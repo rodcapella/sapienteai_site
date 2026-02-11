@@ -40,77 +40,82 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Custom font families */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
 }
 
 :root {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-600);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --radius: 0.65rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.235 0.015 65);
+  /* Neo-Brutalism Color System */
+  --primary: oklch(0.45 0.20 264); /* Electric blue #0066ff */
+  --primary-foreground: oklch(1 0 0); /* Pure white */
+  --sidebar-primary: oklch(0.45 0.20 264);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --chart-1: oklch(0.50 0.18 264);
+  --chart-2: oklch(0.45 0.20 264);
+  --chart-3: oklch(0.40 0.22 264);
+  --chart-4: oklch(0.35 0.20 264);
+  --chart-5: oklch(0.30 0.18 264);
+  --radius: 0rem; /* Sharp corners for brutalism */
+  --background: oklch(1 0 0); /* Pure white */
+  --foreground: oklch(0.15 0.01 264); /* Deep navy #0a1628 */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.235 0.015 65);
+  --card-foreground: oklch(0.15 0.01 264);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.235 0.015 65);
-  --secondary: oklch(0.98 0.001 286.375);
-  --secondary-foreground: oklch(0.4 0.015 65);
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.141 0.005 285.823);
+  --popover-foreground: oklch(0.15 0.01 264);
+  --secondary: oklch(0.60 0.10 35); /* Copper #c17d3a */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.96 0.005 264);
+  --muted-foreground: oklch(0.45 0.01 264);
+  --accent: oklch(0.45 0.20 264); /* Electric blue */
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.92 0.004 286.32);
+  --border: oklch(0.15 0.01 264); /* Dark borders for brutalism */
   --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.235 0.015 65);
-  --sidebar-accent: oklch(0.967 0.001 286.375);
-  --sidebar-accent-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --ring: oklch(0.45 0.20 264);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.15 0.01 264);
+  --sidebar-accent: oklch(0.96 0.005 264);
+  --sidebar-accent-foreground: oklch(0.15 0.01 264);
+  --sidebar-border: oklch(0.15 0.01 264);
+  --sidebar-ring: oklch(0.45 0.20 264);
 }
 
 .dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
+  --primary: oklch(0.45 0.20 264);
+  --primary-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.45 0.20 264);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --background: oklch(0.15 0.01 264);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.20 0.01 264);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.20 0.01 264);
+  --popover-foreground: oklch(1 0 0);
+  --secondary: oklch(0.60 0.10 35);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.25 0.01 264);
+  --muted-foreground: oklch(0.70 0.01 264);
+  --accent: oklch(0.45 0.20 264);
+  --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 15%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --ring: oklch(0.45 0.20 264);
+  --chart-1: oklch(0.50 0.18 264);
+  --chart-2: oklch(0.45 0.20 264);
+  --chart-3: oklch(0.40 0.22 264);
+  --chart-4: oklch(0.35 0.20 264);
+  --chart-5: oklch(0.30 0.18 264);
+  --sidebar: oklch(0.20 0.01 264);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.25 0.01 264);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(1 0 0 / 15%);
+  --sidebar-ring: oklch(0.45 0.20 264);
 }
 
 @layer base {
@@ -119,6 +124,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -130,6 +136,11 @@
   input[type="checkbox"]:not(:disabled),
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
   }
 }
 
@@ -173,5 +184,18 @@
       padding-right: 2rem;
       max-width: 1280px; /* Standard content width */
     }
+  }
+  
+  /* Diagonal clip-path utility for section transitions */
+  .clip-diagonal-top {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+    margin-top: -5rem;
+    padding-top: 8rem;
+  }
+  
+  .clip-diagonal-bottom {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    padding-bottom: 8rem;
+    margin-bottom: -5rem;
   }
 }
