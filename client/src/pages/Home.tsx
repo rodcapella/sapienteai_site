@@ -45,13 +45,9 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b-4 border-foreground">
         <div className="container">
           <nav className="flex items-center justify-between h-20">
-            <div className="flex items-center gap-3">
-              <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png" 
-                alt="SAPIENTE.AI" 
-                className="h-14 w-auto"
-              />
-            </div>
+            <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
+              SAPIENTE.AI
+            </a>
             <div className="hidden md:flex items-center gap-8">
               <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">Serviços</a>
               <a href="#processo" className="text-sm font-medium hover:text-primary transition-colors">Processo</a>
