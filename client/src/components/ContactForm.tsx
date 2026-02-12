@@ -1,6 +1,6 @@
 /**
  * Contact Form Component
- * Features: Form validation, email submission, success/error handling
+ * Features: Form validation, email submission via FormSubmit API, success/error handling
  */
 
 import { useState } from 'react';
@@ -67,27 +67,43 @@ export default function ContactForm() {
     setStatus({ type: 'loading' });
 
     try {
-      // Simulate email sending - in production, this would call your backend API
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Create FormData for submission
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('company', formData.company);
+      formDataToSend.append('message', formData.message);
+      formDataToSend.append('_subject', `Nova Mensagem de Contato - ${formData.name}`);
+      formDataToSend.append('_captcha', 'false');
 
-      // Success response
-      setStatus({
-        type: 'success',
-        message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+      // Send to FormSubmit API
+      const response = await fetch('https://formsubmit.co/sapiente.ai.oficial@gmail.com', {
+        method: 'POST',
+        body: formDataToSend,
       });
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        message: '',
-      });
+      if (response.ok) {
+        // Success response
+        setStatus({
+          type: 'success',
+          message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+        });
 
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setStatus({ type: 'idle' });
-      }, 5000);
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+        });
+
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setStatus({ type: 'idle' });
+        }, 5000);
+      } else {
+        throw new Error('Erro ao enviar formulário');
+      }
     } catch (error) {
       setStatus({
         type: 'error',

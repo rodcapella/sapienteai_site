@@ -397,17 +397,17 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-foreground text-background border-t-4 border-background">
+      <footer className="py-12 bg-black text-white border-t-4 border-white">
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-3">
               <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png" 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/MhgEHrbSKkdNFKRr.png" 
                 alt="SAPIENTE.AI" 
-                className="h-12 w-auto"
+                className="h-20 w-auto"
               />
             </div>
-            <p className="text-sm text-background/70">
+            <p className="text-sm text-white/70">
               © 2026 SAPIENTE.AI • Inteligência Artificial Aplicada
             </p>
           </div>
