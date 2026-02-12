@@ -1,0 +1,73 @@
+# SAPIENTE.AI - robots.txt
+# Optimized for SEO, AEO (Answer Engine Optimization), and GEO (Geographic Optimization)
+
+# Allow all search engines and AI crawlers
+User-agent: *
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Allow: /sitemap.xml
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Allow: /blog
+Allow: /blog/*
+
+User-agent: DuckDuckBot
+Allow: /
+Allow: /blog
+Allow: /blog/*
+
+# Allow AI/LLM crawlers for AEO
+User-agent: GPTBot
+Allow: /
+Allow: /blog
+Allow: /blog/*
+
+User-agent: CCBot
+Allow: /
+Allow: /blog
+Allow: /blog/*
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /blog
+Allow: /blog/*
+
+User-agent: Claude-Web
+Allow: /
+Allow: /blog
+Allow: /blog/*
+
+# Disallow private/admin areas (if any)
+Disallow: /admin
+Disallow: /private
+Disallow: /*.json$
+Disallow: /.env
+
+# Sitemap location
+Sitemap: https://sapiente-ai.manus.space/sitemap.xml
+
+# Crawl delay for general crawlers
+Crawl-delay: 1
+
+# Request rate (requests per second)
+Request-rate: 10/1s
+
+# Comment: This robots.txt is optimized for:
+# - SEO: Allows all major search engines with appropriate crawl delays
+# - AEO: Allows AI/LLM crawlers (GPTBot, CCBot, Claude-Web) for AI search results
+# - GEO: Supports geographic targeting through structured data and content organization

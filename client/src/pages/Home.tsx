@@ -56,6 +56,7 @@ export default function Home() {
               <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">Serviços</a>
               <a href="#processo" className="text-sm font-medium hover:text-primary transition-colors">Processo</a>
               <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">Portfólio</a>
+              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</a>
               <a href="#diferenciais" className="text-sm font-medium hover:text-primary transition-colors">Diferenciais</a>
               <Button 
                 onClick={() => setIsContactOpen(true)}
@@ -75,9 +76,9 @@ export default function Home() {
       <section className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-1_1770834578000_na1fn_aGVyby1haS1uZXVyYWwtbmV0d29yaw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnVHVW5zVHdSRjJuNXczemxsMkp3Qi9zYW5kYm94L244Y0RCV2NtVzRUMVFjTmY4WEEwbnYtaW1nLTFfMTc3MDgzNDU3ODAwMF9uYTFmbl9hR1Z5YnkxaGFTMXVaWFZ5WVd3dGJtVjBkMjl5YXcucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=kkFL2bME1W03EgNa0Ch89mci1--7j2nmTVHh0~vxD4SIlukD3AaB9lDxtYAzLUcLabcDvZIueX~uk-ztc6RsBiCuhRcO6Ig2YC4gNOHK1g52KjzvWWPNFOZMTLjrSk-hsgZ698hERdM1AfM~m7HIeGMBb-k15THRn17iJjjmCFFieAtXRBGjE-JmFv1iclpitB~vpZfmsldhEdCYKGGYOiNQT3NM-sp~bRbDCO2h~xIqvFMY7~QVp6EKImKroxrb7XqQV-HvlhbJhrjOTepZ~AdT5mgziU8b627v4qstbl0nJhAbkr6687t2jAMqKg4RWNs4qYhW6cZLhOZtVL5TRw__" 
-            alt="AI Neural Network" 
-            className="w-full h-full object-cover opacity-10"
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/FYRwdgClQVohvsom.png" 
+            alt="SAPIENTE.AI - AI Innovation" 
+            className="w-full h-full object-cover opacity-20"
           />
         </div>
         <div className="container relative z-10">
