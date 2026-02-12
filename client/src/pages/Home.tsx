@@ -127,14 +127,6 @@ export default function Home() {
               >
                 Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
-                onClick={() => setIsContactOpen(true)}
-                size="lg" 
-                variant="outline"
-                className="border-2 border-foreground text-foreground hover:bg-foreground/5 text-lg px-8 py-6 h-auto font-bold"
-              >
-                Agendar Reunião
-              </Button>
             </div>
           </AnimatedSection>
         </div>
@@ -172,7 +164,7 @@ export default function Home() {
               }
             ].map((service, index) => (
               <AnimatedSection key={index} className={index >= 1 ? 'delay-100' : ''}>
-                <div className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 hover:border-primary hover:shadow-lg transition-all duration-300">
+                <div className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 hover:border-primary hover:shadow-lg transition-all duration-300" style={{height: '464px'}}>
                   <service.icon className="h-12 w-12 text-primary mb-4" />
                   <h3 className="text-2xl font-bold text-foreground mb-4">{service.title}</h3>
                   <p className="text-foreground/70 mb-6">{service.description}</p>
@@ -259,7 +251,7 @@ export default function Home() {
               size="lg"
               className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
             >
-              Ver Mais Casos de Sucesso <ArrowRight className="ml-2 h-5 w-5" />
+               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </AnimatedSection>
         </div>
@@ -283,7 +275,7 @@ export default function Home() {
               { icon: Users, title: 'Suporte Dedicado', desc: 'Acompanhamento contínuo do projeto' }
             ].map((diff, index) => (
               <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
-                <div className="flex gap-6 p-8 bg-white border-2 border-primary/30 hover:border-primary transition-all">
+                <div className="flex gap-6 p-8 bg-white border-2 border-primary/30 hover:border-primary transition-all" style={{height: '180px'}}>
                   <diff.icon className="h-12 w-12 text-primary flex-shrink-0" />
                   <div>
                     <h3 className="text-xl font-bold text-foreground mb-2">{diff.title}</h3>
@@ -354,9 +346,9 @@ export default function Home() {
             <Button 
               onClick={() => setIsContactOpen(true)}
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 border-2 border-white text-lg px-8 py-6 h-auto font-bold"
+              className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
             >
-              Agendar Reunião Agora <ArrowRight className="ml-2 h-5 w-5" />
+              Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </AnimatedSection>
         </div>
@@ -367,7 +359,7 @@ export default function Home() {
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="text-lg font-bold mb-4">SAPIENTE.AI</h3>
+              <h3 className="text-lg font-bold mb-4"></h3>
               <p className="text-sm text-white/70">
                 Inteligência Artificial Aplicada aos Negócios
               </p>
