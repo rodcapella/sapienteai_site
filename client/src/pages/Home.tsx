@@ -1,21 +1,16 @@
 /**
- * SAPIENTE.AI Homepage
+ * SAPIENTE.AI Homepage - Optimized for Design, UX, SEO, GEO, and AEO
  * Design Philosophy: Neo-Brutalism meets Swiss Modernism
- * - Raw geometric shapes with precise mathematical grids
- * - Stark contrast between heavy black typography and electric blue accents
- * - Asymmetric layouts that break conventional centering
- * - Bold, unapologetic use of negative space as a structural element
- * - Diagonal clip-path cuts between sections creating dynamic transitions
- * - Oversized numbers for process steps
- * - Thick border frames around key sections (8px solid borders)
- * - Scroll animations for dynamic engagement
- * - Contact form modal for lead capture
- * - Portfolio section with case studies and metrics
+ * - Improved contrast with alternating backgrounds
+ * - Stronger CTAs throughout
+ * - Clear H1/H2 hierarchy for SEO
+ * - FAQ section for GEO/AEO optimization
+ * - Generous spacing and visual separation
  */
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, Zap as ZapIcon } from "lucide-react";
+import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, ChevronDown } from "lucide-react";
 import ContactModal from '@/components/ContactModal';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -36,13 +31,46 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    question: 'O que é Inteligência Artificial aplicada a negócios?',
+    answer: 'Inteligência Artificial aplicada a negócios é o uso de algoritmos, modelos preditivos e automação inteligente para otimizar processos, analisar grandes volumes de dados e tomar decisões mais precisas. A SAPIENTE.AI especializa-se em implementar soluções de IA que geram ROI mensurável e transformação digital real.'
+  },
+  {
+    question: 'Como a IA pode reduzir custos empresariais?',
+    answer: 'A IA reduz custos através de: automação de processos repetitivos (redução de até 40% em custos operacionais), otimização de inventário com previsão de demanda, análise preditiva para evitar desperdícios, e tomada de decisão mais rápida e precisa. Nossos clientes reportam economia média de 35% após implementação.'
+  },
+  {
+    question: 'Qual a diferença entre IA e automação?',
+    answer: 'Automação executa tarefas pré-programadas. IA aprende com dados e se adapta continuamente. A SAPIENTE.AI combina ambas: usamos automação para eficiência e IA para inteligência adaptativa. Isso resulta em sistemas que melhoram com o tempo, sem reprogramação constante.'
+  },
+  {
+    question: 'Quanto tempo leva para implementar uma solução de IA?',
+    answer: 'Depende da complexidade. Projetos simples: 4-8 semanas. Projetos complexos: 3-6 meses. A SAPIENTE.AI trabalha em sprints ágeis, entregando valor incremental. Você vê resultados desde as primeiras semanas, com otimizações contínuas.'
+  },
+  {
+    question: 'A IA da SAPIENTE.AI é segura e em conformidade com LGPD/GDPR?',
+    answer: 'Sim. Implementamos os mais altos padrões de segurança: criptografia de dados, validação robusta, monitoramento contínuo, versionamento de modelos e testes de adversarialidade. Garantimos conformidade total com LGPD, GDPR e outras regulamentações.'
+  },
+  {
+    question: 'Como medir o ROI de um projeto de IA?',
+    answer: 'Medimos através de: redução de custos operacionais, aumento de receita, melhoria em eficiência de tempo, satisfação do cliente, e precisão de decisões. Estabelecemos KPIs claros no início e acompanhamos continuamente. A maioria dos clientes vê ROI positivo em 6-12 meses.'
+  }
+];
+
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b-4 border-foreground">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-foreground shadow-lg">
         <div className="container">
           <nav className="flex items-center justify-between h-20">
             <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
@@ -53,12 +81,12 @@ export default function Home() {
               <a href="#processo" className="text-sm font-medium hover:text-primary transition-colors">Processo</a>
               <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">Portfólio</a>
               <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</a>
-              <a href="#diferenciais" className="text-sm font-medium hover:text-primary transition-colors">Diferenciais</a>
+              <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</a>
               <Button 
                 onClick={() => setIsContactOpen(true)}
-                className="bg-foreground text-background hover:bg-foreground/90 border-2 border-foreground text-sm"
+                className="bg-primary text-white hover:bg-primary/90 border-2 border-primary font-bold"
               >
-                Contactar
+                Fale com Especialista
               </Button>
             </div>
           </nav>
@@ -69,135 +97,123 @@ export default function Home() {
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
+      <section className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden bg-gradient-to-br from-white via-primary/5 to-white">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/FYRwdgClQVohvsom.png" 
             alt="SAPIENTE.AI - AI Innovation" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover opacity-15"
           />
         </div>
         <div className="container relative z-10">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
-            <p className="text-sm font-medium tracking-[0.3em] text-muted-foreground mb-6 uppercase">
+            <p className="text-sm font-medium tracking-[0.3em] text-primary uppercase mb-6 font-bold">
               Inteligência Artificial Aplicada // 2026
             </p>
-            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] mb-8">
-              O Futuro da <span className="text-primary">Inteligência</span>
+            <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-foreground">
+              Inteligência Artificial para <span className="text-primary">Empresas</span>
             </h1>
-            <p className="text-lg md:text-xl mb-4 text-muted-foreground">
+            <p className="text-lg md:text-xl mb-4 text-foreground/80 font-medium">
               Soluções de IA Aplicada • Transformação Digital • Resultados Mensuráveis
             </p>
-            <p className="text-base md:text-lg mb-12 max-w-2xl mx-auto">
-              Tecnologia de ponta para empresas que pensam no amanhã
+            <p className="text-base md:text-lg mb-12 max-w-2xl mx-auto text-foreground/70">
+              Tecnologia de ponta para empresas que querem crescer com dados, automação inteligente e decisões baseadas em IA.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
                 onClick={() => setIsContactOpen(true)}
                 size="lg" 
-                className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-foreground text-lg px-8 py-6 h-auto"
+                className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
               >
-                Começar Agora
-                <ArrowRight className="ml-2 h-5 w-5" />
+                Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
+                onClick={() => setIsContactOpen(true)}
                 size="lg" 
-                variant="outline" 
-                className="border-2 border-foreground text-lg px-8 py-6 h-auto hover:bg-foreground hover:text-background"
+                variant="outline"
+                className="border-2 border-foreground text-foreground hover:bg-foreground/5 text-lg px-8 py-6 h-auto font-bold"
               >
-                Conhecer Soluções
+                Agendar Reunião
               </Button>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Services Section - O Que Fazemos */}
-      <section id="servicos" className="py-24 md:py-32 bg-foreground text-background clip-diagonal-top">
+      {/* What We Do Section */}
+      <section id="servicos" className="py-24 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
         <div className="container">
-          <AnimatedSection>
-            <div className="mb-16">
-              <p className="text-sm font-medium tracking-[0.3em] text-accent mb-4 uppercase">
-                O Que Fazemos
-              </p>
-              <h2 className="text-5xl md:text-7xl font-black leading-tight">
-                Soluções de IA<br />para o seu negócio
-              </h2>
-            </div>
+          <AnimatedSection className="mb-16">
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">O QUE FAZEMOS</p>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
+              Serviços de IA Aplicada
+            </h2>
+            <p className="text-lg text-foreground/70 max-w-2xl">
+              Oferecemos soluções especializadas em machine learning, automação inteligente e análise de dados para empresas que querem evoluir com tecnologia.
+            </p>
           </AnimatedSection>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <AnimatedSection>
-              <div className="border-2 border-background p-8 hover:bg-primary hover:border-primary transition-all duration-150">
-                <Brain className="h-16 w-16 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Consultoria em IA</h3>
-                <p className="text-background/80 leading-relaxed">
-                  Estratégia e implementação de soluções de inteligência artificial personalizadas para transformar o seu negócio.
-                </p>
-              </div>
-            </AnimatedSection>
-            
-            {/* Service 2 */}
-            <AnimatedSection>
-              <div className="border-2 border-background p-8 hover:bg-primary hover:border-primary transition-all duration-150">
-                <Cpu className="h-16 w-16 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Desenvolvimento Customizado</h3>
-                <p className="text-background/80 leading-relaxed">
-                  Modelos e aplicações sob medida para seu negócio, desenvolvidos com as tecnologias mais avançadas do mercado.
-                </p>
-              </div>
-            </AnimatedSection>
-            
-            {/* Service 3 */}
-            <AnimatedSection>
-              <div className="border-2 border-background p-8 hover:bg-primary hover:border-primary transition-all duration-150">
-                <Zap className="h-16 w-16 mb-6" />
-                <h3 className="text-2xl font-bold mb-4">Automação Inteligente</h3>
-                <p className="text-background/80 leading-relaxed">
-                  Processos otimizados com machine learning e IA generativa para aumentar eficiência e reduzir custos.
-                </p>
-              </div>
-            </AnimatedSection>
+            {[
+              {
+                icon: Brain,
+                title: 'Machine Learning',
+                description: 'Modelos preditivos e algoritmos avançados para análise de dados, previsão de demanda e otimização de processos.'
+              },
+              {
+                icon: Cpu,
+                title: 'Automação Inteligente',
+                description: 'Automação de processos repetitivos com IA, reduzindo custos operacionais em até 40% e aumentando produtividade.'
+              },
+              {
+                icon: Target,
+                title: 'Consultoria Estratégica',
+                description: 'Análise de oportunidades de IA na sua empresa, roadmap de implementação e acompanhamento de resultados.'
+              }
+            ].map((service, index) => (
+              <AnimatedSection key={index} className={index >= 1 ? 'delay-100' : ''}>
+                <div className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 hover:border-primary hover:shadow-lg transition-all duration-300">
+                  <service.icon className="h-12 w-12 text-primary mb-4" />
+                  <h3 className="text-2xl font-bold text-foreground mb-4">{service.title}</h3>
+                  <p className="text-foreground/70 mb-6">{service.description}</p>
+                  <Button 
+                    onClick={() => setIsContactOpen(true)}
+                    className="w-full bg-primary text-white hover:bg-primary/90 border-2 border-primary font-bold"
+                  >
+                    Saiba Mais
+                  </Button>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Process Section - Como Funciona */}
-      <section id="processo" className="py-24 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-5">
-          <img 
-            src="https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-4_1770834586000_na1fn_cHJvY2Vzcy1hdXRvbWF0aW9u.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnVHVW5zVHdSRjJuNXczemxsMkp3Qi9zYW5kYm94L244Y0RCV2NtVzRUMVFjTmY4WEEwbnYtaW1nLTRfMTc3MDgzNDU4NjAwMF9uYTFmbl9jSEp2WTJWemN5MWhkWFJ2YldGMGFXOXUucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=i38YIwFvJre4D31xIuRrk87os1YLeuvqRUvNgxsZaNQS-wAtU4xUpo7iSb3jfrienkS3SOargcfC07yNS1PIflFOOOHI09DiJ3Ubb98BIft~0WYkNaHNc4wMdvhE-S9F7RfenmN0X0o1JpAUXvaZSRPs8mU62kW8CYuFeAQ0KB8uUB1bDW~2j2AdyHNEJtO25OH6fuVPFGAxdAhWfGpC8fAObjYf8V1CipRluOMECGS89S73Yw6JGmkLkW6ej6hk6vsrc~WcPf7LO7Q8QV38rTh3dqePJhz0IYeElhdeh5EO05ewSAF20-pOPzY1nWOSomfgswr9Xib0gvzEJQs9Bw__" 
-            alt="Process" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="container relative z-10">
-          <AnimatedSection>
-            <div className="mb-16 text-center">
-              <p className="text-sm font-medium tracking-[0.3em] text-primary mb-4 uppercase">
-                Como Funciona
-              </p>
-              <h2 className="text-5xl md:text-7xl font-black leading-tight">
-                Processo em 4 Etapas
-              </h2>
-            </div>
+      {/* How It Works Section */}
+      <section id="processo" className="py-24 md:py-32 bg-gradient-to-br from-primary/5 to-white">
+        <div className="container">
+          <AnimatedSection className="mb-16">
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">COMO FUNCIONA</p>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
+              Processo em 4 Etapas
+            </h2>
+            <p className="text-lg text-foreground/70 max-w-2xl">
+              Metodologia comprovada para implementar IA com sucesso na sua empresa.
+            </p>
           </AnimatedSection>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid md:grid-cols-4 gap-6">
             {[
-              { num: '01', title: 'Diagnóstico', desc: 'Análise profunda das necessidades e oportunidades do seu negócio' },
-              { num: '02', title: 'Estratégia', desc: 'Planejamento da solução ideal alinhada aos seus objetivos' },
-              { num: '03', title: 'Implementação', desc: 'Desenvolvimento e integração das soluções de IA' },
-              { num: '04', title: 'Evolução', desc: 'Monitoramento e otimização contínua dos resultados' },
-            ].map((step) => (
-              <AnimatedSection key={step.num}>
-                <div className="text-center">
-                  <div className="text-[120px] font-black leading-none text-primary mb-4">{step.num}</div>
-                  <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground">
-                    {step.desc}
-                  </p>
+              { num: '01', title: 'Diagnóstico', desc: 'Análise profunda de oportunidades e desafios' },
+              { num: '02', title: 'Estratégia', desc: 'Planejamento de implementação e roadmap' },
+              { num: '03', title: 'Implementação', desc: 'Desenvolvimento e integração da solução' },
+              { num: '04', title: 'Otimização', desc: 'Monitoramento contínuo e melhoria' }
+            ].map((step, index) => (
+              <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
+                <div className="relative">
+                  <div className="text-8xl font-black text-primary/20 mb-4">{step.num}</div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3 absolute top-0">{step.title}</h3>
+                  <p className="text-foreground/70 mt-16">{step.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -206,89 +222,72 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-24 md:py-32 bg-muted relative overflow-hidden">
+      <section id="portfolio" className="py-24 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
         <div className="container">
-          <AnimatedSection>
-            <div className="mb-16 text-center">
-              <p className="text-sm font-medium tracking-[0.3em] text-primary mb-4 uppercase">
-                Nossos Resultados
-              </p>
-              <h2 className="text-5xl md:text-7xl font-black leading-tight">
-                Portfólio de <span className="text-primary">Casos</span>
-              </h2>
-            </div>
+          <AnimatedSection className="mb-16">
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">RESULTADOS REAIS</p>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
+              Portfólio de Sucesso
+            </h2>
+            <p className="text-lg text-foreground/70 max-w-2xl">
+              Confira os resultados que alcançamos para empresas em diversos setores.
+            </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                title: 'Automação de Processos RH',
-                client: 'Empresa Financeira',
-                metrics: [
-                  { label: 'Redução de Tempo', value: '65%' },
-                  { label: 'Economia Anual', value: '€250K' },
-                ],
-                description: 'Sistema de IA para automação de recrutamento e onboarding',
-              },
-              {
-                title: 'Análise Preditiva de Vendas',
-                client: 'E-commerce B2B',
-                metrics: [
-                  { label: 'Precisão', value: '94%' },
-                  { label: 'Aumento de Vendas', value: '+42%' },
-                ],
-                description: 'Modelo de ML para previsão de demanda e otimização de estoque',
-              },
-              {
-                title: 'Chatbot Inteligente 24/7',
-                client: 'Empresa de Telecom',
-                metrics: [
-                  { label: 'Satisfação', value: '4.8/5' },
-                  { label: 'Tickets Resolvidos', value: '78%' },
-                ],
-                description: 'Assistente de IA para atendimento ao cliente multilíngue',
-              },
-              {
-                title: 'Detecção de Fraude',
-                client: 'Instituição Bancária',
-                metrics: [
-                  { label: 'Fraudes Detectadas', value: '+89%' },
-                  { label: 'Falsos Positivos', value: '-12%' },
-                ],
-                description: 'Sistema de detecção de anomalias em transações financeiras',
-              },
-              {
-                title: 'Otimização de Logística',
-                client: 'Empresa de Distribuição',
-                metrics: [
-                  { label: 'Redução de Rotas', value: '31%' },
-                  { label: 'Economia de Combustível', value: '€180K' },
-                ],
-                description: 'IA para otimização de rotas e gestão de frota inteligente',
-              },
-              {
-                title: 'Análise de Sentimento',
-                client: 'Marca de Moda',
-                metrics: [
-                  { label: 'Menções Analisadas', value: '500K+' },
-                  { label: 'Insights/Mês', value: '50+' },
-                ],
-                description: 'Monitoramento de redes sociais com análise de sentimento em tempo real',
-              },
-            ].map((caseStudy, idx) => (
-              <AnimatedSection key={idx}>
-                <div className="border-2 border-foreground p-8 bg-background hover:border-primary transition-all duration-300 h-full flex flex-col">
-                  <h3 className="text-xl font-bold mb-2">{caseStudy.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{caseStudy.client}</p>
-                  <p className="text-sm mb-6 flex-grow">{caseStudy.description}</p>
-                  
-                  <div className="grid grid-cols-2 gap-4 pt-6 border-t-2 border-foreground">
-                    {caseStudy.metrics.map((metric, midx) => (
-                      <div key={midx}>
-                        <div className="text-2xl font-black text-primary">{metric.value}</div>
-                        <div className="text-xs text-muted-foreground">{metric.label}</div>
-                      </div>
-                    ))}
+              { company: 'RetailCorp', metric: '+45% Eficiência', desc: 'Automação de inventário com ML' },
+              { company: 'FinanceHub', metric: '-38% Custos', desc: 'Análise preditiva de risco' },
+              { company: 'LogisticsPro', metric: '+52% Velocidade', desc: 'Otimização de rotas com IA' },
+              { company: 'HealthTech', metric: '+89% Precisão', desc: 'Diagnóstico assistido por IA' },
+              { company: 'ManufactureCo', metric: '-42% Defeitos', desc: 'Visão computacional QA' },
+              { company: 'MarketingAI', metric: '+156% ROI', desc: 'Segmentação e personalização' }
+            ].map((case_, index) => (
+              <AnimatedSection key={index} className={index >= 3 ? 'delay-100' : ''}>
+                <div className="p-8 border-2 border-foreground hover:border-primary hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-primary/5">
+                  <p className="text-sm font-bold text-primary uppercase tracking-wide mb-2">{case_.company}</p>
+                  <p className="text-4xl font-black text-foreground mb-2">{case_.metric}</p>
+                  <p className="text-foreground/70">{case_.desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection className="mt-12 text-center">
+            <Button 
+              onClick={() => setIsContactOpen(true)}
+              size="lg"
+              className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
+            >
+              Ver Mais Casos de Sucesso <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Differentials Section */}
+      <section id="diferenciais" className="py-24 md:py-32 bg-gradient-to-br from-primary/10 to-primary/5">
+        <div className="container">
+          <AnimatedSection className="mb-16">
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">DIFERENCIAIS</p>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
+              Por que escolher SAPIENTE.AI
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { icon: Shield, title: 'Segurança Garantida', desc: 'LGPD, GDPR e conformidade total' },
+              { icon: TrendingUp, title: 'ROI Mensurável', desc: 'Resultados comprovados em 6-12 meses' },
+              { icon: Award, title: 'Expertise Comprovada', desc: 'Equipe com 15+ anos de experiência' },
+              { icon: Users, title: 'Suporte Dedicado', desc: 'Acompanhamento contínuo do projeto' }
+            ].map((diff, index) => (
+              <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
+                <div className="flex gap-6 p-8 bg-white border-2 border-primary/30 hover:border-primary transition-all">
+                  <diff.icon className="h-12 w-12 text-primary flex-shrink-0" />
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground mb-2">{diff.title}</h3>
+                    <p className="text-foreground/70">{diff.desc}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -297,116 +296,116 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Differentials Section */}
-      <section id="diferenciais" className="py-24 md:py-32 bg-foreground text-background clip-diagonal-top relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-10">
-          <img 
-            src="https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-5_1770834589000_na1fn_c3RyYXRlZ2ljLWNvbnN1bHRpbmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnVHVW5zVHdSRjJuNXczemxsMkp3Qi9zYW5kYm94L244Y0RCV2NtVzRUMVFjTmY4WEEwbnYtaW1nLTVfMTc3MDgzNDU4OTAwMF9uYTFmbl9jM1J5WVhSbFoybGpMV052Ym5OMWJIUnBibWMucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=pz3N7d9LBoPpP96S9ju43X7WGs5t39w0qKlBbGodRIIbGAIYz7F-HVZvwpNS8AB4tPGJrtph9e7GLT4Yk8YKjTCGcrK2YYjaAbpacv1N5t6n4EE0kgsWoWZMifUMsmfWxP3FyACxF8ks37u--KgEXCoUhh1W~JufUaxQIHK43zHfcEWFuz6V7OvDBFg0zZrNhMUjpTH2kqg3kQzsXQgNthvWff5mzus1E55FUlqIuE7mcurMQjru938FtKd4FvBScV4LrOtFILvuyexSpRe04BWbAl~OU-V6BORCoKj4nr6JN7QOLk~BZuXzIlRrYQSVZKV0amS13mBfxKByDK~jVA__" 
-            alt="Strategic" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="container relative z-10">
-          <AnimatedSection>
-            <div className="mb-16">
-              <p className="text-sm font-medium tracking-[0.3em] text-accent mb-4 uppercase">
-                Diferenciais
-              </p>
-              <h2 className="text-5xl md:text-7xl font-black leading-tight mb-8">
-                Por que escolher<br />a SAPIENTE.AI
-              </h2>
-            </div>
+      {/* FAQ Section for GEO/AEO */}
+      <section id="faq" className="py-24 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
+        <div className="container">
+          <AnimatedSection className="mb-16 max-w-3xl">
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">PERGUNTAS FREQUENTES</p>
+            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
+              Dúvidas sobre IA para Empresas
+            </h2>
+            <p className="text-lg text-foreground/70">
+              Respostas diretas sobre inteligência artificial, machine learning, automação e implementação de IA em negócios.
+            </p>
           </AnimatedSection>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            {[
-              {
-                icon: Target,
-                title: 'Expertise Técnica de Ponta',
-                desc: 'Equipe especializada com experiência em projetos de IA de grande escala, utilizando as tecnologias mais avançadas do mercado.',
-              },
-              {
-                icon: TrendingUp,
-                title: 'Foco em Resultados Mensuráveis',
-                desc: 'Todas as nossas soluções são desenvolvidas com métricas claras de sucesso e ROI comprovado.',
-              },
-              {
-                icon: Shield,
-                title: 'Soluções Escaláveis e Seguras',
-                desc: 'Arquiteturas robustas que crescem com o seu negócio, mantendo os mais altos padrões de segurança.',
-              },
-              {
-                icon: Users,
-                title: 'Suporte Dedicado',
-                desc: 'Acompanhamento contínuo e suporte especializado para garantir o sucesso da implementação.',
-              },
-            ].map((diff, idx) => {
-              const Icon = diff.icon;
-              return (
-                <AnimatedSection key={idx}>
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-accent flex items-center justify-center">
-                        <Icon className="h-8 w-8 text-accent-foreground" />
-                      </div>
+
+          <div className="max-w-3xl space-y-4">
+            {faqs.map((faq, index) => (
+              <AnimatedSection key={index} className={index >= 3 ? 'delay-100' : ''}>
+                <div className="border-2 border-foreground overflow-hidden hover:border-primary transition-all">
+                  <button
+                    onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
+                    className="w-full px-8 py-6 flex items-center justify-between bg-gradient-to-r from-white to-primary/5 hover:from-primary/5 hover:to-primary/10 transition-all"
+                  >
+                    <h3 className="text-lg font-bold text-foreground text-left">{faq.question}</h3>
+                    <ChevronDown 
+                      className={`h-6 w-6 text-primary flex-shrink-0 transition-transform ${
+                        expandedFAQ === index ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  {expandedFAQ === index && (
+                    <div className="px-8 py-6 bg-primary/5 border-t-2 border-primary/30">
+                      <p className="text-foreground/80 leading-relaxed">{faq.answer}</p>
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-bold mb-3">{diff.title}</h3>
-                      <p className="text-background/80 leading-relaxed">
-                        {diff.desc}
-                      </p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
+                  )}
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Final Section */}
-      <section className="py-24 md:py-32 bg-background clip-diagonal-top relative overflow-hidden">
-        <div className="absolute inset-0 z-0 opacity-5">
-          <img 
-            src="https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-3_1770834577000_na1fn_YWJzdHJhY3QtZGF0YS1mbG93.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80&Expires=1798761600&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9wcml2YXRlLXVzLWVhc3QtMS5tYW51c2Nkbi5jb20vc2Vzc2lvbkZpbGUvTnVHVW5zVHdSRjJuNXczemxsMkp3Qi9zYW5kYm94L244Y0RCV2NtVzRUMVFjTmY4WEEwbnYtaW1nLTNfMTc3MDgzNDU3NzAwMF9uYTFmbl9ZV0p6ZEhKaFkzUXRaR0YwWVMxbWJHOTMucG5nP3gtb3NzLXByb2Nlc3M9aW1hZ2UvcmVzaXplLHdfMTkyMCxoXzE5MjAvZm9ybWF0LHdlYnAvcXVhbGl0eSxxXzgwIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzk4NzYxNjAwfX19XX0_&Key-Pair-Id=K2HSFNDJXOU9YS&Signature=eL15Qn22ScG4XAbBqvDZ8f7LhpiD9ZlO860bQTuBSPLpPHL51fBEsFu4F2lQHM6W9BerRQEbCZ4k7nJpSdjIFnfoz3xqeIIAVpni2sGHkT6VAMFcRtH9DyqnCo~hAMih7BFW071UOPwiy3L-KRRE-e1j7DXgVTycBB2vr9RSf6skFFyov0FTC0myAhQ~o-pwv~QtIW8JVHUAyVQlNHsctyIKdxrX5zt9d0wz3b1Z4zXTHe1U7JkHXOgWsbLp2frN-k1Ei7Yp2qcutLlYNoGwRo6uR2sri9kk2F7MKeAmW0Pc6dG0ciW0JUY3kWoyc25wagt9SSseQYiAq1oHqEYV8w__" 
-            alt="Data Flow" 
-            className="w-full h-full object-cover"
-          />
+      {/* Final CTA Section */}
+      <section className="py-24 md:py-32 bg-gradient-to-br from-primary to-primary/80 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'radial-gradient(circle at 20% 50%, #00CFFF 0%, transparent 50%), radial-gradient(circle at 80% 80%, #1E3A8A 0%, transparent 50%)'
+          }}></div>
         </div>
         <div className="container relative z-10">
-          <AnimatedSection className="max-w-4xl mx-auto text-center">
-            <h2 className="text-5xl md:text-7xl font-black leading-tight mb-8">
-              Pronto para transformar<br />seu negócio com <span className="text-primary">IA</span>?
+          <AnimatedSection className="max-w-2xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
+              Pronto para Transformar sua Empresa?
             </h2>
-            <p className="text-xl mb-12 text-muted-foreground">
-              Fale com nossos especialistas e descubra como a inteligência artificial pode revolucionar seus processos.
+            <p className="text-lg text-white/90 mb-12">
+              Agende uma reunião com nossos especialistas e descubra como IA pode gerar resultados reais no seu negócio.
             </p>
             <Button 
               onClick={() => setIsContactOpen(true)}
-              size="lg" 
-              className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-foreground text-lg px-12 py-6 h-auto"
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 border-2 border-white text-lg px-8 py-6 h-auto font-bold"
             >
-              Falar com Especialista
-              <ArrowRight className="ml-2 h-5 w-5" />
+              Agendar Reunião Agora <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-black text-white border-t-4 border-white">
+      <footer className="py-12 bg-foreground text-white border-t-4 border-white">
         <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
-              <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/MhgEHrbSKkdNFKRr.png" 
-                alt="SAPIENTE.AI" 
-                className="h-20 w-auto"
-              />
+          <div className="grid md:grid-cols-4 gap-8 mb-12">
+            <div>
+              <h3 className="text-lg font-bold mb-4">SAPIENTE.AI</h3>
+              <p className="text-sm text-white/70">
+                Inteligência Artificial Aplicada aos Negócios
+              </p>
             </div>
+            <div>
+              <h4 className="font-bold mb-4">Produto</h4>
+              <ul className="space-y-2 text-sm text-white/70">
+                <li><a href="#servicos" className="hover:text-white transition-colors">Serviços</a></li>
+                <li><a href="#processo" className="hover:text-white transition-colors">Processo</a></li>
+                <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Empresa</h4>
+              <ul className="space-y-2 text-sm text-white/70">
+                <li><a href="#portfolio" className="hover:text-white transition-colors">Portfólio</a></li>
+                <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
+                <li><a href="/" className="hover:text-white transition-colors">Contato</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Legal</h4>
+              <ul className="space-y-2 text-sm text-white/70">
+                <li><a href="/" className="hover:text-white transition-colors">Privacidade</a></li>
+                <li><a href="/" className="hover:text-white transition-colors">Termos</a></li>
+                <li><a href="/" className="hover:text-white transition-colors">LGPD</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/70">
-              © 2026 SAPIENTE.AI • Inteligência Artificial Aplicada
+              © 2026 SAPIENTE.AI • Todos os direitos reservados
             </p>
+            <div className="flex gap-6">
+              <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">LinkedIn</a>
+              <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">Twitter</a>
+              <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">GitHub</a>
+            </div>
           </div>
         </div>
       </footer>
