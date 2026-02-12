@@ -74,7 +74,7 @@ export default function Home() {
         <div className="container">
           <nav className="flex items-center justify-between h-20">
             <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
-              SAPIENTE.AI
+              
             </a>
             <div className="hidden md:flex items-center gap-8">
               <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">Serviços</a>
@@ -108,7 +108,7 @@ export default function Home() {
         <div className="container relative z-10">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
             <p className="text-sm font-medium tracking-[0.3em] text-primary uppercase mb-6 font-bold">
-              Inteligência Artificial Aplicada // 2026
+              
             </p>
             <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-foreground">
               Inteligência Artificial para <span className="text-primary">Empresas</span>
@@ -146,7 +146,7 @@ export default function Home() {
           <AnimatedSection className="mb-16">
             <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">O QUE FAZEMOS</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Serviços de IA Aplicada
+              Serviços de IA Aplicada:
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl">
               Oferecemos soluções especializadas em machine learning, automação inteligente e análise de dados para empresas que querem evoluir com tecnologia.
@@ -195,7 +195,7 @@ export default function Home() {
           <AnimatedSection className="mb-16">
             <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">COMO FUNCIONA</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Processo em 4 Etapas
+              Processo em 4 Etapas:
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl">
               Metodologia comprovada para implementar IA com sucesso na sua empresa.
@@ -227,7 +227,7 @@ export default function Home() {
           <AnimatedSection className="mb-16">
             <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">RESULTADOS REAIS</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Portfólio de Sucesso
+              Portfólio de Sucesso:
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl">
               Confira os resultados que alcançamos para empresas em diversos setores.
@@ -266,12 +266,12 @@ export default function Home() {
       </section>
 
       {/* Differentials Section */}
-      <section id="diferenciais" className="py-24 md:py-32 bg-gradient-to-br from-primary/10 to-primary/5">
+      <section id="diferenciais" className="py-24 md:py-32 bg-gradient-to-br from-primary/5 to-white">
         <div className="container">
           <AnimatedSection className="mb-16">
             <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">DIFERENCIAIS</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Por que escolher SAPIENTE.AI
+              Por que escolher SAPIENTE.AI ?
             </h2>
           </AnimatedSection>
 
@@ -279,7 +279,7 @@ export default function Home() {
             {[
               { icon: Shield, title: 'Segurança Garantida', desc: 'LGPD, GDPR e conformidade total' },
               { icon: TrendingUp, title: 'ROI Mensurável', desc: 'Resultados comprovados em 6-12 meses' },
-              { icon: Award, title: 'Expertise Comprovada', desc: 'Equipe com 15+ anos de experiência' },
+              { icon: Award, title: 'Expertise Comprovada', desc: 'Equipe com + 5 anos de experiência' },
               { icon: Users, title: 'Suporte Dedicado', desc: 'Acompanhamento contínuo do projeto' }
             ].map((diff, index) => (
               <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
@@ -403,8 +403,6 @@ export default function Home() {
             </p>
             <div className="flex gap-6">
               <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">LinkedIn</a>
-              <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">Twitter</a>
-              <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">GitHub</a>
             </div>
           </div>
         </div>
