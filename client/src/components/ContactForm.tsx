@@ -1,6 +1,6 @@
 /**
  * Contact Form Component
- * Features: Form validation, email submission via FormSubmit API, success/error handling
+ * Features: Form validation, email submission via FormSubmit API, success/error handling, phone field
  */
 
 import { useState } from 'react';
@@ -10,6 +10,7 @@ import { ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 interface FormData {
   name: string;
   email: string;
+  phone: string;
   company: string;
   message: string;
 }
@@ -23,6 +24,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
+    phone: '',
     company: '',
     message: '',
   });
@@ -44,6 +46,10 @@ export default function ContactForm() {
     }
     if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       setStatus({ type: 'error', message: 'Email inválido' });
+      return false;
+    }
+    if (!formData.phone.trim()) {
+      setStatus({ type: 'error', message: 'Telefone é obrigatório' });
       return false;
     }
     if (!formData.company.trim()) {
@@ -71,6 +77,7 @@ export default function ContactForm() {
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
+      formDataToSend.append('phone', formData.phone);
       formDataToSend.append('company', formData.company);
       formDataToSend.append('message', formData.message);
       formDataToSend.append('_subject', `Nova Mensagem de Contato - ${formData.name}`);
@@ -93,6 +100,7 @@ export default function ContactForm() {
         setFormData({
           name: '',
           email: '',
+          phone: '',
           company: '',
           message: '',
         });
@@ -158,6 +166,23 @@ export default function ContactForm() {
           value={formData.email}
           onChange={handleChange}
           placeholder="seu@email.com"
+          className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
+          disabled={status.type === 'loading'}
+        />
+      </div>
+
+      {/* Phone Field */}
+      <div>
+        <label htmlFor="phone" className="block text-sm font-medium mb-2">
+          Telefone *
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="+351 XXX XXX XXX"
           className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
           disabled={status.type === 'loading'}
         />

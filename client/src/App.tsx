@@ -4,19 +4,26 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
-import AIPillar from "./pages/AIPillar";
 import Blog from "./pages/Blog";
 import ArticleDetail from "./pages/ArticleDetail";
+import AIPillar from "./pages/AIPillar";
+import LGPD from "./pages/LGPD";
+import Termos from "./pages/Termos";
+import Privacidade from "./pages/Privacidade";
 
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
-      <Route path={"/ia-para-empresas"} component={AIPillar} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:id"} component={ArticleDetail} />
+      <Route path={"/ia-para-empresas"} component={AIPillar} />
+      <Route path={"/lgpd"} component={LGPD} />
+      <Route path={"/termos"} component={Termos} />
+      <Route path={"/privacidade"} component={Privacidade} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -32,15 +39,17 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
+      <LanguageProvider>
+        <ThemeProvider
+          defaultTheme="light"
+          // switchable
+        >
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </ThemeProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }
