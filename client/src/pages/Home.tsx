@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, ChevronDown } from "lucide-react";
 import ContactModal from '@/components/ContactModal';
+import { LanguageSelector } from '@/components/LanguageSelector';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 // Animated Section Wrapper
@@ -74,7 +75,7 @@ export default function Home() {
         <div className="container">
           <nav className="flex items-center justify-between h-20">
             <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
-              
+              SAPIENTE.AI
             </a>
             <div className="hidden md:flex items-center gap-8">
               <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">Serviços</a>
@@ -82,6 +83,7 @@ export default function Home() {
               <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">Portfólio</a>
               <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</a>
               <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</a>
+              <LanguageSelector />
               <Button 
                 onClick={() => setIsContactOpen(true)}
                 className="bg-primary text-white hover:bg-primary/90 border-2 border-primary font-bold"
@@ -359,7 +361,11 @@ export default function Home() {
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
-              <h3 className="text-lg font-bold mb-4"></h3>
+              <img 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/vRKqoJgFxdCzRRqV.png" 
+                alt="SAPIENTE.AI" 
+                className="h-16 mb-4 object-contain"
+              />
               <p className="text-sm text-white/70">
                 Inteligência Artificial Aplicada aos Negócios
               </p>
