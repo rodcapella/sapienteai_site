@@ -1,4 +1,4 @@
-/**
+/*
  * SAPIENTE.AI Homepage - Optimized for Design, UX, SEO, GEO, and AEO
  * Design Philosophy: Neo-Brutalism meets Swiss Modernism
  * - Improved contrast with alternating backgrounds
@@ -6,6 +6,7 @@
  * - Clear H1/H2 hierarchy for SEO
  * - FAQ section for GEO/AEO optimization
  * - Generous spacing and visual separation
+ * - Full i18n support with dynamic language switching
  */
 
 import { useState } from 'react';
@@ -14,6 +15,7 @@ import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, 
 import ContactModal from '@/components/ContactModal';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useTranslation } from '@/hooks/useTranslation';
 
 // Animated Section Wrapper
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -37,36 +39,103 @@ interface FAQItem {
   answer: string;
 }
 
-const faqs: FAQItem[] = [
-  {
-    question: 'O que é Inteligência Artificial aplicada a negócios?',
-    answer: 'Inteligência Artificial aplicada a negócios é o uso de algoritmos, modelos preditivos e automação inteligente para otimizar processos, analisar grandes volumes de dados e tomar decisões mais precisas. A SAPIENTE.AI especializa-se em implementar soluções de IA que geram ROI mensurável e transformação digital real.'
-  },
-  {
-    question: 'Como a IA pode reduzir custos empresariais?',
-    answer: 'A IA reduz custos através de: automação de processos repetitivos (redução de até 40% em custos operacionais), otimização de inventário com previsão de demanda, análise preditiva para evitar desperdícios, e tomada de decisão mais rápida e precisa. Nossos clientes reportam economia média de 35% após implementação.'
-  },
-  {
-    question: 'Qual a diferença entre IA e automação?',
-    answer: 'Automação executa tarefas pré-programadas. IA aprende com dados e se adapta continuamente. A SAPIENTE.AI combina ambas: usamos automação para eficiência e IA para inteligência adaptativa. Isso resulta em sistemas que melhoram com o tempo, sem reprogramação constante.'
-  },
-  {
-    question: 'Quanto tempo leva para implementar uma solução de IA?',
-    answer: 'Depende da complexidade. Projetos simples: 4-8 semanas. Projetos complexos: 3-6 meses. A SAPIENTE.AI trabalha em sprints ágeis, entregando valor incremental. Você vê resultados desde as primeiras semanas, com otimizações contínuas.'
-  },
-  {
-    question: 'A IA da SAPIENTE.AI é segura e em conformidade com LGPD/GDPR?',
-    answer: 'Sim. Implementamos os mais altos padrões de segurança: criptografia de dados, validação robusta, monitoramento contínuo, versionamento de modelos e testes de adversarialidade. Garantimos conformidade total com LGPD, GDPR e outras regulamentações.'
-  },
-  {
-    question: 'Como medir o ROI de um projeto de IA?',
-    answer: 'Medimos através de: redução de custos operacionais, aumento de receita, melhoria em eficiência de tempo, satisfação do cliente, e precisão de decisões. Estabelecemos KPIs claros no início e acompanhamos continuamente. A maioria dos clientes vê ROI positivo em 6-12 meses.'
-  }
-];
-
 export default function Home() {
+  const { t } = useTranslation();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+
+  // FAQ items from translations
+  const faqs: FAQItem[] = [
+    {
+      question: t('faq.q1'),
+      answer: t('faq.a1')
+    },
+    {
+      question: t('faq.q2'),
+      answer: t('faq.a2')
+    },
+    {
+      question: t('faq.q3'),
+      answer: t('faq.a3')
+    },
+    {
+      question: 'Quanto tempo leva para implementar uma solução de IA?',
+      answer: 'Depende da complexidade. Projetos simples: 4-8 semanas. Projetos complexos: 3-6 meses. A SAPIENTE.AI trabalha em sprints ágeis, entregando valor incremental. Você vê resultados desde as primeiras semanas, com otimizações contínuas.'
+    },
+    {
+      question: 'A IA da SAPIENTE.AI é segura e em conformidade com LGPD/GDPR?',
+      answer: 'Sim. Implementamos os mais altos padrões de segurança: criptografia de dados, validação robusta, monitoramento contínuo, versionamento de modelos e testes de adversarialidade. Garantimos conformidade total com LGPD, GDPR e outras regulamentações.'
+    },
+    {
+      question: 'Como medir o ROI de um projeto de IA?',
+      answer: 'Medimos através de: redução de custos operacionais, aumento de receita, melhoria em eficiência de tempo, satisfação do cliente, e precisão de decisões. Estabelecemos KPIs claros no início e acompanhamos continuamente. A maioria dos clientes vê ROI positivo em 6-12 meses.'
+    }
+  ];
+
+  const services = [
+    {
+      icon: Brain,
+      title: t('services.ml'),
+      description: t('services.ml.desc')
+    },
+    {
+      icon: Cpu,
+      title: t('services.automation'),
+      description: t('services.automation.desc')
+    },
+    {
+      icon: Target,
+      title: t('services.consulting'),
+      description: t('services.consulting.desc')
+    }
+  ];
+
+  const processSteps = [
+    { number: '01', title: t('process.step1'), description: t('process.step1.desc') },
+    { number: '02', title: t('process.step2'), description: t('process.step2.desc') },
+    { number: '03', title: t('process.step3'), description: t('process.step3.desc') },
+    { number: '04', title: t('process.step4'), description: t('process.step4.desc') }
+  ];
+
+  const portfolioItems = [
+    {
+      company: 'TechCorp Brasil',
+      result: '+35% Eficiência',
+      description: 'Automação de processos de RH com IA'
+    },
+    {
+      company: 'RetailMax',
+      result: '-40% Custos',
+      description: 'Otimização de inventário com ML'
+    },
+    {
+      company: 'FinanceHub',
+      result: '+250% ROI',
+      description: 'Análise preditiva de risco'
+    },
+    {
+      company: 'LogisticaPro',
+      result: '-30% Tempo',
+      description: 'Roteirização inteligente'
+    },
+    {
+      company: 'SalesForce AI',
+      result: '+45% Conversão',
+      description: 'Previsão de demanda'
+    },
+    {
+      company: 'HealthTech',
+      result: '+60% Precisão',
+      description: 'Diagnóstico assistido por IA'
+    }
+  ];
+
+  const differentials = [
+    { icon: Shield, title: t('differentials.security'), desc: t('differentials.security.desc') },
+    { icon: TrendingUp, title: t('differentials.roi'), desc: t('differentials.roi.desc') },
+    { icon: Award, title: t('differentials.expertise'), desc: t('differentials.expertise.desc') },
+    { icon: Users, title: t('differentials.support'), desc: t('differentials.support.desc') }
+  ];
 
   return (
     <div className="min-h-screen bg-white">
@@ -78,17 +147,17 @@ export default function Home() {
               SAPIENTE.AI
             </a>
             <div className="hidden md:flex items-center gap-8">
-              <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">Serviços</a>
-              <a href="#processo" className="text-sm font-medium hover:text-primary transition-colors">Processo</a>
-              <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">Portfólio</a>
-              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">Blog</a>
-              <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">FAQ</a>
+              <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.servicos')}</a>
+              <a href="#processo" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.processo')}</a>
+              <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.portfolio')}</a>
+              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.blog')}</a>
+              <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.faq')}</a>
               <LanguageSelector />
               <Button 
                 onClick={() => setIsContactOpen(true)}
                 className="bg-primary text-white hover:bg-primary/90 border-2 border-primary font-bold"
               >
-                Fale com Especialista
+                {t('nav.fale')}
               </Button>
             </div>
           </nav>
@@ -99,82 +168,59 @@ export default function Home() {
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden bg-gradient-to-br from-white via-primary/5 to-white">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/FYRwdgClQVohvsom.png" 
-            alt="SAPIENTE.AI - AI Innovation" 
-            className="w-full h-full object-cover opacity-15"
-          />
+      <section className="pt-32 pb-24 md:pb-32 bg-gradient-to-br from-blue-50 via-white to-cyan-50 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/vRKqoJgFxdCzRRqV.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}></div>
         </div>
         <div className="container relative z-10">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
             <p className="text-sm font-medium tracking-[0.3em] text-primary uppercase mb-6 font-bold">
-              
+              {t('hero.subtitle')}
             </p>
             <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-foreground">
-              Inteligência Artificial para <span className="text-primary">Empresas</span>
+              {t('hero.title').split(' ').slice(0, 2).join(' ')} <span className="text-primary">{t('hero.title').split(' ').slice(2).join(' ')}</span>
             </h1>
-            <p className="text-lg md:text-xl mb-4 text-foreground/80 font-medium">
-              Soluções de IA Aplicada • Transformação Digital • Resultados Mensuráveis
-            </p>
-            <p className="text-base md:text-lg mb-12 max-w-2xl mx-auto text-foreground/70">
-              Tecnologia de ponta para empresas que querem crescer com dados, automação inteligente e decisões baseadas em IA.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <p className="text-lg text-foreground/70 mb-6">{t('hero.description')}</p>
+            <p className="text-base text-foreground mb-12 max-w-2xl mx-auto">{t('hero.tagline')}</p>
+            <div className="flex flex-col md:flex-row gap-6 justify-center">
               <Button 
                 onClick={() => setIsContactOpen(true)}
-                size="lg" 
+                size="lg"
                 className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
               >
-                Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
+                {t('hero.cta1')} <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* What We Do Section */}
-      <section id="servicos" className="py-24 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
+      {/* Services Section */}
+      <section id="servicos" className="py-24 md:py-32 bg-white">
         <div className="container">
           <AnimatedSection className="mb-16">
-            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">O QUE FAZEMOS</p>
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">{t('services.label')}</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Serviços de IA Aplicada:
+              {t('services.title')}
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl">
-              Oferecemos soluções especializadas em machine learning, automação inteligente e análise de dados para empresas que querem evoluir com tecnologia.
+              {t('services.description')}
             </p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Brain,
-                title: 'Machine Learning',
-                description: 'Modelos preditivos e algoritmos avançados para análise de dados, previsão de demanda e otimização de processos.'
-              },
-              {
-                icon: Cpu,
-                title: 'Automação Inteligente',
-                description: 'Automação de processos repetitivos com IA, reduzindo custos operacionais em até 40% e aumentando produtividade.'
-              },
-              {
-                icon: Target,
-                title: 'Consultoria Estratégica',
-                description: 'Análise de oportunidades de IA na sua empresa, roadmap de implementação e acompanhamento de resultados.'
-              }
-            ].map((service, index) => (
+            {services.map((service, index) => (
               <AnimatedSection key={index} className={index >= 1 ? 'delay-100' : ''}>
                 <div className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 hover:border-primary hover:shadow-lg transition-all duration-300" style={{height: '464px'}}>
                   <service.icon className="h-12 w-12 text-primary mb-4" />
                   <h3 className="text-2xl font-bold text-foreground mb-4">{service.title}</h3>
                   <p className="text-foreground/70 mb-6">{service.description}</p>
-                  <Button 
-                    onClick={() => setIsContactOpen(true)}
-                    className="w-full bg-primary text-white hover:bg-primary/90 border-2 border-primary font-bold"
-                  >
-                    Saiba Mais
+                  <Button variant="outline" className="border-2 border-primary text-primary hover:bg-primary/5">
+                    {t('services.more')}
                   </Button>
                 </div>
               </AnimatedSection>
@@ -183,31 +229,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
-      <section id="processo" className="py-24 md:py-32 bg-gradient-to-br from-primary/5 to-white">
+      {/* Process Section */}
+      <section id="processo" className="py-24 md:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container">
           <AnimatedSection className="mb-16">
-            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">COMO FUNCIONA</p>
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">{t('process.label')}</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Processo em 4 Etapas:
+              {t('process.title')}
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl">
-              Metodologia comprovada para implementar IA com sucesso na sua empresa.
+              {t('process.description')}
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-4 gap-6">
-            {[
-              { num: '01', title: 'Diagnóstico', desc: 'Análise profunda de oportunidades e desafios' },
-              { num: '02', title: 'Estratégia', desc: 'Planejamento de implementação e roadmap' },
-              { num: '03', title: 'Implementação', desc: 'Desenvolvimento e integração da solução' },
-              { num: '04', title: 'Otimização', desc: 'Monitoramento contínuo e melhoria' }
-            ].map((step, index) => (
+          <div className="grid md:grid-cols-4 gap-8">
+            {processSteps.map((step, index) => (
               <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
                 <div className="relative">
-                  <div className="text-8xl font-black text-primary/20 mb-4">{step.num}</div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3 absolute top-0">{step.title}</h3>
-                  <p className="text-foreground/70 mt-16">{step.desc}</p>
+                  <div className="text-8xl font-black text-primary/10 mb-4">{step.number}</div>
+                  <div className="absolute top-0 left-0">
+                    <div className="text-6xl font-black text-primary">{step.number}</div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3 mt-8">{step.title}</h3>
+                  <p className="text-foreground/70">{step.description}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -216,66 +260,44 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-24 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
+      <section id="portfolio" className="py-24 md:py-32 bg-white">
         <div className="container">
           <AnimatedSection className="mb-16">
-            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">RESULTADOS REAIS</p>
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">{t('portfolio.label')}</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Portfólio de Sucesso:
+              {t('portfolio.title')}
             </h2>
             <p className="text-lg text-foreground/70 max-w-2xl">
-              Confira os resultados que alcançamos para empresas em diversos setores.
+              {t('portfolio.description')}
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { company: 'RetailCorp', metric: '+45% Eficiência', desc: 'Automação de inventário com ML' },
-              { company: 'FinanceHub', metric: '-38% Custos', desc: 'Análise preditiva de risco' },
-              { company: 'LogisticsPro', metric: '+52% Velocidade', desc: 'Otimização de rotas com IA' },
-              { company: 'HealthTech', metric: '+89% Precisão', desc: 'Diagnóstico assistido por IA' },
-              { company: 'ManufactureCo', metric: '-42% Defeitos', desc: 'Visão computacional QA' },
-              { company: 'MarketingAI', metric: '+156% ROI', desc: 'Segmentação e personalização' }
-            ].map((case_, index) => (
-              <AnimatedSection key={index} className={index >= 3 ? 'delay-100' : ''}>
-                <div className="p-8 border-2 border-foreground hover:border-primary hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-primary/5">
-                  <p className="text-sm font-bold text-primary uppercase tracking-wide mb-2">{case_.company}</p>
-                  <p className="text-4xl font-black text-foreground mb-2">{case_.metric}</p>
-                  <p className="text-foreground/70">{case_.desc}</p>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {portfolioItems.map((item, index) => (
+              <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
+                <div className="p-8 bg-gradient-to-br from-primary/5 to-cyan/5 border-2 border-primary/20 hover:border-primary hover:shadow-lg transition-all duration-300" style={{height: '180px'}}>
+                  <div className="text-3xl font-black text-primary mb-2">{item.result}</div>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{item.company}</h3>
+                  <p className="text-sm text-foreground/70">{item.description}</p>
                 </div>
               </AnimatedSection>
             ))}
           </div>
-
-          <AnimatedSection className="mt-12 text-center">
-            <Button 
-              onClick={() => setIsContactOpen(true)}
-              size="lg"
-              className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
-            >
-               <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </AnimatedSection>
         </div>
       </section>
 
       {/* Differentials Section */}
-      <section id="diferenciais" className="py-24 md:py-32 bg-gradient-to-br from-primary/5 to-white">
+      <section className="py-24 md:py-32 bg-gradient-to-br from-slate-50 to-blue-50">
         <div className="container">
           <AnimatedSection className="mb-16">
-            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">DIFERENCIAIS</p>
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">{t('differentials.label')}</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Por que escolher SAPIENTE.AI ?
+              {t('differentials.title')}
             </h2>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { icon: Shield, title: 'Segurança Garantida', desc: 'LGPD, GDPR e conformidade total' },
-              { icon: TrendingUp, title: 'ROI Mensurável', desc: 'Resultados comprovados em 6-12 meses' },
-              { icon: Award, title: 'Expertise Comprovada', desc: 'Equipe com + 5 anos de experiência' },
-              { icon: Users, title: 'Suporte Dedicado', desc: 'Acompanhamento contínuo do projeto' }
-            ].map((diff, index) => (
+            {differentials.map((diff, index) => (
               <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
                 <div className="flex gap-6 p-8 bg-white border-2 border-primary/30 hover:border-primary transition-all" style={{height: '180px'}}>
                   <diff.icon className="h-12 w-12 text-primary flex-shrink-0" />
@@ -290,37 +312,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section for GEO/AEO */}
-      <section id="faq" className="py-24 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 md:py-32 bg-white">
         <div className="container">
-          <AnimatedSection className="mb-16 max-w-3xl">
-            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">PERGUNTAS FREQUENTES</p>
+          <AnimatedSection className="mb-16">
+            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">{t('faq.label')}</p>
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Dúvidas sobre IA para Empresas
+              {t('faq.title')}
             </h2>
-            <p className="text-lg text-foreground/70">
-              Respostas diretas sobre inteligência artificial, machine learning, automação e implementação de IA em negócios.
-            </p>
           </AnimatedSection>
 
           <div className="max-w-3xl space-y-4">
             {faqs.map((faq, index) => (
-              <AnimatedSection key={index} className={index >= 3 ? 'delay-100' : ''}>
-                <div className="border-2 border-foreground overflow-hidden hover:border-primary transition-all">
+              <AnimatedSection key={index}>
+                <div className="border-2 border-primary/20 hover:border-primary transition-all">
                   <button
                     onClick={() => setExpandedFAQ(expandedFAQ === index ? null : index)}
-                    className="w-full px-8 py-6 flex items-center justify-between bg-gradient-to-r from-white to-primary/5 hover:from-primary/5 hover:to-primary/10 transition-all"
+                    className="w-full p-6 flex items-center justify-between hover:bg-primary/5 transition-colors"
                   >
                     <h3 className="text-lg font-bold text-foreground text-left">{faq.question}</h3>
                     <ChevronDown 
-                      className={`h-6 w-6 text-primary flex-shrink-0 transition-transform ${
-                        expandedFAQ === index ? 'rotate-180' : ''
-                      }`}
+                      className={`h-5 w-5 text-primary transition-transform ${expandedFAQ === index ? 'rotate-180' : ''}`}
                     />
                   </button>
                   {expandedFAQ === index && (
-                    <div className="px-8 py-6 bg-primary/5 border-t-2 border-primary/30">
-                      <p className="text-foreground/80 leading-relaxed">{faq.answer}</p>
+                    <div className="px-6 pb-6 pt-0 border-t-2 border-primary/20 bg-primary/5">
+                      <p className="text-foreground/70">{faq.answer}</p>
                     </div>
                   )}
                 </div>
@@ -330,27 +347,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* CTA Section */}
       <section className="py-24 md:py-32 bg-gradient-to-br from-primary to-primary/80 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, #00CFFF 0%, transparent 50%), radial-gradient(circle at 80% 80%, #1E3A8A 0%, transparent 50%)'
+            backgroundImage: 'radial-gradient(circle at 20% 50%, #00CFFF 0%, transparent 50%), radial-gradient(circle at 80% 80%, #1E3A8A 0%, transparent 50%)',
+            backgroundColor: '#ffffff'
           }}></div>
         </div>
         <div className="container relative z-10">
           <AnimatedSection className="max-w-2xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Pronto para Transformar sua Empresa?
-            </h2>
-            <p className="text-lg text-white/90 mb-12">
-              Agende uma reunião com nossos especialistas e descubra como IA pode gerar resultados reais no seu negócio.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">{t('cta.title')}</h2>
+            <p className="text-lg text-white/90 mb-12">{t('cta.description')}</p>
             <Button 
               onClick={() => setIsContactOpen(true)}
               size="lg"
-              className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
+              className="bg-white text-primary hover:bg-white/90 border-2 border-white text-lg px-8 py-6 h-auto font-bold" style={{color: '#ffffff', backgroundColor: '#136ee2'}}
             >
-              Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
+              {t('cta.button')} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </AnimatedSection>
         </div>
@@ -371,40 +385,37 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Produto</h4>
+              <h4 className="font-bold mb-4">{t('footer.product')}</h4>
               <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="#servicos" className="hover:text-white transition-colors">Serviços</a></li>
-                <li><a href="#processo" className="hover:text-white transition-colors">Processo</a></li>
-                <li><a href="/blog" className="hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#servicos" className="hover:text-white transition-colors">{t('nav.servicos')}</a></li>
+                <li><a href="#processo" className="hover:text-white transition-colors">{t('nav.processo')}</a></li>
+                <li><a href="/blog" className="hover:text-white transition-colors">{t('nav.blog')}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Empresa</h4>
+              <h4 className="font-bold mb-4">{t('footer.company')}</h4>
               <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="#portfolio" className="hover:text-white transition-colors">Portfólio</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">FAQ</a></li>
-                <li><a href="/" className="hover:text-white transition-colors">Contato</a></li>
+                <li><a href="/ia-para-empresas" className="hover:text-white transition-colors">Sobre IA</a></li>
+                <li><a href="#faq" className="hover:text-white transition-colors">{t('nav.faq')}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Legal</h4>
+              <h4 className="font-bold mb-4">{t('footer.legal')}</h4>
               <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="/privacidade" className="hover:text-white transition-colors">Privacidade</a></li>
-                <li><a href="/termos" className="hover:text-white transition-colors">Termos</a></li>
-                <li><a href="/lgpd" className="hover:text-white transition-colors">LGPD</a></li>
+                <li><a href="/privacidade" className="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
+                <li><a href="/termos" className="hover:text-white transition-colors">{t('footer.terms')}</a></li>
+                <li><a href="/lgpd" className="hover:text-white transition-colors">{t('footer.lgpd')}</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-white/70">
-              © 2026 SAPIENTE.AI • Todos os direitos reservados
-            </p>
-            <div className="flex gap-6">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors" title="LinkedIn">
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-              </a>
+          <div className="border-t border-white/20 pt-8">
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-white/70">
+                {t('footer.copyright')}
+              </p>
+              <div className="flex gap-6">
+                <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">LinkedIn</a>
+              </div>
             </div>
           </div>
         </div>
