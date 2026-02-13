@@ -140,11 +140,15 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-foreground shadow-lg">
+        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
         <div className="container">
           <nav className="flex items-center justify-between h-20">
-            <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
-              SAPIENTE.AI
+            <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <img 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/vRKqoJgFxdCzRRqV.png" 
+                alt="SAPIENTE.AI" 
+                className="h-8 object-contain"
+              />
             </a>
             <div className="hidden md:flex items-center gap-8">
               <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.servicos')}</a>
@@ -184,8 +188,8 @@ export default function Home() {
             <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-foreground">
               {t('hero.title').split(' ').slice(0, 2).join(' ')} <span className="text-primary">{t('hero.title').split(' ').slice(2).join(' ')}</span>
             </h1>
-            <p className="text-lg text-foreground/70 mb-6">{t('hero.description')}</p>
-            <p className="text-base text-foreground mb-12 max-w-2xl mx-auto">{t('hero.tagline')}</p>
+            <p className="text-lg text-foreground/70 mb-6" style={{fontWeight: '600'}}>{t('hero.description')}</p>
+            <p className="text-base text-foreground mb-12 max-w-2xl mx-auto" style={{color: '#0057dc', fontWeight: '600'}}>{t('hero.tagline')}</p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <Button 
                 onClick={() => setIsContactOpen(true)}
@@ -348,21 +352,18 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-primary to-primary/80 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, #00CFFF 0%, transparent 50%), radial-gradient(circle at 80% 80%, #1E3A8A 0%, transparent 50%)',
-            backgroundColor: '#ffffff'
-          }}></div>
-        </div>
+      <section className="py-24 md:py-32 relative overflow-hidden bg-cover bg-center" style={{
+        backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/9wDqWqFxdCzRRqV.png)'
+      }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-primary/70"></div>
         <div className="container relative z-10">
           <AnimatedSection className="max-w-2xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">{t('cta.title')}</h2>
-            <p className="text-lg text-white/90 mb-12">{t('cta.description')}</p>
+            <p className="text-lg text-white/90 mb-12" style={{color: '#000000'}}>{t('cta.description')}</p>
             <Button 
               onClick={() => setIsContactOpen(true)}
               size="lg"
-              className="bg-white text-primary hover:bg-white/90 border-2 border-white text-lg px-8 py-6 h-auto font-bold" style={{color: '#ffffff', backgroundColor: '#136ee2'}}
+              className="bg-white text-primary hover:bg-white/90 border-2 border-white text-lg px-8 py-6 h-auto font-bold" style={{color: '#3a7ee5', backgroundColor: '#f0f2f4'}}
             >
               {t('cta.button')} <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -371,7 +372,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-foreground text-white border-t-4 border-white">
+      <footer className="py-12 bg-black text-white border-t-4 border-white">
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div>
@@ -414,7 +415,7 @@ export default function Home() {
                 {t('footer.copyright')}
               </p>
               <div className="flex gap-6">
-                <a href="/" className="text-sm text-white/70 hover:text-white transition-colors">LinkedIn</a>
+                <a href="/" className="text-sm text-white/70 hover:text-white transition-colors"></a>
               </div>
             </div>
           </div>

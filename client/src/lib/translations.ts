@@ -112,6 +112,12 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.lastUpdated': 'Última atualização:',
     'legal.introduction': 'Introdução',
     'legal.content': 'Conteúdo',
+    'legal.lgpd.title': 'Lei Geral de Proteção de Dados (LGPD)',
+    'legal.lgpd.intro': 'A SAPIENTE.AI está em total conformidade com a Lei Geral de Proteção de Dados (LGPD) e regulamentações internacionais de proteção de dados.',
+    'legal.terms.title': 'Termos de Serviço',
+    'legal.terms.intro': 'Estes termos regem o uso dos serviços da SAPIENTE.AI. Ao acessar nosso site, você concorda com estes termos.',
+    'legal.privacy.title': 'Política de Privacidade',
+    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e se compromete a proteger seus dados pessoais.',
   },
 
   'pt-BR': {
@@ -225,6 +231,12 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.lastUpdated': 'Última atualização:',
     'legal.introduction': 'Introdução',
     'legal.content': 'Conteúdo',
+    'legal.lgpd.title': 'Lei Geral de Proteção de Dados (LGPD)',
+    'legal.lgpd.intro': 'A SAPIENTE.AI está em total conformidade com a Lei Geral de Proteção de Dados (LGPD) e regulamentações internacionais de proteção de dados.',
+    'legal.terms.title': 'Termos de Serviço',
+    'legal.terms.intro': 'Estes termos regem o uso dos serviços da SAPIENTE.AI. Ao acessar nosso site, você concorda com estes termos.',
+    'legal.privacy.title': 'Política de Privacidade',
+    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e se compromete a proteger seus dados pessoais.',
   },
 
   'en': {
@@ -338,6 +350,12 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.lastUpdated': 'Last updated:',
     'legal.introduction': 'Introduction',
     'legal.content': 'Content',
+    'legal.lgpd.title': 'General Data Protection Law (LGPD)',
+    'legal.lgpd.intro': 'SAPIENTE.AI is in full compliance with the General Data Protection Law (LGPD) and international data protection regulations.',
+    'legal.terms.title': 'Terms of Service',
+    'legal.terms.intro': 'These terms govern the use of SAPIENTE.AI services. By accessing our website, you agree to these terms.',
+    'legal.privacy.title': 'Privacy Policy',
+    'legal.privacy.intro': 'SAPIENTE.AI respects your privacy and is committed to protecting your personal data.',
   },
 };
 

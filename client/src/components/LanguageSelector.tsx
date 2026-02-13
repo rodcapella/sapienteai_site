@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 const languages: { code: Language; label: string; flag: string }[] = [
   { code: 'pt-PT', label: 'PT', flag: '🇵🇹' },
   { code: 'pt-BR', label: 'BR', flag: '🇧🇷' },
-  { code: 'en', label: 'EN', flag: '🇬🇧' },
+  { code: 'en', label: 'EN', flag: '🇺🇸' },
 ];
 
 export function LanguageSelector() {
@@ -16,10 +16,10 @@ export function LanguageSelector() {
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}
-          className={`text-xl px-2 py-1 rounded transition-all ${
+          className={`text-2xl px-3 py-2 rounded-lg transition-all border-2 ${
             language === lang.code
-              ? 'bg-primary text-white scale-110'
-              : 'bg-transparent hover:bg-primary/10'
+              ? 'border-primary scale-110 shadow-md'
+              : 'border-transparent hover:border-primary/30'
           }`}
           title={lang.label}
           aria-label={`Switch to ${lang.label}`}
