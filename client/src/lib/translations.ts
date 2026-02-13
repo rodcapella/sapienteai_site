@@ -1,4 +1,4 @@
-import { Language } from '@/contexts/LanguageContext';
+type Language = 'pt-PT' | 'pt-BR' | 'en';
 
 export const translations: Record<Language, Record<string, string>> = {
   'pt-PT': {
@@ -84,6 +84,34 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.terms': 'Termos',
     'footer.lgpd': 'LGPD',
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
+
+    // Blog Page
+    'blog.title': 'Blog SAPIENTE.AI — Inteligência Artificial Aplicada aos Negócios',
+    'blog.subtitle': 'Conteúdos especializados sobre IA, machine learning, automação e tendências tecnológicas para empresas e profissionais que querem evoluir com dados e tecnologia.',
+    'blog.search': 'Pesquisar artigos...',
+    'blog.all': 'Todos',
+    'blog.readMore': 'Ler Artigo',
+    'blog.category': 'Categoria',
+    'blog.date': 'Data',
+    'blog.author': 'SAPIENTE.AI',
+
+    // Article Detail
+    'article.relatedArticles': 'Artigos Relacionados',
+    'article.comments': 'Comentários',
+    'article.leaveComment': 'Deixe um Comentário',
+    'article.name': 'Nome',
+    'article.email': 'Email',
+    'article.comment': 'Comentário',
+    'article.submit': 'Enviar Comentário',
+    'article.share': 'Compartilhar Artigo',
+
+    // Legal Pages
+    'legal.lgpd': 'Lei Geral de Proteção de Dados',
+    'legal.terms': 'Termos de Serviço',
+    'legal.privacy': 'Política de Privacidade',
+    'legal.lastUpdated': 'Última atualização:',
+    'legal.introduction': 'Introdução',
+    'legal.content': 'Conteúdo',
   },
 
   'pt-BR': {
@@ -169,6 +197,34 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.terms': 'Termos',
     'footer.lgpd': 'LGPD',
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
+
+    // Blog Page
+    'blog.title': 'Blog SAPIENTE.AI — Inteligência Artificial Aplicada aos Negócios',
+    'blog.subtitle': 'Conteúdos especializados sobre IA, machine learning, automação e tendências tecnológicas para empresas e profissionais que querem evoluir com dados e tecnologia.',
+    'blog.search': 'Pesquisar artigos...',
+    'blog.all': 'Todos',
+    'blog.readMore': 'Ler Artigo',
+    'blog.category': 'Categoria',
+    'blog.date': 'Data',
+    'blog.author': 'SAPIENTE.AI',
+
+    // Article Detail
+    'article.relatedArticles': 'Artigos Relacionados',
+    'article.comments': 'Comentários',
+    'article.leaveComment': 'Deixe um Comentário',
+    'article.name': 'Nome',
+    'article.email': 'Email',
+    'article.comment': 'Comentário',
+    'article.submit': 'Enviar Comentário',
+    'article.share': 'Compartilhar Artigo',
+
+    // Legal Pages
+    'legal.lgpd': 'Lei Geral de Proteção de Dados',
+    'legal.terms': 'Termos de Serviço',
+    'legal.privacy': 'Política de Privacidade',
+    'legal.lastUpdated': 'Última atualização:',
+    'legal.introduction': 'Introdução',
+    'legal.content': 'Conteúdo',
   },
 
   'en': {
@@ -254,6 +310,34 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.terms': 'Terms',
     'footer.lgpd': 'LGPD',
     'footer.copyright': '© 2026 SAPIENTE.AI • All rights reserved',
+
+    // Blog Page
+    'blog.title': 'SAPIENTE.AI Blog — Applied Artificial Intelligence for Business',
+    'blog.subtitle': 'Specialized content on AI, machine learning, automation and technology trends for companies and professionals who want to evolve with data and technology.',
+    'blog.search': 'Search articles...',
+    'blog.all': 'All',
+    'blog.readMore': 'Read Article',
+    'blog.category': 'Category',
+    'blog.date': 'Date',
+    'blog.author': 'SAPIENTE.AI',
+
+    // Article Detail
+    'article.relatedArticles': 'Related Articles',
+    'article.comments': 'Comments',
+    'article.leaveComment': 'Leave a Comment',
+    'article.name': 'Name',
+    'article.email': 'Email',
+    'article.comment': 'Comment',
+    'article.submit': 'Submit Comment',
+    'article.share': 'Share Article',
+
+    // Legal Pages
+    'legal.lgpd': 'General Data Protection Law',
+    'legal.terms': 'Terms of Service',
+    'legal.privacy': 'Privacy Policy',
+    'legal.lastUpdated': 'Last updated:',
+    'legal.introduction': 'Introduction',
+    'legal.content': 'Content',
   },
 };
 

@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, ArrowRight, Tag, Calendar, User } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useTranslation } from '@/hooks/useTranslation';
 import NewsletterForm from '@/components/NewsletterForm';
 
 // Animated Section Wrapper
@@ -105,6 +106,7 @@ const articles: BlogArticle[] = [
 const categories = ['Todos', 'IA Generativa', 'Machine Learning', 'Deep Learning', 'Segurança', 'Tendências', 'Negócios'];
 
 export default function Blog() {
+  const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -125,7 +127,7 @@ export default function Blog() {
               SAPIENTE.AI
             </a>
             <a href="/" className="text-sm font-medium hover:text-primary transition-colors">
-              ← Voltar
+              ← {t('blog.back') || 'Voltar'}
             </a>
           </nav>
         </div>
@@ -145,13 +147,13 @@ export default function Blog() {
         <div className="container relative z-10">
           <AnimatedSection className="max-w-2xl">
             <p className="text-sm font-medium tracking-[0.3em] text-primary uppercase mb-4">
-              Conhecimento • Estratégia • Inovação
+              {t('blog.knowledge') || 'Conhecimento • Estratégia • Inovação'}
             </p>
             <h1 className="text-5xl md:text-6xl font-black leading-[1.1] mb-6 text-foreground">
-              Blog <span className="text-primary">SAPIENTE.AI</span> — Inteligência Artificial Aplicada aos Negócios
+              {t('blog.title')}
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 mb-8">
-              Conteúdos em IA, machine learning e tecnologia para profissionais e líderes.
+              {t('blog.subtitle')}
             </p>
             <p className="text-base text-foreground/70">
               Artigos e análises sobre Inteligência Artificial, Machine Learning e tecnologia aplicada a negócios. Insights práticos da SAPIENTE.AI para empresas que querem evoluir com dados e tecnologia.
@@ -172,7 +174,7 @@ export default function Blog() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Buscar artigos..."
+                  placeholder={t('blog.search')}
                   className="w-full pl-12 pr-4 py-3 border-2 border-foreground bg-white text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
@@ -190,7 +192,7 @@ export default function Blog() {
                       : 'border-foreground text-foreground hover:border-primary hover:text-primary'
                   }`}
                 >
-                  {category}
+                  {category === 'Todos' ? t('blog.all') : category}
                 </button>
               ))}
             </div>
@@ -256,7 +258,7 @@ export default function Blog() {
                       <Button
                         className="w-full bg-primary text-white hover:bg-primary/90 border-2 border-primary font-medium group/btn"
                       >
-                        Ler Artigo
+                        {t('blog.readMore')}
                         <ArrowRight className="h-4 w-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                       </Button>
                     </div>
@@ -267,7 +269,7 @@ export default function Blog() {
           ) : (
             <AnimatedSection className="text-center py-12">
               <p className="text-lg text-foreground/70">
-                Nenhum artigo encontrado. Tente outra busca ou categoria.
+                {t('blog.noArticles') || 'Nenhum artigo encontrado. Tente outra busca ou categoria.'}
               </p>
             </AnimatedSection>
           )}
@@ -279,10 +281,10 @@ export default function Blog() {
         <div className="container">
           <AnimatedSection className="max-w-2xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-black mb-6 text-foreground">
-              Receba Insights sobre IA
+              {t('blog.newsletter') || 'Receba Insights sobre IA'}
             </h2>
             <p className="text-lg text-foreground/80 mb-8">
-              Inscreva-se na newsletter da SAPIENTE.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.
+              {t('blog.newsletterDesc') || 'Inscreva-se na newsletter da SAPIENTE.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.'}
             </p>
             <NewsletterForm />
           </AnimatedSection>
@@ -301,11 +303,11 @@ export default function Blog() {
             </div>
             <div className="flex items-center gap-6 text-sm text-white/70">
               <a href="/" className="hover:text-white transition-colors">Home</a>
-              <a href="/blog" className="hover:text-white transition-colors">Blog</a>
+              <a href="/blog" className="hover:text-white transition-colors">{t('nav.blog')}</a>
               <a href="/" className="hover:text-white transition-colors">Contato</a>
             </div>
             <p className="text-sm text-white/70">
-              © 2026 SAPIENTE.AI • Todos os direitos reservados
+              {t('footer.copyright')}
             </p>
           </div>
         </div>
