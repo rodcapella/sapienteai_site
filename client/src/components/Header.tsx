@@ -33,7 +33,6 @@ export default function Header({ onContactClick }: HeaderProps) {
               />
             </a>
             <div className="hidden md:flex items-center gap-8">
-              <a href="/" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.home')}</a>
               <a href="/#servicos" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.servicos')}</a>
               <a href="/#processo" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.processo')}</a>
               <a href="/#portfolio" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.portfolio')}</a>

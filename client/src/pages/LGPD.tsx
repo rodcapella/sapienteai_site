@@ -6,6 +6,8 @@
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation();
@@ -24,22 +26,10 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
 export default function LGPD() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-foreground shadow-lg">
-        <div className="container">
-          <nav className="flex items-center justify-between h-20">
-            <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
-              SAPIENTE.AI
-            </a>
-            <a href="/" className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
-              <ArrowLeft className="h-4 w-4" /> Voltar
-            </a>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Content */}
-      <main className="pt-32 pb-24 md:pt-40 md:pb-32">
+      <main className="pt-24 pb-24 md:pt-32 md:pb-32">
         <div className="container max-w-4xl">
           <AnimatedSection className="mb-12">
             <h1 className="text-5xl md:text-6xl font-black text-foreground mb-6">
@@ -163,14 +153,7 @@ export default function LGPD() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="py-12 bg-foreground text-white border-t-4 border-white">
-        <div className="container">
-          <p className="text-sm text-white/70">
-            © 2026 SAPIENTE.AI • Todos os direitos reservados
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

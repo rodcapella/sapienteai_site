@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
             <img 
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/file_00000000619871f595024506779e1909.png" 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/jJJEfEeNxsFPFazg.png" 
               alt="SAPIENTE.AI" 
               className="h-12 object-contain mb-4"
             />
