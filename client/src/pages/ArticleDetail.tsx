@@ -144,11 +144,6 @@ export default function ArticleDetail() {
   const [, params] = useRoute('/blog/:slug');
   const slug = params?.slug as string;
   const article = getBlogArticleBySlug(slug);
-  const [comments, setComments] = useState<Array<{ author: string; text: string; date: string }>>([
-    { author: 'João Silva', text: 'Excelente artigo! Muito informativo.', date: '2026-02-11' },
-    { author: 'Maria Santos', text: 'Implementamos essas técnicas e obtivemos resultados incríveis.', date: '2026-02-10' },
-  ]);
-  const [newComment, setNewComment] = useState('');
 
   useEffect(() => {
     if (article) {
@@ -185,20 +180,7 @@ export default function ArticleDetail() {
     .filter(post => post.category === article?.category && post.slug !== article?.slug)
     .slice(0, 3);
 
-  const handleCommentSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (newComment.trim()) {
-      setComments([
-        ...comments,
-        {
-          author: 'Você',
-          text: newComment,
-          date: new Date().toISOString().split('T')[0],
-        },
-      ]);
-      setNewComment('');
-    }
-  };
+
 
   return (
     <div className="min-h-screen">
@@ -272,41 +254,7 @@ export default function ArticleDetail() {
             <NewsletterForm variant="compact" />
           </AnimatedSection>
 
-          {/* Comments Section */}
-          <AnimatedSection className="max-w-3xl mx-auto py-12">
-            <h3 className="text-3xl font-bold mb-8 flex items-center gap-3">
-              <MessageCircle className="h-8 w-8" />
-              Comentários ({comments.length})
-            </h3>
 
-            {/* Comment Form */}
-            <form onSubmit={handleCommentSubmit} className="mb-12 p-6 border-2 border-foreground">
-              <label className="block text-sm font-medium mb-2">Deixe seu comentário</label>
-              <textarea
-                value={newComment}
-                onChange={(e) => setNewComment(e.target.value)}
-                placeholder="Compartilhe sua opinião..."
-                rows={4}
-                className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none mb-4"
-              />
-              <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary">
-                Publicar Comentário
-              </Button>
-            </form>
-
-            {/* Comments List */}
-            <div className="space-y-6">
-              {comments.map((comment, index) => (
-                <div key={index} className="p-6 border-2 border-foreground">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-bold">{comment.author}</span>
-                    <span className="text-xs text-muted-foreground">{comment.date}</span>
-                  </div>
-                  <p className="text-foreground">{comment.text}</p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
 
           {/* Related Articles */}
           {relatedArticles.length > 0 && (

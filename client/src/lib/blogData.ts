@@ -15,166 +15,166 @@ export interface BlogArticle {
 export const blogArticles: BlogArticle[] = [
   {
     id: '1',
-    slug: 'inteligencia-artificial-revolucionando-negocios',
-    title: 'Inteligência Artificial: Como Está Revolucionando os Negócios em 2026',
-    excerpt: 'Descubra como a IA está transformando indústrias, aumentando produtividade e criando novas oportunidades de crescimento para empresas de todos os tamanhos.',
+    slug: 'artificial-intelligence-revolutionizing-business',
+    title: 'Artificial Intelligence: How It is Revolutionizing Business in 2026',
+    excerpt: 'Discover how AI is transforming industries, increasing productivity and creating new growth opportunities for companies of all sizes.',
     author: 'SAPIENTE.AI',
     date: '2026-02-15',
     readTime: 8,
-    category: 'Inteligência Artificial',
+    category: 'Artificial Intelligence',
     image: 'https://images.unsplash.com/photo-1677442d019cecf8cdc5b4a6f355cc1d1b6d4d8f?w=800',
     tags: ['IA', 'Negócios', 'Transformação Digital', 'Inovação'],
-    content: `# Inteligência Artificial: Como Está Revolucionando os Negócios em 2026
+    content: `# Artificial Intelligence: How It is Revolutionizing Business in 2026
 
-A Inteligência Artificial deixou de ser um conceito futurista para se tornar uma realidade tangível que impacta diretamente os resultados empresariais. Em 2026, as organizações que não adotarem IA correm o risco de ficar para trás em um mercado cada vez mais competitivo.
+Artificial Intelligence has evolved from a futuristic concept to a tangible reality that directly impacts business results. In 2026, organizations that do not adopt AI risk falling behind in an increasingly competitive market.
 
-## O Impacto da IA nos Negócios
+## The Impact of AI on Business
 
-A transformação digital impulsionada por IA não é mais opcional. Empresas líderes já implementaram sistemas de IA para:
+Digital transformation driven by AI is no longer optional. Leading companies have already implemented AI systems for:
 
-- **Automação de Processos**: Redução de custos operacionais em até 40%
-- **Análise Preditiva**: Tomada de decisões baseada em dados em tempo real
-- **Personalização em Escala**: Experiências customizadas para cada cliente
-- **Otimização de Recursos**: Melhor alocação de capital humano e financeiro
+- **Process Automation**: Reducing operational costs by up to 40%
+- **Predictive Analysis**: Making data-driven decisions in real time
+- **Personalization at Scale**: Customized experiences for each customer
+- **Resource Optimization**: Better allocation of human and financial capital
 
-## Setores Transformados pela IA
+## Sectors Transformed by AI
 
-### Varejo e E-commerce
-Recomendações personalizadas, previsão de demanda e otimização de inventário são agora padrão. Empresas que implementaram IA viram aumento de até 35% em conversões.
+### Retail and E-commerce
+Personalized recommendations, demand forecasting and inventory optimization are now standard. Companies that implemented AI saw increases of up to 35% in conversions.
 
-### Saúde
-Diagnósticos assistidos por IA, análise de imagens médicas e previsão de surtos de doenças estão salvando vidas e reduzindo custos hospitalares significativamente.
+### Healthcare
+AI-assisted diagnostics, medical image analysis and disease outbreak prediction are saving lives and significantly reducing hospital costs.
 
-### Financeiro
-Detecção de fraudes, análise de risco e trading automático utilizam IA para proteger ativos e maximizar retornos.
+### Finance
+Fraud detection, risk analysis and automated trading use AI to protect assets and maximize returns.
 
-### Manufatura
-Manutenção preditiva, controle de qualidade e otimização de produção reduzem desperdícios e aumentam eficiência.
+### Manufacturing
+Predictive maintenance, quality control and production optimization reduce waste and increase efficiency.
 
-## O Desafio da Implementação
+## Implementation Challenges
 
-Apesar dos benefícios claros, muitas empresas ainda enfrentam desafios:
+Despite clear benefits, many companies still face challenges:
 
-1. **Falta de Expertise**: Escassez de profissionais qualificados em IA
-2. **Dados de Qualidade**: Necessidade de dados limpos e bem estruturados
-3. **Investimento Inicial**: Custos de infraestrutura e treinamento
-4. **Conformidade Regulatória**: Cumprimento de LGPD, GDPR e outras regulamentações
+1. **Lack of Expertise**: Shortage of qualified AI professionals
+2. **Data Quality**: Need for clean and well-structured data
+3. **Initial Investment**: Infrastructure and training costs
+4. **Regulatory Compliance**: Compliance with LGPD, GDPR and other regulations
 
-## Tendências para 2026
+## Trends for 2026
 
-- **IA Explicável**: Crescente demanda por transparência em decisões de IA
-- **Edge AI**: Processamento de IA diretamente nos dispositivos
-- **IA Generativa**: Expansão além de chatbots para criação de conteúdo complexo
-- **IA Responsável**: Foco em ética, viés e impacto social
+- **Explainable AI**: Growing demand for transparency in AI decisions
+- **Edge AI**: AI processing directly on devices
+- **Generative AI**: Expansion beyond chatbots for complex content creation
+- **Responsible AI**: Focus on ethics, bias and social impact
 
-## Conclusão
+## Conclusion
 
-A Inteligência Artificial não é mais o futuro—é o presente. Empresas que abraçarem essa transformação agora estarão posicionadas para liderar seus mercados na próxima década. O momento de agir é agora.
+Artificial Intelligence is no longer the future—it is the present. Companies that embrace this transformation now will be positioned to lead their markets in the next decade. The time to act is now.
 
-**Pronto para levar sua empresa ao próximo nível com IA? Solicite uma consultoria estratégica com nossos especialistas.**`
+**Ready to take your company to the next level with AI? Request a strategic consultation with our specialists.**`
   },
   {
     id: '2',
-    slug: 'machine-learning-pratico-aplicacoes-reais',
-    title: 'Machine Learning Prático: Aplicações Reais que Geram ROI',
-    excerpt: 'Explore casos de uso concretos de machine learning que empresas estão implementando para aumentar receita, reduzir custos e melhorar a experiência do cliente.',
+    slug: 'practical-machine-learning-real-applications',
+    title: 'Practical Machine Learning: Real Applications that Generate ROI',
+    excerpt: 'Explore concrete use cases of machine learning that companies are implementing to increase revenue, reduce costs and improve customer experience.',
     author: 'SAPIENTE.AI',
     date: '2026-02-10',
     readTime: 10,
     category: 'Machine Learning',
     image: 'https://images.unsplash.com/photo-1516321318423-f06f70d504f0?w=800',
     tags: ['Machine Learning', 'Dados', 'Algoritmos', 'ROI'],
-    content: `# Machine Learning Prático: Aplicações Reais que Geram ROI
+    content: `# Practical Machine Learning: Real Applications that Generate ROI
 
-Machine Learning deixou de ser um tópico acadêmico para se tornar uma ferramenta essencial de negócios. Empresas que dominam ML estão colhendo resultados extraordinários. Vamos explorar aplicações práticas que geram retorno mensurável.
+Machine Learning has evolved from an academic topic to an essential business tool. Companies that master ML are reaping extraordinary results. Let's explore practical applications that generate measurable returns.
 
-## O que é Machine Learning?
+## What is Machine Learning?
 
-Machine Learning é um ramo da IA que permite aos sistemas aprender com dados sem serem explicitamente programados. Os algoritmos identificam padrões, fazem previsões e melhoram continuamente com novos dados.
+Machine Learning is a branch of AI that enables systems to learn from data without being explicitly programmed. Algorithms identify patterns, make predictions and continuously improve with new data.
 
-## Aplicações de ML que Geram Resultados
+## ML Applications that Generate Results
 
-### 1. Previsão de Demanda
-**Problema**: Excesso ou falta de inventário resulta em perdas.
+### 1. Demand Forecasting
+**Problem**: Excess or shortage of inventory results in losses.
 
-**Solução ML**: Algoritmos analisam histórico de vendas, sazonalidade, tendências de mercado e fatores externos para prever demanda futura com precisão.
+**ML Solution**: Algorithms analyze sales history, seasonality, market trends and external factors to predict future demand with precision.
 
-**Resultado**: Redução de 25-30% em custos de estoque, aumento de 15% em disponibilidade de produtos.
+**Result**: 25-30% reduction in inventory costs, 15% increase in product availability.
 
-### 2. Detecção de Fraude
-**Problema**: Fraudes custam bilhões às empresas anualmente.
+### 2. Fraud Detection
+**Problem**: Fraud costs billions to companies annually.
 
-**Solução ML**: Modelos treinados em padrões de transações legítimas identificam anomalias em tempo real.
+**ML Solution**: Models trained on legitimate transaction patterns identify anomalies in real time.
 
-**Resultado**: Redução de 80% em fraudes, proteção de receita, confiança do cliente aumentada.
+**Result**: 80% reduction in fraud, revenue protection, increased customer trust.
 
-### 3. Segmentação de Clientes
-**Problema**: Abordagem genérica não funciona para diferentes tipos de clientes.
+### 3. Customer Segmentation
+**Problem**: Generic approach doesn't work for different customer types.
 
-**Solução ML**: Clustering identifica grupos de clientes com comportamentos similares.
+**ML Solution**: Clustering identifies groups of customers with similar behaviors.
 
-**Resultado**: Campanhas 3x mais efetivas, aumento de 40% em taxa de retenção.
+**Result**: 3x more effective campaigns, 40% increase in retention rate.
 
-### 4. Previsão de Churn
-**Problema**: Perder clientes é mais caro que retê-los.
+### 4. Churn Prediction
+**Problem**: Losing customers is more expensive than retaining them.
 
-**Solução ML**: Modelos identificam clientes em risco de sair antes que saiam.
+**ML Solution**: Models identify customers at risk of leaving before they leave.
 
-**Resultado**: Intervenção proativa reduz churn em 35%, aumenta lifetime value.
+**Result**: Proactive intervention reduces churn by 35%, increases lifetime value.
 
-### 5. Recomendação de Produtos
-**Problema**: Catálogos enormes confundem clientes.
+### 5. Product Recommendation
+**Problem**: Huge catalogs confuse customers.
 
-**Solução ML**: Sistemas de recomendação sugerem produtos baseado em comportamento e preferências.
+**ML Solution**: Recommendation systems suggest products based on behavior and preferences.
 
-**Resultado**: Aumento de 25-35% em cross-sell, melhoria na experiência do cliente.
+**Result**: 25-35% increase in cross-sell, improved customer experience.
 
-## O Ciclo de Vida do ML
+## The ML Lifecycle
 
-1. **Coleta de Dados**: Reunir dados relevantes e de qualidade
-2. **Preparação**: Limpeza, normalização e transformação
-3. **Exploração**: Análise exploratória para entender padrões
-4. **Modelagem**: Seleção e treinamento de algoritmos
-5. **Validação**: Teste em dados não vistos
-6. **Deployment**: Colocar modelo em produção
-7. **Monitoramento**: Acompanhar performance contínua
+1. **Data Collection**: Gather relevant and quality data
+2. **Preparation**: Cleaning, normalization and transformation
+3. **Exploration**: Exploratory analysis to understand patterns
+4. **Modeling**: Selection and training of algorithms
+5. **Validation**: Testing on unseen data
+6. **Deployment**: Put model into production
+7. **Monitoring**: Track continuous performance
 
-## Desafios Práticos
+## Practical Challenges
 
-### Dados Insuficientes
-Muitas empresas não têm dados históricos suficientes. Solução: Começar pequeno, coletar dados, iterar.
+### Insufficient Data
+Many companies don't have enough historical data. Solution: Start small, collect data, iterate.
 
-### Qualidade de Dados
-Dados ruins produzem modelos ruins. Investir em governança de dados é crucial.
+### Data Quality
+Bad data produces bad models. Investing in data governance is crucial.
 
-### Interpretabilidade
-Clientes querem saber por que recebem uma recomendação. Modelos explicáveis são cada vez mais importantes.
+### Interpretability
+Customers want to know why they receive a recommendation. Explainable models are increasingly important.
 
-### Manutenção
-Modelos degradam com o tempo. Retrainamento regular é necessário.
+### Maintenance
+Models degrade over time. Regular retraining is necessary.
 
-## Métricas de Sucesso
+## Success Metrics
 
-- **Acurácia**: Percentual de previsões corretas
-- **ROI**: Retorno do investimento em ML
-- **Tempo de Implementação**: Quanto tempo para ver resultados
-- **Escalabilidade**: Capacidade de crescer com o negócio
+- **Accuracy**: Percentage of correct predictions
+- **ROI**: Return on investment in ML
+- **Implementation Time**: How long to see results
+- **Scalability**: Ability to grow with the business
 
-## Conclusão
+## Conclusion
 
-Machine Learning não é um projeto único—é uma jornada contínua de aprendizado e melhoria. Empresas que começarem hoje terão vantagem competitiva amanhã.
+Machine Learning is not a single project—it's a continuous journey of learning and improvement. Companies that start today will have a competitive advantage tomorrow.
 
-**Quer implementar ML na sua empresa? Nós ajudamos a identificar oportunidades e executar projetos com sucesso.**`
+**Want to implement ML in your company? We help identify opportunities and execute projects successfully.**`
   },
   {
     id: '3',
-    slug: 'tendencias-ia-2026-o-que-esperar',
-    title: 'Tendências de IA para 2026: O Que Esperar do Mercado',
+    slug: 'ai-trends-2026-what-to-expect',
+    title: 'AI Trends for 2026: What to Expect from the Market',
     excerpt: 'Análise das principais tendências de inteligência artificial que moldarão o mercado em 2026, desde IA generativa até regulamentações e novas oportunidades.',
     author: 'SAPIENTE.AI',
     date: '2026-02-05',
     readTime: 9,
-    category: 'Tendências',
+    category: 'Trends',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
     tags: ['Tendências', 'IA Generativa', 'Mercado', 'Futuro'],
     content: `# Tendências de IA para 2026: O Que Esperar do Mercado

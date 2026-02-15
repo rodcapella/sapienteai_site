@@ -141,22 +141,21 @@ export default function Home() {
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-24 md:pb-32 bg-gradient-to-br from-blue-50 via-white to-cyan-50 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/vRKqoJgFxdCzRRqV.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}></div>
-        </div>
+      <section className="pt-32 pb-24 md:pb-32 relative overflow-hidden" style={{
+        backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/LTEUlwhoRdkYEirF.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="container relative z-10">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
 
-            <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-foreground">
-              {t('hero.title').split(' ').slice(0, 2).join(' ')} <span className="text-primary">{t('hero.title').split(' ').slice(2).join(' ')}</span>
+            <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-white">
+              {t('hero.title').split(' ').slice(0, 2).join(' ')} <span className="text-cyan-300">{t('hero.title').split(' ').slice(2).join(' ')}</span>
             </h1>
-            <p className="text-lg text-foreground/70 mb-6" style={{fontWeight: '600'}}>{t('hero.description')}</p>
-            <p className="text-base text-foreground mb-12 max-w-2xl mx-auto" style={{color: '#0057dc', fontWeight: '600'}}>{t('hero.tagline')}</p>
+            <p className="text-lg text-white/90 mb-6" style={{fontWeight: '600'}}>{t('hero.description')}</p>
+            <p className="text-base text-cyan-200 mb-12 max-w-2xl mx-auto" style={{fontWeight: '600'}}>{t('hero.tagline')}</p>
             <div className="flex flex-col md:flex-row gap-6 justify-center">
               <Button 
                 onClick={() => setIsContactOpen(true)}
