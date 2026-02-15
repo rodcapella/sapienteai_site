@@ -11,9 +11,10 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, ChevronDown, Linkedin } from "lucide-react";
+import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, ChevronDown } from "lucide-react";
 import ContactModal from '@/components/ContactModal';
-import { LanguageSelector } from '@/components/LanguageSelector';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -133,35 +134,8 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Navigation */}
-        <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
-        <div className="container">
-          <nav className="flex items-center justify-between h-20">
-            <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/vRKqoJgFxdCzRRqV.png" 
-                alt="SAPIENTE.AI" 
-                className="h-8 object-contain"
-              />
-            </a>
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.servicos')}</a>
-              <a href="#processo" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.processo')}</a>
-              <a href="#portfolio" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.portfolio')}</a>
-              <a href="/blog" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.blog')}</a>
-              <a href="#faq" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.faq')}</a>
-              <LanguageSelector />
-              <Button 
-                onClick={() => setIsContactOpen(true)}
-                className="bg-primary text-white hover:bg-primary/90 border-2 border-primary font-bold"
-              >
-                {t('nav.fale')}
-              </Button>
-            </div>
-          </nav>
-        </div>
-      </header>
+    <div className="min-h-screen flex flex-col">
+      <Header onContactClick={() => setIsContactOpen(true)} />
 
       {/* Contact Modal */}
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
@@ -364,58 +338,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-black text-white border-t-4 border-white">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div>
-              <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/vRKqoJgFxdCzRRqV.png" 
-                alt="SAPIENTE.AI" 
-                className="h-16 mb-4 object-contain"
-              />
-              <p className="text-sm text-white/70">
-                Inteligência Artificial Aplicada aos Negócios
-              </p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">{t('footer.product')}</h4>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="#servicos" className="hover:text-white transition-colors">{t('nav.servicos')}</a></li>
-                <li><a href="#processo" className="hover:text-white transition-colors">{t('nav.processo')}</a></li>
-                <li><a href="/blog" className="hover:text-white transition-colors">{t('nav.blog')}</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">{t('footer.company')}</h4>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="/ia-para-empresas" className="hover:text-white transition-colors">Sobre IA</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">{t('nav.faq')}</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">{t('footer.legal')}</h4>
-              <ul className="space-y-2 text-sm text-white/70">
-                <li><a href="/privacidade" className="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
-                <li><a href="/termos" className="hover:text-white transition-colors">{t('footer.terms')}</a></li>
-                <li><a href="/lgpd" className="hover:text-white transition-colors">{t('footer.lgpd')}</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-white/20 pt-8">
-            <div className="flex justify-between items-center">
-              <p className="text-sm text-white/70">
-                {t('footer.copyright')}
-              </p>
-              <div className="flex gap-6">
-                <a href="https://www.linkedin.com/company/sapiente-ai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
-                  <Linkedin className="h-5 w-5" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

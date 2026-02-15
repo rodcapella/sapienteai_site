@@ -8,6 +8,8 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, ArrowRight, Tag, Calendar, User } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 import NewsletterForm from '@/components/NewsletterForm';
@@ -118,20 +120,8 @@ export default function Blog() {
   });
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-foreground">
-        <div className="container">
-          <nav className="flex items-center justify-between h-20">
-            <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
-              SAPIENTE.AI
-            </a>
-            <a href="/" className="text-sm font-medium hover:text-primary transition-colors">
-              ← {t('blog.back') || 'Voltar'}
-            </a>
-          </nav>
-        </div>
-      </header>
+    <div className="min-h-screen bg-white flex flex-col">
+      <Header />
 
       {/* Hero Section with Blog Header Image */}
       <section className="pt-32 pb-16 md:pb-24 relative overflow-hidden">
@@ -291,27 +281,7 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-foreground text-white border-t-4 border-white">
-        <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <h3 className="text-lg font-bold mb-2">SAPIENTE.AI</h3>
-              <p className="text-sm text-white/70">
-                Inteligência Artificial Aplicada aos Negócios
-              </p>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-white/70">
-              <a href="/" className="hover:text-white transition-colors">Home</a>
-              <a href="/blog" className="hover:text-white transition-colors">{t('nav.blog')}</a>
-              <a href="/" className="hover:text-white transition-colors">Contato</a>
-            </div>
-            <p className="text-sm text-white/70">
-              {t('footer.copyright')}
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
