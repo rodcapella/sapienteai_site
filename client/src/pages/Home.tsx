@@ -11,7 +11,7 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, ChevronDown } from "lucide-react";
+import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, ChevronDown, Linkedin } from "lucide-react";
 import ContactModal from '@/components/ContactModal';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -73,11 +73,6 @@ export default function Home() {
   ];
 
   const services = [
-    {
-      icon: Brain,
-      title: t('services.ml'),
-      description: t('services.ml.desc')
-    },
     {
       icon: Cpu,
       title: t('services.automation'),
@@ -182,9 +177,7 @@ export default function Home() {
         </div>
         <div className="container relative z-10">
           <AnimatedSection className="max-w-4xl mx-auto text-center">
-            <p className="text-sm font-medium tracking-[0.3em] text-primary uppercase mb-6 font-bold">
-              {t('hero.subtitle')}
-            </p>
+
             <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-foreground">
               {t('hero.title').split(' ').slice(0, 2).join(' ')} <span className="text-primary">{t('hero.title').split(' ').slice(2).join(' ')}</span>
             </h1>
@@ -415,7 +408,9 @@ export default function Home() {
                 {t('footer.copyright')}
               </p>
               <div className="flex gap-6">
-                <a href="/" className="text-sm text-white/70 hover:text-white transition-colors"></a>
+                <a href="https://www.linkedin.com/company/sapiente-ai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
+                  <Linkedin className="h-5 w-5" />
+                </a>
               </div>
             </div>
           </div>
