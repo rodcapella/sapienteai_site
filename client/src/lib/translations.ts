@@ -77,12 +77,21 @@ export const translations: Record<Language, Record<string, string>> = {
     'cta.button': 'Solicitar Diagnóstico',
 
     // Footer
+    'footer.description': 'Transformação digital com inteligência artificial aplicada',
     'footer.product': 'Produto',
     'footer.company': 'Empresa',
     'footer.legal': 'Legal',
+    'footer.home': 'Início',
+    'footer.servicos': 'Serviços',
+    'footer.portfolio': 'Portfólio',
+    'footer.blog': 'Blog',
     'footer.privacy': 'Privacidade',
+    'footer.privacidade': 'Privacidade',
     'footer.terms': 'Termos',
+    'footer.termos': 'Termos de Serviço',
     'footer.lgpd': 'LGPD',
+    'footer.contact': 'Contato',
+    'footer.email': 'sapiente.ai.oficial@gmail.com',
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
 
     // Blog Page
@@ -196,12 +205,21 @@ export const translations: Record<Language, Record<string, string>> = {
     'cta.button': 'Solicitar Diagnóstico',
 
     // Footer
+    'footer.description': 'Transformação digital com inteligência artificial aplicada',
     'footer.product': 'Produto',
     'footer.company': 'Empresa',
     'footer.legal': 'Legal',
+    'footer.home': 'Início',
+    'footer.servicos': 'Serviços',
+    'footer.portfolio': 'Portfólio',
+    'footer.blog': 'Blog',
     'footer.privacy': 'Privacidade',
+    'footer.privacidade': 'Privacidade',
     'footer.terms': 'Termos',
+    'footer.termos': 'Termos de Serviço',
     'footer.lgpd': 'LGPD',
+    'footer.contact': 'Contato',
+    'footer.email': 'sapiente.ai.oficial@gmail.com',
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
 
     // Blog Page
@@ -315,12 +333,21 @@ export const translations: Record<Language, Record<string, string>> = {
     'cta.button': 'Request Diagnosis',
 
     // Footer
+    'footer.description': 'Digital transformation with applied artificial intelligence',
     'footer.product': 'Product',
     'footer.company': 'Company',
     'footer.legal': 'Legal',
+    'footer.home': 'Home',
+    'footer.servicos': 'Services',
+    'footer.portfolio': 'Portfolio',
+    'footer.blog': 'Blog',
     'footer.privacy': 'Privacy',
+    'footer.privacidade': 'Privacy',
     'footer.terms': 'Terms',
+    'footer.termos': 'Terms of Service',
     'footer.lgpd': 'LGPD',
+    'footer.contact': 'Contact',
+    'footer.email': 'sapiente.ai.oficial@gmail.com',
     'footer.copyright': '© 2026 SAPIENTE.AI • All rights reserved',
 
     // Blog Page
