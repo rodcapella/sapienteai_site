@@ -5,7 +5,7 @@
  * Typography: Space Grotesk (headlines), IBM Plex Sans (body)
  */
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, ArrowRight, Tag, Calendar, User } from 'lucide-react';
 import Header from '@/components/Header';
@@ -13,6 +13,7 @@ import Footer from '@/components/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 import NewsletterForm from '@/components/NewsletterForm';
+import { getAllBlogArticles } from '@/lib/blogData';
 
 // Animated Section Wrapper
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -31,93 +32,23 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
-interface BlogArticle {
-  id: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  author: string;
-  date: string;
-  readTime: number;
-  image: string;
-}
-
-const articles: BlogArticle[] = [
-  {
-    id: '1',
-    title: 'IA Generativa: O Futuro da Automação Empresarial',
-    excerpt: 'Descubra como modelos de linguagem grandes estão revolucionando a forma como as empresas automatizam processos e tomam decisões inteligentes.',
-    category: 'IA Generativa',
-    author: 'Dr. Carlos Silva',
-    date: '2026-02-10',
-    readTime: 8,
-    image: 'https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-1_1770834578000_na1fn_aGVyby1haS1uZXVyYWwtbmV0d29yaw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80',
-  },
-  {
-    id: '2',
-    title: 'Machine Learning para Previsão de Demanda',
-    excerpt: 'Como algoritmos de ML podem otimizar seu estoque e aumentar a eficiência operacional em até 40% com previsões precisas.',
-    category: 'Machine Learning',
-    author: 'Eng. Maria Santos',
-    date: '2026-02-08',
-    readTime: 6,
-    image: 'https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-4_1770834586000_na1fn_cHJvY2Vzcy1hdXRvbWF0aW9u.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80',
-  },
-  {
-    id: '3',
-    title: 'Segurança em Sistemas de IA: Boas Práticas',
-    excerpt: 'Estratégias essenciais para proteger seus modelos de IA contra ataques adversariais e garantir conformidade com LGPD e GDPR.',
-    category: 'Segurança',
-    author: 'Esp. João Oliveira',
-    date: '2026-02-06',
-    readTime: 7,
-    image: 'https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-3_1770834577000_na1fn_YWJzdHJhY3QtZGF0YS1mbG93.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80',
-  },
-  {
-    id: '4',
-    title: 'Tendências de IA em 2026: O Que Esperar',
-    excerpt: 'Análise das principais tendências que moldarão o mercado de inteligência artificial, desde IA multimodal até regulamentações emergentes.',
-    category: 'Tendências',
-    author: 'Analista Tech. Ana Costa',
-    date: '2026-02-04',
-    readTime: 9,
-    image: 'https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-5_1770834589000_na1fn_c3RyYXRlZ2ljLWNvbnN1bHRpbmc.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80',
-  },
-  {
-    id: '5',
-    title: 'Deep Learning para Visão Computacional',
-    excerpt: 'Aplicações práticas de redes neurais convolucionais em detecção de objetos, análise de imagens e inspeção de qualidade.',
-    category: 'Deep Learning',
-    author: 'Dr. Pedro Ferreira',
-    date: '2026-02-02',
-    readTime: 8,
-    image: 'https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-1_1770834578000_na1fn_aGVyby1haS1uZXVyYWwtbmV0d29yaw.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80',
-  },
-  {
-    id: '6',
-    title: 'ROI de Projetos de IA: Como Medir o Sucesso',
-    excerpt: 'Métricas e KPIs essenciais para avaliar o retorno sobre investimento em soluções de inteligência artificial e tecnologia.',
-    category: 'Negócios',
-    author: 'Consultor de Negócios Rafael Lima',
-    date: '2026-01-31',
-    readTime: 7,
-    image: 'https://private-us-east-1.manuscdn.com/sessionFile/NuGUnsTwRF2n5w3zll2JwB/sandbox/n8cDBWcmW4T1QcNf8XA0nv-img-4_1770834586000_na1fn_cHJvY2Vzcy1hdXRvbWF0aW9u.png?x-oss-process=image/resize,w_1920,h_1920/format,webp/quality,q_80',
-  },
-];
-
-const categories = ['Todos', 'IA Generativa', 'Machine Learning', 'Deep Learning', 'Segurança', 'Tendências', 'Negócios'];
+const articles = getAllBlogArticles();
+const categories = ['Todos', ...Array.from(new Set(articles.map(a => a.category)))];
 
 export default function Blog() {
   const { t } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredArticles = articles.filter(article => {
-    const matchesCategory = selectedCategory === 'Todos' || article.category === selectedCategory;
-    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredArticles = useMemo(() => {
+    return articles.filter(article => {
+      const matchesCategory = selectedCategory === 'Todos' || article.category === selectedCategory;
+      const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                           article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -198,7 +129,7 @@ export default function Blog() {
               {filteredArticles.map((article, index) => (
                 <AnimatedSection key={article.id} className={index >= 3 ? 'delay-100' : ''}>
                   <a
-                    href={`/blog/${article.id}`}
+                    href={`/blog/${article.slug}`}
                     className="group block h-full border-2 border-foreground hover:border-primary transition-all duration-300 overflow-hidden"
                   >
                     {/* Article Image */}
@@ -219,6 +150,15 @@ export default function Blog() {
                         <span className="text-xs font-bold text-primary uppercase tracking-wide">
                           {article.category}
                         </span>
+                        {article.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-1 ml-auto">
+                            {article.tags.slice(0, 1).map(tag => (
+                              <span key={tag} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
 
                       {/* Title */}
@@ -239,7 +179,7 @@ export default function Blog() {
                         </div>
                         <div className="flex items-center gap-1 mt-3">
                           <Calendar className="h-3 w-3" />
-                          <span>{new Date(article.date).toLocaleDateString('pt-BR')}</span>
+                          <span>{new Date(article.date).toLocaleDateString('pt-PT', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                         </div>
                         <span className="mt-3">{article.readTime} min</span>
                       </div>

@@ -10,6 +10,9 @@ import { ArrowLeft, Calendar, User, Tag, Share2, MessageCircle } from 'lucide-re
 import NewsletterForm from '@/components/NewsletterForm';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { updateMetaTags, articleSchema, generateStructuredData } from '@/lib/seo';
+import { getBlogArticleBySlug, getAllBlogArticles } from '@/lib/blogData';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 // Animated Section Wrapper
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -28,8 +31,12 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
+const blogPosts = getAllBlogArticles();
+
+// Legacy interface for backward compatibility
 interface BlogPost {
   id: string;
+  slug?: string;
   title: string;
   excerpt: string;
   content: string;
@@ -40,7 +47,7 @@ interface BlogPost {
   image: string;
 }
 
-const blogPosts: BlogPost[] = [
+const legacyBlogPosts: BlogPost[] = [
   {
     id: '1',
     title: 'IA Generativa: O Futuro da Automação Empresarial',
@@ -134,9 +141,9 @@ A SAPIENTE.AI trabalha com você para definir métricas significativas e acompan
 ];
 
 export default function ArticleDetail() {
-  const [, params] = useRoute('/blog/:id');
-  const articleId = params?.id;
-  const article = blogPosts.find(post => post.id === articleId);
+  const [, params] = useRoute('/blog/:slug');
+  const slug = params?.slug as string;
+  const article = getBlogArticleBySlug(slug);
   const [comments, setComments] = useState<Array<{ author: string; text: string; date: string }>>([
     { author: 'João Silva', text: 'Excelente artigo! Muito informativo.', date: '2026-02-11' },
     { author: 'Maria Santos', text: 'Implementamos essas técnicas e obtivemos resultados incríveis.', date: '2026-02-10' },
@@ -173,8 +180,9 @@ export default function ArticleDetail() {
     );
   }
 
-  const relatedArticles = blogPosts
-    .filter(post => post.category === article.category && post.id !== article.id)
+  const allArticles = getAllBlogArticles();
+  const relatedArticles = allArticles
+    .filter(post => post.category === article?.category && post.slug !== article?.slug)
     .slice(0, 3);
 
   const handleCommentSubmit = (e: React.FormEvent) => {
@@ -194,24 +202,7 @@ export default function ArticleDetail() {
 
   return (
     <div className="min-h-screen">
-      {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b-4 border-foreground">
-        <div className="container">
-          <nav className="flex items-center justify-between h-20">
-            <a href="/" className="flex items-center gap-3">
-              <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png" 
-                alt="SAPIENTE.AI" 
-                className="h-14 w-auto"
-              />
-            </a>
-            <a href="/blog" className="flex items-center gap-2 text-sm font-medium hover:text-primary transition-colors">
-              <ArrowLeft className="h-4 w-4" />
-              Voltar ao Blog
-            </a>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Article Content */}
       <article className="pt-32 pb-24">
@@ -325,7 +316,7 @@ export default function ArticleDetail() {
                 {relatedArticles.map(post => (
                   <a
                     key={post.id}
-                    href={`/blog/${post.id}`}
+                    href={`/blog/${post.slug}`}
                     className="border-2 border-foreground p-6 hover:border-primary transition-all duration-300 group"
                   >
                     <img 

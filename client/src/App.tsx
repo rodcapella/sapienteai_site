@@ -19,7 +19,7 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/blog"} component={Blog} />
-      <Route path={"/blog/:id"} component={ArticleDetail} />
+      <Route path={"/blog/:slug"} component={ArticleDetail} />
       <Route path={"/ia-para-empresas"} component={AIPillar} />
       <Route path={"/lgpd"} component={LGPD} />
       <Route path={"/termos"} component={Termos} />
