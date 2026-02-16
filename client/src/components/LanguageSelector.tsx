@@ -10,22 +10,22 @@ export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="flex items-center gap-2" role="group" aria-label="Language selector">
+    <div className="flex items-center gap-1" role="group" aria-label="Language selector">
       {languages.map((lang) => (
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}
-          className={`w-12 h-12 rounded-lg transition-all border-2 font-semibold text-2xl flex items-center justify-center ${
+          className={`w-10 h-10 rounded-md transition-all border-2 flex items-center justify-center text-xl leading-none ${
             language === lang.code
-              ? 'border-cyan-300 bg-cyan-300/10 shadow-md'
-              : 'border-white/30 hover:border-white/60 hover:bg-white/10'
+              ? 'border-cyan-400 bg-cyan-400/20 shadow-lg shadow-cyan-400/50'
+              : 'border-white/40 hover:border-white/70 hover:bg-white/15'
           }`}
           title={`Switch to ${lang.label}`}
           aria-label={`Switch to ${lang.label}`}
           aria-pressed={language === lang.code}
           type="button"
         >
-          {lang.flag}
+          <span className="inline-block">{lang.flag}</span>
         </button>
       ))}
     </div>

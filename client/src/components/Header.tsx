@@ -27,7 +27,7 @@ export default function Header({ onContactClick }: HeaderProps) {
           <nav className="flex items-center justify-between h-20">
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/LTEUlwhoRdkYEirF.png" 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/JsygqIGdbHNWJuIo.png" 
                 alt="SAPIENTE.AI" 
                 className="h-16 object-contain"
               />
