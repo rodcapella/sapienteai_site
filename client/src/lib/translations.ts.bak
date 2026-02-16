@@ -110,28 +110,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.privacy.title': 'Política de Privacidade',
     'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
 
-    // FAQ Section
-    'faq.label': 'PERGUNTAS FREQUENTES',
-    'faq.title': 'Dúvidas Comuns:',
-    'faq.q1': 'Quanto tempo leva para implementar uma solução de IA?',
-    'faq.a1': 'Depende da complexidade. Projetos simples: 4-8 semanas. Projetos complexos: 3-6 meses. A SAPIENTE.AI trabalha em sprints ágeis, entregando valor incremental. Você vê resultados desde as primeiras semanas, com otimizações contínuas.',
-    'faq.q2': 'A IA da SAPIENTE.AI é segura e em conformidade com LGPD/GDPR?',
-    'faq.a2': 'Sim. Implementamos os mais altos padrões de segurança: criptografia de dados, validação robusta, monitoramento contínuo, versionamento de modelos e testes de adversarialidade. Garantimos conformidade total com LGPD, GDPR e outras regulamentações.',
-    'faq.q3': 'Como medir o ROI de um projeto de IA?',
-    'faq.a3': 'Medimos através de: redução de custos operacionais, aumento de receita, melhoria em eficiência de tempo, satisfação do cliente, e precisão de decisões. Estabelecemos KPIs claros no início e acompanhamos continuamente. A maioria dos clientes vê ROI positivo em 6-12 meses.',
-
-    // Diferencials Section
-    'differentials.label': 'DIFERENCIAIS',
-    'differentials.title': 'Por Que Escolher a SAPIENTE.AI:',
-    'differentials.security': 'Segurança de Dados',
-    'differentials.security.desc': 'Conformidade total com LGPD/GDPR, criptografia de ponta a ponta e auditoria contínua de segurança.',
-    'differentials.roi': 'ROI Comprovado',
-    'differentials.roi.desc': 'Nossos clientes veem retorno positivo em 6-12 meses com redução de custos e aumento de eficiência.',
-    'differentials.expertise': 'Expertise Profunda',
-    'differentials.expertise.desc': 'Equipe com mais de 50 anos de experiência combinada em IA, machine learning e transformação digital.',
-    'differentials.support': 'Suporte Contínuo',
-    'differentials.support.desc': 'Acompanhamento pós-implementação, otimização de modelos e suporte técnico 24/7 para seus projetos.',
-
     // Newsletter
     'newsletter.label': 'Email para Newsletter',
     'newsletter.placeholder': 'seu@email.com',
@@ -253,28 +231,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.privacy.title': 'Política de Privacidade',
     'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
 
-    // FAQ Section
-    'faq.label': 'PERGUNTAS FREQUENTES',
-    'faq.title': 'Dúvidas Comuns:',
-    'faq.q1': 'Quanto tempo leva para implementar uma solução de IA?',
-    'faq.a1': 'Depende da complexidade. Projetos simples: 4-8 semanas. Projetos complexos: 3-6 meses. A SAPIENTE.AI trabalha em sprints ágeis, entregando valor incremental. Você vê resultados desde as primeiras semanas, com otimizações contínuas.',
-    'faq.q2': 'A IA da SAPIENTE.AI é segura e em conformidade com LGPD/GDPR?',
-    'faq.a2': 'Sim. Implementamos os mais altos padrões de segurança: criptografia de dados, validação robusta, monitoramento contínuo, versionamento de modelos e testes de adversarialidade. Garantimos conformidade total com LGPD, GDPR e outras regulamentações.',
-    'faq.q3': 'Como medir o ROI de um projeto de IA?',
-    'faq.a3': 'Medimos através de: redução de custos operacionais, aumento de receita, melhoria em eficiência de tempo, satisfação do cliente, e precisão de decisões. Estabelecemos KPIs claros no início e acompanhamos continuamente. A maioria dos clientes vê ROI positivo em 6-12 meses.',
-
-    // Diferencials Section
-    'differentials.label': 'DIFERENCIAIS',
-    'differentials.title': 'Por Que Escolher a SAPIENTE.AI:',
-    'differentials.security': 'Segurança de Dados',
-    'differentials.security.desc': 'Conformidade total com LGPD/GDPR, criptografia de ponta a ponta e auditoria contínua de segurança.',
-    'differentials.roi': 'ROI Comprovado',
-    'differentials.roi.desc': 'Nossos clientes veem retorno positivo em 6-12 meses com redução de custos e aumento de eficiência.',
-    'differentials.expertise': 'Expertise Profunda',
-    'differentials.expertise.desc': 'Equipe com mais de 50 anos de experiência combinada em IA, machine learning e transformação digital.',
-    'differentials.support': 'Suporte Contínuo',
-    'differentials.support.desc': 'Acompanhamento pós-implementação, otimização de modelos e suporte técnico 24/7 para seus projetos.',
-
     // Newsletter
     'newsletter.label': 'Email para Newsletter',
     'newsletter.placeholder': 'seu@email.com',
@@ -395,28 +351,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.terms.intro': 'These terms govern the use of SAPIENTE.AI services. By accessing our website, you agree to these terms.',
     'legal.privacy.title': 'Privacy Policy',
     'legal.privacy.intro': 'SAPIENTE.AI respects your privacy and is committed to protecting your personal data.',
-
-    // FAQ Section
-    'faq.label': 'FREQUENTLY ASKED QUESTIONS',
-    'faq.title': 'Common Questions:',
-    'faq.q1': 'How long does it take to implement an AI solution?',
-    'faq.a1': 'It depends on complexity. Simple projects: 4-8 weeks. Complex projects: 3-6 months. SAPIENTE.AI works in agile sprints, delivering incremental value. You see results from the first weeks, with continuous optimizations.',
-    'faq.q2': 'Is SAPIENTE.AI AI safe and compliant with LGPD/GDPR?',
-    'faq.a2': 'Yes. We implement the highest security standards: data encryption, robust validation, continuous monitoring, model versioning and adversarial testing. We guarantee full compliance with LGPD, GDPR and other regulations.',
-    'faq.q3': 'How to measure ROI from an AI project?',
-    'faq.a3': 'We measure through: reduction of operational costs, increase in revenue, improvement in time efficiency, customer satisfaction, and decision accuracy. We establish clear KPIs at the beginning and monitor continuously. Most clients see positive ROI within 6-12 months.',
-
-    // Diferencials Section
-    'differentials.label': 'DIFFERENTIALS',
-    'differentials.title': 'Why Choose SAPIENTE.AI:',
-    'differentials.security': 'Data Security',
-    'differentials.security.desc': 'Full compliance with LGPD/GDPR, end-to-end encryption and continuous security audits.',
-    'differentials.roi': 'Proven ROI',
-    'differentials.roi.desc': 'Our clients see positive returns within 6-12 months with cost reduction and efficiency gains.',
-    'differentials.expertise': 'Deep Expertise',
-    'differentials.expertise.desc': 'Team with over 50 years of combined experience in AI, machine learning and digital transformation.',
-    'differentials.support': 'Continuous Support',
-    'differentials.support.desc': 'Post-implementation monitoring, model optimization and 24/7 technical support for your projects.',
 
     // Newsletter
     'newsletter.label': 'Newsletter Email',
