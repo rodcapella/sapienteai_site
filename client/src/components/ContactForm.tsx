@@ -3,9 +3,10 @@
  * Features: Form validation, email submission via FormSubmit API, success/error handling, phone field
  */
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
+import TurnstileWidget from './TurnstileWidget';
 
 interface FormData {
   name: string;
@@ -20,6 +21,11 @@ interface FormStatus {
   message?: string;
 }
 
+interface CaptchaStatus {
+  verified: boolean;
+  token: string | null;
+}
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -30,6 +36,8 @@ export default function ContactForm() {
   });
 
   const [status, setStatus] = useState<FormStatus>({ type: 'idle' });
+  const [captcha, setCaptcha] = useState<CaptchaStatus>({ verified: false, token: null });
+  const turnstileRef = useRef<any>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -60,6 +68,10 @@ export default function ContactForm() {
       setStatus({ type: 'error', message: 'Mensagem é obrigatória' });
       return false;
     }
+    if (!captcha.verified) {
+      setStatus({ type: 'error', message: 'Por favor, complete a verificação CAPTCHA' });
+      return false;
+    }
     return true;
   };
 
@@ -82,6 +94,9 @@ export default function ContactForm() {
       formDataToSend.append('message', formData.message);
       formDataToSend.append('_subject', `Nova Mensagem de Contato - ${formData.name}`);
       formDataToSend.append('_captcha', 'false');
+      if (captcha.token) {
+        formDataToSend.append('cf-turnstile-response', captcha.token);
+      }
 
       // Send to FormSubmit API
       const response = await fetch('https://formsubmit.co/sapiente.ai.oficial@gmail.com', {
@@ -104,6 +119,11 @@ export default function ContactForm() {
           company: '',
           message: '',
         });
+        // Reset CAPTCHA
+        setCaptcha({ verified: false, token: null });
+        if (window.turnstile) {
+          window.turnstile.reset();
+        }
 
         // Clear success message after 5 seconds
         setTimeout(() => {
@@ -219,6 +239,23 @@ export default function ContactForm() {
           rows={5}
           className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
           disabled={status.type === 'loading'}
+        />
+      </div>
+
+      {/* Turnstile CAPTCHA */}
+      <div className="flex justify-center">
+        <TurnstileWidget
+          onVerify={(token: string) => {
+            setCaptcha({ verified: true, token });
+          }}
+          onError={() => {
+            setCaptcha({ verified: false, token: null });
+            setStatus({ type: 'error', message: 'Erro na verificação CAPTCHA. Tente novamente.' });
+          }}
+          onExpire={() => {
+            setCaptcha({ verified: false, token: null });
+          }}
+          theme="light"
         />
       </div>
 
