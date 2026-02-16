@@ -1,4 +1,4 @@
-import { Linkedin, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Linkedin, Instagram, Twitter } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function Footer() {
@@ -48,19 +48,16 @@ export default function Footer() {
               {t('footer.copyright')}
             </p>
             <div className="flex gap-6">
-              <a href="https://www.instagram.com/sapiente.ai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="Instagram">
+              <a href="https://www.instagram.com/sapienteai/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://www.facebook.com/sapiente.ai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="Facebook">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="https://www.tiktok.com/@sapiente.ai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="TikTok">
+              <a href="https://www.tiktok.com/@sapienteai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="TikTok">
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.68v13.67a2.4 2.4 0 0 1-2.4 2.4 2.4 2.4 0 0 1-2.4-2.4 2.4 2.4 0 0 1 2.4-2.4c.34 0 .67.05.98.15V9.48a5.64 5.64 0 0 0-.98-.08 5.64 5.64 0 0 0 0 11.28 5.64 5.64 0 0 0 5.64-5.64V8.42a7.43 7.43 0 0 0 4.41 1.39v-3.12z"/></svg>
               </a>
-              <a href="https://www.twitter.com/sapiente_ai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="Twitter">
+              <a href="https://x.com/SapienteAI" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="X (Twitter)">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="https://www.linkedin.com/company/sapiente-ai" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/sapiente-ai/" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-cyan-400 transition-colors" aria-label="LinkedIn">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>

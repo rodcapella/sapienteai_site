@@ -15,17 +15,17 @@ export function LanguageSelector() {
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}
-          className={`w-10 h-10 rounded-md transition-all border-2 flex items-center justify-center text-xl leading-none ${
+          className={`w-10 h-10 rounded-md transition-all border-2 flex items-center justify-center text-lg leading-none ${
             language === lang.code
-              ? 'border-cyan-400 bg-cyan-400/20 shadow-lg shadow-cyan-400/50'
-              : 'border-white/40 hover:border-white/70 hover:bg-white/15'
+              ? 'border-cyan-500 bg-cyan-50 shadow-md shadow-cyan-300/50'
+              : 'border-slate-300 hover:border-slate-400 hover:bg-slate-100'
           }`}
           title={`Switch to ${lang.label}`}
           aria-label={`Switch to ${lang.label}`}
           aria-pressed={language === lang.code}
           type="button"
         >
-          <span className="inline-block">{lang.flag}</span>
+          <span className="inline-block text-base">{lang.flag}</span>
         </button>
       ))}
     </div>
