@@ -12,7 +12,7 @@ export default function Footer() {
             <img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/jJJEfEeNxsFPFazg.png" 
               alt="SAPIENTE.AI" 
-              className="h-12 object-contain mb-4"
+              className="h-16 object-contain mb-4"
             />
             <p className="text-sm text-white/70">
               {t('footer.description')}

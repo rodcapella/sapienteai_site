@@ -12,6 +12,9 @@ import AIPillar from "./pages/AIPillar";
 import LGPD from "./pages/LGPD";
 import Termos from "./pages/Termos";
 import Privacidade from "./pages/Privacidade";
+import GDPR from "./pages/GDPR";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 
 
 function Router() {
@@ -24,6 +27,9 @@ function Router() {
       <Route path={"/lgpd"} component={LGPD} />
       <Route path={"/termos"} component={Termos} />
       <Route path={"/privacidade"} component={Privacidade} />
+      <Route path={"/gdpr"} component={GDPR} />
+      <Route path={"/terms"} component={Terms} />
+      <Route path={"/privacy"} component={Privacy} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

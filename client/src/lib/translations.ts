@@ -1,4 +1,4 @@
-type Language = 'pt-PT' | 'pt-BR' | 'en';
+export type Language = 'pt-PT' | 'pt-BR' | 'en';
 
 export const translations: Record<Language, Record<string, string>> = {
   'pt-PT': {
@@ -49,28 +49,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'portfolio.description': 'Confira os resultados que alcançamos para empresas em diversos setores.',
     'portfolio.more': 'Ver Mais Casos de Sucesso',
 
-    // Differentials Section
-    'differentials.label': 'DIFERENCIAIS',
-    'differentials.title': 'Por que escolher SAPIENTE.AI ?',
-    'differentials.security': 'Segurança Garantida',
-    'differentials.security.desc': 'LGPD, GDPR e conformidade total',
-    'differentials.roi': 'ROI Mensurável',
-    'differentials.roi.desc': 'Resultados comprovados em 6-12 meses',
-    'differentials.expertise': 'Expertise Comprovada',
-    'differentials.expertise.desc': 'Equipe com + 5 anos de experiência',
-    'differentials.support': 'Suporte Dedicado',
-    'differentials.support.desc': 'Acompanhamento contínuo do projeto',
-
-    // FAQ Section
-    'faq.label': 'DÚVIDAS FREQUENTES',
-    'faq.title': 'Perguntas Frequentes:',
-    'faq.q1': 'O que é Inteligência Artificial aplicada a negócios?',
-    'faq.a1': 'Inteligência Artificial aplicada a negócios é o uso de algoritmos, modelos preditivos e automação inteligente para otimizar processos, analisar grandes volumes de dados e tomar decisões mais precisas. A SAPIENTE.AI especializa-se em implementar soluções de IA que geram ROI mensurável e transformação digital real.',
-    'faq.q2': 'Como a IA pode reduzir custos empresariais?',
-    'faq.a2': 'A IA reduz custos através de: automação de processos repetitivos (redução de até 40% em custos operacionais), otimização de inventário com previsão de demanda, análise preditiva para evitar desperdícios, e tomada de decisão mais rápida e precisa. Nossos clientes reportam economia média de 35% após implementação.',
-    'faq.q3': 'Qual a diferença entre IA e automação?',
-    'faq.a3': 'Automação executa tarefas pré-programadas. IA aprende com dados e se adapta continuamente. A SAPIENTE.AI combina ambas: usamos automação para eficiência e IA para inteligência adaptativa. Isso resulta em sistemas que melhoram com o tempo, sem reprogramação constante.',
-
     // CTA Section
     'cta.title': 'Pronto para Implementar IA na Sua Empresa?',
     'cta.description': 'Agende uma reunião com nossos especialistas e descubra como IA pode gerar resultados reais no seu negócio.',
@@ -103,6 +81,10 @@ export const translations: Record<Language, Record<string, string>> = {
     'blog.category': 'Categoria',
     'blog.date': 'Data',
     'blog.author': 'SAPIENTE.AI',
+    'blog.knowledge': 'Conhecimento • Estratégia • Inovação',
+    'blog.newsletter': 'Receba Insights sobre IA',
+    'blog.newsletterDesc': 'Inscreva-se na newsletter da SAPIENTE.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.',
+    'blog.noArticles': 'Nenhum artigo encontrado. Tente outra busca ou categoria.',
 
     // Article Detail
     'article.relatedArticles': 'Artigos Relacionados',
@@ -126,7 +108,18 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.terms.title': 'Termos de Serviço',
     'legal.terms.intro': 'Estes termos regem o uso dos serviços da SAPIENTE.AI. Ao acessar nosso site, você concorda com estes termos.',
     'legal.privacy.title': 'Política de Privacidade',
-    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e se compromete a proteger seus dados pessoais.',
+    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
+
+    // Newsletter
+    'newsletter.label': 'Email para Newsletter',
+    'newsletter.placeholder': 'seu@email.com',
+    'newsletter.subscribe': 'Inscrever',
+    'newsletter.subscribing': 'Inscrevendo...',
+    'newsletter.invalidEmail': 'Email inválido',
+    'newsletter.subject': 'Nova Inscrição na Newsletter - SAPIENTE.AI',
+    'newsletter.success': 'Inscrição confirmada! Obrigado por se juntar a nós.',
+    'newsletter.error': 'Erro ao inscrever. Tente novamente.',
+    'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.',
   },
 
   'pt-BR': {
@@ -177,28 +170,6 @@ export const translations: Record<Language, Record<string, string>> = {
     'portfolio.description': 'Confira os resultados que alcançamos para empresas em diversos setores.',
     'portfolio.more': 'Ver Mais Casos de Sucesso',
 
-    // Differentials Section
-    'differentials.label': 'DIFERENCIAIS',
-    'differentials.title': 'Por que escolher SAPIENTE.AI ?',
-    'differentials.security': 'Segurança Garantida',
-    'differentials.security.desc': 'LGPD, GDPR e conformidade total',
-    'differentials.roi': 'ROI Mensurável',
-    'differentials.roi.desc': 'Resultados comprovados em 6-12 meses',
-    'differentials.expertise': 'Expertise Comprovada',
-    'differentials.expertise.desc': 'Equipe com + 5 anos de experiência',
-    'differentials.support': 'Suporte Dedicado',
-    'differentials.support.desc': 'Acompanhamento contínuo do projeto',
-
-    // FAQ Section
-    'faq.label': 'DÚVIDAS FREQUENTES',
-    'faq.title': 'Perguntas Frequentes:',
-    'faq.q1': 'O que é Inteligência Artificial aplicada a negócios?',
-    'faq.a1': 'Inteligência Artificial aplicada a negócios é o uso de algoritmos, modelos preditivos e automação inteligente para otimizar processos, analisar grandes volumes de dados e tomar decisões mais precisas. A SAPIENTE.AI especializa-se em implementar soluções de IA que geram ROI mensurável e transformação digital real.',
-    'faq.q2': 'Como a IA pode reduzir custos empresariais?',
-    'faq.a2': 'A IA reduz custos através de: automação de processos repetitivos (redução de até 40% em custos operacionais), otimização de inventário com previsão de demanda, análise preditiva para evitar desperdícios, e tomada de decisão mais rápida e precisa. Nossos clientes reportam economia média de 35% após implementação.',
-    'faq.q3': 'Qual a diferença entre IA e automação?',
-    'faq.a3': 'Automação executa tarefas pré-programadas. IA aprende com dados e se adapta continuamente. A SAPIENTE.AI combina ambas: usamos automação para eficiência e IA para inteligência adaptativa. Isso resulta em sistemas que melhoram com o tempo, sem reprogramação constante.',
-
     // CTA Section
     'cta.title': 'Pronto para Implementar IA na Sua Empresa?',
     'cta.description': 'Agende uma reunião com nossos especialistas e descubra como IA pode gerar resultados reais no seu negócio.',
@@ -231,6 +202,10 @@ export const translations: Record<Language, Record<string, string>> = {
     'blog.category': 'Categoria',
     'blog.date': 'Data',
     'blog.author': 'SAPIENTE.AI',
+    'blog.knowledge': 'Conhecimento • Estratégia • Inovação',
+    'blog.newsletter': 'Receba Insights sobre IA',
+    'blog.newsletterDesc': 'Inscreva-se na newsletter da SAPIENTE.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.',
+    'blog.noArticles': 'Nenhum artigo encontrado. Tente outra busca ou categoria.',
 
     // Article Detail
     'article.relatedArticles': 'Artigos Relacionados',
@@ -254,7 +229,18 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.terms.title': 'Termos de Serviço',
     'legal.terms.intro': 'Estes termos regem o uso dos serviços da SAPIENTE.AI. Ao acessar nosso site, você concorda com estes termos.',
     'legal.privacy.title': 'Política de Privacidade',
-    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e se compromete a proteger seus dados pessoais.',
+    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
+
+    // Newsletter
+    'newsletter.label': 'Email para Newsletter',
+    'newsletter.placeholder': 'seu@email.com',
+    'newsletter.subscribe': 'Inscrever',
+    'newsletter.subscribing': 'Inscrevendo...',
+    'newsletter.invalidEmail': 'Email inválido',
+    'newsletter.subject': 'Nova Inscrição na Newsletter - SAPIENTE.AI',
+    'newsletter.success': 'Inscrição confirmada! Obrigado por se juntar a nós.',
+    'newsletter.error': 'Erro ao inscrever. Tente novamente.',
+    'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.',
   },
 
   'en': {
@@ -264,7 +250,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'nav.portfolio': 'Portfolio',
     'nav.blog': 'Blog',
     'nav.faq': 'FAQ',
-    'nav.fale': 'Talk to Specialist',
+    'nav.fale': 'Contact Expert',
 
     // Hero Section
     'hero.subtitle': 'Applied Artificial Intelligence // 2026',
@@ -283,7 +269,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'services.automation': 'Intelligent Automation',
     'services.automation.desc': 'Automation of repetitive processes with AI, reducing operational costs by up to 40% and increasing productivity.',
     'services.consulting': 'Strategic Consulting',
-    'services.consulting.desc': 'Analysis of AI opportunities in your company, implementation roadmap and results tracking.',
+    'services.consulting.desc': 'Analysis of AI opportunities in your company, implementation roadmap and results monitoring.',
     'services.more': 'Learn More',
 
     // Process Section
@@ -297,35 +283,13 @@ export const translations: Record<Language, Record<string, string>> = {
     'process.step3': 'Implementation',
     'process.step3.desc': 'Development and integration of AI solutions.',
     'process.step4': 'Optimization',
-    'process.step4.desc': 'Continuous monitoring and results improvement.',
+    'process.step4.desc': 'Continuous monitoring and improvement of results.',
 
     // Portfolio Section
     'portfolio.label': 'REAL RESULTS',
     'portfolio.title': 'Success Portfolio:',
-    'portfolio.description': 'Check out the results we achieved for companies in various sectors.',
+    'portfolio.description': 'Check out the results we have achieved for companies in various sectors.',
     'portfolio.more': 'View More Success Cases',
-
-    // Differentials Section
-    'differentials.label': 'DIFFERENTIALS',
-    'differentials.title': 'Why choose SAPIENTE.AI ?',
-    'differentials.security': 'Guaranteed Security',
-    'differentials.security.desc': 'LGPD, GDPR and full compliance',
-    'differentials.roi': 'Measurable ROI',
-    'differentials.roi.desc': 'Proven results in 6-12 months',
-    'differentials.expertise': 'Proven Expertise',
-    'differentials.expertise.desc': 'Team with + 5 years of experience',
-    'differentials.support': 'Dedicated Support',
-    'differentials.support.desc': 'Continuous project monitoring',
-
-    // FAQ Section
-    'faq.label': 'FREQUENTLY ASKED QUESTIONS',
-    'faq.title': 'Frequently Asked Questions:',
-    'faq.q1': 'What is Artificial Intelligence applied to business?',
-    'faq.a1': 'Artificial Intelligence applied to business is the use of algorithms, predictive models and intelligent automation to optimize processes, analyze large volumes of data and make more accurate decisions. SAPIENTE.AI specializes in implementing AI solutions that generate measurable ROI and real digital transformation.',
-    'faq.q2': 'How can AI reduce business costs?',
-    'faq.a2': 'AI reduces costs through: automation of repetitive processes (reduction of up to 40% in operational costs), inventory optimization with demand forecasting, predictive analysis to avoid waste, and faster and more accurate decision-making. Our clients report an average savings of 35% after implementation.',
-    'faq.q3': 'What is the difference between AI and automation?',
-    'faq.a3': 'Automation executes pre-programmed tasks. AI learns from data and adapts continuously. SAPIENTE.AI combines both: we use automation for efficiency and AI for adaptive intelligence. This results in systems that improve over time, without constant reprogramming.',
 
     // CTA Section
     'cta.title': 'Ready to Implement AI in Your Company?',
@@ -345,7 +309,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.privacidade': 'Privacy',
     'footer.terms': 'Terms',
     'footer.termos': 'Terms of Service',
-    'footer.lgpd': 'LGPD',
+    'footer.lgpd': 'GDPR',
     'footer.contact': 'Contact',
     'footer.email': 'sapiente.ai.oficial@gmail.com',
     'footer.copyright': '© 2026 SAPIENTE.AI • All rights reserved',
@@ -359,6 +323,10 @@ export const translations: Record<Language, Record<string, string>> = {
     'blog.category': 'Category',
     'blog.date': 'Date',
     'blog.author': 'SAPIENTE.AI',
+    'blog.knowledge': 'Knowledge • Strategy • Innovation',
+    'blog.newsletter': 'Receive AI Insights',
+    'blog.newsletterDesc': 'Subscribe to SAPIENTE.AI newsletter and receive exclusive content about artificial intelligence, machine learning and technology trends directly in your inbox.',
+    'blog.noArticles': 'No articles found. Try another search or category.',
 
     // Article Detail
     'article.relatedArticles': 'Related Articles',
@@ -383,6 +351,17 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.terms.intro': 'These terms govern the use of SAPIENTE.AI services. By accessing our website, you agree to these terms.',
     'legal.privacy.title': 'Privacy Policy',
     'legal.privacy.intro': 'SAPIENTE.AI respects your privacy and is committed to protecting your personal data.',
+
+    // Newsletter
+    'newsletter.label': 'Newsletter Email',
+    'newsletter.placeholder': 'your@email.com',
+    'newsletter.subscribe': 'Subscribe',
+    'newsletter.subscribing': 'Subscribing...',
+    'newsletter.invalidEmail': 'Invalid email',
+    'newsletter.subject': 'New Newsletter Subscription - SAPIENTE.AI',
+    'newsletter.success': 'Subscription confirmed! Thank you for joining us.',
+    'newsletter.error': 'Error subscribing. Please try again.',
+    'newsletter.description': 'Receive insights about AI, technology trends and updates from SAPIENTE.AI. No spam, just valuable content.',
   },
 };
 

@@ -15,7 +15,7 @@ export function LanguageSelector() {
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}
-          className={`p-2 rounded-lg transition-all border-2 font-semibold text-2xl flex items-center justify-center ${
+          className={`w-12 h-12 rounded-lg transition-all border-2 font-semibold text-2xl flex items-center justify-center ${
             language === lang.code
               ? 'border-cyan-300 bg-cyan-300/10 shadow-md'
               : 'border-white/30 hover:border-white/60 hover:bg-white/10'
@@ -25,9 +25,7 @@ export function LanguageSelector() {
           aria-pressed={language === lang.code}
           type="button"
         >
-          <span role="img" aria-hidden="true">
-            {lang.flag}
-          </span>
+          {lang.flag}
         </button>
       ))}
     </div>

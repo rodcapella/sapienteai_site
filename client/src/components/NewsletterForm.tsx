@@ -6,6 +6,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface NewsletterStatus {
   type: 'idle' | 'loading' | 'success' | 'error';
@@ -13,6 +14,7 @@ interface NewsletterStatus {
 }
 
 export default function NewsletterForm({ variant = 'default' }: { variant?: 'default' | 'compact' }) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<NewsletterStatus>({ type: 'idle' });
 
@@ -20,7 +22,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
     e.preventDefault();
 
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setStatus({ type: 'error', message: 'Email inválido' });
+      setStatus({ type: 'error', message: t('newsletter.invalidEmail') || 'Email inválido' });
       return;
     }
 
@@ -29,7 +31,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
     try {
       const formData = new FormData();
       formData.append('email', email);
-      formData.append('_subject', 'Nova Inscrição na Newsletter - SAPIENTE.AI');
+      formData.append('_subject', t('newsletter.subject') || 'Nova Inscrição na Newsletter - SAPIENTE.AI');
       formData.append('_captcha', 'false');
 
       const response = await fetch('https://formsubmit.co/sapiente.ai.oficial@gmail.com', {
@@ -40,7 +42,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
       if (response.ok) {
         setStatus({
           type: 'success',
-          message: 'Inscrição confirmada! Obrigado por se juntar a nós.',
+          message: t('newsletter.success') || 'Inscrição confirmada! Obrigado por se juntar a nós.',
         });
         setEmail('');
 
@@ -53,7 +55,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
     } catch (error) {
       setStatus({
         type: 'error',
-        message: 'Erro ao inscrever. Tente novamente.',
+        message: t('newsletter.error') || 'Erro ao inscrever. Tente novamente.',
       });
     }
   };
@@ -89,7 +91,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
             disabled={status.type === 'loading'}
             className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary px-4 py-2 h-auto font-medium text-sm"
           >
-            {status.type === 'loading' ? '...' : 'Inscrever'}
+            {status.type === 'loading' ? '...' : t('newsletter.subscribe') || 'Inscrever'}
           </Button>
         </div>
       </form>
@@ -114,7 +116,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
 
       <div>
         <label htmlFor="newsletter-email" className="block text-sm font-medium mb-2">
-          Email para Newsletter
+          {t('newsletter.label') || 'Email para Newsletter'}
         </label>
         <div className="flex gap-2">
           <div className="relative flex-1">
@@ -124,7 +126,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
               id="newsletter-email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="seu@email.com"
+              placeholder={t('newsletter.placeholder') || 'seu@email.com'}
               className="w-full pl-10 pr-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
               disabled={status.type === 'loading'}
             />
@@ -134,13 +136,13 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
             disabled={status.type === 'loading'}
             className="bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary px-6 py-3 h-auto font-medium"
           >
-            {status.type === 'loading' ? 'Inscrevendo...' : 'Inscrever'}
+            {status.type === 'loading' ? t('newsletter.subscribing') || 'Inscrevendo...' : t('newsletter.subscribe') || 'Inscrever'}
           </Button>
         </div>
       </div>
 
       <p className="text-xs text-muted-foreground">
-        Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.
+        {t('newsletter.description') || 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.'}
       </p>
     </form>
   );
