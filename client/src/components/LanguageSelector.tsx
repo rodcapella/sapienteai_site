@@ -15,7 +15,7 @@ export function LanguageSelector() {
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}
-          className={`relative w-9 h-9 rounded-md transition-all border-2 flex items-center justify-center ${
+          className={`relative w-10 h-10 rounded-md transition-all border-2 flex items-center justify-center text-xl ${
             language === lang.code
               ? 'border-cyan-500 bg-cyan-50 shadow-md'
               : 'border-slate-300 hover:border-slate-400 hover:bg-slate-100'
@@ -24,14 +24,8 @@ export function LanguageSelector() {
           aria-label={`Switch to ${lang.label}`}
           aria-pressed={language === lang.code}
           type="button"
-          style={{
-            fontSize: '18px',
-            lineHeight: '1',
-            padding: '0',
-            fontFamily: 'system-ui, -apple-system, sans-serif'
-          }}
         >
-          {lang.flag}
+          <span className="inline-block leading-none">{lang.flag}</span>
         </button>
       ))}
     </div>

@@ -7,11 +7,13 @@ import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 import TurnstileWidget from './TurnstileWidget';
+import CountryPhoneSelector from './CountryPhoneSelector';
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
+  phonePrefix: string;
   company: string;
   message: string;
 }
@@ -31,6 +33,7 @@ export default function ContactForm() {
     name: '',
     email: '',
     phone: '',
+    phonePrefix: '+351',
     company: '',
     message: '',
   });
@@ -89,7 +92,7 @@ export default function ContactForm() {
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
-      formDataToSend.append('phone', formData.phone);
+      formDataToSend.append('phone', `${formData.phonePrefix} ${formData.phone}`);
       formDataToSend.append('company', formData.company);
       formDataToSend.append('message', formData.message);
       formDataToSend.append('_subject', `Nova Mensagem de Contato - ${formData.name}`);
@@ -116,6 +119,7 @@ export default function ContactForm() {
           name: '',
           email: '',
           phone: '',
+          phonePrefix: '+351',
           company: '',
           message: '',
         });
@@ -193,17 +197,18 @@ export default function ContactForm() {
 
       {/* Phone Field */}
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium mb-2">
+        <label className="block text-sm font-medium mb-2">
           Telefone *
         </label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
+        <CountryPhoneSelector
           value={formData.phone}
-          onChange={handleChange}
-          placeholder="+351 XXX XXX XXX"
-          className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
+          onChange={(prefix, phone) => {
+            setFormData(prev => ({
+              ...prev,
+              phonePrefix: prefix,
+              phone: phone
+            }));
+          }}
           disabled={status.type === 'loading'}
         />
       </div>

@@ -38,7 +38,7 @@ export default function Footer() {
           <div>
             <h3 className="font-bold mb-4">{t('footer.contact')}</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/contact" className="text-white/70 hover:text-white transition-colors">Enviar Mensagem</a></li>
+              <li><button onClick={() => window.location.hash = '#contact'} className="text-white/70 hover:text-white transition-colors text-left">Enviar Mensagem</button></li>
             </ul>
           </div>
         </div>
