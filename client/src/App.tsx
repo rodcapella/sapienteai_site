@@ -6,8 +6,9 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import ArticleDetail from "./pages/ArticleDetail";
+import Blog from '@/pages/Blog';
+import ArticleDetail from '@/pages/ArticleDetail';
+import Contact from '@/pages/Contact';
 import AIPillar from "./pages/AIPillar";
 import LGPD from "./pages/LGPD";
 import Termos from "./pages/Termos";
@@ -22,7 +23,8 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/blog"} component={Blog} />
-      <Route path={"/blog/:slug"} component={ArticleDetail} />
+       <Route path="/blog/:slug" component={ArticleDetail} />
+      <Route path="/contact" component={Contact} />
       <Route path={"/ia-para-empresas"} component={AIPillar} />
       <Route path={"/lgpd"} component={LGPD} />
       <Route path={"/termos"} component={Termos} />

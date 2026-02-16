@@ -37,9 +37,9 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="font-bold mb-4">{t('footer.contact')}</h3>
-            <p className="text-sm text-white/70 mb-4">
-              {t('footer.email')}
-            </p>
+            <ul className="space-y-2 text-sm">
+              <li><a href="/contact" className="text-white/70 hover:text-white transition-colors">Enviar Mensagem</a></li>
+            </ul>
           </div>
         </div>
         <div className="border-t border-white/20 pt-8">

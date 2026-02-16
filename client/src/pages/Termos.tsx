@@ -1,6 +1,7 @@
-/**
+/*
  * Termos de Serviço - Terms of Service Page
- * Portuguese (Portugal) - Default language
+ * Portuguese (Portugal)
+ * Design: Matches SAPIENTE.AI visual identity
  */
 
 import { ArrowLeft } from 'lucide-react';
@@ -8,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { useTranslation } from '@/hooks/useTranslation';
 
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation();
@@ -24,116 +26,104 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
 }
 
 export default function Termos() {
+  const { t } = useTranslation();
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <Header />
 
-      {/* Content */}
-      <main className="pt-24 pb-24 md:pt-32 md:pb-32">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-24">
         <div className="container max-w-4xl">
-          <AnimatedSection className="mb-12">
-            <h1 className="text-5xl md:text-6xl font-black text-foreground mb-6">
-              Termos de Serviço
+          <AnimatedSection>
+            <div className="flex items-center gap-4 mb-6">
+              <a href="/" className="text-white/70 hover:text-white transition-colors">
+                <ArrowLeft className="h-5 w-5" />
+              </a>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black mb-4">
+              {t('legal.terms.title')}
             </h1>
-            <p className="text-lg text-foreground/70">
-              Última atualização: 12 de Fevereiro de 2026
+            <p className="text-lg text-white/70">
+              {t('legal.terms.lastUpdated')} 16 de Fevereiro de 2026
             </p>
           </AnimatedSection>
+        </div>
+      </section>
 
-          <div className="space-y-12 text-foreground/80 leading-relaxed">
+      {/* Content */}
+      <main className="flex-grow py-16 md:py-24">
+        <div className="container max-w-4xl">
+          <div className="space-y-12 text-slate-700 leading-relaxed">
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">1. Aceitação dos Termos</h2>
-              <p>
-                Ao aceder e utilizar o website e serviços da SAPIENTE.AI, você concorda em estar vinculado por estes Termos de Serviço. Se não concordar com qualquer parte destes termos, não deve utilizar os nossos serviços.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">1.</span> Aceitação dos Termos
+              </h2>
+              <p className="text-slate-600">
+                Ao acessar e usar o website e serviços da SAPIENTE.AI, você concorda em cumprir estes Termos de Serviço. Se não concordar com qualquer parte destes termos, você não deve usar nossos serviços.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">2. Descrição dos Serviços</h2>
-              <p>
-                A SAPIENTE.AI fornece soluções de Inteligência Artificial, Machine Learning, Automação Inteligente e Consultoria Estratégica para empresas. Os serviços são fornecidos conforme descrito no website e em acordos específicos com clientes.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">2.</span> Descrição dos Serviços
+              </h2>
+              <p className="text-slate-600">
+                SAPIENTE.AI fornece soluções de Inteligência Artificial, consultoria estratégica e serviços de implementação de IA para empresas. Nossos serviços incluem análise de dados, automação inteligente e otimização de processos.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">3. Uso Aceitável</h2>
-              <p className="mb-4">Você concorda em não:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Utilizar os serviços para fins ilegais ou prejudiciais</li>
-                <li>Transmitir conteúdo ofensivo, abusivo ou discriminatório</li>
-                <li>Tentar ganhar acesso não autorizado aos sistemas</li>
-                <li>Interferir com a operação normal dos serviços</li>
-                <li>Violar direitos de propriedade intelectual</li>
-                <li>Enviar spam ou conteúdo malicioso</li>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">3.</span> Responsabilidades do Usuário
+              </h2>
+              <p className="text-slate-600 mb-4">
+                Você concorda em:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-slate-600">
+                <li>Fornecer informações precisas e completas</li>
+                <li>Manter a confidencialidade de suas credenciais</li>
+                <li>Usar nossos serviços de forma legal e ética</li>
+                <li>Não tentar contornar medidas de segurança</li>
               </ul>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">4. Propriedade Intelectual</h2>
-              <p>
-                Todo o conteúdo, código, design e materiais fornecidos pela SAPIENTE.AI são protegidos por direitos de autor e propriedade intelectual. Você não pode reproduzir, distribuir ou modificar sem permissão expressa.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">4.</span> Propriedade Intelectual
+              </h2>
+              <p className="text-slate-600">
+                Todo o conteúdo, código, design e materiais fornecidos pela SAPIENTE.AI são protegidos por direitos autorais e propriedade intelectual. Você não pode reproduzir, distribuir ou modificar sem permissão explícita.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">5. Limitação de Responsabilidade</h2>
-              <p>
-                A SAPIENTE.AI não é responsável por danos indiretos, incidentais, especiais ou consequentes resultantes do uso ou incapacidade de usar os serviços, mesmo que tenha sido informada da possibilidade de tais danos.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">5.</span> Limitação de Responsabilidade
+              </h2>
+              <p className="text-slate-600">
+                SAPIENTE.AI não será responsável por danos indiretos, incidentais ou consequentes resultantes do uso ou incapacidade de usar nossos serviços.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">6. Garantia de Serviços</h2>
-              <p>
-                Os serviços são fornecidos "tal como estão" sem garantias de qualquer tipo, expressas ou implícitas. A SAPIENTE.AI não garante que os serviços serão ininterruptos, seguros ou livres de erros.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">6.</span> Modificações dos Termos
+              </h2>
+              <p className="text-slate-600">
+                SAPIENTE.AI se reserva o direito de modificar estes Termos a qualquer momento. Mudanças significativas serão comunicadas aos usuários.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">7. Rescisão</h2>
-              <p>
-                A SAPIENTE.AI pode rescindir ou suspender o acesso aos serviços a qualquer momento, por qualquer motivo, com ou sem aviso prévio. Você também pode rescindir a qualquer momento.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">8. Modificações dos Termos</h2>
-              <p>
-                A SAPIENTE.AI reserva-se o direito de modificar estes termos a qualquer momento. As alterações entram em vigor quando publicadas. O uso continuado dos serviços após as alterações constitui aceitação dos novos termos.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">9. Lei Aplicável</h2>
-              <p>
-                Estes Termos de Serviço são regidos pelas leis de Portugal. Qualquer disputa será resolvida nos tribunais competentes de Portugal.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">10. Contacto</h2>
-              <p>
-                Para questões sobre estes termos, contacte-nos em: <strong>sapiente.ai.oficial@gmail.com</strong>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">7.</span> Lei Aplicável
+              </h2>
+              <p className="text-slate-600">
+                Estes Termos são regidos pelas leis de Portugal e Brasil, conforme aplicável.
               </p>
             </AnimatedSection>
           </div>
-
-          <AnimatedSection className="mt-16 pt-12 border-t-4 border-foreground">
-            <div className="flex gap-4">
-              <Button 
-                onClick={() => window.history.back()}
-                variant="outline"
-                className="border-2 border-foreground text-foreground hover:bg-foreground/5"
-              >
-                ← Voltar
-              </Button>
-              <a href="/" className="inline-block">
-                <Button className="bg-primary text-white hover:bg-primary/90 border-2 border-primary">
-                  Ir para Home
-                </Button>
-              </a>
-            </div>
-          </AnimatedSection>
         </div>
       </main>
 

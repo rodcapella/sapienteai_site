@@ -95,34 +95,14 @@ export default function Home() {
 
   const portfolioItems = [
     {
-      company: 'TechCorp Brasil',
-      result: '+35% Eficiência',
-      description: 'Automação de processos de RH com IA'
+      company: 'Simulador IR',
+      result: '100K+ Downloads',
+      description: 'Aplicativo inteligente para cálculo de Imposto de Renda com IA. Disponível em Google Play e App Store.'
     },
     {
-      company: 'RetailMax',
-      result: '-40% Custos',
-      description: 'Otimização de inventário com ML'
-    },
-    {
-      company: 'FinanceHub',
-      result: '+250% ROI',
-      description: 'Análise preditiva de risco'
-    },
-    {
-      company: 'LogisticaPro',
-      result: '-30% Tempo',
-      description: 'Roteirização inteligente'
-    },
-    {
-      company: 'SalesForce AI',
-      result: '+45% Conversão',
-      description: 'Previsão de demanda'
-    },
-    {
-      company: 'HealthTech',
-      result: '+60% Precisão',
-      description: 'Diagnóstico assistido por IA'
+      company: 'ScanMyName',
+      result: '50K+ Usuários',
+      description: 'Verificador de disponibilidade de nomes de domínio com análise de marca. Criado com IA. Disponível em Google Play e App Store.'
     }
   ];
 
