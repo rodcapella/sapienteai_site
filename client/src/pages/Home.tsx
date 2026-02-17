@@ -47,6 +47,15 @@ export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
+  // Listen for contact modal open event from Footer
+  useEffect(() => {
+    const handleOpenContactModal = () => {
+      setIsContactOpen(true);
+    };
+    window.addEventListener('openContactModal', handleOpenContactModal);
+    return () => window.removeEventListener('openContactModal', handleOpenContactModal);
+  }, []);
+
   useEffect(() => {
     setSEOHead({
       title: 'SAPIENTE.AI - Inteligencia Artificial Aplicada | Transformacao Digital',

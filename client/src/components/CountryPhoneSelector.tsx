@@ -1,30 +1,12 @@
 /**
  * Country Phone Selector Component
  * Allows users to select country code with flag
+ * Shows only flag + prefix (no country name)
  */
 
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-
-interface Country {
-  code: string;
-  name: string;
-  flag: string;
-  prefix: string;
-}
-
-const countries: Country[] = [
-  { code: 'PT', name: 'Portugal', flag: '🇵🇹', prefix: '+351' },
-  { code: 'BR', name: 'Brasil', flag: '🇧🇷', prefix: '+55' },
-  { code: 'US', name: 'Estados Unidos', flag: '🇺🇸', prefix: '+1' },
-  { code: 'ES', name: 'Espanha', flag: '🇪🇸', prefix: '+34' },
-  { code: 'FR', name: 'França', flag: '🇫🇷', prefix: '+33' },
-  { code: 'DE', name: 'Alemanha', flag: '🇩🇪', prefix: '+49' },
-  { code: 'IT', name: 'Itália', flag: '🇮🇹', prefix: '+39' },
-  { code: 'UK', name: 'Reino Unido', flag: '🇬🇧', prefix: '+44' },
-  { code: 'CA', name: 'Canadá', flag: '🇨🇦', prefix: '+1' },
-  { code: 'AU', name: 'Austrália', flag: '🇦🇺', prefix: '+61' },
-];
+import { SORTED_COUNTRY_PHONE_CODES, CountryPhoneCode } from '@/lib/countryPhoneCodes';
 
 interface CountryPhoneSelectorProps {
   value: string;
@@ -34,14 +16,17 @@ interface CountryPhoneSelectorProps {
 
 export default function CountryPhoneSelector({ value, onChange, disabled = false }: CountryPhoneSelectorProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState<Country>(countries[0]);
+  const [selectedCountry, setSelectedCountry] = useState<CountryPhoneCode>(SORTED_COUNTRY_PHONE_CODES[0]);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        setSearchQuery('');
       }
     };
 
@@ -49,9 +34,17 @@ export default function CountryPhoneSelector({ value, onChange, disabled = false
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const handleCountrySelect = (country: Country) => {
+  // Focus search input when dropdown opens
+  useEffect(() => {
+    if (isOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [isOpen]);
+
+  const handleCountrySelect = (country: CountryPhoneCode) => {
     setSelectedCountry(country);
     setIsOpen(false);
+    setSearchQuery('');
     onChange(country.prefix, phoneNumber);
   };
 
@@ -61,10 +54,17 @@ export default function CountryPhoneSelector({ value, onChange, disabled = false
     onChange(selectedCountry.prefix, phone);
   };
 
+  // Filter countries by prefix or flag
+  const filteredCountries = searchQuery
+    ? SORTED_COUNTRY_PHONE_CODES.filter(country =>
+        country.prefix.includes(searchQuery) || country.flag.includes(searchQuery)
+      )
+    : SORTED_COUNTRY_PHONE_CODES;
+
   return (
     <div className="flex gap-2">
       {/* Country Selector Dropdown */}
-      <div ref={dropdownRef} className="relative w-32">
+      <div ref={dropdownRef} className="relative w-40">
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -72,24 +72,44 @@ export default function CountryPhoneSelector({ value, onChange, disabled = false
           className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors flex items-center justify-between gap-2 disabled:opacity-50"
         >
           <span className="text-lg">{selectedCountry.flag}</span>
-          <span className="text-sm">{selectedCountry.prefix}</span>
+          <span className="text-sm font-medium">{selectedCountry.prefix}</span>
           <ChevronDown className="h-4 w-4" />
         </button>
 
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 mt-1 bg-background border-2 border-foreground max-h-64 overflow-y-auto z-50 shadow-lg">
-            {countries.map((country) => (
-              <button
-                key={country.code}
-                type="button"
-                onClick={() => handleCountrySelect(country)}
-                className="w-full px-4 py-2 text-left hover:bg-primary/10 flex items-center gap-3 text-sm transition-colors"
-              >
-                <span className="text-lg">{country.flag}</span>
-                <span className="flex-1">{country.name}</span>
-                <span className="text-muted-foreground">{country.prefix}</span>
-              </button>
-            ))}
+          <div className="absolute top-full left-0 right-0 mt-1 bg-background border-2 border-foreground z-50 shadow-lg rounded">
+            {/* Search Input */}
+            <div className="p-2 border-b border-foreground">
+              <input
+                ref={searchInputRef}
+                type="text"
+                placeholder="Pesquisar prefixo..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-3 py-2 border border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors text-sm"
+              />
+            </div>
+
+            {/* Country List */}
+            <div className="max-h-64 overflow-y-auto">
+              {filteredCountries.length > 0 ? (
+                filteredCountries.map((country) => (
+                  <button
+                    key={`${country.code}-${country.prefix}`}
+                    type="button"
+                    onClick={() => handleCountrySelect(country)}
+                    className="w-full px-4 py-2 text-left hover:bg-primary/10 flex items-center gap-3 transition-colors border-b border-foreground/10 last:border-b-0"
+                  >
+                    <span className="text-lg">{country.flag}</span>
+                    <span className="text-sm font-medium">{country.prefix}</span>
+                  </button>
+                ))
+              ) : (
+                <div className="px-4 py-3 text-center text-sm text-muted-foreground">
+                  Nenhum resultado encontrado
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>
@@ -99,7 +119,7 @@ export default function CountryPhoneSelector({ value, onChange, disabled = false
         type="tel"
         value={phoneNumber}
         onChange={handlePhoneChange}
-        placeholder="XXX XXX XXX"
+        placeholder="Número de telefone"
         disabled={disabled}
         className="flex-1 px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors disabled:opacity-50"
       />

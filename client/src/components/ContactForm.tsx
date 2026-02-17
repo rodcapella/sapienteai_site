@@ -63,18 +63,20 @@ export default function ContactForm() {
       setStatus({ type: 'error', message: 'Telefone é obrigatório' });
       return false;
     }
-    if (!formData.company.trim()) {
-      setStatus({ type: 'error', message: 'Empresa é obrigatória' });
-      return false;
-    }
+    // Company is optional
+    // if (!formData.company.trim()) {
+    //   setStatus({ type: 'error', message: 'Empresa é obrigatória' });
+    //   return false;
+    // }
     if (!formData.message.trim()) {
       setStatus({ type: 'error', message: 'Mensagem é obrigatória' });
       return false;
     }
-    if (!captcha.verified) {
-      setStatus({ type: 'error', message: 'Por favor, complete a verificação CAPTCHA' });
-      return false;
-    }
+    // CAPTCHA is optional for now - can be enabled later
+    // if (!captcha.verified) {
+    //   setStatus({ type: 'error', message: 'Por favor, complete a verificação CAPTCHA' });
+    //   return false;
+    // }
     return true;
   };
 
@@ -216,7 +218,7 @@ export default function ContactForm() {
       {/* Company Field */}
       <div>
         <label htmlFor="company" className="block text-sm font-medium mb-2">
-          Empresa *
+          Empresa
         </label>
         <input
           type="text"
@@ -247,7 +249,7 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* Turnstile CAPTCHA */}
+      {/* CAPTCHA disabled - optional for now
       <div className="flex justify-center">
         <TurnstileWidget
           onVerify={(token: string) => {
@@ -263,6 +265,7 @@ export default function ContactForm() {
           theme="light"
         />
       </div>
+      */}
 
       {/* Submit Button */}
       <Button
