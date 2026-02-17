@@ -1,7 +1,10 @@
 import { ArrowLeft } from 'lucide-react';
+import { useEffect } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
+import { setSEOHead } from '@/components/SEOHead';
 
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation();
@@ -18,9 +21,20 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
 }
 
 export default function LGPD() {
+  useEffect(() => {
+    setSEOHead({
+      title: 'LGPD & RGPD - Protecao de Dados - SAPIENTE.AI',
+      description: 'Conformidade LGPD e GDPR. Politica de protecao de dados da SAPIENTE.AI para Brasil e Europa.',
+      keywords: 'LGPD, GDPR, protecao de dados, conformidade, privacidade',
+      url: 'https://sapiente-ai.manus.space/lgpd',
+      type: 'website'
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
+      <Breadcrumb />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-24">

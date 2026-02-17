@@ -5,21 +5,21 @@ export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-black text-white py-16 md:py-24">
-      <div className="container">
-        <div className="grid md:grid-cols-4 gap-8 mb-12">
+    <footer className="bg-black text-white py-12 md:py-24">
+      <div className="container px-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           <div>
             <img 
               src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/jJJEfEeNxsFPFazg.png" 
               alt="SAPIENTE.AI" 
-              className="h-16 object-contain mb-4"
+              className="h-12 md:h-16 object-contain mb-4"
             />
             <p className="text-sm text-white/70">
               {t('footer.description')}
             </p>
           </div>
           <div>
-            <h3 className="font-bold mb-4">{t('footer.company')}</h3>
+            <h3 className="font-bold mb-4 text-base md:text-lg">{t('footer.company')}</h3>
             <ul className="space-y-2 text-sm">
               <li><a href="/" className="text-white/70 hover:text-white transition-colors">{t('footer.home')}</a></li>
               <li><a href="/#servicos" className="text-white/70 hover:text-white transition-colors">{t('footer.servicos')}</a></li>
@@ -28,7 +28,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold mb-4">{t('footer.legal')}</h3>
+            <h3 className="font-bold mb-4 text-base md:text-lg">{t('footer.legal')}</h3>
             <ul className="space-y-2 text-sm">
               <li><a href="/privacidade" className="text-white/70 hover:text-white transition-colors">{t('footer.privacidade')}</a></li>
               <li><a href="/termos" className="text-white/70 hover:text-white transition-colors">{t('footer.termos')}</a></li>
@@ -36,15 +36,15 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="font-bold mb-4">{t('footer.contact')}</h3>
+            <h3 className="font-bold mb-4 text-base md:text-lg">{t('footer.contact')}</h3>
             <ul className="space-y-2 text-sm">
               <li><button onClick={() => window.location.hash = '#contact'} className="text-white/70 hover:text-white transition-colors text-left">Enviar Mensagem</button></li>
             </ul>
           </div>
         </div>
         <div className="border-t border-white/20 pt-8">
-          <div className="flex justify-between items-center">
-            <p className="text-sm text-white/70">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-white/70 text-center md:text-left">
               {t('footer.copyright')}
             </p>
             <div className="flex gap-6">

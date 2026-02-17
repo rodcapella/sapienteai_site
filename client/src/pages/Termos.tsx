@@ -5,11 +5,14 @@
  */
 
 import { ArrowLeft } from 'lucide-react';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import { useTranslation } from '@/hooks/useTranslation';
+import { setSEOHead } from '@/components/SEOHead';
 
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation();
@@ -28,9 +31,20 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
 export default function Termos() {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    setSEOHead({
+      title: 'Termos de Servico - SAPIENTE.AI',
+      description: 'Termos de servico da SAPIENTE.AI. Condicoes de uso, direitos e responsabilidades.',
+      keywords: 'termos de servico, condicoes de uso, termos e condicoes',
+      url: 'https://sapiente-ai.manus.space/termos',
+      type: 'website'
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
+      <Breadcrumb />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-24">

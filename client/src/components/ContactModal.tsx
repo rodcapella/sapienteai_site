@@ -1,6 +1,6 @@
 /**
  * Contact Modal Component
- * Displays contact form in a modal dialog
+ * Displays contact form in a modal dialog with mobile responsiveness
  */
 
 import { useState } from 'react';
@@ -24,24 +24,24 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       />
 
       {/* Modal */}
-      <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl mx-4">
-        <div className="bg-background border-4 border-foreground p-8 md:p-12">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-0">
+        <div className="bg-background border-2 md:border-4 border-foreground p-6 md:p-12 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg md:rounded-none">
           {/* Header */}
-          <div className="flex justify-between items-start mb-8">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-black mb-2">
+          <div className="flex justify-between items-start mb-6 md:mb-8">
+            <div className="flex-1">
+              <h2 className="text-2xl md:text-4xl font-black mb-2">
                 Entre em <span className="text-primary">Contato</span>
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-sm md:text-base text-muted-foreground">
                 Fale com nossos especialistas sobre seu projeto
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-muted transition-colors"
+              className="p-2 hover:bg-muted transition-colors flex-shrink-0 ml-2"
               aria-label="Fechar"
             >
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5 md:h-6 md:w-6" />
             </button>
           </div>
 

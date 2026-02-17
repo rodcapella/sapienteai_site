@@ -5,15 +5,17 @@
  * Typography: Space Grotesk (headlines), IBM Plex Sans (body)
  */
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, ArrowRight, Tag, Calendar, User } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 import NewsletterForm from '@/components/NewsletterForm';
 import { getAllBlogArticles } from '@/lib/blogData';
+import { setSEOHead } from '@/components/SEOHead';
 
 // Animated Section Wrapper
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -40,6 +42,16 @@ export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
 
+  useEffect(() => {
+    setSEOHead({
+      title: 'Blog - SAPIENTE.AI | Artigos sobre IA e Transformacao Digital',
+      description: 'Artigos e analises sobre Inteligencia Artificial, Machine Learning e tecnologia aplicada a negocios. Insights praticos para empresas que querem evoluir com dados.',
+      keywords: 'blog IA, machine learning, inteligencia artificial, transformacao digital, data science, automacao',
+      url: 'https://sapiente-ai.manus.space/blog',
+      type: 'website'
+    });
+  }, []);
+
   const filteredArticles = useMemo(() => {
     return articles.filter(article => {
       const matchesCategory = selectedCategory === 'Todos' || article.category === selectedCategory;
@@ -53,6 +65,7 @@ export default function Blog() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
+      <Breadcrumb />
 
       {/* Hero Section with Blog Header Image */}
       <section className="pt-32 pb-16 md:pb-24 relative overflow-hidden">

@@ -9,7 +9,7 @@
  * - Full i18n support with dynamic language switching
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Brain, Cpu, Zap, Target, Shield, TrendingUp, Award, Users, ChevronDown } from "lucide-react";
 import ContactModal from '@/components/ContactModal';
@@ -17,6 +17,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
+import { setSEOHead } from '@/components/SEOHead';
+import AppDownloadButtons from '@/components/AppDownloadButtons';
 
 // Animated Section Wrapper
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -44,6 +46,16 @@ export default function Home() {
   const { t } = useTranslation();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+
+  useEffect(() => {
+    setSEOHead({
+      title: 'SAPIENTE.AI - Inteligencia Artificial Aplicada | Transformacao Digital',
+      description: 'Solucoes de IA aplicada para transformacao digital. Machine Learning, IA Generativa, Automacao Inteligente. Tecnologia de ponta para empresas que pensam no amanha.',
+      keywords: 'inteligencia artificial, machine learning, IA generativa, automacao, transformacao digital, deep learning, data science, AI aplicada',
+      url: 'https://sapiente-ai.manus.space',
+      type: 'website'
+    });
+  }, []);
 
   // FAQ items from translations
   const faqs: FAQItem[] = [
@@ -222,13 +234,23 @@ export default function Home() {
             </p>
           </AnimatedSection>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
             {portfolioItems.map((item, index) => (
-              <AnimatedSection key={index} className={index >= 2 ? 'delay-100' : ''}>
-                <div className="p-8 bg-gradient-to-br from-primary/5 to-cyan/5 border-2 border-primary/20 hover:border-primary hover:shadow-lg transition-all duration-300" style={{height: '180px'}}>
+              <AnimatedSection key={index}>
+                <div className="p-8 bg-gradient-to-br from-primary/5 to-cyan/5 border-2 border-primary/20 hover:border-primary hover:shadow-lg transition-all duration-300">
                   <div className="text-3xl font-black text-primary mb-2">{item.result}</div>
-                  <h3 className="text-lg font-bold text-foreground mb-2">{item.company}</h3>
-                  <p className="text-sm text-foreground/70">{item.description}</p>
+                  <h3 className="text-lg font-bold text-foreground mb-4">{item.company}</h3>
+                  <p className="text-sm text-foreground/70 mb-6">{item.description}</p>
+                  <AppDownloadButtons
+                    appName={item.company}
+                    playStoreUrl={item.company === 'Simulador IR' 
+                      ? 'https://play.google.com/store/apps/details?id=com.simulador.ir'
+                      : 'https://play.google.com/store/apps/details?id=com.scanmyname'}
+                    appStoreUrl={item.company === 'Simulador IR'
+                      ? 'https://apps.apple.com/app/simulador-ir/id123456789'
+                      : 'https://apps.apple.com/app/scanmyname/id987654321'}
+                    className="mt-4"
+                  />
                 </div>
               </AnimatedSection>
             ))}

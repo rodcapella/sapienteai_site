@@ -5,11 +5,14 @@
  */
 
 import { ArrowLeft } from 'lucide-react';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import { useTranslation } from '@/hooks/useTranslation';
+import { setSEOHead } from '@/components/SEOHead';
 
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation();
@@ -28,9 +31,20 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
 export default function Privacidade() {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    setSEOHead({
+      title: 'Politica de Privacidade - SAPIENTE.AI',
+      description: 'Politica de privacidade da SAPIENTE.AI. Conformidade com LGPD e GDPR. Protecao de dados pessoais.',
+      keywords: 'privacidade, LGPD, GDPR, protecao de dados, politica de privacidade',
+      url: 'https://sapiente-ai.manus.space/privacidade',
+      type: 'website'
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
+      <Breadcrumb />
 
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-24">
