@@ -24,21 +24,21 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       />
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-0">
-        <div className="bg-background border-2 md:border-4 border-foreground p-6 md:p-12 w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg md:rounded-none">
+      <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-4">
+        <div className="bg-background border-t-2 md:border-2 md:border-foreground p-4 md:p-8 w-full md:max-w-2xl max-h-[85vh] md:max-h-[90vh] overflow-y-auto rounded-t-lg md:rounded-lg md:shadow-2xl">
           {/* Header */}
-          <div className="flex justify-between items-start mb-6 md:mb-8">
+          <div className="flex justify-between items-start mb-4 md:mb-6">
             <div className="flex-1">
-              <h2 className="text-2xl md:text-4xl font-black mb-2">
-                Entre em <span className="text-primary">Contato</span>
+              <h2 className="text-xl md:text-3xl font-bold mb-1 md:mb-2">
+                Entre em <span className="text-blue-600">Contato</span>
               </h2>
-              <p className="text-sm md:text-base text-muted-foreground">
+              <p className="text-xs md:text-sm text-muted-foreground">
                 Fale com nossos especialistas sobre seu projeto
               </p>
             </div>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-muted transition-colors flex-shrink-0 ml-2"
+              className="p-1 md:p-2 hover:bg-muted transition-colors flex-shrink-0 ml-2"
               aria-label="Fechar"
             >
               <X className="h-5 w-5 md:h-6 md:w-6" />

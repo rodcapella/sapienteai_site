@@ -10,15 +10,15 @@ export function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <div className="flex items-center gap-2" role="group" aria-label="Language selector">
+    <div className="flex items-center gap-1.5" role="group" aria-label="Language selector">
       {languages.map((lang) => (
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}
-          className={`relative w-10 h-10 rounded-md transition-all border-2 flex items-center justify-center text-xl ${
+          className={`relative w-11 h-11 rounded-lg transition-all border-2 flex items-center justify-center text-2xl font-bold ${
             language === lang.code
-              ? 'border-cyan-500 bg-cyan-50 shadow-md'
-              : 'border-slate-300 hover:border-slate-400 hover:bg-slate-100'
+              ? 'border-blue-600 bg-blue-50 shadow-lg scale-105'
+              : 'border-slate-300 hover:border-blue-400 hover:bg-slate-100'
           }`}
           title={`Switch to ${lang.label}`}
           aria-label={`Switch to ${lang.label}`}
