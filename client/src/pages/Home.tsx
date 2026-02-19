@@ -1,20 +1,19 @@
 /**
- * SAPIENTE.AI Homepage - Complete Redesign
- * Positioning: LABORATÓRIO DE INOVAÇÃO TECNOLÓGICA E INTELIGÊNCIA DIGITAL APLICADA
+ * SAPIENTE.AI Homepage - Intermediate Positioning
+ * Between: Innovation Laboratory + Strategic Digital Transformation Partner
+ * Tone: Portuguese corporate, institutional, technical
  * Design Philosophy: Minimalist, technological, institutional
- * Focus: Innovation laboratory, not marketing agency
  */
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code2, Smartphone, Globe, Zap, Brain, BarChart3, Sparkles, ChevronDown } from "lucide-react";
+import { ArrowRight, Code2, Smartphone, Globe, Zap, Brain, BarChart3, Sparkles, Building2, Shield, Cpu } from "lucide-react";
 import ContactModal from '@/components/ContactModal';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 import { setSEOHead } from '@/components/SEOHead';
-import AppDownloadButtons from '@/components/AppDownloadButtons';
 
 // Animated Section Wrapper
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
@@ -33,15 +32,9 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
 export default function Home() {
   const { t } = useTranslation();
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
   // Listen for contact modal open event from Footer
   useEffect(() => {
@@ -54,9 +47,9 @@ export default function Home() {
 
   useEffect(() => {
     setSEOHead({
-      title: 'SAPIENTE.AI - Laboratório de Inovação Tecnológica | IA Aplicada',
-      description: 'Laboratório de inovação que desenvolve aplicações, sistemas inteligentes, automações e estratégias digitais. Engenharia de software + IA como ferramenta técnica.',
-      keywords: 'laboratório inovação, IA aplicada, desenvolvimento software, sistemas inteligentes, automação, estratégia digital, engenharia',
+      title: 'SAPIENTE.AI - Laboratório de Inovação | Transformação Digital para PME',
+      description: 'Laboratório de inovação tecnológica com produtos próprios. Parceiro estratégico em transformação digital, sistemas inteligentes e automação para organizações.',
+      keywords: 'laboratório inovação, transformação digital, sistemas inteligentes, automação, PME, engenharia software, IA aplicada',
       url: 'https://sapiente-ai.manus.space',
       type: 'website'
     });
@@ -65,23 +58,28 @@ export default function Home() {
   const areasOfExpertise = [
     {
       title: 'Engenharia e Desenvolvimento',
-      items: ['Aplicações Mobile', 'Plataformas Web', 'Projetos chave na mão'],
+      items: ['Aplicações Mobile', 'Plataformas Web', 'Arquitetura escalável', 'Projetos chave na mão'],
       icon: Code2
     },
     {
       title: 'Sistemas Inteligentes',
-      items: ['Algoritmos personalizados', 'Sistemas de scoring', 'Motores de recomendação'],
+      items: ['Algoritmos personalizados', 'Sistemas de scoring', 'Motores de recomendação', 'Análise preditiva'],
       icon: Brain
     },
     {
-      title: 'Automação de Processos',
-      items: ['Workflows inteligentes', 'Otimização operacional', 'Integração de sistemas'],
+      title: 'Automação e Eficiência Operacional',
+      items: ['Workflows inteligentes', 'Otimização de processos', 'Integração de sistemas', 'RPA e automação'],
       icon: Zap
     },
     {
-      title: 'Marketing e Inteligência Digital',
-      items: ['Gestão estratégica de redes', 'SEO avançado', 'GEO e AEO'],
+      title: 'Inteligência Digital e Branding Estratégico',
+      items: ['SEO avançado', 'GEO e AEO', 'Estruturação estratégica de presença digital', 'Estudos de branding orientados a dados'],
       icon: BarChart3
+    },
+    {
+      title: 'Modelos Virtuais e Ativos Digitais',
+      items: ['Avatares digitais', 'Influenciadores virtuais', 'Identidade visual baseada em IA', 'Experiências imersivas'],
+      icon: Sparkles
     }
   ];
 
@@ -91,34 +89,58 @@ export default function Home() {
       description: 'Aplicativo inteligente para cálculo de Imposto de Renda',
       features: [
         'Validação automatizada da legislação brasileira',
-        'Motor de cálculo estruturado',
-        'Automatização normativa com apoio de IA'
+        'Motor normativo estruturado',
+        'Automatização interpretativa com apoio de IA'
       ],
       stats: '100K+ Downloads',
-      color: 'from-blue-600 to-cyan-500'
+      color: 'from-blue-600 to-cyan-500',
+      playStoreUrl: 'https://play.google.com/store/apps/details?id=com.sapiente.simulador_ir',
+      appStoreUrl: 'https://apps.apple.com/br/app/simulador-ir/id1234567890'
     },
     {
       name: 'CupãoMania',
       description: 'Plataforma inteligente de cupons e descontos',
       features: [
         'Sistema de scoring avançado',
-        'Algoritmo de recomendação',
-        'Estrutura escalável'
+        'Algoritmo de recomendação personalizado',
+        'Estrutura escalável e resiliente'
       ],
       stats: 'Em desenvolvimento',
-      color: 'from-purple-600 to-pink-500'
+      color: 'from-purple-600 to-pink-500',
+      playStoreUrl: '#',
+      appStoreUrl: '#'
     },
     {
       name: 'ScanMyName',
       description: 'Análise de pegada digital e reputação online',
       features: [
-        'Análise de pegada digital',
         'Sistema de scoring de reputação',
-        'Monitorização pública'
+        'Monitorização estruturada de presença digital',
+        'Relatórios detalhados e acionáveis'
       ],
       stats: '50K+ Usuários',
-      color: 'from-emerald-600 to-teal-500'
+      color: 'from-emerald-600 to-teal-500',
+      playStoreUrl: 'https://play.google.com/store/apps/details?id=com.sapiente.scanmyname',
+      appStoreUrl: 'https://apps.apple.com/br/app/scanmyname/id0987654321'
     }
+  ];
+
+  const industries = [
+    'Serviços Financeiros',
+    'Retalho e E-commerce',
+    'Saúde e Bem-estar',
+    'Educação e Formação',
+    'Manufatura e Indústria',
+    'Turismo e Hospitalidade',
+    'Administração Pública',
+    'Telecomunicações'
+  ];
+
+  const technologies = [
+    { title: 'Arquitetura Escalável', desc: 'Sistemas desenhados para crescimento' },
+    { title: 'Integrações via API', desc: 'Conectividade com ecossistemas existentes' },
+    { title: 'Metodologia Ágil', desc: 'Desenvolvimento iterativo e adaptativo' },
+    { title: 'Segurança em Primeiro Lugar', desc: 'Conformidade com LGPD, GDPR e standards internacionais' }
   ];
 
   return (
@@ -147,11 +169,11 @@ export default function Home() {
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 py-20 text-center max-w-4xl">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            Transformamos tecnologia e inteligência digital em vantagem estratégica.
+            Tecnologia estruturada para inovação e crescimento sustentável.
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 mb-12 leading-relaxed max-w-3xl mx-auto">
-            A Sapiente.AI é um laboratório de inovação tecnológica que desenvolve aplicações, sistemas inteligentes, automações e estratégias digitais orientadas a dados.
+            A Sapiente.AI é um laboratório de inovação tecnológica que desenvolve produtos próprios e atua como parceiro estratégico na transformação digital de organizações.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -166,7 +188,7 @@ export default function Home() {
               variant="outline"
               className="border-2 border-white text-white hover:bg-white/10 px-8 py-3 text-lg h-auto font-semibold"
             >
-              Explorar Portfólio
+              Explorar Soluções
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -183,28 +205,28 @@ export default function Home() {
                   Quem Somos
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  Somos um laboratório de inovação tecnológica dedicado a transformar desafios empresariais em oportunidades de crescimento através de soluções digitais inteligentes e sustentáveis.
+                  Somos um laboratório de inovação tecnológica que combina desenvolvimento de produtos próprios com consultoria estratégica em transformação digital. Os nossos produtos são prova viva da nossa capacidade técnica e da nossa compreensão profunda dos desafios empresariais.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-foreground flex items-center gap-3">
-                    <Sparkles className="h-6 w-6 text-blue-600" />
-                    Engenharia Primeiro
+                    <Code2 className="h-6 w-6 text-blue-600" />
+                    Produtos Próprios
                   </h3>
                   <p className="text-muted-foreground">
-                    A IA é uma ferramenta de apoio técnico, não um substituto de engenharia sólida. Combinamos arquitetura de software robusta com inteligência artificial aplicada.
+                    Desenvolvemos produtos como Simulador IR, CupãoMania e ScanMyName que demonstram a nossa expertise em engenharia, IA aplicada e estratégia digital. Cada produto é uma solução completa, do conceito à escala.
                   </p>
                 </div>
 
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-foreground flex items-center gap-3">
                     <Brain className="h-6 w-6 text-blue-600" />
-                    Supervisão Especializada
+                    IA com Validação Humana
                   </h3>
                   <p className="text-muted-foreground">
-                    Cada solução é desenvolvida com supervisão especializada, garantindo qualidade, segurança e conformidade com regulamentações como LGPD e GDPR.
+                    A inteligência artificial é uma ferramenta de apoio técnico, nunca um substituto da engenharia sólida. Cada solução passa por validação especializada, garantindo qualidade, segurança e conformidade regulatória.
                   </p>
                 </div>
               </div>
@@ -226,20 +248,20 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {areasOfExpertise.map((area, idx) => {
                 const Icon = area.icon;
                 return (
                   <div key={idx} className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
                     <div className="flex items-center gap-4 mb-6">
                       <Icon className="h-8 w-8 text-blue-600" />
-                      <h3 className="text-xl font-semibold text-foreground">
+                      <h3 className="text-lg font-semibold text-foreground">
                         {area.title}
                       </h3>
                     </div>
                     <ul className="space-y-3">
                       {area.items.map((item, itemIdx) => (
-                        <li key={itemIdx} className="flex items-start gap-3 text-muted-foreground">
+                        <li key={itemIdx} className="flex items-start gap-3 text-sm text-muted-foreground">
                           <span className="text-blue-600 font-bold mt-1">•</span>
                           <span>{item}</span>
                         </li>
@@ -259,10 +281,10 @@ export default function Home() {
           <AnimatedSection>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Portfólio de Sucesso
+                Portfólio de Produtos
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Soluções desenvolvidas e implementadas com sucesso.
+                Soluções desenvolvidas e implementadas com sucesso, disponíveis nas principais plataformas.
               </p>
             </div>
 
@@ -277,7 +299,7 @@ export default function Home() {
 
                   {/* Content */}
                   <div className="p-8 space-y-6">
-                    <p className="text-muted-foreground">{item.description}</p>
+                    <p className="text-muted-foreground text-sm">{item.description}</p>
                     
                     <div className="space-y-3">
                       {item.features.map((feature, fIdx) => (
@@ -288,23 +310,33 @@ export default function Home() {
                       ))}
                     </div>
 
-                    {/* App Download Buttons */}
-                    {idx === 0 && (
-                      <div className="pt-4 border-t border-gray-200">
-                        <AppDownloadButtons 
-                          appName={item.name}
-                          playStoreUrl="https://play.google.com/store/apps/details?id=com.sapiente.simulador_ir"
-                          appStoreUrl="https://apps.apple.com/br/app/simulador-ir/id1234567890"
-                        />
-                      </div>
-                    )}
-                    {idx === 2 && (
-                      <div className="pt-4 border-t border-gray-200">
-                        <AppDownloadButtons 
-                          appName={item.name}
-                          playStoreUrl="https://play.google.com/store/apps/details?id=com.sapiente.scanmyname"
-                          appStoreUrl="https://apps.apple.com/br/app/scanmyname/id0987654321"
-                        />
+                    {/* Official App Store Buttons */}
+                    {idx < 2 && (
+                      <div className="pt-4 border-t border-gray-200 space-y-3">
+                        <a 
+                          href={item.appStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block"
+                        >
+                          <img 
+                            src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1234567890000" 
+                            alt="Download on the App Store"
+                            className="h-12 w-auto"
+                          />
+                        </a>
+                        <a 
+                          href={item.playStoreUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block"
+                        >
+                          <img 
+                            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
+                            alt="Get it on Google Play"
+                            className="h-12 w-auto"
+                          />
+                        </a>
                       </div>
                     )}
                   </div>
@@ -315,53 +347,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ECOSSISTEMA DE PRODUTOS */}
+      {/* INDÚSTRIAS */}
       <section className="py-24 md:py-32 bg-gray-50">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
+        <div className="container mx-auto px-4">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Ecossistema de Produtos
-            </h2>
-            <p className="text-lg text-muted-foreground mb-12">
-              Todos os nossos produtos estão disponíveis nas principais plataformas de distribuição digital.
-            </p>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Indústrias
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Experiência comprovada em diversos setores económicos.
+              </p>
+            </div>
 
-            <div className="bg-white p-12 rounded-lg border border-gray-200">
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold text-foreground mb-4">
-                    Baixe nossos aplicativos
-                  </h3>
-                  <p className="text-muted-foreground mb-8">
-                    Acesse a página oficial do developer Sapiente.AI para explorar todos os produtos.
-                  </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {industries.map((industry, idx) => (
+                <div key={idx} className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-md transition-shadow text-center">
+                  <p className="text-foreground font-semibold">{industry}</p>
                 </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <a 
-                    href="https://play.google.com/store/apps/developer?id=Sapiente.AI"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold"
-                  >
-                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3.609 1.814L13.792 12 3.609 22.186a1.5 1.5 0 0 1-2.131 0l-.001-.001a1.5 1.5 0 0 1 0-2.121L10.55 12 1.477 3.936a1.5 1.5 0 0 1 0-2.121l.001-.001a1.5 1.5 0 0 1 2.131 0z"/>
-                    </svg>
-                    Google Play
-                  </a>
-                  <a 
-                    href="https://apps.apple.com/app/sapiente-ai/id0000000000"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors font-semibold"
-                  >
-                    <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M17.05 13.5c-.91 0-1.82.55-2.25 1.51.93.64 1.54 1.62 1.54 2.76 0 .59-.13 1.15-.37 1.65.46.3.99.47 1.55.47 1.93 0 3.5-1.57 3.5-3.5S18.98 13.5 17.05 13.5zM6.5 13c-1.93 0-3.5 1.57-3.5 3.5S4.57 20 6.5 20s3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm0-12C2.91 1 0 3.91 0 7.5S2.91 14 6.5 14s6.5-2.91 6.5-6.5S10.09 1 6.5 1z"/>
-                    </svg>
-                    App Store
-                  </a>
+      {/* TECNOLOGIA E METODOLOGIA */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="container mx-auto px-4">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Tecnologia e Metodologia
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Abordagem técnica rigorosa e boas práticas consolidadas.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {technologies.map((tech, idx) => (
+                <div key={idx} className="bg-gray-50 p-8 rounded-lg border border-gray-200">
+                  <div className="flex items-start gap-4">
+                    <div className="h-12 w-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <span className="text-white font-bold">{idx + 1}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">{tech.title}</h3>
+                      <p className="text-muted-foreground">{tech.desc}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </AnimatedSection>
         </div>
@@ -372,10 +408,10 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <AnimatedSection>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Pronto para Transformar sua Empresa?
+              Pronto para Transformar a sua Organização?
             </h2>
             <p className="text-lg text-white/90 mb-12">
-              Agende uma reunião com nossos especialistas e descubra como podemos gerar resultados reais no seu negócio.
+              Agende uma reunião com os nossos especialistas e descubra como podemos gerar resultados reais no seu negócio.
             </p>
             <Button 
               onClick={() => setIsContactOpen(true)}
