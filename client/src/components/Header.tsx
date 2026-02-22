@@ -74,13 +74,18 @@ export default function Header({ onContactClick }: HeaderProps) {
           {isMobileMenuOpen && (
             <div className="md:hidden border-t border-gray-200 bg-white">
               <div className="flex flex-col gap-4 p-4">
+                {/* Breadcrumb with Language Selector */}
+                <div className="flex items-center justify-between gap-2 pb-4 border-b border-gray-200">
+                  <span className="text-xs text-slate-500">Idioma / Language</span>
+                  <LanguageSelector />
+                </div>
+                
                 <a href="/#servicos" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.servicos')}</a>
                 <a href="/#processo" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.processo')}</a>
                 <a href="/#portfolio" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.portfolio')}</a>
                 <a href="/blog" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.blog')}</a>
                 <a href="/#faq" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.faq')}</a>
                 <div className="border-t border-gray-200 pt-4">
-                  <LanguageSelector />
                 </div>
                 <Button 
                   onClick={handleContactClick}

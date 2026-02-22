@@ -1,9 +1,10 @@
 /**
  * App Download Buttons Component
- * Display official download buttons for PlayStore and AppStore
+ * Display official download buttons for PlayStore and AppStore with language support
  */
 
 import { Download } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface AppDownloadButtonsProps {
   appName: string;
@@ -18,6 +19,35 @@ export default function AppDownloadButtons({
   appStoreUrl,
   className = ''
 }: AppDownloadButtonsProps) {
+  const { language } = useLanguage();
+
+  // Get localized text based on language
+  const getLocalizedText = () => {
+    switch (language) {
+      case 'en':
+        return {
+          available: 'Available on',
+          googlePlay: 'Google Play',
+          appStore: 'App Store'
+        };
+      case 'pt-BR':
+        return {
+          available: 'Disponível em',
+          googlePlay: 'Google Play',
+          appStore: 'App Store'
+        };
+      case 'pt-PT':
+      default:
+        return {
+          available: 'Disponível em',
+          googlePlay: 'Google Play',
+          appStore: 'App Store'
+        };
+    }
+  };
+
+  const text = getLocalizedText();
+
   return (
     <div className={`flex flex-col sm:flex-row gap-4 ${className}`}>
       {/* Google Play Store Button */}
@@ -32,8 +62,8 @@ export default function AppDownloadButtons({
           <path d="M3.609 1.814L13.792 12 3.609 22.186A1.5 1.5 0 0 1 1.5 20.836V3.164a1.5 1.5 0 0 1 2.109-1.35zm16.227 9.386L7.841 2.574 3.609 1.814l11.227 9.186 4.609-3.8zm0 1.2l-4.609 3.8-11.227 9.186 4.232-.76 12.604-12.226z"/>
         </svg>
         <div className="text-left">
-          <div className="text-xs text-gray-400">Disponível em</div>
-          <div className="text-sm font-semibold">Google Play</div>
+          <div className="text-xs text-gray-400">{text.available}</div>
+          <div className="text-sm font-semibold">{text.googlePlay}</div>
         </div>
       </a>
 
@@ -50,8 +80,8 @@ export default function AppDownloadButtons({
           <path d="M12.45 5.38c.34-.44.56-1.04.5-1.64-.48.02-.96.3-1.3.75-.3.42-.56 1.12-.5 1.82.53-.04 1.06-.34 1.3-.93z"/>
         </svg>
         <div className="text-left">
-          <div className="text-xs text-gray-400">Disponível em</div>
-          <div className="text-sm font-semibold">App Store</div>
+          <div className="text-xs text-gray-400">{text.available}</div>
+          <div className="text-sm font-semibold">{text.appStore}</div>
         </div>
       </a>
     </div>
