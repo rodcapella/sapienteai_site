@@ -41,12 +41,13 @@ export default function Header({ onContactClick }: HeaderProps) {
             </a>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-6">
               <a href="/#servicos" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.servicos')}</a>
               <a href="/#processo" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.processo')}</a>
               <a href="/#portfolio" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.portfolio')}</a>
               <a href="/blog" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.blog')}</a>
               <a href="/#faq" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.faq')}</a>
+              <div className="h-6 w-px bg-gray-200"></div>
               <LanguageSelector />
               <Button 
                 onClick={handleContactClick}

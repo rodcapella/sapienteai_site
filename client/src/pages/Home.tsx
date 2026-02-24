@@ -11,6 +11,7 @@ import { ArrowRight, Code2, Smartphone, Globe, Zap, Brain, BarChart3, Sparkles, 
 import ContactModal from '@/components/ContactModal';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import AppDownloadButtons from '@/components/AppDownloadButtons';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTranslation } from '@/hooks/useTranslation';
 import { setSEOHead } from '@/components/SEOHead';
@@ -312,31 +313,13 @@ export default function Home() {
 
                     {/* Official App Store Buttons */}
                     {idx < 2 && (
-                      <div className="pt-4 border-t border-gray-200 space-y-3">
-                        <a 
-                          href={item.appStoreUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block"
-                        >
-                          <img 
-                            src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&releaseDate=1234567890000" 
-                            alt="Download on the App Store"
-                            className="h-12 w-auto"
-                          />
-                        </a>
-                        <a 
-                          href={item.playStoreUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block"
-                        >
-                          <img 
-                            src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" 
-                            alt="Get it on Google Play"
-                            className="h-12 w-auto"
-                          />
-                        </a>
+                      <div className="pt-4 border-t border-gray-200">
+                        <AppDownloadButtons
+                          appName={item.name}
+                          playStoreUrl={item.playStoreUrl}
+                          appStoreUrl={item.appStoreUrl}
+                          className="justify-start"
+                        />
                       </div>
                     )}
                   </div>
