@@ -56,6 +56,8 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     'footer.description': 'Transformação digital com inteligência artificial aplicada',
+    'footer.navigation': 'Navegação',
+    'footer.products': 'Produtos',
     'footer.product': 'Produto',
     'footer.company': 'Empresa',
     'footer.legal': 'Legal',
@@ -64,13 +66,17 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.portfolio': 'Portfólio',
     'footer.blog': 'Blog',
     'footer.privacy': 'Privacidade',
-    'footer.privacidade': 'Privacidade',
+    'footer.privacidade': 'Política de Privacidade',
     'footer.terms': 'Termos',
     'footer.termos': 'Termos de Serviço',
     'footer.lgpd': 'LGPD',
     'footer.contact': 'Contato',
     'footer.email': 'sapiente.ai.oficial@gmail.com',
+    'footer.newsletter': 'Newsletter',
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
+    'footer.simuladorIR': 'Simulador IR',
+    'footer.cupaomania': 'CupãoMania',
+    'footer.scanmyname': 'ScanMyName',
 
     // Blog Page
     'blog.title': 'Blog SAPIENTE.AI — Inteligência Artificial Aplicada aos Negócios',
@@ -142,6 +148,12 @@ export const translations: Record<Language, Record<string, string>> = {
     'newsletter.success': 'Inscrição confirmada! Obrigado por se juntar a nós.',
     'newsletter.error': 'Erro ao inscrever. Tente novamente.',
     'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.',
+
+    // Social Media
+    'social.instagram': 'Instagram',
+    'social.tiktok': 'TikTok',
+    'social.twitter': 'X (Twitter)',
+    'social.linkedin': 'LinkedIn',
   },
 
   'pt-BR': {
@@ -199,6 +211,8 @@ export const translations: Record<Language, Record<string, string>> = {
 
     // Footer
     'footer.description': 'Transformação digital com inteligência artificial aplicada',
+    'footer.navigation': 'Navegação',
+    'footer.products': 'Produtos',
     'footer.product': 'Produto',
     'footer.company': 'Empresa',
     'footer.legal': 'Legal',
@@ -207,13 +221,17 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.portfolio': 'Portfólio',
     'footer.blog': 'Blog',
     'footer.privacy': 'Privacidade',
-    'footer.privacidade': 'Privacidade',
+    'footer.privacidade': 'Política de Privacidade',
     'footer.terms': 'Termos',
     'footer.termos': 'Termos de Serviço',
     'footer.lgpd': 'LGPD',
     'footer.contact': 'Contato',
     'footer.email': 'sapiente.ai.oficial@gmail.com',
+    'footer.newsletter': 'Newsletter',
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
+    'footer.simuladorIR': 'Simulador IR',
+    'footer.cupaomania': 'CupãoMania',
+    'footer.scanmyname': 'ScanMyName',
 
     // Blog Page
     'blog.title': 'Blog SAPIENTE.AI — Inteligência Artificial Aplicada aos Negócios',
@@ -285,6 +303,12 @@ export const translations: Record<Language, Record<string, string>> = {
     'newsletter.success': 'Inscrição confirmada! Obrigado por se juntar a nós.',
     'newsletter.error': 'Erro ao inscrever. Tente novamente.',
     'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.',
+
+    // Social Media
+    'social.instagram': 'Instagram',
+    'social.tiktok': 'TikTok',
+    'social.twitter': 'X (Twitter)',
+    'social.linkedin': 'LinkedIn',
   },
 
   'en': {

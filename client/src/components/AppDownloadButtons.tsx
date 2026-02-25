@@ -46,7 +46,7 @@ export default function AppDownloadButtons({
         aria-label={`Download ${appName} on Google Play Store`}
       >
         <img
-          src={`/badges/google-play-${badgeLanguage}.png`}
+          src={`/media/badges/google-play-${badgeLanguage}.png`}
           alt={`Get it on Google Play - ${badgeLanguage === 'pt' ? 'Português' : 'English'}`}
           className="h-auto w-auto max-h-[120px]"
           loading="lazy"
@@ -62,7 +62,7 @@ export default function AppDownloadButtons({
         aria-label={`Download ${appName} on Apple App Store`}
       >
         <img
-          src={`/badges/app-store-${badgeLanguage}.png`}
+          src={`/media/badges/app-store-${badgeLanguage}.png`}
           alt={`Download on the App Store - ${badgeLanguage === 'pt' ? 'Português' : 'English'}`}
           className="h-auto w-auto max-h-[120px]"
           loading="lazy"
