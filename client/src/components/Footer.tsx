@@ -73,18 +73,18 @@ export default function Footer({ onContactClick }: FooterProps) {
                 </a>
               </li>
               <li>
-                <a href="/#servicos" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
-                  {t('footer.servicos')}
-                </a>
-              </li>
-              <li>
-                <a href="/#portfolio" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                <a href="/portfolio" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
                   {t('footer.portfolio')}
                 </a>
               </li>
               <li>
-                <a href="/blog" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
-                  {t('footer.blog')}
+                <a href="/faq" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                  {t('footer.faq')}
+                </a>
+              </li>
+              <li>
+                <a href="/noticias" className="text-slate-400 hover:text-cyan-400 transition-colors text-sm">
+                  {t('footer.noticias')}
                 </a>
               </li>
               <li>

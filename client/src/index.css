@@ -57,9 +57,9 @@
   --chart-3: oklch(0.45 0.24 258);
   --chart-4: oklch(0.40 0.22 258);
   --chart-5: oklch(0.35 0.20 258);
-  --radius: 0rem; /* Sharp corners for brutalism */
-  --background: oklch(1 0 0); /* Pure white */
-  --foreground: oklch(0.15 0.01 258); /* Deep navy from logo */
+  --radius: 0.5rem; /* Subtle rounded corners */
+  --background: oklch(0.97 0.01 258); /* Off-white with blue tint */
+  --foreground: oklch(0.20 0.02 258); /* Deep blue-navy */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.01 258);
   --popover: oklch(1 0 0);
@@ -72,7 +72,7 @@
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.15 0.01 258); /* Dark borders for brutalism */
+  --border: oklch(0.85 0.02 258); /* Softer borders */
   --input: oklch(0.92 0.004 286.32);
   --ring: oklch(0.50 0.22 258);
   --sidebar: oklch(1 0 0);

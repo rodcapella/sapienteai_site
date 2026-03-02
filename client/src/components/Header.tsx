@@ -29,7 +29,7 @@ export default function Header({ onContactClick }: HeaderProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-50 to-blue-50 border-b border-blue-200/50 shadow-sm">
         <div className="container">
           <nav className="flex items-center justify-between h-16 md:h-20 px-4">
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0">
@@ -42,11 +42,10 @@ export default function Header({ onContactClick }: HeaderProps) {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-6">
-              <a href="/#servicos" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.servicos')}</a>
-              <a href="/#processo" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.processo')}</a>
-              <a href="/#portfolio" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.portfolio')}</a>
-              <a href="/blog" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.blog')}</a>
-              <a href="/#faq" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.faq')}</a>
+              <a href="/" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.home')}</a>
+              <a href="/portfolio" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.portfolio')}</a>
+              <a href="/faq" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.faq')}</a>
+              <a href="/noticias" className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.noticias')}</a>
               <div className="h-6 w-px bg-gray-200"></div>
               <LanguageSelector />
               <Button 
@@ -81,11 +80,10 @@ export default function Header({ onContactClick }: HeaderProps) {
                   <LanguageSelector />
                 </div>
                 
-                <a href="/#servicos" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.servicos')}</a>
-                <a href="/#processo" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.processo')}</a>
-                <a href="/#portfolio" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.portfolio')}</a>
-                <a href="/blog" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.blog')}</a>
-                <a href="/#faq" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.faq')}</a>
+                <a href="/" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.home')}</a>
+                <a href="/portfolio" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.portfolio')}</a>
+                <a href="/faq" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.faq')}</a>
+                <a href="/noticias" onClick={handleNavClick} className="text-sm font-medium text-slate-700 hover:text-cyan-600 transition-colors">{t('nav.noticias')}</a>
                 <div className="border-t border-gray-200 pt-4">
                 </div>
                 <Button 

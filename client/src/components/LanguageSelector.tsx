@@ -2,7 +2,6 @@ import { useLanguage, type Language } from '@/contexts/LanguageContext';
 
 const languages: { code: Language; label: string; flagUrl: string; countryName: string }[] = [
   { code: 'pt-PT', label: 'PT-PT', flagUrl: '/media/flags/pt-PT.png', countryName: 'Portugal' },
-  { code: 'pt-BR', label: 'PT-BR', flagUrl: '/media/flags/pt-BR.png', countryName: 'Brasil' },
   { code: 'en', label: 'EN', flagUrl: '/media/flags/en.png', countryName: 'English' },
 ];
 
