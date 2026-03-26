@@ -162,36 +162,6 @@ const services = [
         </div>
       </section>
 
-      {/* PRODUCTS */}
-      <section className="py-32 px-4">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {products.map((product, i) => (
-            <div key={i} className="group">
-
-              <div className={`rounded-xl p-6 bg-gradient-to-br ${product.color} text-white mb-4`}>
-                <h3 className="text-xl font-bold">{product.name}</h3>
-                <p className="text-white/80">{product.description}</p>
-                <span className="text-sm opacity-80">{product.stats}</span>
-              </div>
-
-              <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-xl p-6">
-                <ul className="text-slate-300 text-sm space-y-2 mb-4">
-                  {product.features.map((f, idx) => (
-                    <li key={idx}>• {f}</li>
-                  ))}
-                </ul>
-
-                <AppDownloadButtons
-                  appName={product.name}
-                  playStoreUrl={product.playStoreUrl}
-                  appStoreUrl={product.appStoreUrl}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="py-32 text-center px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
