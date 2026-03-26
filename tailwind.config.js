@@ -21,6 +21,10 @@ export default {
         card: "var(--card)",
         "card-foreground": "var(--card-foreground)",
       },
+
+      borderColor: {
+        border: "var(--border)",
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
