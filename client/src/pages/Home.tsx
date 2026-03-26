@@ -124,6 +124,10 @@ export default function Home() {
     <div className="bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 min-h-screen">
       <Header />
 
+      <div className="bg-red-500 text-white p-10 text-2xl">
+        TESTE TAILWIND
+      </div>
+
       {/* HERO SECTION */}
       <section className="pt-20 md:pt-32 pb-24 md:pb-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">

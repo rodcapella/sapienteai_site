@@ -1,11 +1,27 @@
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./client/index.html",
-    "./client/src/**/*.{js,ts,jsx,tsx}",
+    "./client/**/*.{js,ts,jsx,tsx,html}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        primary: "var(--primary)",
+        "primary-foreground": "var(--primary-foreground)",
+        secondary: "var(--secondary)",
+        "secondary-foreground": "var(--secondary-foreground)",
+        muted: "var(--muted)",
+        "muted-foreground": "var(--muted-foreground)",
+        accent: "var(--accent)",
+        "accent-foreground": "var(--accent-foreground)",
+        card: "var(--card)",
+        "card-foreground": "var(--card-foreground)",
+      },
+    },
   },
-  plugins: [require("tailwindcss-animate")]
+  plugins: [require("tailwindcss-animate")],
 };
