@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from '../hooks/useTranslation';
 
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Brain, Zap, BarChart3 } from 'lucide-react';
+import { Icons } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -13,11 +13,34 @@ export default function Home() {
   const { t } = useTranslation();
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const services = [
-    { icon: Brain, key: 'services.ml' },
-    { icon: Zap, key: 'services.automation' },
-    { icon: BarChart3, key: 'services.consulting' }
-  ];
+const values = [
+  {
+    icon: Icons.Lightbulb,
+    title: t('values.innovation'),
+    description: t('values.innovation.desc')
+  },
+  {
+    icon: Icons.Trophy,
+    title: t('values.excellence'),
+    description: t('values.excellence.desc')
+  },
+  {
+    icon: Icons.Handshake,
+    title: t('values.partnership'),
+    description: t('values.partnership.desc')
+  },
+  {
+    icon: Icons.Target,
+    title: t('values.results'),
+    description: t('values.results.desc')
+  }
+];
+
+const services = [
+  { icon: Icons.Brain, key: 'services.ml' },
+  { icon: Icons.Zap, key: 'services.automation' },
+  { icon: Icons.BarChart3, key: 'services.consulting' }
+];
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)] text-[var(--foreground)]">
