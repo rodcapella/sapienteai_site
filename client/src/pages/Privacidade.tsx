@@ -47,7 +47,7 @@ export default function Privacidade() {
       <Breadcrumb />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-24">
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-32 md:py-40">
         <div className="container max-w-4xl">
           <AnimatedSection>
             <div className="flex items-center gap-4 mb-6">
@@ -66,7 +66,7 @@ export default function Privacidade() {
       </section>
 
       {/* Content */}
-      <main className="flex-grow py-16 md:py-24">
+      <main className="flex-grow py-16 md:py-32 md:py-40">
         <div className="container max-w-4xl">
           <div className="space-y-12 text-slate-700 leading-relaxed">
             <AnimatedSection>

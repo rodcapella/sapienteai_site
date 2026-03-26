@@ -135,7 +135,7 @@ export default function Blog() {
       </section>
 
       {/* Articles Grid */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-32 md:py-40 bg-white">
         <div className="container">
           {filteredArticles.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -220,7 +220,7 @@ export default function Blog() {
       </section>
 
       {/* Newsletter CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-primary/10 to-primary/5 border-t-4 border-foreground">
+      <section className="py-16 md:py-32 md:py-40 bg-gradient-to-br from-primary/10 to-primary/5 border-t-4 border-foreground">
         <div className="container">
           <AnimatedSection className="max-w-2xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-black mb-6 text-foreground">

@@ -124,7 +124,7 @@ export default function AIPillar() {
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
       {/* Definition Section - GEO/AEO Optimization */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-primary/10 to-primary/5 border-b-4 border-foreground">
+      <section className="py-32 md:py-40 md:py-32 bg-gradient-to-br from-primary/10 to-primary/5 border-b-4 border-foreground">
         <div className="container">
           <AnimatedSection className="max-w-3xl">
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-8">
@@ -146,7 +146,7 @@ export default function AIPillar() {
       </section>
 
       {/* Main Content Sections */}
-      <section className="py-24 md:py-32 bg-white">
+      <section className="py-32 md:py-40 md:py-32 bg-white">
         <div className="container">
           <div className="space-y-24">
             {/* Section 1: Benefits */}
@@ -269,7 +269,7 @@ export default function AIPillar() {
       </section>
 
       {/* Cluster Content Section */}
-      <section className="py-24 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
+      <section className="py-32 md:py-40 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
         <div className="container">
           <AnimatedSection className="mb-16">
             <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
@@ -303,7 +303,7 @@ export default function AIPillar() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 md:py-32 bg-gradient-to-br from-primary to-primary/80">
+      <section className="py-32 md:py-40 md:py-32 bg-gradient-to-br from-primary to-primary/80">
         <div className="container">
           <AnimatedSection className="max-w-2xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6">

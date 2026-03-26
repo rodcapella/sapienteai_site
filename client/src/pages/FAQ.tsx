@@ -17,7 +17,7 @@ interface FAQItem {
 
 function FAQAccordion({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div className="border border-blue-800/50 rounded-lg overflow-hidden hover:border-cyan-400/50 transition-all duration-300">
+    <div className="border border-blue-800/50 rounded-2xl overflow-hidden hover:border-cyan-400/50 transition-all duration-300">
       <button
         onClick={onToggle}
         className="w-full px-6 py-4 md:px-8 md:py-6 bg-gradient-to-r from-blue-900/30 to-slate-900/30 hover:from-blue-900/50 hover:to-slate-900/50 transition-all duration-300 flex items-center justify-between"
@@ -104,7 +104,7 @@ export default function FAQ() {
       </section>
 
       {/* FAQ SECTION */}
-      <section className="py-24 md:py-32 px-4">
+      <section className="py-32 md:py-40 md:py-32 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="space-y-4">
             {faqs.map((faq, idx) => (
@@ -120,7 +120,7 @@ export default function FAQ() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-24 md:py-32 px-4 relative overflow-hidden">
+      <section className="py-32 md:py-40 md:py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
@@ -132,7 +132,7 @@ export default function FAQ() {
           <p className="text-lg text-slate-300 mb-12">
             Entre em contato com nossos especialistas e tire suas dúvidas diretamente
           </p>
-          <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-300">
+          <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg font-semibold rounded-2xl transition-colors duration-300">
             Fale com um Especialista
           </button>
         </div>

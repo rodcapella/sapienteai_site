@@ -10,7 +10,7 @@ export default function BlogArticleCard({ article }: BlogArticleCardProps) {
   return (
     <Link href={`/blog/${article.slug}`}>
       <a className="group block h-full">
-        <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+        <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
           {/* Image */}
           <div className="relative overflow-hidden h-48 bg-gray-200">
             <img

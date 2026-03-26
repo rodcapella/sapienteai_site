@@ -43,7 +43,7 @@ export default function Footer({ onContactClick }: FooterProps) {
   return (
     <footer className="bg-black text-slate-100">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-16 md:py-24">
+      <div className="container mx-auto px-4 py-16 md:py-32 md:py-40">
         {/* 4-Column Grid with Newsletter */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-16">
           {/* Column 1: Identity with Logo */}

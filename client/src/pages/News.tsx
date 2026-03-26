@@ -148,7 +148,7 @@ export default function News() {
                   setSearchQuery(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full pl-12 pr-4 py-3 bg-slate-900/50 border border-blue-800/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition-colors"
+                className="w-full pl-12 pr-4 py-3 bg-slate-900/50 border border-blue-800/50 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition-colors"
               />
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function News() {
                   setSelectedCategory(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-lg text-white focus:outline-none focus:border-cyan-400 transition-colors"
+                className="w-full px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-2xl text-white focus:outline-none focus:border-cyan-400 transition-colors"
               >
                 <option value="all">Todas</option>
                 {categories.filter(c => c !== 'all').map(cat => (
@@ -182,7 +182,7 @@ export default function News() {
                   setSelectedType(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-lg text-white focus:outline-none focus:border-cyan-400 transition-colors"
+                className="w-full px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-2xl text-white focus:outline-none focus:border-cyan-400 transition-colors"
               >
                 {types.map(type => (
                   <option key={type.value} value={type.value}>{type.label}</option>
@@ -194,7 +194,7 @@ export default function News() {
       </section>
 
       {/* ARTICLES GRID */}
-      <section className="py-24 md:py-32 px-4">
+      <section className="py-32 md:py-40 md:py-32 px-4">
         <div className="container mx-auto max-w-6xl">
           {paginatedArticles.length > 0 ? (
             <>
@@ -202,7 +202,7 @@ export default function News() {
                 {paginatedArticles.map((article) => (
                   <article
                     key={article.id}
-                    className="group bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-lg overflow-hidden hover:border-cyan-400/50 transition-all duration-300"
+                    className="group bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-2xl overflow-hidden hover:border-cyan-400/50 transition-all duration-300"
                   >
                     {/* Image */}
                     <div className="relative h-48 overflow-hidden bg-slate-900">
@@ -267,7 +267,7 @@ export default function News() {
                   <button
                     onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-lg text-white disabled:opacity-50 hover:border-cyan-400/50 transition-colors"
+                    className="px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-2xl text-white disabled:opacity-50 hover:border-cyan-400/50 transition-colors"
                   >
                     Anterior
                   </button>
@@ -275,7 +275,7 @@ export default function News() {
                     <button
                       key={page}
                       onClick={() => setCurrentPage(page)}
-                      className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                      className={`px-4 py-2 rounded-2xl font-semibold transition-colors ${
                         currentPage === page
                           ? 'bg-cyan-600 text-white'
                           : 'bg-slate-900/50 border border-blue-800/50 text-white hover:border-cyan-400/50'
@@ -287,7 +287,7 @@ export default function News() {
                   <button
                     onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-lg text-white disabled:opacity-50 hover:border-cyan-400/50 transition-colors"
+                    className="px-4 py-2 bg-slate-900/50 border border-blue-800/50 rounded-2xl text-white disabled:opacity-50 hover:border-cyan-400/50 transition-colors"
                   >
                     Próxima
                   </button>
@@ -303,7 +303,7 @@ export default function News() {
       </section>
 
       {/* NEWSLETTER CTA */}
-      <section className="py-24 md:py-32 px-4 relative overflow-hidden">
+      <section className="py-32 md:py-40 md:py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
@@ -319,9 +319,9 @@ export default function News() {
             <input
               type="email"
               placeholder={t('newsletter.placeholder')}
-              className="flex-1 px-4 py-3 bg-slate-900/50 border border-blue-800/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition-colors"
+              className="flex-1 px-4 py-3 bg-slate-900/50 border border-blue-800/50 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition-colors"
             />
-            <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 font-semibold rounded-lg transition-colors duration-300">
+            <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 font-semibold rounded-2xl transition-colors duration-300">
               {t('newsletter.subscribe')}
             </button>
           </div>

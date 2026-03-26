@@ -14,7 +14,7 @@ export function LanguageSelector() {
         <button
           key={lang.code}
           onClick={() => setLanguage(lang.code)}
-          className={`relative w-10 h-10 rounded-lg transition-all border-2 flex items-center justify-center overflow-hidden ${
+          className={`relative w-10 h-10 rounded-2xl transition-all border-2 flex items-center justify-center overflow-hidden ${
             language === lang.code
               ? 'border-blue-600 shadow-lg scale-105 ring-2 ring-blue-300'
               : 'border-slate-300 hover:border-blue-400 hover:shadow-md'

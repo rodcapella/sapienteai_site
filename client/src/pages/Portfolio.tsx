@@ -168,7 +168,7 @@ export default function Portfolio() {
               <button
                 key={key}
                 onClick={() => setSelectedProduct(key)}
-                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 ${
                   selectedProduct === key
                     ? 'bg-cyan-600 text-white'
                     : 'bg-slate-900/50 text-slate-300 hover:bg-slate-900/80 border border-slate-800'
@@ -182,7 +182,7 @@ export default function Portfolio() {
       </section>
 
       {/* PRODUCT DETAILS */}
-      <section className="py-24 md:py-32 px-4">
+      <section className="py-32 md:py-40 md:py-32 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             {/* Left: Product Info */}
@@ -196,7 +196,17 @@ export default function Portfolio() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {product.stats.map((stat, idx) => (
-                  <div key={idx} className="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-lg p-4">
+                  <div key={idx} className="
+                    bg-white/[0.03]
+                    backdrop-blur-xl
+                    border border-white/[0.08]
+                    rounded-2xl
+                    p-8
+                    shadow-[0_0_40px_rgba(0,0,0,0.3)]
+                    transition-all duration-300 ease-out
+                    hover:scale-[1.015]
+                    hover:shadow-[0_0_60px_rgba(0,255,255,0.08)]
+                    ">
                     <p className="text-slate-400 text-sm mb-1">{stat.label}</p>
                     <p className="text-2xl font-bold text-cyan-400">{stat.value}</p>
                   </div>
@@ -217,7 +227,7 @@ export default function Portfolio() {
             {/* Right: Features & Benefits */}
             <div className="space-y-8">
               {/* Features */}
-              <div className="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-lg p-8">
+              <div className="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-2xl p-8">
                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
                   <Zap className="h-6 w-6 text-cyan-400" />
                   Funcionalidades
@@ -233,7 +243,17 @@ export default function Portfolio() {
               </div>
 
               {/* Benefits */}
-              <div className="bg-gradient-to-br from-cyan-900/40 to-blue-900/40 border border-cyan-800/50 rounded-lg p-8">
+              <div className="
+                bg-white/[0.03]
+                backdrop-blur-xl
+                border border-white/[0.08]
+                rounded-2xl
+                p-8
+                shadow-[0_0_40px_rgba(0,0,0,0.3)]
+                transition-all duration-300 ease-out
+                hover:scale-[1.015]
+                hover:shadow-[0_0_60px_rgba(0,255,255,0.08)]
+                ">
                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
                   <Shield className="h-6 w-6 text-cyan-400" />
                   Benefícios
@@ -253,7 +273,7 @@ export default function Portfolio() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-24 md:py-32 px-4 relative overflow-hidden">
+      <section className="py-32 md:py-40 md:py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
@@ -265,7 +285,7 @@ export default function Portfolio() {
           <p className="text-lg text-slate-300 mb-12">
             Entre em contato com nossos especialistas e descubra como podemos ajudar seu negócio
           </p>
-          <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg font-semibold rounded-lg transition-colors duration-300 flex items-center gap-2 mx-auto">
+          <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg font-semibold rounded-2xl transition-colors duration-300 flex items-center gap-2 mx-auto">
             Solicitar Demonstração
             <ArrowRight className="h-5 w-5" />
           </button>
