@@ -1,6 +1,8 @@
 import { Route, Switch } from "wouter";
 import Home from "./pages/Home";
-import { LanguageProvider } from "./contexts/LanguageContext";
+import { useTranslation } from '@/hooks/useTranslation';
+
+const { t } = useTranslation();x
 
 function Router() {
   return (
@@ -12,9 +14,7 @@ function Router() {
 
 function App() {
   return (
-    <LanguageProvider>
       <Router />
-    </LanguageProvider>
   );
 }
 
