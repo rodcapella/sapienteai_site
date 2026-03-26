@@ -300,6 +300,10 @@ export const translations: Record<Language, Record<string, string>> = {
   },
 };
 
-export function getTranslation(language: Language, key: string): string {
-  return translations[language]?.[key] || key;
-}
+const t = (key: string): string => {
+  return (
+    translations[language]?.[key] ??
+    translations['pt-PT']?.[key] ??
+    key
+  );
+};
