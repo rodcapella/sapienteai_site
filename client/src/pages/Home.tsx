@@ -75,7 +75,7 @@ const services = [
               className="bg-cyan-500 text-black font-medium px-8 py-3 rounded-full shadow-[0_0_30px_rgba(0,255,255,0.4)] hover:shadow-[0_0_50px_rgba(0,255,255,0.6)] transition-all duration-300"
             >
               {t('hero.cta1')}
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <Icons.ArrowRight className="ml-2 h-5 w-5" />
             </Button>
 
             <Button
