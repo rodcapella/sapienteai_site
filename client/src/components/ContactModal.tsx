@@ -25,7 +25,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       {/* Modal */}
       <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-4">
-        <div className="bg-background border-t-2 md:border-2 md:border-foreground p-4 md:p-8 w-full md:max-w-2xl max-h-[85vh] md:max-h-[90vh] overflow-y-auto rounded-t-lg md:rounded-lg md:shadow-2xl">
+        <div className="bg-[var(--background)] text-[var(--foreground)]">
           {/* Header */}
           <div className="flex justify-between items-start mb-4 md:mb-6">
             <div className="flex-1">

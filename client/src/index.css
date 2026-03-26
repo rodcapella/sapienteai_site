@@ -2,157 +2,124 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* Neo-Brutalism Color System - Updated from SAPIENTE.AI Logo */
-  --primary: oklch(0.50 0.22 258); /* Deep blue from logo #0052CC */
-  --primary-foreground: oklch(1 0 0); /* Pure white */
-  --sidebar-primary: oklch(0.50 0.22 258);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --chart-1: oklch(0.55 0.20 258);
-  --chart-2: oklch(0.50 0.22 258);
-  --chart-3: oklch(0.45 0.24 258);
-  --chart-4: oklch(0.40 0.22 258);
-  --chart-5: oklch(0.35 0.20 258);
-  --radius: 0.5rem; /* Subtle rounded corners */
-  --background: oklch(0.97 0.01 258); /* Off-white with blue tint */
-  --foreground: oklch(0.20 0.02 258); /* Deep blue-navy */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.01 258);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.01 258);
-  --secondary: oklch(0.60 0.24 256); /* Cyan accent from logo #00D4FF */
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.96 0.005 258);
-  --muted-foreground: oklch(0.45 0.01 258);
-  --accent: oklch(0.60 0.24 256); /* Cyan from logo */
-  --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.85 0.02 258); /* Softer borders */
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.50 0.22 258);
-  --sidebar: oklch(1 0 0);
-  --sidebar-foreground: oklch(0.15 0.01 258);
-  --sidebar-accent: oklch(0.96 0.005 258);
-  --sidebar-accent-foreground: oklch(0.15 0.01 258);
-  --sidebar-border: oklch(0.15 0.01 258);
-  --sidebar-ring: oklch(0.50 0.22 258);
-}
+/* =========================
+   DESIGN TOKENS
+========================= */
 
-.dark {
+:root {
   --primary: oklch(0.50 0.22 258);
   --primary-foreground: oklch(1 0 0);
-  --sidebar-primary: oklch(0.50 0.22 258);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --background: oklch(0.15 0.01 258);
-  --foreground: oklch(1 0 0);
-  --card: oklch(0.20 0.01 258);
-  --card-foreground: oklch(1 0 0);
-  --popover: oklch(0.20 0.01 258);
-  --popover-foreground: oklch(1 0 0);
+
+  --background: oklch(0.97 0.01 258);
+  --foreground: oklch(0.20 0.02 258);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.01 258);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.01 258);
+
   --secondary: oklch(0.60 0.24 256);
   --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.25 0.01 258);
-  --muted-foreground: oklch(0.70 0.01 258);
+
+  --muted: oklch(0.96 0.005 258);
+  --muted-foreground: oklch(0.45 0.01 258);
+
   --accent: oklch(0.60 0.24 256);
   --accent-foreground: oklch(1 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(1 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.85 0.02 258);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.50 0.22 258);
+
+  --radius: 0.5rem;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+.dark {
+  --background: oklch(0.15 0.01 258);
+  --foreground: oklch(1 0 0);
+
+  --card: oklch(0.20 0.01 258);
+  --card-foreground: oklch(1 0 0);
+
+  --popover: oklch(0.20 0.01 258);
+  --popover-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.25 0.01 258);
+  --muted-foreground: oklch(0.70 0.01 258);
+
   --border: oklch(1 0 0 / 15%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.50 0.22 258);
-  --chart-1: oklch(0.55 0.20 258);
-  --chart-2: oklch(0.50 0.22 258);
-  --chart-3: oklch(0.45 0.24 258);
-  --chart-4: oklch(0.40 0.22 258);
-  --chart-5: oklch(0.35 0.20 258);
-  --sidebar: oklch(0.20 0.01 258);
-  --sidebar-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.25 0.01 258);
-  --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(1 0 0 / 15%);
-  --sidebar-ring: oklch(0.50 0.22 258);
 }
 
-@layer base {
-  * {
-    border-color: var(--border);
-    outline-color: var(--ring);
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-body);
-  }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 700;
-  }
+/* =========================
+   BASE RESET (SAFE)
+========================= */
+
+* {
+  border-color: var(--border);
+  outline-color: var(--ring);
 }
 
-@layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+
+/* =========================
+   UTILIDADES EXTRAS
+========================= */
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
   .container {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
+}
 
-  .flex {
-    min-height: 0;
-    min-width: 0;
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 1280px;
   }
+}
 
-  @media (min-width: 640px) {
-    .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
-    }
-  }
+/* Layout helpers */
 
-  @media (min-width: 1024px) {
-    .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
-    }
-  }
-  
-  /* Diagonal clip-path utility for section transitions */
-  .clip-diagonal-top {
-    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
-    margin-top: -5rem;
-    padding-top: 8rem;
-  }
-  
-  .clip-diagonal-bottom {
-    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-    padding-bottom: 8rem;
-    margin-bottom: -5rem;
-  }
+.clip-diagonal-top {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  margin-top: -5rem;
+  padding-top: 8rem;
+}
+
+.clip-diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  padding-bottom: 8rem;
+  margin-bottom: -5rem;
 }

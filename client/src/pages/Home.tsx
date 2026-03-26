@@ -121,237 +121,131 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 min-h-screen">
-      <Header />
+  <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <Header />
 
-      <div className="bg-red-500 text-white p-10 text-2xl">
-        TESTE TAILWIND
+    {/* DEBUG REMOVE DEPOIS */}
+    <div className="bg-red-500 text-white p-10 text-2xl">
+      TESTE TAILWIND
+    </div>
+
+    {/* HERO */}
+    <section className="pt-20 md:pt-32 pb-24 md:pb-32 px-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-500 rounded-full blur-3xl"></div>
       </div>
 
-      {/* HERO SECTION */}
-      <section className="pt-20 md:pt-32 pb-24 md:pb-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <AnimatedSection className="text-center">
-            <p className="text-cyan-400 font-semibold mb-4 text-sm md:text-base uppercase tracking-wider">
-              {t('hero.subtitle')}
-            </p>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-              {t('hero.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
-              {t('hero.tagline')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                onClick={() => setIsContactOpen(true)}
-                className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg h-auto font-semibold"
-              >
-                {t('hero.cta1')}
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                variant="outline"
-                className="border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 px-8 py-3 text-lg h-auto font-semibold"
-              >
-                {t('hero.cta2')}
-              </Button>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <div className="container mx-auto max-w-4xl relative z-10">
+        <AnimatedSection className="text-center">
+          <p className="text-cyan-400 font-semibold mb-4 text-sm md:text-base uppercase tracking-wider">
+            {t('hero.subtitle')}
+          </p>
 
-      {/* VALUES SECTION */}
-      <section className="py-24 md:py-32 px-4 relative">
-        <div className="container mx-auto max-w-6xl">
-          <AnimatedSection className="text-center mb-16">
-            <p className="text-cyan-400 font-semibold mb-4 uppercase tracking-wider text-sm">
-              {t('values.label')}
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {t('values.title')}
-            </h2>
-          </AnimatedSection>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            {t('hero.title')}
+          </h1>
 
-          <div className="grid md:grid-cols-4 gap-6">
-            {values.map((value, idx) => {
-              const Icon = value.icon;
-              return (
-                <AnimatedSection key={idx} className="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-lg p-8 hover:border-cyan-400/50 transition-all duration-300">
-                  <div className="mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">{value.description}</p>
-                </AnimatedSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
+            {t('hero.tagline')}
+          </p>
 
-      {/* MISSION & VISION SECTION */}
-      <section className="py-24 md:py-32 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Mission */}
-            <AnimatedSection className="bg-gradient-to-br from-blue-900/50 to-slate-900/50 border border-blue-800/50 rounded-lg p-12">
-              <p className="text-cyan-400 font-semibold mb-4 uppercase tracking-wider text-sm">
-                {t('mission.label')}
-              </p>
-              <h3 className="text-3xl font-bold text-white mb-6">{t('mission.title')}</h3>
-              <p className="text-slate-300 text-lg leading-relaxed">{t('mission.desc')}</p>
-            </AnimatedSection>
-
-            {/* Vision */}
-            <AnimatedSection className="bg-gradient-to-br from-cyan-900/50 to-blue-900/50 border border-cyan-800/50 rounded-lg p-12">
-              <p className="text-cyan-400 font-semibold mb-4 uppercase tracking-wider text-sm">
-                {t('vision.label')}
-              </p>
-              <h3 className="text-3xl font-bold text-white mb-6">{t('vision.title')}</h3>
-              <p className="text-slate-300 text-lg leading-relaxed">{t('vision.desc')}</p>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES SECTION */}
-      <section className="py-24 md:py-32 px-4 relative">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <AnimatedSection className="text-center mb-16">
-            <p className="text-cyan-400 font-semibold mb-4 uppercase tracking-wider text-sm">
-              {t('services.label')}
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {t('services.title')}
-            </h2>
-            <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-              {t('services.description')}
-            </p>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Brain, key: 'services.ml' },
-              { icon: Zap, key: 'services.automation' },
-              { icon: BarChart3, key: 'services.consulting' }
-            ].map((service, idx) => {
-              const Icon = service.icon;
-              return (
-                <AnimatedSection key={idx} className="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-lg p-8 hover:border-cyan-400/50 transition-all duration-300">
-                  <div className="mb-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                      <Icon className="h-7 w-7 text-white" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{t(`${service.key}`)}</h3>
-                  <p className="text-slate-300 mb-6">{t(`${service.key}.desc`)}</p>
-                  <a href="#" className="text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-2">
-                    {t('services.more')} <ArrowRight className="h-4 w-4" />
-                  </a>
-                </AnimatedSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* PORTFOLIO SECTION */}
-      <section className="py-24 md:py-32 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <AnimatedSection className="text-center mb-16">
-            <p className="text-cyan-400 font-semibold mb-4 uppercase tracking-wider text-sm">
-              {t('portfolio.label')}
-            </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {t('portfolio.title')}
-            </h2>
-            <p className="text-slate-300 max-w-2xl mx-auto text-lg">
-              {t('portfolio.description')}
-            </p>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {products.map((product, idx) => (
-              <AnimatedSection key={idx} className="group">
-                <div className={`bg-gradient-to-br ${product.color} rounded-lg p-8 text-white mb-4 relative overflow-hidden`}>
-                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                    <Sparkles className="h-32 w-32 absolute -top-8 -right-8" />
-                  </div>
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-2">{product.name}</h3>
-                    <p className="text-white/90 mb-4">{product.description}</p>
-                    <div className="text-sm text-white/80">{product.stats}</div>
-                  </div>
-                </div>
-                <div className="bg-slate-900/50 border border-slate-800 rounded-lg p-6">
-                  <ul className="space-y-2 mb-6">
-                    {product.features.map((feature, fidx) => (
-                      <li key={fidx} className="text-slate-300 flex items-start gap-2">
-                        <span className="text-cyan-400 mt-1">•</span>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <AppDownloadButtons 
-                    appName={product.name}
-                    playStoreUrl={product.playStoreUrl}
-                    appStoreUrl={product.appStoreUrl}
-                    className="flex flex-col gap-3"
-                  />
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          <AnimatedSection className="text-center mt-12">
-            <Button 
-              className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg h-auto font-semibold"
-            >
-              {t('portfolio.more')}
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* CTA FINAL */}
-      <section className="py-24 md:py-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {t('cta.title')}
-            </h2>
-            <p className="text-lg text-slate-300 mb-12">
-              {t('cta.description')}
-            </p>
-            <Button 
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
               onClick={() => setIsContactOpen(true)}
               className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg h-auto font-semibold"
             >
-              {t('cta.button')}
+              {t('hero.cta1')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </AnimatedSection>
-        </div>
-      </section>
 
-      <Footer />
-      {!isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
-    </div>
-  );
-}
+            <Button
+              variant="outline"
+              className="border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 px-8 py-3 text-lg h-auto font-semibold"
+            >
+              {t('hero.cta2')}
+            </Button>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    {/* VALUES */}
+    <section className="py-24 md:py-32 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-cyan-400 font-semibold mb-4 uppercase tracking-wider text-sm">
+            {t('values.label')}
+          </p>
+
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            {t('values.title')}
+          </h2>
+        </AnimatedSection>
+
+        <div className="grid md:grid-cols-4 gap-6">
+          {values.map((value, idx) => {
+            const Icon = value.icon;
+
+            return (
+              <AnimatedSection
+                key={idx}
+                className="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-blue-800/50 rounded-lg p-8 hover:border-cyan-400/50 transition-all duration-300"
+              >
+                <div className="mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-bold text-white mb-3">
+                  {value.title}
+                </h3>
+
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  {value.description}
+                </p>
+              </AnimatedSection>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    {/* CTA FINAL (exemplo ajustado) */}
+    <section className="py-24 md:py-32 px-4 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto max-w-3xl relative z-10 text-center">
+        <AnimatedSection>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            {t('cta.title')}
+          </h2>
+
+          <p className="text-lg text-slate-300 mb-12">
+            {t('cta.description')}
+          </p>
+
+          <Button
+            onClick={() => setIsContactOpen(true)}
+            className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg h-auto font-semibold"
+          >
+            {t('cta.button')}
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    <Footer />
+
+    {!isContactOpen && (
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
+    )}
+  </div>
+);
