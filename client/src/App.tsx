@@ -1,6 +1,6 @@
 import { Route, Switch } from "wouter";
 import Home from "./pages/Home";
-import { useTranslation } from '@/hooks/useTranslation';
+import { useTranslation } from '../hooks/useTranslation';
 
 const { t } = useTranslation();
 
