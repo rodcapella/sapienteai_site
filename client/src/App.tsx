@@ -1,5 +1,6 @@
 import { Route, Switch } from "wouter";
 import Home from "./pages/Home";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 function Router() {
   return (
@@ -10,7 +11,11 @@ function Router() {
 }
 
 function App() {
-  return <Router />;
+  return (
+    <LanguageProvider>
+      <Router />
+    </LanguageProvider>
+  );
 }
 
 export default App;
