@@ -4,11 +4,7 @@ export function useTranslation() {
   const language = 'pt-PT';
 
   const t = (key: string): string => {
-    try {
-      return translations[language]?.[key] ?? key;
-    } catch {
-      return key;
-    }
+    return translations[language]?.[key] ?? key;
   };
 
   return { t, language };
