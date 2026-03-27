@@ -16,7 +16,7 @@ export function setSEOHead({
   title,
   description,
   image = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/FYRwdgClQVohvsom.png',
-  url = 'https://sapiente-ai.manus.space',
+  url = 'https://sapienteai.com',
   type = 'website',
   keywords = 'inteligência artificial, machine learning, IA generativa, automação, transformação digital'
 }: SEOHeadProps) {

@@ -1,154 +1,151 @@
-import { ArrowLeft } from 'lucide-react';
 import { useEffect } from 'react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
+
+import { Section } from "@/components/ui/section/Section";
+import { SectionHeader } from "@/components/ui/section/SectionHeader";
+import { SectionTitle } from "@/components/ui/section/SectionTitle";
+import { SectionCard } from "@/components/ui/section/SectionCard";
+
+import { TOC } from "@/components/ui/navigation/TOC";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { setSEOHead } from '@/components/SEOHead';
 
-function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  const { ref, isVisible } = useScrollAnimation();
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
 export default function LGPD() {
+
   useEffect(() => {
     setSEOHead({
       title: 'LGPD & RGPD - Protecao de Dados - SAPIENTE.AI',
-      description: 'Conformidade LGPD e GDPR. Politica de protecao de dados da SAPIENTE.AI para Brasil e Europa.',
-      keywords: 'LGPD, GDPR, protecao de dados, conformidade, privacidade',
-      url: 'https://sapiente-ai.manus.space/lgpd',
+      description: 'Conformidade LGPD e GDPR.',
+      keywords: 'LGPD, GDPR, protecao de dados',
+      url: 'https://sapienteai.com/lgpd',
       type: 'website'
     });
   }, []);
 
+  const tocItems = [
+    { id: "compliance", label: "Conformidade" },
+    { id: "storage", label: "Armazenamento" },
+    { id: "rights", label: "Direitos" },
+    { id: "legal", label: "Bases Legais" },
+    { id: "security", label: "Segurança" },
+    { id: "dpo", label: "DPO" },
+    { id: "incidents", label: "Incidentes" },
+    { id: "contact", label: "Contato" }
+  ];
+
+  const activeId = useScrollSpy(tocItems.map(i => i.id));
+
   return (
-    <div className="min-h-screen bg-white flex flex-col">
+    <div className="
+      min-h-screen
+      bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
+      text-white
+      relative
+      overflow-hidden
+    ">
+
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
+      </div>
+
       <Header />
-      <Breadcrumb />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-32 md:py-40">
-        <div className="container max-w-4xl">
-          <AnimatedSection>
-            <div className="flex items-center gap-4 mb-6">
-              <a href="/" className="text-white/70 hover:text-white transition-colors">
-                <ArrowLeft className="h-5 w-5" />
-              </a>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black mb-4">
-              LGPD & RGPD - Proteção de Dados
-            </h1>
-            <p className="text-lg text-white/70">
-              Conformidade com Lei Geral de Proteção de Dados (Brasil) e Regulamento Geral de Proteção de Dados (Europa)
-            </p>
-          </AnimatedSection>
+      {/* HERO */}
+      <Section>
+        <SectionHeader>
+          <SectionTitle
+            label="Legal"
+            title="LGPD & GDPR Compliance"
+          />
+        </SectionHeader>
+
+        <div className="text-center max-w-2xl mx-auto text-slate-400">
+          <p>
+            Proteção de dados com conformidade total entre Brasil e Europa.
+          </p>
         </div>
-      </section>
+      </Section>
 
-      {/* Content */}
-      <main className="flex-grow py-16 md:py-32 md:py-40">
-        <div className="container max-w-4xl">
-          <div className="space-y-12 text-slate-700 leading-relaxed">
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">1.</span> Conformidade LGPD & RGPD
-              </h2>
-              <p className="text-slate-600">
-                SAPIENTE.AI está em conformidade total com a Lei Geral de Proteção de Dados (LGPD) brasileira e com o Regulamento Geral de Proteção de Dados (RGPD) europeu. Implementamos todas as medidas necessárias para proteger dados pessoais de usuários em ambos os continentes.
-              </p>
-            </AnimatedSection>
+      {/* CONTENT + TOC */}
+      <Section>
+        <div className="max-w-6xl mx-auto grid md:grid-cols-[250px_1fr] gap-12">
 
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">2.</span> Armazenamento de Dados em Servidores Europeus
-              </h2>
-              <p className="text-slate-600 mb-4">
-                Dados pessoais de usuários brasileiros podem ser processados em servidores localizados na Europa. SAPIENTE.AI garante:
+          {/* TOC */}
+          <div className="hidden md:block">
+            <TOC items={tocItems} activeId={activeId} />
+          </div>
+
+          {/* CONTENT */}
+          <div className="space-y-6">
+
+            <SectionCard id="compliance">
+              <h2 className="text-xl font-semibold mb-3">1. Conformidade LGPD & RGPD</h2>
+              <p className="text-slate-400">
+                SAPIENTE.AI está em conformidade com LGPD e RGPD, garantindo proteção de dados em múltiplas jurisdições.
               </p>
-              <ul className="list-disc list-inside space-y-2 text-slate-600 ml-4">
-                <li>Criptografia end-to-end de todos os dados em trânsito e em repouso</li>
-                <li>Conformidade com padrões de segurança internacionais (ISO 27001)</li>
-                <li>Acordos de Processamento de Dados (DPA) com provedores de infraestrutura</li>
-                <li>Transferências internacionais seguras com mecanismos aprovados (Standard Contractual Clauses)</li>
-                <li>Direito de acesso, correção e exclusão de dados em qualquer jurisdição</li>
+            </SectionCard>
+
+            <SectionCard id="storage">
+              <h2 className="text-xl font-semibold mb-3">2. Armazenamento de Dados</h2>
+              <ul className="text-slate-400 space-y-2 list-disc ml-5">
+                <li>Criptografia end-to-end</li>
+                <li>ISO 27001</li>
+                <li>DPA com fornecedores</li>
+                <li>Transferências seguras (SCC)</li>
               </ul>
-            </AnimatedSection>
+            </SectionCard>
 
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">3.</span> Direitos dos Titulares de Dados
-              </h2>
-              <p className="text-slate-600 mb-4">
-                Conforme LGPD e RGPD, você tem direito a:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-slate-600 ml-4">
-                <li>Acessar seus dados pessoais</li>
-                <li>Corrigir dados imprecisos</li>
-                <li>Solicitar exclusão de dados ("direito ao esquecimento")</li>
-                <li>Revogar consentimento a qualquer momento</li>
-                <li>Portabilidade de dados em formato estruturado</li>
-                <li>Oposição ao processamento</li>
-                <li>Restrição do processamento</li>
+            <SectionCard id="rights">
+              <h2 className="text-xl font-semibold mb-3">3. Direitos dos Titulares</h2>
+              <ul className="text-slate-400 space-y-2 list-disc ml-5">
+                <li>Acesso</li>
+                <li>Correção</li>
+                <li>Exclusão</li>
+                <li>Portabilidade</li>
               </ul>
-            </AnimatedSection>
+            </SectionCard>
 
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">4.</span> Bases Legais para Processamento
-              </h2>
-              <p className="text-slate-600">
-                Processamos dados pessoais apenas com base em: consentimento expresso, execução de contrato, cumprimento de obrigações legais, ou interesses legítimos da SAPIENTE.AI.
+            <SectionCard id="legal">
+              <h2 className="text-xl font-semibold mb-3">4. Bases Legais</h2>
+              <p className="text-slate-400">
+                Consentimento, contrato, obrigação legal e interesse legítimo.
               </p>
-            </AnimatedSection>
+            </SectionCard>
 
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">5.</span> Segurança de Dados
-              </h2>
-              <p className="text-slate-600">
-                Implementamos criptografia end-to-end, auditorias de segurança contínuas, testes de penetração regulares e conformidade com padrões internacionais de proteção de dados.
+            <SectionCard id="security">
+              <h2 className="text-xl font-semibold mb-3">5. Segurança</h2>
+              <p className="text-slate-400">
+                Criptografia, auditorias contínuas e proteção avançada.
               </p>
-            </AnimatedSection>
+            </SectionCard>
 
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">6.</span> Delegado de Proteção de Dados (DPO)
-              </h2>
-              <p className="text-slate-600">
-                SAPIENTE.AI designou um Delegado de Proteção de Dados responsável por garantir conformidade com LGPD e RGPD. Entre em contacto conosco para questões relacionadas a proteção de dados.
+            <SectionCard id="dpo">
+              <h2 className="text-xl font-semibold mb-3">6. DPO</h2>
+              <p className="text-slate-400">
+                Responsável dedicado à proteção de dados.
               </p>
-            </AnimatedSection>
+            </SectionCard>
 
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">7.</span> Incidentes de Segurança
-              </h2>
-              <p className="text-slate-600">
-                Em caso de incidente que comprometa dados pessoais, SAPIENTE.AI notificará os titulares e autoridades competentes conforme exigido pela LGPD e RGPD, dentro dos prazos legais.
+            <SectionCard id="incidents">
+              <h2 className="text-xl font-semibold mb-3">7. Incidentes</h2>
+              <p className="text-slate-400">
+                Notificação conforme exigências legais.
               </p>
-            </AnimatedSection>
+            </SectionCard>
 
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">8.</span> Contato para Questões LGPD/RGPD
-              </h2>
-              <p className="text-slate-600">
-                Para questões sobre proteção de dados, exercer seus direitos, ou reportar incidentes, entre em contacto conosco através da página de contacto do site.
+            <SectionCard id="contact">
+              <h2 className="text-xl font-semibold mb-3">8. Contato</h2>
+              <p className="text-slate-400">
+                Entre em contato via site para exercer seus direitos.
               </p>
-            </AnimatedSection>
+            </SectionCard>
+
           </div>
         </div>
-      </main>
+      </Section>
 
       <Footer />
     </div>

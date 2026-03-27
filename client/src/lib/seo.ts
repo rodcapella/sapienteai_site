@@ -118,7 +118,7 @@ export const organizationSchema = {
   '@type': 'Organization',
   'name': 'SAPIENTE.AI',
   'alternateName': 'Sapiente IA',
-  'url': 'https://sapiente-ai.manus.space',
+  'url': 'https://sapienteai.com',
   'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png',
   'description': 'Soluções de inteligência artificial aplicada para transformação digital de empresas',
   'sameAs': [
@@ -159,7 +159,7 @@ export function articleSchema(article: any) {
     'dateModified': article.date,
     'mainEntityOfPage': {
       '@type': 'WebPage',
-      '@id': `https://sapiente-ai.manus.space/blog/${article.id}`,
+      '@id': `https://sapienteai.com/blog/${article.id}`,
     },
     'keywords': article.category,
     'articleBody': article.content,
@@ -190,7 +190,7 @@ export const localBusinessSchema = {
   '@type': 'LocalBusiness',
   'name': 'SAPIENTE.AI',
   'description': 'Soluções de inteligência artificial aplicada',
-  'url': 'https://sapiente-ai.manus.space',
+  'url': 'https://sapienteai.com',
   'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png',
   'address': {
     '@type': 'PostalAddress',

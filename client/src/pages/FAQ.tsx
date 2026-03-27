@@ -1,12 +1,14 @@
-/**
- * FAQ Page - Frequently Asked Questions
- * Modern tech-forward design with accordion layout
- */
-
 import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
+
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+import { Section } from "@/components/ui/section/Section";
+import { SectionHeader } from "@/components/ui/section/SectionHeader";
+import { SectionTitle } from "@/components/ui/section/SectionTitle";
+import { SectionCard } from "@/components/ui/section/SectionCard";
+
 import { useTranslation } from '@/hooks/useTranslation';
 import { setSEOHead } from '@/components/SEOHead';
 
@@ -15,24 +17,52 @@ interface FAQItem {
   answer: string;
 }
 
-function FAQAccordion({ item, isOpen, onToggle }: { item: FAQItem; isOpen: boolean; onToggle: () => void }) {
+function FAQAccordion({
+  item,
+  isOpen,
+  onToggle
+}: {
+  item: FAQItem;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
   return (
-    <div className="border border-blue-800/50 rounded-2xl overflow-hidden hover:border-cyan-400/50 transition-all duration-300">
-      <button
-        onClick={onToggle}
-        className="w-full px-6 py-4 md:px-8 md:py-6 bg-gradient-to-r from-blue-900/30 to-slate-900/30 hover:from-blue-900/50 hover:to-slate-900/50 transition-all duration-300 flex items-center justify-between"
-      >
-        <h3 className="text-left text-lg font-semibold text-white">{item.question}</h3>
-        <ChevronDown 
-          className={`h-6 w-6 text-cyan-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+    <SectionCard
+      className={`
+        cursor-pointer
+        transition-all
+        ${isOpen ? 'border-cyan-400/40' : ''}
+      `}
+      onClick={onToggle}
+    >
+      {/* HEADER */}
+      <div className="flex items-center justify-between gap-4">
+        <h3 className="text-lg font-medium text-white">
+          {item.question}
+        </h3>
+
+        <ChevronDown
+          className={`
+            h-5 w-5 text-cyan-400
+            transition-transform duration-300
+            ${isOpen ? 'rotate-180' : ''}
+          `}
         />
-      </button>
-      {isOpen && (
-        <div className="px-6 py-4 md:px-8 md:py-6 bg-slate-900/20 border-t border-blue-800/50">
-          <p className="text-slate-300 leading-relaxed text-base md:text-lg">{item.answer}</p>
-        </div>
-      )}
-    </div>
+      </div>
+
+      {/* CONTENT */}
+      <div
+        className={`
+          overflow-hidden
+          transition-all duration-300
+          ${isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}
+        `}
+      >
+        <p className="text-slate-400 leading-relaxed">
+          {item.answer}
+        </p>
+      </div>
+    </SectionCard>
   );
 }
 
@@ -42,101 +72,110 @@ export default function FAQ() {
 
   useEffect(() => {
     setSEOHead({
-      title: 'FAQ - SAPIENTE.AI | Perguntas Frequentes sobre IA e Transformação Digital',
-      description: 'Encontre respostas para as perguntas mais frequentes sobre soluções de IA, implementação, segurança e ROI.',
-      keywords: 'FAQ, perguntas frequentes, IA, inteligência artificial, LGPD, segurança, ROI',
-      url: 'https://sapiente-ai.manus.space/faq',
+      title: 'FAQ - SAPIENTE.AI',
+      description: 'Perguntas frequentes sobre IA, implementação e ROI.',
+      keywords: 'FAQ IA, inteligência artificial, automação',
+      url: 'https://sapienteai.com/faq',
       type: 'website'
     });
   }, []);
 
   const faqs: FAQItem[] = [
-    {
-      question: t('faq.q1'),
-      answer: t('faq.a1')
-    },
-    {
-      question: t('faq.q2'),
-      answer: t('faq.a2')
-    },
-    {
-      question: t('faq.q3'),
-      answer: t('faq.a3')
-    },
+    { question: t('faq.q1'), answer: t('faq.a1') },
+    { question: t('faq.q2'), answer: t('faq.a2') },
+    { question: t('faq.q3'), answer: t('faq.a3') },
     {
       question: 'Qual é o investimento mínimo para um projeto de IA?',
-      answer: 'Não existe um investimento mínimo fixo. Oferecemos soluções escaláveis desde projetos pilotos (€5K-€15K) até implementações enterprise. O importante é começar pequeno, validar resultados e escalar progressivamente.'
+      answer:
+        'Projetos podem começar pequenos (€5K–€15K) e escalar conforme os resultados. O foco é validar rápido e crescer com segurança.'
     },
     {
       question: 'Como funciona o suporte após a implementação?',
-      answer: 'Oferecemos suporte técnico 24/7, monitoramento contínuo dos modelos, otimizações periódicas e treinamento da sua equipe. Temos planos de suporte flexíveis que se adaptam às suas necessidades.'
+      answer:
+        'Monitoramento contínuo, suporte técnico, otimizações e evolução dos modelos conforme o negócio cresce.'
     },
     {
-      question: 'Posso integrar a IA com meus sistemas existentes?',
-      answer: 'Sim! Nossas soluções são projetadas para integração com sistemas legados. Trabalhamos com APIs, webhooks e integrações customizadas para garantir compatibilidade total com sua infraestrutura.'
+      question: 'Posso integrar com sistemas existentes?',
+      answer:
+        'Sim. Integramos com APIs, sistemas legados e ferramentas atuais sem fricção.'
     }
   ];
 
   return (
-    <div className="bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950 min-h-screen">
+    <div className="
+      min-h-screen
+      bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
+      text-white
+      relative
+      overflow-hidden
+    ">
+
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
+      </div>
+
       <Header />
 
-      {/* HERO SECTION */}
-      <section className="pt-20 md:pt-32 pb-16 md:pb-24 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <div className="text-center">
-            <p className="text-cyan-400 font-semibold mb-4 text-sm md:text-base uppercase tracking-wider">
-              {t('faq.label')}
-            </p>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              {t('faq.title')}
-            </h1>
-            <p className="text-xl text-slate-300">
-              Encontre respostas para as dúvidas mais comuns sobre nossas soluções de IA
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* HERO */}
+      <Section id="home">
+        <SectionHeader>
+          <SectionTitle
+            label={t('faq.label')}
+            title={t('faq.title')}
+          />
+        </SectionHeader>
 
-      {/* FAQ SECTION */}
-      <section className="py-32 md:py-40 md:py-32 px-4">
-        <div className="container mx-auto max-w-4xl">
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => (
-              <FAQAccordion
-                key={idx}
-                item={faq}
-                isOpen={openIndex === idx}
-                onToggle={() => setOpenIndex(openIndex === idx ? null : idx)}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA SECTION */}
-      <section className="py-32 md:py-40 md:py-32 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-3xl relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Não encontrou sua resposta?
-          </h2>
-          <p className="text-lg text-slate-300 mb-12">
-            Entre em contato com nossos especialistas e tire suas dúvidas diretamente
+        <div className="text-center max-w-2xl mx-auto text-slate-400">
+          <p>
+            Encontre respostas diretas sobre como usamos IA para gerar resultados reais.
           </p>
-          <button className="bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-3 text-lg font-semibold rounded-2xl transition-colors duration-300">
-            Fale com um Especialista
-          </button>
         </div>
-      </section>
+      </Section>
+
+      {/* FAQ LIST */}
+      <Section>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((faq, idx) => (
+            <FAQAccordion
+              key={idx}
+              item={faq}
+              isOpen={openIndex === idx}
+              onToggle={() =>
+                setOpenIndex(openIndex === idx ? null : idx)
+              }
+            />
+          ))}
+        </div>
+      </Section>
+
+      {/* CTA */}
+      <Section className="text-center">
+        <div className="max-w-2xl mx-auto">
+          <SectionCard variant="highlight">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+              Ainda com dúvidas?
+            </h2>
+
+            <p className="text-slate-400 mb-6">
+              Fala direto com quem implementa IA no mundo real.
+            </p>
+
+            <button className="
+              bg-cyan-400
+              text-black
+              font-medium
+              px-6 py-3
+              rounded-full
+              hover:scale-[1.03]
+              transition
+            ">
+              Falar com especialista
+            </button>
+          </SectionCard>
+        </div>
+      </Section>
 
       <Footer />
     </div>

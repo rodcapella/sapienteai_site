@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes headerEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* =========================
    DESIGN TOKENS
 ========================= */

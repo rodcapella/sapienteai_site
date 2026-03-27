@@ -59,7 +59,7 @@ Disallow: /*.json$
 Disallow: /.env
 
 # Sitemap location
-Sitemap: https://sapiente-ai.manus.space/sitemap.xml
+Sitemap: https://sapienteai.com/sitemap.xml
 
 # Crawl delay for general crawlers
 Crawl-delay: 1

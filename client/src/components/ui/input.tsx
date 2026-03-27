@@ -1,77 +1,45 @@
-import { useDialogComposition } from "@/components/ui/dialog";
-import { useComposition } from "@/hooks/useComposition";
-import { cn } from "@/lib/utils";
 import * as React from "react";
+import { cn } from "@/lib/utils";
 
-function Input({
+export function Input({
   className,
-  type,
-  onKeyDown,
-  onCompositionStart,
-  onCompositionEnd,
   ...props
-}: React.ComponentProps<"input">) {
-  const dialogComposition = useDialogComposition();
-
-  const {
-    onCompositionStart: handleCompositionStart,
-    onCompositionEnd: handleCompositionEnd,
-    onKeyDown: handleKeyDown,
-  } = useComposition<HTMLInputElement>({
-    onKeyDown: (e) => {
-      const isComposing =
-        (e.nativeEvent as any).isComposing ||
-        dialogComposition.justEndedComposing();
-
-      if (e.key === "Enter" && isComposing) return;
-
-      onKeyDown?.(e);
-    },
-
-    onCompositionStart: (e) => {
-      dialogComposition.setComposing(true);
-      onCompositionStart?.(e);
-    },
-
-    onCompositionEnd: (e) => {
-      dialogComposition.markCompositionEnd();
-
-      setTimeout(() => {
-        dialogComposition.setComposing(false);
-      }, 100);
-
-      onCompositionEnd?.(e);
-    },
-  });
-
+}: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
-    <input
-      type={type}
-      data-slot="input"
-      className={cn(
-        // base
-        "w-full h-9 px-3 py-1 rounded-md text-sm outline-none transition-all",
+    <div className="relative group">
+      <input
+        className={cn(
+          `
+          w-full
+          bg-white/[0.03]
+          border border-white/[0.08]
+          rounded-xl
 
-        // colors (v4 safe)
-        "bg-transparent",
-        "text-[var(--foreground)]",
-        "placeholder:text-[var(--muted-foreground)]",
-        "border border-[var(--border)]",
+          px-4 py-3
+          text-sm text-white
 
-        // focus
-        "focus-visible:ring-2 focus-visible:ring-[var(--ring)]",
+          outline-none
+          transition-all duration-300
 
-        // disabled
-        "disabled:opacity-50 disabled:cursor-not-allowed",
+          placeholder:text-slate-500
 
-        className
-      )}
-      onCompositionStart={handleCompositionStart}
-      onCompositionEnd={handleCompositionEnd}
-      onKeyDown={handleKeyDown}
-      {...props}
-    />
+          focus:border-cyan-400/40
+          focus:bg-white/[0.05]
+
+          `,
+          className
+        )}
+        {...props}
+      />
+
+      {/* glow focus */}
+      <div className="
+        pointer-events-none absolute inset-0
+        rounded-xl
+        opacity-0 group-focus-within:opacity-100
+        transition duration-300
+        shadow-[0_0_30px_rgba(0,255,255,0.15)]
+      " />
+    </div>
   );
 }
-
-export { Input };

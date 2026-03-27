@@ -1,29 +1,12 @@
-/**
- * Pillar Page: Inteligência Artificial para Empresas
- * SEO Strategy: Cluster content hub for keyword rankings
- * Main Keywords: IA para empresas, inteligência artificial empresarial, IA aplicada a negócios
- * Internal Linking: Links to blog articles for cluster content strategy
- */
-
 import { ArrowRight, CheckCircle, TrendingUp, Zap, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useState } from 'react';
 import ContactModal from '@/components/ContactModal';
 
-function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  const { ref, isVisible } = useScrollAnimation();
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
+import { Section } from "@/components/ui/section/Section";
+import { SectionHeader } from "@/components/ui/section/SectionHeader";
+import { SectionTitle } from "@/components/ui/section/SectionTitle";
+import { SectionCard } from "@/components/ui/section/SectionCard";
 
 interface ClusterArticle {
   title: string;
@@ -60,13 +43,13 @@ const clusterArticles: ClusterArticle[] = [
   {
     title: 'Deep Learning para Visão Computacional',
     slug: 'deep-learning-visao-computacional',
-    description: 'Aplicações práticas de redes neurais convolucionais em detecção de objetos e análise de imagens.',
+    description: 'Aplicações práticas de redes neurais em análise de imagens.',
     keywords: ['deep learning', 'visão computacional', 'CNN']
   },
   {
     title: 'ROI de Projetos de IA: Como Medir o Sucesso',
     slug: 'roi-projetos-ia',
-    description: 'Métricas e KPIs essenciais para avaliar o retorno sobre investimento em soluções de IA.',
+    description: 'Métricas essenciais para avaliar retorno em IA.',
     keywords: ['ROI', 'negócios', 'métricas']
   }
 ];
@@ -75,275 +58,184 @@ export default function AIPillar() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-foreground shadow-lg">
-        <div className="container">
-          <nav className="flex items-center justify-between h-20">
-            <a href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors">
-              SAPIENTE.AI
-            </a>
-            <a href="/" className="text-sm font-medium hover:text-primary transition-colors">
-              ← Voltar
-            </a>
-          </nav>
-        </div>
-      </header>
+    <div className="
+      min-h-screen 
+      bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
+      text-white
+      relative
+      overflow-hidden
+    ">
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-24 md:pt-40 md:pb-32 bg-gradient-to-br from-white via-primary/5 to-white border-b-4 border-foreground">
-        <div className="container">
-          <AnimatedSection className="max-w-4xl">
-            <p className="text-sm font-bold tracking-[0.3em] text-primary uppercase mb-4">GUIA COMPLETO</p>
-            <h1 className="text-6xl md:text-7xl font-black leading-[1.1] mb-8 text-foreground">
-              Inteligência Artificial para <span className="text-primary">Empresas</span>
-            </h1>
-            <p className="text-xl text-foreground/80 mb-8">
-              Tudo o que você precisa saber sobre IA aplicada a negócios, machine learning empresarial e transformação digital com tecnologia inteligente.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                onClick={() => setIsContactOpen(true)}
-                className="bg-primary text-white hover:bg-primary/90 border-2 border-primary text-lg px-8 py-6 h-auto font-bold"
-              >
-                Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                onClick={() => setIsContactOpen(true)}
-                variant="outline"
-                className="border-2 border-foreground text-foreground hover:bg-foreground/5 text-lg px-8 py-6 h-auto font-bold"
-              >
-                Fale com Especialista
-              </Button>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      {/* BACKGROUND */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
+      </div>
 
-      {/* Contact Modal */}
-      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      {/* HERO */}
+      <Section id="home">
+        <SectionHeader>
+          <SectionTitle
+            label="GUIA COMPLETO"
+            title="Inteligência Artificial para Empresas"
+          />
+        </SectionHeader>
 
-      {/* Definition Section - GEO/AEO Optimization */}
-      <section className="py-32 md:py-40 md:py-32 bg-gradient-to-br from-primary/10 to-primary/5 border-b-4 border-foreground">
-        <div className="container">
-          <AnimatedSection className="max-w-3xl">
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-8">
-              O que é Inteligência Artificial para Empresas?
-            </h2>
-            <div className="space-y-6 text-lg text-foreground/80 leading-relaxed">
-              <p>
-                <strong className="text-foreground">Inteligência Artificial aplicada a negócios</strong> é o uso estratégico de algoritmos, modelos preditivos e sistemas de automação inteligente para otimizar processos, analisar grandes volumes de dados e tomar decisões mais precisas e rápidas.
-              </p>
-              <p>
-                Diferente da automação tradicional, que executa tarefas pré-programadas, a IA aprende com os dados e se adapta continuamente, melhorando seus resultados sem necessidade de reprogramação constante.
-              </p>
-              <p>
-                A SAPIENTE.AI especializa-se em implementar soluções de IA que geram <strong>ROI mensurável</strong>, transformação digital real e crescimento sustentável para empresas de todos os tamanhos.
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+        <div className="max-w-2xl">
+          <p className="text-slate-400 mb-8">
+            Tudo o que você precisa saber sobre IA aplicada a negócios.
+          </p>
 
-      {/* Main Content Sections */}
-      <section className="py-32 md:py-40 md:py-32 bg-white">
-        <div className="container">
-          <div className="space-y-24">
-            {/* Section 1: Benefits */}
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-black text-foreground mb-12">
-                Benefícios da IA para Negócios
-              </h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                {[
-                  {
-                    icon: TrendingUp,
-                    title: 'Aumento de Receita',
-                    description: 'Personalização inteligente, previsão de oportunidades e otimização de preços aumentam vendas em média 25-40%.'
-                  },
-                  {
-                    icon: Zap,
-                    title: 'Redução de Custos',
-                    description: 'Automação de processos repetitivos reduz custos operacionais em até 40% e libera equipes para tarefas estratégicas.'
-                  },
-                  {
-                    icon: Users,
-                    title: 'Melhor Experiência do Cliente',
-                    description: 'Atendimento 24/7 com chatbots inteligentes, recomendações personalizadas e suporte proativo.'
-                  },
-                  {
-                    icon: Shield,
-                    title: 'Decisões Baseadas em Dados',
-                    description: 'Análise preditiva e insights em tempo real para decisões mais precisas e estratégicas.'
-                  }
-                ].map((benefit, index) => (
-                  <div key={index} className="p-8 border-2 border-primary/30 hover:border-primary transition-all bg-gradient-to-br from-white to-primary/5">
-                    <benefit.icon className="h-12 w-12 text-primary mb-4" />
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{benefit.title}</h3>
-                    <p className="text-foreground/70">{benefit.description}</p>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
-
-            {/* Section 2: Applications */}
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-black text-foreground mb-12">
-                Aplicações de IA em Diferentes Setores
-              </h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    sector: 'Varejo',
-                    applications: ['Previsão de demanda', 'Otimização de inventário', 'Personalização de ofertas', 'Análise de comportamento']
-                  },
-                  {
-                    sector: 'Finanças',
-                    applications: ['Análise de risco', 'Detecção de fraude', 'Previsão de mercado', 'Automação de compliance']
-                  },
-                  {
-                    sector: 'Manufatura',
-                    applications: ['Manutenção preditiva', 'Controle de qualidade', 'Otimização de produção', 'Visão computacional']
-                  },
-                  {
-                    sector: 'Saúde',
-                    applications: ['Diagnóstico assistido', 'Análise de imagens', 'Previsão de epidemias', 'Personalização de tratamentos']
-                  }
-                ].map((item, index) => (
-                  <div key={index} className="p-8 border-2 border-foreground hover:border-primary transition-all bg-gradient-to-r from-white to-primary/5">
-                    <h3 className="text-2xl font-bold text-foreground mb-4">{item.sector}</h3>
-                    <ul className="grid md:grid-cols-2 gap-4">
-                      {item.applications.map((app, appIndex) => (
-                        <li key={appIndex} className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                          <span className="text-foreground/80">{app}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
-
-            {/* Section 3: Implementation */}
-            <AnimatedSection>
-              <h2 className="text-4xl md:text-5xl font-black text-foreground mb-12">
-                Como Implementar IA na Sua Empresa
-              </h2>
-              <div className="space-y-6">
-                {[
-                  {
-                    step: '1. Diagnóstico',
-                    description: 'Análise profunda de oportunidades, desafios e maturidade tecnológica da sua empresa.'
-                  },
-                  {
-                    step: '2. Estratégia',
-                    description: 'Definição de roadmap, priorização de projetos e alinhamento com objetivos de negócio.'
-                  },
-                  {
-                    step: '3. Preparação de Dados',
-                    description: 'Coleta, limpeza e estruturação de dados para treinar modelos de IA eficazes.'
-                  },
-                  {
-                    step: '4. Desenvolvimento',
-                    description: 'Criação de modelos, testes e validação com dados reais da sua empresa.'
-                  },
-                  {
-                    step: '5. Implementação',
-                    description: 'Integração com sistemas existentes, treinamento de equipes e deployment em produção.'
-                  },
-                  {
-                    step: '6. Otimização Contínua',
-                    description: 'Monitoramento de performance, ajustes e melhoria contínua dos modelos.'
-                  }
-                ].map((item, index) => (
-                  <div key={index} className="p-8 border-l-4 border-primary bg-gradient-to-r from-primary/5 to-white">
-                    <h3 className="text-xl font-bold text-foreground mb-2">{item.step}</h3>
-                    <p className="text-foreground/70">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* Cluster Content Section */}
-      <section className="py-32 md:py-40 md:py-32 bg-white border-t-4 border-b-4 border-foreground">
-        <div className="container">
-          <AnimatedSection className="mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
-              Conteúdo Relacionado
-            </h2>
-            <p className="text-lg text-foreground/70">
-              Explore artigos e guias detalhados sobre tópicos específicos de IA para empresas.
-            </p>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {clusterArticles.map((article, index) => (
-              <AnimatedSection key={index} className={index >= 3 ? 'delay-100' : ''}>
-                <a href={`/blog/${article.slug}`} className="group block h-full p-8 border-2 border-foreground hover:border-primary transition-all bg-gradient-to-br from-white to-primary/5 hover:shadow-lg">
-                  <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-foreground/70 mb-6">{article.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {article.keywords.map((keyword, keyIndex) => (
-                      <span key={keyIndex} className="text-xs font-medium px-3 py-1 bg-primary/10 text-primary rounded-full">
-                        {keyword}
-                      </span>
-                    ))}
-                  </div>
-                </a>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-32 md:py-40 md:py-32 bg-gradient-to-br from-primary to-primary/80">
-        <div className="container">
-          <AnimatedSection className="max-w-2xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-              Pronto para Implementar IA na Sua Empresa?
-            </h2>
-            <p className="text-lg text-white/90 mb-12">
-              Agende uma reunião com nossos especialistas e descubra como IA pode gerar resultados reais no seu negócio.
-            </p>
-            <Button 
-              onClick={() => setIsContactOpen(true)}
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90 border-2 border-white text-lg px-8 py-6 h-auto font-bold"
-            >
+          <div className="flex gap-4 flex-wrap">
+            <Button onClick={() => setIsContactOpen(true)}>
               Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </AnimatedSection>
-        </div>
-      </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-foreground text-white border-t-4 border-white">
-        <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <h3 className="text-lg font-bold mb-2">SAPIENTE.AI</h3>
-              <p className="text-sm text-white/70">
-                Inteligência Artificial Aplicada aos Negócios
-              </p>
-            </div>
-            <div className="flex items-center gap-6 text-sm text-white/70">
-              <a href="/" className="hover:text-white transition-colors">Home</a>
-              <a href="/blog" className="hover:text-white transition-colors">Blog</a>
-              <a href="/" className="hover:text-white transition-colors">Contato</a>
-            </div>
-            <p className="text-sm text-white/70">
-              © 2026 SAPIENTE.AI • Todos os direitos reservados
-            </p>
+            <Button variant="outline">
+              Fale com Especialista
+            </Button>
           </div>
         </div>
-      </footer>
+      </Section>
+
+      <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+
+      {/* DEFINIÇÃO */}
+      <Section id="definition">
+        <div className="max-w-3xl space-y-6 text-slate-400 leading-relaxed">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white">
+            O que é Inteligência Artificial para Empresas?
+          </h2>
+
+          <p>
+            <strong className="text-white">IA aplicada a negócios</strong> usa dados e algoritmos para decisões mais rápidas e precisas.
+          </p>
+
+          <p>
+            Diferente da automação tradicional, a IA aprende e evolui continuamente.
+          </p>
+
+          <p>
+            O foco é gerar <strong className="text-white">ROI real</strong> e crescimento sustentável.
+          </p>
+        </div>
+      </Section>
+
+      {/* BENEFÍCIOS */}
+      <Section id="benefits">
+        <SectionHeader>
+          <SectionTitle title="Benefícios da IA para Negócios" />
+        </SectionHeader>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {[
+            {
+              icon: TrendingUp,
+              title: 'Aumento de Receita',
+              description: 'Aumento de vendas com personalização inteligente.'
+            },
+            {
+              icon: Zap,
+              title: 'Redução de Custos',
+              description: 'Automação reduz custos operacionais.'
+            },
+            {
+              icon: Users,
+              title: 'Experiência do Cliente',
+              description: 'Atendimento inteligente e personalizado.'
+            },
+            {
+              icon: Shield,
+              title: 'Decisões Inteligentes',
+              description: 'Insights baseados em dados.'
+            }
+          ].map((b, i) => {
+            const Icon = b.icon;
+
+            return (
+              <SectionCard key={i}>
+                <Icon className="h-10 w-10 text-cyan-400 mb-4" />
+                <h3 className="text-xl font-semibold mb-2">{b.title}</h3>
+                <p className="text-slate-400">{b.description}</p>
+              </SectionCard>
+            );
+          })}
+        </div>
+      </Section>
+
+      {/* APLICAÇÕES */}
+      <Section id="applications">
+        <SectionHeader>
+          <SectionTitle title="Aplicações por Setor" />
+        </SectionHeader>
+
+        <div className="space-y-6 max-w-5xl mx-auto">
+          {[
+            { sector: 'Varejo', apps: ['Previsão', 'Inventário'] },
+            { sector: 'Finanças', apps: ['Fraude', 'Risco'] },
+            { sector: 'Saúde', apps: ['Diagnóstico', 'Análise'] }
+          ].map((item, i) => (
+            <SectionCard key={i} variant="subtle">
+              <h3 className="text-xl font-semibold mb-4">{item.sector}</h3>
+
+              <ul className="grid md:grid-cols-2 gap-3">
+                {item.apps.map((app, idx) => (
+                  <li key={idx} className="flex gap-2 items-center text-slate-400">
+                    <CheckCircle className="h-4 w-4 text-cyan-400" />
+                    {app}
+                  </li>
+                ))}
+              </ul>
+            </SectionCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* CLUSTER */}
+      <Section id="articles">
+        <SectionHeader>
+          <SectionTitle title="Conteúdo Relacionado" />
+        </SectionHeader>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {clusterArticles.map((article, i) => (
+            <SectionCard key={i} className="group cursor-pointer">
+              <h3 className="text-lg font-semibold mb-3 group-hover:text-cyan-400 transition">
+                {article.title}
+              </h3>
+
+              <p className="text-slate-400 mb-4">
+                {article.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {article.keywords.map((k, idx) => (
+                  <span key={idx} className="text-xs px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-300">
+                    {k}
+                  </span>
+                ))}
+              </div>
+            </SectionCard>
+          ))}
+        </div>
+      </Section>
+
+      {/* CTA */}
+      <Section id="cta" className="text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-4xl font-semibold mb-6">
+            Pronto para implementar IA?
+          </h2>
+
+          <p className="text-slate-400 mb-10">
+            Descubra como gerar resultados reais.
+          </p>
+
+          <Button onClick={() => setIsContactOpen(true)}>
+            Solicitar Diagnóstico
+          </Button>
+        </div>
+      </Section>
     </div>
   );
 }
