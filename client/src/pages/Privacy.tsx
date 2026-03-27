@@ -1,13 +1,18 @@
 /*
- * Privacy Policy - Política de Privacidade Page
- * English version
+ * Política de Privacidade - Privacy Policy Page
+ * Portuguese (Portugal) - Default language
+ * Design: Matches SAPIENTE.AI visual identity with dark header, white content, dark footer
  */
 
 import { ArrowLeft } from 'lucide-react';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
+import { useTranslation } from '@/hooks/useTranslation';
+import { setSEOHead } from '@/components/SEOHead';
 
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation();
@@ -23,137 +28,128 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
-export default function Privacy() {
-  return (
-    <div className="min-h-screen bg-white">
-      <Header />
+export default function Privacidade() {
+  const { t } = useTranslation();
 
-      {/* Content */}
-      <main className="pt-24 pb-24 md:pt-32 md:pb-32">
+  useEffect(() => {
+    setSEOHead({
+      title: 'Politica de Privacidade - SAPIENTE.AI',
+      description: 'Politica de privacidade da SAPIENTE.AI. Conformidade com LGPD e GDPR. Protecao de dados pessoais.',
+      keywords: 'privacidade, LGPD, GDPR, protecao de dados, politica de privacidade',
+      url: 'https://sapiente-ai.manus.space/privacidade',
+      type: 'website'
+    });
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-white flex flex-col">
+      <Header />
+      <Breadcrumb />
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 md:py-32 md:py-40">
         <div className="container max-w-4xl">
-          <AnimatedSection className="mb-12">
-            <h1 className="text-5xl md:text-6xl font-black text-foreground mb-6">
-              Privacy Policy
+          <AnimatedSection>
+            <div className="flex items-center gap-4 mb-6">
+              <a href="/" className="text-white/70 hover:text-white transition-colors">
+                <ArrowLeft className="h-5 w-5" />
+              </a>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-black mb-4">
+              {t('legal.privacy.title')}
             </h1>
-            <p className="text-lg text-foreground/70">
-              Last updated: February 12, 2026
+            <p className="text-lg text-white/70">
+              {t('legal.privacy.lastUpdated')} 16 de Fevereiro de 2026
             </p>
           </AnimatedSection>
+        </div>
+      </section>
 
-          <div className="space-y-12 text-foreground/80 leading-relaxed">
+      {/* Content */}
+      <main className="flex-grow py-16 md:py-32 md:py-40">
+        <div className="container max-w-4xl">
+          <div className="space-y-12 text-slate-700 leading-relaxed">
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">1. Overview</h2>
-              <p>
-                SAPIENTE.AI respects your privacy and is committed to being transparent about how we collect, use and protect your personal data. This Privacy Policy describes our privacy practices.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">1.</span> {t('legal.privacy.overview')}
+              </h2>
+              <p className="text-slate-600">
+                {t('legal.privacy.intro')}
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">2. Information We Collect</h2>
-              <p className="mb-4">We may collect the following information:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Contact Information:</strong> Name, email, phone, address, company</li>
-                <li><strong>Navigation Information:</strong> IP address, browser type, pages visited, time spent</li>
-                <li><strong>Cookies and Similar Technologies:</strong> To improve user experience</li>
-                <li><strong>Form Information:</strong> Data you voluntarily submit</li>
-                <li><strong>Communication Information:</strong> Content of emails and messages</li>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">2.</span> Dados que Recolhemos
+              </h2>
+              <p className="text-slate-600 mb-4">
+                Recolhemos dados pessoais que você nos fornece diretamente, incluindo:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-slate-600">
+                <li>Nome e informações de contacto (email, telefone)</li>
+                <li>Informações da empresa e cargo</li>
+                <li>Dados de navegação e uso do site</li>
+                <li>Informações de transações e pagamentos</li>
               </ul>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">3. How We Use Information</h2>
-              <p className="mb-4">We use information to:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Provide and improve our services</li>
-                <li>Respond to your inquiries and requests</li>
-                <li>Send updates and marketing communications</li>
-                <li>Personalize your experience</li>
-                <li>Data analysis and website optimization</li>
-                <li>Comply with legal obligations</li>
-                <li>Prevent fraud and abuse</li>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">3.</span> Como Utilizamos os Seus Dados
+              </h2>
+              <p className="text-slate-600 mb-4">
+                Utilizamos os dados recolhidos para:
+              </p>
+              <ul className="list-disc list-inside space-y-2 text-slate-600">
+                <li>Fornecer e melhorar os nossos serviços</li>
+                <li>Comunicar atualizações e ofertas relevantes</li>
+                <li>Cumprir obrigações legais</li>
+                <li>Prevenir fraude e garantir segurança</li>
               </ul>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">4. Cookies</h2>
-              <p>
-                We use cookies to improve your experience. Cookies are small files stored on your device. You can control cookie preferences in your browser settings. Some cookies are essential for website functionality.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">4.</span> Segurança dos Dados
+              </h2>
+              <p className="text-slate-600">
+                Implementamos medidas de segurança técnicas e organizacionais para proteger seus dados pessoais contra acesso não autorizado, alteração, divulgação ou destruição.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">5. Information Sharing</h2>
-              <p>
-                We do not sell your personal information. We may share information with trusted partners who help us provide services, under strict confidentiality agreements. We may also disclose information when required by law.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">5.</span> Conformidade LGPD/GDPR
+              </h2>
+              <p className="text-slate-600">
+                SAPIENTE.AI está em conformidade total com a Lei Geral de Proteção de Dados (LGPD) brasileira e o Regulamento Geral sobre a Proteção de Dados (GDPR) europeu.
               </p>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">6. Data Security</h2>
-              <p>
-                We implement technical and organizational security measures to protect your data against unauthorized access, alteration or destruction. We use SSL/TLS encryption, firewalls and strict access control.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">6.</span> Seus Direitos
+              </h2>
+              <p className="text-slate-600 mb-4">
+                Você tem o direito de:
               </p>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">7. Data Retention</h2>
-              <p>
-                We retain your data only as long as necessary for the purposes described. You can request deletion of your data at any time, subject to legal retention obligations.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">8. Your Rights</h2>
-              <p className="mb-4">You have the following rights:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Right to access your data</li>
-                <li>Right to correct inaccurate data</li>
-                <li>Right to be forgotten (deletion)</li>
-                <li>Right to restrict processing</li>
-                <li>Right to data portability</li>
-                <li>Right to withdraw consent</li>
-                <li>Right to object to processing</li>
+              <ul className="list-disc list-inside space-y-2 text-slate-600">
+                <li>Acessar seus dados pessoais</li>
+                <li>Corrigir dados imprecisos</li>
+                <li>Solicitar exclusão de dados</li>
+                <li>Revogar consentimento a qualquer momento</li>
               </ul>
             </AnimatedSection>
 
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">9. External Links</h2>
-              <p>
-                Our website may contain links to external sites. We are not responsible for third-party privacy policies. We recommend that you review the privacy policies of any website you visit.
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">10. Contact Us</h2>
-              <p>
-                For questions about this Privacy Policy or to exercise your rights, contact us at: <strong>sapiente.ai.oficial@gmail.com</strong>
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection>
-              <h2 className="text-3xl font-bold text-foreground mb-4">11. Changes to This Policy</h2>
-              <p>
-                We may update this policy periodically. We will notify you of significant changes by posting the new policy on this website.
+              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
+                <span className="text-cyan-500">7.</span> Contacte-nos
+              </h2>
+              <p className="text-slate-600">
+                Para questões sobre privacidade, entre em contacto conosco através da página de contacto do site.
               </p>
             </AnimatedSection>
           </div>
-
-          <AnimatedSection className="mt-16 pt-12 border-t-4 border-foreground">
-            <div className="flex gap-4">
-              <Button 
-                onClick={() => window.history.back()}
-                variant="outline"
-                className="border-2 border-foreground text-foreground hover:bg-foreground/5"
-              >
-                ← Back
-              </Button>
-              <a href="/" className="inline-block">
-                <Button className="bg-primary text-white hover:bg-primary/90 border-2 border-primary">
-                  Go to Home
-                </Button>
-              </a>
-            </div>
-          </AnimatedSection>
         </div>
       </main>
 
