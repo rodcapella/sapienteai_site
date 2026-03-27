@@ -36,5 +36,10 @@
     "autoprefixer": "^10.4.20",
     "tailwindcss-animate": "^1.0.7",
     "@tailwindcss/postcss": "^4.0.0"
+  },
+  {
+    "scripts": {
+      "build": "node scripts/generate-sitemap.js && vite build"
+    }
   }
 }

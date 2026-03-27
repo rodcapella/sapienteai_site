@@ -12,6 +12,8 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 import { useTranslation } from '@/hooks/useTranslation';
 import { setSEOHead } from '@/components/SEOHead';
 
+import { generateFAQSchema } from "@/lib/faqSchema";
+
 interface FAQItem {
   question: string;
   answer: string;
@@ -100,6 +102,24 @@ export default function FAQ() {
         'Sim. Integramos com APIs, sistemas legados e ferramentas atuais sem fricção.'
     }
   ];
+
+  useEffect(() => {
+    const existing = document.getElementById("faq-schema");
+    if (existing) existing.remove();
+
+    const schema = generateFAQSchema(faqs);
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "faq-schema";
+    script.innerHTML = JSON.stringify(schema);
+
+    document.head.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, [faqs]);
 
   return (
     <div className="
