@@ -1,11 +1,15 @@
 import { translations } from '@/lib/translations';
+import { useLanguage } from '@/hooks/useLanguage';
+import { useLocation } from "wouter";
 
 export function useTranslation() {
-  const language = 'pt-PT';
+  const [location] = useLocation();
 
-  const t = (key: string): string => {
-    return translations[language]?.[key] ?? key;
+  const lang = location.startsWith("/en") ? "en" : "pt";
+
+  const t = (key: string) => {
+    return translations[lang]?.[key] ?? key;
   };
 
-  return { t, language };
+  return { t, lang };
 }

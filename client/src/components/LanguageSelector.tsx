@@ -1,37 +1,62 @@
-import { useLanguage, type Language } from '@/contexts/LanguageContext';
-
-const languages: { code: Language; label: string; flagUrl: string; countryName: string }[] = [
-  { code: 'pt-PT', label: 'PT-PT', flagUrl: '/media/flags/pt-PT.png', countryName: 'Portugal' },
-  { code: 'en', label: 'EN', flagUrl: '/media/flags/en.png', countryName: 'English' },
-];
+import { motion } from "framer-motion";
+import { useLanguage } from "@/hooks/useLanguage";
+import { preloadPage } from "@/hooks/usePreload";
+import { useLocation } from "wouter";
 
 export function LanguageSelector() {
-  const { language, setLanguage } = useLanguage();
+  const { lang } = useLanguage();
+  const [location, setLocation] = useLocation();
+
+  const handleSwitch = () => {
+    const scrollY = window.scrollY;
+
+    const newLang = lang === "pt" ? "en" : "pt";
+    const newPath = location.replace(/^\/(pt|en)/, `/${newLang}`);
+
+    preloadPage(newPath);
+
+    setLocation(newPath);
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
+    });
 
   return (
-    <div className="flex items-center gap-2" role="group" aria-label="Language selector">
-      {languages.map((lang) => (
-        <button
-          key={lang.code}
-          onClick={() => setLanguage(lang.code)}
-          className={`relative w-10 h-10 rounded-2xl transition-all border-2 flex items-center justify-center overflow-hidden ${
-            language === lang.code
-              ? 'border-blue-600 shadow-lg scale-105 ring-2 ring-blue-300'
-              : 'border-slate-300 hover:border-blue-400 hover:shadow-md'
-          }`}
-          title={`Switch to ${lang.countryName} (${lang.label})`}
-          aria-label={`Switch to ${lang.countryName} (${lang.label})`}
-          aria-pressed={language === lang.code}
-          type="button"
-        >
-          <img
-            src={lang.flagUrl}
-            alt={`${lang.countryName} flag`}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </button>
-      ))}
-    </div>
+    <button
+      onClick={handleSwitch}
+      onMouseEnter={() => {
+        const newLang = lang === "pt" ? "en" : "pt";
+        const newPath = location.replace(/^\/(pt|en)/, `/${newLang}`);
+        preloadPage(newPath);
+      }}
+      className="
+        relative flex items-center gap-2
+        px-3 py-2 rounded-xl
+        bg-white/[0.04]
+        border border-white/10
+        hover:border-cyan-400/40
+        transition-all
+      "
+    >
+      <span className="text-lg">
+        {lang === "pt" ? "🇵🇹" : "🇺🇸"}
+      </span>
+
+      <span className="text-sm text-white/70 uppercase">
+        {lang}
+      </span>
+
+      <motion.div
+        layoutId="lang-indicator"
+        className="
+          absolute inset-0 rounded-xl
+          bg-cyan-400/10
+          blur-md
+          -z-10
+        "
+      />
+    </button>
   );
 }
