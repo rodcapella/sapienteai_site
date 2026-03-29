@@ -64,6 +64,14 @@ export default function App() {
             {(params) => <Home lang={params.lang} />}
           </Route>
 
+          <Route path="/:lang/about">
+            {(params) => <About  lang={params.lang} />}
+          </Route>
+
+          <Route path="/:lang/team">
+            {(params) => <Team  lang={params.lang} />}
+          </Route>
+
           <Route path="/:lang/faq">
             {(params) => <FAQ lang={params.lang} />}
           </Route>

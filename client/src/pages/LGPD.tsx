@@ -3,10 +3,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 import { Section } from "@/components/ui/section/Section";
-import { SectionHeader } from "@/components/ui/section/SectionHeader";
-import { SectionTitle } from "@/components/ui/section/SectionTitle";
-import { SectionCard } from "@/components/ui/section/SectionCard";
-
 import { TOC } from "@/components/ui/navigation/TOC";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { setSEOHead } from '@/components/SEOHead';
@@ -15,139 +11,191 @@ export default function LGPD() {
 
   useEffect(() => {
     setSEOHead({
-      title: 'LGPD & RGPD - Protecao de Dados - SAPIENTE.AI',
+      title: 'LGPD & GDPR - Proteção de Dados - SAPIENTE.AI',
       description: 'Conformidade LGPD e GDPR.',
-      keywords: 'LGPD, GDPR, protecao de dados',
+      keywords: 'LGPD, GDPR, proteção de dados',
       url: 'https://sapienteai.com/lgpd',
       type: 'website'
     });
   }, []);
 
-  const tocItems = [
-    { id: "compliance", label: "Conformidade" },
-    { id: "storage", label: "Armazenamento" },
-    { id: "rights", label: "Direitos" },
-    { id: "legal", label: "Bases Legais" },
-    { id: "security", label: "Segurança" },
-    { id: "dpo", label: "DPO" },
-    { id: "incidents", label: "Incidentes" },
-    { id: "contact", label: "Contato" }
+  const sections = [
+    {
+      id: "compliance",
+      title: "1. Conformidade Regulatória",
+      content:
+        "A SAPIENTE.AI atua em conformidade com a LGPD (Lei nº 13.709/2018) e o RGPD (UE 2016/679), adotando práticas alinhadas às melhores referências internacionais."
+    },
+    {
+      id: "ai",
+      title: "2. Uso de Inteligência Artificial",
+      content:
+        "Utilizamos IA de forma responsável, garantindo explicabilidade, minimização de dados e supervisão humana quando necessário."
+    },
+    {
+      id: "infrastructure",
+      title: "3. Infraestrutura e Jurisdição",
+      content:
+        "Utilizamos exclusivamente ferramentas e provedores com conformidade própria em GDPR, com processamento em ambiente europeu (UE/EEA)."
+    },
+    {
+      id: "vendors",
+      title: "4. Subprocessadores",
+      content:
+        "Todos os parceiros passam por validação com DPA, SCC e critérios rigorosos de segurança."
+    },
+    {
+      id: "storage",
+      title: "5. Armazenamento e Proteção",
+      content: [
+        "Criptografia em trânsito e em repouso",
+        "Arquitetura Zero Trust",
+        "Segregação de dados",
+        "Políticas de retenção seguras"
+      ]
+    },
+    {
+      id: "rights",
+      title: "6. Direitos dos Titulares",
+      content: [
+        "Acesso e confirmação",
+        "Correção",
+        "Eliminação",
+        "Portabilidade",
+        "Revogação de consentimento"
+      ]
+    },
+    {
+      id: "security",
+      title: "7. Segurança da Informação",
+      content:
+        "Controles alinhados a ISO 27001 e NIST, com monitoramento contínuo e auditorias periódicas."
+    },
+    {
+      id: "governance",
+      title: "8. Governança",
+      content:
+        "Processos estruturados garantem rastreabilidade e conformidade contínua."
+    },
+    {
+      id: "incidents",
+      title: "9. Incidentes",
+      content:
+        "Resposta estruturada com notificação conforme exigido por lei."
+    },
+    {
+      id: "dpo",
+      title: "10. DPO",
+      content:
+        "Responsável designado para proteção de dados e comunicação regulatória."
+    },
+    {
+      id: "international",
+      title: "11. Transferência Internacional",
+      content:
+        "Realizada com SCC e mecanismos legais adequados."
+    },
+    {
+      id: "privacy",
+      title: "15. Privacy by Design & Data Minimization",
+      content:
+        "A SAPIENTE.AI adota os princípios de Privacy by Design e Privacy by Default, garantindo que a coleta e o processamento de dados sejam limitados ao mínimo necessário para cada finalidade. Nossos sistemas são projetados desde a origem para reduzir exposição de dados, aplicar anonimização sempre que possível e evitar retenção desnecessária, assegurando conformidade contínua com os requisitos do GDPR e LGPD."
+    },
+    {
+      id: "ai-ethics",
+      title: "16. AI Ethics & Responsible AI",
+      content:
+        "A SAPIENTE.AI desenvolve e utiliza sistemas de Inteligência Artificial seguindo princípios de responsabilidade, transparência e controle humano. Garantimos que modelos não sejam utilizados para decisões automatizadas sensíveis sem supervisão adequada, evitando vieses, discriminação e uso indevido de dados."
+    },
+    {
+      id: "retention",
+      title: "12. Retenção",
+      content:
+        "Dados mantidos apenas pelo tempo necessário, seguindo princípios de minimização."
+    },
+    {
+      id: "contact",
+      title: "13. Contato",
+      content:
+        "Solicitações podem ser realizadas através dos canais oficiais."
+    }
   ];
 
-  const activeId = useScrollSpy(tocItems.map(i => i.id));
+  const tocItems = sections.map(s => ({
+    id: s.id,
+    label: s.title.replace(/^\d+\.\s/, "")
+  }));
+
+  const activeId = useScrollSpy(sections.map(s => s.id));
 
   return (
-    <div className="
-      min-h-screen
-      bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
-      text-white
-      relative
-      overflow-hidden
-    ">
-
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
-      </div>
+    <div className="min-h-screen bg-white text-gray-900">
 
       <Header />
 
       {/* HERO */}
-      <Section>
-        <SectionHeader>
-          <SectionTitle
-            label="Legal"
-            title="LGPD & GDPR Compliance"
-          />
-        </SectionHeader>
+      <Section className="pt-32 pb-16">
+        <div className="max-w-3xl mx-auto text-center">
 
-        <div className="text-center max-w-2xl mx-auto text-slate-400">
-          <p>
-            Proteção de dados com conformidade total entre Brasil e Europa.
+          <p className="text-sm text-gray-500 mb-4 uppercase tracking-wider">
+            Documento Legal
           </p>
+
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+            LGPD & GDPR Compliance
+          </h1>
+
+          <p className="text-gray-600">
+            Política de proteção de dados e conformidade internacional.
+          </p>
+
         </div>
       </Section>
 
-      {/* CONTENT + TOC */}
+      {/* CONTENT */}
       <Section>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-[250px_1fr] gap-12">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-[220px_1fr] gap-16">
 
           {/* TOC */}
-          <div className="hidden md:block">
-            <TOC items={tocItems} activeId={activeId} />
-          </div>
+          <aside className="hidden md:block">
+            <div className="sticky top-24">
+              <TOC items={tocItems} activeId={activeId} />
+            </div>
+          </aside>
 
-          {/* CONTENT */}
-          <div className="space-y-6">
+          {/* DOCUMENT */}
+          <div className="space-y-12">
 
-            <SectionCard id="compliance">
-              <h2 className="text-xl font-semibold mb-3">1. Conformidade LGPD & RGPD</h2>
-              <p className="text-slate-400">
-                SAPIENTE.AI está em conformidade com LGPD e RGPD, garantindo proteção de dados em múltiplas jurisdições.
-              </p>
-            </SectionCard>
+            {sections.map((section) => (
+              <section key={section.id} id={section.id} className="space-y-4">
 
-            <SectionCard id="storage">
-              <h2 className="text-xl font-semibold mb-3">2. Armazenamento de Dados</h2>
-              <ul className="text-slate-400 space-y-2 list-disc ml-5">
-                <li>Criptografia end-to-end</li>
-                <li>ISO 27001</li>
-                <li>DPA com fornecedores</li>
-                <li>Transferências seguras (SCC)</li>
-              </ul>
-            </SectionCard>
+                <h2 className="text-xl font-semibold">
+                  {section.title}
+                </h2>
 
-            <SectionCard id="rights">
-              <h2 className="text-xl font-semibold mb-3">3. Direitos dos Titulares</h2>
-              <ul className="text-slate-400 space-y-2 list-disc ml-5">
-                <li>Acesso</li>
-                <li>Correção</li>
-                <li>Exclusão</li>
-                <li>Portabilidade</li>
-              </ul>
-            </SectionCard>
+                {Array.isArray(section.content) ? (
+                  <ul className="list-disc ml-5 space-y-2 text-gray-600">
+                    {section.content.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-600 leading-relaxed">
+                    {section.content}
+                  </p>
+                )}
 
-            <SectionCard id="legal">
-              <h2 className="text-xl font-semibold mb-3">4. Bases Legais</h2>
-              <p className="text-slate-400">
-                Consentimento, contrato, obrigação legal e interesse legítimo.
-              </p>
-            </SectionCard>
+                <div className="border-b border-gray-200 pt-6" />
 
-            <SectionCard id="security">
-              <h2 className="text-xl font-semibold mb-3">5. Segurança</h2>
-              <p className="text-slate-400">
-                Criptografia, auditorias contínuas e proteção avançada.
-              </p>
-            </SectionCard>
-
-            <SectionCard id="dpo">
-              <h2 className="text-xl font-semibold mb-3">6. DPO</h2>
-              <p className="text-slate-400">
-                Responsável dedicado à proteção de dados.
-              </p>
-            </SectionCard>
-
-            <SectionCard id="incidents">
-              <h2 className="text-xl font-semibold mb-3">7. Incidentes</h2>
-              <p className="text-slate-400">
-                Notificação conforme exigências legais.
-              </p>
-            </SectionCard>
-
-            <SectionCard id="contact">
-              <h2 className="text-xl font-semibold mb-3">8. Contato</h2>
-              <p className="text-slate-400">
-                Entre em contato via site para exercer seus direitos.
-              </p>
-            </SectionCard>
+              </section>
+            ))}
 
           </div>
         </div>
       </Section>
 
       <Footer />
+
     </div>
   );
 }

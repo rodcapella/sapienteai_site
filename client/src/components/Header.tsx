@@ -90,6 +90,20 @@ export default function Header({ onContactClick }: HeaderProps) {
               </NavLink>
 
               <NavLink
+                href={`/${lang}/about`}
+                className="text-sm text-gray-900 font-medium"
+              >
+                {t('nav.about')}
+              </NavLink>
+
+              <NavLink
+                href={`/${lang}/team`}
+                className="text-sm text-gray-900 font-medium"
+              >
+                {t('nav.team')}
+              </NavLink>
+
+              <NavLink
                 href={`/${lang}/portfolio`}
                 className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
               >

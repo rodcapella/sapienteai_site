@@ -36,7 +36,7 @@ export default function Privacidade() {
       title: 'Politica de Privacidade - SAPIENTE.AI',
       description: 'Politica de privacidade da SAPIENTE.AI. Conformidade com LGPD e GDPR. Protecao de dados pessoais.',
       keywords: 'privacidade, LGPD, GDPR, protecao de dados, politica de privacidade',
-      url: 'https://sapiente-ai.manus.space/privacidade',
+      url: 'https://sapiente-ai.manus.space/privacy',
       type: 'website'
     });
   }, []);
@@ -68,87 +68,138 @@ export default function Privacidade() {
       {/* Content */}
       <main className="flex-grow py-16 md:py-32 md:py-40">
         <div className="container max-w-4xl">
-          <div className="space-y-12 text-slate-700 leading-relaxed">
+          <div className="space-y-16 text-slate-700 leading-relaxed">
+
+            {/* 1 */}
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">1.</span> {t('legal.privacy.overview')}
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                1. Enquadramento Geral
               </h2>
               <p className="text-slate-600">
-                {t('legal.privacy.intro')}
+                A SAPIENTE.AI compromete-se a proteger a privacidade e os dados pessoais dos seus utilizadores,
+                atuando em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD - UE 2016/679)
+                e a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018).
               </p>
             </AnimatedSection>
 
+            {/* 2 */}
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">2.</span> Dados que Recolhemos
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                2. Dados Pessoais Tratados
               </h2>
-              <p className="text-slate-600 mb-4">
-                Recolhemos dados pessoais que você nos fornece diretamente, incluindo:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-slate-600">
-                <li>Nome e informações de contacto (email, telefone)</li>
-                <li>Informações da empresa e cargo</li>
-                <li>Dados de navegação e uso do site</li>
-                <li>Informações de transações e pagamentos</li>
+              <ul className="list-disc ml-5 space-y-2 text-slate-600">
+                <li>Dados de identificação (nome, email, telefone)</li>
+                <li>Informações profissionais (empresa, função)</li>
+                <li>Dados técnicos (IP, dispositivo, navegação)</li>
+                <li>Dados de utilização dos serviços</li>
               </ul>
             </AnimatedSection>
 
+            {/* 3 */}
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">3.</span> Como Utilizamos os Seus Dados
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                3. Finalidades do Tratamento
               </h2>
-              <p className="text-slate-600 mb-4">
-                Utilizamos os dados recolhidos para:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-slate-600">
-                <li>Fornecer e melhorar os nossos serviços</li>
-                <li>Comunicar atualizações e ofertas relevantes</li>
-                <li>Cumprir obrigações legais</li>
-                <li>Prevenir fraude e garantir segurança</li>
+              <ul className="list-disc ml-5 space-y-2 text-slate-600">
+                <li>Prestação e melhoria dos serviços</li>
+                <li>Gestão de relacionamento com clientes</li>
+                <li>Cumprimento de obrigações legais</li>
+                <li>Segurança e prevenção de fraude</li>
               </ul>
             </AnimatedSection>
 
+            {/* 4 */}
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">4.</span> Segurança dos Dados
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                4. Bases Legais
               </h2>
               <p className="text-slate-600">
-                Implementamos medidas de segurança técnicas e organizacionais para proteger seus dados pessoais contra acesso não autorizado, alteração, divulgação ou destruição.
+                O tratamento de dados é realizado com base em consentimento, execução de contrato,
+                cumprimento de obrigações legais e interesse legítimo, conforme previsto no RGPD e LGPD.
               </p>
             </AnimatedSection>
 
+            {/* 5 */}
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">5.</span> Conformidade LGPD/GDPR
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                5. Partilha de Dados e Subprocessadores
               </h2>
               <p className="text-slate-600">
-                SAPIENTE.AI está em conformidade total com a Lei Geral de Proteção de Dados (LGPD) brasileira e o Regulamento Geral sobre a Proteção de Dados (GDPR) europeu.
+                A SAPIENTE.AI poderá recorrer a fornecedores e subprocessadores que cumpram integralmente
+                o RGPD, mediante acordos de processamento de dados (DPA) e cláusulas contratuais padrão (SCC),
+                garantindo níveis adequados de proteção.
               </p>
             </AnimatedSection>
 
+            {/* 6 */}
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">6.</span> Seus Direitos
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                6. Transferências Internacionais
               </h2>
-              <p className="text-slate-600 mb-4">
-                Você tem o direito de:
+              <p className="text-slate-600">
+                Sempre que aplicável, as transferências internacionais de dados são realizadas com base em
+                mecanismos legais adequados, incluindo SCC e garantias equivalentes de proteção.
               </p>
-              <ul className="list-disc list-inside space-y-2 text-slate-600">
-                <li>Acessar seus dados pessoais</li>
-                <li>Corrigir dados imprecisos</li>
-                <li>Solicitar exclusão de dados</li>
-                <li>Revogar consentimento a qualquer momento</li>
+            </AnimatedSection>
+
+            {/* 7 */}
+            <AnimatedSection>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                7. Segurança da Informação
+              </h2>
+              <p className="text-slate-600">
+                São implementadas medidas técnicas e organizacionais alinhadas com frameworks internacionais,
+                incluindo criptografia, controlo de acessos e monitorização contínua.
+              </p>
+            </AnimatedSection>
+
+            {/* 8 */}
+            <AnimatedSection>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                8. Privacy by Design e Minimização de Dados
+              </h2>
+              <p className="text-slate-600">
+                Os sistemas da SAPIENTE.AI são concebidos com base nos princípios de Privacy by Design e
+                Privacy by Default, assegurando que apenas os dados estritamente necessários são tratados
+                para cada finalidade.
+              </p>
+            </AnimatedSection>
+
+            {/* 9 */}
+            <AnimatedSection>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                9. Retenção de Dados
+              </h2>
+              <p className="text-slate-600">
+                Os dados pessoais são conservados apenas pelo período necessário ao cumprimento das finalidades
+                definidas, respeitando obrigações legais e regulatórias.
+              </p>
+            </AnimatedSection>
+
+            {/* 10 */}
+            <AnimatedSection>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                10. Direitos dos Titulares
+              </h2>
+              <ul className="list-disc ml-5 space-y-2 text-slate-600">
+                <li>Acesso, retificação e eliminação</li>
+                <li>Limitação e oposição ao tratamento</li>
+                <li>Portabilidade dos dados</li>
+                <li>Revogação de consentimento</li>
               </ul>
             </AnimatedSection>
 
+            {/* 11 */}
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                <span className="text-cyan-500">7.</span> Contacte-nos
+              <h2 className="text-2xl font-semibold text-slate-900 mb-4">
+                11. Contacto
               </h2>
               <p className="text-slate-600">
-                Para questões sobre privacidade, entre em contacto conosco através da página de contacto do site.
+                Para exercer os seus direitos ou esclarecer questões relacionadas com proteção de dados,
+                poderá contactar a SAPIENTE.AI através dos canais oficiais disponibilizados no website.
               </p>
             </AnimatedSection>
+
           </div>
         </div>
       </main>
