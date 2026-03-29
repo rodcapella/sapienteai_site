@@ -3,6 +3,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
     extend: {
       colors: {
@@ -25,8 +26,41 @@ export default {
 
       borderColor: {
         border: "var(--border)",
-      }
+      },
+
+      // 💎 tipografia premium
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+      },
+
+      // 💎 sombras suaves
+      boxShadow: {
+        soft: "0 10px 30px rgba(0,0,0,0.08)",
+        medium: "0 20px 60px rgba(0,0,0,0.12)",
+      },
+
+      // 💎 radius consistente
+      borderRadius: {
+        xl: "12px",
+        "2xl": "16px",
+      },
+
+      // 💎 easing premium
+      transitionTimingFunction: {
+        smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
+      },
+      
+      willChange: {
+        transform: "transform",
+      },
+      // 💎 spacing mais respirado
+      spacing: {
+        18: "4.5rem",
+        22: "5.5rem",
+      },
+
     },
   },
+
   plugins: [require("tailwindcss-animate")],
 };

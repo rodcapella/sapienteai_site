@@ -9,24 +9,52 @@
   }
 }
 
+/* Smooth transitions */
+* {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+
+  border-color: var(--border);
+  outline-color: var(--ring);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Cursor */
+body {
+  cursor: default;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+}
+
 /* =========================
    DESIGN TOKENS
 ========================= */
 
 :root {
-  --primary: oklch(0.50 0.22 258);
+  --primary: oklch(0.55 0.18 258);
   --primary-foreground: oklch(1 0 0);
 
-  --background: oklch(0.97 0.01 258);
+  --background: oklch(0.98 0.005 258);
   --foreground: oklch(0.20 0.02 258);
 
-  --card: oklch(1 0 0);
+  --card: oklch(0.99 0.002 258);
   --card-foreground: oklch(0.15 0.01 258);
 
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.01 258);
 
-  --secondary: oklch(0.60 0.24 256);
+  --secondary: oklch(0.65 0.12 256);
   --secondary-foreground: oklch(1 0 0);
 
   --muted: oklch(0.96 0.005 258);
@@ -38,9 +66,9 @@
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
 
-  --border: oklch(0.85 0.02 258);
+  --border: oklch(0.90 0.01 258);
   --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.50 0.22 258);
+  --ring: oklch(0.55 0.18 258);
 
   --radius: 0.5rem;
 }
@@ -50,7 +78,7 @@
 ========================= */
 
 .dark {
-  --background: oklch(0.15 0.01 258);
+  --background: oklch(0.14 0.01 258);
   --foreground: oklch(1 0 0);
 
   --card: oklch(0.20 0.01 258);
@@ -66,19 +94,9 @@
   --input: oklch(1 0 0 / 15%);
 }
 
-/* =========================
-   BASE RESET (SAFE)
-========================= */
-
-* {
-  border-color: var(--border);
-  outline-color: var(--ring);
-}
-
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: 'IBM Plex Sans', sans-serif;
+/* Performance helper */
+.will-change-transform {
+  will-change: transform;
 }
 
 /* =========================
@@ -87,11 +105,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* =========================
-   UTILIDADES EXTRAS
+   CONTAINER
 ========================= */
 
 .container {

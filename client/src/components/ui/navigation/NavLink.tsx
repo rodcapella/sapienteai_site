@@ -1,47 +1,53 @@
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
+import { Link, useLocation } from "wouter";
+import { useMagnetic } from "@/hooks/useMagnetic";
 
 const navLinkVariants = cva(
   `
   relative
   text-sm font-medium
   transition-all duration-300
+  group
   `,
   {
     variants: {
       variant: {
         default: `
-          text-white/70 hover:text-white
+          text-gray-600 hover:text-gray-900
 
           after:absolute after:left-0 after:-bottom-1
-          after:h-[1px] after:w-full
-          after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500
+          after:h-[2px] after:w-full
+          after:bg-primary
+          after:rounded-full
           after:origin-left after:scale-x-0
           after:transition-transform after:duration-300
 
-          hover:after:scale-x-100
+          group-hover:after:scale-x-100
         `,
 
         subtle: `
-          text-white/50 hover:text-white/80
+          text-gray-500 hover:text-gray-800
         `,
 
         footer: `
-          text-white/40 hover:text-white/70 text-sm
+          text-gray-400 hover:text-gray-600 text-sm
         `,
 
         mobile: `
-          text-white/80 hover:text-white text-base
+          text-gray-700 hover:text-gray-900 text-base
         `
       },
 
       active: {
         true: `
-          text-white
+          text-gray-900
 
           after:absolute after:left-0 after:-bottom-1
-          after:h-[1px] after:w-full
-          after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500
+          after:h-[2px] after:w-full
+          after:bg-primary
+          after:rounded-full
+          after:scale-x-100
         `
       }
     },
@@ -52,24 +58,41 @@ const navLinkVariants = cva(
   }
 );
 
-type Props = React.ComponentProps<"a"> &
-  VariantProps<typeof navLinkVariants> & {
-    isActive?: boolean;
-  };
+type Props = {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+  variant?: "default" | "subtle" | "footer" | "mobile";
+  onClick?: () => void;
+};
 
 export function NavLink({
+  href,
+  children,
   className,
   variant,
-  isActive,
-  ...props
+  onClick
 }: Props) {
+  const [location] = useLocation();
+
+  const isActive = location === href;
+
+  const magnetic = useMagnetic(16);
+
   return (
-    <a
-      className={cn(
-        navLinkVariants({ variant, active: isActive }),
-        className
-      )}
-      {...props}
-    />
+    <Link href={href} onClick={onClick}>
+      <span
+        ref={magnetic.ref}
+        onMouseMove={magnetic.onMouseMove}
+        onMouseLeave={magnetic.onMouseLeave}
+        className={cn(
+          navLinkVariants({ variant, active: isActive }),
+          "inline-block transition-transform duration-300 ease-out",
+          className
+        )}
+      >
+        {children}
+      </span>
+    </Link>
   );
 }

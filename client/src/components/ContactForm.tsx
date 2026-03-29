@@ -1,8 +1,3 @@
-/**
- * Contact Form Component
- * Features: Form validation, email submission via FormSubmit API, success/error handling, phone field
- */
-
 import { useState, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
@@ -44,10 +39,16 @@ export default function ContactForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+
     setFormData(prev => ({
       ...prev,
       [name]: value,
     }));
+
+    // 💎 limpa erro ao digitar
+    if (status.type === 'error') {
+      setStatus({ type: 'idle' });
+    }
   };
 
   const validateForm = (): boolean => {
@@ -63,60 +64,41 @@ export default function ContactForm() {
       setStatus({ type: 'error', message: 'Telefone é obrigatório' });
       return false;
     }
-    // Company is optional
-    // if (!formData.company.trim()) {
-    //   setStatus({ type: 'error', message: 'Empresa é obrigatória' });
-    //   return false;
-    // }
     if (!formData.message.trim()) {
       setStatus({ type: 'error', message: 'Mensagem é obrigatória' });
       return false;
     }
-    // CAPTCHA is optional for now - can be enabled later
-    // if (!captcha.verified) {
-    //   setStatus({ type: 'error', message: 'Por favor, complete a verificação CAPTCHA' });
-    //   return false;
-    // }
     return true;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setStatus({ type: 'loading' });
 
     try {
-      // Create FormData for submission
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
       formDataToSend.append('phone', `${formData.phonePrefix} ${formData.phone}`);
       formDataToSend.append('company', formData.company);
       formDataToSend.append('message', formData.message);
-      formDataToSend.append('_subject', `Nova Mensagem de Contato - ${formData.name}`);
+      formDataToSend.append('_subject', `Nova Mensagem - ${formData.name}`);
       formDataToSend.append('_captcha', 'false');
-      if (captcha.token) {
-        formDataToSend.append('cf-turnstile-response', captcha.token);
-      }
 
-      // Send to FormSubmit API
       const response = await fetch('https://formsubmit.co/sapiente.ai.oficial@gmail.com', {
         method: 'POST',
         body: formDataToSend,
       });
 
       if (response.ok) {
-        // Success response
         setStatus({
           type: 'success',
-          message: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
+          message: 'Mensagem enviada com sucesso!',
         });
 
-        // Reset form
         setFormData({
           name: '',
           email: '',
@@ -125,170 +107,136 @@ export default function ContactForm() {
           company: '',
           message: '',
         });
-        // Reset CAPTCHA
-        setCaptcha({ verified: false, token: null });
-        if (window.turnstile) {
-          window.turnstile.reset();
-        }
 
-        // Clear success message after 5 seconds
-        setTimeout(() => {
-          setStatus({ type: 'idle' });
-        }, 5000);
+        setTimeout(() => setStatus({ type: 'idle' }), 5000);
       } else {
-        throw new Error('Erro ao enviar formulário');
+        throw new Error();
       }
-    } catch (error) {
+    } catch {
       setStatus({
         type: 'error',
-        message: 'Erro ao enviar mensagem. Tente novamente.',
+        message: 'Erro ao enviar. Tente novamente.',
       });
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Status Messages */}
+    <form onSubmit={handleSubmit} className="space-y-5">
+
+      {/* STATUS */}
       {status.type === 'success' && (
-        <div className="flex items-center gap-3 p-4 bg-green-50 border-2 border-green-500 rounded">
+        <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-xl">
           <CheckCircle className="h-5 w-5 text-green-600" />
-          <p className="text-green-700 font-medium">{status.message}</p>
+          <p className="text-green-700 text-sm">{status.message}</p>
         </div>
       )}
 
       {status.type === 'error' && (
-        <div className="flex items-center gap-3 p-4 bg-red-50 border-2 border-red-500 rounded">
+        <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-xl">
           <AlertCircle className="h-5 w-5 text-red-600" />
-          <p className="text-red-700 font-medium">{status.message}</p>
+          <p className="text-red-700 text-sm">{status.message}</p>
         </div>
       )}
 
-      {/* Name Field */}
+      {/* NAME */}
       <div>
-        <label htmlFor="name" className="block text-sm font-medium mb-2">
-          Nome Completo *
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          Nome *
         </label>
         <input
-          type="text"
-          id="name"
           name="name"
           value={formData.name}
           onChange={handleChange}
           placeholder="Seu nome"
-          className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
           disabled={status.type === 'loading'}
+          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
         />
       </div>
 
-      {/* Email Field */}
+      {/* EMAIL */}
       <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Email *
         </label>
         <input
-          type="email"
-          id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
           placeholder="seu@email.com"
-          className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
           disabled={status.type === 'loading'}
+          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
         />
       </div>
 
-      {/* Phone Field */}
+      {/* PHONE */}
       <div>
-        <label className="block text-sm font-medium mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Telefone *
         </label>
         <CountryPhoneSelector
           value={formData.phone}
-          onChange={(prefix, phone) => {
-            setFormData(prev => ({
-              ...prev,
-              phonePrefix: prefix,
-              phone: phone
-            }));
-          }}
+          onChange={(prefix, phone) =>
+            setFormData(prev => ({ ...prev, phonePrefix: prefix, phone }))
+          }
           disabled={status.type === 'loading'}
         />
       </div>
 
-      {/* Company Field */}
+      {/* COMPANY */}
       <div>
-        <label htmlFor="company" className="block text-sm font-medium mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Empresa
         </label>
         <input
-          type="text"
-          id="company"
           name="company"
           value={formData.company}
           onChange={handleChange}
-          placeholder="Nome da sua empresa"
-          className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
+          placeholder="Sua empresa"
           disabled={status.type === 'loading'}
+          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
         />
       </div>
 
-      {/* Message Field */}
+      {/* MESSAGE */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
+        <label className="block text-sm font-medium text-gray-700 mb-2">
           Mensagem *
         </label>
         <textarea
-          id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Conte-nos sobre seu projeto..."
           rows={5}
-          className="w-full px-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors resize-none"
+          placeholder="Conte-nos sobre seu projeto..."
           disabled={status.type === 'loading'}
+          className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
         />
       </div>
 
-      {/* CAPTCHA disabled - optional for now
-      <div className="flex justify-center">
-        <TurnstileWidget
-          onVerify={(token: string) => {
-            setCaptcha({ verified: true, token });
-          }}
-          onError={() => {
-            setCaptcha({ verified: false, token: null });
-            setStatus({ type: 'error', message: 'Erro na verificação CAPTCHA. Tente novamente.' });
-          }}
-          onExpire={() => {
-            setCaptcha({ verified: false, token: null });
-          }}
-          theme="light"
-        />
-      </div>
-      */}
-
-      {/* Submit Button */}
+      {/* BUTTON */}
       <Button
         type="submit"
         disabled={status.type === 'loading'}
-        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 border-2 border-primary text-lg px-6 py-3 h-auto font-medium"
+        className="
+        w-full
+        bg-primary text-white
+        rounded-xl
+        px-6 py-3
+        font-medium
+        shadow-soft
+        hover:shadow-medium
+        hover:-translate-y-[1px]
+        transition-all
+        "
       >
-        {status.type === 'loading' ? (
-          <>
-            <span className="inline-block animate-spin mr-2">⏳</span>
-            Enviando...
-          </>
-        ) : (
-          <>
-            Enviar Mensagem
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </>
-        )}
+        {status.type === 'loading' ? 'Enviando...' : 'Enviar mensagem'}
+        <ArrowRight className="ml-2 h-5 w-5" />
       </Button>
 
-      <p className="text-xs text-muted-foreground">
-        * Campos obrigatórios. Responderemos em até 24 horas.
+      <p className="text-xs text-gray-400 text-center">
+        Respondemos em até 24h
       </p>
+
     </form>
   );
 }

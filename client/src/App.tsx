@@ -1,6 +1,9 @@
 import { Route, Redirect, useLocation } from "wouter";
 import { useEffect, Suspense, lazy } from "react";
 import { PageTransition } from "@/components/PageTransition";
+import MainLayout from "@/components/layout/MainLayout";
+import { ThemeTransition } from "@/components/ThemeTransition";
+import { useTheme } from "@/hooks/useTheme";
 
 // pages (lazy)
 const Home = lazy(() => import("@/pages/Home"));
@@ -8,28 +11,32 @@ const FAQ = lazy(() => import("@/pages/FAQ"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const ArticleDetail = lazy(() => import("@/pages/ArticleDetail"));
 
+<ThemeTransition trigger={isTransitioning} />
+
 export default function App() {
   const [location, setLocation] = useLocation();
 
-  // 🌍 DETECÇÃO + REDIRECIONAMENTO
+  const { isTransitioning } = useTheme();
+
+  // 🌍 DETECÇÃO DE IDIOMA (mais previsível)
   useEffect(() => {
     const savedLang = localStorage.getItem("lang");
+    const currentLang = location.split("/")[1];
 
-    if (savedLang) {
-      if (!location.startsWith(`/${savedLang}`)) {
-        setLocation(location.replace(/^\/(pt|en)?/, `/${savedLang}`));
-      }
+    // 🔁 Se já existe idioma salvo, força consistência
+    if (savedLang && currentLang !== savedLang) {
+      setLocation(`/${savedLang}`);
       return;
     }
 
-    const browserLang = navigator.language.startsWith("en") ? "en" : "pt";
-
-    if (!location.startsWith("/pt") && !location.startsWith("/en")) {
+    // 🌐 Primeira visita
+    if (!savedLang && !["pt", "en"].includes(currentLang)) {
+      const browserLang = navigator.language.startsWith("en") ? "en" : "pt";
       setLocation(`/${browserLang}`);
     }
   }, []);
 
-  // 💾 PERSISTÊNCIA
+  // 💾 Persistência
   useEffect(() => {
     const currentLang = location.startsWith("/en") ? "en" : "pt";
     localStorage.setItem("lang", currentLang);
@@ -38,37 +45,43 @@ export default function App() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center text-white/40">
-          Carregando...
+        <div className="min-h-screen flex items-center justify-center bg-white">
+          <div className="animate-pulse text-gray-400 text-sm tracking-wide">
+            Loading experience...
+          </div>
         </div>
       }
     >
-      {/* fallback raiz */}
+      {/* Root redirect */}
       <Route path="/">
         <Redirect to="/pt" />
       </Route>
 
-      {/* 🔥 SÓ O CONTEÚDO ANIMA */}
       <PageTransition>
+        <MainLayout>
+          
+          <Route path="/:lang">
+            {(params) => <Home lang={params.lang} />}
+          </Route>
 
-        <Route path="/:lang">
-          {(params) => <Home lang={params.lang} />}
-        </Route>
+          <Route path="/:lang/faq">
+            {(params) => <FAQ lang={params.lang} />}
+          </Route>
 
-        <Route path="/:lang/faq">
-          {(params) => <FAQ lang={params.lang} />}
-        </Route>
+          <Route path="/:lang/blog">
+            {(params) => <Blog lang={params.lang} />}
+          </Route>
 
-        <Route path="/:lang/blog">
-          {(params) => <Blog lang={params.lang} />}
-        </Route>
+          <Route path="/:lang/blog/:slug">
+            {(params) => (
+              <ArticleDetail 
+                lang={params.lang} 
+                slug={params.slug} 
+              />
+            )}
+          </Route>
 
-        <Route path="/:lang/blog/:slug">
-          {(params) => (
-            <ArticleDetail lang={`${params.lang}-${params.slug}`} />
-          )}
-        </Route>
-
+        </MainLayout>
       </PageTransition>
     </Suspense>
   );
