@@ -1,0 +1,3 @@
+export function getContent(lang: string, pt: any, en: any) {
+  return lang === "en" ? en : pt;
+}
