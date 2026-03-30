@@ -16,18 +16,19 @@ export default function Privacidade() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
 
-  const content = lang === "en"
-    ? privacyContentEN
-    : privacyContentPT;
+  const content =
+    lang === "en"
+      ? privacyContentEN
+      : privacyContentPT;
 
   useEffect(() => {
     setSEOHead({
       title: `${content.title} - SAPIENTE.AI`,
-      description: "Privacy and data protection policy.",
+      description: content.subtitle || "Privacy and data protection policy.",
       url: `https://sapienteai.com/${lang}/privacy`,
       type: 'website'
     });
-  }, [lang]);
+  }, [lang, content]);
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -39,7 +40,10 @@ export default function Privacidade() {
       <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-20">
         <div className="container max-w-4xl">
 
-          <a href="/" className="text-white/60 hover:text-white transition mb-6 inline-block">
+          <a
+            href={`/${lang}`}
+            className="text-white/60 hover:text-white transition mb-6 inline-block"
+          >
             <ArrowLeft className="h-5 w-5" />
           </a>
 
@@ -56,10 +60,10 @@ export default function Privacidade() {
 
       {/* CONTENT */}
       <main className="flex-grow py-20">
-        <div className="container max-w-4xl space-y-12 text-slate-700">
+        <div className="container max-w-4xl space-y-12 text-slate-700 leading-relaxed">
 
-          {content.sections.map((section, i) => (
-            <section key={i} className="space-y-3">
+          {content.sections.map((section) => (
+            <section key={section.id} className="space-y-4">
 
               <h2 className="text-xl font-semibold text-slate-900">
                 {section.title}
@@ -72,7 +76,7 @@ export default function Privacidade() {
                   ))}
                 </ul>
               ) : (
-                <p className="leading-relaxed">
+                <p>
                   {section.content}
                 </p>
               )}
