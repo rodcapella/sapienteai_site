@@ -8,7 +8,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { setSEOHead } from '@/components/SEOHead';
-import { getContent } from "@/lib/content";
+import { getContent } from "@/content";
 
 const ArrowLeft = Icons.ArrowLeft; 
 

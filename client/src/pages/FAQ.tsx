@@ -17,8 +17,6 @@ import { getContent } from "@/lib/content";
 
 const ChevronDown = Icons.ChevronDown; 
 
-const content = getContent("faq", lang);
-
 function FAQAccordion({ item, isOpen, onToggle }: any) {
   return (
     <SectionCard
@@ -53,6 +51,8 @@ export default function FAQ() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const content = getContent("faq", lang);
 
   useEffect(() => {
     setSEOHead({

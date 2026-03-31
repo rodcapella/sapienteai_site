@@ -1,4 +1,3 @@
-import { ArrowLeft, Shield } from 'lucide-react';
 import { useEffect } from 'react';
 import { useLocation } from "wouter";
 import { Icons } from "@/lib/icons";

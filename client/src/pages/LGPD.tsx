@@ -11,13 +11,12 @@ import { setSEOHead } from '@/components/SEOHead';
 
 import { getContent } from "@/lib/content";
 
-const content = getContent("lgpd", lang);
-
-
 export default function LGPD() {
 
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
+
+  const content = getContent("lgpd", lang);
 
   useEffect(() => {
     setSEOHead({
