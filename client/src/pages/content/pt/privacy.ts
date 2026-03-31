@@ -1,10 +1,12 @@
-import { ArrowLeft } from 'lucide-react';
+import { Icons } from "@/lib/icons";
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { setSEOHead } from '@/components/SEOHead';
+
+const ArrowLeft = Icons.ArrowLeft; 
 
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const { ref, isVisible } = useScrollAnimation();
