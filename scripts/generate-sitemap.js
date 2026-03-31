@@ -1,39 +1,18 @@
 import fs from "fs";
-import { getAllBlogArticles } from "./blogData.js";
+import path from "path";
+import { generateSitemap } from "../src/lib/generateSitemap.js"; // ajusta o path se necessário
 
-const BASE = "https://sapienteai.com";
+const publicDir = path.resolve("./public");
+const filePath = path.join(publicDir, "sitemap-pages.xml");
 
-  const pages = [
-    "",
-    "/portfolio",
-    "/faq",
-    "/privacy",
-    "/blog",
-    "/news",
-    "/terms",
-    "/lgpd",
-    "/inteligencia-artificial-empresas"
-  ];
+// 🔥 garante que a pasta existe
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
 
-const blog = getAllBlogArticles();
+const sitemap = generateSitemap();
 
-const build = (urls) => `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `<url><loc>${BASE}${u}</loc></url>`).join("")}
-</urlset>`;
+// escreve o ficheiro
+fs.writeFileSync(filePath, sitemap);
 
-// gerar arquivos
-fs.writeFileSync("./public/sitemap-pages.xml", build(pages));
-fs.writeFileSync("./public/sitemap-blog.xml", build(blog.map(a => `/blog/${a.slug}`)));
-fs.writeFileSync("./public/sitemap-news.xml", build(["/noticias"]));
-
-// index
-fs.writeFileSync("./public/sitemap.xml", `
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap><loc>${BASE}/sitemap-pages.xml</loc></sitemap>
-  <sitemap><loc>${BASE}/sitemap-blog.xml</loc></sitemap>
-  <sitemap><loc>${BASE}/sitemap-news.xml</loc></sitemap>
-</sitemapindex>
-`);
-
-console.log("🔥 Sitemap enterprise criado");
+console.log("✅ Sitemap gerado em:", filePath);

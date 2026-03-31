@@ -2,33 +2,41 @@ import { getAllBlogArticles } from "@/lib/blogData";
 
 const BASE_URL = "https://sapienteai.com";
 
+const languages = ["pt", "en"];
+
 export function generateSitemap() {
   const staticPages = [
     "",
     "/portfolio",
+    "/about",
     "/blog",
     "/news",
     "/faq",
     "/privacy",
     "/terms",
+    "/team",
+    "/trust",
     "/lgpd",
-    "/gdpr",
-    "/AiPillar",
-    "/inteligencia-artificial-empresas",
   ];
 
   const blogArticles = getAllBlogArticles();
 
   const urls = [
-    ...staticPages.map((path) => ({
-      loc: `${BASE_URL}${path}`,
-      priority: path === "" ? "1.0" : "0.8",
-    })),
+    // 🔥 páginas estáticas multilíngua
+    ...languages.flatMap((lang) =>
+      staticPages.map((path) => ({
+        loc: `${BASE_URL}/${lang}${path}`,
+        priority: path === "" ? "1.0" : "0.8",
+      }))
+    ),
 
-    ...blogArticles.map((article) => ({
-      loc: `${BASE_URL}/blog/${article.slug}`,
-      priority: "0.7",
-    })),
+    // 🔥 blog multilíngua (se tiver)
+    ...blogArticles.flatMap((article) =>
+      languages.map((lang) => ({
+        loc: `${BASE_URL}/${lang}/blog/${article.slug}`,
+        priority: "0.7",
+      }))
+    ),
   ];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
