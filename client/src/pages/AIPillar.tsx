@@ -2,6 +2,7 @@ import { ArrowRight, CheckCircle, TrendingUp, Zap, Shield, Users } from 'lucide-
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import ContactModal from '@/components/ContactModal';
+import { Icons } from "@/lib/icons";
 
 import { Section } from "@/components/ui/section/Section";
 import { SectionHeader } from "@/components/ui/section/SectionHeader";
@@ -14,6 +15,13 @@ interface ClusterArticle {
   description: string;
   keywords: string[];
 }
+
+const ArrowRight = Icons.ArrowRight;
+const CheckCircle = Icons.CheckCircle;
+const TrendingUp = Icons.TrendingUp;
+const Zap = Icons.Zap;
+const Shield = Icons.Shield;
+const Users = Icons.Users;
 
 const clusterArticles: ClusterArticle[] = [
   {

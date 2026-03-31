@@ -104,10 +104,10 @@ export default function Header({ onContactClick }: HeaderProps) {
               </NavLink>
 
               <NavLink
-                href={`/${lang}/portfolio`}
-                className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                href={`/${lang}/trust`}
+                className="text-sm text-gray-900 font-medium"
               >
-                {t('nav.portfolio')}
+                Trust
               </NavLink>
 
               <NavLink
@@ -115,13 +115,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                 className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
               >
                 {t('nav.faq')}
-              </NavLink>
-
-              <NavLink
-                href={`/${lang}/noticias`}
-                className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                {t('nav.noticias')}
               </NavLink>
 
               <div className="h-6 w-px bg-gray-200"></div>
@@ -177,12 +170,28 @@ export default function Header({ onContactClick }: HeaderProps) {
                   {t('nav.home')}
                 </NavLink>
 
+              <NavLink
+                variant="mobile"
+                href={`/${lang}/about`}
+                onClick={handleNavClick}
+              >
+                {t('nav.about')}
+              </NavLink>
+
+              <NavLink
+                variant="mobile"
+                href={`/${lang}/team`}
+                onClick={handleNavClick}
+              >
+                {t('nav.team')}
+              </NavLink>
+
                 <NavLink
                   variant="mobile"
-                  href={`/${lang}/portfolio`}
+                  href={`/${lang}/trust`}
                   onClick={handleNavClick}
                 >
-                  {t('nav.portfolio')}
+                  Trust
                 </NavLink>
 
                 <NavLink
@@ -191,14 +200,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                   onClick={handleNavClick}
                 >
                   {t('nav.faq')}
-                </NavLink>
-
-                <NavLink
-                  variant="mobile"
-                  href={`/${lang}/noticias`}
-                  onClick={handleNavClick}
-                >
-                  {t('nav.noticias')}
                 </NavLink>
 
                 <Button

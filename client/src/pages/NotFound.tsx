@@ -1,15 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Home } from "lucide-react";
 import { useLocation } from "wouter";
+import { getContent } from "@/lib/content";
+import { Icons } from "@/lib/icons";
 
-import { notFoundPT } from "@/content/pt/notFound";
-import { notFoundEN } from "@/content/en/notFound";
+const content = getContent("notFound", lang);
+
+const Home = Icons.Home; 
+const AlertCircle = Icons.AlertCircle; 
 
 export default function NotFound() {
   const [location, setLocation] = useLocation();
 
   const lang = location.split("/")[1] || "pt";
-  const content = lang === "en" ? notFoundEN : notFoundPT;
 
   return (
     <div

@@ -9,15 +9,15 @@ import { TOC } from "@/components/ui/navigation/TOC";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { setSEOHead } from '@/components/SEOHead';
 
-import { lgpdContentPT } from "@/content/pt/lgpd";
-import { lgpdContentEN } from "@/content/en/lgpd";
+import { getContent } from "@/lib/content";
+
+const content = getContent("lgpd", lang);
+
 
 export default function LGPD() {
 
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
-
-  const content = lang === "en" ? lgpdContentEN : lgpdContentPT;
 
   useEffect(() => {
     setSEOHead({

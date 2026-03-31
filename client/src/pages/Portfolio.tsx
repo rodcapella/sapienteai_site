@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Zap, Shield } from 'lucide-react';
+import { Icons } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AppDownloadButtons from '@/components/AppDownloadButtons';
 
-import { useTranslation } from '@/hooks/useTranslation';
+import { getContent } from "@/lib/content";
+
 import { setSEOHead } from '@/components/SEOHead';
+
+const ArrowRight = Icons.ArrowRight; 
+const Zap = Icons.Zap; 
+const Shield = Icons.Shield; 
+
+const content = getContent("notFound", lang);
 
 interface Product {
   id: string;

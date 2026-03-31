@@ -6,6 +6,10 @@ import { useLocation } from "wouter";
 
 import { setSEOHead } from "@/components/SEOHead";
 
+import { getContent } from "@/lib/content";
+
+const content = getContent("team", lang);
+
 // 🔥 (futuro: mover para content/)
 const team = [
   {

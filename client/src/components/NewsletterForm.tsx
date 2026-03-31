@@ -1,12 +1,12 @@
-/**
- * Newsletter Form Component
- * Captures email subscriptions for newsletter
- */
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
 import { useTranslation } from '@/hooks/useTranslation';
+import { Icons } from "@/lib/icons";
+
+const Mail = Icons.Mail; 
+const CheckCircle = Icons.CheckCircle; 
+const AlertCircle = Icons.AlertCircle; 
 
 interface NewsletterStatus {
   type: 'idle' | 'loading' | 'success' | 'error';

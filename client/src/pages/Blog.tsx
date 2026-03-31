@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Search, ArrowRight, Tag, Calendar, User } from 'lucide-react';
+import { Icons } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -14,6 +14,12 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 import { useTranslation } from '@/hooks/useTranslation';
 import { getAllBlogArticles } from '@/lib/blogData';
 import { setSEOHead } from '@/components/SEOHead';
+
+const Search = Icons.Search;
+const Tag = Icons.Tag;
+const ArrowRight = Icons.ArrowRight;
+const Calendar = Icons.Calendar;
+const User = Icons.User;
 
 const articles = getAllBlogArticles();
 const categories = ['Todos', ...Array.from(new Set(articles.map(a => a.category)))];

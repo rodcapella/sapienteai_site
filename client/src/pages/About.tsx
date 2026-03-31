@@ -2,10 +2,9 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-import { aboutPT } from "@/content/pt/about";
-import { aboutEN } from "@/content/en/about";
+import { getContent } from "@/lib/content";
 
-const content = lang === "en" ? aboutEN : aboutPT;
+const content = getContent("about", lang);
 
 export default function About() {
     useEffect(() => {

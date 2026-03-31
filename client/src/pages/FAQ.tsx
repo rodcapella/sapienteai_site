@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from "wouter";
-import { ChevronDown } from 'lucide-react';
+import { Icons } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -13,8 +13,11 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 import { setSEOHead } from '@/components/SEOHead';
 import { generateFAQSchema } from "@/lib/faqSchema";
 
-import { faqPT } from "@/content/pt/faq";
-import { faqEN } from "@/content/en/faq";
+import { getContent } from "@/lib/content";
+
+const ChevronDown = Icons.ChevronDown; 
+
+const content = getContent("faq", lang);
 
 function FAQAccordion({ item, isOpen, onToggle }: any) {
   return (
@@ -49,9 +52,6 @@ export default function FAQ() {
 
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
-
-  const content = lang === "en" ? faqEN : faqPT;
-
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   useEffect(() => {

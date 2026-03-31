@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, Calendar, User, Tag } from 'lucide-react';
+import { Icons } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -11,6 +11,11 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 
 import { useTranslation } from '@/hooks/useTranslation';
 import { setSEOHead } from '@/components/SEOHead';
+
+const Search = Icons.Search; 
+const Calendar = Icons.Calendar; 
+const User = Icons.User; 
+const Tag = Icons.Tag; 
 
 export default function News() {
   const { t } = useTranslation();
