@@ -1,21 +1,17 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Section } from "@/components/ui/section/Section";
-import { useRef, useEffect } from "react";
+import { Icons } from "@/lib/icons";
+import { useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 
+import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from "@/components/SEOHead";
 import { getContent } from "@/content";
-
-const content = getContent("team", lang);
-
 
 const team = [
   {
     name: "Rodrigo Póvoa",
     role: "Founder & Tech Lead",
     bio: "Building intelligent systems focused on clarity, speed, and decision-making.",
-    stack: ["AI", "Automation", "Product Strategy"],
+    stack: ["AI", "Automation", "Data Analytics Engineer", "Product Strategy"],
     image: "/media/photos/tati.jpg",
     link: "https://www.rpovoadata.tech",
   },
@@ -23,7 +19,7 @@ const team = [
     name: "Tatiane Gomes",
     role: "Marketing",
     bio: "Turning complex ideas into scalable and efficient systems.",
-    stack: ["React", "Node", "AI Systems"],
+    stack: ["Marketing", "SEO", "GEO", "AEO", "AI"],
     image: "/media/photos/member.jpg",
     link: "#",
   },
@@ -31,7 +27,7 @@ const team = [
 
 type Member = typeof team[number];
 
-// 💎 TOOLTIP
+// TOOLTIP
 function getTechDescription(tech: string) {
   const map: Record<string, string> = {
     AI: "Artificial Intelligence systems",
@@ -45,7 +41,7 @@ function getTechDescription(tech: string) {
   return map[tech] || tech;
 }
 
-// 💎 CARD
+// CARD
 function TeamCard({ member }: { member: Member }) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -83,17 +79,16 @@ function TeamCard({ member }: { member: Member }) {
         }}
       >
         <div className="
-          bg-white dark:bg-card
-          border border-gray-200 dark:border-white/10
+          bg-white/5
+          border border-white/10
           rounded-2xl
           p-8
           text-center
           transition-all
           group-hover:-translate-y-1
-          group-hover:shadow-medium
+          group-hover:shadow-[0_0_40px_rgba(0,255,255,0.08)]
         ">
 
-          {/* IMAGE */}
           <div className="w-28 h-28 mx-auto mb-6 rounded-full overflow-hidden">
             <img
               src={member.image}
@@ -102,22 +97,18 @@ function TeamCard({ member }: { member: Member }) {
             />
           </div>
 
-          {/* NAME */}
-          <h3 className="text-xl font-semibold mb-1">
+          <h3 className="text-xl font-semibold mb-1 text-white">
             {member.name}
           </h3>
 
-          {/* ROLE */}
-          <p className="text-sm text-primary mb-4">
+          <p className="text-sm text-cyan-400 mb-4">
             {member.role}
           </p>
 
-          {/* BIO */}
-          <p className="text-sm text-muted-foreground mb-6">
+          <p className="text-sm text-white/60 mb-6">
             {member.bio}
           </p>
 
-          {/* STACK */}
           <div className="flex flex-wrap justify-center gap-2">
             {member.stack.map((tech, idx) => (
               <div key={idx} className="relative group/tooltip">
@@ -125,8 +116,8 @@ function TeamCard({ member }: { member: Member }) {
                 <span className="
                   text-xs px-3 py-1
                   rounded-full
-                  bg-gray-100 dark:bg-white/5
-                  text-gray-600 dark:text-white/70
+                  bg-white/5
+                  text-white/70
                 ">
                   {tech}
                 </span>
@@ -157,34 +148,30 @@ export default function Team() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
 
+  const content = getContent("team", lang);
+
   useEffect(() => {
     setSEOHead({
-      title: lang === "en" ? "Team - SAPIENTE.AI" : "Equipa - SAPIENTE.AI",
-      description: "Current team of SAPIENTE.AI.",
+      title: content.title,
+      description: content.subtitle,
       url: `https://sapienteai.com/${lang}/team`,
       type: "website"
     });
-  }, [lang]);
+  }, [lang, content]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-
-      <Header />
+    <div className="space-y-20">
 
       {/* HERO */}
-      <Section className="pt-32 pb-20 text-center">
+      <Section className="text-center">
         <div className="max-w-3xl mx-auto">
 
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6">
-            {lang === "en"
-              ? "The people behind Sapiente"
-              : "A equipa por trás da Sapiente"}
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6 text-white">
+            {content.title}
           </h1>
 
-          <p className="text-lg text-muted-foreground">
-            {lang === "en"
-              ? "Small team. High standards. Built with intention."
-              : "Equipa pequena. Padrões elevados. Construído com intenção."}
+          <p className="text-lg text-white/60">
+            {content.subtitle}
           </p>
 
         </div>
@@ -198,8 +185,6 @@ export default function Team() {
           ))}
         </div>
       </Section>
-
-      <Footer />
 
     </div>
   );

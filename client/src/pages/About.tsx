@@ -1,34 +1,33 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import { useEffect } from "react";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-import { getContent } from "@/lib/content";
+import { getContent } from "@/content";
+import { setSEOHead } from "@/components/SEOHead";
 
-const content = getContent("about", lang);
+export default function About({ lang = "pt" }) {
+  const content = getContent("about", lang);
 
-export default function About() {
-    useEffect(() => {
+  useEffect(() => {
     setSEOHead({
       title: 'Sobre Nós - SAPIENTE.AI',
       description: 'Sobre nós, SAPIENTE.AI.',
-      url: 'https://sapiente-ai.manus.space/about',
+      url: `https://sapienteai.com/${lang}/about`,
       type: 'website'
     });
+  }, [lang]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-
-      <Header />
+    <div className="space-y-16">
 
       {/* HERO */}
-      <Section className="pt-32 pb-20 text-center">
+      <Section className="text-center">
         <div className="max-w-3xl mx-auto">
 
           <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6">
             This didn’t start as a company.
           </h1>
 
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-white/60">
             It started as a question: why is making decisions still so hard?
           </p>
 
@@ -37,7 +36,7 @@ export default function About() {
 
       {/* STORY */}
       <Section>
-        <div className="max-w-3xl mx-auto space-y-6 text-muted-foreground leading-relaxed">
+        <div className="max-w-3xl mx-auto space-y-6 text-white/60 leading-relaxed">
 
           <p>
             Sapiente AI was born from a simple frustration: businesses have more data than ever,
@@ -48,7 +47,7 @@ export default function About() {
             Tools became more complex. Dashboards multiplied. But clarity didn’t.
           </p>
 
-          <p className="text-foreground font-medium">
+          <p className="text-white font-medium">
             So we asked a different question:
             what if systems could think with you?
           </p>
@@ -68,7 +67,7 @@ export default function About() {
             <h3 className="text-xl font-semibold mb-4">
               The Problem
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-white/60">
               Decision-making is fragmented. Tools are reactive. Teams waste time interpreting instead of acting.
             </p>
           </SectionCard>
@@ -77,7 +76,7 @@ export default function About() {
             <h3 className="text-xl font-semibold mb-4">
               The Vision
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-white/60">
               Build intelligent systems that don’t just show data — but guide action.
             </p>
           </SectionCard>
@@ -85,7 +84,7 @@ export default function About() {
         </div>
       </Section>
 
-      {/* LOGO STORY (🔥 DIFERENCIAL) */}
+      {/* LOGO */}
       <Section>
         <div className="max-w-3xl mx-auto text-center space-y-6">
 
@@ -93,19 +92,19 @@ export default function About() {
             The logo wasn’t random.
           </h2>
 
-          <p className="text-muted-foreground">
+          <p className="text-white/60">
             It represents structure, intelligence, and evolution.
           </p>
 
-          <p className="text-muted-foreground">
+          <p className="text-white/60">
             Every line, every shape was designed to reflect clarity emerging from complexity.
           </p>
 
-          <p className="text-muted-foreground">
+          <p className="text-white/60">
             Not just artificial intelligence — but structured thinking.
           </p>
 
-          <p className="text-foreground font-medium">
+          <p className="text-white font-medium">
             Sapiente means “to be wise”.
           </p>
 
@@ -120,14 +119,13 @@ export default function About() {
             We’re just getting started.
           </h2>
 
-          <p className="text-muted-foreground">
+          <p className="text-white/60">
             The future belongs to companies that make better decisions faster.
           </p>
 
         </div>
       </Section>
 
-      <Footer />
     </div>
   );
 }

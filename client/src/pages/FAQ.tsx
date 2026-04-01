@@ -2,9 +2,6 @@ import { useState, useEffect } from 'react';
 import { useLocation } from "wouter";
 import { Icons } from "@/lib/icons";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-
 import { Section } from "@/components/ui/section/Section";
 import { SectionHeader } from "@/components/ui/section/SectionHeader";
 import { SectionTitle } from "@/components/ui/section/SectionTitle";
@@ -12,15 +9,16 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 
 import { setSEOHead } from '@/components/SEOHead';
 import { generateFAQSchema } from "@/lib/faqSchema";
+import { getContent } from "@/content";
 
-import { getContent } from "@/lib/content";
-
-const ChevronDown = Icons.ChevronDown; 
+const ChevronDown = Icons.ChevronDown;
 
 function FAQAccordion({ item, isOpen, onToggle }: any) {
   return (
     <SectionCard
-      className={`cursor-pointer transition-all ${isOpen ? 'border-cyan-400/40' : ''}`}
+      className={`cursor-pointer transition-all ${
+        isOpen ? 'border-cyan-400/40' : ''
+      }`}
       onClick={onToggle}
     >
       <div className="flex items-center justify-between gap-4">
@@ -35,10 +33,12 @@ function FAQAccordion({ item, isOpen, onToggle }: any) {
         />
       </div>
 
-      <div className={`overflow-hidden transition-all duration-300 ${
-        isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'
-      }`}>
-        <p className="text-slate-400 leading-relaxed">
+      <div
+        className={`overflow-hidden transition-all duration-300 ${
+          isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <p className="text-white/60 leading-relaxed">
           {item.answer}
         </p>
       </div>
@@ -47,9 +47,9 @@ function FAQAccordion({ item, isOpen, onToggle }: any) {
 }
 
 export default function FAQ() {
-
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
+
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const content = getContent("faq", lang);
@@ -61,7 +61,7 @@ export default function FAQ() {
       url: `https://sapienteai.com/${lang}/faq`,
       type: 'website'
     });
-  }, [lang]);
+  }, [lang, content]);
 
   useEffect(() => {
     const schema = generateFAQSchema(content.items);
@@ -78,9 +78,7 @@ export default function FAQ() {
   }, [content]);
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)] text-white">
-
-      <Header />
+    <div className="space-y-16">
 
       {/* HERO */}
       <Section>
@@ -91,7 +89,7 @@ export default function FAQ() {
           />
         </SectionHeader>
 
-        <div className="text-center max-w-2xl mx-auto text-slate-400">
+        <div className="text-center max-w-2xl mx-auto text-white/60">
           <p>{content.subtitle}</p>
         </div>
       </Section>
@@ -121,7 +119,7 @@ export default function FAQ() {
               {content.cta.title}
             </h2>
 
-            <p className="text-slate-400 mb-6">
+            <p className="text-white/60 mb-6">
               {content.cta.description}
             </p>
 
@@ -137,7 +135,6 @@ export default function FAQ() {
         </div>
       </Section>
 
-      <Footer />
     </div>
   );
 }

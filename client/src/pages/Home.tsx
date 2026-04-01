@@ -3,9 +3,6 @@ import { useLocation } from "wouter";
 
 import { Button } from '@/components/ui/button';
 import { Icons } from "@/lib/icons";
-
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
 
 import { Section } from "@/components/ui/section/Section";
@@ -40,28 +37,26 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-
-      <Header />
+    <div className="space-y-24">
 
       {/* HERO */}
-      <section className="pt-32 md:pt-40 pb-24 px-6 text-center">
+      <Section className="text-center pt-10 md:pt-20">
         <div className="max-w-4xl mx-auto">
 
           <Reveal>
-            <p className="text-sm uppercase tracking-wide text-gray-500 mb-4">
+            <p className="text-sm uppercase tracking-wide text-white/40 mb-4">
               {content.hero.label}
             </p>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-white">
               {content.hero.title}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-lg text-gray-600 mt-6 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg text-white/60 mt-6 mb-10 max-w-2xl mx-auto">
               {content.hero.subtitle}
             </p>
           </Reveal>
@@ -81,7 +76,7 @@ export default function Home() {
           </Reveal>
 
         </div>
-      </section>
+      </Section>
 
       {/* VALUES */}
       <Section>
@@ -100,15 +95,15 @@ export default function Home() {
               <Reveal key={value.title} delay={i * 100}>
                 <SectionCard>
 
-                  <div className="w-10 h-10 mb-4 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Icon className="text-gray-700" />
+                  <div className="w-10 h-10 mb-4 bg-white/5 rounded-lg flex items-center justify-center">
+                    <Icon className="text-white/70" />
                   </div>
 
-                  <h3 className="font-semibold mb-2">
+                  <h3 className="font-semibold mb-2 text-white">
                     {value.title}
                   </h3>
 
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-white/60">
                     {value.description}
                   </p>
 
@@ -136,15 +131,15 @@ export default function Home() {
               <Reveal key={service.title} delay={i * 120}>
                 <SectionCard>
 
-                  <div className="w-10 h-10 mb-4 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <Icon className="text-gray-700" />
+                  <div className="w-10 h-10 mb-4 bg-white/5 rounded-lg flex items-center justify-center">
+                    <Icon className="text-white/70" />
                   </div>
 
-                  <h3 className="font-semibold mb-3">
+                  <h3 className="font-semibold mb-3 text-white">
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-600">
+                  <p className="text-white/60">
                     {service.description}
                   </p>
 
@@ -159,11 +154,11 @@ export default function Home() {
       <Section className="text-center">
         <div className="max-w-2xl mx-auto">
 
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-white">
             {content.cta.title}
           </h2>
 
-          <p className="text-gray-600 mb-10">
+          <p className="text-white/60 mb-10">
             {content.cta.description}
           </p>
 
@@ -174,14 +169,13 @@ export default function Home() {
         </div>
       </Section>
 
-      <Footer />
-
       {isContactOpen && (
         <ContactModal
           isOpen={isContactOpen}
           onClose={() => setIsContactOpen(false)}
         />
       )}
+
     </div>
   );
 }

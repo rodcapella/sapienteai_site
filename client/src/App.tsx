@@ -45,20 +45,20 @@ export default function App() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center bg-white">
-          <div className="animate-pulse text-gray-400 text-sm tracking-wide">
+        <div className="min-h-screen flex items-center justify-center bg-[#0B0F1A]">
+          <div className="animate-pulse text-white/40 text-sm tracking-wide">
             Loading experience...
           </div>
         </div>
       }
-    >
+          >
       {/* Root redirect */}
       <Route path="/">
         <Redirect to="/pt" />
       </Route>
 
-      <PageTransition>
-        <MainLayout>
+      <MainLayout>
+        <PageTransition>
           
           <Route path="/:lang">
             {(params) => <Home lang={params.lang} />}
@@ -89,8 +89,8 @@ export default function App() {
             )}
           </Route>
 
-        </MainLayout>
-      </PageTransition>
+        </PageTransition>
+      </MainLayout>
     </Suspense>
   );
 }

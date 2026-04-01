@@ -1,15 +1,12 @@
 import { useEffect } from 'react';
 import { useLocation } from "wouter";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-
 import { Section } from "@/components/ui/section/Section";
 import { TOC } from "@/components/ui/navigation/TOC";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { setSEOHead } from '@/components/SEOHead';
 
-import { getContent } from "@/lib/content";
+import { getContent } from "@/content";
 
 export default function LGPD() {
 
@@ -25,7 +22,7 @@ export default function LGPD() {
       url: `https://sapienteai.com/${lang}/lgpd`,
       type: 'website'
     });
-  }, [lang]);
+  }, [lang, content]);
 
   const tocItems = content.sections.map(s => ({
     id: s.id,
@@ -35,23 +32,21 @@ export default function LGPD() {
   const activeId = useScrollSpy(content.sections.map(s => s.id));
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-
-      <Header />
+    <div className="space-y-20">
 
       {/* HERO */}
-      <Section className="pt-32 pb-16">
+      <Section>
         <div className="max-w-3xl mx-auto text-center">
 
-          <p className="text-sm text-gray-500 mb-4 uppercase tracking-wider">
+          <p className="text-sm text-white/40 mb-4 uppercase tracking-wider">
             {content.label}
           </p>
 
-          <h1 className="text-4xl md:text-5xl font-semibold mb-6">
+          <h1 className="text-4xl md:text-5xl font-semibold mb-6 text-white">
             {content.title}
           </h1>
 
-          <p className="text-gray-600">
+          <p className="text-white/60">
             {content.subtitle}
           </p>
 
@@ -62,34 +57,36 @@ export default function LGPD() {
       <Section>
         <div className="max-w-6xl mx-auto grid md:grid-cols-[220px_1fr] gap-16">
 
+          {/* TOC */}
           <aside className="hidden md:block">
             <div className="sticky top-24">
               <TOC items={tocItems} activeId={activeId} />
             </div>
           </aside>
 
+          {/* DOCUMENT */}
           <div className="space-y-12">
 
             {content.sections.map((section) => (
               <section key={section.id} id={section.id} className="space-y-4">
 
-                <h2 className="text-xl font-semibold">
+                <h2 className="text-xl font-semibold text-white">
                   {section.title}
                 </h2>
 
                 {Array.isArray(section.content) ? (
-                  <ul className="list-disc ml-5 space-y-2 text-gray-600">
+                  <ul className="list-disc ml-5 space-y-2 text-white/60">
                     {section.content.map((item, i) => (
                       <li key={i}>{item}</li>
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-white/60 leading-relaxed">
                     {section.content}
                   </p>
                 )}
 
-                <div className="border-b border-gray-200 pt-6" />
+                <div className="border-b border-white/10 pt-6" />
 
               </section>
             ))}
@@ -97,8 +94,6 @@ export default function LGPD() {
           </div>
         </div>
       </Section>
-
-      <Footer />
 
     </div>
   );

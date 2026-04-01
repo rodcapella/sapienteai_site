@@ -2,90 +2,64 @@ import { Icons } from "@/lib/icons";
 import { useEffect } from 'react';
 import { useLocation } from "wouter";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-
+import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from '@/components/SEOHead';
-import { getContent } from "@/lib/content";
+import { getContent } from "@/content";
 
-const ArrowLeft = Icons.ArrowLeft; 
+const ArrowLeft = Icons.ArrowLeft;
 
 export default function Terms() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
 
-<<<<<<< HEAD
   const content = getContent("terms", lang);
-=======
-  const content =
-    lang === "en"
-      ? privacyContentEN
-      : privacyContentPT;
->>>>>>> 483f67648d4f2b9402935b142be26221ece9b5f6
 
   useEffect(() => {
     setSEOHead({
       title: `${content.title} - SAPIENTE.AI`,
-<<<<<<< HEAD
       description:
         lang === "en"
-          ? "Terms of Service of Sapiente AI."
+          ? "Terms of Service of SAPIENTE.AI."
           : "Termos de Serviço da SAPIENTE.AI.",
       url: `https://sapienteai.com/${lang}/terms`,
-=======
-      description: content.subtitle || "Privacy and data protection policy.",
-      url: `https://sapienteai.com/${lang}/privacy`,
->>>>>>> 483f67648d4f2b9402935b142be26221ece9b5f6
       type: 'website'
     });
   }, [lang, content]);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col">
-
-      <Header />
-      <Breadcrumb />
+    <div className="space-y-20">
 
       {/* HERO */}
-      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-20">
-        <div className="container max-w-4xl">
+      <Section>
+        <div className="max-w-4xl mx-auto">
 
-<<<<<<< HEAD
-          <a href={`/${lang}`} className="text-white/60 hover:text-white transition mb-6 inline-block">
-=======
           <a
             href={`/${lang}`}
-            className="text-white/60 hover:text-white transition mb-6 inline-block"
+            className="inline-flex items-center gap-2 text-white/40 hover:text-white mb-6 transition"
           >
->>>>>>> 483f67648d4f2b9402935b142be26221ece9b5f6
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-4 w-4" />
+            Back
           </a>
 
-          <h1 className="text-4xl md:text-5xl font-semibold mb-4">
+          <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-white">
             {content.title}
           </h1>
 
-          <p className="text-white/70">
+          <p className="text-white/50">
             {content.lastUpdated}
           </p>
 
         </div>
-      </section>
+      </Section>
 
       {/* CONTENT */}
-      <main className="flex-grow py-20">
-        <div className="container max-w-4xl space-y-12 text-slate-700 leading-relaxed">
+      <Section>
+        <div className="max-w-4xl mx-auto space-y-12 text-white/60 leading-relaxed">
 
-<<<<<<< HEAD
-          {content.sections.map((section: any, i: number) => (
-            <section key={i} className="space-y-3">
-=======
-          {content.sections.map((section) => (
+          {content.sections.map((section: any) => (
             <section key={section.id} className="space-y-4">
->>>>>>> 483f67648d4f2b9402935b142be26221ece9b5f6
 
-              <h2 className="text-xl font-semibold text-slate-900">
+              <h2 className="text-xl font-semibold text-white">
                 {section.title}
               </h2>
 
@@ -96,20 +70,17 @@ export default function Terms() {
                   ))}
                 </ul>
               ) : (
-                <p>
-                  {section.content}
-                </p>
+                <p>{section.content}</p>
               )}
 
-              <div className="border-b border-gray-200 pt-6" />
+              <div className="border-b border-white/10 pt-6" />
 
             </section>
           ))}
 
         </div>
-      </main>
+      </Section>
 
-      <Footer />
     </div>
   );
 }
