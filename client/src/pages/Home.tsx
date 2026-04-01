@@ -9,6 +9,7 @@ import { Section } from "@/components/ui/section/Section";
 import { SectionHeader } from "@/components/ui/section/SectionHeader";
 import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 
 import { Reveal } from "@/components/ui/motion/Reveal";
 
@@ -64,9 +65,9 @@ export default function Home() {
           <Reveal delay={300}>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
-              <Button onClick={() => setIsContactOpen(true)}>
-                {content.hero.cta1}
-              </Button>
+            <PremiumButton onClick={() => setIsContactOpen(true)}>
+              {content.hero.cta1}
+            </PremiumButton>
 
               <Button variant="outline">
                 {content.hero.cta2}
@@ -162,9 +163,9 @@ export default function Home() {
             {content.cta.description}
           </p>
 
-          <Button onClick={() => setIsContactOpen(true)}>
+          <PremiumButton>
             {content.cta.button}
-          </Button>
+          </PremiumButton>
 
         </div>
       </Section>

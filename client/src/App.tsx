@@ -76,8 +76,28 @@ export default function App() {
             {(params) => <FAQ lang={params.lang} />}
           </Route>
 
+          <Route path="/:lang/terms">
+            {(params) => <Terms  lang={params.lang} />}
+          </Route>
+
+          <Route path="/:lang/privacy">
+            {(params) => <Privacy  lang={params.lang} />}
+          </Route>
+
+          <Route path="/:lang/trust">
+            {(params) => <Trust  lang={params.lang} />}
+          </Route>
+
+          <Route path="/:lang/lgpd">
+            {(params) => <LGPD  lang={params.lang} />}
+          </Route>
+
           <Route path="/:lang/blog">
             {(params) => <Blog lang={params.lang} />}
+          </Route>
+
+          <Route path="/:lang/contact">
+            {(params) => <Contact lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/blog/:slug">

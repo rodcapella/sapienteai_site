@@ -45,102 +45,106 @@ function getTechDescription(tech: string) {
 function TeamCard({ member }: { member: Member }) {
   const ref = useRef<HTMLDivElement>(null);
 
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const springX = useSpring(x, { stiffness: 120, damping: 10 });
+  const springY = useSpring(y, { stiffness: 120, damping: 10 });
+
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
 
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
 
-    ref.current?.style.setProperty("--x", `${x}px`);
-    ref.current?.style.setProperty("--y", `${y}px`);
+    x.set(dx * 0.08);
+    y.set(dy * 0.08);
+
+    ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
+  };
+
+  const handleLeave = () => {
+    x.set(0);
+    y.set(0);
   };
 
   return (
-    <a
+    <motion.a
       href={member.link}
       target="_blank"
       rel="noopener noreferrer"
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleLeave}
+      style={{ x: springX, y: springY }}
       className="group relative w-full md:w-[420px]"
     >
-      {/* GLOW */}
-      <div
-        ref={ref}
-        onMouseMove={handleMouseMove}
-        className="relative rounded-2xl p-[1px] overflow-hidden"
+      {/* 🌌 GLOW */}
+      <span
+        className="
+          absolute inset-0 rounded-2xl opacity-0
+          group-hover:opacity-100 transition
+        "
         style={{
           background: `
             radial-gradient(
               300px circle at var(--x) var(--y),
-              rgba(99,102,241,0.25),
+              rgba(34,211,238,0.15),
               transparent 40%
             )
-          `,
+          `
         }}
-      >
-        <div className="
-          bg-white/5
-          border border-white/10
-          rounded-2xl
-          p-8
-          text-center
-          transition-all
-          group-hover:-translate-y-1
-          group-hover:shadow-[0_0_40px_rgba(0,255,255,0.08)]
-        ">
+      />
 
-          <div className="w-28 h-28 mx-auto mb-6 rounded-full overflow-hidden">
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
+      {/* CARD */}
+      <div className="
+        relative bg-white dark:bg-card
+        border border-gray-200 dark:border-white/10
+        rounded-2xl p-8 text-center
+        transition-all duration-300
+        group-hover:-translate-y-2
+        group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+      ">
 
-          <h3 className="text-xl font-semibold mb-1 text-white">
-            {member.name}
-          </h3>
-
-          <p className="text-sm text-cyan-400 mb-4">
-            {member.role}
-          </p>
-
-          <p className="text-sm text-white/60 mb-6">
-            {member.bio}
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-2">
-            {member.stack.map((tech, idx) => (
-              <div key={idx} className="relative group/tooltip">
-
-                <span className="
-                  text-xs px-3 py-1
-                  rounded-full
-                  bg-white/5
-                  text-white/70
-                ">
-                  {tech}
-                </span>
-
-                <div className="
-                  absolute bottom-full left-1/2 -translate-x-1/2 mb-2
-                  px-3 py-1.5 text-xs
-                  rounded-md bg-black text-white
-                  opacity-0 scale-95
-                  group-hover/tooltip:opacity-100
-                  group-hover/tooltip:scale-100
-                  transition-all
-                ">
-                  {getTechDescription(tech)}
-                </div>
-
-              </div>
-            ))}
-          </div>
-
+        {/* IMAGE */}
+        <div className="w-28 h-28 mx-auto mb-6 rounded-full overflow-hidden">
+          <img src={member.image} alt={member.name} />
         </div>
+
+        <h3 className="text-xl font-semibold mb-1">
+          {member.name}
+        </h3>
+
+        <p className="text-sm text-primary mb-4">
+          {member.role}
+        </p>
+
+        <p className="text-sm text-muted-foreground mb-6">
+          {member.bio}
+        </p>
+
+        {/* STACK */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {member.stack.map((tech, idx) => (
+            <span
+              key={idx}
+              className="
+                text-xs px-3 py-1 rounded-full
+                bg-gray-100 dark:bg-white/5
+                text-gray-600 dark:text-white/70
+                hover:bg-cyan-400/10
+                transition
+              "
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
       </div>
-    </a>
+    </motion.a>
   );
 }
 
