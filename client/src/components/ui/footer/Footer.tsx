@@ -50,7 +50,7 @@ export default function Footer({ onContactClick }: FooterProps) {
         <img
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/JsygqIGdbHNWJuIo.png"
           alt="SAPIENTE.AI"
-          className="h-10 md:h-12 mb-8 invert"
+          className="h-12 mb-8 invert"
         />
 
         <p className="text-white/60 text-lg leading-relaxed max-w-sm">
@@ -136,8 +136,6 @@ export default function Footer({ onContactClick }: FooterProps) {
             href={social.url} 
             className="group transition-transform hover:-translate-y-1"
             aria-label={social.name}
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <img 
               src={social.icon} 

@@ -6,28 +6,29 @@ import { Section } from "@/components/ui/section/Section";
 import { SectionHeader } from "@/components/ui/section/SectionHeader";
 import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 
 import { setSEOHead } from '@/components/SEOHead';
 import { generateFAQSchema } from "@/lib/faqSchema";
-import { getContent } from "@/content";
+import { getContent } from "@/lib/content";
 
 const ChevronDown = Icons.ChevronDown;
 
 function FAQAccordion({ item, isOpen, onToggle }: any) {
   return (
     <SectionCard
-      className={`cursor-pointer transition-all ${
-        isOpen ? 'border-cyan-400/40' : ''
+      className={`cursor-pointer transition-all bg-white border-foreground/5 shadow-sm hover:shadow-md ${
+        isOpen ? 'border-primary/40' : ''
       }`}
       onClick={onToggle}
     >
       <div className="flex items-center justify-between gap-4">
-        <h3 className="text-lg font-medium text-white">
+        <h3 className="text-lg md:text-xl font-bold text-foreground">
           {item.question}
         </h3>
 
         <ChevronDown
-          className={`h-5 w-5 text-cyan-400 transition-transform duration-300 ${
+          className={`h-6 w-6 text-primary transition-transform duration-300 ${
             isOpen ? 'rotate-180' : ''
           }`}
         />
@@ -35,10 +36,10 @@ function FAQAccordion({ item, isOpen, onToggle }: any) {
 
       <div
         className={`overflow-hidden transition-all duration-300 ${
-          isOpen ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[500px] mt-6 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <p className="text-white/60 leading-relaxed">
+        <p className="text-foreground/70 text-lg leading-relaxed">
           {item.answer}
         </p>
       </div>
@@ -78,63 +79,64 @@ export default function FAQ() {
   }, [content]);
 
   return (
-    <div className="space-y-16">
-
-      {/* HERO */}
-      <Section>
-        <SectionHeader>
-          <SectionTitle
-            label={content.label}
-            title={content.title}
-          />
-        </SectionHeader>
-
-        <div className="text-center max-w-2xl mx-auto text-white/60">
-          <p>{content.subtitle}</p>
-        </div>
-      </Section>
-
-      {/* FAQ */}
-      <Section>
-        <div className="max-w-3xl mx-auto space-y-4">
-          {content.items.map((faq, idx) => (
-            <FAQAccordion
-              key={idx}
-              item={faq}
-              isOpen={openIndex === idx}
-              onToggle={() =>
-                setOpenIndex(openIndex === idx ? null : idx)
-              }
-            />
-          ))}
-        </div>
-      </Section>
-
-      {/* CTA */}
-      <Section className="text-center">
-        <div className="max-w-2xl mx-auto">
-          <SectionCard variant="highlight">
-
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              {content.cta.title}
-            </h2>
-
-            <p className="text-white/60 mb-6">
-              {content.cta.description}
+    <div className="flex flex-col">
+      {/* HERO BANNER */}
+      <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
+        <img 
+          src="/media/banners/hero-banner.webp" 
+          alt="Sapiente AI FAQ Banner" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-6">
+          <div className="max-w-4xl text-center">
+            <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
+              {content.title}
+            </h1>
+            <p className="text-lg md:text-2xl text-white/90 mt-6 drop-shadow-md max-w-2xl mx-auto">
+              {content.subtitle}
             </p>
+          </div>
+        </div>
+      </div>
 
-            <button className="
-              bg-cyan-400 text-black font-medium
-              px-6 py-3 rounded-full
-              hover:scale-[1.03] transition
-            ">
-              {content.cta.button}
-            </button>
-
-          </SectionCard>
+      {/* FAQ LIST - Ice White */}
+      <Section className="bg-ice py-20 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto space-y-6">
+            {content.items.map((faq, idx) => (
+              <FAQAccordion
+                key={idx}
+                item={faq}
+                isOpen={openIndex === idx}
+                onToggle={() =>
+                  setOpenIndex(openIndex === idx ? null : idx)
+                }
+              />
+            ))}
+          </div>
         </div>
       </Section>
 
+      {/* CTA - Blue Tint */}
+      <Section className="bg-blue-tint py-24 md:py-40 text-center">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <SectionCard className="bg-white p-10 md:p-16 shadow-xl hover:shadow-2xl transition-all duration-500 border-primary/10">
+              <h2 className="text-3xl md:text-5xl font-bold mb-8 text-foreground leading-tight">
+                {content.cta.title}
+              </h2>
+
+              <p className="text-xl text-foreground/70 mb-12 leading-relaxed">
+                {content.cta.description}
+              </p>
+
+              <PremiumButton className="scale-110">
+                {content.cta.button}
+              </PremiumButton>
+            </SectionCard>
+          </div>
+        </div>
+      </Section>
     </div>
   );
 }

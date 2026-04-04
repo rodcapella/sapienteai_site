@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 export function Section({ className, ...props }: React.ComponentProps<"section">) {
   return (
     <section
-      className={cn("py-28 md:py-36 px-4", className)}
+      className={cn("py-16 md:py-32 px-6", className)}
       {...props}
     />
   );

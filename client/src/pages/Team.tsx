@@ -1,10 +1,11 @@
 import { Icons } from "@/lib/icons";
 import { useEffect, useRef } from "react";
 import { useLocation } from "wouter";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from "@/components/SEOHead";
-import { getContent } from "@/content";
+import { getContent } from "@/lib/content";
 
 const team = [
   {
@@ -26,20 +27,6 @@ const team = [
 ];
 
 type Member = typeof team[number];
-
-// TOOLTIP
-function getTechDescription(tech: string) {
-  const map: Record<string, string> = {
-    AI: "Artificial Intelligence systems",
-    Automation: "Process automation & workflows",
-    "Product Strategy": "Product vision & execution",
-    React: "Frontend framework",
-    Node: "Backend runtime",
-    "AI Systems": "Machine learning & decision engines",
-  };
-
-  return map[tech] || tech;
-}
 
 // CARD
 function TeamCard({ member }: { member: Member }) {
@@ -100,41 +87,40 @@ function TeamCard({ member }: { member: Member }) {
 
       {/* CARD */}
       <div className="
-        relative bg-white dark:bg-card
-        border border-gray-200 dark:border-white/10
-        rounded-2xl p-8 text-center
+        relative bg-white
+        border border-foreground/5
+        rounded-2xl p-10 text-center
         transition-all duration-300
         group-hover:-translate-y-2
-        group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+        group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)]
       ">
 
         {/* IMAGE */}
-        <div className="w-28 h-28 mx-auto mb-6 rounded-full overflow-hidden">
-          <img src={member.image} alt={member.name} />
+        <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary/10">
+          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
         </div>
 
-        <h3 className="text-xl font-semibold mb-1">
+        <h3 className="text-2xl font-bold mb-2 text-foreground">
           {member.name}
         </h3>
 
-        <p className="text-sm text-primary mb-4">
+        <p className="text-lg text-primary font-bold mb-6">
           {member.role}
         </p>
 
-        <p className="text-sm text-muted-foreground mb-6">
+        <p className="text-foreground/70 mb-8 leading-relaxed">
           {member.bio}
         </p>
 
         {/* STACK */}
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="flex flex-wrap justify-center gap-3">
           {member.stack.map((tech, idx) => (
             <span
               key={idx}
               className="
-                text-xs px-3 py-1 rounded-full
-                bg-gray-100 dark:bg-white/5
-                text-gray-600 dark:text-white/70
-                hover:bg-cyan-400/10
+                text-sm px-4 py-1.5 rounded-full
+                bg-primary/5 text-primary font-medium
+                hover:bg-primary/10
                 transition
               "
             >
@@ -164,32 +150,36 @@ export default function Team() {
   }, [lang, content]);
 
   return (
-    <div className="space-y-20">
+    <div className="flex flex-col">
+      {/* HERO BANNER */}
+      <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
+        <img 
+          src="/media/banners/hero-banner.webp" 
+          alt="Sapiente AI Team Banner" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-6">
+          <div className="max-w-4xl text-center">
+            <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
+              {content.title}
+            </h1>
+            <p className="text-lg md:text-2xl text-white/90 mt-6 drop-shadow-md max-w-2xl mx-auto">
+              {content.subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
 
-      {/* HERO */}
-      <Section className="text-center">
-        <div className="max-w-3xl mx-auto">
-
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-tight mb-6 text-white">
-            {content.title}
-          </h1>
-
-          <p className="text-lg text-white/60">
-            {content.subtitle}
-          </p>
-
+      {/* TEAM - Ice White */}
+      <Section className="bg-ice py-20 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-stretch justify-center gap-10">
+            {team.map((member, i) => (
+              <TeamCard key={i} member={member} />
+            ))}
+          </div>
         </div>
       </Section>
-
-      {/* TEAM */}
-      <Section>
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10">
-          {team.map((member, i) => (
-            <TeamCard key={i} member={member} />
-          ))}
-        </div>
-      </Section>
-
     </div>
   );
 }
