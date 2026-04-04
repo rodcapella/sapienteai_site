@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz IA - SapienteAI</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@400;500;600&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; font-family: 'DM Sans', sans-serif; }
+    .font-display { font-family: 'Syne', sans-serif; }
+    
+    /* Language Toggle */
+    .lang-toggle-group { display: flex; gap: 0; background: rgba(0, 212, 255, 0.08); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; padding: 4px; }
+    .lang-toggle-btn { padding: 6px 12px; border: none; background: transparent; color: var(--text); font-weight: 600; font-size: 12px; cursor: pointer; transition: all 0.3s ease; border-radius: 8px; }
+    .lang-toggle-btn.active { background: var(--accent); color: #0a1a3a; box-shadow: 0 0 15px rgba(0, 212, 255, 0.3); }
+    
+    /* Color Variables */
+    .neon-blue { color: var(--accent); }
+    .neon-blue-bg { background-color: var(--accent); }
+    .neon-glow { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 60px rgba(0, 212, 255, 0.1); }
+    .neon-glow-strong { box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 80px rgba(0, 212, 255, 0.2); }
+    .neon-text-glow { text-shadow: 0 0 20px rgba(0, 212, 255, 0.5), 0 0 40px rgba(0, 212, 255, 0.3); }
+    
+    /* Card Styles */
+    .card-white { background: var(--accent); color: #0a1a3a; border-radius: 16px; }
+    .card-dark { background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 16px; backdrop-filter: blur(10px); color: var(--text); }
+    
+    /* Options */
+    .option-btn { transition: all 0.25s ease; border-radius: 12px; border: 1px solid rgba(0,212,255,0.3); background: rgba(0, 0, 0, 0.6); color: var(--text); font-weight: 500; }
+    .option-btn:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.7); box-shadow: 0 0 25px rgba(0, 212, 255, 0.4); }
+    .option-correct { background: var(--accent) !important; color: #0a1a3a !important; border-color: var(--accent) !important; }
+    .option-wrong { background: #ff3366 !important; color: #fff !important; border-color: #ff3366 !important; box-shadow: 0 0 20px rgba(255, 51, 102, 0.4) !important; }
+    
+    /* Animations */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(0, 212, 255, 0.1); } 50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.5), inset 0 0 30px rgba(0, 212, 255, 0.15); } }
+    .progress-fill { transition: width 0.5s ease; background: var(--accent); }
+    .anim-in { animation: fadeUp 0.5s ease-out both; }
+    .anim-d1 { animation-delay: 0.1s; }
+    .anim-d2 { animation-delay: 0.2s; }
+    .anim-d3 { animation-delay: 0.3s; }
+    .total-glow { animation: glowPulse 3s ease-in-out infinite; border: 2px solid rgba(0, 212, 255, 0.6); }
+    .score-ring { transition: stroke-dashoffset 1s ease; stroke: var(--accent); }
+  </style>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full" style="background: var(--bg); color: var(--text);">
+  <div id="app" class="h-full w-full overflow-auto"><!-- Language Toggle -->
+   <div style="position: absolute; top: 20px; right: 20px; z-index: 50;">
+    <div class="lang-toggle-group">
+     <button onclick="setLanguage('pt')" id="btn-pt" class="lang-toggle-btn active">PT</button> <button onclick="setLanguage('en')" id="btn-en" class="lang-toggle-btn">EN</button>
+    </div>
+   </div><!-- START SCREEN -->
+   <div id="screen-start" class="flex items-center justify-center min-h-full p-4 sm:p-6">
+    <div class="text-center max-w-2xl w-full anim-in">
+     <div class="mb-6 sm:mb-8 h-20 sm:h-28 flex items-center justify-center"><img id="logo-img" src="https://github.com/rodcapella/sapienteai_site/raw/main/client/public/media/logos/sapiente-ai-footer.png" alt="SapienteAI Logo" style="max-height: 100px; max-width: 400px; object-fit: contain;" loading="lazy">
+     </div>
+     <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-3 sm:mb-4 anim-in anim-d1" style="background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.4);"><i data-lucide="zap" style="width: 12px; height: 12px;"></i> <span id="el-badge">Quiz sobre IA</span>
+     </div>
+     <h1 id="el-title" class="font-display font-800 text-2xl sm:text-4xl md:text-5xl mb-3 sm:mb-4 leading-tight anim-in anim-d2">Quanto você sabe sobre <span class="neon-blue neon-text-glow">Inteligência Artificial</span>?</h1>
+     <p id="el-subtitle" class="text-xs sm:text-base opacity-70 mb-6 sm:mb-8 anim-in anim-d3">Teste seus conhecimentos sobre IA no contexto empresarial e pessoal com 10 perguntas rápidas.</p><button onclick="startQuiz()" id="el-start-btn" class="neon-blue-bg text-black font-display font-700 text-sm sm:text-base px-6 sm:px-10 py-2.5 sm:py-4 rounded-lg sm:rounded-xl neon-glow-strong hover:scale-105 transition-transform anim-in anim-d4"> Começar o Quiz <i data-lucide="arrow-right" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-left: 8px;"></i> </button>
+     <p id="el-duration" class="text-xs mt-3 sm:mt-4 opacity-60" style="font-family: 'Space Mono', monospace;">10 perguntas · ~3 minutos</p>
+    </div>
+   </div><!-- QUIZ SCREEN -->
+   <div id="screen-quiz" class="hidden min-h-full p-3 sm:p-6 flex items-center justify-center">
+    <div class="max-w-3xl w-full"><!-- Progress -->
+     <div class="flex items-center justify-between mb-2 sm:mb-3"><span id="q-counter" class="text-xs sm:text-sm neon-blue font-600" style="font-family: 'Space Mono', monospace;">01/10</span> <span id="q-score" class="text-xs sm:text-sm opacity-60" style="font-family: 'Space Mono', monospace;">Pontos: 0</span>
+     </div>
+     <div class="w-full h-1.5 rounded-full bg-gray-800 mb-6 sm:mb-8">
+      <div id="progress-bar" class="h-full rounded-full progress-fill" style="width: 10%"></div>
+     </div><!-- Question Card -->
+     <div class="card-dark rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 neon-glow anim-in" id="q-card">
+      <p id="q-category" class="text-xs uppercase tracking-widest neon-blue mb-2 sm:mb-3 font-600" style="font-family: 'Space Mono', monospace;">categoria</p>
+      <h2 id="q-text" class="font-display font-700 text-lg sm:text-2xl md:text-3xl mb-6 sm:mb-8 leading-relaxed"></h2>
+      <div id="q-options" class="grid gap-2 sm:gap-3 mb-4 sm:mb-6"></div>
+      <div id="q-feedback" class="hidden p-3 sm:p-4 rounded-lg text-xs sm:text-sm leading-relaxed border" style="background: rgba(0,212,255,0.05); border-color: rgba(0,212,255,0.3);"></div>
+     </div><!-- Next Button -->
+     <div class="text-center mt-4 sm:mt-6"><button id="btn-next" onclick="nextQuestion()" class="hidden neon-blue-bg text-black font-display font-700 px-6 sm:px-8 py-2 sm:py-3 rounded-lg sm:rounded-xl neon-glow hover:scale-105 transition-transform text-sm sm:text-base"> Próxima Pergunta <i data-lucide="arrow-right" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-left: 6px;"></i> </button>
+     </div>
+    </div>
+   </div><!-- RESULT SCREEN -->
+   <div id="screen-result" class="hidden min-h-full p-4 sm:p-6 flex items-center justify-center">
+    <div class="max-w-xl w-full text-center anim-in"><!-- Score Ring -->
+     <div class="relative inline-block mb-6 sm:mb-8">
+      <svg width="140" height="140" viewbox="0 0 160 160" style="width: 100%; height: auto;"><circle cx="80" cy="80" r="70" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="8"></circle> <circle id="score-circle" cx="80" cy="80" r="70" fill="none" stroke-width="8" stroke-linecap="round" stroke-dasharray="440" stroke-dashoffset="440" transform="rotate(-90 80 80)" class="score-ring"></circle>
+      </svg>
+      <div class="absolute inset-0 flex flex-col items-center justify-center"><span id="score-num" class="text-3xl sm:text-5xl font-display font-800 neon-blue neon-text-glow">0</span> <span class="text-xs sm:text-sm opacity-60">/10</span>
+      </div>
+     </div>
+     <h2 id="result-title" class="font-display font-800 text-xl sm:text-3xl mb-2 sm:mb-3"></h2>
+     <p id="result-desc" class="text-xs sm:text-base opacity-70 mb-6 sm:mb-8"></p><!-- CTA Card -->
+     <div class="card-dark rounded-lg sm:rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 neon-glow">
+      <div class="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-lg mb-3 sm:mb-4" style="background: rgba(0, 212, 255, 0.15);"><i data-lucide="rocket" style="width: 20px; height: 20px; color: var(--accent); display: inline-block;"></i>
+      </div>
+      <h3 id="el-cta-title" class="font-display font-700 text-lg sm:text-xl mb-2 sm:mb-3">Pronto para transformar seu negócio com IA?</h3>
+      <p class="text-xs sm:text-sm mb-4 sm:mb-6">A <strong>Sapiente.AI</strong> ajuda empresas e profissionais a implementar soluções de IA de forma estratégica, prática e acessível.</p><a id="el-cta-btn" href="#" onclick="event.preventDefault()" class="inline-block neon-blue-bg text-black font-display font-700 px-6 sm:px-8 py-2 sm:py-3 rounded-lg sm:rounded-xl neon-glow-strong hover:scale-105 transition-transform text-sm sm:text-base"> Fale conosco </a>
+     </div><button onclick="restartQuiz()" class="text-xs sm:text-sm opacity-60 hover:opacity-100 transition-opacity"> <i data-lucide="rotate-ccw" style="width: 14px; height: 14px; display: inline-block; vertical-align: middle; margin-right: 4px;"></i> Refazer o quiz </button>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      background_color: '#000000',
+      surface_color: 'rgba(0, 0, 0, 0.6)',
+      text_color: '#e0e6ff',
+      accent_color: '#00d4ff',
+      secondary_action_color: '#0066cc',
+      font_family: 'Syne',
+      font_size: 16,
+      logo_url: 'https://github.com/rodcapella/sapienteai_site/raw/main/client/public/media/logos/sapiente-ai-footer.png',
+      quiz_title_pt: 'Quanto você sabe sobre Inteligência Artificial?',
+      quiz_title_en: 'How much do you know about Artificial Intelligence?',
+      cta_title_pt: 'Pronto para transformar seu negócio com IA?',
+      cta_title_en: 'Ready to transform your business with AI?',
+      cta_button_text_pt: 'Fale conosco',
+      cta_button_text_en: 'Talk to us'
+    };
+
+    const questionsData = {
+      pt: [
+        { cat: "Conceitos Básicos", q: "O que é Inteligência Artificial (IA)?", opts: ["Um robô físico que substitui humanos", "Sistemas que simulam capacidades de inteligência humana", "Apenas assistentes de voz como Alexa e Siri", "Um tipo de rede social"], correct: 1, explain: "IA são sistemas computacionais capazes de simular capacidades humanas como aprendizado, raciocínio e tomada de decisão." },
+        { cat: "IA no Trabalho", q: "Qual é uma das principais vantagens de usar IA em empresas?", opts: ["Substituir completamente todos os funcionários", "Automatizar tarefas repetitivas e aumentar a produtividade", "Eliminar a necessidade de estratégia de negócio", "Reduzir custos demitindo toda a equipe"], correct: 1, explain: "A IA complementa o trabalho humano automatizando tarefas repetitivas, permitindo que equipes foquem em atividades mais estratégicas." },
+        { cat: "Ferramentas de IA", q: "Como a IA reduz custos empresariais através da automatização inteligente?", opts: ["Apenas substituindo funcionários", "Automatizando processos repetitivos, otimizando recursos e reduzindo erros operacionais", "Aumentando o número de tarefas manuais", "Não tem impacto nos custos"], correct: 1, explain: "A IA automatiza fluxos de trabalho, elimina retrabalho, otimiza recursos e reduz custos operacionais significativamente." },
+        { cat: "IA Pessoal", q: "Como a IA pode ajudar no dia a dia pessoal?", opts: ["Apenas jogando xadrez", "Organizando tarefas, recomendando conteúdo e auxiliando estudos", "Fazendo exercícios físicos por você", "Substituindo relacionamentos humanos"], correct: 1, explain: "No cotidiano, IA ajuda com assistentes virtuais, recomendações personalizadas, organização de rotina e aprendizado." },
+        { cat: "IA Empresarial", q: "Como a IA generativa pode revolucionar campanhas publicitárias?", opts: ["Apenas criando pequenos textos", "Gerando conteúdo personalizado em escala, otimizando segmentação e aumentando ROI", "Substituindo criativos completamente", "Não funciona para marketing"], correct: 1, explain: "A IA generativa cria conteúdo diverso em segundos, personaliza mensagens por público e otimiza campanhas automaticamente." },
+        { cat: "Machine Learning", q: "O que é Machine Learning (Aprendizado de Máquina)?", opts: ["Ensinar máquinas a andar", "Um subcampo da IA onde sistemas aprendem com dados", "Um curso online sobre tecnologia", "Um tipo de hardware de computador"], correct: 1, explain: "Machine Learning é uma área da IA em que algoritmos aprendem padrões a partir de dados, melhorando seu desempenho com o tempo." },
+        { cat: "Análise de Dados", q: "Como análise avançada de dados com IA beneficia empresas?", opts: ["Apenas gerando gráficos bonitos", "Identificando padrões, prevendo tendências e informando decisões estratégicas", "Criando relatórios em PDF", "Não traz benefícios reais"], correct: 1, explain: "Análise com IA descobre insights ocultos, prevê comportamentos de clientes e otimiza estratégias de negócio baseado em dados." },
+        { cat: "Marketing", q: "Como a IA transforma segmentação de clientes e personalização?", opts: ["Apenas dividindo por idade", "Analisando comportamentos em tempo real e criando experiências ultra-personalizadas", "Ignorando preferências individuais", "Não é possível com IA"], correct: 1, explain: "A IA analisa múltiplas variáveis de comportamento para segmentar precisamente e personalizar cada interação com clientes." },
+        { cat: "Eficiência", q: "Qual é o principal impacto financeiro da automatização com IA?", opts: ["Apenas economia de papel", "Redução de custos operacionais, aumento de produtividade e melhoria de receita", "Aumento de despesas", "Nenhum impacto"], correct: 1, explain: "Automatização com IA reduz custos fixos, aumenta output com menos recursos e libera equipes para tarefas de alto valor." },
+        { cat: "Futuro da IA", q: "Qual tendência de IA tem maior impacto previsto para os próximos anos?", opts: ["IA vai substituir a internet", "IA generativa e copilotos inteligentes integrados ao trabalho", "A IA vai deixar de existir", "Computadores vão se tornar conscientes"], correct: 1, explain: "A IA generativa e assistentes inteligentes integrados a ferramentas de trabalho são as tendências com maior impacto nos próximos anos." }
+      ],
+      en: [
+        { cat: "Basic Concepts", q: "What is Artificial Intelligence (AI)?", opts: ["A physical robot that replaces humans", "Systems that simulate human intelligence capabilities", "Only voice assistants like Alexa and Siri", "A type of social network"], correct: 1, explain: "AI is computational systems capable of simulating human abilities like learning, reasoning, and decision-making." },
+        { cat: "AI at Work", q: "What is one of the main advantages of using AI in companies?", opts: ["Completely replace all employees", "Automate repetitive tasks and increase productivity", "Eliminate the need for business strategy", "Reduce costs by firing the entire team"], correct: 1, explain: "AI complements human work by automating repetitive tasks, allowing teams to focus on more strategic activities." },
+        { cat: "Smart Automation", q: "How does AI reduce business costs through intelligent automation?", opts: ["Only by replacing employees", "By automating repetitive processes, optimizing resources and reducing operational errors", "By increasing manual tasks", "It has no impact on costs"], correct: 1, explain: "AI automates workflows, eliminates rework, optimizes resources, and significantly reduces operational costs." },
+        { cat: "Personal AI", q: "How can AI help in daily life?", opts: ["Only playing chess", "Organizing tasks, recommending content and assisting with learning", "Doing physical exercises for you", "Replacing human relationships"], correct: 1, explain: "In daily life, AI helps with virtual assistants, personalized recommendations, routine organization and learning." },
+        { cat: "AI Marketing", q: "How can generative AI revolutionize advertising campaigns?", opts: ["Only creating small texts", "Generating personalized content at scale, optimizing targeting and increasing ROI", "Completely replacing creatives", "Doesn't work for marketing"], correct: 1, explain: "Generative AI creates diverse content in seconds, personalizes messages by audience, and automatically optimizes campaigns." },
+        { cat: "Machine Learning", q: "What is Machine Learning?", opts: ["Teaching machines to walk", "A field of AI where systems learn from data", "An online technology course", "A type of computer hardware"], correct: 1, explain: "Machine Learning is an area of AI where algorithms learn patterns from data and improve performance over time." },
+        { cat: "Data Analysis", q: "How does advanced AI-powered data analysis benefit companies?", opts: ["Only creating pretty graphs", "Identifying patterns, predicting trends and informing strategic decisions", "Creating PDF reports", "Brings no real benefits"], correct: 1, explain: "AI analysis discovers hidden insights, predicts customer behavior, and optimizes business strategies based on data." },
+        { cat: "Personalization", q: "How does AI transform customer segmentation and personalization?", opts: ["Only dividing by age", "Analyzing behaviors in real time and creating ultra-personalized experiences", "Ignoring individual preferences", "Not possible with AI"], correct: 1, explain: "AI analyzes multiple behavior variables to segment precisely and personalize each customer interaction." },
+        { cat: "Financial Impact", q: "What is the main financial impact of automation with AI?", opts: ["Only saving paper", "Reducing operational costs, increasing productivity and improving revenue", "Increasing expenses", "No impact"], correct: 1, explain: "AI automation reduces fixed costs, increases output with fewer resources, and frees teams for high-value tasks." },
+        { cat: "Future of AI", q: "Which AI trend is predicted to have the greatest impact in the coming years?", opts: ["AI will replace the internet", "Generative AI and intelligent copilots integrated into work", "AI will cease to exist", "Computers will become conscious"], correct: 1, explain: "Generative AI and intelligent assistants integrated into work tools are the trends with the greatest impact in coming years." }
+      ]
+    };
+
+    const uiText = {
+      pt: {
+        badge: 'Quiz sobre IA',
+        title: 'Quanto você sabe sobre <span class="neon-blue neon-text-glow">Inteligência Artificial</span>?',
+        subtitle: 'Teste seus conhecimentos sobre IA no contexto empresarial e pessoal com 10 perguntas rápidas.',
+        startBtn: 'Começar o Quiz',
+        duration: '10 perguntas · ~3 minutos',
+        nextBtn: 'Próxima Pergunta',
+        resultBtn: 'Ver Resultado',
+        ctaTitle: 'Pronto para transformar seu negócio com IA?',
+        ctaBtn: 'Fale conosco',
+        retakeBtn: 'Refazer o quiz'
+      },
+      en: {
+        badge: 'AI Quiz',
+        title: 'How much do you know about <span class="neon-blue neon-text-glow">Artificial Intelligence</span>?',
+        subtitle: 'Test your knowledge about AI in business and personal context with 10 quick questions.',
+        startBtn: 'Start Quiz',
+        duration: '10 questions · ~3 minutes',
+        nextBtn: 'Next Question',
+        resultBtn: 'See Results',
+        ctaTitle: 'Ready to transform your business with AI?',
+        ctaBtn: 'Talk to us',
+        retakeBtn: 'Retake the quiz'
+      }
+    };
+
+    let current = 0, score = 0, answered = false, lang = 'pt';
+    let questions = questionsData.pt;
+
+    function applyColors(c) {
+      const r = document.documentElement;
+      r.style.setProperty('--bg', c.background_color || defaultConfig.background_color);
+      r.style.setProperty('--surface', c.surface_color || defaultConfig.surface_color);
+      r.style.setProperty('--text', c.text_color || defaultConfig.text_color);
+      r.style.setProperty('--accent', c.accent_color || defaultConfig.accent_color);
+      r.style.setProperty('--sec-action', c.secondary_action_color || defaultConfig.secondary_action_color);
+      document.body.style.background = c.background_color || defaultConfig.background_color;
+      document.body.style.color = c.text_color || defaultConfig.text_color;
+    }
+
+    function setLanguage(newLang) {
+      lang = newLang;
+      questions = questionsData[lang];
+      
+      // Update button states
+      document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      
+      updateUIText();
+      if (current === 0 && document.getElementById('screen-quiz').classList.contains('hidden')) {
+        updateStartScreen();
+      } else if (!document.getElementById('screen-quiz').classList.contains('hidden')) {
+        renderQuestion();
+      }
+    }
+
+    function updateStartScreen() {
+      const el = uiText[lang];
+      const config = window.elementSdk?.config || defaultConfig;
+      document.getElementById('el-badge').textContent = el.badge;
+      document.getElementById('el-title').innerHTML = lang === 'pt' ? (config.quiz_title_pt || el.title) : (config.quiz_title_en || el.title);
+      document.getElementById('el-subtitle').textContent = el.subtitle;
+      document.getElementById('el-start-btn').innerHTML = el.startBtn + ' <i data-lucide="arrow-right" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-left: 8px;"></i>';
+      document.getElementById('el-duration').textContent = el.duration;
+      lucide.createIcons();
+    }
+
+    function updateUIText() {
+      const el = uiText[lang];
+      const config = window.elementSdk?.config || defaultConfig;
+      document.getElementById('el-cta-title').textContent = lang === 'pt' ? (config.cta_title_pt || el.ctaTitle) : (config.cta_title_en || el.ctaTitle);
+      document.getElementById('el-cta-btn').textContent = lang === 'pt' ? (config.cta_button_text_pt || el.ctaBtn) : (config.cta_button_text_en || el.ctaBtn);
+    }
+
+    function showScreen(id) {
+      document.querySelectorAll('[id^="screen-"]').forEach(s => s.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function startQuiz() {
+      current = 0;
+      score = 0;
+      answered = false;
+      showScreen('screen-quiz');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      answered = false;
+      const qData = questions[current];
+      const el = uiText[lang];
+      document.getElementById('q-counter').textContent = String(current + 1).padStart(2, '0') + '/10';
+      document.getElementById('q-score').textContent = (lang === 'pt' ? 'Pontos' : 'Score') + ': ' + score;
+      document.getElementById('progress-bar').style.width = ((current + 1) * 10) + '%';
+      document.getElementById('q-category').textContent = qData.cat;
+      document.getElementById('q-text').textContent = qData.q;
+      document.getElementById('q-feedback').classList.add('hidden');
+      document.getElementById('btn-next').classList.add('hidden');
+
+      const optDiv = document.getElementById('q-options');
+      optDiv.innerHTML = '';
+      qData.opts.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn w-full text-left p-3 sm:p-4 text-xs sm:text-sm';
+        btn.innerHTML = `<span class="inline-block w-6 h-6 sm:w-7 sm:h-7 rounded-lg text-center leading-6 sm:leading-7 mr-2 sm:mr-3 font-700 text-xs sm:text-sm" style="background: rgba(0,212,255,0.15); color: var(--accent); font-family: 'Space Mono', monospace;">${String.fromCharCode(65 + i)}</span>${opt}`;
+        btn.onclick = () => selectAnswer(i);
+        optDiv.appendChild(btn);
+      });
+
+      lucide.createIcons();
+    }
+
+    function selectAnswer(idx) {
+      if (answered) return;
+      answered = true;
+      const qData = questions[current];
+      const btns = document.getElementById('q-options').children;
+
+      btns[qData.correct].classList.add('option-correct');
+      if (idx !== qData.correct) {
+        btns[idx].classList.add('option-wrong');
+      } else {
+        score++;
+      }
+      document.getElementById('q-score').textContent = (lang === 'pt' ? 'Pontos' : 'Score') + ': ' + score;
+
+      for (let b of btns) b.style.pointerEvents = 'none';
+
+      const fb = document.getElementById('q-feedback');
+      fb.classList.remove('hidden');
+      fb.style.background = idx === qData.correct ? 'rgba(0,212,255,0.08)' : 'rgba(255,51,102,0.08)';
+      fb.style.borderColor = idx === qData.correct ? 'rgba(0,212,255,0.3)' : 'rgba(255,51,102,0.3)';
+      fb.innerHTML = `<strong>${idx === qData.correct ? '✅ ' + (lang === 'pt' ? 'Correto!' : 'Correct!') : '❌ ' + (lang === 'pt' ? 'Incorreto!' : 'Wrong!')}</strong><br>${qData.explain}`;
+
+      const btn = document.getElementById('btn-next');
+      btn.classList.remove('hidden');
+      const el = uiText[lang];
+      btn.innerHTML = (current < 9 ? el.nextBtn : el.resultBtn) + ' <i data-lucide="arrow-right" style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-left: 6px;"></i>';
+      lucide.createIcons();
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current >= 10) {
+        showResult();
+        return;
+      }
+      renderQuestion();
+    }
+
+    function showResult() {
+      showScreen('screen-result');
+      document.getElementById('score-num').textContent = score;
+
+      const circle = document.getElementById('score-circle');
+      const offset = 440 - (440 * score / 10);
+      setTimeout(() => {
+        circle.style.strokeDashoffset = offset;
+      }, 100);
+
+      let title, desc;
+      if (lang === 'pt') {
+        if (score <= 3) {
+          title = '🌱 Iniciante em IA';
+          desc = 'Você está começando sua jornada. A SapienteAI pode acelerar seu aprendizado!';
+        } else if (score <= 6) {
+          title = '⚡ Conhecimento Intermediário';
+          desc = 'Você já sabe o básico! Hora de aplicar IA de forma estratégica no seu negócio.';
+        } else if (score <= 9) {
+          title = '🚀 Quase Especialista';
+          desc = 'Impressionante! Você tem uma ótima base sobre IA. Vamos elevar ao próximo nível?';
+        } else {
+          title = '🏆 Expert em IA!';
+          desc = 'Parabéns! Você domina os conceitos de IA. Que tal transformar esse conhecimento em resultados?';
+        }
+      } else {
+        if (score <= 3) {
+          title = '🌱 AI Beginner';
+          desc = 'You\'re beginning your AI journey. SapienteAI can accelerate your learning!';
+        } else if (score <= 6) {
+          title = '⚡ Intermediate Knowledge';
+          desc = 'You know the basics! Time to apply AI strategically in your business.';
+        } else if (score <= 9) {
+          title = '🚀 Almost Expert';
+          desc = 'Impressive! You have a great foundation in AI. Ready to take it to the next level?';
+        } else {
+          title = '🏆 AI Expert!';
+          desc = 'Congratulations! You master AI concepts. Ready to turn that knowledge into results?';
+        }
+      }
+
+      document.getElementById('result-title').textContent = title;
+      document.getElementById('result-desc').textContent = desc;
+      lucide.createIcons();
+    }
+
+    function restartQuiz() {
+      current = 0;
+      startQuiz();
+    }
+
+    // Element SDK
+    window.elementSdk.init({
+      defaultConfig,
+      onConfigChange: async (config) => {
+        applyColors(config);
+        const ff = config.font_family || defaultConfig.font_family;
+        const fs = config.font_size || defaultConfig.font_size;
+        document.querySelectorAll('.font-display').forEach(el => el.style.fontFamily = `${ff}, sans-serif`);
+        document.body.style.fontFamily = `'DM Sans', ${ff}, sans-serif`;
+
+        const logoImg = document.getElementById('logo-img');
+        if (config.logo_url && config.logo_url.trim()) {
+          logoImg.src = config.logo_url;
+        }
+
+        updateStartScreen();
+        updateUIText();
+      },
+      mapToCapabilities: (config) => ({
+        recolorables: [
+          { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+          { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+          { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+          { get: () => config.accent_color || defaultConfig.accent_color, set: v => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+          { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: v => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+        ],
+        borderables: [],
+        fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+        fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+      }),
+      mapToEditPanelValues: (config) => new Map([
+        ['logo_url', config.logo_url || defaultConfig.logo_url],
+        ['quiz_title_pt', config.quiz_title_pt || defaultConfig.quiz_title_pt],
+        ['quiz_title_en', config.quiz_title_en || defaultConfig.quiz_title_en],
+        ['cta_title_pt', config.cta_title_pt || defaultConfig.cta_title_pt],
+        ['cta_title_en', config.cta_title_en || defaultConfig.cta_title_en],
+        ['cta_button_text_pt', config.cta_button_text_pt || defaultConfig.cta_button_text_pt],
+        ['cta_button_text_en', config.cta_button_text_en || defaultConfig.cta_button_text_en]
+      ])
+    });
+
+    applyColors(defaultConfig);
+    lucide.createIcons();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e7290c26718785f',t:'MTc3NTMyOTMyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
