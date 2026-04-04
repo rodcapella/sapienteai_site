@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="pt-BR" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+html, body { height: 100%; margin: 0; }
+* { box-sizing: border-box; }
+body { font-family: 'DM Sans', sans-serif; }
+.font-display { font-family: 'Syne', sans-serif; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(0, 212, 255, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.5), inset 0 0 30px rgba(0, 212, 255, 0.15); }
+}
+
+.anim-in { animation: fadeUp 0.5s ease-out both; }
+.anim-d1 { animation-delay: 0.1s; }
+.anim-d2 { animation-delay: 0.2s; }
+.anim-d3 { animation-delay: 0.3s; }
+.anim-d4 { animation-delay: 0.4s; }
+.anim-d5 { animation-delay: 0.5s; }
+
+.range-input { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 999px; outline: none; cursor: pointer; background: linear-gradient(to right, rgba(0,212,255,0.2), rgba(0,212,255,0.3)); }
+.range-input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 12px rgba(0,212,255,0.8), inset 0 0 6px rgba(0,212,255,0.4); background: var(--accent); }
+.range-input::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 3px solid #fff; box-shadow: 0 0 12px rgba(0,212,255,0.8), inset 0 0 6px rgba(0,212,255,0.4); background: var(--accent); }
+
+.card-hover { transition: all 0.3s ease; border: 1px solid rgba(0,212,255,0.3); }
+.card-hover:hover { transform: translateY(-6px); border-color: rgba(0,212,255,0.7); box-shadow: 0 0 30px rgba(0,212,255,0.25); }
+
+.total-glow { animation: glowPulse 3s ease-in-out infinite; border: 2px solid rgba(0,212,255,0.6); }
+
+.tech-input { background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.3); color: var(--text); padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; transition: all 0.3s ease; }
+.tech-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 12px rgba(0,212,255,0.4); background: rgba(0,212,255,0.1); }
+</style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full w-full overflow-auto" style="background: var(--bg);">
+   <!-- Header -->
+   <header class="anim-in px-4 pt-6 pb-4 text-center relative" style="color: var(--text);">
+    <!-- Language Toggle -->
+    <div class="absolute top-4 right-4 sm:top-6 sm:right-4 flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-full text-xs" style="background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3);">
+     <span class="font-600" style="color: var(--accent);">PT</span> <button id="lang-toggle" onclick="toggleLanguage()" class="relative w-8 h-5 sm:w-10 sm:h-6 rounded-full transition-all" style="background: var(--accent);">
+      <div id="toggle-dot" class="absolute top-0.5 left-0.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full transition-all" style="background: #0a1a3a;"></div></button> <span class="font-600" style="color: var(--accent);">EN</span>
+    </div>
+    <div class="mb-6 sm:mb-8 h-20 sm:h-28 flex items-center justify-center">
+     <img id="logo-img" src="https://github.com/rodcapella/sapienteai_site/raw/main/client/public/media/logos/sapiente-ai-footer.png" alt="Logo" style="max-height: 80px; sm:max-height: 112px; max-width: 320px; sm:max-width: 400px; object-fit: contain;">
+    </div>
+    <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-xs font-semibold tracking-widest uppercase mb-3 sm:mb-4" style="background: rgba(0,212,255,0.1); color: var(--accent); border: 1px solid rgba(0,212,255,0.4);">
+     <i data-lucide="zap" style="width:12px;height:12px;"></i> <span id="el-badge">Calculadora de Preços</span>
+    </div>
+    <p id="el-tagline" class="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base opacity-70">Criação de Conteúdo com IA</p>
+   </header><!-- Services -->
+   <main class="max-w-4xl mx-auto px-3 sm:px-4 pb-8 sm:pb-12">
+    <div class="grid grid-cols-1 gap-3 sm:gap-4 mb-6 sm:mb-8">
+     <!-- Avatar Virtual -->
+     <div class="anim-in anim-d1 card-hover rounded-xl sm:rounded-2xl p-4 sm:p-5 backdrop-blur" style="background: rgba(0, 0, 0, 0.6);">
+      <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+       <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(0,212,255,0.2); border: 1px solid rgba(0,212,255,0.5); color: var(--accent);">
+        <i data-lucide="user" style="width:16px;height:16px;"></i>
+       </div>
+       <div class="text-left">
+        <h3 id="avatar-title" class="font-display font-700 text-xs sm:text-sm" style="color: var(--text);">Avatar Virtual</h3>
+        <p id="avatar-desc" class="text-xs opacity-60" style="color: var(--text);">Criação &amp; Customização</p>
+       </div>
+      </div><label class="text-xs font-600 mb-1 block" style="color: var(--accent);"><span id="avatar-label">Quantidade de Avatares:</span> <span id="avatar-qty-val" class="font-700">1</span></label> <input type="range" min="1" max="10" value="1" id="avatar-qty" class="range-input mb-2 sm:mb-3">
+      <div class="mt-3 sm:mt-4 text-xs opacity-60" style="color: var(--text);" id="avatar-note">
+       Para mais de 10 avatares, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>
+      </div>
+      <div class="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t flex justify-between items-center text-xs sm:text-sm" style="border-color: rgba(0,212,255,0.2);">
+       <span class="opacity-60" style="color: var(--text);">Subtotal</span> <span id="avatar-sub" class="font-display font-700" style="color: var(--accent);">€50</span>
+      </div>
+     </div><!-- Imagens IA -->
+     <div class="anim-in anim-d2 card-hover rounded-xl sm:rounded-2xl p-4 sm:p-5 backdrop-blur" style="background: rgba(0, 0, 0, 0.6);">
+      <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+       <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(0,212,255,0.2); border: 1px solid rgba(0,212,255,0.5); color: var(--accent);">
+        <i data-lucide="image" style="width:16px;height:16px;"></i>
+       </div>
+       <div class="text-left">
+        <h3 id="images-title" class="font-display font-700 text-xs sm:text-sm" style="color: var(--text);">Imagens IA</h3>
+        <p id="images-desc" class="text-xs opacity-60" style="color: var(--text);">€5/imagem</p>
+       </div>
+      </div><label class="text-xs font-600 mb-1 block" style="color: var(--accent);"><span id="images-label">Quantidade de Imagens:</span> <span id="images-qty-val" class="font-700">5</span></label> <input type="range" min="0" max="50" value="5" id="images-qty" class="range-input mb-2">
+      <div class="mt-3 text-xs opacity-60" style="color: var(--text);" id="images-note">
+       Para múltiplos avatares por imagem, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>
+      </div>
+      <div class="mt-2 text-xs opacity-60" style="color: var(--text);" id="images-special-note">
+       Para mais de 50 imagens, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>
+      </div>
+      <div class="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t flex justify-between items-center text-xs sm:text-sm" style="border-color: rgba(0,212,255,0.2);">
+       <span class="opacity-60" style="color: var(--text);">Subtotal</span> <span id="images-sub" class="font-display font-700" style="color: var(--accent);">€25</span>
+      </div>
+     </div><!-- Vídeos até 15 segundos -->
+     <div class="anim-in anim-d3 card-hover rounded-xl sm:rounded-2xl p-4 sm:p-5 backdrop-blur" style="background: rgba(0, 0, 0, 0.6);">
+      <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+       <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(0,212,255,0.2); border: 1px solid rgba(0,212,255,0.5); color: var(--accent);">
+        <i data-lucide="video" style="width:16px;height:16px;"></i>
+       </div>
+       <div class="text-left">
+        <h3 id="videos-title" class="font-display font-700 text-xs sm:text-sm" style="color: var(--text);">Vídeos Curtos</h3>
+        <p id="videos-desc" class="text-xs opacity-60" style="color: var(--text);">até 15 segundos</p>
+       </div>
+      </div><label class="text-xs font-600 mb-1 block" style="color: var(--accent);"><span id="videos-label">Quantidade de Vídeos:</span> <span id="videos-qty-val" class="font-700">2</span></label> <input type="range" min="0" max="20" value="2" id="videos-qty" class="range-input mb-2">
+      <div class="mt-3 text-xs opacity-60" style="color: var(--text);" id="videos-note">
+       Para múltiplos avatares por vídeo, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>
+      </div>
+      <div class="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t flex justify-between items-center text-xs sm:text-sm" style="border-color: rgba(0,212,255,0.2);">
+       <span class="opacity-60" style="color: var(--text);">Subtotal</span> <span id="videos-sub" class="font-display font-700" style="color: var(--accent);">€140</span>
+      </div>
+     </div><!-- Vídeos Estendidos -->
+     <div class="anim-in anim-d4 card-hover rounded-xl sm:rounded-2xl p-4 sm:p-5 backdrop-blur" style="background: rgba(0, 0, 0, 0.6);">
+      <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+       <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(0,212,255,0.2); border: 1px solid rgba(0,212,255,0.5); color: var(--accent);">
+        <i data-lucide="film" style="width:16px;height:16px;"></i>
+       </div>
+       <div class="text-left">
+        <h3 id="videos-ext-title" class="font-display font-700 text-xs sm:text-sm" style="color: var(--text);">Vídeos Estendidos</h3>
+        <p id="videos-ext-desc" class="text-xs opacity-60" style="color: var(--text);">15 a 120 segundos</p>
+       </div>
+      </div>
+      <div class="space-y-2 sm:space-y-3">
+       <div><label class="text-xs font-600 block mb-1" style="color: var(--accent);"><span id="videos-ext-qty-label">Quantidade de Vídeos:</span> <span id="videos-ext-qty-val" class="font-700">1</span></label> <input type="range" min="0" max="20" value="1" id="videos-ext-qty" class="range-input">
+       </div>
+       <div><label class="text-xs font-600 block mb-1" style="color: var(--accent);"><span id="videos-ext-duration-label">Duração (segundos):</span> <span id="videos-ext-duration-val" class="font-700">20s</span></label> <input type="range" min="20" max="120" value="20" step="5" id="videos-ext-duration" class="range-input">
+       </div>
+      </div>
+      <div class="mt-3 text-xs opacity-60" style="color: var(--text);" id="videos-ext-note">
+       Para múltiplos avatares, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>
+      </div>
+      <div class="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t flex justify-between items-center text-xs sm:text-sm" style="border-color: rgba(0,212,255,0.2);">
+       <span class="opacity-60" style="color: var(--text);">Subtotal</span> <span id="videos-ext-sub" class="font-display font-700" style="color: var(--accent);">€90</span>
+      </div>
+     </div>
+    </div><!-- Total -->
+    <div class="anim-in anim-d5 total-glow rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center backdrop-blur" style="background: rgba(0, 0, 0, 0.6);">
+     <p id="total-label" class="text-xs font-600 uppercase tracking-widest mb-1" style="color: var(--accent);">Investimento Total Estimado</p>
+     <p id="total" class="font-display font-800 text-3xl sm:text-4xl md:text-5xl" style="color: var(--accent);">€370</p>
+     <p id="total-note" class="text-xs mt-2 opacity-60" style="color: var(--text);">*Valores sujeitos a ajustes conforme briefing</p><button id="el-cta" onclick="copyEstimate()" class="mt-4 sm:mt-5 inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-600 text-xs sm:text-sm transition-all hover:scale-105 active:scale-95" style="background: var(--accent); color: #0a1a3a;"> <i data-lucide="send" style="width:14px;height:14px;"></i> <span>Solicitar Orçamento</span> </button>
+     <p id="copy-msg" class="text-xs mt-2 opacity-0 transition-opacity" style="color: var(--accent);">✓ Orçamento copiado!</p>
+    </div>
+   </main>
+  </div>
+  <script>
+const defaultConfig = {
+  background_color: '#000000',
+  surface_color: 'rgba(0, 0, 0, 0.6)',
+  text_color: '#e0e6ff',
+  accent_color: '#00d4ff',
+  secondary_action_color: '#0066cc',
+  font_family: 'Syne',
+  font_size: 16,
+  logo_url: 'https://github.com/rodcapella/sapienteai_site/raw/main/client/public/media/logos/sapiente-ai-footer.png',
+  tagline_pt: 'Criação de Conteúdo com IA',
+  tagline_en: 'AI Content Creation',
+  cta_text_pt: 'Solicitar Orçamento',
+  cta_text_en: 'Request Quote'
+};
+
+let currentLanguage = 'pt';
+
+const translations = {
+  pt: {
+    badge: 'Calculadora de Preços',
+    avatar_title: 'Avatar Virtual',
+    avatar_desc: 'Criação & Customização',
+    avatar_label: 'Quantidade de Avatares:',
+    avatar_note: 'Para mais de 10 avatares, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>',
+    images_title: 'Imagens IA',
+    images_desc: '€5/imagem',
+    images_label: 'Quantidade de Imagens:',
+    images_note: 'Para múltiplos avatares por imagem e/ou para mais de 50 imagens, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>',
+    images_special_note: '',
+    videos_title: 'Vídeos Curtos',
+    videos_desc: 'até 15 segundos',
+    videos_label: 'Quantidade de Vídeos:',
+    videos_note: 'Para múltiplos avatares por vídeo, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>',
+    videos_ext_title: 'Vídeos Estendidos',
+    videos_ext_desc: '15 segundos a 120 segundos',
+    videos_ext_qty_label: 'Quantidade de Vídeos:',
+    videos_ext_duration_label: 'Duração (segundos):',
+    videos_ext_note: 'Para múltiplos avatares, <span style="color: var(--accent); font-weight: 600;">consulte nossos especialistas</span>',
+    total_label: 'Investimento Total Estimado',
+    total_note: '*Valores sujeitos a ajustes conforme briefing',
+    copy_success: '✓ Orçamento copiado!'
+  },
+  en: {
+    badge: 'Price Calculator',
+    avatar_title: 'Virtual Avatar',
+    avatar_desc: 'Creation & Customization',
+    avatar_label: 'Number of Avatars:',
+    avatar_note: 'For more than 10 avatars, <span style="color: var(--accent); font-weight: 600;">consult our specialists</span>',
+    images_title: 'AI Images',
+    images_desc: '€5/image',
+    images_label: 'Number of Images:',
+    images_note: 'For multiple avatars per image and/or more than 50 images, <span style="color: var(--accent); font-weight: 600;">consult our specialists</span>',
+    images_special_note: '',
+    videos_title: 'Short Videos',
+    videos_desc: 'up to 15 seconds',
+    videos_label: 'Number of Videos:',
+    videos_note: 'For multiple avatars per video, <span style="color: var(--accent); font-weight: 600;">consult our specialists</span>',
+    videos_ext_title: 'Extended Videos',
+    videos_ext_desc: '15 seconds to 120 seconds',
+    videos_ext_qty_label: 'Number of Videos:',
+    videos_ext_duration_label: 'Duration (seconds):',
+    videos_ext_note: 'For multiple avatars, <span style="color: var(--accent); font-weight: 600;">consult our specialists</span>',
+    total_label: 'Total Estimated Investment',
+    total_note: '*Values subject to adjustment based on briefing',
+    copy_success: '✓ Quote copied!'
+  }
+};
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === 'pt' ? 'en' : 'pt';
+  updateLanguage();
+  const dot = document.getElementById('toggle-dot');
+  dot.style.transform = currentLanguage === 'en' ? 'translateX(20px)' : 'translateX(0)';
+}
+
+function updateLanguage() {
+  const t = translations[currentLanguage];
+  document.getElementById('el-badge').textContent = t.badge;
+  document.getElementById('el-tagline').textContent = currentLanguage === 'pt' ? 
+    (window.elementSdk?.config?.tagline_pt || defaultConfig.tagline_pt) :
+    (window.elementSdk?.config?.tagline_en || defaultConfig.tagline_en);
+  
+  document.getElementById('avatar-title').textContent = t.avatar_title;
+  document.getElementById('avatar-desc').textContent = t.avatar_desc;
+  document.getElementById('avatar-label').textContent = t.avatar_label;
+  document.getElementById('avatar-note').innerHTML = t.avatar_note;
+  
+  document.getElementById('images-title').textContent = t.images_title;
+  document.getElementById('images-desc').textContent = t.images_desc;
+  document.getElementById('images-label').textContent = t.images_label;
+  document.getElementById('images-note').innerHTML = t.images_note;
+  document.getElementById('images-special-note').innerHTML = t.images_special_note;
+  
+  document.getElementById('videos-title').textContent = t.videos_title;
+  document.getElementById('videos-desc').textContent = t.videos_desc;
+  document.getElementById('videos-label').textContent = t.videos_label;
+  document.getElementById('videos-note').innerHTML = t.videos_note;
+  
+  document.getElementById('videos-ext-title').textContent = t.videos_ext_title;
+  document.getElementById('videos-ext-desc').textContent = t.videos_ext_desc;
+  document.getElementById('videos-ext-qty-label').textContent = t.videos_ext_qty_label;
+  document.getElementById('videos-ext-duration-label').textContent = t.videos_ext_duration_label;
+  document.getElementById('videos-ext-note').innerHTML = t.videos_ext_note;
+  
+  document.getElementById('total-label').textContent = t.total_label;
+  document.getElementById('total-note').textContent = t.total_note;
+  const ctaBtn = document.getElementById('el-cta');
+  ctaBtn.querySelector('span').textContent = currentLanguage === 'pt' ?
+    (window.elementSdk?.config?.cta_text_pt || defaultConfig.cta_text_pt) :
+    (window.elementSdk?.config?.cta_text_en || defaultConfig.cta_text_en);
+}
+
+function applyColors(c) {
+  const r = document.documentElement;
+  r.style.setProperty('--bg', c.background_color || defaultConfig.background_color);
+  r.style.setProperty('--surface', c.surface_color || defaultConfig.surface_color);
+  r.style.setProperty('--text', c.text_color || defaultConfig.text_color);
+  r.style.setProperty('--accent', c.accent_color || defaultConfig.accent_color);
+  r.style.setProperty('--sec-action', c.secondary_action_color || defaultConfig.secondary_action_color);
+
+  const accent = c.accent_color || defaultConfig.accent_color;
+  document.querySelectorAll('.range-input').forEach(el => {
+    el.style.setProperty('--thumb-bg', accent);
+    el.style.accentColor = accent;
+  });
+  const thumbStyle = document.getElementById('thumb-style');
+  if (thumbStyle) thumbStyle.textContent = `.range-input::-webkit-slider-thumb{background:${accent}} .range-input::-moz-range-thumb{background:${accent}}`;
+}
+
+// Inject dynamic thumb style tag
+const ts = document.createElement('style'); ts.id = 'thumb-style'; document.head.appendChild(ts);
+
+// Calculator
+const els = {
+  avatarQty: document.getElementById('avatar-qty'),
+  imagesQty: document.getElementById('images-qty'),
+  videosQty: document.getElementById('videos-qty'),
+  videosExtQty: document.getElementById('videos-ext-qty'),
+  videosExtDuration: document.getElementById('videos-ext-duration')
+};
+
+function calc() {
+  const aq = +els.avatarQty.value;
+  const iq = +els.imagesQty.value;
+  const vq = +els.videosQty.value;
+  const veq = +els.videosExtQty.value;
+  const ved = +els.videosExtDuration.value;
+
+  // Avatar: €50 base, 5% discount per additional avatar
+  let avatarPrice = 50 * aq * (1 - Math.max(0, (aq - 1) * 0.05));
+
+  // Images: €5 per image, 5% discount per image when quantity >= 10
+  let imagesDiscount = iq >= 10 ? 0.05 : 0;
+  let imagesPrice = 5 * iq * (1 - imagesDiscount);
+
+  // Videos: €70 base, 2.5% discount per additional video
+  let videosPrice = 70 * vq * (1 - Math.max(0, (vq - 1) * 0.025));
+
+  // Extended Videos: Price based on duration
+  // 20s: €90, 30s: €105, +€15 per 10s
+  let basePriceExt = 90;
+  if (ved >= 20 && ved <= 30) {
+    basePriceExt = 90 + ((ved - 20) / 10) * 15;
+  } else if (ved > 30) {
+    basePriceExt = 105 + Math.floor((ved - 30) / 10) * 15;
+    if ((ved - 30) % 10 !== 0) {
+      basePriceExt += 15;
+    }
+  }
+  
+  let videosExtPrice = basePriceExt * veq * (1 - Math.max(0, (veq - 1) * 0.025));
+
+  document.getElementById('avatar-qty-val').textContent = aq;
+  document.getElementById('images-qty-val').textContent = iq;
+  document.getElementById('videos-qty-val').textContent = vq;
+  document.getElementById('videos-ext-qty-val').textContent = veq;
+  document.getElementById('videos-ext-duration-val').textContent = ved + 's';
+
+  document.getElementById('avatar-sub').textContent = `€${avatarPrice.toFixed(2)}`;
+  document.getElementById('images-sub').textContent = `€${imagesPrice.toFixed(2)}`;
+  document.getElementById('videos-sub').textContent = `€${videosPrice.toFixed(2)}`;
+  document.getElementById('videos-ext-sub').textContent = `€${videosExtPrice.toFixed(2)}`;
+  document.getElementById('total').textContent = `€${(avatarPrice + imagesPrice + videosPrice + videosExtPrice).toFixed(2)}`;
+}
+
+Object.values(els).forEach(el => el.addEventListener('input', calc));
+
+function copyEstimate() {
+  const t = document.getElementById('total').textContent;
+  const text = `Sapiente AI — ${currentLanguage === 'pt' ? 'Orçamento estimado' : 'Estimated quote'}: ${t}`;
+  navigator.clipboard.writeText(text).catch(()=>{});
+  const msg = document.getElementById('copy-msg');
+  msg.textContent = translations[currentLanguage].copy_success;
+  msg.style.opacity = '1';
+  setTimeout(() => msg.style.opacity = '0', 2000);
+}
+
+// Element SDK
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => {
+    applyColors(config);
+    const ff = config.font_family || defaultConfig.font_family;
+    const fs = config.font_size || defaultConfig.font_size;
+    document.querySelectorAll('.font-display').forEach(el => el.style.fontFamily = `${ff}, sans-serif`);
+    document.body.style.fontFamily = `'DM Sans', ${ff}, sans-serif`;
+    
+    // Update logo
+    const logoImg = document.getElementById('logo-img');
+    if (config.logo_url && config.logo_url.trim()) {
+      logoImg.src = config.logo_url;
+    }
+
+    // font size scaling
+    document.getElementById('el-tagline').style.fontSize = `${fs * 0.95}px`;
+    document.getElementById('total').style.fontSize = `${fs * 2.8}px`;
+    
+    updateLanguage();
+  },
+  mapToCapabilities: (config) => ({
+    recolorables: [
+      { get: () => config.background_color || defaultConfig.background_color, set: v => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+      { get: () => config.surface_color || defaultConfig.surface_color, set: v => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+      { get: () => config.text_color || defaultConfig.text_color, set: v => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+      { get: () => config.accent_color || defaultConfig.accent_color, set: v => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); } },
+      { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: v => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+    ],
+    borderables: [],
+    fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: v => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); } },
+    fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: v => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); } }
+  }),
+  mapToEditPanelValues: (config) => new Map([
+    ['logo_url', config.logo_url || defaultConfig.logo_url],
+    ['tagline_pt', config.tagline_pt || defaultConfig.tagline_pt],
+    ['tagline_en', config.tagline_en || defaultConfig.tagline_en],
+    ['cta_text_pt', config.cta_text_pt || defaultConfig.cta_text_pt],
+    ['cta_text_en', config.cta_text_en || defaultConfig.cta_text_en]
+  ])
+});
+
+applyColors(defaultConfig);
+calc();
+updateLanguage();
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e71b57d93c4785f',t:'MTc3NTMyMDM0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
