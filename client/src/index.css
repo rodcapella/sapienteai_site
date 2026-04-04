@@ -36,60 +36,59 @@ body {
 }
 
 /* =========================
-   DESIGN TOKENS
+   DESIGN TOKENS (Ice White & Neon Blue)
 ========================= */
 
 :root {
-  --primary: oklch(0.55 0.18 258);
-  --primary-foreground: oklch(1 0 0);
+  /* Neon Blue Primary */
+  --primary: oklch(0.75 0.15 240); 
+  --primary-foreground: oklch(0.1 0.01 240);
 
-  --background: oklch(0.98 0.005 258);
-  --foreground: oklch(0.20 0.02 258);
+  /* Ice White Backgrounds */
+  --background: oklch(0.99 0.005 240);
+  --foreground: oklch(0.15 0.02 240);
+  
+  /* Section Variations */
+  --section-ice: oklch(0.98 0.01 240);
+  --section-blue-tint: oklch(0.96 0.02 240);
 
-  --card: oklch(0.99 0.002 258);
-  --card-foreground: oklch(0.15 0.01 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 240);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.01 258);
+  --popover-foreground: oklch(0.15 0.02 240);
 
-  --secondary: oklch(0.65 0.12 256);
-  --secondary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.90 0.03 240);
+  --secondary-foreground: oklch(0.2 0.02 240);
 
-  --muted: oklch(0.96 0.005 258);
-  --muted-foreground: oklch(0.45 0.01 258);
+  --muted: oklch(0.95 0.01 240);
+  --muted-foreground: oklch(0.4 0.02 240);
 
-  --accent: oklch(0.60 0.24 256);
-  --accent-foreground: oklch(1 0 0);
+  --accent: oklch(0.8 0.1 240);
+  --accent-foreground: oklch(0.1 0.01 240);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.90 0.01 258);
-  --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.55 0.18 258);
+  --border: oklch(0.9 0.01 240);
+  --input: oklch(0.95 0.01 240);
+  --ring: oklch(0.75 0.15 240);
 
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 }
 
 /* =========================
-   DARK MODE
+   DARK MODE (Optional, keeping it clean)
 ========================= */
 
 .dark {
-  --background: oklch(0.14 0.01 258);
-  --foreground: oklch(1 0 0);
+  --background: oklch(0.1 0.01 240);
+  --foreground: oklch(0.98 0.005 240);
 
-  --card: oklch(0.20 0.01 258);
-  --card-foreground: oklch(1 0 0);
+  --card: oklch(0.15 0.01 240);
+  --card-foreground: oklch(0.98 0.005 240);
 
-  --popover: oklch(0.20 0.01 258);
-  --popover-foreground: oklch(1 0 0);
-
-  --muted: oklch(0.25 0.01 258);
-  --muted-foreground: oklch(0.70 0.01 258);
-
-  --border: oklch(1 0 0 / 15%);
-  --input: oklch(1 0 0 / 15%);
+  --border: oklch(1 0 0 / 10%);
 }
 
 /* Performance helper */
@@ -104,6 +103,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 /* =========================
@@ -114,26 +114,30 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-@media (min-width: 640px) {
-  .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    max-width: 1280px;
+    max-width: 1200px;
   }
 }
 
-/* Layout helpers */
+/* =========================
+   UTILITIES
+========================= */
+
+.bg-ice { background-color: var(--section-ice); }
+.bg-blue-tint { background-color: var(--section-blue-tint); }
+
+.text-neon-blue { color: var(--primary); }
+.bg-neon-blue { background-color: var(--primary); }
+
+.header-footer-black {
+  background-color: #000000;
+  color: #ffffff;
+}
 
 .clip-diagonal-top {
   clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);

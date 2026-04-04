@@ -38,38 +38,45 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-24">
+    <div className="flex flex-col">
 
-      {/* HERO */}
-      <Section className="text-center pt-10 md:pt-20">
+      {/* HERO - Ice White Background */}
+      <Section className="bg-ice text-center pt-20 md:pt-32 pb-20 md:pb-40">
         <div className="max-w-4xl mx-auto">
 
           <Reveal>
-            <p className="text-sm uppercase tracking-wide text-white/40 mb-4">
+            <p className="text-sm uppercase tracking-widest text-primary font-bold mb-6">
               {content.hero.label}
             </p>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-white">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
               {content.hero.title}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-lg text-white/60 mt-6 mb-10 max-w-2xl mx-auto">
+            <p className="text-xl text-foreground/70 mt-8 mb-12 max-w-2xl mx-auto leading-relaxed">
               {content.hero.subtitle}
             </p>
           </Reveal>
 
           <Reveal delay={300}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
 
             <PremiumButton onClick={() => setIsContactOpen(true)}>
               {content.hero.cta1}
             </PremiumButton>
 
-              <Button variant="outline">
+              <Button 
+                variant="outline" 
+                className="rounded-full px-8 py-6 border-foreground/10 hover:bg-foreground/5 transition-all"
+                onClick={() => {
+                  const el = document.getElementById('services');
+                  el?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 {content.hero.cta2}
               </Button>
 
@@ -79,32 +86,33 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* VALUES */}
-      <Section>
+      {/* VALUES - Blue Tint Background */}
+      <Section className="bg-blue-tint py-32">
         <SectionHeader>
           <SectionTitle
             label={content.values.label}
             title={content.values.title}
+            className="text-foreground"
           />
         </SectionHeader>
 
-        <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto px-6">
           {content.values.items.map((value, i) => {
             const Icon = valueIcons[i];
 
             return (
               <Reveal key={value.title} delay={i * 100}>
-                <SectionCard>
+                <SectionCard className="bg-white border-foreground/5 shadow-sm hover:shadow-xl transition-all duration-500">
 
-                  <div className="w-10 h-10 mb-4 bg-white/5 rounded-lg flex items-center justify-center">
-                    <Icon className="text-white/70" />
+                  <div className="w-12 h-12 mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
+                    <Icon className="text-primary w-6 h-6" />
                   </div>
 
-                  <h3 className="font-semibold mb-2 text-white">
+                  <h3 className="text-xl font-bold mb-3 text-foreground">
                     {value.title}
                   </h3>
 
-                  <p className="text-sm text-white/60">
+                  <p className="text-foreground/60 leading-relaxed">
                     {value.description}
                   </p>
 
@@ -115,8 +123,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* SERVICES */}
-      <Section>
+      {/* SERVICES - Ice White Background */}
+      <Section id="services" className="bg-ice py-32">
         <SectionHeader>
           <SectionTitle
             label={content.services.label}
@@ -124,23 +132,23 @@ export default function Home() {
           />
         </SectionHeader>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto px-6">
           {content.services.items.map((service, i) => {
             const Icon = serviceIcons[i];
 
             return (
               <Reveal key={service.title} delay={i * 120}>
-                <SectionCard>
+                <SectionCard className="bg-white border-foreground/5 shadow-md hover:shadow-2xl transition-all duration-500 p-10">
 
-                  <div className="w-10 h-10 mb-4 bg-white/5 rounded-lg flex items-center justify-center">
-                    <Icon className="text-white/70" />
+                  <div className="w-14 h-14 mb-8 bg-primary/10 rounded-2xl flex items-center justify-center">
+                    <Icon className="text-primary w-7 h-7" />
                   </div>
 
-                  <h3 className="font-semibold mb-3 text-white">
+                  <h3 className="text-2xl font-bold mb-4 text-foreground">
                     {service.title}
                   </h3>
 
-                  <p className="text-white/60">
+                  <p className="text-foreground/60 text-lg leading-relaxed">
                     {service.description}
                   </p>
 
@@ -151,21 +159,27 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* CTA */}
-      <Section className="text-center">
-        <div className="max-w-2xl mx-auto">
+      {/* CTA - Blue Tint Background */}
+      <Section className="bg-blue-tint text-center py-40">
+        <div className="max-w-3xl mx-auto px-6">
 
-          <h2 className="text-3xl md:text-4xl font-semibold mb-6 text-white">
-            {content.cta.title}
-          </h2>
+          <Reveal>
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-foreground leading-tight">
+              {content.cta.title}
+            </h2>
+          </Reveal>
 
-          <p className="text-white/60 mb-10">
-            {content.cta.description}
-          </p>
+          <Reveal delay={100}>
+            <p className="text-xl text-foreground/70 mb-12 leading-relaxed">
+              {content.cta.description}
+            </p>
+          </Reveal>
 
-          <PremiumButton>
-            {content.cta.button}
-          </PremiumButton>
+          <Reveal delay={200}>
+            <PremiumButton onClick={() => setIsContactOpen(true)} className="scale-110">
+              {content.cta.button}
+            </PremiumButton>
+          </Reveal>
 
         </div>
       </Section>

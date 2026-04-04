@@ -49,20 +49,16 @@ export default function Header({ onContactClick }: HeaderProps) {
     <>
       <header
         className={cn(
-          `
-          sticky top-0 z-50
-          transition-all duration-300
-          border-b
-          `,
+          "sticky top-0 z-50 transition-all duration-300 border-b",
           scrolled
-            ? "bg-white/70 backdrop-blur-xl border-gray-200 shadow-soft"
-            : "bg-white/60 backdrop-blur-md border-transparent"
+            ? "bg-black/90 backdrop-blur-xl border-white/10 shadow-lg"
+            : "bg-black border-transparent"
         )}
       >
         <div className="container">
           <nav
             className={cn(
-              "flex items-center justify-between px-4 transition-all duration-300",
+              "flex items-center justify-between transition-all duration-300",
               scrolled ? "h-14" : "h-16 md:h-20"
             )}
           >
@@ -75,60 +71,59 @@ export default function Header({ onContactClick }: HeaderProps) {
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/JsygqIGdbHNWJuIo.png"
                 alt="SAPIENTE.AI"
-                className="h-12 md:h-14 object-contain"
+                className="h-10 md:h-12 object-contain invert"
               />
             </Link>
 
             {/* DESKTOP */}
             <div className="hidden md:flex items-center gap-8">
-              <ThemeToggle />
               <NavLink
                 href={`/${lang}`}
-                className="text-sm text-gray-900 font-medium"
+                className="text-sm text-white/70 hover:text-white font-medium transition-colors"
               >
                 {t('nav.home')}
               </NavLink>
 
               <NavLink
                 href={`/${lang}/about`}
-                className="text-sm text-gray-900 font-medium"
+                className="text-sm text-white/70 hover:text-white font-medium transition-colors"
               >
                 {t('nav.about')}
               </NavLink>
 
               <NavLink
                 href={`/${lang}/team`}
-                className="text-sm text-gray-900 font-medium"
+                className="text-sm text-white/70 hover:text-white font-medium transition-colors"
               >
                 {t('nav.team')}
               </NavLink>
 
               <NavLink
                 href={`/${lang}/trust`}
-                className="text-sm text-gray-900 font-medium"
+                className="text-sm text-white/70 hover:text-white font-medium transition-colors"
               >
                 Trust
               </NavLink>
 
               <NavLink
                 href={`/${lang}/faq`}
-                className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                className="text-sm text-white/70 hover:text-white font-medium transition-colors"
               >
                 {t('nav.faq')}
               </NavLink>
 
-              <div className="h-6 w-px bg-gray-200"></div>
+              <div className="h-6 w-px bg-white/10"></div>
 
               <LanguageSelector />
 
               <Button
                 onClick={handleContactClick}
                 className="
-                bg-primary text-white
+                bg-primary text-primary-foreground
                 px-5 py-2.5
-                rounded-lg
-                shadow-soft
-                hover:shadow-medium
+                rounded-full
+                font-semibold
+                hover:opacity-90
                 hover:-translate-y-[1px]
                 transition-all
                 "
@@ -140,25 +135,23 @@ export default function Header({ onContactClick }: HeaderProps) {
             {/* MOBILE BUTTON */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 hover:bg-gray-100 transition-colors rounded-lg"
+              className="md:hidden p-2 hover:bg-white/10 transition-colors rounded-lg"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-gray-700" />
+                <X className="h-6 w-6 text-white" />
               ) : (
-                <Menu className="h-6 w-6 text-gray-700" />
+                <Menu className="h-6 w-6 text-white" />
               )}
             </button>
           </nav>
 
           {/* MOBILE MENU */}
           {isMobileMenuOpen && (
-            <div className="md:hidden bg-white border-t border-gray-200 backdrop-blur-xl">
-              <div className="flex flex-col gap-4 p-4">
+            <div className="md:hidden bg-black border-t border-white/10 backdrop-blur-xl">
+              <div className="flex flex-col gap-4 p-6">
 
-                <div className="flex items-center justify-between pb-4 border-b border-gray-200">
-                   <span className="text-gray-700 text-sm">Tema</span>
-                      <ThemeToggle />
-                   <span className="text-gray-700 text-sm">Idioma</span>
+                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+                   <span className="text-white/70 text-sm">Idioma</span>
                   <LanguageSelector />
                 </div>
 
@@ -166,30 +159,34 @@ export default function Header({ onContactClick }: HeaderProps) {
                   variant="mobile"
                   href={`/${lang}`}
                   onClick={handleNavClick}
+                  className="text-white/70 hover:text-white"
                 >
                   {t('nav.home')}
                 </NavLink>
 
-              <NavLink
-                variant="mobile"
-                href={`/${lang}/about`}
-                onClick={handleNavClick}
-              >
-                {t('nav.about')}
-              </NavLink>
+                <NavLink
+                  variant="mobile"
+                  href={`/${lang}/about`}
+                  onClick={handleNavClick}
+                  className="text-white/70 hover:text-white"
+                >
+                  {t('nav.about')}
+                </NavLink>
 
-              <NavLink
-                variant="mobile"
-                href={`/${lang}/team`}
-                onClick={handleNavClick}
-              >
-                {t('nav.team')}
-              </NavLink>
+                <NavLink
+                  variant="mobile"
+                  href={`/${lang}/team`}
+                  onClick={handleNavClick}
+                  className="text-white/70 hover:text-white"
+                >
+                  {t('nav.team')}
+                </NavLink>
 
                 <NavLink
                   variant="mobile"
                   href={`/${lang}/trust`}
                   onClick={handleNavClick}
+                  className="text-white/70 hover:text-white"
                 >
                   Trust
                 </NavLink>
@@ -198,6 +195,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                   variant="mobile"
                   href={`/${lang}/faq`}
                   onClick={handleNavClick}
+                  className="text-white/70 hover:text-white"
                 >
                   {t('nav.faq')}
                 </NavLink>
@@ -205,12 +203,11 @@ export default function Header({ onContactClick }: HeaderProps) {
                 <Button
                   onClick={handleContactClick}
                   className="
-                  bg-primary text-white
+                  bg-primary text-primary-foreground
                   px-5 py-2.5
-                  rounded-lg
-                  shadow-soft
-                  hover:shadow-medium
-                  hover:-translate-y-[1px]
+                  rounded-full
+                  font-semibold
+                  hover:opacity-90
                   transition-all
                   "
                 >
