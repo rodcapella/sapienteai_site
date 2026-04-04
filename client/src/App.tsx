@@ -7,11 +7,16 @@ import { useTheme } from "@/hooks/useTheme";
 
 // pages (lazy)
 const Home = lazy(() => import("@/pages/Home"));
+const About = lazy(() => import("@/pages/About"));
+const Team = lazy(() => import("@/pages/Team"));
 const FAQ = lazy(() => import("@/pages/FAQ"));
+const Terms = lazy(() => import("@/pages/Terms"));
+const Privacy = lazy(() => import("@/pages/Privacy"));
+const Trust = lazy(() => import("@/pages/Trust"));
+const LGPD = lazy(() => import("@/pages/LGPD"));
 const Blog = lazy(() => import("@/pages/Blog"));
+const Contact = lazy(() => import("@/pages/Contact"));
 const ArticleDetail = lazy(() => import("@/pages/ArticleDetail"));
-
-<ThemeTransition trigger={isTransitioning} />
 
 export default function App() {
   const [location, setLocation] = useLocation();
@@ -51,7 +56,9 @@ export default function App() {
           </div>
         </div>
       }
-          >
+    >
+      <ThemeTransition trigger={isTransitioning} />
+      
       {/* Root redirect */}
       <Route path="/">
         <Redirect to="/pt" />
@@ -65,11 +72,11 @@ export default function App() {
           </Route>
 
           <Route path="/:lang/about">
-            {(params) => <About  lang={params.lang} />}
+            {(params) => <About lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/team">
-            {(params) => <Team  lang={params.lang} />}
+            {(params) => <Team lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/faq">
@@ -77,19 +84,19 @@ export default function App() {
           </Route>
 
           <Route path="/:lang/terms">
-            {(params) => <Terms  lang={params.lang} />}
+            {(params) => <Terms lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/privacy">
-            {(params) => <Privacy  lang={params.lang} />}
+            {(params) => <Privacy lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/trust">
-            {(params) => <Trust  lang={params.lang} />}
+            {(params) => <Trust lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/lgpd">
-            {(params) => <LGPD  lang={params.lang} />}
+            {(params) => <LGPD lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/blog">

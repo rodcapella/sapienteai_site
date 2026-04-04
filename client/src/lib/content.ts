@@ -4,11 +4,11 @@ import { homeEN } from "@/content/en/home";
 import { aboutPT } from "@/content/pt/about";
 import { aboutEN } from "@/content/en/about";
 
-import { faqPT } from "@/content/pt/faq";
-import { faqEN } from "@/content/en/faq";
+import { faqPT } from "@/content/pt/FAQ";
+import { faqEN } from "@/content/en/FAQ";
 
-import { privacyContentPT } from "@/content/pt/privacy";
-import { privacyContentEN } from "@/content/en/privacy";
+import { privacy as privacyPT } from "@/content/pt/privacy";
+import { privacy as privacyEN } from "@/content/en/privacy";
 
 import { termsContentPT } from "@/content/pt/terms";
 import { termsContentEN } from "@/content/en/terms";
@@ -30,8 +30,8 @@ const contentMap = {
     en: faqEN
   },
   privacy: {
-    pt: privacyContentPT,
-    en: privacyContentEN
+    pt: privacyPT,
+    en: privacyEN
   },
   terms: {
     pt: termsContentPT,
@@ -40,14 +40,14 @@ const contentMap = {
   trust: {
     pt: trustContentPT,
     en: trustContentEN
-    }
+  }
 } as const;
 
-export function getContent<T extends keyof typeof contentMap>(
-  page: T,
+export function getContent(
+  page: keyof typeof contentMap,
   lang: string
 ) {
   const safeLang = lang === "en" ? "en" : "pt";
 
-  return contentMap[page][safeLang];
+  return contentMap[page][safeLang as "pt" | "en"];
 }
