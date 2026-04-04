@@ -3,9 +3,10 @@
  */
 
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useLocation, Link } from "wouter";
+import { PremiumButton } from '@/components/ui/button/PremiumButton';
+import { NavLink } from '@/components/ui/navigation/NavLink';
 
 interface FooterProps {
   onContactClick?: () => void;
@@ -39,60 +40,65 @@ export default function Footer({ onContactClick }: FooterProps) {
   ];
 
   return (
-<footer className="bg-black text-white border-t border-white/10">
+<footer className="bg-black text-white border-t border-white/10 relative overflow-hidden">
+  {/* DECORATIVE GLOW */}
+  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full -z-10"></div>
 
-  <div className="container mx-auto px-6 py-16 md:py-24">
+  <div className="container mx-auto px-6 py-20 md:py-32">
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-20 mb-24">
 
       {/* LOGO + DESCRIÇÃO */}
       <div className="col-span-1 sm:col-span-2 lg:col-span-1">
-        <img
-          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/JsygqIGdbHNWJuIo.png"
-          alt="SAPIENTE.AI"
-          className="h-10 md:h-12 mb-8 invert"
-        />
+        <Link href={`/${lang}`} className="inline-block mb-10 group">
+          <img
+            src="/media/logos/sapiente-ai-footer.png"
+            alt="SAPIENTE.AI"
+            className="h-12 md:h-16 object-contain transition-transform duration-500 group-hover:scale-105"
+          />
+        </Link>
 
-        <p className="text-white/60 text-lg leading-relaxed max-w-sm">
+        <p className="text-white/50 text-xl leading-relaxed max-w-sm font-medium">
           {t('footer.description')}
         </p>
       </div>
 
       {/* NAV */}
       <div>
-        <h4 className="text-sm font-black mb-8 text-white uppercase tracking-[0.2em]">
+        <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
           {t('footer.navigation')}
         </h4>
 
-        <ul className="space-y-4 text-lg">
-          <li><Link href={`/${lang}`} className="text-white/60 hover:text-primary transition-colors">Home</Link></li>
-          <li><Link href={`/${lang}/about`} className="text-white/60 hover:text-primary transition-colors">{t('nav.about')}</Link></li>
-          <li><Link href={`/${lang}/faq`} className="text-white/60 hover:text-primary transition-colors">FAQ</Link></li>
-          <li><Link href={`/${lang}/blog`} className="text-white/60 hover:text-primary transition-colors">Blog</Link></li>
+        <ul className="space-y-6">
+          <li><NavLink href={`/${lang}`} variant="footer">{t('nav.home')}</NavLink></li>
+          <li><NavLink href={`/${lang}/about`} variant="footer">{t('nav.about')}</NavLink></li>
+          <li><NavLink href={`/${lang}/team`} variant="footer">{t('nav.team')}</NavLink></li>
+          <li><NavLink href={`/${lang}/faq`} variant="footer">{t('nav.faq')}</NavLink></li>
+          <li><NavLink href={`/${lang}/blog`} variant="footer">Blog</NavLink></li>
         </ul>
       </div>
 
       {/* LEGAL */}
       <div>
-        <h4 className="text-sm font-black mb-8 text-white uppercase tracking-[0.2em]">
+        <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
           Legal
         </h4>
 
-        <ul className="space-y-4 text-lg">
-          <li><Link href={`/${lang}/terms`} className="text-white/60 hover:text-primary transition-colors">Terms</Link></li>
-          <li><Link href={`/${lang}/privacy`} className="text-white/60 hover:text-primary transition-colors">Privacy</Link></li>
-          <li><Link href={`/${lang}/trust`} className="text-white/60 hover:text-primary transition-colors">Trust</Link></li>
-          <li><Link href={`/${lang}/lgpd`} className="text-white/60 hover:text-primary transition-colors">LGPD</Link></li>
+        <ul className="space-y-6">
+          <li><NavLink href={`/${lang}/terms`} variant="footer">Terms</NavLink></li>
+          <li><NavLink href={`/${lang}/privacy`} variant="footer">Privacy</NavLink></li>
+          <li><NavLink href={`/${lang}/trust`} variant="footer">Trust</NavLink></li>
+          <li><NavLink href={`/${lang}/lgpd`} variant="footer">LGPD</NavLink></li>
         </ul>
       </div>
 
       {/* NEWSLETTER */}
       <div>
-        <h4 className="text-sm font-black mb-8 text-white uppercase tracking-[0.2em]">
-          {t('footer.newsletter')}
+        <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
+          Newsletter
         </h4>
 
-        <form onSubmit={handleSubscribe} className="flex flex-col gap-4">
+        <form onSubmit={handleSubscribe} className="flex flex-col gap-6">
 
           <input
             type="email"
@@ -100,26 +106,27 @@ export default function Footer({ onContactClick }: FooterProps) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="
-              px-5 py-4
+              px-6 py-5
               bg-white/5
               border border-white/10 
-              rounded-xl
+              rounded-2xl
               text-lg
               text-white
-              placeholder:text-white/30
+              placeholder:text-white/20
               focus:outline-none focus:ring-2 focus:ring-primary/40
-              transition-all
+              transition-all duration-500
             "
           />
 
-          <Button
+          <PremiumButton
+            onClick={() => {}} // Form handles submit
             type="submit"
-            className="bg-primary text-primary-foreground py-6 rounded-xl font-bold text-lg hover:opacity-90 transition-all"
+            className="py-6 rounded-2xl text-lg w-full"
           >
             {subscribeStatus === 'loading'
               ? t('newsletter.subscribing')
               : t('newsletter.subscribe')}
-          </Button>
+          </PremiumButton>
 
         </form>
       </div>
@@ -127,14 +134,14 @@ export default function Footer({ onContactClick }: FooterProps) {
     </div>
 
     {/* SOCIAL + COPYRIGHT */}
-    <div className="flex flex-col md:flex-row items-center justify-between gap-10 border-t border-white/10 pt-12">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-12 border-t border-white/10 pt-16">
 
-      <div className="flex gap-8">
+      <div className="flex gap-10">
         {socialLinks.map((social) => (
           <a 
             key={social.name} 
             href={social.url} 
-            className="group transition-transform hover:-translate-y-1"
+            className="group transition-all duration-500 hover:-translate-y-2"
             aria-label={social.name}
             target="_blank"
             rel="noopener noreferrer"
@@ -142,13 +149,13 @@ export default function Footer({ onContactClick }: FooterProps) {
             <img 
               src={social.icon} 
               alt={social.name} 
-              className="h-6 w-6 object-contain opacity-50 group-hover:opacity-100 transition-opacity"
+              className="h-7 w-7 object-contain opacity-40 group-hover:opacity-100 group-hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all"
             />
           </a>
         ))}
       </div>
 
-      <p className="text-sm text-white/40 font-bold uppercase tracking-widest">
+      <p className="text-xs text-white/30 font-black uppercase tracking-[0.4em] text-center md:text-right">
         {t('footer.copyright')}
       </p>
 

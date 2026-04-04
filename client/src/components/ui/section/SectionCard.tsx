@@ -7,50 +7,48 @@ import { useMouseGlow } from "@/hooks/useMouseGlow";
 const sectionCardVariants = cva(
   `
   group relative overflow-hidden
-  backdrop-blur-xl
-  border rounded-2xl
-  p-6 md:p-8
+  backdrop-blur-2xl
+  border rounded-[2.5rem]
+  p-10 md:p-12
 
-  transition-all duration-300 ease-out
+  transition-all duration-700 ease-out
   transform-gpu
   `,
   {
     variants: {
       variant: {
         default: `
-          bg-white/[0.03]
-          border-white/[0.08]
+          bg-white/80
+          border-foreground/5
+          shadow-[0_10px_40px_rgba(0,0,0,0.03)]
 
-          hover:-translate-y-1
-          hover:scale-[1.02]
-          hover:border-cyan-400/30
-          hover:shadow-[0_20px_80px_rgba(0,0,0,0.6)]
+          hover:-translate-y-3
+          hover:shadow-[0_40px_100px_rgba(0,0,0,0.1)]
+          hover:border-primary/20
         `,
 
         highlight: `
-          bg-gradient-to-br from-cyan-500/10 to-blue-600/10
-          border-cyan-400/30
+          bg-modern-gradient
+          border-primary/20
+          shadow-[0_20px_60px_rgba(34,211,238,0.1)]
 
-          shadow-[0_0_40px_rgba(0,255,255,0.15)]
-
-          hover:-translate-y-1.5
-          hover:scale-[1.03]
-          hover:shadow-[0_0_100px_rgba(0,255,255,0.25)]
+          hover:-translate-y-4
+          hover:shadow-[0_50px_120px_rgba(34,211,238,0.25)]
+          hover:border-primary/40
         `,
 
         subtle: `
-          bg-white/[0.02]
-          border-white/[0.05]
-
-          hover:bg-white/[0.04]
+          bg-white/40
+          border-foreground/5
+          hover:bg-white/60
         `,
 
         solid: `
-          bg-slate-900
+          bg-black
           border-white/10
-
-          hover:border-cyan-400/40
-          hover:-translate-y-1
+          text-white
+          hover:border-primary/40
+          hover:-translate-y-2
         `
       }
     },
@@ -72,31 +70,31 @@ export function SectionCard({ className, variant, children, ...props }: Props) {
       className={cn(sectionCardVariants({ variant }), className)}
       {...props}
     >
-      {/* ✨ cursor glow (mais suave e elegante) */}
+      {/* ✨ cursor glow (neon blue/purple mix) */}
       <div
         className="
         pointer-events-none absolute
-        w-52 h-52
+        w-80 h-80
         rounded-full
-        bg-cyan-400/20
-        blur-3xl
+        bg-primary/10
+        blur-[100px]
 
         opacity-0 group-hover:opacity-100
-        transition-opacity duration-300
+        transition-opacity duration-700
         "
         style={{
-          left: position.x - 100,
-          top: position.y - 100,
+          left: position.x - 160,
+          top: position.y - 160,
         }}
       />
 
       {/* ✨ light overlay (efeito vidro premium) */}
       <div className="
         pointer-events-none absolute inset-0
-        rounded-2xl
-        bg-gradient-to-b from-white/[0.06] to-transparent
+        rounded-[2.5rem]
+        bg-gradient-to-br from-white/10 to-transparent
         opacity-0 group-hover:opacity-100
-        transition duration-300
+        transition duration-700
       " />
 
       {/* conteúdo */}

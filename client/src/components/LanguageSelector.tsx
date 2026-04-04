@@ -28,8 +28,10 @@ export function LanguageSelector() {
     y.set(dy * 0.15);
 
     // 🌌 glow position
-    ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    if (ref.current) {
+      ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
+      ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    }
   };
 
   const handleMouseLeave = () => {
@@ -53,6 +55,8 @@ export function LanguageSelector() {
     });
   };
 
+  const flagSrc = lang === "pt" ? "/media/flags/pt-PT.png" : "/media/flags/en.png";
+
   return (
     <motion.button
       ref={ref}
@@ -69,14 +73,14 @@ export function LanguageSelector() {
         y: springY,
       }}
       className="
-        relative flex items-center gap-2
-        px-4 py-2.5 rounded-xl
+        relative flex items-center gap-3
+        px-5 py-2.5 rounded-full
         border border-white/10
-        bg-white/[0.03]
+        bg-white/5
         backdrop-blur-xl
         transition-all duration-300
-        hover:border-cyan-400/40
-        hover:shadow-[0_0_40px_rgba(0,255,255,0.08)]
+        hover:border-primary/40
+        hover:shadow-[0_0_40px_rgba(34,211,238,0.1)]
         group
         overflow-hidden
       "
@@ -92,7 +96,7 @@ export function LanguageSelector() {
           background: `
             radial-gradient(
               120px circle at var(--x) var(--y),
-              rgba(34,211,238,0.15),
+              rgba(34,211,238,0.2),
               transparent 40%
             )
           `,
@@ -100,12 +104,16 @@ export function LanguageSelector() {
       />
 
       {/* 🌍 FLAG */}
-      <span className="text-lg relative z-10">
-        {lang === "pt" ? "🇵🇹" : "🇺🇸"}
-      </span>
+      <div className="w-6 h-4 overflow-hidden rounded-sm relative z-10 flex-shrink-0 shadow-sm">
+        <img 
+          src={flagSrc} 
+          alt={lang === "pt" ? "Português" : "English"} 
+          className="w-full h-full object-cover"
+        />
+      </div>
 
       {/* TEXT */}
-      <span className="text-xs tracking-wide text-white/70 uppercase relative z-10">
+      <span className="text-xs font-black tracking-[0.2em] text-white/80 uppercase relative z-10">
         {lang}
       </span>
 
@@ -113,8 +121,8 @@ export function LanguageSelector() {
       <motion.div
         layoutId="lang-indicator"
         className="
-          absolute inset-0 rounded-xl
-          bg-cyan-400/10
+          absolute inset-0 rounded-full
+          bg-primary/10
           blur-md
           -z-10
         "

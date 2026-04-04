@@ -4,6 +4,8 @@ export const translations: Record<Language, Record<string, string>> = {
   'pt-PT': {
     // Navigation
     'nav.home': 'Início',
+    'nav.about': 'Sobre',
+    'nav.team': 'Equipa',
     'nav.portfolio': 'Portfólio',
     'nav.faq': 'FAQ',
     'nav.noticias': 'Notícias IA',
@@ -153,6 +155,8 @@ export const translations: Record<Language, Record<string, string>> = {
   'en': {
     // Navigation
     'nav.home': 'Home',
+    'nav.about': 'About',
+    'nav.team': 'Team',
     'nav.portfolio': 'Portfolio',
     'nav.faq': 'FAQ',
     'nav.noticias': 'AI News',
@@ -215,9 +219,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'faq.q1': 'How long does it take to implement an AI solution?',
     'faq.a1': 'It depends on complexity. Simple projects: 4-8 weeks. Complex projects: 3-6 months. SAPIENTE.AI works in agile sprints, delivering incremental value. You see results from the first weeks, with continuous optimizations.',
     'faq.q2': 'Is SAPIENTE.AI\'s AI safe and compliant with LGPD/GDPR?',
-    'faq.a2': 'Yes. We implement the highest security standards: data encryption, robust validation, continuous monitoring, model versioning and adversarial testing. We guarantee full compliance with LGPD, GDPR and other regulations.',
+    'faq.a2': 'Yes. We implement the highest security standards: data encryption, robust validation, continuous monitoring, model versioning and adversarial testing. We ensure full compliance with LGPD, GDPR and other regulations.',
     'faq.q3': 'How to measure the ROI of an AI project?',
-    'faq.a3': 'We measure through: reduction of operational costs, increase in revenue, improvement in time efficiency, customer satisfaction, and decision accuracy. We establish clear KPIs at the beginning and monitor continuously. Most clients see positive ROI in 6-12 months.',
+    'faq.a3': 'We measure through: reduction in operational costs, increase in revenue, improvement in time efficiency, customer satisfaction, and decision accuracy. We establish clear KPIs at the beginning and monitor continuously. Most clients see positive ROI in 6-12 months.',
 
     // Footer
     'footer.description': 'Digital transformation with applied artificial intelligence',
@@ -244,8 +248,8 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.scanmyname': 'ScanMyName',
 
     // Blog Page
-    'blog.title': 'SAPIENTE.AI Blog — Applied Artificial Intelligence for Business',
-    'blog.subtitle': 'Specialized content about AI, machine learning, automation and technological trends for companies and professionals who want to evolve with data and technology.',
+    'blog.title': 'SAPIENTE.AI Blog — Applied AI for Business',
+    'blog.subtitle': 'Specialized content on AI, machine learning, automation and technological trends for companies and professionals who want to evolve with data and technology.',
     'blog.search': 'Search articles...',
     'blog.all': 'All',
     'blog.readMore': 'Read Article',
@@ -253,8 +257,8 @@ export const translations: Record<Language, Record<string, string>> = {
     'blog.date': 'Date',
     'blog.author': 'SAPIENTE.AI',
     'blog.knowledge': 'Knowledge • Strategy • Innovation',
-    'blog.newsletter': 'Receive AI Insights',
-    'blog.newsletterDesc': 'Subscribe to the SAPIENTE.AI newsletter and receive exclusive content about artificial intelligence, machine learning and technological trends straight to your inbox.',
+    'blog.newsletter': 'Get AI Insights',
+    'blog.newsletterDesc': 'Subscribe to the SAPIENTE.AI newsletter and receive exclusive content on AI, machine learning and tech trends directly in your inbox.',
     'blog.noArticles': 'No articles found. Try another search or category.',
 
     // Article Detail
@@ -277,12 +281,12 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.lgpd.title': 'General Data Protection Law (LGPD)',
     'legal.lgpd.intro': 'SAPIENTE.AI is in full compliance with the General Data Protection Law (LGPD) and international data protection regulations.',
     'legal.terms.title': 'Terms of Service',
-    'legal.terms.intro': 'These terms govern the use of SAPIENTE.AI services. By accessing our website, you agree to these terms.',
+    'legal.terms.intro': 'These terms govern the use of SAPIENTE.AI services. By accessing our site, you agree to these terms.',
     'legal.privacy.title': 'Privacy Policy',
     'legal.privacy.intro': 'SAPIENTE.AI respects your privacy and is committed to protecting your personal data.',
 
     // Newsletter
-    'newsletter.label': 'Email for Newsletter',
+    'newsletter.label': 'Newsletter Email',
     'newsletter.placeholder': 'your@email.com',
     'newsletter.subscribe': 'Subscribe',
     'newsletter.subscribing': 'Subscribing...',
@@ -290,20 +294,12 @@ export const translations: Record<Language, Record<string, string>> = {
     'newsletter.subject': 'New Newsletter Subscription - SAPIENTE.AI',
     'newsletter.success': 'Subscription confirmed! Thank you for joining us.',
     'newsletter.error': 'Error subscribing. Please try again.',
-    'newsletter.description': 'Receive insights about AI, technological trends and updates from SAPIENTE.AI. No spam, just valuable content.',
+    'newsletter.description': 'Get insights on AI, tech trends and SAPIENTE.AI updates. No spam, just value content.',
 
     // Social Media
     'social.instagram': 'Instagram',
     'social.tiktok': 'TikTok',
     'social.twitter': 'X (Twitter)',
     'social.linkedin': 'LinkedIn',
-  },
-};
-
-const t = (key: string): string => {
-  return (
-    translations[language]?.[key] ??
-    translations['pt-PT']?.[key] ??
-    key
-  );
+  }
 };

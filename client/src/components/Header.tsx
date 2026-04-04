@@ -3,10 +3,11 @@ import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useState, useEffect } from 'react';
 import ContactModal from '@/components/ContactModal';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Link, useLocation } from "wouter";
 import { NavLink } from '@/components/ui/navigation/NavLink';
+import { PremiumButton } from '@/components/ui/button/PremiumButton';
 
 interface HeaderProps {
   onContactClick?: () => void;
@@ -20,6 +21,7 @@ export default function Header({ onContactClick }: HeaderProps) {
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLegalOpen, setIsLegalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -42,72 +44,95 @@ export default function Header({ onContactClick }: HeaderProps) {
 
   const handleNavClick = () => {
     setIsMobileMenuOpen(false);
+    setIsLegalOpen(false);
   };
+
+  const legalLinks = [
+    { name: 'Trust', href: `/${lang}/trust` },
+    { name: 'Privacy', href: `/${lang}/privacy` },
+    { name: 'Terms', href: `/${lang}/terms` },
+    { name: 'LGPD', href: `/${lang}/lgpd` },
+  ];
 
   return (
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-300 border-b",
+          "sticky top-0 z-50 transition-all duration-500 border-b",
           scrolled
-            ? "bg-black/95 backdrop-blur-xl border-white/10 shadow-lg"
+            ? "bg-black/95 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
             : "bg-black border-transparent"
         )}
       >
         <div className="container mx-auto px-6">
           <nav
             className={cn(
-              "flex items-center justify-between transition-all duration-300",
-              scrolled ? "h-16" : "h-20 md:h-24"
+              "flex items-center justify-between transition-all duration-500",
+              scrolled ? "h-16 md:h-20" : "h-20 md:h-28"
             )}
           >
 
             {/* LOGO */}
             <Link
               href={`/${lang}`}
-              className="flex items-center gap-2 hover:opacity-90 transition-opacity flex-shrink-0"
+              className="flex items-center gap-2 hover:opacity-80 transition-all duration-500 flex-shrink-0 group"
             >
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/JsygqIGdbHNWJuIo.png"
+                src="/media/logos/sapiente-ai-footer.png"
                 alt="SAPIENTE.AI"
-                className="h-10 md:h-14 object-contain invert"
+                className="h-10 md:h-14 object-contain transition-transform duration-500 group-hover:scale-105"
               />
             </Link>
 
-            {/* DESKTOP */}
+            {/* DESKTOP NAV */}
             <div className="hidden lg:flex items-center gap-10">
-              <NavLink
-                href={`/${lang}`}
-                className="text-sm text-white/70 hover:text-white font-bold uppercase tracking-widest transition-colors"
-              >
+              <NavLink href={`/${lang}`} className="text-sm font-black uppercase tracking-widest">
                 {t('nav.home')}
               </NavLink>
 
-              <NavLink
-                href={`/${lang}/about`}
-                className="text-sm text-white/70 hover:text-white font-bold uppercase tracking-widest transition-colors"
-              >
+              <NavLink href={`/${lang}/about`} className="text-sm font-black uppercase tracking-widest">
                 {t('nav.about')}
               </NavLink>
 
-              <NavLink
-                href={`/${lang}/team`}
-                className="text-sm text-white/70 hover:text-white font-bold uppercase tracking-widest transition-colors"
-              >
+              <NavLink href={`/${lang}/team`} className="text-sm font-black uppercase tracking-widest">
                 {t('nav.team')}
               </NavLink>
 
-              <NavLink
-                href={`/${lang}/trust`}
-                className="text-sm text-white/70 hover:text-white font-bold uppercase tracking-widest transition-colors"
+              {/* LEGAL DROPDOWN */}
+              <div 
+                className="relative group"
+                onMouseEnter={() => setIsLegalOpen(true)}
+                onMouseLeave={() => setIsLegalOpen(false)}
               >
-                Trust
-              </NavLink>
+                <button className={cn(
+                  "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
+                  isLegalOpen ? "text-primary" : "text-white/70 hover:text-white"
+                )}>
+                  Legal
+                  <ChevronDown className={cn("h-4 w-4 transition-transform duration-500", isLegalOpen && "rotate-180")} />
+                </button>
 
-              <NavLink
-                href={`/${lang}/faq`}
-                className="text-sm text-white/70 hover:text-white font-bold uppercase tracking-widest transition-colors"
-              >
+                {/* DROPDOWN MENU */}
+                <div className={cn(
+                  "absolute top-full -left-4 w-48 pt-4 transition-all duration-500 origin-top-left",
+                  isLegalOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+                )}>
+                  <div className="bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 shadow-2xl">
+                    {legalLinks.map((link) => (
+                      <Link 
+                        key={link.name} 
+                        href={link.href}
+                        className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/60 hover:text-white hover:bg-white/5 transition-all"
+                      >
+                        <ShieldCheck className="h-4 w-4 text-primary" />
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              <NavLink href={`/${lang}/faq`} className="text-sm font-black uppercase tracking-widest">
                 {t('nav.faq')}
               </NavLink>
 
@@ -115,28 +140,18 @@ export default function Header({ onContactClick }: HeaderProps) {
 
               <LanguageSelector />
 
-              <Button
+              <PremiumButton 
                 onClick={handleContactClick}
-                className="
-                bg-primary text-primary-foreground
-                px-8 py-3
-                rounded-full
-                font-black
-                uppercase
-                tracking-tighter
-                hover:opacity-90
-                hover:-translate-y-[1px]
-                transition-all
-                "
+                className="scale-90"
               >
                 {t('nav.fale')}
-              </Button>
+              </PremiumButton>
             </div>
 
             {/* MOBILE BUTTON */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-3 hover:bg-white/10 transition-colors rounded-xl"
+              className="lg:hidden p-3 hover:bg-white/10 transition-all duration-300 rounded-2xl"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -149,9 +164,9 @@ export default function Header({ onContactClick }: HeaderProps) {
 
           {/* MOBILE MENU */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden fixed inset-0 top-[inherit] bg-black z-40 flex flex-col p-8 pt-12 space-y-8 animate-in fade-in slide-in-from-top-4 duration-300">
+            <div className="lg:hidden fixed inset-0 top-[inherit] bg-black z-40 flex flex-col p-8 pt-12 space-y-8 animate-in fade-in slide-in-from-top-10 duration-500 overflow-y-auto">
               <div className="flex items-center justify-between pb-8 border-b border-white/10">
-                <span className="text-white/40 text-sm font-bold uppercase tracking-widest">Idioma</span>
+                <span className="text-white/40 text-xs font-black uppercase tracking-widest">Idioma</span>
                 <LanguageSelector />
               </div>
 
@@ -160,7 +175,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                   variant="mobile"
                   href={`/${lang}`}
                   onClick={handleNavClick}
-                  className="text-2xl text-white/70 hover:text-white font-bold"
                 >
                   {t('nav.home')}
                 </NavLink>
@@ -169,7 +183,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                   variant="mobile"
                   href={`/${lang}/about`}
                   onClick={handleNavClick}
-                  className="text-2xl text-white/70 hover:text-white font-bold"
                 >
                   {t('nav.about')}
                 </NavLink>
@@ -178,46 +191,42 @@ export default function Header({ onContactClick }: HeaderProps) {
                   variant="mobile"
                   href={`/${lang}/team`}
                   onClick={handleNavClick}
-                  className="text-2xl text-white/70 hover:text-white font-bold"
                 >
                   {t('nav.team')}
                 </NavLink>
 
-                <NavLink
-                  variant="mobile"
-                  href={`/${lang}/trust`}
-                  onClick={handleNavClick}
-                  className="text-2xl text-white/70 hover:text-white font-bold"
-                >
-                  Trust
-                </NavLink>
+                <div className="py-4 space-y-4 border-y border-white/5">
+                  <span className="text-white/30 text-xs font-black uppercase tracking-widest">Legal</span>
+                  <div className="grid grid-cols-2 gap-4">
+                    {legalLinks.map((link) => (
+                      <Link 
+                        key={link.name} 
+                        href={link.href}
+                        onClick={handleNavClick}
+                        className="text-lg font-bold text-white/60 hover:text-white transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
 
                 <NavLink
                   variant="mobile"
                   href={`/${lang}/faq`}
                   onClick={handleNavClick}
-                  className="text-2xl text-white/70 hover:text-white font-bold"
                 >
                   {t('nav.faq')}
                 </NavLink>
               </div>
 
               <div className="pt-8 mt-auto">
-                <Button
+                <PremiumButton
                   onClick={handleContactClick}
-                  className="
-                  w-full
-                  bg-primary text-primary-foreground
-                  py-8
-                  rounded-2xl
-                  font-black
-                  text-xl
-                  uppercase
-                  tracking-tighter
-                  "
+                  className="w-full py-8 text-xl"
                 >
                   {t('nav.fale')}
-                </Button>
+                </PremiumButton>
               </div>
             </div>
           )}

@@ -10,10 +10,11 @@
 /* Smooth transitions */
 * {
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   border-color: var(--border);
   outline-color: var(--ring);
@@ -33,67 +34,59 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
 /* =========================
-   DESIGN TOKENS (Ice White & Neon Blue)
+   DESIGN TOKENS (Ice White, Neon Blue & Neon Purple)
 ========================= */
 
 :root {
-  /* Neon Blue Primary */
+  /* Neon Blue */
   --primary: oklch(0.75 0.15 240); 
   --primary-foreground: oklch(0.1 0.01 240);
 
+  /* Neon Purple (New Default for Buttons) */
+  --accent-purple: oklch(0.65 0.25 300);
+  --accent-purple-foreground: oklch(0.99 0.01 300);
+
   /* Ice White Backgrounds */
   --background: oklch(0.99 0.005 240);
-  --foreground: oklch(0.15 0.02 240);
+  --foreground: oklch(0.1 0.02 240);
   
   /* Section Variations */
-  --section-ice: oklch(0.98 0.01 240);
-  --section-blue-tint: oklch(0.96 0.02 240);
+  --section-ice: oklch(0.99 0.005 240);
+  --section-blue-tint: oklch(0.97 0.02 240);
+  --section-gradient: linear-gradient(135deg, oklch(0.99 0.005 240) 0%, oklch(0.95 0.03 240) 100%);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.02 240);
+  --card: oklch(1 0 0 / 80%);
+  --card-foreground: oklch(0.1 0.02 240);
 
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.02 240);
+  --popover-foreground: oklch(0.1 0.02 240);
 
-  --secondary: oklch(0.90 0.03 240);
+  --secondary: oklch(0.92 0.02 240);
   --secondary-foreground: oklch(0.2 0.02 240);
 
-  --muted: oklch(0.95 0.01 240);
+  --muted: oklch(0.96 0.01 240);
   --muted-foreground: oklch(0.4 0.02 240);
 
-  --accent: oklch(0.8 0.1 240);
-  --accent-foreground: oklch(0.1 0.01 240);
+  --border: oklch(0.1 0.02 240 / 8%);
+  --input: oklch(0.1 0.02 240 / 5%);
+  --ring: var(--accent-purple);
 
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.98 0 0);
-
-  --border: oklch(0.9 0.01 240);
-  --input: oklch(0.95 0.01 240);
-  --ring: oklch(0.75 0.15 240);
-
-  --radius: 0.75rem;
+  --radius: 1rem;
 }
 
 /* =========================
-   DARK MODE (Optional, keeping it clean)
+   DARK MODE
 ========================= */
 
 .dark {
   --background: oklch(0.1 0.01 240);
   --foreground: oklch(0.98 0.005 240);
-
-  --card: oklch(0.15 0.01 240);
-  --card-foreground: oklch(0.98 0.005 240);
-
+  --card: oklch(0.12 0.01 240 / 80%);
   --border: oklch(1 0 0 / 10%);
-}
-
-/* Performance helper */
-.will-change-transform {
-  will-change: transform;
 }
 
 /* =========================
@@ -102,26 +95,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-/* =========================
-   CONTAINER
-========================= */
-
-.container {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1200px;
-  }
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
 /* =========================
@@ -130,23 +106,47 @@ h1, h2, h3, h4, h5, h6 {
 
 .bg-ice { background-color: var(--section-ice); }
 .bg-blue-tint { background-color: var(--section-blue-tint); }
+.bg-modern-gradient { background: var(--section-gradient); }
 
 .text-neon-blue { color: var(--primary); }
-.bg-neon-blue { background-color: var(--primary); }
+.text-neon-purple { color: var(--accent-purple); }
+.bg-neon-purple { background-color: var(--accent-purple); }
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
 
 .header-footer-black {
   background-color: #000000;
   color: #ffffff;
 }
 
-.clip-diagonal-top {
-  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
-  margin-top: -5rem;
-  padding-top: 8rem;
+.btn-neon-purple {
+  background-color: var(--accent-purple);
+  color: white;
+  box-shadow: 0 0 20px oklch(0.65 0.25 300 / 30%);
 }
 
-.clip-diagonal-bottom {
-  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
-  padding-bottom: 8rem;
-  margin-bottom: -5rem;
+.btn-neon-purple:hover {
+  background-color: oklch(0.7 0.25 300);
+  box-shadow: 0 0 30px oklch(0.65 0.25 300 / 50%);
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-purple);
 }

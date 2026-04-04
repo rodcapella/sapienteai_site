@@ -2,7 +2,14 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
-export function PremiumButton({ children, onClick, className }: any) {
+interface PremiumButtonProps {
+  children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
+  variant?: 'primary' | 'purple' | 'secondary' | 'outline';
+}
+
+export function PremiumButton({ children, onClick, className, variant = 'purple' }: PremiumButtonProps) {
   const ref = useRef<HTMLButtonElement>(null);
 
   const x = useMotionValue(0);
@@ -21,13 +28,22 @@ export function PremiumButton({ children, onClick, className }: any) {
     x.set(dx * 0.1);
     y.set(dy * 0.1);
 
-    ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    if (ref.current) {
+      ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
+      ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    }
   };
 
   const reset = () => {
     x.set(0);
     y.set(0);
+  };
+
+  const variantClasses = {
+    primary: "bg-primary text-primary-foreground shadow-[0_0_20px_oklch(0.75_0.15_240_/_20%)]",
+    purple: "bg-neon-purple text-white shadow-[0_0_25px_oklch(0.65_0.25_300_/_30%)] hover:shadow-[0_0_40px_oklch(0.65_0.25_300_/_50%)]",
+    secondary: "bg-white text-foreground border border-foreground/5 shadow-sm hover:bg-foreground/5",
+    outline: "bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white"
   };
 
   return (
@@ -38,14 +54,14 @@ export function PremiumButton({ children, onClick, className }: any) {
       onMouseLeave={reset}
       style={{ x: springX, y: springY }}
       className={cn(`
-        relative px-8 py-4 rounded-full
-        bg-primary text-primary-foreground font-bold text-lg
+        relative px-10 py-5 rounded-full
+        font-black uppercase tracking-widest text-base
         overflow-hidden
-        transition-all duration-300
+        transition-all duration-500
         hover:scale-[1.05]
-        hover:shadow-[0_0_30px_rgba(150,220,255,0.4)]
+        active:scale-95
         group
-      `, className)}
+      `, variantClasses[variant], className)}
     >
       {/* glow */}
       <span
