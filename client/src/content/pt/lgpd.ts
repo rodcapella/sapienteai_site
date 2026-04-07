@@ -1,109 +1,95 @@
 // /content/pt/lgpd.ts
+import { 
+  ShieldCheck, 
+  Globe, 
+  Database, 
+  Lock, 
+  UserCheck, 
+  Cpu, 
+  History, 
+  Mail,
+  Scale
+} from "lucide-react";
 
 export const lgpdContentPT = {
   label: "Documento Legal",
-  title: "LGPD & GDPR Compliance",
-  subtitle: "Política de proteção de dados e conformidade internacional.",
+  title: "GDPR Compliance",
+  subtitle: "Conformidade rigorosa com o Regulamento Geral sobre a Proteção de Dados da União Europeia.",
 
   sections: [
     {
       id: "compliance",
-      title: "1. Conformidade Regulatória",
+      icon: Scale, // Representa a balança da justiça/conformidade legal
+      title: "1. Conformidade Integral com o GDPR",
       content:
-        "A SAPIENTE.AI atua em conformidade com a LGPD (Lei nº 13.709/2018) e o RGPD (UE 2016/679), adotando práticas alinhadas às melhores referências internacionais."
+        "A SAPIENTE.AI opera em total conformidade com o Regulamento (UE) 2016/679 (GDPR). Nossa estrutura de governança de dados foi desenhada para atender aos mais altos padrões de privacidade e segurança exigidos pelas autoridades de proteção de dados da União Europeia, garantindo um tratamento lícito, leal e transparente."
     },
     {
-      id: "ai",
-      title: "2. Uso de Inteligência Artificial",
+      id: "infrastructure-eu",
+      icon: Globe, // Representa a atuação internacional/europeia
+      title: "2. Ecossistema de Ferramentas Homologadas",
       content:
-        "Utilizamos Inteligência Artificial de forma responsável, garantindo explicabilidade, minimização de dados e supervisão humana quando necessário."
+        "Trabalhamos exclusivamente com fornecedores de tecnologia e parceiros de infraestrutura que demonstram conformidade comprovada com o GDPR. Todo o fluxo de dados é mantido dentro do Espaço Económico Europeu (EEE) ou em jurisdições que oferecem um nível de proteção equivalente, assegurando a integridade da cadeia de custódia."
     },
     {
-      id: "infrastructure",
-      title: "3. Infraestrutura e Jurisdição",
+      id: "local-repository",
+      icon: Database, // Representa o repositório de dados/código
+      title: "3. Segurança do Repositório Local e Ativos de Projeto",
       content:
-        "Utilizamos exclusivamente fornecedores com conformidade GDPR, com processamento prioritário em ambiente europeu (UE/EEA)."
+        "Mantemos um ambiente de desenvolvimento altamente seguro e controlado. Nossos repositórios locais de projetos utilizam criptografia de disco e sistemas de versionamento com registos de auditoria completos (logs). O acesso ao código-fonte e às configurações dos projetos é restrito através de autenticação forte e limitado apenas aos membros da equipa diretamente envolvidos."
     },
     {
-      id: "vendors",
-      title: "4. Subprocessadores",
+      id: "local-ai-sovereignty",
+      icon: Cpu, // Representa o processamento local/IA
+      title: "4. IA Local e Soberania de Dados Sensíveis",
       content:
-        "Todos os parceiros são avaliados com base em DPA, SCC e critérios rigorosos de segurança."
+        "Para cenários que envolvem o tratamento de categorias especiais de dados (dados sensíveis), a SAPIENTE.AI implementa arquiteturas de IA Local. Tecnicamente, esta abordagem utiliza ambientes isolados ou instâncias dedicadas (VPC), garantindo que o processamento ocorra sem comunicação com APIs externas de terceiros."
     },
     {
-      id: "storage",
-      title: "5. Armazenamento e Proteção",
+      id: "privacy-by-design",
+      icon: ShieldCheck, // Representa proteção desde a concepção
+      title: "5. Privacy by Design & by Default",
+      content:
+        "A proteção de dados é integrada na arquitetura de todos os nossos sistemas desde a sua conceção. Aplicamos medidas técnicas para garantir a minimização de dados, assegurando que apenas as informações estritamente necessárias para cada finalidade específica sejam tratadas por defeito."
+    },
+    {
+      id: "security-measures",
+      icon: Lock, // Representa criptografia e trancas de segurança
+      title: "6. Segurança e Proteção Técnica",
       content: [
-        "Criptografia em trânsito e em repouso",
-        "Arquitetura Zero Trust",
-        "Segregação de dados",
-        "Políticas de retenção seguras"
+        "Criptografia avançada em trânsito e em repouso para todos os conjuntos de dados.",
+        "Controlo de acesso granular baseado em perfis (RBAC).",
+        "Isolamento lógico e físico de ambientes de desenvolvimento, teste e produção.",
+        "Sistemas de monitorização ativa para deteção de anomalias."
       ]
     },
     {
-      id: "rights",
-      title: "6. Direitos dos Titulares",
-      content: [
-        "Acesso e confirmação",
-        "Correção",
-        "Eliminação",
-        "Portabilidade",
-        "Revogação de consentimento"
-      ]
+      id: "data-subject-rights",
+      icon: UserCheck, // Representa o titular do dado e seus direitos
+      title: "7. Direitos dos Titulares dos Dados",
+      content:
+        "Respeitamos integralmente os direitos conferidos pelo GDPR, incluindo o direito de acesso, retificação, apagamento ('direito ao esquecimento'), portabilidade e o direito de oposição. Disponibilizamos canais diretos para que estas solicitações sejam atendidas sem demora injustificada."
     },
     {
-      id: "security",
-      title: "7. Segurança da Informação",
+      id: "ai-ethics-eu",
+      icon: ShieldCheck, // Ou use "Brain" se preferir reforçar a parte de IA ética
+      title: "8. Governança Ética e IA Responsável",
       content:
-        "Controles alinhados a ISO 27001 e NIST, com monitorização contínua e auditorias periódicas."
-    },
-    {
-      id: "governance",
-      title: "8. Governança",
-      content:
-        "Processos estruturados garantem rastreabilidade, auditoria e conformidade contínua."
-    },
-    {
-      id: "incidents",
-      title: "9. Incidentes",
-      content:
-        "Resposta estruturada com notificação conforme exigido por lei."
-    },
-    {
-      id: "dpo",
-      title: "10. Encarregado de Dados (DPO)",
-      content:
-        "Responsável designado para proteção de dados e comunicação com autoridades."
-    },
-    {
-      id: "international",
-      title: "11. Transferência Internacional",
-      content:
-        "Realizada com SCC e mecanismos legais adequados."
+        "Alinhados com as diretrizes europeias para uma IA fiável, garantimos que os nossos modelos operem com transparência. Nas implementações de IA Local, o cliente retém o controlo total sobre a lógica de processamento, permitindo auditorias técnicas."
     },
     {
       id: "retention",
-      title: "12. Retenção de Dados",
+      icon: History, // Representa o ciclo de vida/tempo de retenção
+      title: "9. Conservação e Eliminação Segura",
       content:
-        "Dados mantidos apenas pelo tempo necessário, seguindo princípios de minimização."
+        "Os dados pessoais são conservados apenas durante o período necessário para as finalidades para as quais são tratados. Findo este prazo, aplicamos procedimentos de eliminação definitiva ou anonimização irreversível."
     },
     {
-      id: "privacy",
-      title: "13. Privacy by Design & Data Minimization",
+      id: "dpo-contact",
+      icon: Mail, // Representa o canal de comunicação/DPO
+      title: "10. Contacto e Proteção de Dados",
       content:
-        "A SAPIENTE.AI adota princípios de Privacy by Design e Privacy by Default, limitando o tratamento ao mínimo necessário."
-    },
-    {
-      id: "ai-ethics",
-      title: "14. Responsible AI",
-      content:
-        "Sistemas de IA são desenvolvidos com transparência, controle humano e mitigação de vieses."
-    },
-    {
-      id: "contact",
-      title: "15. Contacto",
-      content:
-        "Solicitações podem ser realizadas através dos canais oficiais."
+        "A SAPIENTE.AI mantém processos internos de supervisão para garantir a conformidade contínua. Para questões relacionadas com a proteção de dados ou detalhes técnicos sobre a segurança dos nossos repositórios, utilize os nossos canais de contacto oficiais."
     }
   ]
 };

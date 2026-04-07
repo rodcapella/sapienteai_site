@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { useLocation } from "wouter";
 
+<<<<<<< HEAD
+=======
 import { Icons } from "@/lib/icons";
+>>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
 import ContactModal from '@/components/ContactModal';
+import { Icons } from "@/lib/icons";
 
 import { Section } from "@/components/ui/section/Section";
 import { SectionHeader } from "@/components/ui/section/SectionHeader";
 import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
-
 import { Reveal } from "@/components/ui/motion/Reveal";
 
 import { homePT } from "@/content/pt/home";
@@ -39,11 +42,16 @@ export default function Home() {
   return (
     <div className="flex flex-col">
 
+<<<<<<< HEAD
+      {/* HERO */}
+      <Section className="bg-modern-gradient text-center pt-24 md:pt-40 pb-32 md:pb-56 relative overflow-hidden">
+=======
       {/* HERO - Modern Gradient Background */}
       <Section className="bg-modern-gradient text-center py-24 md:py-40 relative overflow-hidden">
         {/* DECORATIVE ELEMENTS */}
+>>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/5 blur-[150px] rounded-full -z-10 animate-pulse"></div>
-        
+
         <div className="max-w-5xl mx-auto px-6">
           <Reveal>
             <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
@@ -56,11 +64,7 @@ export default function Home() {
 
           <Reveal delay={100}>
             <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-foreground leading-[1] mb-10">
-              {content.hero.title.split(' ').map((word, i) => (
-                <span key={i} className={i === content.hero.title.split(' ').length - 1 ? "text-primary drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]" : ""}>
-                  {word}{' '}
-                </span>
-              ))}
+              {content.hero.title}
             </h1>
           </Reveal>
 
@@ -93,10 +97,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* VALUES - Solid Blue Tint Background */}
+      {/* VALUES */}
       <Section className="bg-blue-tint py-32 md:py-48 relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/5 to-transparent"></div>
-        
         <SectionHeader>
           <Reveal>
             <SectionTitle
@@ -114,7 +116,7 @@ export default function Home() {
             return (
               <Reveal key={value.title} delay={i * 100}>
                 <SectionCard className="bg-white/80 backdrop-blur-xl border-foreground/5 shadow-xl hover:shadow-2xl transition-all duration-500 group p-10 h-full">
-                  <div className="w-16 h-16 mb-8 bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary group-hover:rotate-[10deg] transition-all duration-500">
+                  <div className="w-16 h-16 mb-8 bg-primary/10 rounded-3xl flex items-center justify-center group-hover:bg-primary transition-all duration-500">
                     <Icon className="text-primary w-8 h-8 group-hover:text-white transition-colors duration-500" />
                   </div>
 
@@ -132,10 +134,8 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* SERVICES - Modern Gradient Background */}
+      {/* SERVICES */}
       <Section id="services" className="bg-modern-gradient py-32 md:py-48 relative">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/5 to-transparent"></div>
-        
         <SectionHeader>
           <Reveal>
             <SectionTitle
@@ -151,8 +151,8 @@ export default function Home() {
 
             return (
               <Reveal key={service.title} delay={i * 150}>
-                <SectionCard className="bg-white border-foreground/5 shadow-2xl hover:shadow-[0_20px_80px_rgba(0,0,0,0.1)] transition-all duration-700 p-12 h-full group">
-                  <div className="w-20 h-20 mb-10 bg-primary/5 rounded-[2rem] flex items-center justify-center group-hover:bg-neon-purple group-hover:scale-110 transition-all duration-500 shadow-sm">
+                <SectionCard className="bg-white border-foreground/5 shadow-2xl transition-all duration-700 p-12 h-full group">
+                  <div className="w-20 h-20 mb-10 bg-primary/5 rounded-[2rem] flex items-center justify-center group-hover:bg-primary transition-all duration-500">
                     <Icon className="text-primary w-10 h-10 group-hover:text-white transition-colors duration-500" />
                   </div>
 
@@ -163,13 +163,6 @@ export default function Home() {
                   <p className="text-foreground/60 text-xl leading-relaxed font-medium">
                     {service.description}
                   </p>
-                  
-                  <div className="mt-10 pt-10 border-t border-foreground/5">
-                    <button className="flex items-center gap-3 text-sm font-black uppercase tracking-widest text-primary hover:text-neon-purple transition-colors">
-                      {content.services.more || "Saiba Mais"}
-                      <Icons.ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
                 </SectionCard>
               </Reveal>
             );
@@ -177,14 +170,9 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* CTA - Solid Ice White Background */}
+      {/* CTA */}
       <Section className="bg-ice py-40 md:py-60 relative text-center">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/5 to-transparent"></div>
-        
-        <div className="max-w-4xl mx-auto px-6 relative">
-          {/* DECORATIVE ELEMENTS */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-purple/5 blur-[100px] rounded-full -z-10"></div>
-
+        <div className="max-w-4xl mx-auto px-6">
           <Reveal>
             <h2 className="text-5xl md:text-8xl font-black mb-10 text-foreground tracking-tighter leading-[0.9]">
               {content.cta.title}
@@ -211,7 +199,6 @@ export default function Home() {
           onClose={() => setIsContactOpen(false)}
         />
       )}
-
     </div>
   );
 }

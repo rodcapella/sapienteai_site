@@ -1,109 +1,95 @@
-// /content/en/lgpd.ts
+// /content/en/gdpr.ts
+import { 
+  ShieldCheck, 
+  Globe, 
+  Database, 
+  Lock, 
+  UserCheck, 
+  Cpu, 
+  History, 
+  Mail,
+  Scale
+} from "lucide-react";
 
-export const lgpdContentEN = {
+export const gdprContentEN = {
   label: "Legal Document",
-  title: "LGPD & GDPR Compliance",
-  subtitle: "Data protection policy and international compliance.",
+  title: "GDPR Compliance",
+  subtitle: "Strict compliance with the European Union's General Data Protection Regulation.",
 
   sections: [
     {
       id: "compliance",
-      title: "1. Regulatory Compliance",
+      icon: Scale,
+      title: "1. Full GDPR Compliance",
       content:
-        "SAPIENTE.AI operates in full compliance with the Brazilian General Data Protection Law (LGPD - Law No. 13.709/2018) and the European General Data Protection Regulation (GDPR - EU 2016/679), adopting practices aligned with leading international standards."
+        "SAPIENTE.AI operates in full compliance with Regulation (EU) 2016/679 (GDPR). Our data governance framework is designed to meet the highest standards of privacy and security required by EU data protection authorities, ensuring lawful, fair, and transparent processing."
     },
     {
-      id: "ai",
-      title: "2. Use of Artificial Intelligence",
+      id: "infrastructure-eu",
+      icon: Globe,
+      title: "2. Approved Tooling Ecosystem",
       content:
-        "We use Artificial Intelligence responsibly, ensuring explainability, data minimization, and human oversight where applicable."
+        "We work exclusively with technology providers and infrastructure partners that demonstrate proven GDPR compliance. All data flows are maintained within the European Economic Area (EEA) or in jurisdictions offering an equivalent level of protection, ensuring the integrity of the chain of custody."
     },
     {
-      id: "infrastructure",
-      title: "3. Infrastructure and Jurisdiction",
+      id: "local-repository",
+      icon: Database,
+      title: "3. Local Repository & Project Asset Security",
       content:
-        "We exclusively rely on providers that are GDPR-compliant, with data processing primarily hosted within the European Economic Area (EU/EEA)."
+        "We maintain a highly secure and controlled development environment. Our local project repositories utilize full disk encryption and version control systems with comprehensive audit logs. Access to source code and project configurations is restricted via strong authentication and limited only to directly involved team members."
     },
     {
-      id: "vendors",
-      title: "4. Subprocessors",
+      id: "local-ai-sovereignty",
+      icon: Cpu,
+      title: "4. Local AI & Sensitive Data Sovereignty",
       content:
-        "All partners are evaluated under strict criteria, including Data Processing Agreements (DPA), Standard Contractual Clauses (SCC), and security standards."
+        "For scenarios involving the processing of special categories of data (sensitive data), SAPIENTE.AI implements Local AI architectures. Technically, this approach utilizes isolated environments or dedicated instances (VPCs), ensuring that processing occurs without communication with external third-party APIs."
     },
     {
-      id: "storage",
-      title: "5. Data Storage and Protection",
+      id: "privacy-by-design",
+      icon: ShieldCheck,
+      title: "5. Privacy by Design & by Default",
+      content:
+        "Data protection is integrated into the architecture of all our systems from the point of conception. We apply technical measures to ensure data minimization, guaranteeing that only the information strictly necessary for each specific purpose is processed by default."
+    },
+    {
+      id: "security-measures",
+      icon: Lock,
+      title: "6. Technical Protection & Security",
       content: [
-        "Encryption in transit and at rest",
-        "Zero Trust architecture",
-        "Logical data segregation",
-        "Secure data retention policies"
+        "Advanced encryption in transit and at rest for all data sets.",
+        "Granular Role-Based Access Control (RBAC).",
+        "Logical and physical isolation of development, testing, and production environments.",
+        "Active monitoring systems for anomaly detection and protection against unauthorized access."
       ]
     },
     {
-      id: "rights",
-      title: "6. Data Subject Rights",
-      content: [
-        "Access and confirmation",
-        "Correction",
-        "Erasure",
-        "Data portability",
-        "Withdrawal of consent"
-      ]
+      id: "data-subject-rights",
+      icon: UserCheck,
+      title: "7. Data Subject Rights",
+      content:
+        "We fully respect the rights granted by the GDPR, including the right of access, rectification, erasure ('right to be forgotten'), portability, and the right to object. We provide direct channels to ensure these requests are addressed without undue delay, within European regulatory timeframes."
     },
     {
-      id: "security",
-      title: "7. Information Security",
+      id: "ai-ethics-eu",
+      icon: ShieldCheck,
+      title: "8. Ethical Governance & Responsible AI",
       content:
-        "Controls aligned with ISO 27001 and NIST frameworks, including continuous monitoring and periodic audits."
-    },
-    {
-      id: "governance",
-      title: "8. Data Governance",
-      content:
-        "Structured processes ensure traceability, auditability, and continuous compliance."
-    },
-    {
-      id: "incidents",
-      title: "9. Incident Management",
-      content:
-        "Structured response procedures with notification in accordance with applicable legal requirements."
-    },
-    {
-      id: "dpo",
-      title: "10. Data Protection Officer (DPO)",
-      content:
-        "A designated officer is responsible for data protection and communication with regulatory authorities."
-    },
-    {
-      id: "international",
-      title: "11. International Data Transfers",
-      content:
-        "Transfers are conducted using Standard Contractual Clauses (SCC) and other legally valid mechanisms."
+        "Aligned with European guidelines for Trustworthy AI, we ensure our models operate with transparency and explainability. In Local AI deployments, the client retains full control over the processing logic, allowing for technical audits to validate compliance with European security standards."
     },
     {
       id: "retention",
-      title: "12. Data Retention",
+      icon: History,
+      title: "9. Conservation & Secure Disposal",
       content:
-        "Data is retained only for as long as necessary, following data minimization principles."
+        "Personal data is kept only for the period necessary for the purposes for which it is processed. After this period, we apply definitive deletion or irreversible anonymization procedures, preventing any reconstitution of the data subject's identity."
     },
     {
-      id: "privacy",
-      title: "13. Privacy by Design & Data Minimization",
+      id: "dpo-contact",
+      icon: Mail,
+      title: "10. Contact & Data Protection",
       content:
-        "SAPIENTE.AI adopts Privacy by Design and Privacy by Default principles, ensuring that data processing is limited to what is strictly necessary for each purpose."
-    },
-    {
-      id: "ai-ethics",
-      title: "14. Responsible AI",
-      content:
-        "AI systems are developed with transparency, human control, and bias mitigation to ensure responsible usage."
-    },
-    {
-      id: "contact",
-      title: "15. Contact",
-      content:
-        "Requests related to data protection can be submitted through official company channels."
+        "SAPIENTE.AI maintains internal oversight processes to ensure continuous compliance. For questions regarding data protection or technical details about our repository security, please use our official contact channels."
     }
   ]
 };

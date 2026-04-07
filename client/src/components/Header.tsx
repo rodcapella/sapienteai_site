@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/hooks/useTranslation';
 import { useState, useEffect } from 'react';
@@ -48,10 +47,10 @@ export default function Header({ onContactClick }: HeaderProps) {
   };
 
   const legalLinks = [
-    { name: 'Trust', href: `/${lang}/trust` },
-    { name: 'Privacy', href: `/${lang}/privacy` },
-    { name: 'Terms', href: `/${lang}/terms` },
-    { name: 'LGPD', href: `/${lang}/lgpd` },
+    { name: t('legal.trust'), href: `/${lang}/trust` },
+    { name: t('legal.privacy'), href: `/${lang}/privacy` },
+    { name: t('legal.terms'), href: `/${lang}/terms` },
+    { name: t('legal.lgpd'), href: `/${lang}/lgpd` },
   ];
 
   return (
@@ -86,19 +85,29 @@ export default function Header({ onContactClick }: HeaderProps) {
 
             {/* DESKTOP NAV */}
             <div className="hidden lg:flex items-center gap-10">
-              <NavLink href={`/${lang}`} className="text-sm font-black uppercase tracking-widest">
+
+              <NavLink href={`/${lang}`}>
                 {t('nav.home')}
               </NavLink>
 
-              <NavLink href={`/${lang}/about`} className="text-sm font-black uppercase tracking-widest">
+              <NavLink href={`/${lang}/about`}>
                 {t('nav.about')}
               </NavLink>
 
-              <NavLink href={`/${lang}/team`} className="text-sm font-black uppercase tracking-widest">
+              {/* REMOVE se não tiver página */}
+              {/* <NavLink href={`/${lang}/team`}>
                 {t('nav.team')}
+              </NavLink> */}
+
+              <NavLink href={`/${lang}/faq`}>
+                {t('nav.faq')}
               </NavLink>
 
-              {/* LEGAL DROPDOWN */}
+              <NavLink href={`/${lang}/contact`}>
+                {t('nav.contact')}
+              </NavLink>
+
+              {/* LEGAL */}
               <div 
                 className="relative group"
                 onMouseEnter={() => setIsLegalOpen(true)}
@@ -108,14 +117,13 @@ export default function Header({ onContactClick }: HeaderProps) {
                   "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
                   isLegalOpen ? "text-primary" : "text-white/70 hover:text-white"
                 )}>
-                  Legal
+                  {t('nav.legal')}
                   <ChevronDown className={cn("h-4 w-4 transition-transform duration-500", isLegalOpen && "rotate-180")} />
                 </button>
 
-                {/* DROPDOWN MENU */}
                 <div className={cn(
                   "absolute top-full -left-4 w-48 pt-4 transition-all duration-500 origin-top-left",
-                  isLegalOpen ? "opacity-100 scale-100 pointer-events-auto" : "opacity-0 scale-95 pointer-events-none"
+                  isLegalOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
                 )}>
                   <div className="bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 shadow-2xl">
                     {legalLinks.map((link) => (
@@ -132,6 +140,8 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </div>
               </div>
 
+<<<<<<< HEAD
+=======
               <NavLink href={`/${lang}/faq`} className="text-sm font-black uppercase tracking-widest">
                 {t('nav.faq')}
               </NavLink>
@@ -140,14 +150,12 @@ export default function Header({ onContactClick }: HeaderProps) {
                 {t('nav.contact') || 'Contact'}
               </NavLink>
 
+>>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
               <div className="h-6 w-px bg-white/10"></div>
 
               <LanguageSelector />
 
-              <PremiumButton 
-                onClick={handleContactClick}
-                className="scale-90"
-              >
+              <PremiumButton onClick={handleContactClick} className="scale-90">
                 {t('nav.fale')}
               </PremiumButton>
             </div>
@@ -158,49 +166,44 @@ export default function Header({ onContactClick }: HeaderProps) {
               className="lg:hidden p-3 hover:bg-white/10 transition-all duration-300 rounded-2xl"
               aria-label="Toggle menu"
             >
-              {isMobileMenuOpen ? (
-                <X className="h-8 w-8 text-white" />
-              ) : (
-                <Menu className="h-8 w-8 text-white" />
-              )}
+              {isMobileMenuOpen ? <X className="h-8 w-8 text-white" /> : <Menu className="h-8 w-8 text-white" />}
             </button>
           </nav>
 
           {/* MOBILE MENU */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden fixed inset-0 top-[inherit] bg-black z-40 flex flex-col p-8 pt-12 space-y-8 animate-in fade-in slide-in-from-top-10 duration-500 overflow-y-auto">
+            <div className="lg:hidden fixed inset-0 bg-black z-40 flex flex-col p-8 pt-12 space-y-8 overflow-y-auto">
+
               <div className="flex items-center justify-between pb-8 border-b border-white/10">
-                <span className="text-white/40 text-xs font-black uppercase tracking-widest">Idioma</span>
+                <span className="text-white/40 text-xs font-black uppercase tracking-widest">
+                  {t('nav.language')}
+                </span>
                 <LanguageSelector />
               </div>
 
               <div className="flex flex-col space-y-6">
-                <NavLink
-                  variant="mobile"
-                  href={`/${lang}`}
-                  onClick={handleNavClick}
-                >
+
+                <NavLink variant="mobile" href={`/${lang}`} onClick={handleNavClick}>
                   {t('nav.home')}
                 </NavLink>
 
-                <NavLink
-                  variant="mobile"
-                  href={`/${lang}/about`}
-                  onClick={handleNavClick}
-                >
+                <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>
                   {t('nav.about')}
                 </NavLink>
 
-                <NavLink
-                  variant="mobile"
-                  href={`/${lang}/team`}
-                  onClick={handleNavClick}
-                >
-                  {t('nav.team')}
+                <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>
+                  {t('nav.faq')}
+                </NavLink>
+
+                <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>
+                  {t('nav.contact')}
                 </NavLink>
 
                 <div className="py-4 space-y-4 border-y border-white/5">
-                  <span className="text-white/30 text-xs font-black uppercase tracking-widest">Legal</span>
+                  <span className="text-white/30 text-xs font-black uppercase tracking-widest">
+                    {t('nav.legal')}
+                  </span>
+
                   <div className="grid grid-cols-2 gap-4">
                     {legalLinks.map((link) => (
                       <Link 
@@ -214,6 +217,8 @@ export default function Header({ onContactClick }: HeaderProps) {
                     ))}
                   </div>
                 </div>
+<<<<<<< HEAD
+=======
 
                 <NavLink
                   variant="mobile"
@@ -230,13 +235,11 @@ export default function Header({ onContactClick }: HeaderProps) {
                 >
                   {t('nav.contact') || 'Contact'}
                 </NavLink>
+>>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
               </div>
 
               <div className="pt-8 mt-auto">
-                <PremiumButton
-                  onClick={handleContactClick}
-                  className="w-full py-8 text-xl"
-                >
+                <PremiumButton onClick={handleContactClick} className="w-full py-8 text-xl">
                   {t('nav.fale')}
                 </PremiumButton>
               </div>
