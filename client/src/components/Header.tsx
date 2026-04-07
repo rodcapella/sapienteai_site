@@ -58,7 +58,7 @@ export default function Header({ onContactClick }: HeaderProps) {
     <>
       <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-500 border-b",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b",
           scrolled
             ? "bg-black/95 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
             : "bg-black border-transparent"
@@ -134,6 +134,10 @@ export default function Header({ onContactClick }: HeaderProps) {
 
               <NavLink href={`/${lang}/faq`} className="text-sm font-black uppercase tracking-widest">
                 {t('nav.faq')}
+              </NavLink>
+
+              <NavLink href={`/${lang}/contact`} className="text-sm font-black uppercase tracking-widest">
+                {t('nav.contact') || 'Contact'}
               </NavLink>
 
               <div className="h-6 w-px bg-white/10"></div>
@@ -217,6 +221,14 @@ export default function Header({ onContactClick }: HeaderProps) {
                   onClick={handleNavClick}
                 >
                   {t('nav.faq')}
+                </NavLink>
+
+                <NavLink
+                  variant="mobile"
+                  href={`/${lang}/contact`}
+                  onClick={handleNavClick}
+                >
+                  {t('nav.contact') || 'Contact'}
                 </NavLink>
               </div>
 

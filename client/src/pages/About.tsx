@@ -2,34 +2,31 @@ import { useEffect } from 'react';
 import { useLocation } from "wouter";
 import { Icons } from "@/lib/icons";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { setSEOHead } from '@/components/SEOHead';
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
+import { useTranslation } from '@/hooks/useTranslation';
 
 export default function About() {
   const [location] = useLocation();
+  const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
 
   const content = getContent("about", lang);
 
   useEffect(() => {
     setSEOHead({
-      title: `Sobre Nós - SAPIENTE.AI`,
+      title: `${t('nav.about')} - SAPIENTE.AI`,
       description: content.hero.title,
       url: `https://sapienteai.com/${lang}/about`,
       type: 'website'
     });
-  }, [lang, content]);
+  }, [lang, content, t]);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
+    <div className="flex flex-col">
       {/* HERO BANNER - Modern Gradient */}
       <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
         {/* DECORATIVE ELEMENTS */}
@@ -161,8 +158,6 @@ export default function About() {
           </div>
         </div>
       </Section>
-
-      <Footer />
     </div>
   );
 }

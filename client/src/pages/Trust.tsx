@@ -2,20 +2,19 @@ import { useEffect } from 'react';
 import { useLocation, Link } from "wouter";
 import { Icons } from "@/lib/icons";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { setSEOHead } from '@/components/SEOHead';
 import { getContent } from "@/lib/content";
+import { Reveal } from "@/components/ui/motion/Reveal";
+import { useTranslation } from '@/hooks/useTranslation';
 
 const ArrowLeft = Icons.ArrowLeft; 
 const Shield = Icons.Shield; 
 
 export default function Trust() {
   const [location] = useLocation();
+  const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
 
   const content = getContent("trust", lang);
@@ -27,74 +26,89 @@ export default function Trust() {
       url: `https://sapienteai.com/${lang}/trust`,
       type: 'website'
     });
-  }, [lang]);
+  }, [lang, content]);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      
-      {/* HERO BANNER */}
-      <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
-        <img 
-          src="/media/banners/hero-banner.webp" 
-          alt="Sapiente AI Trust Banner" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/50 flex items-center justify-center px-6">
-          <div className="container max-w-4xl text-center md:text-left">
-            <Link href={`/${lang}`} className="text-white/60 hover:text-white mb-8 inline-flex items-center gap-2 transition-colors">
-              <ArrowLeft className="h-5 w-5" />
-              <span className="text-sm font-medium">Voltar</span>
+    <div className="flex flex-col">
+      {/* HERO BANNER - Modern Gradient */}
+      <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
+        {/* DECORATIVE ELEMENTS */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
+        
+        <div className="container max-w-5xl text-center px-6">
+          <Reveal>
+            <Link 
+              href={`/${lang}`}
+              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {t('nav.home')}
             </Link>
+          </Reveal>
 
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
+          <Reveal delay={100}>
+            <div className="flex items-center justify-center gap-3 mb-6">
               <Shield className="text-primary w-6 h-6" />
-              <span className="text-sm text-white/80 uppercase tracking-widest font-bold">
+              <span className="text-sm text-foreground/40 uppercase tracking-[0.3em] font-black">
                 {content.label}
               </span>
             </div>
-
-            <h1 className="text-4xl md:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
+            <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
               {content.title}
             </h1>
+          </Reveal>
 
-            <p className="text-lg md:text-2xl text-white/90 max-w-2xl drop-shadow-md leading-relaxed">
+          <Reveal delay={200}>
+            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
               {content.subtitle}
             </p>
-          </div>
+          </Reveal>
         </div>
       </div>
 
-      <Breadcrumb />
-
-      {/* CONTENT - Ice White */}
-      <Section className="bg-ice py-20 md:py-32 flex-grow">
+      {/* TRUST SECTIONS - Solid Blue Tint */}
+      <Section className="bg-blue-tint py-24 md:py-48">
         <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12">
-            {content.sections.map((section: any, i: number) => (
-              <SectionCard
-                key={i}
-                className="bg-white p-8 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-500 border-foreground/5"
-              >
-                <h3 className="text-2xl font-bold mb-8 text-foreground border-b border-foreground/5 pb-4">
-                  {section.title}
-                </h3>
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 max-w-6xl mx-auto">
+            {content.sections.map((section: any, idx: number) => (
+              <Reveal key={idx} delay={idx * 100}>
+                <SectionCard className="h-full bg-white/80 backdrop-blur-2xl border-foreground/5 p-12 shadow-2xl hover:shadow-[0_30px_80px_rgba(0,0,0,0.1)] transition-all duration-700 group">
+                  <h2 className="text-3xl font-black mb-8 text-foreground tracking-tight leading-none border-b border-foreground/5 pb-6">
+                    {section.title}
+                  </h2>
 
-                <ul className="space-y-4 text-foreground/70 text-lg leading-relaxed">
-                  {section.content.map((item: string, idx: number) => (
-                    <li key={idx} className="flex gap-3">
-                      <span className="text-primary font-bold">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </SectionCard>
+                  <ul className="space-y-6">
+                    {section.content.map((item: string, i: number) => (
+                      <li key={i} className="flex gap-4 text-foreground/60 text-xl leading-relaxed font-medium">
+                        <span className="text-primary font-black">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </SectionCard>
+              </Reveal>
             ))}
           </div>
         </div>
       </Section>
 
-      <Footer />
+      {/* FOOTER CALLOUT - Modern Gradient */}
+      <Section className="bg-modern-gradient py-32 md:py-56 text-center relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-purple/5 blur-[100px] rounded-full -z-10"></div>
+        
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto">
+            <Reveal>
+              <h2 className="text-4xl md:text-7xl font-black mb-10 text-foreground tracking-tighter leading-none">
+                SAPIENTE.AI
+              </h2>
+              <p className="text-xl md:text-2xl text-foreground/50 font-medium max-w-2xl mx-auto">
+                {lang === 'en' ? 'Built on trust, powered by intelligence.' : 'Construído sobre confiança, movido por inteligência.'}
+              </p>
+            </Reveal>
+          </div>
+        </div>
+      </Section>
     </div>
   );
 }

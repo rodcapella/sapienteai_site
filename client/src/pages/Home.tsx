@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from "wouter";
 
-import { Button } from '@/components/ui/button';
 import { Icons } from "@/lib/icons";
 import ContactModal from '@/components/ContactModal';
 
@@ -41,7 +40,7 @@ export default function Home() {
     <div className="flex flex-col">
 
       {/* HERO - Modern Gradient Background */}
-      <Section className="bg-modern-gradient text-center pt-24 md:pt-40 pb-32 md:pb-56 relative overflow-hidden">
+      <Section className="bg-modern-gradient text-center py-24 md:py-40 relative overflow-hidden">
         {/* DECORATIVE ELEMENTS */}
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/5 blur-[150px] rounded-full -z-10 animate-pulse"></div>
         

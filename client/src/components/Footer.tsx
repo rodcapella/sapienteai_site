@@ -35,7 +35,7 @@ export default function Footer({ onContactClick }: FooterProps) {
   const socialLinks = [
     { name: 'LinkedIn', icon: '/media/logos/linkedin.png', url: '#' },
     { name: 'Instagram', icon: '/media/logos/instagram.png', url: '#' },
-    { name: 'TikTok', icon: '/media/logos/tiktok.png', url: '#' },
+    { name: 'TikTok', icon: 'https://sl.bing.net/i3gg7xzqIVM', url: '#' },
     { name: 'X', icon: '/media/logos/x.png', url: '#' },
   ];
 
@@ -74,28 +74,28 @@ export default function Footer({ onContactClick }: FooterProps) {
           <li><NavLink href={`/${lang}/about`} variant="footer">{t('nav.about')}</NavLink></li>
           <li><NavLink href={`/${lang}/team`} variant="footer">{t('nav.team')}</NavLink></li>
           <li><NavLink href={`/${lang}/faq`} variant="footer">{t('nav.faq')}</NavLink></li>
-          <li><NavLink href={`/${lang}/blog`} variant="footer">Blog</NavLink></li>
+          <li><NavLink href={`/${lang}/contact`} variant="footer">{t('nav.contact') || 'Contact'}</NavLink></li>
         </ul>
       </div>
 
       {/* LEGAL */}
       <div>
         <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
-          Legal
+          {t('footer.legal')}
         </h4>
 
         <ul className="space-y-6">
-          <li><NavLink href={`/${lang}/terms`} variant="footer">Terms</NavLink></li>
-          <li><NavLink href={`/${lang}/privacy`} variant="footer">Privacy</NavLink></li>
+          <li><NavLink href={`/${lang}/terms`} variant="footer">{t('footer.terms')}</NavLink></li>
+          <li><NavLink href={`/${lang}/privacy`} variant="footer">{t('footer.privacy')}</NavLink></li>
           <li><NavLink href={`/${lang}/trust`} variant="footer">Trust</NavLink></li>
-          <li><NavLink href={`/${lang}/lgpd`} variant="footer">LGPD</NavLink></li>
+          <li><NavLink href={`/${lang}/lgpd`} variant="footer">{t('footer.lgpd')}</NavLink></li>
         </ul>
       </div>
 
       {/* NEWSLETTER */}
       <div>
         <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
-          Newsletter
+          {t('footer.newsletter')}
         </h4>
 
         <form onSubmit={handleSubscribe} className="flex flex-col gap-6">

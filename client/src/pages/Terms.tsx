@@ -1,15 +1,18 @@
-import { Icons } from "@/lib/icons";
 import { useEffect } from 'react';
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
+import { Icons } from "@/lib/icons";
 
 import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from '@/components/SEOHead';
-import { getContent } from "@/content";
+import { getContent } from "@/lib/content";
+import { Reveal } from "@/components/ui/motion/Reveal";
+import { useTranslation } from '@/hooks/useTranslation';
 
 const ArrowLeft = Icons.ArrowLeft;
 
 export default function Terms() {
   const [location] = useLocation();
+  const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
 
   const content = getContent("terms", lang);
@@ -17,70 +20,75 @@ export default function Terms() {
   useEffect(() => {
     setSEOHead({
       title: `${content.title} - SAPIENTE.AI`,
-      description:
-        lang === "en"
-          ? "Terms of Service of SAPIENTE.AI."
-          : "Termos de Serviço da SAPIENTE.AI.",
+      description: content.subtitle || (lang === "en" ? "Terms of Service" : "Termos de Serviço"),
       url: `https://sapienteai.com/${lang}/terms`,
       type: 'website'
     });
   }, [lang, content]);
 
   return (
-    <div className="space-y-20">
+    <div className="flex flex-col">
+      {/* HERO BANNER - Modern Gradient */}
+      <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
+        {/* DECORATIVE ELEMENTS */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
+        
+        <div className="container max-w-5xl text-center px-6">
+          <Reveal>
+            <Link 
+              href={`/${lang}`}
+              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {t('nav.home')}
+            </Link>
+          </Reveal>
 
-      {/* HERO */}
-      <Section>
-        <div className="max-w-4xl mx-auto">
+          <Reveal delay={100}>
+            <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
+              {content.title}
+            </h1>
+          </Reveal>
 
-          <a
-            href={`/${lang}`}
-            className="inline-flex items-center gap-2 text-white/40 hover:text-white mb-6 transition"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back
-          </a>
+          <Reveal delay={200}>
+            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
+              {content.subtitle || content.lastUpdated}
+            </p>
+          </Reveal>
+        </div>
+      </div>
 
-          <h1 className="text-4xl md:text-5xl font-semibold mb-4 text-white">
-            {content.title}
-          </h1>
+      {/* TERMS SECTIONS - Solid Ice White */}
+      <Section className="bg-ice py-24 md:py-48">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto space-y-24">
+            {content.sections.map((section: any, idx: number) => (
+              <Reveal key={idx} delay={idx * 50}>
+                <section className="space-y-10">
+                  <h2 className="text-3xl md:text-5xl font-black text-foreground tracking-tighter leading-none border-l-4 border-primary pl-8">
+                    {section.title}
+                  </h2>
 
-          <p className="text-white/50">
-            {content.lastUpdated}
-          </p>
-
+                  <div className="text-foreground/60 text-xl leading-relaxed font-medium space-y-8">
+                    {Array.isArray(section.content) ? (
+                      <ul className="space-y-4">
+                        {section.content.map((item: string, i: number) => (
+                          <li key={i} className="flex gap-4">
+                            <span className="text-primary font-black">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>{section.content}</p>
+                    )}
+                  </div>
+                </section>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </Section>
-
-      {/* CONTENT */}
-      <Section>
-        <div className="max-w-4xl mx-auto space-y-12 text-white/60 leading-relaxed">
-
-          {content.sections.map((section: any) => (
-            <section key={section.id} className="space-y-4">
-
-              <h2 className="text-xl font-semibold text-white">
-                {section.title}
-              </h2>
-
-              {Array.isArray(section.content) ? (
-                <ul className="list-disc ml-5 space-y-2">
-                  {section.content.map((item: string, idx: number) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p>{section.content}</p>
-              )}
-
-              <div className="border-b border-white/10 pt-6" />
-
-            </section>
-          ))}
-
-        </div>
-      </Section>
-
     </div>
   );
 }

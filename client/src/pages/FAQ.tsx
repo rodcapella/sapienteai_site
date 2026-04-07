@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from "wouter";
-import { Icons } from "@/lib/icons";
 import { ChevronDown, MessageSquare } from 'lucide-react';
 
 import { Section } from "@/components/ui/section/Section";
-import { SectionHeader } from "@/components/ui/section/SectionHeader";
-import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 
@@ -13,8 +10,7 @@ import { setSEOHead } from '@/components/SEOHead';
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { useTranslation } from '@/hooks/useTranslation';
 
 function FAQAccordion({ item, isOpen, onToggle }: any) {
   return (
@@ -49,6 +45,7 @@ function FAQAccordion({ item, isOpen, onToggle }: any) {
 
 export default function FAQ() {
   const [location] = useLocation();
+  const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -79,9 +76,7 @@ export default function FAQ() {
   }, [content]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-
+    <div className="flex flex-col">
       {/* HERO BANNER - Modern Gradient */}
       <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
         {/* DECORATIVE ELEMENTS */}
@@ -147,8 +142,6 @@ export default function FAQ() {
           </div>
         </div>
       </Section>
-
-      <Footer />
     </div>
   );
 }
