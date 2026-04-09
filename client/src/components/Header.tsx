@@ -47,10 +47,10 @@ export default function Header({ onContactClick }: HeaderProps) {
   };
 
   const legalLinks = [
-    { name: t('legal.trust'), href: `/${lang}/trust` },
-    { name: t('legal.privacy'), href: `/${lang}/privacy` },
-    { name: t('legal.terms'), href: `/${lang}/terms` },
-    { name: t('legal.lgpd'), href: `/${lang}/lgpd` },
+    { name: t('legal.trust') || 'Trust', href: `/${lang}/trust` },
+    { name: t('legal.privacy') || 'Privacy', href: `/${lang}/privacy` },
+    { name: t('legal.terms') || 'Terms', href: `/${lang}/terms` },
+    { name: t('legal.lgpd') || 'LGPD', href: `/${lang}/lgpd` },
   ];
 
   return (
@@ -94,17 +94,12 @@ export default function Header({ onContactClick }: HeaderProps) {
                 {t('nav.about')}
               </NavLink>
 
-              {/* REMOVE se não tiver página */}
-              {/* <NavLink href={`/${lang}/team`}>
-                {t('nav.team')}
-              </NavLink> */}
-
               <NavLink href={`/${lang}/faq`}>
                 {t('nav.faq')}
               </NavLink>
 
               <NavLink href={`/${lang}/contact`}>
-                {t('nav.contact')}
+                {t('nav.contact') || 'Contact'}
               </NavLink>
 
               {/* LEGAL */}
@@ -117,7 +112,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                   "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
                   isLegalOpen ? "text-primary" : "text-white/70 hover:text-white"
                 )}>
-                  {t('nav.legal')}
+                  {t('nav.legal') || 'Legal'}
                   <ChevronDown className={cn("h-4 w-4 transition-transform duration-500", isLegalOpen && "rotate-180")} />
                 </button>
 
@@ -140,17 +135,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </div>
               </div>
 
-<<<<<<< HEAD
-=======
-              <NavLink href={`/${lang}/faq`} className="text-sm font-black uppercase tracking-widest">
-                {t('nav.faq')}
-              </NavLink>
-
-              <NavLink href={`/${lang}/contact`} className="text-sm font-black uppercase tracking-widest">
-                {t('nav.contact') || 'Contact'}
-              </NavLink>
-
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
               <div className="h-6 w-px bg-white/10"></div>
 
               <LanguageSelector />
@@ -176,7 +160,7 @@ export default function Header({ onContactClick }: HeaderProps) {
 
               <div className="flex items-center justify-between pb-8 border-b border-white/10">
                 <span className="text-white/40 text-xs font-black uppercase tracking-widest">
-                  {t('nav.language')}
+                  {t('nav.language') || 'Language'}
                 </span>
                 <LanguageSelector />
               </div>
@@ -196,12 +180,12 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </NavLink>
 
                 <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>
-                  {t('nav.contact')}
+                  {t('nav.contact') || 'Contact'}
                 </NavLink>
 
                 <div className="py-4 space-y-4 border-y border-white/5">
                   <span className="text-white/30 text-xs font-black uppercase tracking-widest">
-                    {t('nav.legal')}
+                    {t('nav.legal') || 'Legal'}
                   </span>
 
                   <div className="grid grid-cols-2 gap-4">
@@ -217,25 +201,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                     ))}
                   </div>
                 </div>
-<<<<<<< HEAD
-=======
-
-                <NavLink
-                  variant="mobile"
-                  href={`/${lang}/faq`}
-                  onClick={handleNavClick}
-                >
-                  {t('nav.faq')}
-                </NavLink>
-
-                <NavLink
-                  variant="mobile"
-                  href={`/${lang}/contact`}
-                  onClick={handleNavClick}
-                >
-                  {t('nav.contact') || 'Contact'}
-                </NavLink>
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
               </div>
 
               <div className="pt-8 mt-auto">

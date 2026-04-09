@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import { useLocation } from "wouter";
 
-<<<<<<< HEAD
-=======
 import { Icons } from "@/lib/icons";
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
 import ContactModal from '@/components/ContactModal';
-import { Icons } from "@/lib/icons";
 
 import { Section } from "@/components/ui/section/Section";
 import { SectionHeader } from "@/components/ui/section/SectionHeader";
@@ -42,16 +38,11 @@ export default function Home() {
   return (
     <div className="flex flex-col">
 
-<<<<<<< HEAD
-      {/* HERO */}
-      <Section className="bg-modern-gradient text-center pt-24 md:pt-40 pb-32 md:pb-56 relative overflow-hidden">
-=======
       {/* HERO - Modern Gradient Background */}
       <Section className="bg-modern-gradient text-center py-24 md:py-40 relative overflow-hidden">
         {/* DECORATIVE ELEMENTS */}
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/5 blur-[150px] rounded-full -z-10 animate-pulse"></div>
-
+        
         <div className="max-w-5xl mx-auto px-6">
           <Reveal>
             <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
@@ -97,8 +88,10 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* VALUES */}
+      {/* VALUES - Solid Blue Tint Background */}
       <Section className="bg-blue-tint py-32 md:py-48 relative">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/5 to-transparent"></div>
+        
         <SectionHeader>
           <Reveal>
             <SectionTitle
@@ -134,8 +127,10 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* SERVICES */}
+      {/* SERVICES - Modern Gradient Background */}
       <Section id="services" className="bg-modern-gradient py-32 md:py-48 relative">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/5 to-transparent"></div>
+        
         <SectionHeader>
           <Reveal>
             <SectionTitle
@@ -170,9 +165,14 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* CTA */}
+      {/* CTA - Solid Ice White Background */}
       <Section className="bg-ice py-40 md:py-60 relative text-center">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-foreground/5 to-transparent"></div>
+        
+        <div className="max-w-4xl mx-auto px-6 relative">
+          {/* DECORATIVE ELEMENTS */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-purple/5 blur-[100px] rounded-full -z-10"></div>
+
           <Reveal>
             <h2 className="text-5xl md:text-8xl font-black mb-10 text-foreground tracking-tighter leading-[0.9]">
               {content.cta.title}
@@ -199,6 +199,7 @@ export default function Home() {
           onClose={() => setIsContactOpen(false)}
         />
       )}
+
     </div>
   );
 }

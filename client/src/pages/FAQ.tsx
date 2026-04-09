@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { ChevronDown, MessageSquare } from 'lucide-react';
-
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import { Icons } from "@/lib/icons";
 
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
@@ -13,10 +11,7 @@ import { setSEOHead } from '@/components/SEOHead';
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
-<<<<<<< HEAD
-=======
 import { useTranslation } from '@/hooks/useTranslation';
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
 
 const ArrowLeft = Icons.ArrowLeft;
 
@@ -107,53 +102,35 @@ export default function FAQ() {
     };
   }, [content]);
 
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = `/${lang}`;
-    }
-  };
-
   return (
-<<<<<<< HEAD
-    <div className="flex flex-col min-h-screen">
-
-      <Header />
-
-      {/* HERO */}
-      <div className="relative w-full h-[400px] md:h-[600px] bg-modern-gradient flex items-center justify-center">
-=======
     <div className="flex flex-col">
       {/* HERO BANNER - Modern Gradient */}
       <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
         {/* DECORATIVE ELEMENTS */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
         
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
         <div className="container max-w-5xl text-center px-6">
-
-          {/* BACK */}
-          <button
-            onClick={handleBack}
-            className="mb-8 inline-flex items-center gap-2 text-foreground/50 hover:text-foreground"
-          >
-            <ArrowLeft className="h-5 w-5" />
-            <span>{content.back || "Voltar"}</span>
-          </button>
-
           <Reveal>
-            <h1 className="text-4xl md:text-8xl font-black text-foreground mb-10">
+            <Link 
+              href={`/${lang}`}
+              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {t('nav.home')}
+            </Link>
+          </Reveal>
+
+          <Reveal delay={100}>
+            <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
               {content.title}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em]">
+            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
               {content.subtitle}
             </p>
           </Reveal>
-
         </div>
       </div>
 

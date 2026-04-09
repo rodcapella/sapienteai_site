@@ -61,75 +61,37 @@ export default function Footer({ onContactClick }: FooterProps) {
             </p>
           </div>
 
-<<<<<<< HEAD
           {/* NAV */}
           <div>
             <h4 className="text-xs font-black mb-10 uppercase tracking-[0.3em]">
               {t('footer.navigation')}
             </h4>
-=======
-        <ul className="space-y-6">
-          <li><NavLink href={`/${lang}`} variant="footer">{t('nav.home')}</NavLink></li>
-          <li><NavLink href={`/${lang}/about`} variant="footer">{t('nav.about')}</NavLink></li>
-          <li><NavLink href={`/${lang}/team`} variant="footer">{t('nav.team')}</NavLink></li>
-          <li><NavLink href={`/${lang}/faq`} variant="footer">{t('nav.faq')}</NavLink></li>
-          <li><NavLink href={`/${lang}/contact`} variant="footer">{t('nav.contact') || 'Contact'}</NavLink></li>
-        </ul>
-      </div>
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
-
-<<<<<<< HEAD
             <ul className="space-y-6">
               <li><NavLink href={`/${lang}`} variant="footer">{t('nav.home')}</NavLink></li>
               <li><NavLink href={`/${lang}/about`} variant="footer">{t('nav.about')}</NavLink></li>
+              <li><NavLink href={`/${lang}/team`} variant="footer">{t('nav.team')}</NavLink></li>
               <li><NavLink href={`/${lang}/faq`} variant="footer">{t('nav.faq')}</NavLink></li>
-              <li><NavLink href={`/${lang}/contact`} variant="footer">{t('nav.contact')}</NavLink></li>
+              <li><NavLink href={`/${lang}/contact`} variant="footer">{t('nav.contact') || 'Contact'}</NavLink></li>
             </ul>
           </div>
-=======
-      {/* LEGAL */}
-      <div>
-        <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
-          {t('footer.legal')}
-        </h4>
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
 
-<<<<<<< HEAD
           {/* LEGAL */}
           <div>
-            <h4 className="text-xs font-black mb-10 uppercase tracking-[0.3em]">
-              {t('nav.legal')}
+            <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
+              {t('footer.legal')}
             </h4>
-=======
-        <ul className="space-y-6">
-          <li><NavLink href={`/${lang}/terms`} variant="footer">{t('footer.terms')}</NavLink></li>
-          <li><NavLink href={`/${lang}/privacy`} variant="footer">{t('footer.privacy')}</NavLink></li>
-          <li><NavLink href={`/${lang}/trust`} variant="footer">Trust</NavLink></li>
-          <li><NavLink href={`/${lang}/lgpd`} variant="footer">{t('footer.lgpd')}</NavLink></li>
-        </ul>
-      </div>
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
-
-<<<<<<< HEAD
             <ul className="space-y-6">
-              <li><NavLink href={`/${lang}/terms`} variant="footer">{t('legal.terms')}</NavLink></li>
-              <li><NavLink href={`/${lang}/privacy`} variant="footer">{t('legal.privacy')}</NavLink></li>
-              <li><NavLink href={`/${lang}/trust`} variant="footer">{t('legal.trust')}</NavLink></li>
-              <li><NavLink href={`/${lang}/lgpd`} variant="footer">{t('legal.lgpd')}</NavLink></li>
+              <li><NavLink href={`/${lang}/terms`} variant="footer">{t('footer.terms')}</NavLink></li>
+              <li><NavLink href={`/${lang}/privacy`} variant="footer">{t('footer.privacy')}</NavLink></li>
+              <li><NavLink href={`/${lang}/trust`} variant="footer">Trust</NavLink></li>
+              <li><NavLink href={`/${lang}/lgpd`} variant="footer">{t('footer.lgpd')}</NavLink></li>
             </ul>
           </div>
-=======
-      {/* NEWSLETTER */}
-      <div>
-        <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
-          {t('footer.newsletter')}
-        </h4>
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
 
           {/* NEWSLETTER */}
           <div>
-            <h4 className="text-xs font-black mb-10 uppercase tracking-[0.3em]">
-              {t('newsletter.title')}
+            <h4 className="text-xs font-black mb-10 text-white uppercase tracking-[0.3em]">
+              {t('footer.newsletter')}
             </h4>
 
             <form onSubmit={handleSubscribe} className="flex flex-col gap-6">

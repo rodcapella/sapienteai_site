@@ -7,14 +7,17 @@ import { aboutEN } from "@/content/en/about";
 import { faqPT } from "@/content/pt/FAQ";
 import { faqEN } from "@/content/en/FAQ";
 
-import { privacy as privacyPT } from "@/content/pt/privacy";
-import { privacy as privacyEN } from "@/content/en/privacy";
+import { privacyPT } from "@/content/pt/privacy";
+import { privacyEN } from "@/content/en/privacy";
 
 import { termsContentPT } from "@/content/pt/terms";
 import { termsContentEN } from "@/content/en/terms";
 
 import { trustContentPT } from "@/content/pt/trust";
 import { trustContentEN } from "@/content/en/trust";
+
+import { lgpdContentPT } from "@/content/pt/lgpd";
+import { gdprContentEN } from "@/content/en/lgpd";
 
 const contentMap = {
   home: {
@@ -40,6 +43,10 @@ const contentMap = {
   trust: {
     pt: trustContentPT,
     en: trustContentEN
+  },
+  lgpd: {
+    pt: lgpdContentPT,
+    en: gdprContentEN
   }
 } as const;
 

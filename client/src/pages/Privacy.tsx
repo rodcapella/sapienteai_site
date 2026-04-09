@@ -4,49 +4,13 @@ import { Icons } from "@/lib/icons";
 
 import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from '@/components/SEOHead';
-<<<<<<< HEAD
-import { getContent } from "@/lib/content";
-=======
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from '@/hooks/useTranslation';
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
 
 const ArrowLeft = Icons.ArrowLeft;
 
-<<<<<<< HEAD
-type PrivacySection = {
-  id: string;
-  title: string;
-  content: string | string[];
-  icon?: React.ElementType;
-};
-
-function AnimatedSection({
-  children,
-  className = ''
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  const { ref, isVisible } = useScrollAnimation();
-
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      } ${className}`}
-    >
-      {children}
-    </div>
-  );
-}
-
-export default function Privacidade() {
-=======
 export default function Privacy() {
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
   const [location] = useLocation();
   const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
@@ -56,24 +20,11 @@ export default function Privacy() {
   useEffect(() => {
     setSEOHead({
       title: `${content.title} - SAPIENTE.AI`,
-<<<<<<< HEAD
-      description: content.description,
-      url: `${window.location.origin}/${lang}/privacy`,
-=======
       description: content.subtitle || (lang === "en" ? "Privacy Policy" : "Política de Privacidade"),
       url: `https://sapienteai.com/${lang}/privacy`,
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
       type: 'website'
     });
   }, [lang, content]);
-
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = `/${lang}`;
-    }
-  };
 
   return (
     <div className="flex flex-col">
@@ -93,31 +44,8 @@ export default function Privacy() {
             </Link>
           </Reveal>
 
-<<<<<<< HEAD
-      <Header />
-      <Breadcrumb />
-
-      {/* HERO */}
-      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-20 md:py-32">
-        <div className="container max-w-4xl">
-
-          <AnimatedSection>
-
-            <button
-              onClick={handleBack}
-              className="text-white/60 hover:text-white mb-6 inline-flex items-center gap-2 transition"
-            >
-              <ArrowLeft className="h-5 w-5" />
-              <span className="text-sm">
-                {content.back || "Voltar"}
-              </span>
-            </button>
-
-            <h1 className="text-4xl md:text-5xl font-semibold mb-4">
-=======
           <Reveal delay={100}>
             <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
               {content.title}
             </h1>
           </Reveal>
@@ -126,13 +54,7 @@ export default function Privacy() {
             <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
               {content.subtitle || content.lastUpdated}
             </p>
-<<<<<<< HEAD
-
-          </AnimatedSection>
-
-=======
           </Reveal>
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
         </div>
       </div>
 
@@ -147,44 +69,6 @@ export default function Privacy() {
                     {section.title}
                   </h2>
 
-<<<<<<< HEAD
-          {content.sections.map((section: PrivacySection, i: number) => {
-            const Icon = section.icon;
-
-            return (
-              <AnimatedSection key={section.id || i}>
-
-                {/* HEADER COM ÍCONE */}
-                <div className="flex items-start gap-4 mb-4">
-
-                  {Icon && (
-                    <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                  )}
-
-                  <h2 className="text-2xl font-semibold text-slate-900 leading-tight">
-                    {section.title}
-                  </h2>
-
-                </div>
-
-                {/* CONTENT */}
-                {Array.isArray(section.content) ? (
-                  <ul className="list-disc ml-16 space-y-2">
-                    {section.content.map((item: string, idx: number) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="ml-16">{section.content}</p>
-                )}
-
-              </AnimatedSection>
-            );
-          })}
-
-=======
                   <div className="text-foreground/60 text-xl leading-relaxed font-medium space-y-6">
                     {Array.isArray(section.content) ? (
                       <ul className="space-y-4">
@@ -203,7 +87,6 @@ export default function Privacy() {
               </Reveal>
             ))}
           </div>
->>>>>>> 370dbba90159c1c26f44e5daafbebf311c416472
         </div>
       </Section>
     </div>
