@@ -7,14 +7,26 @@
   }
 }
 
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes mesh-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Smooth transitions */
 * {
   transition:
-    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
   border-color: var(--border);
   outline-color: var(--ring);
@@ -33,60 +45,62 @@ body {
   cursor: default;
   background-color: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Global Mesh Texture Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3仿真%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 9999;
 }
 
 /* =========================
-   DESIGN TOKENS (Ice White, Neon Blue & Neon Purple)
+   DESIGN TOKENS (High-Tech AI Consultancy)
 ========================= */
 
 :root {
-  /* Neon Blue */
-  --primary: oklch(0.75 0.15 240); 
+  /* Core Colors */
+  --primary: oklch(0.75 0.15 240); /* Neon Blue */
   --primary-foreground: oklch(0.1 0.01 240);
-
-  /* Neon Purple (New Default for Buttons) */
-  --accent-purple: oklch(0.65 0.25 300);
+  
+  --accent-purple: oklch(0.65 0.25 300); /* Neon Purple */
   --accent-purple-foreground: oklch(0.99 0.01 300);
 
-  /* Ice White Backgrounds */
+  /* Backgrounds (Ice White Base) */
   --background: oklch(0.99 0.005 240);
-  --foreground: oklch(0.1 0.02 240);
+  --foreground: oklch(0.15 0.02 240);
   
   /* Section Variations */
   --section-ice: oklch(0.99 0.005 240);
-  --section-blue-tint: oklch(0.97 0.02 240);
-  --section-gradient: linear-gradient(135deg, oklch(0.99 0.005 240) 0%, oklch(0.95 0.03 240) 100%);
+  --section-blue-tint: oklch(0.97 0.015 240);
+  
+  /* Advanced Mesh Gradient */
+  --section-gradient: linear-gradient(
+    135deg, 
+    oklch(0.99 0.005 240) 0%, 
+    oklch(0.96 0.02 240) 50%,
+    oklch(0.94 0.04 240) 100%
+  );
 
-  --card: oklch(1 0 0 / 80%);
-  --card-foreground: oklch(0.1 0.02 240);
+  /* Glassmorphism Tokens */
+  --card: oklch(1 0 0 / 70%);
+  --card-foreground: oklch(0.15 0.02 240);
+  --card-border: oklch(0.15 0.02 240 / 8%);
+  --card-shadow: 0 20px 50px -12px oklch(0.15 0.02 240 / 5%);
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.1 0.02 240);
-
-  --secondary: oklch(0.92 0.02 240);
-  --secondary-foreground: oklch(0.2 0.02 240);
-
-  --muted: oklch(0.96 0.01 240);
-  --muted-foreground: oklch(0.4 0.02 240);
-
-  --border: oklch(0.1 0.02 240 / 8%);
-  --input: oklch(0.1 0.02 240 / 5%);
+  --border: oklch(0.15 0.02 240 / 10%);
   --ring: var(--accent-purple);
-
-  --radius: 1rem;
-}
-
-/* =========================
-   DARK MODE
-========================= */
-
-.dark {
-  --background: oklch(0.1 0.01 240);
-  --foreground: oklch(0.98 0.005 240);
-  --card: oklch(0.12 0.01 240 / 80%);
-  --border: oklch(1 0 0 / 10%);
+  --radius: 1.5rem;
 }
 
 /* =========================
@@ -95,58 +109,80 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  text-wrap: balance;
 }
 
 /* =========================
-   UTILITIES
+   HIGH-TECH UTILITIES
 ========================= */
 
 .bg-ice { background-color: var(--section-ice); }
 .bg-blue-tint { background-color: var(--section-blue-tint); }
-.bg-modern-gradient { background: var(--section-gradient); }
-
-.text-neon-blue { color: var(--primary); }
-.text-neon-purple { color: var(--accent-purple); }
-.bg-neon-purple { background-color: var(--accent-purple); }
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+.bg-modern-gradient { 
+  background: var(--section-gradient);
+  background-size: 200% 200%;
+  animation: mesh-gradient 15s ease infinite;
 }
 
-.header-footer-black {
-  background-color: #000000;
-  color: #ffffff;
+.glass-panel {
+  background: var(--card);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
 }
 
-.btn-neon-purple {
-  background-color: var(--accent-purple);
-  color: white;
-  box-shadow: 0 0 20px oklch(0.65 0.25 300 / 30%);
+.cyber-border {
+  position: relative;
 }
 
-.btn-neon-purple:hover {
-  background-color: oklch(0.7 0.25 300);
-  box-shadow: 0 0 30px oklch(0.65 0.25 300 / 50%);
-  transform: translateY(-2px);
+.cyber-border::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(to bottom right, var(--primary), transparent, var(--accent-purple));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.2;
+  transition: opacity 0.5s ease;
+}
+
+.cyber-border:hover::after {
+  opacity: 0.6;
+}
+
+/* Neon Glows */
+.neon-glow-blue {
+  box-shadow: 0 0 30px oklch(0.75 0.15 240 / 20%);
+}
+
+.neon-glow-purple {
+  box-shadow: 0 0 30px oklch(0.65 0.25 300 / 20%);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 10px;
+  background: linear-gradient(to bottom, var(--primary), var(--accent-purple));
+  border-radius: 20px;
+  border: 2px solid var(--background);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-purple);
+}
+
+/* Selection */
+::selection {
+  background: var(--primary);
+  color: white;
 }

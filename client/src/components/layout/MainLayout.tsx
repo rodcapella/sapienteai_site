@@ -1,25 +1,45 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "wouter";
+import { useEffect } from "react";
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative min-h-screen flex flex-col bg-[#0B0F1A] text-white overflow-x-hidden">
+  const [location] = useLocation();
 
-      {/* 🌌 BACKGROUND GLOW SYSTEM */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-[-120px] left-[-120px] w-[500px] h-[500px] bg-indigo-500/10 blur-3xl rounded-full" />
-        <div className="absolute bottom-[-150px] right-[-150px] w-[500px] h-[500px] bg-purple-500/10 blur-3xl rounded-full" />
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return (
+    <div className="relative min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-foreground">
+
+      {/* 🌌 HIGH-TECH BACKGROUND GLOW SYSTEM */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full animate-pulse-slow" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent-purple/5 blur-[120px] rounded-full animate-pulse-slow" />
       </div>
 
-      {/* 🧊 HEADER - Fixed by default in Header component, but here we provide the spacing */}
       <Header />
 
-      {/* 🧠 MAIN CONTENT */}
+      {/* 🧠 MAIN CONTENT WITH TRANSITION */}
       <main className="flex-1 w-full pt-20 md:pt-28">
-        {children}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.16, 1, 0.3, 1] 
+            }}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
-      {/* 🧩 FOOTER */}
       <Footer />
 
     </div>
