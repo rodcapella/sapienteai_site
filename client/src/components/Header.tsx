@@ -76,9 +76,9 @@ export default function Header({ onContactClick }: HeaderProps) {
           >
             <Link href={`/${lang}`} className="flex items-center gap-2 transition-all duration-500 hover:opacity-90">
               <img
-                src="/logo-header.png"
+                src="/logo_sapiente_transparente.png"
                 alt="SAPIENTE.AI"
-                className="h-14 md:h-16 lg:h-[70px] w-auto object-contain"
+                className="h-[67px] md:h-[77px] lg:h-[84px] w-auto object-contain"
               />
             </Link>
 

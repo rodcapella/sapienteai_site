@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useState, type SVGProps } from "react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useLocation, Link } from "wouter";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
-import { Instagram, Linkedin, Music2, Twitter } from "lucide-react";
+import { Instagram, Linkedin, Music2 } from "lucide-react";
+
+function XIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M18.901 2H22l-6.77 7.74L23 22h-6.142l-4.81-6.71L6.176 22H3.075l7.245-8.28L1 2h6.297l4.347 6.063L18.901 2Zm-1.077 18h1.715L6.365 3.894H4.526L17.824 20Z" />
+    </svg>
+  );
+}
 
 interface FooterProps {
   onContactClick?: () => void;
@@ -34,7 +42,7 @@ export default function Footer({ onContactClick }: FooterProps) {
     { name: "LinkedIn", icon: Linkedin, url: "#" },
     { name: "Instagram", icon: Instagram, url: "#" },
     { name: "TikTok", icon: Music2, url: "#" },
-    { name: "X", icon: Twitter, url: "#" },
+    { name: "X", icon: XIcon, url: "#" },
   ];
 
   return (
@@ -47,9 +55,9 @@ export default function Footer({ onContactClick }: FooterProps) {
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link href={`/${lang}`} className="group mb-8 inline-block">
               <img
-                src="/logo-black-bg.png"
+                src="/logo_sapiente_transparente.png"
                 alt="SAPIENTE.AI"
-                className="h-16 md:h-20 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                className="h-24 md:h-[120px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
               />
             </Link>
 
