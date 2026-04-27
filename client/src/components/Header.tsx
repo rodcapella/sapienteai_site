@@ -65,7 +65,7 @@ export default function Header({ onContactClick }: HeaderProps) {
             : "bg-white/90 backdrop-blur-xl dark:bg-[#0A1128]/86",
         )}
       >
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#00D4FF]/75 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
 
         <div className="container mx-auto px-4 sm:px-6">
           <nav
@@ -93,7 +93,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                   type="button"
                   className={cn(
                     "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
-                    isLegalOpen ? "text-[#0EA5E9]" : "text-foreground/70 hover:text-foreground",
+                    isLegalOpen ? "text-[var(--brand-cyan)]" : "text-foreground/70 hover:text-foreground",
                   )}
                 >
                   {t("nav.legal") || "Legal"}
@@ -111,9 +111,9 @@ export default function Header({ onContactClick }: HeaderProps) {
                       <Link
                         key={link.name}
                         href={link.href}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-[#3B82F6]/10 hover:text-foreground"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-foreground"
                       >
-                        <ShieldCheck className="h-4 w-4 text-[#00D4FF]" />
+                        <ShieldCheck className="h-4 w-4 text-[var(--brand-cyan)]" />
                         {link.name}
                       </Link>
                     ))}
@@ -135,7 +135,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--tech-border)] bg-[var(--glass-bg)] p-2.5 text-foreground transition-all duration-300 hover:border-[#00D4FF]/60 hover:text-[#00D4FF]"
+                className="rounded-2xl border border-[var(--tech-border)] bg-[var(--glass-bg)] p-2.5 text-foreground transition-all duration-300 hover:border-[var(--brand-cyan)]/60 hover:text-[var(--brand-cyan)]"
                 aria-label="Toggle menu"
                 type="button"
               >
@@ -177,7 +177,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                         key={link.name}
                         href={link.href}
                         onClick={handleNavClick}
-                        className="text-lg font-bold text-white/70 transition-colors hover:text-[#22D3EE]"
+                        className="text-lg font-bold text-white/70 transition-colors hover:text-[var(--brand-cyan)]"
                       >
                         {link.name}
                       </Link>

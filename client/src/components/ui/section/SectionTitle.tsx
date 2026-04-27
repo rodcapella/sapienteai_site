@@ -10,20 +10,16 @@ export function SectionTitle({ label, title, description }: Props) {
   return (
     <>
       {label && (
-        <p className="text-cyan-400/80 uppercase tracking-[0.2em] text-xs mb-4">
+        <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[var(--brand-cyan)]/85">
           {label}
         </p>
       )}
 
-      <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4">
+      <h2 className="mb-4 font-heading text-3xl font-extrabold tracking-tight text-[var(--brand-offwhite)] md:text-4xl lg:text-5xl">
         {title}
       </h2>
 
-      {description && (
-        <p className="text-slate-400 max-w-2xl mx-auto">
-          {description}
-        </p>
-      )}
+      {description && <p className="mx-auto max-w-2xl text-[var(--brand-offwhite)]/72">{description}</p>}
     </>
   );
 }

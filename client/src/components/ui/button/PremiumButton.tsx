@@ -50,14 +50,14 @@ export function PremiumButton({
 
   const variantClasses = {
     primary:
-      "bg-[#00D4FF] text-[#03162A] shadow-[0_0_0_1px_rgba(0,212,255,0.45),0_0_42px_rgba(0,212,255,0.42)] hover:bg-[#22D3EE] hover:shadow-[0_0_0_1px_rgba(0,212,255,0.8),0_0_58px_rgba(0,212,255,0.62)]",
+      "bg-[var(--brand-cyan)] text-[#041227] shadow-[0_0_0_1px_rgba(0,209,255,0.45),0_0_42px_rgba(0,209,255,0.42)] hover:bg-[var(--brand-cyan-bright)] hover:shadow-[0_0_0_1px_rgba(0,240,255,0.8),0_0_58px_rgba(0,240,255,0.62)]",
     purple:
-      "bg-gradient-to-r from-[#1E3A8A] to-[#2563EB] text-white shadow-[0_0_0_1px_rgba(59,130,246,0.4),0_0_34px_rgba(37,99,235,0.34)] hover:from-[#2563EB] hover:to-[#00D4FF] hover:shadow-[0_0_0_1px_rgba(0,212,255,0.6),0_0_50px_rgba(0,212,255,0.45)]",
+      "bg-gradient-to-r from-[var(--brand-deep)] to-[var(--brand-purple)] text-white shadow-[0_0_0_1px_rgba(123,129,255,0.4),0_0_34px_rgba(123,129,255,0.34)] hover:from-[var(--brand-purple)] hover:to-[var(--brand-primary)] hover:shadow-[0_0_0_1px_rgba(123,129,255,0.6),0_0_50px_rgba(123,129,255,0.45)]",
     secondary:
-      "bg-[#3B82F6] text-white shadow-[0_12px_30px_rgba(37,99,235,0.35)] hover:bg-[#0EA5E9] hover:shadow-[0_0_0_1px_rgba(34,211,238,0.5),0_0_42px_rgba(34,211,238,0.4)]",
+      "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,138,255,0.35)] hover:bg-[var(--brand-purple)] hover:shadow-[0_0_0_1px_rgba(123,129,255,0.5),0_0_42px_rgba(123,129,255,0.4)]",
     outline:
-      "bg-transparent border-2 border-[#3B82F6] text-[#3B82F6] hover:bg-[#3B82F6] hover:text-white hover:shadow-[0_0_30px_rgba(59,130,246,0.36)]",
-    black: "bg-black text-white hover:bg-black/90 shadow-2xl",
+      "bg-transparent border-2 border-[var(--brand-primary)] text-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_30px_rgba(10,138,255,0.36)]",
+    black: "bg-[var(--brand-night)] text-white hover:bg-[var(--brand-night)]/90 shadow-2xl",
   };
 
   const sizeClasses = {
@@ -75,7 +75,7 @@ export function PremiumButton({
       onMouseLeave={reset}
       style={{ x: springX, y: springY }}
       className={cn(
-        "neon-shimmer relative overflow-hidden rounded-full font-black uppercase tracking-[0.2em] transition-all duration-500 hover:scale-[1.05] active:scale-95 group",
+        "neon-shimmer relative overflow-hidden rounded-full font-heading font-extrabold uppercase tracking-[0.2em] transition-all duration-500 hover:scale-[1.05] active:scale-95 group",
         variantClasses[variant],
         sizeClasses[size],
         className,

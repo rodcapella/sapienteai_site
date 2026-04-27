@@ -46,8 +46,8 @@ export default function Footer({ onContactClick }: FooterProps) {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-[#00D4FF]/25 bg-[#000000] text-white tech-grid scanlines">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(30,58,138,0.45),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(0,212,255,0.25),transparent_38%)]" />
+    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/25 bg-[#05081B] text-[var(--brand-offwhite)] tech-grid scanlines">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(10,138,255,0.34),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(0,209,255,0.22),transparent_38%)]" />
       <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
 
       <div className="container relative z-10 mx-auto px-6 py-18 md:py-24">
@@ -65,7 +65,7 @@ export default function Footer({ onContactClick }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-8 text-xs font-black uppercase tracking-[0.3em] text-[#22D3EE]">{t("footer.navigation")}</h4>
+            <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.navigation")}</h4>
             <ul className="space-y-5">
               <li>
                 <NavLink href={`/${lang}`} variant="footer">
@@ -96,7 +96,7 @@ export default function Footer({ onContactClick }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-8 text-xs font-black uppercase tracking-[0.3em] text-[#22D3EE]">{t("footer.legal")}</h4>
+            <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
             <ul className="space-y-5">
               <li>
                 <NavLink href={`/${lang}/terms`} variant="footer">
@@ -122,15 +122,15 @@ export default function Footer({ onContactClick }: FooterProps) {
           </div>
 
           <div>
-            <h4 className="mb-8 text-xs font-black uppercase tracking-[0.3em] text-[#22D3EE]">{t("footer.newsletter")}</h4>
+            <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.newsletter")}</h4>
 
-            <form onSubmit={handleSubscribe} className="space-y-4 rounded-3xl border border-[#00D4FF]/25 bg-[#040b1f]/65 p-4 backdrop-blur-3xl">
+            <form onSubmit={handleSubscribe} className="space-y-4 rounded-3xl border border-[var(--brand-cyan)]/25 bg-[#040b1f]/65 p-4 backdrop-blur-3xl">
               <input
                 type="email"
                 placeholder={t("newsletter.placeholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-2xl border border-[#3B82F6]/35 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[#00D4FF]/60"
+                className="w-full rounded-2xl border border-[var(--brand-primary)]/35 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--brand-cyan)]/60"
               />
 
               <PremiumButton type="submit" className="w-full rounded-2xl py-4 text-sm tracking-[0.16em]" variant="secondary">
@@ -140,7 +140,7 @@ export default function Footer({ onContactClick }: FooterProps) {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-8 border-t border-[#00D4FF]/20 pt-10 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-8 border-t border-[var(--brand-cyan)]/20 pt-10 md:flex-row">
           <div className="flex items-center gap-3">
             {socialLinks.map((social) => {
               const Icon = social.icon;
@@ -149,7 +149,7 @@ export default function Footer({ onContactClick }: FooterProps) {
                 <a
                   key={social.name}
                   href={social.url}
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[#00D4FF]/30 bg-[#08112a]/70 text-[#7DD3FC] transition-all duration-300 hover:-translate-y-1 hover:border-[#00D4FF] hover:bg-[#00D4FF]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,212,255,0.45)]"
+                  className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
                   aria-label={social.name}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -160,7 +160,7 @@ export default function Footer({ onContactClick }: FooterProps) {
             })}
           </div>
 
-          <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[#7DD3FC]/65 md:text-right">{t("footer.copyright")}</p>
+          <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
         </div>
       </div>
     </footer>

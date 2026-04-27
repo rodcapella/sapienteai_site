@@ -1,66 +1,94 @@
 export const homePT = {
   hero: {
-    label: "Performance com IA",
-    title: "Marketing que faz o seu negócio crescer",
-    subtitle: "Soluções digitais pensadas para gerar resultados — IA para aumentar a performance.",
-    ctaPrimary: "Entre em contato",
-    ctaSecondary: "Ver soluções",
+    label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO",
+    title: "Transformamos inteligência em resultados reais",
+    subtitle:
+      "Soluções completas de IA para marketing, automação, desenvolvimento e análise de dados que impulsionam o crescimento do seu negócio.",
+    ctaPrimary: "Falar com especialista",
+    ctaSecondary: "Ver pilares",
+  },
+
+  brandPillars: {
+    label: "Pilares estratégicos",
+    title: "Quatro frentes para acelerar resultados com tecnologia",
+    items: [
+      {
+        title: "INTELIGÊNCIA",
+        description: "Modelos de IA, análise avançada e decisões orientadas por dados para máxima precisão.",
+        image: "/brandbook/moodboard-main.jpeg",
+      },
+      {
+        title: "AUTOMAÇÃO",
+        description: "Fluxos inteligentes, integração de processos e eficiência operacional com foco em escala.",
+        image: "/brandbook/automacao-inteligente.jpeg",
+      },
+      {
+        title: "CRESCIMENTO",
+        description: "Estratégias de performance, aquisição e otimização contínua para gerar conversões reais.",
+        image: "/brandbook/marketing-ia.jpeg",
+      },
+      {
+        title: "FUTURO",
+        description: "Visão tecnológica para antecipar tendências e construir experiências digitais de próxima geração.",
+        image: "/brandbook/web-mobile.jpeg",
+      },
+    ],
   },
 
   coreServices: {
     label: "Soluções completas",
-    title: "Serviços desenhados para escalar o seu negócio",
+    title: "Serviços desenhados para escalar com confiança",
     items: [
       {
         title: "Estratégia de Marketing",
-        description: "Planeamento estratégico orientado a dados para atrair, nutrir e converter mais clientes.",
+        description: "Planeamento orientado a dados para atrair, converter e reter clientes com previsibilidade.",
       },
       {
         title: "Automação de Processos",
-        description: "Mais eficiência, menos retrabalho. Automatizamos fluxos para a sua operação crescer sem fricção.",
+        description: "Menos tarefas manuais, mais produtividade e operações prontas para escalar.",
       },
       {
         title: "Desenvolvimento de Aplicações",
-        description: "Aplicações robustas, escaláveis e personalizadas para suportar objetivos reais de negócio.",
+        description: "Aplicações robustas, seguras e escaláveis alinhadas aos objetivos do seu negócio.",
       },
       {
         title: "Engenharia",
-        description: "Soluções técnicas inteligentes com foco em performance, fiabilidade e inovação contínua.",
+        description: "Arquitetura técnica moderna com foco em performance, estabilidade e inovação.",
       },
       {
         title: "Análise de Dados",
-        description: "Transformamos dados em insights acionáveis para decisões mais assertivas e rápidas.",
+        description: "Transformamos dados em decisões estratégicas rápidas, claras e mensuráveis.",
       },
       {
         title: "Criação de Chatbots",
-        description: "Atendimento inteligente 24/7 que encanta utilizadores e aumenta conversão.",
+        description: "Atendimento inteligente 24/7 com experiência fluida e maior taxa de conversão.",
       },
     ],
   },
 
   marketingAI: {
     label: "Marketing Digital IA",
-    title: "Campanhas inteligentes para crescimento previsível",
-    subtitle: "Combinamos branding, criatividade e inteligência artificial para acelerar resultados.",
+    title: "Inovação aplicada à geração de procura e performance",
+    subtitle: "Branding estratégico, conteúdos com IA e relatórios de performance para crescimento sustentável.",
     cards: [
       {
         title: "Branding estratégico",
-        points: ["Campanhas eficientes", "Conteúdo visual"],
+        points: ["Posicionamento claro", "Campanhas eficientes", "Conteúdo visual de impacto"],
       },
       {
         title: "Avatares e conteúdos IA",
-        points: ["Influencers digitais", "Tecnologia inovadora", "IA para aumentar a performance"],
+        points: ["Influenciadores digitais", "Tecnologia de ponta", "Escalabilidade com consistência"],
       },
       {
         title: "Análise & relatórios",
-        points: ["Leads & Automação", "Otimização escalável", "Análise de dados"],
+        points: ["Leads e automação", "Otimização contínua", "Resultados mensuráveis"],
       },
     ],
   },
 
   smartAutomation: {
     label: "Automação Inteligente",
-    title: "Fluxos automatizados com IA para mais eficiência e escala",
+    title: "Fluxos automatizados com IA para eficiência, velocidade e escala",
     columns: [
       {
         title: "Automação",
@@ -78,21 +106,21 @@ export const homePT = {
   },
 
   conversionWebsites: {
-    label: "Websites que Convertem",
-    title: "Experiências digitais pensadas para conversão",
+    label: "Websites que convertem",
+    title: "Experiências digitais orientadas a conversão",
     items: [
       "Foco no utilizador",
       "Design responsivo",
       "UI/UX Mobile-first",
       "Resultados mensuráveis",
-      "SEO & Conversão",
+      "SEO & conversão",
       "Funis integrados",
     ],
   },
 
   webMobile: {
     label: "Desenvolvimento Web e Mobile",
-    title: "Criamos experiências digitais nativas e multiplataforma de alta performance",
+    title: "Experiências nativas e multiplataforma de alta performance",
     pillars: [
       {
         title: "Design UX/UI",
@@ -109,10 +137,61 @@ export const homePT = {
     ],
   },
 
+  brandPersonality: {
+    label: "Personalidade da marca",
+    title: "Uma parceira tecnológica para performance e crescimento",
+    traits: [
+      {
+        title: "Inteligente",
+        description: "Soluções baseadas em IA de ponta para gerar vantagem competitiva.",
+      },
+      {
+        title: "Visionária",
+        description: "Antecipamos tendências e criamos o futuro digital do seu negócio.",
+      },
+      {
+        title: "Confiável",
+        description: "Tecnologia segura, ética e transparente em todas as camadas.",
+      },
+      {
+        title: "Parceira",
+        description: "Crescemos lado a lado com os objetivos da sua empresa.",
+      },
+      {
+        title: "Focada em resultados",
+        description: "Mais performance, mais conversões e mais crescimento com consistência.",
+      },
+    ],
+  },
+
+  applications: {
+    label: "Aplicações da marca",
+    title: "Execução visual coesa em todos os pontos de contacto",
+    items: [
+      { title: "Campanhas e criativos", image: "/brandbook/marketing-ia.jpeg" },
+      { title: "Automação e operações", image: "/brandbook/automacao-inteligente.jpeg" },
+      { title: "Websites e conversão", image: "/brandbook/websites-convertem.jpeg" },
+      { title: "Produto Web/Mobile", image: "/brandbook/web-mobile.jpeg" },
+      { title: "Soluções integradas", image: "/brandbook/solucoes-completas.jpeg" },
+    ],
+  },
+
+  keywords: [
+    "INTELIGÊNCIA",
+    "INOVAÇÃO",
+    "CRESCIMENTO",
+    "DADOS",
+    "PERFORMANCE",
+    "TECNOLOGIA",
+    "RESULTADOS",
+    "ESCALABILIDADE",
+    "FUTURO",
+  ],
+
   finalCta: {
-    title: "Transforme sua empresa com IA. O futuro começa agora!",
-    subtitle: "Ative uma operação mais inteligente, mais rápida e orientada a resultados.",
-    button: "Entre em contato",
+    title: "Inteligência que impulsiona. Resultados que transformam.",
+    subtitle: "Ative uma operação mais inteligente, confiante e orientada a crescimento real.",
+    button: "Entrar em contacto",
     phone: "910 567 575",
     website: "sapienteai.com",
   },

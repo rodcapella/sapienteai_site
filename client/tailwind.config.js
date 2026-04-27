@@ -22,15 +22,24 @@ export default {
         "accent-foreground": "var(--accent-foreground)",
         card: "var(--card)",
         "card-foreground": "var(--card-foreground)",
+        brand: {
+          night: "#05081B",
+          deep: "#1A1F2E",
+          primary: "#0A8AFF",
+          cyan: "#00D1FF",
+          cyanBright: "#00F0FF",
+          purple: "#7B81FF",
+          offwhite: "#EAF6FF",
+        },
       },
 
       borderColor: {
         border: "var(--border)",
       },
 
-      // 💎 tipografia premium
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        heading: ["Sora", "Inter", "sans-serif"],
       },
 
       // 💎 sombras suaves
