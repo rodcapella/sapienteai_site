@@ -16,8 +16,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
       {/* 🌌 HIGH-TECH BACKGROUND GLOW SYSTEM */}
       <div className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/5 blur-[120px] rounded-full animate-pulse-slow" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-accent-purple/5 blur-[120px] rounded-full animate-pulse-slow" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#2563EB]/10 blur-[130px] rounded-full animate-pulse-slow" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#00D4FF]/10 blur-[130px] rounded-full animate-pulse-slow" />
       </div>
 
       <Header />

@@ -61,27 +61,24 @@ export default function Header({ onContactClick }: HeaderProps) {
           "fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500",
           "border-[var(--tech-border)]",
           scrolled
-            ? "bg-background/85 backdrop-blur-2xl shadow-[0_15px_45px_rgba(0,0,0,0.12)] dark:bg-[#070B16]/90"
-            : "bg-background/70 backdrop-blur-xl dark:bg-[#060A14]/70",
+            ? "bg-white/95 backdrop-blur-2xl shadow-[0_18px_40px_rgba(10,17,40,0.14)] dark:bg-[#0A1128]/92"
+            : "bg-white/90 backdrop-blur-xl dark:bg-[#0A1128]/86",
         )}
       >
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#00D4FF]/75 to-transparent" />
 
         <div className="container mx-auto px-4 sm:px-6">
           <nav
             className={cn(
               "flex items-center justify-between transition-all duration-500",
-              scrolled ? "h-16 md:h-20" : "h-20 md:h-24",
+              scrolled ? "h-20 md:h-24" : "h-24 md:h-28",
             )}
           >
-            <Link
-              href={`/${lang}`}
-              className="flex items-center gap-2 transition-all duration-500 hover:opacity-90"
-            >
+            <Link href={`/${lang}`} className="flex items-center gap-2 transition-all duration-500 hover:opacity-90">
               <img
                 src="/logo-header.png"
                 alt="SAPIENTE.AI"
-                className="h-10 md:h-12 w-auto object-contain"
+                className="h-14 md:h-16 lg:h-[70px] w-auto object-contain"
               />
             </Link>
 
@@ -91,18 +88,12 @@ export default function Header({ onContactClick }: HeaderProps) {
               <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
               <NavLink href={`/${lang}/contact`}>{t("nav.contact") || "Contact"}</NavLink>
 
-              <div
-                className="relative"
-                onMouseEnter={() => setIsLegalOpen(true)}
-                onMouseLeave={() => setIsLegalOpen(false)}
-              >
+              <div className="relative" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
                 <button
                   type="button"
                   className={cn(
                     "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
-                    isLegalOpen
-                      ? "text-primary"
-                      : "text-foreground/70 hover:text-foreground",
+                    isLegalOpen ? "text-[#0EA5E9]" : "text-foreground/70 hover:text-foreground",
                   )}
                 >
                   {t("nav.legal") || "Legal"}
@@ -115,14 +106,14 @@ export default function Header({ onContactClick }: HeaderProps) {
                     isLegalOpen ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-95",
                   )}
                 >
-                  <div className="rounded-2xl border border-[var(--tech-border)] bg-background/90 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:bg-[#090f1e]/95">
+                  <div className="rounded-2xl border border-[var(--tech-border)] bg-white/95 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(10,17,40,0.2)] dark:bg-[#091634]/95">
                     {legalLinks.map((link) => (
                       <Link
                         key={link.name}
                         href={link.href}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-white/5 hover:text-foreground"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-[#3B82F6]/10 hover:text-foreground"
                       >
-                        <ShieldCheck className="h-4 w-4 text-primary" />
+                        <ShieldCheck className="h-4 w-4 text-[#00D4FF]" />
                         {link.name}
                       </Link>
                     ))}
@@ -135,7 +126,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <LanguageSelector />
               <ThemeToggle />
 
-              <PremiumButton onClick={handleContactClick} className="scale-90">
+              <PremiumButton onClick={handleContactClick} className="scale-90" variant="secondary">
                 {t("nav.fale")}
               </PremiumButton>
             </div>
@@ -144,7 +135,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--tech-border)] bg-[var(--glass-bg)] p-2.5 text-foreground transition-all duration-300 hover:border-primary/50 hover:text-primary"
+                className="rounded-2xl border border-[var(--tech-border)] bg-[var(--glass-bg)] p-2.5 text-foreground transition-all duration-300 hover:border-[#00D4FF]/60 hover:text-[#00D4FF]"
                 aria-label="Toggle menu"
                 type="button"
               >
@@ -154,11 +145,9 @@ export default function Header({ onContactClick }: HeaderProps) {
           </nav>
 
           {isMobileMenuOpen && (
-            <div className="lg:hidden fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[#050814]/95 p-6 pt-24 text-white backdrop-blur-2xl">
+            <div className="lg:hidden fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[#050d24]/96 p-6 pt-28 text-white backdrop-blur-2xl">
               <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
-                <span className="text-xs font-black uppercase tracking-widest text-white/40">
-                  {t("nav.language") || "Language"}
-                </span>
+                <span className="text-xs font-black uppercase tracking-widest text-white/40">{t("nav.language") || "Language"}</span>
                 <LanguageSelector />
               </div>
 
@@ -180,9 +169,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </NavLink>
 
                 <div className="space-y-4 border-y border-white/10 py-4">
-                  <span className="text-xs font-black uppercase tracking-widest text-white/30">
-                    {t("nav.legal") || "Legal"}
-                  </span>
+                  <span className="text-xs font-black uppercase tracking-widest text-white/30">{t("nav.legal") || "Legal"}</span>
 
                   <div className="grid grid-cols-2 gap-4">
                     {legalLinks.map((link) => (
@@ -190,7 +177,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                         key={link.name}
                         href={link.href}
                         onClick={handleNavClick}
-                        className="text-lg font-bold text-white/65 transition-colors hover:text-white"
+                        className="text-lg font-bold text-white/70 transition-colors hover:text-[#22D3EE]"
                       >
                         {link.name}
                       </Link>
@@ -200,7 +187,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               </div>
 
               <div className="mt-auto pt-8">
-                <PremiumButton onClick={handleContactClick} className="w-full py-6 text-base">
+                <PremiumButton onClick={handleContactClick} className="w-full py-6 text-base" variant="primary">
                   {t("nav.fale")}
                 </PremiumButton>
               </div>
@@ -209,12 +196,7 @@ export default function Header({ onContactClick }: HeaderProps) {
         </div>
       </header>
 
-      {!onContactClick && (
-        <ContactModal
-          isOpen={isContactOpen}
-          onClose={() => setIsContactOpen(false)}
-        />
-      )}
+      {!onContactClick && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </>
   );
 }
