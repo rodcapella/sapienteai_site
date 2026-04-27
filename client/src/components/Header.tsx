@@ -1,12 +1,13 @@
-import { LanguageSelector } from '@/components/LanguageSelector';
-import { useTranslation } from '@/hooks/useTranslation';
-import { useState, useEffect } from 'react';
-import ContactModal from '@/components/ContactModal';
-import { Menu, X, ChevronDown, ShieldCheck } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { LanguageSelector } from "@/components/LanguageSelector";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useState, useEffect } from "react";
+import ContactModal from "@/components/ContactModal";
+import { Menu, X, ChevronDown, ShieldCheck } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Link, useLocation } from "wouter";
-import { NavLink } from '@/components/ui/navigation/NavLink';
-import { PremiumButton } from '@/components/ui/button/PremiumButton';
+import { NavLink } from "@/components/ui/navigation/NavLink";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 
 interface HeaderProps {
   onContactClick?: () => void;
@@ -28,8 +29,8 @@ export default function Header({ onContactClick }: HeaderProps) {
       setScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleContactClick = () => {
@@ -47,85 +48,79 @@ export default function Header({ onContactClick }: HeaderProps) {
   };
 
   const legalLinks = [
-    { name: t('legal.trust') || 'Trust', href: `/${lang}/trust` },
-    { name: t('legal.privacy') || 'Privacy', href: `/${lang}/privacy` },
-    { name: t('legal.terms') || 'Terms', href: `/${lang}/terms` },
-    { name: t('legal.lgpd') || 'LGPD', href: `/${lang}/lgpd` },
+    { name: t("legal.trust") || "Trust", href: `/${lang}/trust` },
+    { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
+    { name: t("legal.terms") || "Terms", href: `/${lang}/terms` },
+    { name: t("legal.lgpd") || "LGPD", href: `/${lang}/lgpd` },
   ];
 
   return (
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b",
+          "fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500",
+          "border-[var(--tech-border)]",
           scrolled
-            ? "bg-black/95 backdrop-blur-2xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
-            : "bg-black border-transparent"
+            ? "bg-background/85 backdrop-blur-2xl shadow-[0_15px_45px_rgba(0,0,0,0.12)] dark:bg-[#070B16]/90"
+            : "bg-background/70 backdrop-blur-xl dark:bg-[#060A14]/70",
         )}
       >
-        <div className="container mx-auto px-6">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+
+        <div className="container mx-auto px-4 sm:px-6">
           <nav
             className={cn(
               "flex items-center justify-between transition-all duration-500",
-              scrolled ? "h-16 md:h-20" : "h-20 md:h-28"
+              scrolled ? "h-16 md:h-20" : "h-20 md:h-24",
             )}
           >
-
-            {/* LOGO */}
             <Link
               href={`/${lang}`}
-              className="flex items-center gap-2 hover:opacity-80 transition-all duration-500 flex-shrink-0 group"
+              className="flex items-center gap-2 transition-all duration-500 hover:opacity-90"
             >
               <img
-                src="/media/logos/sapiente-ai-footer.png"
+                src="/logo-header.png"
                 alt="SAPIENTE.AI"
-                className="h-10 md:h-14 object-contain transition-transform duration-500 group-hover:scale-105"
+                className="h-10 md:h-12 w-auto object-contain"
               />
             </Link>
 
-            {/* DESKTOP NAV */}
-            <div className="hidden lg:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-8 xl:gap-10">
+              <NavLink href={`/${lang}`}>{t("nav.home")}</NavLink>
+              <NavLink href={`/${lang}/about`}>{t("nav.about")}</NavLink>
+              <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
+              <NavLink href={`/${lang}/contact`}>{t("nav.contact") || "Contact"}</NavLink>
 
-              <NavLink href={`/${lang}`}>
-                {t('nav.home')}
-              </NavLink>
-
-              <NavLink href={`/${lang}/about`}>
-                {t('nav.about')}
-              </NavLink>
-
-              <NavLink href={`/${lang}/faq`}>
-                {t('nav.faq')}
-              </NavLink>
-
-              <NavLink href={`/${lang}/contact`}>
-                {t('nav.contact') || 'Contact'}
-              </NavLink>
-
-              {/* LEGAL */}
-              <div 
-                className="relative group"
+              <div
+                className="relative"
                 onMouseEnter={() => setIsLegalOpen(true)}
                 onMouseLeave={() => setIsLegalOpen(false)}
               >
-                <button className={cn(
-                  "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
-                  isLegalOpen ? "text-primary" : "text-white/70 hover:text-white"
-                )}>
-                  {t('nav.legal') || 'Legal'}
+                <button
+                  type="button"
+                  className={cn(
+                    "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
+                    isLegalOpen
+                      ? "text-primary"
+                      : "text-foreground/70 hover:text-foreground",
+                  )}
+                >
+                  {t("nav.legal") || "Legal"}
                   <ChevronDown className={cn("h-4 w-4 transition-transform duration-500", isLegalOpen && "rotate-180")} />
                 </button>
 
-                <div className={cn(
-                  "absolute top-full -left-4 w-48 pt-4 transition-all duration-500 origin-top-left",
-                  isLegalOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
-                )}>
-                  <div className="bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 shadow-2xl">
+                <div
+                  className={cn(
+                    "absolute top-full -left-4 w-52 pt-4 origin-top-left transition-all duration-300",
+                    isLegalOpen ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-95",
+                  )}
+                >
+                  <div className="rounded-2xl border border-[var(--tech-border)] bg-background/90 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.2)] dark:bg-[#090f1e]/95">
                     {legalLinks.map((link) => (
-                      <Link 
-                        key={link.name} 
+                      <Link
+                        key={link.name}
                         href={link.href}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/60 hover:text-white hover:bg-white/5 transition-all"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-white/5 hover:text-foreground"
                       >
                         <ShieldCheck className="h-4 w-4 text-primary" />
                         {link.name}
@@ -135,66 +130,67 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </div>
               </div>
 
-              <div className="h-6 w-px bg-white/10"></div>
+              <div className="h-6 w-px bg-[var(--tech-border)]" />
 
               <LanguageSelector />
+              <ThemeToggle />
 
               <PremiumButton onClick={handleContactClick} className="scale-90">
-                {t('nav.fale')}
+                {t("nav.fale")}
               </PremiumButton>
             </div>
 
-            {/* MOBILE BUTTON */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-3 hover:bg-white/10 transition-all duration-300 rounded-2xl"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X className="h-8 w-8 text-white" /> : <Menu className="h-8 w-8 text-white" />}
-            </button>
+            <div className="lg:hidden flex items-center gap-3">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="rounded-2xl border border-[var(--tech-border)] bg-[var(--glass-bg)] p-2.5 text-foreground transition-all duration-300 hover:border-primary/50 hover:text-primary"
+                aria-label="Toggle menu"
+                type="button"
+              >
+                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </nav>
 
-          {/* MOBILE MENU */}
           {isMobileMenuOpen && (
-            <div className="lg:hidden fixed inset-0 bg-black z-40 flex flex-col p-8 pt-12 space-y-8 overflow-y-auto">
-
-              <div className="flex items-center justify-between pb-8 border-b border-white/10">
-                <span className="text-white/40 text-xs font-black uppercase tracking-widest">
-                  {t('nav.language') || 'Language'}
+            <div className="lg:hidden fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[#050814]/95 p-6 pt-24 text-white backdrop-blur-2xl">
+              <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
+                <span className="text-xs font-black uppercase tracking-widest text-white/40">
+                  {t("nav.language") || "Language"}
                 </span>
                 <LanguageSelector />
               </div>
 
               <div className="flex flex-col space-y-6">
-
                 <NavLink variant="mobile" href={`/${lang}`} onClick={handleNavClick}>
-                  {t('nav.home')}
+                  {t("nav.home")}
                 </NavLink>
 
                 <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>
-                  {t('nav.about')}
+                  {t("nav.about")}
                 </NavLink>
 
                 <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>
-                  {t('nav.faq')}
+                  {t("nav.faq")}
                 </NavLink>
 
                 <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>
-                  {t('nav.contact') || 'Contact'}
+                  {t("nav.contact") || "Contact"}
                 </NavLink>
 
-                <div className="py-4 space-y-4 border-y border-white/5">
-                  <span className="text-white/30 text-xs font-black uppercase tracking-widest">
-                    {t('nav.legal') || 'Legal'}
+                <div className="space-y-4 border-y border-white/10 py-4">
+                  <span className="text-xs font-black uppercase tracking-widest text-white/30">
+                    {t("nav.legal") || "Legal"}
                   </span>
 
                   <div className="grid grid-cols-2 gap-4">
                     {legalLinks.map((link) => (
-                      <Link 
-                        key={link.name} 
+                      <Link
+                        key={link.name}
                         href={link.href}
                         onClick={handleNavClick}
-                        className="text-lg font-bold text-white/60 hover:text-white transition-colors"
+                        className="text-lg font-bold text-white/65 transition-colors hover:text-white"
                       >
                         {link.name}
                       </Link>
@@ -203,9 +199,9 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </div>
               </div>
 
-              <div className="pt-8 mt-auto">
-                <PremiumButton onClick={handleContactClick} className="w-full py-8 text-xl">
-                  {t('nav.fale')}
+              <div className="mt-auto pt-8">
+                <PremiumButton onClick={handleContactClick} className="w-full py-6 text-base">
+                  {t("nav.fale")}
                 </PremiumButton>
               </div>
             </div>

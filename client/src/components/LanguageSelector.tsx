@@ -75,12 +75,12 @@ export function LanguageSelector() {
       className="
         relative flex items-center gap-3
         px-5 py-2.5 rounded-full
-        border border-white/10
-        bg-white/5
+        border border-[var(--tech-border)]
+        bg-[var(--glass-bg)]
         backdrop-blur-xl
         transition-all duration-300
-        hover:border-primary/40
-        hover:shadow-[0_0_40px_rgba(34,211,238,0.1)]
+        hover:border-primary/50
+        hover:shadow-[var(--shadow-neon-blue)]
         group
         overflow-hidden
       "
@@ -113,7 +113,7 @@ export function LanguageSelector() {
       </div>
 
       {/* TEXT */}
-      <span className="text-xs font-black tracking-[0.2em] text-white/80 uppercase relative z-10">
+      <span className="relative z-10 text-xs font-black uppercase tracking-[0.2em] text-foreground/80">
         {lang}
       </span>
 

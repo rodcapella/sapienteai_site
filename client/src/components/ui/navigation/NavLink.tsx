@@ -14,7 +14,7 @@ const navLinkVariants = cva(
     variants: {
       variant: {
         default: `
-          text-white/70 hover:text-white
+          text-foreground/70 hover:text-foreground
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full
@@ -41,7 +41,7 @@ const navLinkVariants = cva(
 
       active: {
         true: `
-          text-white
+          text-foreground
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full
