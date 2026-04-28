@@ -3,7 +3,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useLocation, Link } from "wouter";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
-import { InstagramIcon, LinkedIn, Facebook, Music2 } from "lucide-react";
+import { Instagram, Linkedin, Facebook, Music2 } from "lucide-react";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -39,7 +39,7 @@ export default function Footer({ onContactClick }: FooterProps) {
   };
 
   const socialLinks = [
-    { name: "LinkedIn", icon: LinkedIn, url: "https://www.linkedin.com/company/sapiente-ai/" },
+    { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/company/sapiente-ai/" },
     { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/sapienteai/" },
     { name: "Facebook", icon: Facebook, url: "https://facebook.com/sapienteai" },
     { name: "TikTok", icon: Music2, url: "https://www.tiktok.com/@sapienteai" },
