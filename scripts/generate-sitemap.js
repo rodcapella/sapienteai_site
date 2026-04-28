@@ -13,7 +13,7 @@ const pages = [
   "/privacy",
   "/terms",
   "/team",
-  "/lgpd"
+  "/RGPD"
 ];
 
 const urls = languages.flatMap((lang) =>

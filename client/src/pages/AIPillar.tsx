@@ -40,7 +40,7 @@ const clusterArticles: ClusterArticle[] = [
     title: 'Segurança em Sistemas de IA: Boas Práticas',
     slug: 'seguranca-sistemas-ia',
     description: 'Estratégias essenciais para proteger seus modelos de IA contra ataques e garantir conformidade.',
-    keywords: ['segurança IA', 'LGPD', 'conformidade']
+    keywords: ['segurança IA', 'RGPD', 'conformidade']
   },
   {
     title: 'Tendências de IA em 2026: O Que Esperar',

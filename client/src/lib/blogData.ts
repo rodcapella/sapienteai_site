@@ -58,7 +58,7 @@ Despite clear benefits, many companies still face challenges:
 1. **Lack of Expertise**: Shortage of qualified AI professionals
 2. **Data Quality**: Need for clean and well-structured data
 3. **Initial Investment**: Infrastructure and training costs
-4. **Regulatory Compliance**: Compliance with LGPD, GDPR and other regulations
+4. **Regulatory Compliance**: Compliance with RGPD, GDPR and other regulations
 
 ## Trends for 2026
 
@@ -197,7 +197,7 @@ O mercado de Inteligência Artificial está em transformação acelerada. Enquan
 
 **O que será**: Modelos que explicam suas decisões.
 
-**Por quê**: Reguladores, clientes e empresas exigem transparência. Conformidade com LGPD e GDPR requer explicabilidade.
+**Por quê**: Reguladores, clientes e empresas exigem transparência. Conformidade com RGPD e GDPR requer explicabilidade.
 
 **Impacto**: Modelos mais simples e interpretáveis ganharão espaço sobre megamodelos complexos em aplicações críticas.
 
@@ -223,7 +223,7 @@ O mercado de Inteligência Artificial está em transformação acelerada. Enquan
 - Governança de dados
 - Privacidade por design
 
-**Regulamentações**: EU AI Act, LGPD, GDPR moldam o desenvolvimento.
+**Regulamentações**: EU AI Act, RGPD, GDPR moldam o desenvolvimento.
 
 **Mercado**: Empresas que adotam IA responsável ganham confiança e evitam multas regulatórias.
 
@@ -272,7 +272,7 @@ O mercado de Inteligência Artificial está em transformação acelerada. Enquan
 
 **Marcos**:
 - EU AI Act entra em vigor
-- LGPD Brasil aplicada rigorosamente
+- RGPD Brasil aplicada rigorosamente
 - Novos regulamentos em outros países
 - Compliance se torna competência essencial
 

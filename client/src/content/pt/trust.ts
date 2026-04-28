@@ -17,7 +17,7 @@ export const trustContentPT = {
     {
       title: "Proteção de Dados",
       content: [
-        "Conformidade com RGPD e LGPD",
+        "Conformidade com RGPD e RGPD",
         "Processamento de dados com minimização por design",
         "Anonimização sempre que aplicável",
         "Políticas rigorosas de retenção de dados"

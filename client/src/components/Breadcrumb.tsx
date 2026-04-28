@@ -22,8 +22,8 @@ export default function Breadcrumb() {
     '/termos': [
       { label: t('footer.termos'), href: '/termos' }
     ],
-    '/lgpd': [
-      { label: t('footer.lgpd'), href: '/lgpd' }
+    '/RGPD': [
+      { label: t('footer.RGPD'), href: '/RGPD' }
     ],
   };
 

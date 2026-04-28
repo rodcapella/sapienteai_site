@@ -82,7 +82,7 @@ export default function Footer({ onContactClick }: FooterProps) {
           <li><Link href={`/${lang}/terms`} className="text-white/60 hover:text-primary transition-colors">Terms</Link></li>
           <li><Link href={`/${lang}/privacy`} className="text-white/60 hover:text-primary transition-colors">Privacy</Link></li>
           <li><Link href={`/${lang}/trust`} className="text-white/60 hover:text-primary transition-colors">Trust</Link></li>
-          <li><Link href={`/${lang}/lgpd`} className="text-white/60 hover:text-primary transition-colors">LGPD</Link></li>
+          <li><Link href={`/${lang}/RGPD`} className="text-white/60 hover:text-primary transition-colors">RGPD</Link></li>
         </ul>
       </div>
 

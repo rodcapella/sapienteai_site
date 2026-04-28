@@ -13,7 +13,7 @@ const FAQ = lazy(() => import("@/pages/FAQ"));
 const Terms = lazy(() => import("@/pages/Terms"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const Trust = lazy(() => import("@/pages/Trust"));
-const LGPD = lazy(() => import("@/pages/LGPD"));
+const RGPD = lazy(() => import("@/pages/RGPD"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const Contact = lazy(() => import("@/pages/Contact"));
 const ArticleDetail = lazy(() => import("@/pages/ArticleDetail"));
@@ -95,8 +95,8 @@ export default function App() {
             {(params) => <Trust lang={params.lang} />}
           </Route>
 
-          <Route path="/:lang/lgpd">
-            {(params) => <LGPD lang={params.lang} />}
+          <Route path="/:lang/RGPD">
+            {(params) => <RGPD lang={params.lang} />}
           </Route>
 
           <Route path="/:lang/blog">

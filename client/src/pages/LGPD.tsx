@@ -13,18 +13,18 @@ import { useTranslation } from '@/hooks/useTranslation';
 
 const ArrowLeft = Icons.ArrowLeft;
 
-export default function LGPD() {
+export default function RGPD() {
   const [location] = useLocation();
   const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
 
-  const content = getContent("lgpd", lang);
+  const content = getContent("RGPD", lang);
 
   useEffect(() => {
     setSEOHead({
       title: `${content.title} - SAPIENTE.AI`,
       description: content.subtitle,
-      url: `${window.location.origin}/${lang}/lgpd`,
+      url: `${window.location.origin}/${lang}/RGPD`,
       type: 'website'
     });
   }, [lang, content]);

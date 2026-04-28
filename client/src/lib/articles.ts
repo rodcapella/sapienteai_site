@@ -68,12 +68,12 @@ A SAPIENTE.AI utiliza as técnicas mais avançadas de machine learning para cria
   {
     id: '3',
     title: 'Segurança em Sistemas de IA: Boas Práticas',
-    excerpt: 'Estratégias essenciais para proteger seus modelos de IA contra ataques adversariais e garantir conformidade com LGPD e GDPR.',
+    excerpt: 'Estratégias essenciais para proteger seus modelos de IA contra ataques adversariais e garantir conformidade com RGPD e GDPR.',
     content: `A segurança é fundamental quando se trabalha com IA. Modelos podem ser alvo de ataques adversariais, manipulação de dados de treinamento e exploração de vulnerabilidades.
 
 Implementar boas práticas como validação robusta de dados, monitoramento contínuo, versionamento de modelos e testes de adversarialidade é essencial para manter a integridade e confiabilidade dos sistemas.
 
-A SAPIENTE.AI implementa os mais altos padrões de segurança em todos os seus projetos, garantindo conformidade com LGPD, GDPR e outras regulamentações.`,
+A SAPIENTE.AI implementa os mais altos padrões de segurança em todos os seus projetos, garantindo conformidade com RGPD, GDPR e outras regulamentações.`,
     category: 'Segurança',
     author: 'Esp. João Oliveira',
     date: '2026-02-06',

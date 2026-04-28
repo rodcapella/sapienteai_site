@@ -3,7 +3,7 @@ import { aboutPT } from "./about";
 import { blogPT } from "./blog";
 import { contactPT } from "./contact";
 import { homePT } from "./home";
-import { lgpdContentPT } from "./lgpd";
+import { RGPDContentPT } from "./RGPD";
 import { newsPT } from "./news";
 import { notFoundPT } from "./notFound";
 import { portfolioPT } from "./portfolio";
@@ -17,7 +17,7 @@ export {
   blogPT as blog,
   contactPT as contact,
   homePT as home,
-  lgpdContentPT as lgpd,
+  RGPDContentPT as RGPD,
   newsPT as news,
   notFoundPT as notFound,
   portfolioPT as portfolio,

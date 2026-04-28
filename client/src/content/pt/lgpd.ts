@@ -1,4 +1,4 @@
-// /content/pt/lgpd.ts
+// /content/pt/RGPD.ts
 import { 
   ShieldCheck, 
   Globe, 
@@ -11,7 +11,7 @@ import {
   Scale
 } from "lucide-react";
 
-export const lgpdContentPT = {
+export const RGPDContentPT = {
   label: "Documento Legal",
   title: "GDPR Compliance",
   subtitle: "Conformidade rigorosa com o Regulamento Geral sobre a Proteção de Dados da União Europeia.",

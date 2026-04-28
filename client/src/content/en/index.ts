@@ -3,7 +3,7 @@ import { aboutEN } from "./about";
 import { blogEN } from "./blog";
 import { contactEN } from "./contact";
 import { homeEN } from "./home";
-import { lgpdContentEN } from "./lgpd";
+import { RGPDContentEN } from "./RGPD";
 import { newsEN } from "./news";
 import { notFoundEN } from "./notFound";
 import { portfolioEN } from "./portfolio";
@@ -17,7 +17,7 @@ export {
   blogEN as blog,
   contactEN as contact,
   homeEN as home,
-  lgpdContentEN as lgpd,
+  RGPDContentEN as RGPD,
   newsEN as news,
   notFoundEN as notFound,
   portfolioEN as portfolio,

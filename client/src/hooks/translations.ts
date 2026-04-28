@@ -22,7 +22,7 @@ export const translations = {
       trust: "Confiança",
       privacy: "Privacidade",
       terms: "Termos",
-      lgpd: "Proteção de Dados"
+      RGPD: "Proteção de Dados"
     },
 
     home: {
@@ -71,7 +71,7 @@ export const translations = {
       trust: "Trust",
       privacy: "Privacy",
       terms: "Terms",
-      lgpd: "Data Protection"
+      RGPD: "Data Protection"
     },
 
     home: {
