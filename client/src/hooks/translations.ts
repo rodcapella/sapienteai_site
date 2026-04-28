@@ -6,7 +6,7 @@ export const translations = {
       services: "Serviços",
       team: "Equipa",
       faq: "FAQ",
-      contact: "Contacto",
+      contact: "Contato",
       fale: "Falar",
       legal: "Legal"
     },
@@ -15,7 +15,7 @@ export const translations = {
       navigation: "Navegação",
       description: "Soluções inteligentes para o teu dia a dia.",
       copyright: "© 2026 SAPIENTE.AI. Todos os direitos reservados.",
-      contact: "Contacto"
+      contact: "Contato"
     },
 
     legal: {

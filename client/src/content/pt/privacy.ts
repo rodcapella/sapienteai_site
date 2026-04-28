@@ -32,7 +32,7 @@ export const privacyPT = {
       icon: UserPlus,
       title: "2. Dados Pessoais Recolhidos",
       content: [
-        "Identificação e Contacto: Nome completo, e-mail profissional e números de telefone verificados.",
+        "Identificação e Contato: Nome completo, e-mail profissional e números de telefone verificados.",
         "Contexto Profissional: Afiliação organizacional, cargo e departamento.",
         "Metadados e Identificadores Técnicos: Endereços IP (hashed), impressões digitais de dispositivos (fingerprinting) e user-agents de navegadores.",
         "Dados de Interação: Telemetria granular sobre a utilização do serviço e envolvimento com funcionalidades através de registos (logs) seguros."
@@ -123,8 +123,8 @@ export const privacyPT = {
     {
       id: "contact",
       icon: Send,
-      title: "15. Contacto e Encarregado de Proteção de Dados (DPO)",
-      content: "Para exercer os seus direitos ou contactar a nossa Equipa de Privacidade, entre em contacto com o nosso Encarregado de Proteção de Dados através do nosso portal oficial de suporte ou via dpo@sapiente.ai."
+      title: "15. Contato e Encarregado de Proteção de Dados (DPO)",
+      content: "Para exercer os seus direitos ou contactar a nossa Equipa de Privacidade, entre em contato com o nosso Encarregado de Proteção de Dados através do nosso portal oficial de suporte ou via dpo@sapiente.ai."
     }
   ]
 };

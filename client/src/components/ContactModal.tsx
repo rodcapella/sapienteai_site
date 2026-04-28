@@ -136,7 +136,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       payload.append("phone", formData.phone.trim() || "Não informado");
       payload.append("company", formData.company.trim() || "Não informado");
       payload.append("message", formData.message.trim());
-      payload.append("_subject", `Novo contacto - ${formData.name.trim()}`);
+      payload.append("_subject", `Novo contato - ${formData.name.trim()}`);
       payload.append("_captcha", "false");
 
       const response = await fetch("https://formsubmit.co/sapiente.ai.oficial@gmail.com", {
@@ -274,7 +274,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <button
             type="button"
             onClick={closeModal}
-            aria-label="Fechar modal de contacto"
+            aria-label="Fechar modal de contato"
             className="absolute right-4 top-4 z-20 rounded-full border border-[rgba(0,209,255,0.4)] bg-[rgba(5,8,27,0.85)] p-2 text-[var(--brand-offwhite)] transition-all duration-300 hover:border-[rgba(0,240,255,0.88)] hover:text-[var(--brand-cyan)] hover:shadow-[0_0_20px_rgba(0,209,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]"
           >
             <X className="h-4 w-4" />
@@ -283,7 +283,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <DialogHeader className="relative z-10 mb-7 space-y-3 text-left">
             <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(0,209,255,0.35)] bg-[rgba(5,8,27,0.65)] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--brand-cyan)]">
               <Sparkles className="h-3.5 w-3.5" />
-              Contacto inteligente
+              Contato inteligente
             </div>
 
             <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight text-[var(--brand-offwhite)] sm:text-3xl">

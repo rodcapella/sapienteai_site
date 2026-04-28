@@ -1,70 +1,95 @@
 export const homeEN = {
   hero: {
-    label: "AI-Powered Growth",
-    title: "Marketing that actually grows your business",
-    subtitle: "Digital growth systems built to generate measurable outcomes — AI to amplify performance.",
-    ctaPrimary: "Talk to our team",
-    ctaSecondary: "Explore solutions",
+    label: "AI • AUTOMATION • REAL GROWTH",
+    title: "We turn intelligence into real business results",
+    subtitle:
+      "Sapiente.AI helps companies increase revenue, reduce costs, and scale with intelligent automation.",
+    ctaPrimary: "Automate my business",
+    ctaSecondary: "See how it works"
+  },
+
+  brandPillars: {
+    label: "Real results",
+    title: "The impact we deliver to our clients",
+    items: [
+      {
+        title: "Higher productivity",
+        description: "AI-powered automation of internal processes",
+        image: "",
+      },
+      {
+        title: "Less manual work",
+        description: "Automated workflows and system integrations",
+        image: "",
+      },
+      {
+        title: "More conversions",
+        description: "Data-driven marketing focused on performance",
+        image: "",
+      },
+      {
+        title: "Sustainable scale",
+        description: "Technology built for continuous growth",
+        image: "",
+      },
+    ],
   },
 
   coreServices: {
-    label: "End-to-end capabilities",
-    title: "Core services built for scale",
+    label: "How we help",
+    title: "5 ways to accelerate your business with AI",
     items: [
       {
-        title: "Marketing Strategy",
-        description: "Data-led strategy to attract the right audience and convert more high-intent customers.",
+        title: "Customer acquisition",
+        description: "Marketing and automation strategies to generate leads and increase sales.",
       },
       {
-        title: "Process Automation",
-        description: "Higher efficiency, less manual effort. We automate workflows so your operations can scale faster.",
+        title: "Operational efficiency",
+        description: "We eliminate manual work and build intelligent, scalable processes.",
       },
       {
-        title: "Application Development",
-        description: "Robust, scalable, and tailored applications engineered around your business goals.",
+        title: "Technology & development",
+        description: "Custom applications and systems to support business growth.",
       },
       {
-        title: "Engineering",
-        description: "Intelligent technical solutions with a strong focus on reliability, speed, and innovation.",
+        title: "Data analytics",
+        description: "We turn data into fast, clear, and measurable strategic decisions.",
       },
       {
-        title: "Data Analytics",
-        description: "We turn data into actionable insights that support sharper and faster decision-making.",
-      },
-      {
-        title: "Chatbot Development",
-        description: "24/7 intelligent customer experiences that improve satisfaction and increase conversion.",
+        title: "Chatbot development",
+        description: "24/7 intelligent customer service with seamless experience and higher conversion rates.",
       },
     ],
   },
 
   marketingAI: {
     label: "AI Digital Marketing",
-    title: "Creative + AI to accelerate demand generation",
-    subtitle: "We blend strategic branding, AI content, and performance analytics to drive sustainable growth.",
+    title: "Innovation applied to demand generation and performance",
+    subtitle:
+      "Strategic branding, AI-powered content, and performance reporting for sustainable growth.",
     cards: [
       {
-        title: "Strategic Branding",
-        points: ["High-performance campaigns", "Visual content systems"],
+        title: "Strategic branding",
+        points: ["Clear positioning", "Efficient campaigns", "High-impact visual content"],
       },
       {
-        title: "AI Avatars & Content",
-        points: ["Digital influencers", "Innovative technology", "AI-driven performance uplift"],
+        title: "AI avatars & content",
+        points: ["Digital influencers", "Cutting-edge technology", "Scalable consistency"],
       },
       {
-        title: "Analytics & Reporting",
-        points: ["Leads & automation", "Scalable optimization", "Data intelligence"],
+        title: "Analytics & reporting",
+        points: ["Leads & automation", "Continuous optimization", "Measurable results"],
       },
     ],
   },
 
   smartAutomation: {
-    label: "Intelligent Automation",
-    title: "AI-automated workflows for greater efficiency and scale",
+    label: "Smart Automation",
+    title: "AI-powered workflows for efficiency, speed, and scale",
     columns: [
       {
         title: "Automation",
-        points: ["Smarter processes", "Reduced manual workload", "Operational efficiency"],
+        points: ["Smart processes", "Reduced manual work", "Operational efficiency"],
       },
       {
         title: "Processing",
@@ -78,12 +103,12 @@ export const homeEN = {
   },
 
   conversionWebsites: {
-    label: "Websites That Convert",
-    title: "Digital experiences engineered for conversion",
+    label: "High-converting websites",
+    title: "Digital experiences built for conversion",
     items: [
-      "User-centered strategy",
-      "Responsive design",
-      "Mobile-first UX/UI",
+      "User-focused design",
+      "Responsive layouts",
+      "Mobile-first UI/UX",
       "Measurable results",
       "SEO & conversion optimization",
       "Integrated funnels",
@@ -92,11 +117,11 @@ export const homeEN = {
 
   webMobile: {
     label: "Web & Mobile Development",
-    title: "We build native, cross-platform digital experiences with high performance",
+    title: "High-performance native and cross-platform experiences",
     pillars: [
       {
         title: "UX/UI Design",
-        points: ["User-first approach", "Rapid prototyping", "Intuitive experiences"],
+        points: ["User-centered approach", "Rapid prototyping", "Intuitive experiences"],
       },
       {
         title: "Development",
@@ -104,16 +129,62 @@ export const homeEN = {
       },
       {
         title: "Performance",
-        points: ["Optimization", "Integration", "Automation", "Simplified publishing"],
+        points: ["Optimization", "Integration", "Automation", "Seamless deployment"],
       },
     ],
   },
 
-  finalCta: {
-    title: "Transform your company with AI. The future starts now.",
-    subtitle: "Scale with intelligence, speed, and a measurable growth engine.",
-    button: "Contact us",
-    phone: "910 567 575",
-    website: "sapienteai.com",
+  brandPersonality: {
+    label: "Brand personality",
+    title: "A technology partner focused on performance and growth",
+    traits: [
+      {
+        title: "Intelligent",
+        description: "Cutting-edge AI solutions to create competitive advantage.",
+      },
+      {
+        title: "Visionary",
+        description: "We anticipate trends and build the digital future of your business.",
+      },
+      {
+        title: "Reliable",
+        description: "Secure, ethical, and transparent technology at every level.",
+      },
+      {
+        title: "Partner-driven",
+        description: "We grow alongside your business goals.",
+      },
+      {
+        title: "Results-focused",
+        description: "More performance, more conversions, and consistent growth.",
+      },
+    ],
   },
+
+  applications: {
+    label: "Brand applications",
+    title: "Consistent execution across every touchpoint",
+    items: [
+      { title: "Campaigns & creatives", image: "/brandbook/marketing-ia.jpeg" },
+      { title: "Automation & operations", image: "/brandbook/automacao-inteligente.jpeg" },
+      { title: "Websites & conversion", image: "/brandbook/websites-convertem.jpeg" },
+      { title: "Web/Mobile products", image: "/brandbook/web-mobile.jpeg" },
+      { title: "Integrated solutions", image: "/brandbook/solucoes-completas.jpeg" },
+    ],
+  },
+
+  keywords: [
+    "More visibility",
+    "More customers",
+    "Less manual work",
+    "Better decision-making",
+    "Higher profits",
+    "Scalable growth",
+  ],
+
+  finalCta: {
+    title: "Find out where you're losing money in your business",
+    subtitle: "We run a quick analysis and show exactly how you can grow with AI.",
+    button: "Get a free audit"
+  }
 };

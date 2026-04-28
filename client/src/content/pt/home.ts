@@ -1,59 +1,55 @@
 export const homePT = {
   hero: {
-    label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO",
+    label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO REAL",
     title: "Transformamos inteligência em resultados reais",
     subtitle:
-      "Soluções completas de IA para marketing, automação, desenvolvimento e análise de dados que impulsionam o crescimento do seu negócio.",
-    ctaPrimary: "Falar com especialista",
-    ctaSecondary: "Ver pilares",
+       "A Sapiente.AI ajuda empresas a aumentar vendas, reduzir custos e escalar com automação inteligente",
+    ctaPrimary: "Quero automatizar o meu negócio",
+    ctaSecondary: "Ver como funciona"
   },
 
   brandPillars: {
-    label: "Pilares estratégicos",
-    title: "Quatro frentes para acelerar resultados com tecnologia",
+    label: "Resultados reais",
+    title: "O impacto que geramos nos nossos clientes",
     items: [
       {
-        title: "INTELIGÊNCIA",
-        description: "Modelos de IA, análise avançada e decisões orientadas por dados para máxima precisão.",
-        image: "/brandbook/moodboard-main.jpeg",
+        title: "Maior produtividade",
+        description: "Automação de processos internos com IA",
+        image: "",
       },
       {
-        title: "AUTOMAÇÃO",
-        description: "Fluxos inteligentes, integração de processos e eficiência operacional com foco em escala.",
-        image: "/brandbook/automacao-inteligente.jpeg",
+        title: "Menos tarefas manuais",
+        description: "Fluxos automatizados e integração de sistemas",
+        image: "",
       },
       {
-        title: "CRESCIMENTO",
-        description: "Estratégias de performance, aquisição e otimização contínua para gerar conversões reais.",
-        image: "/brandbook/marketing-ia.jpeg",
+        title: "Mais Conversões",
+        description: "Marketing orientado a dados e performance",
+        image: "",
       },
       {
-        title: "FUTURO",
-        description: "Visão tecnológica para antecipar tendências e construir experiências digitais de próxima geração.",
-        image: "/brandbook/web-mobile.jpeg",
+        title: "Escala sustentável",
+        description: "Tecnologia preparada para crescimento contínuo",
+        image: "",
       },
     ],
   },
 
   coreServices: {
-    label: "Soluções completas",
-    title: "Serviços desenhados para escalar com confiança",
+    label: "Como ajudamos",
+    title: "5 formas de acelerar o seu negócio com IA",
     items: [
-      {
-        title: "Estratégia de Marketing",
-        description: "Planeamento orientado a dados para atrair, converter e reter clientes com previsibilidade.",
+        {
+        title: "Aquisição de clientes",
+        description: "Estratégias de marketing e automação para gerar leads e aumentar vendas.",
       },
       {
-        title: "Automação de Processos",
-        description: "Menos tarefas manuais, mais produtividade e operações prontas para escalar.",
+        title: "Eficiência operacional",
+        description: "Eliminamos tarefas manuais e criamos processos inteligentes e escaláveis.",
       },
       {
-        title: "Desenvolvimento de Aplicações",
-        description: "Aplicações robustas, seguras e escaláveis alinhadas aos objetivos do seu negócio.",
-      },
-      {
-        title: "Engenharia",
-        description: "Arquitetura técnica moderna com foco em performance, estabilidade e inovação.",
+        title: "Tecnologia e desenvolvimento",
+        description: "Aplicações e sistemas personalizados para suportar o crescimento do negócio.",
       },
       {
         title: "Análise de Dados",
@@ -166,7 +162,7 @@ export const homePT = {
 
   applications: {
     label: "Aplicações da marca",
-    title: "Execução visual coesa em todos os pontos de contacto",
+    title: "Execução visual coesa em todos os pontos de contato",
     items: [
       { title: "Campanhas e criativos", image: "/brandbook/marketing-ia.jpeg" },
       { title: "Automação e operações", image: "/brandbook/automacao-inteligente.jpeg" },
@@ -177,22 +173,17 @@ export const homePT = {
   },
 
   keywords: [
-    "INTELIGÊNCIA",
-    "INOVAÇÃO",
-    "CRESCIMENTO",
-    "DADOS",
-    "PERFORMANCE",
-    "TECNOLOGIA",
-    "RESULTADOS",
-    "ESCALABILIDADE",
-    "FUTURO",
+    "Mais reconhecimento",
+    "Mais clientes",
+    "Menos trabalho manual",
+    "Maior assertividade", 
+    "Mais lucro",
+    "Crescimento",
   ],
 
   finalCta: {
-    title: "Inteligência que impulsiona. Resultados que transformam.",
-    subtitle: "Ative uma operação mais inteligente, confiante e orientada a crescimento real.",
-    button: "Entrar em contacto",
-    phone: "910 567 575",
-    website: "sapienteai.com",
-  },
+    title: "Descubra onde está a perder dinheiro no seu negócio",
+    subtitle: "Fazemos uma análise rápida e mostramos como pode crescer com IA.",
+    button: "Pedir diagnóstico gratuito"
+  }
 };

@@ -51,7 +51,7 @@ export default function Header({ onContactClick }: HeaderProps) {
     { name: t("legal.trust") || "Trust", href: `/${lang}/trust` },
     { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
     { name: t("legal.terms") || "Terms", href: `/${lang}/terms` },
-    { name: t("legal.lgpd") || "LGPD", href: `/${lang}/lgpd` },
+    { name: t("legal.RGPD") || "RGPD", href: `/${lang}/RGPD` },
   ];
 
   return (
@@ -85,6 +85,7 @@ export default function Header({ onContactClick }: HeaderProps) {
             <div className="hidden lg:flex items-center gap-8 xl:gap-10">
               <NavLink href={`/${lang}`}>{t("nav.home")}</NavLink>
               <NavLink href={`/${lang}/about`}>{t("nav.about")}</NavLink>
+              <NavLink href={`/${lang}/team`}>{t("nav.team")}</NavLink>
               <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
               <NavLink href={`/${lang}/contact`}>{t("nav.contact") || "Contact"}</NavLink>
 
@@ -158,6 +159,10 @@ export default function Header({ onContactClick }: HeaderProps) {
 
                 <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>
                   {t("nav.about")}
+                </NavLink>
+
+                <NavLink variant="mobile" href={`/${lang}/team`} onClick={handleNavClick}>
+                  {t("nav.team")}
                 </NavLink>
 
                 <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>

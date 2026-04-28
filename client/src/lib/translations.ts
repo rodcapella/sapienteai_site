@@ -9,7 +9,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.portfolio": "Portfólio",
     "nav.blog": "Blog",
     "nav.faq": "FAQ",
-    "nav.contact": "Contacto",
+    "nav.contact": "Contato",
     "nav.legal": "Legal",
     "nav.language": "Idioma",
     "nav.fale": "Fale com Especialista",
@@ -18,7 +18,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "legal.trust": "Confiança",
     "legal.privacy": "Privacidade",
     "legal.terms": "Termos",
-    "legal.lgpd": "LGPD",
+    "legal.RGPD": "RGPD",
 
     // Footer
     "footer.home": "Início",
@@ -29,7 +29,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacy": "Privacidade",
     "footer.privacidade": "Privacidade",
     "footer.termos": "Termos",
-    "footer.lgpd": "LGPD",
+    "footer.RGPD": "RGPD",
     "footer.newsletter": "Newsletter",
     "footer.copyright": "© 2026 SAPIENTE.AI • Todos os direitos reservados",
 
@@ -45,7 +45,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "newsletter.error": "Erro ao subscrever.",
 
     // Contact Page
-    "contact.title": "Entre em Contacto",
+    "contact.title": "Entre em Contato",
     "contact.subtitle": "Estamos prontos para impulsionar o seu negócio com IA.",
     "contact.form.name": "Nome Completo",
     "contact.form.email": "E-mail Profissional",
@@ -73,7 +73,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "legal.trust": "Trust",
     "legal.privacy": "Privacy",
     "legal.terms": "Terms",
-    "legal.lgpd": "LGPD",
+    "legal.RGPD": "RGPD",
 
     // Footer
     "footer.home": "Home",
@@ -84,7 +84,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacy": "Privacy",
     "footer.privacidade": "Privacy",
     "footer.termos": "Terms",
-    "footer.lgpd": "LGPD",
+    "footer.RGPD": "RGPD",
     "footer.newsletter": "Newsletter",
     "footer.copyright": "© 2026 SAPIENTE.AI • All rights reserved",
 

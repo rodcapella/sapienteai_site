@@ -3,7 +3,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useLocation, Link } from "wouter";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
-import { Instagram, Linkedin, Music2 } from "lucide-react";
+import { InstagramIcon, LinkedIn, Facebook, Music2 } from "lucide-react";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -39,10 +39,11 @@ export default function Footer({ onContactClick }: FooterProps) {
   };
 
   const socialLinks = [
-    { name: "LinkedIn", icon: Linkedin, url: "#" },
-    { name: "Instagram", icon: Instagram, url: "#" },
-    { name: "TikTok", icon: Music2, url: "#" },
-    { name: "X", icon: XIcon, url: "#" },
+    { name: "LinkedIn", icon: LinkedIn, url: "https://www.linkedin.com/company/sapiente-ai/" },
+    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/sapienteai/" },
+    { name: "Facebook", icon: Facebook, url: "https://facebook.com/sapienteai" },
+    { name: "TikTok", icon: Music2, url: "https://www.tiktok.com/@sapienteai" },
+    { name: "X", icon: XIcon, url: "https://x.com/SapienteAI" },
   ];
 
   return (
@@ -114,8 +115,8 @@ export default function Footer({ onContactClick }: FooterProps) {
                 </NavLink>
               </li>
               <li>
-                <NavLink href={`/${lang}/lgpd`} variant="footer">
-                  {t("footer.lgpd")}
+                <NavLink href={`/${lang}/RGPD`} variant="footer">
+                  {t("footer.RGPD")}
                 </NavLink>
               </li>
             </ul>
@@ -152,7 +153,7 @@ export default function Footer({ onContactClick }: FooterProps) {
                   className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
                   aria-label={social.name}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
