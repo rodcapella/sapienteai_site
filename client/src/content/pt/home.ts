@@ -1,7 +1,7 @@
 export const homePT = {
   hero: {
     label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO REAL",
-    title: "Transformamos inteligência em resultados reais",
+    title: "Inteligência que impulsiona. Resultados que transformam.",
     subtitle:
        "A Sapiente.AI ajuda empresas a aumentar vendas, reduzir custos e escalar com automação inteligente",
     ctaPrimary: "Quero automatizar o meu negócio",
@@ -10,26 +10,31 @@ export const homePT = {
 
   brandPillars: {
     label: "Resultados reais",
-    title: "O impacto que geramos nos nossos clientes",
+    title: "Tecnologia aplicada diretamente ao crescimento do seu negócio",
     items: [
       {
-        title: "Maior produtividade",
-        description: "Automação de processos internos com IA",
+        title: "Inovação",
+        description: "Utilizamos IA para automatizar decisões, prever resultados e aumentar a eficiência em escala.",
         image: "",
       },
       {
-        title: "Menos tarefas manuais",
-        description: "Fluxos automatizados e integração de sistemas",
+        title: "Marketing orientado a aumento de receita",
+        description: "Estratégias focadas em gerar leads qualificados, dimuinuir custos operacionais e aumentar conversões.",
         image: "",
       },
       {
-        title: "Mais Conversões",
-        description: "Marketing orientado a dados e performance",
+        title: "Dados que geram ação",
+        description: "Dashboards e insights para decisões rápidas e estratégicas.",
         image: "",
       },
       {
-        title: "Escala sustentável",
-        description: "Tecnologia preparada para crescimento contínuo",
+        title: "Automação inteligente",
+        description: "Eliminamos tarefas repetitivas e criamos fluxos que trabalham por si 24/7.",
+        image: "",
+      },
+      {
+        title: "Tecnologia escalável",
+        description: "Soluções robustas preparadas para crescimento sem limitações técnicas.",
         image: "",
       },
     ],
@@ -37,27 +42,35 @@ export const homePT = {
 
   coreServices: {
     label: "Como ajudamos",
-    title: "5 formas de acelerar o seu negócio com IA",
+    title: "Onde a IA impacta diretamente o seu negócio",
     items: [
-        {
+      {
         title: "Aquisição de clientes",
-        description: "Estratégias de marketing e automação para gerar leads e aumentar vendas.",
+        description: "Geramos leads qualificados e aumentamos vendas com estratégias de marketing e automação orientadas a performance.",
       },
       {
         title: "Eficiência operacional",
-        description: "Eliminamos tarefas manuais e criamos processos inteligentes e escaláveis.",
+        description: "Reduzimos custos operacionais ao eliminar tarefas manuais e otimizar processos com IA.",
       },
       {
-        title: "Tecnologia e desenvolvimento",
-        description: "Aplicações e sistemas personalizados para suportar o crescimento do negócio.",
+        title: "Websites orientados à conversão",
+        description: "Criamos websites que não são apenas bonitos, mas que geram leads e vendas de forma consistente.",
       },
       {
-        title: "Análise de Dados",
-        description: "Transformamos dados em decisões estratégicas rápidas, claras e mensuráveis.",
+        title: "Análise de dados",
+        description: "Transformamos dados complexos em decisões claras que impactam diretamente o crescimento.",
       },
       {
-        title: "Criação de Chatbots",
-        description: "Atendimento inteligente 24/7 com experiência fluida e maior taxa de conversão.",
+        title: "Chatbots inteligentes",
+        description: "Automatize atendimento, qualificação e vendas com assistentes disponíveis 24/7.",
+      },
+      {
+        title: "Gestão de redes sociais",
+        description: "Conteúdo estratégico focado em crescimento de audiência, autoridade e geração de leads.",
+      }, 
+      {
+        title: "Conteúdo visual de alta performance",
+        description: "Produção de vídeos e imagens pensados para captar atenção e converter audiência em clientes.",
       },
     ],
   },
@@ -84,19 +97,19 @@ export const homePT = {
 
   smartAutomation: {
     label: "Automação Inteligente",
-    title: "Fluxos automatizados com IA para eficiência, velocidade e escala",
+    title: "Menos trabalho manual. Mais crescimento automático.",
     columns: [
       {
         title: "Automação",
-        points: ["Processos inteligentes", "Redução de tarefas manuais", "Eficiência operacional"],
+        points: ["Fluxos automáticos 24/7", "Redução de tarefas repetitivas", "Escala sem aumentar equipa"],
       },
       {
         title: "Processamento",
-        points: ["Leitura de documentos", "Organização automática", "Integração de dados"],
+        points: ["Leitura automática de documentos", "Organização inteligente de dados", "Integração entre sistemas"],
       },
       {
         title: "Resultados",
-        points: ["Mais produtividade", "Menos erros", "Decisões rápidas"],
+        points: ["Redução de custos", "Aumento de produtividade", "Decisões mais rápidas"],
       },
     ],
   },
@@ -109,27 +122,8 @@ export const homePT = {
       "Design responsivo",
       "UI/UX Mobile-first",
       "Resultados mensuráveis",
-      "SEO & conversão",
+      "SEO & GEO AEO conversão",
       "Funis integrados",
-    ],
-  },
-
-  webMobile: {
-    label: "Desenvolvimento Web e Mobile",
-    title: "Experiências nativas e multiplataforma de alta performance",
-    pillars: [
-      {
-        title: "Design UX/UI",
-        points: ["Foco no utilizador", "Prototipagem rápida", "Experiência intuitiva"],
-      },
-      {
-        title: "Desenvolvimento",
-        points: ["Front-end moderno", "Back-end robusto", "Performance escalável"],
-      },
-      {
-        title: "Performance",
-        points: ["Otimização", "Integração", "Automatização", "Publicação simplificada"],
-      },
     ],
   },
 
@@ -159,7 +153,26 @@ export const homePT = {
       },
     ],
   },
-
+  
+  beforeAfter: {
+    label: "Transformação",
+    title: "O impacto real da automação com IA",
+    items: [
+      {
+        before: "Processos manuais e lentos",
+        after: "Fluxos automáticos e escaláveis"
+      },
+      {
+        before: "Decisões baseadas em intuição",
+        after: "Decisões baseadas em dados"
+      },
+      {
+        before: "Equipa sobrecarregada",
+        after: "Operação eficiente e otimizada"
+      }
+    ]
+  },
+  
   applications: {
     label: "Aplicações da marca",
     title: "Execução visual coesa em todos os pontos de contato",
@@ -167,23 +180,24 @@ export const homePT = {
       { title: "Campanhas e criativos", image: "/brandbook/marketing-ia.jpeg" },
       { title: "Automação e operações", image: "/brandbook/automacao-inteligente.jpeg" },
       { title: "Websites e conversão", image: "/brandbook/websites-convertem.jpeg" },
-      { title: "Produto Web/Mobile", image: "/brandbook/web-mobile.jpeg" },
       { title: "Soluções integradas", image: "/brandbook/solucoes-completas.jpeg" },
     ],
   },
 
   keywords: [
+    "Conteúdo qualificado",
     "Mais reconhecimento",
     "Mais clientes",
     "Menos trabalho manual",
-    "Maior assertividade", 
+    "Maior assertividade",
+    "Menos custos operacionais",
     "Mais lucro",
     "Crescimento",
   ],
 
   finalCta: {
     title: "Descubra onde está a perder dinheiro no seu negócio",
-    subtitle: "Fazemos uma análise rápida e mostramos como pode crescer com IA.",
-    button: "Pedir diagnóstico gratuito"
+    subtitle: "Fazemos um diagnóstico gratuito e mostramos exatamente onde pode automatizar, reduzir custos e aumentar vendas.",
+    button: "Quero descobrir agora"
   }
 };
