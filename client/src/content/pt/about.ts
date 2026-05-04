@@ -2,38 +2,39 @@ export const aboutPT = {
   hero: {
     title: "A maioria das empresas não tem um problema de dados.",
     highlight: "Tem um problema de decisão.",
-    subtitle: "A Sapiente AI existe para resolver isso."
+    subtitle: "Transformamos dados em decisões que aumentam receita, reduzem custos e escalam o negócio com IA."
   },
 
   manifesto: [
-    "Nós não construímos dashboards.",
-    "Não construímos relatórios.",
-    "Não construímos complexidade disfarçada de inteligência.",
-    "",
-    "Construímos sistemas que pensam.",
-    "Sistemas que reduzem ruído.",
-    "Sistemas que fazem avançar."
+    "Ser uma referência em inovação tecnológica para PMEs, profissionais e criadores digitais no mercado lusófono, aplicando IA com rigor de engenharia e validação humana para gerar crescimento sustentável."
   ],
 
   shift: {
-    title: "Esta é a mudança.",
+    title: "A mudança.",
     items: [
       "De dados → para decisões.",
-      "De análise → para ação.",
-      "De ferramentas → para inteligência."
+      "De trabalho manual → para automação.",
+      "De esforço → para crescimento.",
+      "De tarefas repetitivas → para eficiência.",
+      "De ferramentas isoladas → para sistemas integrados.",
+      "De conteúdo inconsistente → para presença estratégica.",
+      "De leads dispersos → para aquisição previsível.",
+      "De tempo perdido → para foco no que importa.",
+      "De operação limitada → para escala.",
+      "De tentativa e erro → para decisões baseadas em dados."
     ]
   },
 
   problem: {
     title: "O Problema",
     text:
-      "As empresas estão afogadas em dados, mas continuam sem clareza. Mais ferramentas não resolveram. Tornaram pior."
+      "PMEs, profissionais e criadores estão sobrecarregados com ferramentas, dados e tarefas manuais. Mesmo assim, continuam sem clareza, sem tempo e sem resultados consistentes."
   },
 
   vision: {
     title: "A Visão",
     text:
-      "Uma nova camada de inteligência — que ajuda a decidir mais rápido, com confiança e precisão."
+      "Criamos soluções digitais que fazem negócios crescer, automatizam operações e transformam dados em decisões estratégicas, combinando expertise humana com IA avançada."
   },
 
   logo: {
