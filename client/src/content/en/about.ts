@@ -1,39 +1,40 @@
 export const aboutEN = {
   hero: {
-    title: "Most companies don’t have a data problem.",
+    title: "Most businesses don’t have a data problem.",
     highlight: "They have a decision problem.",
-    subtitle: "Sapiente AI exists to solve that."
+    subtitle: "We turn data into decisions that increase revenue, reduce costs, and scale your business with AI."
   },
 
   manifesto: [
-    "We don’t build dashboards.",
-    "We don’t build reports.",
-    "We don’t build complexity disguised as intelligence.",
-    "",
-    "We build systems that think.",
-    "Systems that reduce noise.",
-    "Systems that move things forward."
+    "To become a leading force in technological innovation for SMEs, professionals, and digital creators in the Portuguese-speaking market, applying AI with engineering rigor and human validation to drive sustainable growth."
   ],
 
   shift: {
-    title: "This is the shift.",
+    title: "The shift.",
     items: [
       "From data → to decisions.",
-      "From analysis → to action.",
-      "From tools → to intelligence."
+      "From manual work → to automation.",
+      "From effort → to growth.",
+      "From repetitive tasks → to efficiency.",
+      "From isolated tools → to integrated systems.",
+      "From inconsistent content → to strategic presence.",
+      "From scattered leads → to predictable acquisition.",
+      "From wasted time → to focus on what matters.",
+      "From limited operations → to scale.",
+      "From trial and error → to data-driven decisions."
     ]
   },
 
   problem: {
     title: "The Problem",
     text:
-      "Companies are drowning in data, yet still lack clarity. More tools didn’t solve it. They made it worse."
+      "SMEs, professionals, and creators are overwhelmed by tools, data, and manual tasks. Yet they still lack clarity, time, and consistent results."
   },
 
   vision: {
     title: "The Vision",
     text:
-      "A new layer of intelligence — one that helps you decide faster, with confidence and precision."
+      "We build digital solutions that drive growth, automate operations, and turn data into strategic decisions, combining human expertise with advanced AI."
   },
 
   logo: {
