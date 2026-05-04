@@ -16,8 +16,8 @@ import { termsContentEN } from "@/content/en/terms";
 import { trustContentPT } from "@/content/pt/trust";
 import { trustContentEN } from "@/content/en/trust";
 
-import { RGPDContentPT } from "@/content/pt/RGPD";
-import { gdprContentEN } from "@/content/en/RGPD";
+import { rgpdContentPT } from "@/content/pt/RGPD";
+import { gdprContentEN } from "@/content/en/GDPR";
 
 const contentMap = {
   home: {
@@ -45,7 +45,7 @@ const contentMap = {
     en: trustContentEN
   },
   RGPD: {
-    pt: RGPDContentPT,
+    pt: rgpdContentPT,
     en: gdprContentEN
   }
 } as const;
