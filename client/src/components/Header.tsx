@@ -1,13 +1,14 @@
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
+
+import ContactModal from "@/components/ContactModal";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useState, useEffect } from "react";
-import ContactModal from "@/components/ContactModal";
-import { Menu, X, ChevronDown, ShieldCheck } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Link, useLocation } from "wouter";
-import { NavLink } from "@/components/ui/navigation/NavLink";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
+import { NavLink } from "@/components/ui/navigation/NavLink";
+import { useTranslation } from "@/hooks/useTranslation";
+import { Icons } from "@/lib/icons";
+import { cn } from "@/lib/utils";
 
 interface HeaderProps {
   onContactClick?: () => void;
@@ -16,7 +17,6 @@ interface HeaderProps {
 export default function Header({ onContactClick }: HeaderProps) {
   const { t } = useTranslation();
   const [location] = useLocation();
-
   const lang = location.split("/")[1] || "pt";
 
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -25,9 +25,7 @@ export default function Header({ onContactClick }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -39,6 +37,7 @@ export default function Header({ onContactClick }: HeaderProps) {
     } else {
       setIsContactOpen(true);
     }
+
     setIsMobileMenuOpen(false);
   };
 
@@ -68,18 +67,9 @@ export default function Header({ onContactClick }: HeaderProps) {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
 
         <div className="container mx-auto px-4 sm:px-6">
-          <nav
-            className={cn(
-              "flex items-center justify-between transition-all duration-500",
-              scrolled ? "h-20 md:h-24" : "h-24 md:h-28",
-            )}
-          >
+          <nav className={cn("flex items-center justify-between transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
             <Link href={`/${lang}`} className="flex items-center gap-2 transition-all duration-500 hover:opacity-90">
-              <img
-                src="/logo_sapiente_transparente.png"
-                alt="SAPIENTE.AI"
-                className="h-[67px] md:h-[77px] lg:h-[84px] w-auto object-contain"
-              />
+              <img src="/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-[67px] md:h-[77px] lg:h-[84px] w-auto object-contain" />
             </Link>
 
             <div className="hidden lg:flex items-center gap-8 xl:gap-10">
@@ -87,6 +77,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <NavLink href={`/${lang}/about`}>{t("nav.about")}</NavLink>
               <NavLink href={`/${lang}/team`}>{t("nav.team")}</NavLink>
               <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
+              <NavLink href={`/${lang}/quiz-ai`}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
               <NavLink href={`/${lang}/contact`}>{t("nav.contact") || "Contact"}</NavLink>
 
               <div className="relative" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
@@ -98,7 +89,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                   )}
                 >
                   {t("nav.legal") || "Legal"}
-                  <ChevronDown className={cn("h-4 w-4 transition-transform duration-500", isLegalOpen && "rotate-180")} />
+                  <Icons.ChevronDown className={cn("h-4 w-4 transition-transform duration-500", isLegalOpen && "rotate-180")} />
                 </button>
 
                 <div
@@ -114,7 +105,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                         href={link.href}
                         className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-foreground"
                       >
-                        <ShieldCheck className="h-4 w-4 text-[var(--brand-cyan)]" />
+                        <Icons.ShieldCheck className="h-4 w-4 text-[var(--brand-cyan)]" />
                         {link.name}
                       </Link>
                     ))}
@@ -140,7 +131,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 aria-label="Toggle menu"
                 type="button"
               >
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMobileMenuOpen ? <Icons.X className="h-6 w-6" /> : <Icons.Menu className="h-6 w-6" />}
               </button>
             </div>
           </nav>
@@ -153,41 +144,19 @@ export default function Header({ onContactClick }: HeaderProps) {
               </div>
 
               <div className="flex flex-col space-y-6">
-                <NavLink variant="mobile" href={`/${lang}`} onClick={handleNavClick}>
-                  {t("nav.home")}
-                </NavLink>
-
-                <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>
-                  {t("nav.about")}
-                </NavLink>
-
-                <NavLink variant="mobile" href={`/${lang}/team`} onClick={handleNavClick}>
-                  {t("nav.team")}
-                </NavLink>
-
-                <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>
-                  {t("nav.faq")}
-                </NavLink>
-
-                <NavLink href={`/${lang}/quiz-ai`}>
-                  {lang === "pt" ? "Quiz IA" : "AI Quiz"}
-                </NavLink>
-
-                <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>
-                  {t("nav.contact") || "Contact"}
-                </NavLink>
+                <NavLink variant="mobile" href={`/${lang}`} onClick={handleNavClick}>{t("nav.home")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>{t("nav.about")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/team`} onClick={handleNavClick}>{t("nav.team")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>{t("nav.faq")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/quiz-ai`} onClick={handleNavClick}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>{t("nav.contact") || "Contact"}</NavLink>
 
                 <div className="space-y-4 border-y border-white/10 py-4">
                   <span className="text-xs font-black uppercase tracking-widest text-white/30">{t("nav.legal") || "Legal"}</span>
 
                   <div className="grid grid-cols-2 gap-4">
                     {legalLinks.map((link) => (
-                      <Link
-                        key={link.name}
-                        href={link.href}
-                        onClick={handleNavClick}
-                        className="text-lg font-bold text-white/70 transition-colors hover:text-[var(--brand-cyan)]"
-                      >
+                      <Link key={link.name} href={link.href} onClick={handleNavClick} className="text-lg font-bold text-white/70 transition-colors hover:text-[var(--brand-cyan)]">
                         {link.name}
                       </Link>
                     ))}
