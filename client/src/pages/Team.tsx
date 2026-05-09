@@ -15,7 +15,7 @@ const team = [
     role: "Founder & Tech Lead",
     bio: "Building intelligent systems focused on clarity, speed, and decision-making.",
     stack: ["AI", "Automation", "Data Analytics Engineer", "Product Strategy"],
-    image: "/media/photos/tati.jpg",
+    image: "/media/photos/rodrigo_why_me.jpg",
     link: "https://www.rpovoadata.tech",
   },
   {
