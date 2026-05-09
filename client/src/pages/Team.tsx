@@ -1,16 +1,14 @@
-import { Icons } from "@/lib/icons";
 import { useEffect, useRef } from "react";
-import { useLocation, Link } from "wouter";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { Link, useLocation } from "wouter";
 
-import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from "@/components/SEOHead";
-import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { useTranslation } from '@/hooks/useTranslation';
+import { Section } from "@/components/ui/section/Section";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getContent } from "@/lib/content";
+import { Icons } from "@/lib/icons";
 
-<<<<<<< HEAD
-// TYPE
 type Member = {
   name: string;
   role: string;
@@ -21,49 +19,26 @@ type Member = {
   image: string;
   link: string;
 };
-=======
-const team = [
-  {
-    name: "Rodrigo Póvoa",
-    role: "Founder & Tech Lead",
-    bio: "Building intelligent systems focused on clarity, speed, and decision-making.",
-    stack: ["AI", "Automation", "Data Analytics Engineer", "Product Strategy"],
-    image: "/media/photos/rodrigo_why_me.webp",
-    link: "https://www.rpovoadata.tech",
-  },
-  {
-    name: "Tatiane Gomes",
-    role: "Marketing",
-    bio: "Turning complex ideas into scalable and efficient systems.",
-    stack: ["Marketing", "SEO", "GEO", "AEO", "AI"],
-    image: "/media/photos/member.jpg",
-    link: "#",
-  },
-];
->>>>>>> a6251e932a7073eaf3f5f9565d8d4be55d5d5d58
 
-// CARD
 function TeamCard({ member }: { member: Member }) {
-  const ref = useRef<HTMLDivElement>(null);
-
+  const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-
   const springX = useSpring(x, { stiffness: 120, damping: 10 });
   const springY = useSpring(y, { stiffness: 120, damping: 10 });
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (event: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
 
-    const dx = e.clientX - (rect.left + rect.width / 2);
-    const dy = e.clientY - (rect.top + rect.height / 2);
+    const dx = event.clientX - (rect.left + rect.width / 2);
+    const dy = event.clientY - (rect.top + rect.height / 2);
 
     x.set(dx * 0.08);
     y.set(dy * 0.08);
 
-    ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    ref.current.style.setProperty("--x", `${event.clientX - rect.left}px`);
+    ref.current.style.setProperty("--y", `${event.clientY - rect.top}px`);
   };
 
   const handleLeave = () => {
@@ -82,73 +57,41 @@ function TeamCard({ member }: { member: Member }) {
       style={{ x: springX, y: springY }}
       className="group relative w-full md:w-[420px]"
     >
-      {/* GLOW */}
       <span
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition"
+        className="absolute inset-0 rounded-2xl opacity-0 transition group-hover:opacity-100"
         style={{
-          background: `
-            radial-gradient(
-              300px circle at var(--x) var(--y),
-              rgba(34,211,238,0.15),
-              transparent 40%
-            )
-          `
+          background: "radial-gradient(300px circle at var(--x) var(--y), rgba(34,211,238,0.15), transparent 40%)",
         }}
       />
 
-      {/* CARD */}
-      <div className="relative bg-white/80 backdrop-blur-xl border border-foreground/5 rounded-2xl p-10 text-center transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
-
-        {/* IMAGE */}
-        <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary/10">
-          <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+      <div className="relative rounded-2xl border border-foreground/5 bg-white/80 p-10 text-center backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
+        <div className="mx-auto mb-8 h-32 w-32 overflow-hidden rounded-full border-4 border-primary/10">
+          <img src={member.image} alt={member.name} className="h-full w-full object-cover" />
         </div>
 
-        <h3 className="text-2xl font-black mb-2 text-foreground tracking-tight">
-          {member.name}
-        </h3>
+        <h3 className="mb-2 text-2xl font-black tracking-tight text-foreground">{member.name}</h3>
+        <p className="mb-6 text-lg font-black uppercase tracking-widest text-primary">{member.role}</p>
+        <p className="mb-4 font-medium leading-relaxed text-foreground/60">{member.bio}</p>
 
-        <p className="text-lg text-primary font-black mb-6 uppercase tracking-widest">
-          {member.role}
-        </p>
+        {member.story && <p className="mb-6 text-sm leading-relaxed text-foreground/50">{member.story}</p>}
 
-        <p className="text-foreground/60 mb-4 leading-relaxed font-medium">
-          {member.bio}
-        </p>
-
-        {/* STORY */}
-        {member.story && (
-          <p className="text-sm text-foreground/50 mb-6 leading-relaxed">
-            {member.story}
-          </p>
-        )}
-
-        {/* BADGES */}
         {member.badges && (
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
-            {member.badges.map((badge, i) => (
-              <span
-                key={i}
-                className="text-[10px] px-3 py-1 rounded-full bg-foreground/5 text-foreground/70 font-black uppercase tracking-widest"
-              >
+          <div className="mb-6 flex flex-wrap justify-center gap-2">
+            {member.badges.map((badge) => (
+              <span key={badge} className="rounded-full bg-foreground/5 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-foreground/70">
                 {badge}
               </span>
             ))}
           </div>
         )}
 
-        {/* STACK */}
         <div className="flex flex-wrap justify-center gap-3">
-          {member.stack.map((tech, idx) => (
-            <span
-              key={idx}
-              className="text-xs px-4 py-2 rounded-full bg-primary/5 text-primary font-black uppercase tracking-widest hover:bg-primary/10 transition"
-            >
+          {member.stack.map((tech) => (
+            <span key={tech} className="rounded-full bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-widest text-primary transition hover:bg-primary/10">
               {tech}
             </span>
           ))}
         </div>
-
       </div>
     </motion.a>
   );
@@ -158,7 +101,6 @@ export default function Team() {
   const [location] = useLocation();
   const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
-
   const content = getContent("team", lang);
   const members: Member[] = content.members;
 
@@ -167,47 +109,42 @@ export default function Team() {
       title: `${content.hero.title} - SAPIENTE.AI`,
       description: content.hero.subtitle,
       url: `https://sapienteai.com/${lang}/team`,
-      type: "website"
+      type: "website",
     });
   }, [lang, content]);
 
   return (
     <div className="flex flex-col">
-      {/* HERO */}
-      <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
-        
-        <div className="container max-w-5xl text-center px-6">
+      <div className="relative flex h-[400px] w-full items-center justify-center overflow-hidden bg-modern-gradient md:h-[600px]">
+        <div className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
+
+        <div className="container max-w-5xl px-6 text-center">
           <Reveal>
-            <Link 
-              href={`/${lang}`}
-              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity"
-            >
+            <Link href={`/${lang}`} className="mb-8 inline-flex items-center gap-2 font-black uppercase tracking-widest text-primary transition-opacity hover:opacity-70">
               <Icons.ArrowLeft className="h-4 w-4" />
-              {t('nav.home')}
+              {t("nav.home")}
             </Link>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
+            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-foreground md:text-8xl">
               {content.hero.title}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
+            <p className="text-xl font-black uppercase tracking-[0.2em] text-foreground/60 drop-shadow-md md:text-3xl">
               {content.hero.subtitle}
             </p>
           </Reveal>
         </div>
       </div>
 
-      {/* TEAM */}
       <Section className="bg-ice py-24 md:py-48">
         <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-stretch justify-center gap-10">
-            {members.map((member, i) => (
-              <Reveal key={i} delay={i * 200}>
+          <div className="mx-auto flex max-w-6xl flex-col items-stretch justify-center gap-10 md:flex-row">
+            {members.map((member) => (
+              <Reveal key={member.name}>
                 <TeamCard member={member} />
               </Reveal>
             ))}
