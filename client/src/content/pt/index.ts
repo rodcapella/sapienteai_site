@@ -10,6 +10,7 @@ import { portfolioPT } from "./portfolio";
 import { privacy as privacyPT } from "./privacy";
 import { termsContentPT } from "./terms";
 import { trustContentPT } from "./trust";
+import { iaGenerativaPolicyPT } from "./iaGenerativaPolicy";
 
 export {
   faqPT as faq,
@@ -23,5 +24,6 @@ export {
   portfolioPT as portfolio,
   privacyPT as privacy,
   termsContentPT as terms,
-  trustContentPT as trust
+  trustContentPT as trust,
+  iaGenerativaPolicyPT as iaGenerativaPolicy
 };

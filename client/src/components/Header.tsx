@@ -51,6 +51,7 @@ export default function Header({ onContactClick }: HeaderProps) {
     { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
     { name: t("legal.terms") || "Terms", href: `/${lang}/terms` },
     { name: t("legal.rgpd") || "RGPD", href: `/${lang}/rgpd` },
+    { name: t("legal.generative-ai-policy") || "GenerativeAIPolicy", href: `/${lang}/generative-ai-policy` },
   ];
 
   return (
