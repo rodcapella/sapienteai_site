@@ -9,6 +9,19 @@ import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from '@/hooks/useTranslation';
 
+<<<<<<< HEAD
+// TYPE
+type Member = {
+  name: string;
+  role: string;
+  bio: string;
+  story?: string;
+  stack: string[];
+  badges?: string[];
+  image: string;
+  link: string;
+};
+=======
 const team = [
   {
     name: "Rodrigo Póvoa",
@@ -27,8 +40,7 @@ const team = [
     link: "#",
   },
 ];
-
-type Member = typeof team[number];
+>>>>>>> a6251e932a7073eaf3f5f9565d8d4be55d5d5d58
 
 // CARD
 function TeamCard({ member }: { member: Member }) {
@@ -70,12 +82,9 @@ function TeamCard({ member }: { member: Member }) {
       style={{ x: springX, y: springY }}
       className="group relative w-full md:w-[420px]"
     >
-      {/* 🌌 GLOW */}
+      {/* GLOW */}
       <span
-        className="
-          absolute inset-0 rounded-2xl opacity-0
-          group-hover:opacity-100 transition
-        "
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition"
         style={{
           background: `
             radial-gradient(
@@ -88,14 +97,7 @@ function TeamCard({ member }: { member: Member }) {
       />
 
       {/* CARD */}
-      <div className="
-        relative bg-white/80 backdrop-blur-xl
-        border border-foreground/5
-        rounded-2xl p-10 text-center
-        transition-all duration-300
-        group-hover:-translate-y-2
-        group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)]
-      ">
+      <div className="relative bg-white/80 backdrop-blur-xl border border-foreground/5 rounded-2xl p-10 text-center transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)]">
 
         {/* IMAGE */}
         <div className="w-32 h-32 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary/10">
@@ -110,21 +112,37 @@ function TeamCard({ member }: { member: Member }) {
           {member.role}
         </p>
 
-        <p className="text-foreground/60 mb-8 leading-relaxed font-medium">
+        <p className="text-foreground/60 mb-4 leading-relaxed font-medium">
           {member.bio}
         </p>
+
+        {/* STORY */}
+        {member.story && (
+          <p className="text-sm text-foreground/50 mb-6 leading-relaxed">
+            {member.story}
+          </p>
+        )}
+
+        {/* BADGES */}
+        {member.badges && (
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
+            {member.badges.map((badge, i) => (
+              <span
+                key={i}
+                className="text-[10px] px-3 py-1 rounded-full bg-foreground/5 text-foreground/70 font-black uppercase tracking-widest"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
+        )}
 
         {/* STACK */}
         <div className="flex flex-wrap justify-center gap-3">
           {member.stack.map((tech, idx) => (
             <span
               key={idx}
-              className="
-                text-xs px-4 py-2 rounded-full
-                bg-primary/5 text-primary font-black uppercase tracking-widest
-                hover:bg-primary/10
-                transition
-              "
+              className="text-xs px-4 py-2 rounded-full bg-primary/5 text-primary font-black uppercase tracking-widest hover:bg-primary/10 transition"
             >
               {tech}
             </span>
@@ -142,11 +160,12 @@ export default function Team() {
   const lang = location.split("/")[1] || "pt";
 
   const content = getContent("team", lang);
+  const members: Member[] = content.members;
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.title} - SAPIENTE.AI`,
-      description: content.subtitle,
+      title: `${content.hero.title} - SAPIENTE.AI`,
+      description: content.hero.subtitle,
       url: `https://sapienteai.com/${lang}/team`,
       type: "website"
     });
@@ -154,9 +173,8 @@ export default function Team() {
 
   return (
     <div className="flex flex-col">
-      {/* HERO BANNER - Modern Gradient */}
+      {/* HERO */}
       <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
-        {/* DECORATIVE ELEMENTS */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
         
         <div className="container max-w-5xl text-center px-6">
@@ -172,23 +190,23 @@ export default function Team() {
 
           <Reveal delay={100}>
             <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
-              {content.title}
+              {content.hero.title}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
             <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
-              {content.subtitle}
+              {content.hero.subtitle}
             </p>
           </Reveal>
         </div>
       </div>
 
-      {/* TEAM - Solid Ice White */}
+      {/* TEAM */}
       <Section className="bg-ice py-24 md:py-48">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-stretch justify-center gap-10">
-            {team.map((member, i) => (
+            {members.map((member, i) => (
               <Reveal key={i} delay={i * 200}>
                 <TeamCard member={member} />
               </Reveal>
