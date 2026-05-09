@@ -4,8 +4,8 @@ import { homeEN } from "@/content/en/home";
 import { aboutPT } from "@/content/pt/about";
 import { aboutEN } from "@/content/en/about";
 
-import { faqPT } from "@/content/pt/FAQ";
-import { faqEN } from "@/content/en/FAQ";
+import { faqPT } from "@/content/pt/faq";
+import { faqEN } from "@/content/en/faq";
 
 import { privacyPT } from "@/content/pt/privacy";
 import { privacyEN } from "@/content/en/privacy";
@@ -16,45 +16,45 @@ import { termsContentEN } from "@/content/en/terms";
 import { trustContentPT } from "@/content/pt/trust";
 import { trustContentEN } from "@/content/en/trust";
 
-import { rgpdContentPT } from "@/content/pt/RGPD";
-import { gdprContentEN } from "@/content/en/GDPR";
+import { rgpdContentPT } from "@/content/pt/rgpd";
+import { gdprContentEN } from "@/content/en/gdpr";
 
 const contentMap = {
   home: {
     pt: homePT,
-    en: homeEN
+    en: homeEN,
   },
   about: {
     pt: aboutPT,
-    en: aboutEN
+    en: aboutEN,
   },
   faq: {
     pt: faqPT,
-    en: faqEN
+    en: faqEN,
   },
   privacy: {
     pt: privacyPT,
-    en: privacyEN
+    en: privacyEN,
   },
   terms: {
     pt: termsContentPT,
-    en: termsContentEN
+    en: termsContentEN,
   },
   trust: {
     pt: trustContentPT,
-    en: trustContentEN
+    en: trustContentEN,
   },
   RGPD: {
     pt: rgpdContentPT,
-    en: gdprContentEN
-  }
+    en: gdprContentEN,
+  },
+  rgpd: {
+    pt: rgpdContentPT,
+    en: gdprContentEN,
+  },
 } as const;
 
-export function getContent(
-  page: keyof typeof contentMap,
-  lang: string
-) {
+export function getContent(page: keyof typeof contentMap, lang: string) {
   const safeLang = lang === "en" ? "en" : "pt";
-
-  return contentMap[page][safeLang as "pt" | "en"];
+  return contentMap[page][safeLang];
 }
