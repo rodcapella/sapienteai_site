@@ -1,6 +1,6 @@
 import { useLocation } from 'wouter';
 import { useTranslation } from '@/hooks/useTranslation';
-import { ChevronRight } from 'lucide-react';
+import { Icons } from '@/lib/icons';
 
 interface BreadcrumbItem {
   label: string;
@@ -40,7 +40,7 @@ export default function Breadcrumb() {
           </a>
           {items.map((item, index) => (
             <div key={index} className="flex items-center gap-2">
-              <ChevronRight className="h-4 w-4 text-slate-400" />
+              <Icons.ChevronRight className="h-4 w-4 text-slate-400" />
               {index === items.length - 1 ? (
                 <span className="text-slate-900 font-medium">{item.label}</span>
               ) : (
