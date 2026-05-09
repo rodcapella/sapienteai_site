@@ -1,85 +1,85 @@
-export const faqEN = {
+export const faqPT = {
   label: "FAQ",
-  title: "Frequently Asked Questions",
+  title: "Perguntas Frequentes",
   subtitle:
-    "Clear answers on how we use AI to help businesses grow, automate, and increase results.",
+    "Respostas claras sobre como usamos IA para ajudar empresas a crescer, automatizar processos e aumentar resultados.",
 
   cta: {
-    title: "Still have questions?",
-    description: "Talk directly with specialists applying AI in real-world businesses every day.",
-    button: "Talk to a specialist"
+    title: "Ainda tem dúvidas?",
+    description: "Fale diretamente com especialistas que aplicam IA em negócios reais todos os dias.",
+    button: "Falar com um especialista",
   },
 
   items: [
     {
-      question: "What exactly does Sapiente AI do?",
+      question: "O que faz exatamente a Sapiente.AI?",
       answer:
-        "We help SMEs, professionals, and creators grow using applied artificial intelligence. We work across customer acquisition, process automation, digital marketing, content creation, and conversion-focused website development."
+        "Ajudamos pequenas e médias empresas, profissionais e criadores a crescer com inteligência artificial aplicada. Atuamos em captação de clientes, automação de processos, marketing digital, criação de conteúdo e desenvolvimento de websites orientados à conversão.",
     },
     {
-      question: "What kind of results can I expect?",
+      question: "Que tipo de resultados posso esperar?",
       answer:
-        "Our clients typically increase qualified leads, improve conversion rates, and reduce operational costs through automation and data-driven decision-making."
+        "Os resultados variam conforme o ponto de partida, mas normalmente trabalhamos para aumentar leads qualificados, melhorar conversões e reduzir custos operacionais com automação e decisões baseadas em dados.",
     },
     {
-      question: "How long does it take to see results?",
+      question: "Quanto tempo demora para ver resultados?",
       answer:
-        "Initial impact can appear within weeks. Most marketing, content, and automation initiatives start delivering measurable results within 3 to 6 months."
+        "Alguns impactos podem surgir nas primeiras semanas. Em marketing, conteúdo e automação, os resultados mais consistentes costumam aparecer entre 3 e 6 meses.",
     },
     {
-      question: "Will AI replace my job or team?",
+      question: "A IA vai substituir a minha equipa?",
       answer:
-        "No. AI acts as a force multiplier. It automates repetitive tasks and increases productivity, allowing you and your team to focus on high-value activities."
+        "Não. A IA funciona como acelerador de produtividade. Automatiza tarefas repetitivas e permite que a equipa se concentre em atividades de maior valor.",
     },
     {
-      question: "Do you handle marketing and social media management?",
+      question: "Também fazem marketing e gestão de redes sociais?",
       answer:
-        "Yes. We create and manage strategies across Instagram, Facebook, LinkedIn, Pinterest, and TikTok, focused on audience growth, authority building, and lead generation."
+        "Sim. Criamos e gerimos estratégias para Instagram, Facebook, LinkedIn, Pinterest e TikTok, com foco em crescimento de audiência, autoridade e geração de leads.",
     },
     {
-      question: "Do you also create content and videos?",
+      question: "Criam conteúdos, imagens e vídeos?",
       answer:
-        "Yes. We produce high-performance visual content, including videos, images, and creatives designed to capture attention and convert audiences into customers."
+        "Sim. Produzimos conteúdos visuais, vídeos e peças criativas pensadas para captar atenção, comunicar melhor e converter público em clientes.",
     },
     {
-      question: "Do you build websites or landing pages?",
+      question: "Desenvolvem websites ou landing pages?",
       answer:
-        "Yes. We develop conversion-focused websites and landing pages fully integrated with funnels, automation, and data tracking."
+        "Sim. Desenvolvemos websites e landing pages focados em conversão, integrados com funis, automações e acompanhamento de dados.",
     },
     {
-      question: "Is it possible to automate customer support and sales?",
+      question: "É possível automatizar atendimento e vendas?",
       answer:
-        "Yes. We implement intelligent chatbots that automate support, lead qualification, and even sales processes, operating 24/7."
+        "Sim. Implementamos chatbots e fluxos inteligentes para atendimento, qualificação de leads e apoio ao processo comercial, disponíveis 24/7.",
     },
     {
-      question: "Do you work with SEO, GEO, and AEO?",
+      question: "Trabalham com SEO, GEO e AEO?",
       answer:
-        "Yes. We optimize your digital presence for traditional search engines (SEO), location-based discovery (GEO), and AI-powered answer engines (AEO), ensuring higher visibility and qualified demand capture."
+        "Sim. Otimizamos a presença digital para motores de busca tradicionais, pesquisa geolocalizada e motores de resposta com IA, aumentando a visibilidade e a captura de procura qualificada.",
     },
     {
-      question: "Can you integrate with my existing tools and systems?",
+      question: "Conseguem integrar com ferramentas que já usamos?",
       answer:
-        "Yes. We integrate with CRMs, marketing platforms, APIs, and existing systems to ensure a seamless and efficient operation."
+        "Sim. Integramos CRMs, plataformas de marketing, APIs e sistemas existentes para tornar a operação mais simples, eficiente e conectada.",
     },
     {
-      question: "What is the investment required?",
+      question: "Qual é o investimento necessário?",
       answer:
-        "It depends on your goals and project complexity, but in most cases it’s significantly more accessible than expected, especially considering the direct impact on growth and efficiency. The best approach is to evaluate your specific case."
+        "Depende dos objetivos, complexidade e alcance do projeto. A melhor abordagem é avaliar o caso concreto e propor uma solução proporcional ao impacto esperado.",
     },
     {
-      question: "How does ongoing support work?",
+      question: "Como funciona o suporte contínuo?",
       answer:
-        "We operate on a continuous model with monitoring, optimization, and evolution of the solutions to ensure consistent long-term results."
+        "Trabalhamos com acompanhamento, monitorização, otimização e evolução contínua das soluções para garantir consistência e melhoria ao longo do tempo.",
     },
     {
-      question: "Who is this service best suited for?",
+      question: "Para quem este serviço é mais indicado?",
       answer:
-        "SMEs, professionals, and creators who want to grow, automate processes, and increase results using technology."
+        "Para empresas, profissionais e criadores que querem crescer, automatizar processos, ganhar eficiência e usar tecnologia de forma prática.",
     },
     {
-      question: "When is it not the right fit?",
+      question: "Quando pode não ser a melhor solução?",
       answer:
-        "If the business is not yet focused on growth or scaling, the impact may be limited. We deliver the best results for those ready to evolve and expand."
-    }
-  ]
+        "Se o negócio ainda não está preparado para crescer, medir resultados ou implementar mudanças, o impacto pode ser limitado. Entregamos mais valor quando existe vontade real de evoluir.",
+    },
+  ],
 };
