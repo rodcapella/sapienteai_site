@@ -12,12 +12,12 @@ import { termsContentPT } from "./terms";
 import { trustContentPT } from "./trust";
 
 export {
-  faqPT as FAQ,
+  faqPT as faq,
   aboutPT as about,
   blogPT as blog,
   contactPT as contact,
   homePT as home,
-  rgpdContentPT as RGPD,
+  rgpdContentPT as rgpd,
   newsPT as news,
   notFoundPT as notFound,
   portfolioPT as portfolio,

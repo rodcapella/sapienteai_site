@@ -89,6 +89,11 @@ export default function Footer({ onContactClick }: FooterProps) {
                 </NavLink>
               </li>
               <li>
+              <NavLink href={`/${lang}/quiz-ai`} variant="footer">
+                {lang === "pt" ? "Quiz IA" : "AI Quiz"}
+              </NavLink>
+            </li>
+              <li>
                 <NavLink href={`/${lang}/contact`} variant="footer">
                   {t("nav.contact") || "Contact"}
                 </NavLink>
@@ -115,8 +120,8 @@ export default function Footer({ onContactClick }: FooterProps) {
                 </NavLink>
               </li>
               <li>
-                <NavLink href={`/${lang}/RGPD`} variant="footer">
-                  {t("footer.RGPD")}
+                <NavLink href={`/${lang}/rgpd`} variant="footer">
+                  {t("footer.rgpd")}
                 </NavLink>
               </li>
             </ul>

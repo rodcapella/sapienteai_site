@@ -180,6 +180,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     ].join(" ");
   };
 
+  const handleOpenChange: (open: boolean) => void = (open) => {
+    if (!open) closeModal();
+  };
+
   const statusNode = useMemo(() => {
     if (submitState === "idle") return null;
 
@@ -228,12 +232,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   }, [feedbackMessage, submitState]);
 
   return (
-    <Dialog
-      open={isOpen}
-      onOpenChange={(open) => {
-        if (!open) closeModal();
-      }}
-    >
+      <Dialog
+        open={isOpen}
+        onOpenChange={(open) => {
+          if (!open) closeModal();
+        }}
+      >
       <DialogContent
         showCloseButton={false}
         className="w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[rgba(0,209,255,0.5)] bg-[linear-gradient(145deg,rgba(5,8,27,0.85),rgba(26,31,46,0.8))] p-0 shadow-[0_0_0_1px_rgba(0,209,255,0.32),0_0_60px_rgba(0,209,255,0.32),0_24px_90px_rgba(5,8,27,0.65)] backdrop-blur-2xl sm:max-w-2xl"

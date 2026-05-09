@@ -365,6 +365,55 @@ export default function Home() {
         </Section>
       )}
 
+      <Section className="relative overflow-hidden bg-[#05081B] tech-grid scanlines py-24 md:py-32">
+        <TechBackdrop intensity="medium" />
+        <TechParticleField className="opacity-45" />
+
+        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
+          <Reveal>
+            <div className="glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-cyan)]">
+              <Icons.Brain className="h-4 w-4" />
+              {isPT ? "Quiz interativo" : "Interactive quiz"}
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <h2 className="mt-8 font-heading text-4xl font-black tracking-tight text-[var(--brand-offwhite)] sm:text-5xl md:text-6xl">
+              {isPT
+                ? "Quanto sabe sobre Inteligência Artificial?"
+                : "How much do you know about Artificial Intelligence?"}
+            </h2>
+          </Reveal>
+
+          <Reveal delay={180}>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-[var(--brand-offwhite)]/78 sm:text-xl">
+              {isPT
+                ? "Faça o nosso quiz rápido e descubra o seu nível de conhecimento sobre IA, automação, marketing inteligente e produtividade."
+                : "Take our quick quiz and discover your knowledge level about AI, automation, smart marketing and productivity."}
+            </p>
+          </Reveal>
+
+          <Reveal delay={240}>
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="mt-10 inline-block"
+            >
+              <PremiumButton
+                variant="primary"
+                size="lg"
+                className="neon-button"
+                onClick={() => {
+                  window.location.href = `/${lang}/quiz-ai`;
+                }}
+              >
+                {isPT ? "Fazer o Quiz IA" : "Take the AI Quiz"}
+              </PremiumButton>
+            </motion.div>
+          </Reveal>
+        </div>
+      </Section>
+
       <Section className="relative overflow-hidden bg-ice py-24 text-center md:py-36 tech-grid">
         <TechBackdrop intensity="soft" />
         <div className="relative mx-auto max-w-5xl px-6">

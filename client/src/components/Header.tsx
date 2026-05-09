@@ -51,7 +51,7 @@ export default function Header({ onContactClick }: HeaderProps) {
     { name: t("legal.trust") || "Trust", href: `/${lang}/trust` },
     { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
     { name: t("legal.terms") || "Terms", href: `/${lang}/terms` },
-    { name: t("legal.RGPD") || "RGPD", href: `/${lang}/RGPD` },
+    { name: t("legal.rgpd") || "RGPD", href: `/${lang}/rgpd` },
   ];
 
   return (
@@ -167,6 +167,10 @@ export default function Header({ onContactClick }: HeaderProps) {
 
                 <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>
                   {t("nav.faq")}
+                </NavLink>
+
+                <NavLink href={`/${lang}/quiz-ai`}>
+                  {lang === "pt" ? "Quiz IA" : "AI Quiz"}
                 </NavLink>
 
                 <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>

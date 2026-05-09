@@ -107,6 +107,10 @@ export default function App() {
             {(params) => <Contact lang={params.lang} />}
           </Route>
 
+          <Route path="/:lang/quiz-ia"> 
+            {(params) => <QuizAI lang={params.lang} />}
+          </Route>
+
           <Route path="/:lang/blog/:slug">
             {(params) => (
               <ArticleDetail 
