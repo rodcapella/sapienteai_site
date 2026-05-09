@@ -5,7 +5,7 @@ export const homeEN = {
     subtitle:
       "Sapiente.AI helps companies increase revenue, reduce costs, and scale operations through intelligent automation.",
     ctaPrimary: "Automate my business",
-    ctaSecondary: "See how it works"
+    ctaSecondary: "See how it works",
   },
 
   brandPillars: {
@@ -67,7 +67,7 @@ export const homeEN = {
       {
         title: "Social media management",
         description: "Strategic content designed to grow audience, build authority, and generate leads.",
-      }, 
+      },
       {
         title: "High-performance visual content",
         description: "We produce videos and images designed to capture attention and convert audiences into customers.",
@@ -127,6 +127,25 @@ export const homeEN = {
     ],
   },
 
+  webMobile: {
+    label: "Web & Mobile Development",
+    title: "Custom digital products built to scale",
+    pillars: [
+      {
+        title: "Strategy first",
+        points: ["Product discovery", "User journeys", "Conversion-oriented architecture"],
+      },
+      {
+        title: "Smart development",
+        points: ["Web apps", "Mobile experiences", "API and system integrations"],
+      },
+      {
+        title: "Growth-ready delivery",
+        points: ["Performance optimization", "Analytics setup", "Scalable foundations"],
+      },
+    ],
+  },
+
   brandPersonality: {
     label: "Brand personality",
     title: "A technology partner for performance and growth",
@@ -160,17 +179,17 @@ export const homeEN = {
     items: [
       {
         before: "Manual and slow processes",
-        after: "Automated and scalable workflows"
+        after: "Automated and scalable workflows",
       },
       {
         before: "Decisions based on intuition",
-        after: "Data-driven decision making"
+        after: "Data-driven decision making",
       },
       {
         before: "Overloaded teams",
-        after: "Efficient and optimized operations"
-      }
-    ]
+        after: "Efficient and optimized operations",
+      },
+    ],
   },
 
   applications: {
@@ -198,6 +217,8 @@ export const homeEN = {
   finalCta: {
     title: "You’re losing money every day — you just don’t see where",
     subtitle: "We run a free diagnosis and show exactly where you can automate, reduce costs, and increase revenue.",
-    button: "Get my free diagnosis"
-  }
+    phone: "+351 913 327 944",
+    website: "www.sapienteai.com",
+    button: "Get my free diagnosis",
+  },
 };
