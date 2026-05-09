@@ -1,9 +1,10 @@
 import { useState, type SVGProps } from "react";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useLocation, Link } from "wouter";
+import { Link, useLocation } from "wouter";
+
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
-import { Instagram, Linkedin, Facebook, Music2 } from "lucide-react";
+import { useTranslation } from "@/hooks/useTranslation";
+import { Icons } from "@/lib/icons";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -13,11 +14,7 @@ function XIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-interface FooterProps {
-  onContactClick?: () => void;
-}
-
-export default function Footer({ onContactClick }: FooterProps) {
+export default function Footer() {
   const [email, setEmail] = useState("");
   const [subscribeStatus, setSubscribeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -39,10 +36,10 @@ export default function Footer({ onContactClick }: FooterProps) {
   };
 
   const socialLinks = [
-    { name: "LinkedIn", icon: Linkedin, url: "https://www.linkedin.com/company/sapiente-ai/" },
-    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/sapienteai/" },
-    { name: "Facebook", icon: Facebook, url: "https://facebook.com/sapienteai" },
-    { name: "TikTok", icon: Music2, url: "https://www.tiktok.com/@sapienteai" },
+    { name: "LinkedIn", icon: Icons.Linkedin, url: "https://www.linkedin.com/company/sapiente-ai/" },
+    { name: "Instagram", icon: Icons.Instagram, url: "https://www.instagram.com/sapienteai/" },
+    { name: "Facebook", icon: Icons.Facebook, url: "https://facebook.com/sapienteai" },
+    { name: "TikTok", icon: Icons.Music2, url: "https://www.tiktok.com/@sapienteai" },
     { name: "X", icon: XIcon, url: "https://x.com/SapienteAI" },
   ];
 
@@ -55,11 +52,7 @@ export default function Footer({ onContactClick }: FooterProps) {
         <div className="mb-20 grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-4">
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link href={`/${lang}`} className="group mb-8 inline-block">
-              <img
-                src="/logo_sapiente_transparente.png"
-                alt="SAPIENTE.AI"
-                className="h-24 md:h-[120px] w-auto object-contain transition-transform duration-500 group-hover:scale-105"
-              />
+              <img src="/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-24 md:h-[120px] w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
             </Link>
 
             <p className="max-w-sm text-lg leading-relaxed text-white/65">{t("footer.description")}</p>
@@ -68,62 +61,22 @@ export default function Footer({ onContactClick }: FooterProps) {
           <div>
             <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.navigation")}</h4>
             <ul className="space-y-5">
-              <li>
-                <NavLink href={`/${lang}`} variant="footer">
-                  {t("nav.home")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink href={`/${lang}/about`} variant="footer">
-                  {t("nav.about")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink href={`/${lang}/team`} variant="footer">
-                  {t("nav.team")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink href={`/${lang}/faq`} variant="footer">
-                  {t("nav.faq")}
-                </NavLink>
-              </li>
-              <li>
-              <NavLink href={`/${lang}/quiz-ai`} variant="footer">
-                {lang === "pt" ? "Quiz IA" : "AI Quiz"}
-              </NavLink>
-            </li>
-              <li>
-                <NavLink href={`/${lang}/contact`} variant="footer">
-                  {t("nav.contact") || "Contact"}
-                </NavLink>
-              </li>
+              <li><NavLink href={`/${lang}`} variant="footer">{t("nav.home")}</NavLink></li>
+              <li><NavLink href={`/${lang}/about`} variant="footer">{t("nav.about")}</NavLink></li>
+              <li><NavLink href={`/${lang}/team`} variant="footer">{t("nav.team")}</NavLink></li>
+              <li><NavLink href={`/${lang}/faq`} variant="footer">{t("nav.faq")}</NavLink></li>
+              <li><NavLink href={`/${lang}/quiz-ai`} variant="footer">{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink></li>
+              <li><NavLink href={`/${lang}/contact`} variant="footer">{t("nav.contact") || "Contact"}</NavLink></li>
             </ul>
           </div>
 
           <div>
             <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
             <ul className="space-y-5">
-              <li>
-                <NavLink href={`/${lang}/terms`} variant="footer">
-                  {t("footer.terms")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink href={`/${lang}/privacy`} variant="footer">
-                  {t("footer.privacy")}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink href={`/${lang}/trust`} variant="footer">
-                  {t("legal.trust") || "Trust"}
-                </NavLink>
-              </li>
-              <li>
-                <NavLink href={`/${lang}/rgpd`} variant="footer">
-                  {t("footer.rgpd")}
-                </NavLink>
-              </li>
+              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms")}</NavLink></li>
+              <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
+              <li><NavLink href={`/${lang}/trust`} variant="footer">{t("legal.trust") || "Trust"}</NavLink></li>
+              <li><NavLink href={`/${lang}/rgpd`} variant="footer">{t("footer.rgpd")}</NavLink></li>
             </ul>
           </div>
 
