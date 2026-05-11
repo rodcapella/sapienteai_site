@@ -14,7 +14,7 @@ const Terms = lazy(() => import("@/pages/Terms"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const Trust = lazy(() => import("@/pages/Trust"));
 const RGPD = lazy(() => import("@/pages/RGPD"));
-const GenerativeAIPolicy = lazy(() => import("@/pages/iaGenerativaPolicy"));
+const GenerativeAIPolicy = lazy(() => import("@/pages/GenerativeAIPolicy"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const Contact = lazy(() => import("@/pages/Contact"));
 const QuizAI = lazy(() => import("@/pages/QuizAI"));
