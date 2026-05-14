@@ -22,6 +22,13 @@ export default function Footer() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
@@ -84,19 +91,20 @@ export default function Footer() {
           <div>
             <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.newsletter")}</h4>
 
-            <form onSubmit={handleSubscribe} className="space-y-4 rounded-3xl border border-[var(--brand-cyan)]/25 bg-[#040b1f]/65 p-4 backdrop-blur-3xl">
-              <input
-                type="email"
-                placeholder={t("newsletter.placeholder")}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-2xl border border-[var(--brand-primary)]/35 bg-black/40 px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-[var(--brand-cyan)]/60"
-              />
-
-              <PremiumButton type="submit" className="w-full rounded-2xl py-4 text-sm tracking-[0.16em]" variant="secondary">
-                {subscribeStatus === "loading" ? t("newsletter.subscribing") : t("newsletter.subscribe")}
-              </PremiumButton>
-            </form>
+            <a
+              href={`/${lang}/newsletter`}
+              target="_blank"
+              rel="noopener noreferrer"
+              >
+                <PremiumButton
+                    className="w-full rounded-2xl py-4"
+                    variant="secondary"
+                >
+                    {lang==="pt"
+                    ? "Abrir Newsletter"
+                    : "Open Newsletter"}
+                </PremiumButton>
+              </a>
           </div>
         </div>
 
@@ -123,6 +131,28 @@ export default function Footer() {
           <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
         </div>
       </div>
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        className="
+          absolute bottom-8 right-8
+          inline-flex h-14 w-14 items-center justify-center
+          rounded-2xl
+          border border-[var(--brand-cyan)]/35
+          bg-[#08112a]/85
+          text-[var(--brand-cyan)]
+          backdrop-blur-xl
+          transition-all duration-300
+          hover:-translate-y-1
+          hover:border-[var(--brand-cyan)]
+          hover:bg-[var(--brand-cyan)]/15
+          hover:text-white
+          hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]
+        "
+      >
+        <Icons.ArrowUp className="h-5 w-5" />
+      </button>
     </footer>
   );
 }
