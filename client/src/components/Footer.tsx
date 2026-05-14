@@ -1,4 +1,4 @@
-import { useState, type SVGProps } from "react";
+import { type SVGProps } from "react";
 import { Link, useLocation } from "wouter";
 
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
@@ -15,9 +15,6 @@ function XIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [subscribeStatus, setSubscribeStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-
   const { t } = useTranslation();
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
@@ -27,19 +24,6 @@ export default function Footer() {
       top: 0,
       behavior: "smooth",
     });
-  };
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setSubscribeStatus("loading");
-
-    setTimeout(() => {
-      setSubscribeStatus("success");
-      setEmail("");
-      setTimeout(() => setSubscribeStatus("idle"), 3000);
-    }, 1000);
   };
 
   const socialLinks = [
@@ -89,22 +73,26 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.newsletter")}</h4>
+            <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">
+              {t("footer.newsletter")}
+            </h4>
 
-            <a
-              href={`/${lang}/newsletter`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link href={`/${lang}/newsletter`}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
               >
                 <PremiumButton
-                    className="w-full rounded-2xl py-4"
-                    variant="secondary"
+                  className="w-full rounded-2xl py-4"
+                  variant="secondary"
                 >
-                    {lang==="pt"
+                  {lang === "pt"
                     ? "Abrir Newsletter"
                     : "Open Newsletter"}
                 </PremiumButton>
               </a>
+            </Link>
           </div>
         </div>
 
