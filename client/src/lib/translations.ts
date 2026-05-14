@@ -19,6 +19,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "legal.privacy": "Privacidade",
     "legal.terms": "Termos",
     "legal.RGPD": "RGPD",
+    "legal.rgpd": "RGPD",
 
     // Footer
     "footer.home": "Início",
@@ -30,6 +31,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacidade": "Privacidade",
     "footer.termos": "Termos",
     "footer.RGPD": "RGPD",
+    "footer.rgpd": "RGPD",
+    "footer.generative-ai-policy": "Política de IA Generativa",
     "footer.newsletter": "Newsletter",
     "footer.copyright": "© 2026 SAPIENTE.AI • Todos os direitos reservados",
 
@@ -73,7 +76,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "legal.trust": "Trust",
     "legal.privacy": "Privacy",
     "legal.terms": "Terms",
-    "legal.RGPD": "RGPD",
+    "legal.RGPD": "GDPR",
+    "legal.rgpd": "GDPR",
 
     // Footer
     "footer.home": "Home",
@@ -84,7 +88,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.privacy": "Privacy",
     "footer.privacidade": "Privacy",
     "footer.termos": "Terms",
-    "footer.RGPD": "RGPD",
+    "footer.RGPD": "GDPR",
+    "footer.rgpd": "GDPR",
+    "footer.generative-ai-policy": "Generative AI Policy",
     "footer.newsletter": "Newsletter",
     "footer.copyright": "© 2026 SAPIENTE.AI • All rights reserved",
 
