@@ -20,6 +20,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "legal.terms": "Termos",
     "legal.RGPD": "RGPD",
     "legal.rgpd": "RGPD",
+    "legal.generative-ai-policy": "Política de IA Generativa",
 
     // Footer
     "footer.home": "Início",
@@ -78,6 +79,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "legal.terms": "Terms",
     "legal.RGPD": "GDPR",
     "legal.rgpd": "GDPR",
+    "legal.generative-ai-policy": "Generative AI Policy",
 
     // Footer
     "footer.home": "Home",
