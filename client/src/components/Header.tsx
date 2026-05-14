@@ -51,7 +51,7 @@ export default function Header({ onContactClick }: HeaderProps) {
     { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
     { name: t("legal.terms") || "Terms", href: `/${lang}/terms` },
     { name: t("legal.rgpd") || "RGPD", href: `/${lang}/rgpd` },
-    { name: t("legal.generative-ai-policy") || "GenerativeAIPolicy", href: `/${lang}/generative-ai-policy` },
+    { name: t("legal.generative-ai-policy") || "Generative AI Policy", href: `/${lang}/generative-ai-policy` },
   ];
 
   return (
@@ -59,10 +59,10 @@ export default function Header({ onContactClick }: HeaderProps) {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500",
-          "border-[var(--tech-border)]",
+          "border-[var(--tech-border)] dark:border-cyan-400/20",
           scrolled
-            ? "bg-white/95 backdrop-blur-2xl shadow-[0_18px_40px_rgba(10,17,40,0.14)] dark:bg-[#0A1128]/92"
-            : "bg-white/90 backdrop-blur-xl dark:bg-[#0A1128]/86",
+            ? "bg-white/96 backdrop-blur-2xl shadow-[0_18px_40px_rgba(10,17,40,0.14)] dark:bg-[#050B16]/96 dark:shadow-[0_18px_50px_rgba(0,0,0,0.65)]"
+            : "bg-white/92 backdrop-blur-xl dark:bg-[#050B16]/92",
         )}
       >
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
@@ -85,7 +85,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 <button
                   type="button"
                   className={cn(
-                    "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
+                    "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300 dark:text-white/80 dark:hover:text-white",
                     isLegalOpen ? "text-[var(--brand-cyan)]" : "text-foreground/70 hover:text-foreground",
                   )}
                 >
@@ -95,16 +95,16 @@ export default function Header({ onContactClick }: HeaderProps) {
 
                 <div
                   className={cn(
-                    "absolute top-full -left-4 w-52 pt-4 origin-top-left transition-all duration-300",
+                    "absolute top-full -left-4 w-60 pt-4 origin-top-left transition-all duration-300",
                     isLegalOpen ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-95",
                   )}
                 >
-                  <div className="rounded-2xl border border-[var(--tech-border)] bg-white/95 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(10,17,40,0.2)] dark:bg-[#091634]/95">
+                  <div className="rounded-2xl border border-[var(--tech-border)] bg-white/96 p-2 backdrop-blur-2xl shadow-[0_20px_50px_rgba(10,17,40,0.2)] dark:border-cyan-400/20 dark:bg-[#081120]/98 dark:shadow-[0_20px_60px_rgba(0,0,0,0.7)]">
                     {legalLinks.map((link) => (
                       <Link
                         key={link.name}
                         href={link.href}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-foreground"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/70 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-foreground dark:text-white/75 dark:hover:bg-cyan-400/10 dark:hover:text-white"
                       >
                         <Icons.ShieldCheck className="h-4 w-4 text-[var(--brand-cyan)]" />
                         {link.name}
@@ -114,7 +114,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </div>
               </div>
 
-              <div className="h-6 w-px bg-[var(--tech-border)]" />
+              <div className="h-6 w-px bg-[var(--tech-border)] dark:bg-white/10" />
 
               <LanguageSelector />
               <ThemeToggle />
@@ -128,7 +128,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--tech-border)] bg-[var(--glass-bg)] p-2.5 text-foreground transition-all duration-300 hover:border-[var(--brand-cyan)]/60 hover:text-[var(--brand-cyan)]"
+                className="rounded-2xl border border-[var(--tech-border)] bg-[var(--glass-bg)] p-2.5 text-foreground transition-all duration-300 hover:border-[var(--brand-cyan)]/60 hover:text-[var(--brand-cyan)] dark:border-cyan-400/20 dark:bg-[#081120] dark:text-white"
                 aria-label="Toggle menu"
                 type="button"
               >
