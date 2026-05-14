@@ -3,7 +3,7 @@ export const homePT = {
     label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO REAL",
     title: "Inteligência que impulsiona. Resultados que transformam.",
     subtitle:
-       "A Sapiente.AI ajuda empresas a aumentar vendas, reduzir custos e escalar com automação inteligente",
+      "A Sapiente.AI ajuda empresas a aumentar vendas, reduzir custos e escalar com automação inteligente",
     ctaPrimary: "Quero automatizar o meu negócio",
     ctaSecondary: "Ver como funciona"
   },
@@ -19,7 +19,7 @@ export const homePT = {
       },
       {
         title: "Marketing orientado a aumento de receita",
-        description: "Estratégias focadas em gerar leads qualificados, dimuinuir custos operacionais e aumentar conversões.",
+        description: "Estratégias focadas em gerar leads qualificados, diminuir custos operacionais e aumentar conversões.",
         image: "",
       },
       {
@@ -67,7 +67,7 @@ export const homePT = {
       {
         title: "Gestão de redes sociais",
         description: "Conteúdo estratégico focado em crescimento de audiência, autoridade e geração de leads.",
-      }, 
+      },
       {
         title: "Conteúdo visual de alta performance",
         description: "Produção de vídeos e imagens pensados para captar atenção e converter audiência em clientes.",
@@ -122,8 +122,27 @@ export const homePT = {
       "Design responsivo",
       "UI/UX Mobile-first",
       "Resultados mensuráveis",
-      "SEO & GEO AEO conversão",
+      "SEO + GEO + AEO conversão",
       "Funis integrados",
+    ],
+  },
+
+  webMobile: {
+    label: "Desenvolvimento Web & Mobile",
+    title: "Produtos digitais à medida preparados para escalar",
+    pillars: [
+      {
+        title: "Estratégia primeiro",
+        points: ["Descoberta do produto", "Jornadas do utilizador", "Arquitetura orientada à conversão"],
+      },
+      {
+        title: "Desenvolvimento inteligente",
+        points: ["Aplicações web", "Experiências mobile", "Integrações com APIs e sistemas"],
+      },
+      {
+        title: "Entrega preparada para crescimento",
+        points: ["Otimização de performance", "Configuração de analytics", "Bases escaláveis"],
+      },
     ],
   },
 
@@ -153,7 +172,7 @@ export const homePT = {
       },
     ],
   },
-  
+
   beforeAfter: {
     label: "Transformação",
     title: "O impacto real da automação com IA",
@@ -172,10 +191,10 @@ export const homePT = {
       }
     ]
   },
-  
+
   applications: {
     label: "Aplicações da marca",
-    title: "Execução visual coesa em todos os pontos de contato",
+    title: "Execução visual coesa em todos os pontos de contacto",
     items: [
       { title: "Campanhas e criativos", image: "/brandbook/marketing-ia.jpeg" },
       { title: "Automação e operações", image: "/brandbook/automacao-inteligente.jpeg" },
@@ -198,6 +217,8 @@ export const homePT = {
   finalCta: {
     title: "Descubra onde está a perder dinheiro no seu negócio",
     subtitle: "Fazemos um diagnóstico gratuito e mostramos exatamente onde pode automatizar, reduzir custos e aumentar vendas.",
+    phone: "+351 913 327 944",
+    website: "www.sapienteai.com",
     button: "Quero descobrir agora"
   }
 };
