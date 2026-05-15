@@ -115,25 +115,23 @@ export default function Team() {
 
   return (
     <div className="flex flex-col">
-      <div className="relative flex h-[400px] w-full items-center justify-center overflow-hidden bg-modern-gradient md:h-[600px]">
-        <div className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
-
+      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
         <div className="container max-w-5xl px-6 text-center">
           <Reveal>
-            <Link href={`/${lang}`} className="mb-8 inline-flex items-center gap-2 font-black uppercase tracking-widest text-primary transition-opacity hover:opacity-70">
+            <Link href={`/${lang}`} className="mb-8 inline-flex items-center gap-2 font-black uppercase tracking-widest text-[var(--brand-cyan)] transition-opacity hover:opacity-70">
               <Icons.ArrowLeft className="h-4 w-4" />
               {t("nav.home")}
             </Link>
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-foreground md:text-8xl">
+            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
               {content.hero.title}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-xl font-black uppercase tracking-[0.2em] text-foreground/60 drop-shadow-md md:text-3xl">
+            <p className="text-xl font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/75 drop-shadow-md md:text-3xl">
               {content.hero.subtitle}
             </p>
           </Reveal>
