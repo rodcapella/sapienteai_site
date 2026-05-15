@@ -27,21 +27,17 @@ export default function About() {
 
   return (
     <div className="flex flex-col">
-      {/* HERO BANNER - Modern Gradient */}
-      <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
-        {/* DECORATIVE ELEMENTS */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
-        
-        <div className="container max-w-5xl text-center px-6">
+      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
+        <div className="container max-w-5xl px-6 text-center">
           <Reveal>
-            <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
+            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
               {content.hero.title} <br/>
-              <span className="text-primary drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">{content.hero.highlight}</span>
+              <span className="text-[var(--brand-cyan)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">{content.hero.highlight}</span>
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
+            <p className="text-xl font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/75 drop-shadow-md md:text-3xl">
               {content.hero.subtitle}
             </p>
           </Reveal>
