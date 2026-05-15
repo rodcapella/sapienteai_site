@@ -1,5 +1,6 @@
 import { FormEvent, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "wouter";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -8,14 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
-import {
-  AlertTriangle,
-  CheckCircle2,
-  LoaderCircle,
-  MessageSquareText,
-  Sparkles,
-  X,
-} from "lucide-react";
+import { Icons } from "@/lib/icons";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -33,6 +27,7 @@ type FormData = {
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
+type ModalLang = "pt" | "en";
 
 const INITIAL_FORM: FormData = {
   name: "",
@@ -43,6 +38,83 @@ const INITIAL_FORM: FormData = {
 };
 
 const requiredFields: (keyof FormData)[] = ["name", "email", "message"];
+
+const modalText = {
+  pt: {
+    closeLabel: "Fechar modal de contacto",
+    title: "Vamos transformar o seu negócio juntos",
+    description: "Partilhe os seus objetivos e a nossa equipa vai desenhar uma estratégia com IA para acelerar os seus resultados.",
+    labels: {
+      name: "Nome *",
+      email: "Email *",
+      phone: "Telefone (opcional)",
+      company: "Empresa (opcional)",
+      message: "Mensagem *",
+    },
+    placeholders: {
+      name: "Ex: Ana Silva",
+      email: "exemplo@empresa.com",
+      phone: "+351 9XX XXX XXX",
+      company: "Nome da empresa",
+      message: "Conte-nos o que pretende transformar com IA...",
+    },
+    errors: {
+      name: "Nome é obrigatório.",
+      email: "Email é obrigatório.",
+      message: "Mensagem é obrigatória.",
+      invalidEmail: "Insira um email válido.",
+      form: "Revise os campos obrigatórios antes de enviar.",
+      submit: "Não foi possível enviar agora. Tente novamente em instantes.",
+    },
+    submit: {
+      loading: "A enviar mensagem...",
+      processing: "A processar...",
+      success: "Mensagem enviada! Entraremos em contacto em breve.",
+      successButton: "Transformação iniciada",
+      idle: "Enviar mensagem",
+    },
+    fallback: "Não informado",
+    subject: "Novo contacto",
+    averageResponse: "Resposta média em menos de 48 horas úteis.",
+  },
+  en: {
+    closeLabel: "Close contact modal",
+    title: "Let’s transform your business together",
+    description: "Share your goals and our team will design an AI-powered strategy to accelerate your results.",
+    labels: {
+      name: "Name *",
+      email: "Email *",
+      phone: "Phone (optional)",
+      company: "Company (optional)",
+      message: "Message *",
+    },
+    placeholders: {
+      name: "Ex: Anna Smith",
+      email: "example@company.com",
+      phone: "+351 9XX XXX XXX",
+      company: "Company name",
+      message: "Tell us what you want to transform with AI...",
+    },
+    errors: {
+      name: "Name is required.",
+      email: "Email is required.",
+      message: "Message is required.",
+      invalidEmail: "Enter a valid email address.",
+      form: "Please review the required fields before sending.",
+      submit: "We couldn’t send your message right now. Please try again shortly.",
+    },
+    submit: {
+      loading: "Sending message...",
+      processing: "Processing...",
+      success: "Message sent! We’ll get back to you soon.",
+      successButton: "Transformation started",
+      idle: "Send message",
+    },
+    fallback: "Not provided",
+    subject: "New contact",
+    averageResponse: "Average response in less than 48 business hours.",
+  },
+} as const;
 
 const PARTICLES = [
   { left: "8%", top: "18%", size: 4, delay: 0.2 },
@@ -55,6 +127,10 @@ const PARTICLES = [
 ];
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const [location] = useLocation();
+  const lang: ModalLang = location.startsWith("/en") ? "en" : "pt";
+  const text = modalText[lang];
+
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
@@ -63,14 +139,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const validateField = (field: keyof FormData, value: string): string => {
     if (requiredFields.includes(field) && !value.trim()) {
-      if (field === "name") return "Nome é obrigatório.";
-      if (field === "email") return "Email é obrigatório.";
-      if (field === "message") return "Mensagem é obrigatória.";
+      if (field === "name") return text.errors.name;
+      if (field === "email") return text.errors.email;
+      if (field === "message") return text.errors.message;
     }
 
     if (field === "email" && value.trim()) {
       const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-      if (!isValid) return "Insira um email válido.";
+      if (!isValid) return text.errors.invalidEmail;
     }
 
     return "";
@@ -122,21 +198,21 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
     if (!validateForm()) {
       setSubmitState("error");
-      setFeedbackMessage("Revise os campos obrigatórios antes de enviar.");
+      setFeedbackMessage(text.errors.form);
       return;
     }
 
     setSubmitState("loading");
-    setFeedbackMessage("A enviar mensagem...");
+    setFeedbackMessage(text.submit.loading);
 
     try {
       const payload = new FormData();
       payload.append("name", formData.name.trim());
       payload.append("email", formData.email.trim());
-      payload.append("phone", formData.phone.trim() || "Não informado");
-      payload.append("company", formData.company.trim() || "Não informado");
+      payload.append("phone", formData.phone.trim() || text.fallback);
+      payload.append("company", formData.company.trim() || text.fallback);
       payload.append("message", formData.message.trim());
-      payload.append("_subject", `Novo contato - ${formData.name.trim()}`);
+      payload.append("_subject", `${text.subject} - ${formData.name.trim()}`);
       payload.append("_captcha", "false");
 
       const response = await fetch("https://formsubmit.co/sapiente.ai.oficial@gmail.com", {
@@ -144,18 +220,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         body: payload,
       });
 
-      if (!response.ok) {
-        throw new Error("submit_failed");
-      }
+      if (!response.ok) throw new Error("submit_failed");
 
       setSubmitState("success");
-      setFeedbackMessage("Mensagem enviada! Entraremos em contacto em breve.");
+      setFeedbackMessage(text.submit.success);
       setFormData(INITIAL_FORM);
       setErrors({});
       setTouched({});
     } catch {
       setSubmitState("error");
-      setFeedbackMessage("Não foi possível enviar agora. Tente novamente em instantes.");
+      setFeedbackMessage(text.errors.submit);
     }
   };
 
@@ -180,10 +254,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     ].join(" ");
   };
 
-  const handleOpenChange: (open: boolean) => void = (open) => {
-    if (!open) closeModal();
-  };
-
   const statusNode = useMemo(() => {
     if (submitState === "idle") return null;
 
@@ -196,7 +266,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           role="status"
           aria-live="polite"
         >
-          <LoaderCircle className="h-4 w-4 animate-spin text-[var(--brand-cyan)]" />
+          <Icons.LoaderCircle className="h-4 w-4 animate-spin text-[var(--brand-cyan)]" />
           <span>{feedbackMessage}</span>
         </motion.div>
       );
@@ -211,7 +281,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           role="status"
           aria-live="polite"
         >
-          <CheckCircle2 className="h-5 w-5 text-emerald-300" />
+          <Icons.CheckCircle2 className="h-5 w-5 text-emerald-300" />
           <span>{feedbackMessage}</span>
         </motion.div>
       );
@@ -225,19 +295,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
         role="alert"
         aria-live="assertive"
       >
-        <AlertTriangle className="h-5 w-5 text-red-300" />
+        <Icons.AlertTriangle className="h-5 w-5 text-red-300" />
         <span>{feedbackMessage}</span>
       </motion.div>
     );
   }, [feedbackMessage, submitState]);
 
   return (
-      <Dialog
-        open={isOpen}
-        onOpenChange={(open) => {
-          if (!open) closeModal();
-        }}
-      >
+    <Dialog open={isOpen} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent
         showCloseButton={false}
         className="w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[rgba(0,209,255,0.5)] bg-[linear-gradient(145deg,rgba(5,8,27,0.85),rgba(26,31,46,0.8))] p-0 shadow-[0_0_0_1px_rgba(0,209,255,0.32),0_0_60px_rgba(0,209,255,0.32),0_24px_90px_rgba(5,8,27,0.65)] backdrop-blur-2xl sm:max-w-2xl"
@@ -278,22 +343,22 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           <button
             type="button"
             onClick={closeModal}
-            aria-label="Fechar modal de contato"
+            aria-label={text.closeLabel}
             className="absolute right-4 top-4 z-20 rounded-full border border-[rgba(0,209,255,0.4)] bg-[rgba(5,8,27,0.85)] p-2 text-[var(--brand-offwhite)] transition-all duration-300 hover:border-[rgba(0,240,255,0.88)] hover:text-[var(--brand-cyan)] hover:shadow-[0_0_20px_rgba(0,209,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]"
           >
-            <X className="h-4 w-4" />
+            <Icons.X className="h-4 w-4" />
           </button>
 
           <DialogHeader className="relative z-10 mb-7 space-y-3 text-left">
             <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight text-[var(--brand-offwhite)] sm:text-3xl">
               <span className="inline-flex items-center gap-2">
-                <MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />
-                Vamos transformar o seu negócio juntos
+                <Icons.MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />
+                {text.title}
               </span>
             </DialogTitle>
 
             <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[rgba(234,246,255,0.76)] sm:text-base">
-              Partilhe os seus objetivos e a nossa equipa vai desenhar uma estratégia com IA para acelerar os seus resultados.
+              {text.description}
             </DialogDescription>
           </DialogHeader>
 
@@ -301,7 +366,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5 sm:col-span-1">
                 <label htmlFor="contact-name" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">
-                  Nome *
+                  {text.labels.name}
                 </label>
                 <input
                   id="contact-name"
@@ -311,23 +376,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   value={formData.name}
                   onChange={(e) => handleChange("name", e.target.value)}
                   onBlur={() => handleBlur("name")}
-                  placeholder="Ex: Ana Silva"
+                  placeholder={text.placeholders.name}
                   className={fieldClass("name")}
                   aria-required="true"
                   aria-invalid={Boolean(touched.name && errors.name)}
                   aria-describedby={errors.name ? "contact-name-error" : undefined}
                   disabled={submitState === "loading"}
                 />
-                {touched.name && errors.name && (
-                  <p id="contact-name-error" className="text-xs text-red-300">
-                    {errors.name}
-                  </p>
-                )}
+                {touched.name && errors.name && <p id="contact-name-error" className="text-xs text-red-300">{errors.name}</p>}
               </div>
 
               <div className="space-y-1.5 sm:col-span-1">
                 <label htmlFor="contact-email" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">
-                  Email *
+                  {text.labels.email}
                 </label>
                 <input
                   id="contact-email"
@@ -337,25 +398,21 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   value={formData.email}
                   onChange={(e) => handleChange("email", e.target.value)}
                   onBlur={() => handleBlur("email")}
-                  placeholder="exemplo@empresa.com"
+                  placeholder={text.placeholders.email}
                   className={fieldClass("email")}
                   aria-required="true"
                   aria-invalid={Boolean(touched.email && errors.email)}
                   aria-describedby={errors.email ? "contact-email-error" : undefined}
                   disabled={submitState === "loading"}
                 />
-                {touched.email && errors.email && (
-                  <p id="contact-email-error" className="text-xs text-red-300">
-                    {errors.email}
-                  </p>
-                )}
+                {touched.email && errors.email && <p id="contact-email-error" className="text-xs text-red-300">{errors.email}</p>}
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <label htmlFor="contact-phone" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">
-                  Telefone (opcional)
+                  {text.labels.phone}
                 </label>
                 <input
                   id="contact-phone"
@@ -365,7 +422,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   value={formData.phone}
                   onChange={(e) => handleChange("phone", e.target.value)}
                   onBlur={() => handleBlur("phone")}
-                  placeholder="+351 9XX XXX XXX"
+                  placeholder={text.placeholders.phone}
                   className={fieldClass("phone")}
                   aria-invalid={Boolean(touched.phone && errors.phone)}
                   disabled={submitState === "loading"}
@@ -374,7 +431,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
               <div className="space-y-1.5">
                 <label htmlFor="contact-company" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">
-                  Empresa (opcional)
+                  {text.labels.company}
                 </label>
                 <input
                   id="contact-company"
@@ -384,7 +441,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   value={formData.company}
                   onChange={(e) => handleChange("company", e.target.value)}
                   onBlur={() => handleBlur("company")}
-                  placeholder="Nome da empresa"
+                  placeholder={text.placeholders.company}
                   className={fieldClass("company")}
                   aria-invalid={Boolean(touched.company && errors.company)}
                   disabled={submitState === "loading"}
@@ -394,7 +451,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
             <div className="space-y-1.5">
               <label htmlFor="contact-message" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">
-                Mensagem *
+                {text.labels.message}
               </label>
               <textarea
                 id="contact-message"
@@ -403,18 +460,14 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 value={formData.message}
                 onChange={(e) => handleChange("message", e.target.value)}
                 onBlur={() => handleBlur("message")}
-                placeholder="Conte-nos o que pretende transformar com IA..."
+                placeholder={text.placeholders.message}
                 className={`${fieldClass("message")} resize-none`}
                 aria-required="true"
                 aria-invalid={Boolean(touched.message && errors.message)}
                 aria-describedby={errors.message ? "contact-message-error" : undefined}
                 disabled={submitState === "loading"}
               />
-              {touched.message && errors.message && (
-                <p id="contact-message-error" className="text-xs text-red-300">
-                  {errors.message}
-                </p>
-              )}
+              {touched.message && errors.message && <p id="contact-message-error" className="text-xs text-red-300">{errors.message}</p>}
             </div>
 
             <AnimatePresence mode="wait">
@@ -434,26 +487,24 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               >
                 {submitState === "loading" ? (
                   <>
-                    <LoaderCircle className="h-4 w-4 animate-spin" />
-                    A processar...
+                    <Icons.LoaderCircle className="h-4 w-4 animate-spin" />
+                    {text.submit.processing}
                   </>
                 ) : submitState === "success" ? (
                   <>
-                    <CheckCircle2 className="h-4 w-4" />
-                    Transformação iniciada
+                    <Icons.CheckCircle2 className="h-4 w-4" />
+                    {text.submit.successButton}
                   </>
                 ) : (
                   <>
-                    <MessageSquareText className="h-4 w-4" />
-                    Enviar mensagem
+                    <Icons.MessageSquareText className="h-4 w-4" />
+                    {text.submit.idle}
                   </>
                 )}
               </PremiumButton>
             </div>
 
-            <p className="text-center text-xs text-[rgba(234,246,255,0.65)]">
-              Resposta média em menos de 48 horas úteis.
-            </p>
+            <p className="text-center text-xs text-[rgba(234,246,255,0.65)]">{text.averageResponse}</p>
           </form>
         </motion.div>
       </DialogContent>
