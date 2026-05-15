@@ -220,6 +220,42 @@ h6 {
   animation: mesh-gradient 15s ease infinite;
 }
 
+.page-hero-banner {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    linear-gradient(135deg, rgba(5, 8, 27, 0.96), rgba(26, 31, 46, 0.88), rgba(10, 138, 255, 0.45)),
+    url("/media/banners/hero-banner.webp");
+  background-size: cover;
+  background-position: center;
+  color: var(--brand-offwhite);
+}
+
+.page-hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(0, 212, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.14) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.18;
+}
+
+.page-hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 35%, rgba(0, 240, 255, 0.22), transparent 52%);
+}
+
+.page-hero-banner > * {
+  position: relative;
+  z-index: 1;
+}
+
 .tech-grid {
   position: relative;
 }
