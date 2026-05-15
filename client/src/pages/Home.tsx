@@ -41,12 +41,10 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-background">
       <Section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-modern-gradient tech-grid scanlines pt-28 pb-20 md:pt-40 md:pb-28">
-        {isPT && (
-          <div className="absolute inset-0">
-            <img src="/brandbook/moodboard-main.jpeg" alt="Moodboard Sapiente.AI" className="h-full w-full object-cover opacity-25" />
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.96),rgba(26,31,46,0.88),rgba(10,138,255,0.45))]" />
-          </div>
-        )}
+        <div className="absolute inset-0">
+          <img src="/media/banners/hero-banner.webp" alt="Sapiente.AI" className="h-full w-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.96),rgba(26,31,46,0.88),rgba(10,138,255,0.45))]" />
+        </div>
         <TechBackdrop intensity="strong" />
         <TechParticleField className="opacity-75" />
 
@@ -404,7 +402,7 @@ export default function Home() {
                 size="lg"
                 className="neon-button"
                 onClick={() => {
-                  window.location.href = `/${lang}/quiz-ai`;
+                  window.location.href = isPT ? "/pt/quiz-ia" : "/en/quiz-ai";
                 }}
               >
                 {isPT ? "Fazer o Quiz IA" : "Take the AI Quiz"}
