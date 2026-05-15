@@ -19,6 +19,9 @@ import { trustContentEN } from "@/content/en/trust";
 import { rgpdContentPT } from "@/content/pt/rgpd";
 import { gdprContentEN } from "@/content/en/gdpr";
 
+import { contactPT } from "@/content/pt/contact";
+import { contactEN } from "@/content/en/contact";
+
 const contentMap = {
   home: {
     pt: homePT,
@@ -52,6 +55,10 @@ const contentMap = {
     pt: rgpdContentPT,
     en: gdprContentEN,
   },
+  contact: {
+    pt: contactPT,
+    en: contactEN,
+},
 } as const;
 
 export function getContent(page: keyof typeof contentMap, lang: string) {

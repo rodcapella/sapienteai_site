@@ -79,7 +79,6 @@ export default function Header({ onContactClick }: HeaderProps) {
               <NavLink href={`/${lang}/team`}>{t("nav.team")}</NavLink>
               <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
               <NavLink href={`/${lang}/quiz-ai`}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
-              <NavLink href={`/${lang}/contact`}>{t("nav.contact") || "Contact"}</NavLink>
 
               <div className="relative" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
                 <button
@@ -159,9 +158,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </NavLink>
                 <NavLink variant="mobile" href={`/${lang}/quiz-ai`} onClick={handleNavClick}>
                   {lang === "pt" ? "Quiz IA" : "AI Quiz"}
-                </NavLink>
-                <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>
-                  {t("nav.contact") || "Contact"}
                 </NavLink>
 
                 <div className="space-y-4 border-y border-white/10 py-4">

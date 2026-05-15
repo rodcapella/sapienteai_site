@@ -217,8 +217,6 @@ export const homePT = {
   finalCta: {
     title: "Descubra onde está a perder dinheiro no seu negócio",
     subtitle: "Fazemos um diagnóstico gratuito e mostramos exatamente onde pode automatizar, reduzir custos e aumentar vendas.",
-    phone: "+351 913 327 944",
-    website: "www.sapienteai.com",
     button: "Quero descobrir agora"
   }
 };

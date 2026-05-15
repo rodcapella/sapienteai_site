@@ -415,13 +415,6 @@ export default function Home() {
             <p className="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-foreground/75 sm:text-2xl">{content.finalCta.subtitle}</p>
           </Reveal>
 
-          <Reveal delay={170}>
-            <div className="mt-8 flex flex-col items-center justify-center gap-2 text-foreground/85">
-              <span className="text-base font-semibold sm:text-lg">{content.finalCta.phone}</span>
-              <span className="text-base sm:text-lg">{content.finalCta.website}</span>
-            </div>
-          </Reveal>
-
           <Reveal delay={220}>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }} className="mt-12 inline-block">
               <PremiumButton onClick={() => setIsContactOpen(true)} variant="primary" size="lg" className="neon-button">

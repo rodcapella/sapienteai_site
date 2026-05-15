@@ -217,8 +217,6 @@ export const homeEN = {
   finalCta: {
     title: "You’re losing money every day — you just don’t see where",
     subtitle: "We run a free diagnosis and show exactly where you can automate, reduce costs, and increase revenue.",
-    phone: "+351 913 327 944",
-    website: "www.sapienteai.com",
     button: "Get my free diagnosis",
   },
 };
