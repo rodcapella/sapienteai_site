@@ -26,37 +26,6 @@
     0 0 40px rgba(0, 212, 255, 0.3);
 }
 
-.quiz-lang-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 50;
-  display: flex;
-  gap: 0;
-  padding: 4px;
-  border: 1px solid rgba(0, 212, 255, 0.2);
-  border-radius: 10px;
-  background: rgba(0, 212, 255, 0.08);
-}
-
-.quiz-lang-toggle button {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: var(--text);
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.quiz-lang-toggle button.active {
-  background: var(--accent);
-  color: #0a1a3a;
-  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
-}
-
 .quiz-screen {
   min-height: 100vh;
   padding: 24px;
@@ -71,6 +40,16 @@
   text-align: center;
 }
 
+.quiz-start-inner,
+.quiz-result-inner {
+  width: 100%;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .quiz-logo {
   max-width: 400px;
   width: 80%;
@@ -82,6 +61,7 @@
 .quiz-badge {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   margin-bottom: 16px;
   padding: 6px 14px;
@@ -102,14 +82,17 @@
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.05;
+  text-align: center;
 }
 
 .quiz-subtitle {
   max-width: 640px;
-  margin: 0 0 32px;
+  width: 100%;
+  margin: 0 auto 32px;
   color: rgba(224, 230, 255, 0.7);
   font-size: 16px;
   line-height: 1.6;
+  text-align: center;
 }
 
 .quiz-main-btn {
@@ -141,6 +124,7 @@
   color: rgba(224, 230, 255, 0.6);
   font-family: "Space Mono", monospace;
   font-size: 12px;
+  text-align: center;
 }
 
 .quiz-container {
@@ -327,18 +311,22 @@
   font-family: "Syne", sans-serif;
   font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 800;
+  text-align: center;
 }
 
-.quiz-result > p {
+.quiz-result > p,
+.quiz-result-inner > p {
   max-width: 560px;
-  margin-bottom: 32px;
+  margin: 0 auto 32px;
   color: rgba(224, 230, 255, 0.7);
+  text-align: center;
 }
 
 .quiz-cta-card {
   max-width: 560px;
   padding: 28px;
   margin-bottom: 24px;
+  text-align: center;
 }
 
 .quiz-cta-icon {
@@ -368,6 +356,7 @@
 .quiz-restart {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   border: none;
   background: transparent;
