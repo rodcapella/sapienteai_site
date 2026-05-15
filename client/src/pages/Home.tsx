@@ -23,6 +23,9 @@ const pillarBorder = [
   "border-[#00F0FF]/55",
 ];
 
+const lightSectionClass = "relative overflow-hidden bg-[#EAF6FF] py-24 text-[#0A1024] md:py-36";
+const darkSectionClass = "relative overflow-hidden border-y border-[var(--tech-border)] bg-[#060B1E] tech-grid py-24 md:py-36";
+
 export default function Home() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
@@ -116,8 +119,8 @@ export default function Home() {
       )}
 
       {isPT && (
-        <Section className="relative overflow-hidden bg-[#05081B] tech-grid py-24 md:py-32">
-          <TechBackdrop intensity="soft" />
+        <Section className={lightSectionClass}>
+          <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
           <SectionHeader>
             <Reveal>
               <SectionTitle label={homePT.brandPillars.label} title={homePT.brandPillars.title} />
@@ -126,15 +129,15 @@ export default function Home() {
 
           <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-6 px-6 md:grid-cols-2">
             {homePT.brandPillars.items.map((pillar, i) => (
-              <SectionCard key={pillar.title} delay={i * 0.08} className={`rounded-[2rem] border bg-[#070D24]/70 p-0 ${pillarBorder[i % pillarBorder.length]}`}>
-                <div className="relative h-56 w-full overflow-hidden rounded-t-[2rem]">
-                  <img src={pillar.image} alt={pillar.title} className="h-full w-full object-cover opacity-70" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#05081B] via-[#05081B]/35 to-transparent" />
+              <SectionCard key={pillar.title} delay={i * 0.08} className={`rounded-[2rem] border bg-white/80 p-0 shadow-[0_20px_50px_rgba(10,17,40,0.12)] ${pillarBorder[i % pillarBorder.length]}`}>
+                <div className="relative h-56 w-full overflow-hidden rounded-t-[2rem] bg-[#DCEEFF]">
+                  {pillar.image && <img src={pillar.image} alt={pillar.title} className="h-full w-full object-cover opacity-70" />}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/25 to-transparent" />
                 </div>
 
                 <div className="p-7 md:p-8">
-                  <h3 className="font-heading text-2xl font-black tracking-tight text-[var(--brand-offwhite)]">{pillar.title}</h3>
-                  <p className="mt-3 text-[var(--brand-offwhite)]/76">{pillar.description}</p>
+                  <h3 className="font-heading text-2xl font-black tracking-tight text-[#0A1024]">{pillar.title}</h3>
+                  <p className="mt-3 text-[#0A1024]/76">{pillar.description}</p>
                 </div>
               </SectionCard>
             ))}
@@ -142,11 +145,9 @@ export default function Home() {
         </Section>
       )}
 
-      <Section id="core-services" className="relative overflow-hidden bg-[#05081B] tech-grid py-24 md:py-36">
-        {isPT && <img src="/brandbook/solucoes-completas.jpeg" alt="Soluções Sapiente" className="absolute inset-0 h-full w-full object-cover opacity-18" />}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,8,27,0.9),rgba(5,8,27,0.92),rgba(26,31,46,0.94))]" />
+      <Section id="core-services" className={darkSectionClass}>
+        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
         <TechBackdrop intensity="soft" className="opacity-75" />
-        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-25" />
 
         <SectionHeader>
           <Reveal>
@@ -172,12 +173,8 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="relative overflow-hidden bg-modern-gradient tech-grid scanlines py-24 md:py-36">
-        {isPT && <img src="/brandbook/marketing-ia.jpeg" alt="Marketing IA" className="absolute inset-0 h-full w-full object-cover opacity-18" />}
-        <div className="absolute inset-0 bg-[linear-gradient(155deg,rgba(5,8,27,0.92),rgba(26,31,46,0.85),rgba(10,138,255,0.28))]" />
-        <TechBackdrop intensity="medium" />
-        <TechParticleField className="opacity-55" />
-
+      <Section className={lightSectionClass}>
+        <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader>
           <Reveal>
             <SectionTitle label={content.marketingAI.label} title={content.marketingAI.title} description={content.marketingAI.subtitle} />
@@ -189,17 +186,17 @@ export default function Home() {
             const Icon = marketingIcons[i % marketingIcons.length];
 
             return (
-              <SectionCard key={card.title} delay={i * 0.1} variant="highlight" className="rounded-[2rem] bg-[#06102A]/60 p-8 md:p-10">
-                <div className="mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)]/15 text-[var(--brand-cyan)] shadow-[0_0_26px_rgba(0,209,255,0.32)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)]/20">
+              <SectionCard key={card.title} delay={i * 0.1} variant="highlight" className="rounded-[2rem] border border-[#0A8AFF]/25 bg-white/82 p-8 text-[#0A1024] shadow-[0_20px_50px_rgba(10,17,40,0.12)] md:p-10">
+                <div className="mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-primary)]/40 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] shadow-[0_0_26px_rgba(0,209,255,0.18)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)]/20">
                   <Icon className="h-8 w-8" />
                 </div>
 
-                <h3 className="mb-4 font-heading text-3xl font-black tracking-tight text-[var(--brand-offwhite)]">{card.title}</h3>
+                <h3 className="mb-4 font-heading text-3xl font-black tracking-tight text-[#0A1024]">{card.title}</h3>
 
                 <ul className="space-y-3">
                   {card.points.map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-[var(--brand-offwhite)]/82">
-                      <Icons.CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-cyan)]" />
+                    <li key={point} className="flex items-start gap-3 text-[#0A1024]/82">
+                      <Icons.CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-primary)]" />
                       <span>{point}</span>
                     </li>
                   ))}
@@ -210,9 +207,8 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="relative overflow-hidden bg-[#020817] tech-grid py-24 md:py-36">
-        {isPT && <img src="/brandbook/automacao-inteligente.jpeg" alt="Automação inteligente" className="absolute inset-0 h-full w-full object-cover opacity-16" />}
-        <div className="absolute inset-0 bg-[linear-gradient(145deg,rgba(5,8,27,0.94),rgba(26,31,46,0.86))]" />
+      <Section className={darkSectionClass}>
+        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
         <TechBackdrop intensity="soft" />
 
         <SectionHeader>
@@ -247,11 +243,8 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="relative overflow-hidden bg-modern-gradient tech-grid py-24 md:py-36">
-        {isPT && <img src="/brandbook/websites-convertem.jpeg" alt="Websites que convertem" className="absolute inset-0 h-full w-full object-cover opacity-14" />}
-        <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(5,8,27,0.92),rgba(26,31,46,0.84),rgba(123,129,255,0.18))]" />
-        <TechBackdrop intensity="soft" className="opacity-75" />
-
+      <Section className={lightSectionClass}>
+        <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader>
           <Reveal>
             <SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} />
@@ -263,20 +256,19 @@ export default function Home() {
             const Icon = conversionIcons[i % conversionIcons.length];
 
             return (
-              <SectionCard key={item} delay={i * 0.05} variant="subtle" className="rounded-3xl bg-[#06102A]/50 p-7">
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/45 bg-[var(--brand-cyan)]/12 text-[var(--brand-cyan)]">
+              <SectionCard key={item} delay={i * 0.05} variant="subtle" className="rounded-3xl border border-[#0A8AFF]/20 bg-white/78 p-7 text-[#0A1024] shadow-[0_20px_50px_rgba(10,17,40,0.1)]">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
                   <Icon className="h-6 w-6" />
                 </div>
-                <p className="text-lg font-bold text-[var(--brand-offwhite)]/90">{item}</p>
+                <p className="text-lg font-bold text-[#0A1024]/90">{item}</p>
               </SectionCard>
             );
           })}
         </div>
       </Section>
 
-      <Section className="relative overflow-hidden bg-[#050d24] tech-grid scanlines py-24 md:py-36">
-        {isPT && <img src="/brandbook/web-mobile.jpeg" alt="Desenvolvimento Web e Mobile" className="absolute inset-0 h-full w-full object-cover opacity-15" />}
-        <div className="absolute inset-0 bg-[linear-gradient(155deg,rgba(5,8,27,0.92),rgba(10,138,255,0.2),rgba(26,31,46,0.9))]" />
+      <Section className={darkSectionClass}>
+        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
         <TechBackdrop intensity="medium" />
         <TechParticleField className="opacity-45" />
 
@@ -312,8 +304,8 @@ export default function Home() {
       </Section>
 
       {isPT && (
-        <Section className="relative overflow-hidden bg-[#05081B] tech-grid py-24 md:py-32">
-          <TechBackdrop intensity="soft" className="opacity-85" />
+        <Section className={lightSectionClass}>
+          <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
           <SectionHeader>
             <Reveal>
               <SectionTitle label={homePT.brandPersonality.label} title={homePT.brandPersonality.title} />
@@ -325,12 +317,12 @@ export default function Home() {
               const Icon = brandbookIcons[i % brandbookIcons.length];
 
               return (
-                <SectionCard key={trait.title} delay={i * 0.07} variant="subtle" className="rounded-3xl bg-[#071129]/62 p-6">
-                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/45 bg-[var(--brand-cyan)]/12 text-[var(--brand-cyan)]">
+                <SectionCard key={trait.title} delay={i * 0.07} variant="subtle" className="rounded-3xl border border-[#0A8AFF]/20 bg-white/78 p-6 text-[#0A1024] shadow-[0_20px_50px_rgba(10,17,40,0.1)]">
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="font-heading text-xl font-extrabold text-[var(--brand-offwhite)]">{trait.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[var(--brand-offwhite)]/75">{trait.description}</p>
+                  <h3 className="font-heading text-xl font-extrabold text-[#0A1024]">{trait.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[#0A1024]/75">{trait.description}</p>
                 </SectionCard>
               );
             })}
@@ -339,7 +331,8 @@ export default function Home() {
       )}
 
       {isPT && (
-        <Section className="relative overflow-hidden bg-[#060B1E] tech-grid py-24 md:py-32">
+        <Section className={darkSectionClass}>
+          <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
           <TechBackdrop intensity="soft" />
           <SectionHeader>
             <Reveal>
@@ -363,20 +356,19 @@ export default function Home() {
         </Section>
       )}
 
-      <Section className="relative overflow-hidden bg-[#05081B] tech-grid scanlines py-24 md:py-32">
-        <TechBackdrop intensity="medium" />
-        <TechParticleField className="opacity-45" />
+      <Section className={lightSectionClass}>
+        <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           <Reveal>
-            <div className="glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-cyan)]">
+            <div className="inline-flex items-center gap-3 rounded-full border border-[#0A8AFF]/25 bg-white/80 px-6 py-2.5 text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-primary)] shadow-[0_16px_40px_rgba(10,17,40,0.1)]">
               <Icons.Brain className="h-4 w-4" />
               {isPT ? "Quiz interativo" : "Interactive quiz"}
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <h2 className="mt-8 font-heading text-4xl font-black tracking-tight text-[var(--brand-offwhite)] sm:text-5xl md:text-6xl">
+            <h2 className="mt-8 font-heading text-4xl font-black tracking-tight text-[#0A1024] sm:text-5xl md:text-6xl">
               {isPT
                 ? "Quanto sabe sobre Inteligência Artificial?"
                 : "How much do you know about Artificial Intelligence?"}
@@ -384,7 +376,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={180}>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-[var(--brand-offwhite)]/78 sm:text-xl">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-[#0A1024]/75 sm:text-xl">
               {isPT
                 ? "Faça o nosso quiz rápido e descubra o seu nível de conhecimento sobre IA, automação, marketing inteligente e produtividade."
                 : "Take our quick quiz and discover your knowledge level about AI, automation, smart marketing and productivity."}
