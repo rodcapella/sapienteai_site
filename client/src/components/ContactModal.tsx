@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import TurnstileWidget from "@/components/TurnstileWidget";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Icons } from "@/lib/icons";
 
@@ -63,7 +64,10 @@ const modalText = {
       email: "Email é obrigatório.",
       message: "Mensagem é obrigatória.",
       invalidEmail: "Insira um email válido.",
-      form: "Revise os campos obrigatórios antes de enviar.",
+      form: "Revise os campos obrigatórios e conclua a verificação antes de enviar.",
+      turnstile: "Conclua a verificação de segurança antes de enviar.",
+      turnstileExpired: "A verificação expirou. Por favor, confirme novamente.",
+      turnstileError: "Não foi possível validar a verificação. Tente novamente.",
       submit: "Não foi possível enviar agora. Tente novamente em instantes.",
     },
     submit: {
@@ -100,7 +104,10 @@ const modalText = {
       email: "Email is required.",
       message: "Message is required.",
       invalidEmail: "Enter a valid email address.",
-      form: "Please review the required fields before sending.",
+      form: "Please review the required fields and complete verification before sending.",
+      turnstile: "Complete the security verification before sending.",
+      turnstileExpired: "The verification expired. Please confirm it again.",
+      turnstileError: "We couldn’t validate the verification. Please try again.",
       submit: "We couldn’t send your message right now. Please try again shortly.",
     },
     submit: {
@@ -136,6 +143,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string>("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const validateField = (field: keyof FormData, value: string): string => {
     if (requiredFields.includes(field) && !value.trim()) {
@@ -190,6 +198,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setTouched({});
     setSubmitState("idle");
     setFeedbackMessage("");
+    setTurnstileToken("");
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -199,6 +208,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     if (!validateForm()) {
       setSubmitState("error");
       setFeedbackMessage(text.errors.form);
+      return;
+    }
+
+    if (!turnstileToken) {
+      setSubmitState("error");
+      setFeedbackMessage(text.errors.turnstile);
       return;
     }
 
@@ -212,6 +227,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       payload.append("phone", formData.phone.trim() || text.fallback);
       payload.append("company", formData.company.trim() || text.fallback);
       payload.append("message", formData.message.trim());
+      payload.append("turnstile_token", turnstileToken);
       payload.append("_subject", `${text.subject} - ${formData.name.trim()}`);
       payload.append("_captcha", "false");
 
@@ -227,6 +243,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setFormData(INITIAL_FORM);
       setErrors({});
       setTouched({});
+      setTurnstileToken("");
     } catch {
       setSubmitState("error");
       setFeedbackMessage(text.errors.submit);
@@ -469,6 +486,27 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               />
               {touched.message && errors.message && <p id="contact-message-error" className="text-xs text-red-300">{errors.message}</p>}
             </div>
+
+            <TurnstileWidget
+              theme="dark"
+              onVerify={(token) => {
+                setTurnstileToken(token);
+                if (submitState === "error") {
+                  setSubmitState("idle");
+                  setFeedbackMessage("");
+                }
+              }}
+              onExpire={() => {
+                setTurnstileToken("");
+                setSubmitState("error");
+                setFeedbackMessage(text.errors.turnstileExpired);
+              }}
+              onError={() => {
+                setTurnstileToken("");
+                setSubmitState("error");
+                setFeedbackMessage(text.errors.turnstileError);
+              }}
+            />
 
             <AnimatePresence mode="wait">
               {statusNode && (
