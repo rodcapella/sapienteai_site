@@ -77,8 +77,10 @@ export default function App() {
           <Route path="/:lang/contact">{(params) => <Contact lang={params.lang} />}</Route>
           <Route path="/:lang/newsletter">{(params) => <Newsletter lang={params.lang} />}</Route>
 
-          <Route path="/:lang/quiz-ai">{(params) => <QuizAI lang={params.lang} />}</Route>
-          <Route path="/:lang/quiz-ia">{(params) => <Redirect to={`/${params.lang}/quiz-ai`} />}</Route>
+          <Route path="/pt/quiz-ia"><QuizAI lang="pt" /></Route>
+          <Route path="/pt/quiz-ai"><Redirect to="/pt/quiz-ia" /></Route>
+          <Route path="/en/quiz-ai"><QuizAI lang="en" /></Route>
+          <Route path="/en/quiz-ia"><Redirect to="/en/quiz-ai" /></Route>
 
           <Route path="/:lang/blog/:slug">
             {(params) => <ArticleDetail lang={params.lang} slug={params.slug} />}
