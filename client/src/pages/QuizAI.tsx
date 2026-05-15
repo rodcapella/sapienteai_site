@@ -74,8 +74,6 @@ export default function QuizAI() {
       {screen === "start" && (
         <section className="quiz-screen quiz-start anim-in">
           <div className="quiz-start-inner">
-            <img src="/media/logos/sapiente-ai-footer.png" alt="SapienteAI Logo" className="quiz-logo" />
-
             <div className="quiz-badge anim-in anim-d1">
               <Icons.Zap size={14} />
               <span>{content.badge}</span>

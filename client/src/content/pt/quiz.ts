@@ -14,13 +14,13 @@ export const quizContentPt = {
   ctaTitle: "Pronto para transformar seu negócio com IA?",
   ctaText:
     "A Sapiente.AI ajuda empresas e profissionais a implementar soluções de IA de forma estratégica, prática e acessível.",
-  ctaButton: "Fale conosco",
+  ctaButton: "Fale connosco",
   restartButton: "Refazer o quiz",
   results: [
     {
       max: 3,
       title: "🌱 Iniciante em IA",
-      desc: "Você está começando sua jornada. A SapienteAI pode acelerar seu aprendizado!",
+      desc: "Você está começando sua jornada. A Sapiente.AI pode acelerar seu aprendizado!",
     },
     {
       max: 6,

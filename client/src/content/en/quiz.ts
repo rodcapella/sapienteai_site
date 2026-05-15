@@ -20,7 +20,7 @@ export const quizContentEn = {
     {
       max: 3,
       title: "🌱 AI Beginner",
-      desc: "You're beginning your AI journey. SapienteAI can accelerate your learning!",
+      desc: "You're beginning your AI journey. Sapiente.AI can accelerate your learning!",
     },
     {
       max: 6,
