@@ -150,7 +150,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                 <NavLink variant="mobile" href={`/${lang}/team`} onClick={handleNavClick}>{t("nav.team")}</NavLink>
                 <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>{t("nav.faq")}</NavLink>
                 <NavLink variant="mobile" href={`/${lang}/quiz-ai`} onClick={handleNavClick}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
-                <NavLink variant="mobile" href={`/${lang}/contact`} onClick={handleNavClick}>{t("nav.contact") || "Contact"}</NavLink>
 
                 <div className="space-y-4 border-y border-white/10 py-4">
                   <span className="text-xs font-black uppercase tracking-widest text-white/30">{t("nav.legal") || "Legal"}</span>

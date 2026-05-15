@@ -57,7 +57,6 @@ export default function Footer() {
               <li><NavLink href={`/${lang}/team`} variant="footer">{t("nav.team")}</NavLink></li>
               <li><NavLink href={`/${lang}/faq`} variant="footer">{t("nav.faq")}</NavLink></li>
               <li><NavLink href={`/${lang}/quiz-ai`} variant="footer">{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink></li>
-              <li><NavLink href={`/${lang}/contact`} variant="footer">{t("nav.contact") || "Contact"}</NavLink></li>
             </ul>
           </div>
 
