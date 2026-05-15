@@ -285,11 +285,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           </button>
 
           <DialogHeader className="relative z-10 mb-7 space-y-3 text-left">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-[rgba(0,209,255,0.35)] bg-[rgba(5,8,27,0.65)] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--brand-cyan)]">
-              <Sparkles className="h-3.5 w-3.5" />
-              Contato inteligente
-            </div>
-
             <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight text-[var(--brand-offwhite)] sm:text-3xl">
               <span className="inline-flex items-center gap-2">
                 <MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />
@@ -457,7 +452,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             </div>
 
             <p className="text-center text-xs text-[rgba(234,246,255,0.65)]">
-              Resposta média em menos de 24h úteis.
+              Resposta média em menos de 48 horas úteis.
             </p>
           </form>
         </motion.div>
