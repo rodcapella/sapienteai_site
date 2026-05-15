@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useLocation } from "wouter";
 
 import { quizContentEn } from "@/content/en/quiz";
 import { quizContentPt } from "@/content/pt/quiz";
@@ -15,7 +16,9 @@ const quizContent = {
 };
 
 export default function QuizAI() {
-  const [lang, setLang] = useState<QuizLang>("pt");
+  const [location] = useLocation();
+  const lang: QuizLang = location.startsWith("/en") ? "en" : "pt";
+
   const [screen, setScreen] = useState<QuizScreen>("start");
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
@@ -31,14 +34,6 @@ export default function QuizAI() {
 
   const progress = ((current + 1) / questions.length) * 100;
   const circleOffset = 440 - (440 * score) / questions.length;
-
-  const handleLanguageChange = (nextLang: QuizLang) => {
-    setLang(nextLang);
-    setCurrent(0);
-    setScore(0);
-    setSelected(null);
-    setScreen("start");
-  };
 
   const startQuiz = () => {
     setCurrent(0);
@@ -76,11 +71,6 @@ export default function QuizAI() {
 
   return (
     <main className="quiz-ai-page">
-      <div className="quiz-lang-toggle">
-        <button type="button" className={lang === "pt" ? "active" : ""} onClick={() => handleLanguageChange("pt")}>PT</button>
-        <button type="button" className={lang === "en" ? "active" : ""} onClick={() => handleLanguageChange("en")}>EN</button>
-      </div>
-
       {screen === "start" && (
         <section className="quiz-screen quiz-start anim-in">
           <div className="quiz-start-inner">
