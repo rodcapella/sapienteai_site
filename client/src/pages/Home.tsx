@@ -123,7 +123,7 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
           <SectionHeader>
             <Reveal>
-              <SectionTitle label={homePT.brandPillars.label} title={homePT.brandPillars.title} />
+              <SectionTitle label={homePT.brandPillars.label} title={homePT.brandPillars.title} variant="light" />
             </Reveal>
           </SectionHeader>
 
@@ -177,7 +177,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader>
           <Reveal>
-            <SectionTitle label={content.marketingAI.label} title={content.marketingAI.title} description={content.marketingAI.subtitle} />
+            <SectionTitle label={content.marketingAI.label} title={content.marketingAI.title} description={content.marketingAI.subtitle} variant="light" />
           </Reveal>
         </SectionHeader>
 
@@ -247,7 +247,7 @@ export default function Home() {
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader>
           <Reveal>
-            <SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} />
+            <SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} variant="light" />
           </Reveal>
         </SectionHeader>
 
@@ -308,7 +308,7 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
           <SectionHeader>
             <Reveal>
-              <SectionTitle label={homePT.brandPersonality.label} title={homePT.brandPersonality.title} />
+              <SectionTitle label={homePT.brandPersonality.label} title={homePT.brandPersonality.title} variant="light" />
             </Reveal>
           </SectionHeader>
 
