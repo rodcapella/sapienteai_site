@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 
+import ContactModal from "@/components/ContactModal";
 import { quizContentEn } from "@/content/en/quiz";
 import { quizContentPt } from "@/content/pt/quiz";
 import { Icons } from "@/lib/icons";
@@ -23,6 +24,7 @@ export default function QuizAI() {
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   const content = quizContent[lang];
   const questions = content.questions;
@@ -198,9 +200,9 @@ export default function QuizAI() {
               <h3>{content.ctaTitle}</h3>
               <p>{content.ctaText}</p>
 
-              <a href={`/${lang}/contact`} className="quiz-main-btn">
+              <button type="button" onClick={() => setIsContactOpen(true)} className="quiz-main-btn">
                 {content.ctaButton}
-              </a>
+              </button>
             </div>
 
             <button type="button" onClick={restartQuiz} className="quiz-restart">
@@ -210,6 +212,8 @@ export default function QuizAI() {
           </div>
         </section>
       )}
+
+      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </main>
   );
 }
