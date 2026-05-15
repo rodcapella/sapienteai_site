@@ -29,7 +29,7 @@ export default function Terms() {
   return (
     <div className="flex flex-col">
       {/* HERO BANNER - Modern Gradient */}
-      <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
+      <div className="page-hero-banner relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
         {/* DECORATIVE ELEMENTS */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
         
