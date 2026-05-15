@@ -7,6 +7,9 @@ import { aboutEN } from "@/content/en/about";
 import { faqPT } from "@/content/pt/faq";
 import { faqEN } from "@/content/en/faq";
 
+import { teamPT } from "@/content/pt/team";
+import { teamEN } from "@/content/en/team";
+
 import { privacyPT } from "@/content/pt/privacy";
 import { privacyEN } from "@/content/en/privacy";
 
@@ -30,6 +33,10 @@ const contentMap = {
   about: {
     pt: aboutPT,
     en: aboutEN,
+  },
+  team: {
+    pt: teamPT,
+    en: teamEN,
   },
   faq: {
     pt: faqPT,
