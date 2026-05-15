@@ -85,7 +85,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                   type="button"
                   className={cn(
                     "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
-                    isLegalOpen ? "text-[var(--brand-cyan)]" : "text-slate-700 hover:text-slate-900 dark:text-white/80 dark:hover:text-white",
+                    isLegalOpen ? "text-[var(--brand-cyan)]" : "text-slate-700 hover:text-slate-900 dark:text-white/90 dark:hover:text-[var(--brand-cyan)]",
                   )}
                 >
                   {t("nav.legal") || "Legal"}
@@ -98,15 +98,15 @@ export default function Header({ onContactClick }: HeaderProps) {
                     isLegalOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0",
                   )}
                 >
-                  <div className="rounded-2xl border border-slate-200 bg-white/96 p-2 text-slate-900 shadow-[0_20px_50px_rgba(10,17,40,0.2)] backdrop-blur-2xl dark:border-cyan-500/15 dark:bg-[#0b1220]/98 dark:text-white dark:shadow-[0_20px_60px_rgba(0,0,0,0.75)]">
+                  <div className="rounded-2xl border border-slate-200 bg-white/96 p-2 text-slate-900 shadow-[0_20px_50px_rgba(10,17,40,0.2)] backdrop-blur-2xl dark:border-cyan-500/20 dark:bg-[#071126]/98 dark:text-white dark:shadow-[0_20px_60px_rgba(0,0,0,0.75)]">
                     {legalLinks.map((link) => (
                       <Link
                         key={link.name}
                         href={link.href}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-slate-900 dark:text-white/80 dark:hover:bg-cyan-400/10 dark:hover:text-[var(--brand-cyan)]"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-slate-900 dark:!text-white dark:hover:!text-[var(--brand-cyan)] dark:hover:bg-cyan-400/10"
                       >
                         <Icons.ShieldCheck className="h-4 w-4 text-[var(--brand-cyan)]" />
-                        {link.name}
+                        <span className="dark:!text-inherit">{link.name}</span>
                       </Link>
                     ))}
                   </div>
@@ -144,28 +144,18 @@ export default function Header({ onContactClick }: HeaderProps) {
               </div>
 
               <div className="flex flex-col space-y-6">
-                <NavLink variant="mobile" href={`/${lang}`} onClick={handleNavClick}>
-                  {t("nav.home")}
-                </NavLink>
-                <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>
-                  {t("nav.about")}
-                </NavLink>
-                <NavLink variant="mobile" href={`/${lang}/team`} onClick={handleNavClick}>
-                  {t("nav.team")}
-                </NavLink>
-                <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>
-                  {t("nav.faq")}
-                </NavLink>
-                <NavLink variant="mobile" href={`/${lang}/quiz-ai`} onClick={handleNavClick}>
-                  {lang === "pt" ? "Quiz IA" : "AI Quiz"}
-                </NavLink>
+                <NavLink variant="mobile" href={`/${lang}`} onClick={handleNavClick}>{t("nav.home")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>{t("nav.about")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/team`} onClick={handleNavClick}>{t("nav.team")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>{t("nav.faq")}</NavLink>
+                <NavLink variant="mobile" href={`/${lang}/quiz-ai`} onClick={handleNavClick}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
 
                 <div className="space-y-4 border-y border-white/10 py-4">
                   <span className="text-xs font-black uppercase tracking-widest text-white/30">{t("nav.legal") || "Legal"}</span>
 
                   <div className="grid grid-cols-2 gap-4">
                     {legalLinks.map((link) => (
-                      <Link key={link.name} href={link.href} onClick={handleNavClick} className="text-lg font-bold text-white/75 transition-colors hover:text-[var(--brand-cyan)]">
+                      <Link key={link.name} href={link.href} onClick={handleNavClick} className="text-lg font-bold text-white/90 transition-colors hover:text-[var(--brand-cyan)]">
                         {link.name}
                       </Link>
                     ))}
