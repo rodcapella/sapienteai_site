@@ -19,6 +19,7 @@ const Blog = lazy(() => import("@/pages/Blog"));
 const Contact = lazy(() => import("@/pages/Contact"));
 const QuizAI = lazy(() => import("@/pages/QuizAI"));
 const Newsletter = lazy(() => import("@/pages/Newsletter"));
+const Sitemap = lazy(() => import("@/pages/Sitemap"));
 const ArticleDetail = lazy(() => import("@/pages/ArticleDetail"));
 
 export default function App() {
@@ -85,6 +86,7 @@ export default function App() {
           <Route path="/:lang/blog">{(params) => <Blog lang={params.lang} />}</Route>
           <Route path="/:lang/contact">{(params) => <Contact lang={params.lang} />}</Route>
           <Route path="/:lang/newsletter">{(params) => <Newsletter lang={params.lang} />}</Route>
+          <Route path="/:lang/sitemap">{(params) => <Sitemap lang={params.lang} />}</Route>
 
           <Route path="/pt/quiz-ia"><QuizAI lang="pt" /></Route>
           <Route path="/pt/quiz-ai"><Redirect to="/pt/quiz-ia" /></Route>

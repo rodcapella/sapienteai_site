@@ -50,6 +50,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://sapienteai.com/pt/sitemap</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sapienteai.com/pt/quiz-ia</loc>
     <priority>0.8</priority>
   </url>
@@ -99,6 +103,10 @@
   </url>
   <url>
     <loc>https://sapienteai.com/en/newsletter</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/sitemap</loc>
     <priority>0.8</priority>
   </url>
   <url>

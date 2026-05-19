@@ -17,7 +17,8 @@ const pages = [
   "/generative-ai-policy",
   "/blog",
   "/contact",
-  "/newsletter"
+  "/newsletter",
+  "/sitemap"
 ];
 
 const urls = languages.flatMap((lang) => [

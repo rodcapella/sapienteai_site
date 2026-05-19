@@ -34,6 +34,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.RGPD": "RGPD",
     "footer.rgpd": "RGPD",
     "footer.generative-ai-policy": "Política de IA Generativa",
+    "footer.sitemap": "Mapa do site",
     "footer.newsletter": "Newsletter",
     "footer.copyright": "© 2026 SAPIENTE.AI • Todos os direitos reservados",
 
@@ -102,6 +103,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.RGPD": "GDPR",
     "footer.rgpd": "GDPR",
     "footer.generative-ai-policy": "Generative AI Policy",
+    "footer.sitemap": "Sitemap",
     "footer.newsletter": "Newsletter",
     "footer.copyright": "© 2026 SAPIENTE.AI • All rights reserved",
 
