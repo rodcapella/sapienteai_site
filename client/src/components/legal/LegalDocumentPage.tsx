@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 
+import ContactModal from "@/components/ContactModal";
 import { setSEOHead } from "@/components/SEOHead";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
@@ -42,6 +44,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const [location] = useLocation();
   const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     setSEOHead({
@@ -131,6 +134,39 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
           </div>
         </div>
       </Section>
+
+      <Section className="relative overflow-hidden bg-[linear-gradient(135deg,#05081B_0%,#06102A_44%,#0A2F66_72%,#7B81FF_100%)] py-24 text-center md:py-36 tech-grid">
+        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,209,255,0.22),transparent_45%)]" />
+        <div className="relative z-10 mx-auto max-w-5xl px-6">
+          <Reveal>
+            <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+              Sapiente.AI
+            </p>
+            <h2 className="font-heading text-4xl font-black tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl">
+              {lang === "pt" ? "Precisa de ajuda para aplicar isto ao seu negócio?" : "Need help applying this to your business?"}
+            </h2>
+          </Reveal>
+
+          <Reveal delay={110}>
+            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[var(--brand-offwhite)]/78 sm:text-2xl">
+              {lang === "pt"
+                ? "Fale connosco e perceba como podemos estruturar uma solução clara, segura e alinhada aos seus objetivos."
+                : "Talk to us and understand how we can structure a clear, secure solution aligned with your goals."}
+            </p>
+          </Reveal>
+
+          <Reveal delay={220}>
+            <div className="mt-12 inline-block">
+              <PremiumButton onClick={() => setIsContactOpen(true)} variant="primary" size="lg">
+                {lang === "pt" ? "Contacto" : "Contact"}
+              </PremiumButton>
+            </div>
+          </Reveal>
+        </div>
+      </Section>
+
+      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </div>
   );
 }
