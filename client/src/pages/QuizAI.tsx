@@ -72,7 +72,10 @@ export default function QuizAI() {
   };
 
   return (
-    <main className="quiz-ai-page">
+    <main className="quiz-ai-page tech-grid scanlines">
+      <div className="quiz-bg-radials" />
+      <div className="quiz-bg-dots dots-matrix" />
+
       {screen === "start" && (
         <section className="quiz-screen quiz-start anim-in">
           <div className="quiz-start-inner">

@@ -1,16 +1,36 @@
 .quiz-ai-page {
-  --bg: #000000;
+  --bg: #05081b;
   --surface: rgba(0, 0, 0, 0.6);
   --text: #e0e6ff;
   --accent: #00d4ff;
   --danger: #ff3366;
 
+  position: relative;
   min-height: 100vh;
   width: 100%;
   background: var(--bg);
   color: var(--text);
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
+}
+
+.quiz-bg-radials,
+.quiz-bg-dots {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.quiz-bg-radials {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 209, 255, 0.22), transparent 34%),
+    radial-gradient(circle at 80% 80%, rgba(123, 129, 255, 0.18), transparent 36%);
+}
+
+.quiz-bg-dots {
+  z-index: 1;
+  opacity: 0.2;
 }
 
 .quiz-ai-page * {
@@ -27,6 +47,8 @@
 }
 
 .quiz-screen {
+  position: relative;
+  z-index: 2;
   min-height: 100vh;
   padding: 24px;
   display: flex;
