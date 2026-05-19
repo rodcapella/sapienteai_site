@@ -37,7 +37,7 @@ export default function Home() {
   const coreServiceIcons = [Icons.Bot, Icons.Cog, Icons.Cpu, Icons.ShieldCheck, Icons.BarChart3, Icons.MessageCircle];
   const marketingIcons = [Icons.Target, Icons.Brain, Icons.BarChart3];
   const automationIcons = [Icons.Zap, Icons.Calendar, Icons.TrendingUp];
-  const conversionIcons = [Icons.User, Icons.Tag, Icons.CheckCircle, Icons.BarChart3, Icons.Target, Icons.Share2];
+  const conversionIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
   const webMobileIcons = [Icons.Lightbulb, Icons.Cpu, Icons.TrendingUp];
   const brandbookIcons = [Icons.Bot, Icons.Brain, Icons.TrendingUp, Icons.PieChart, Icons.Cog, Icons.MessageCircle, Icons.ShieldCheck];
 
@@ -251,17 +251,31 @@ export default function Home() {
           </Reveal>
         </SectionHeader>
 
-        <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
           {content.conversionWebsites.items.map((item, i) => {
             const Icon = conversionIcons[i % conversionIcons.length];
 
             return (
-              <SectionCard key={item} delay={i * 0.05} variant="subtle" className="rounded-3xl border border-[#0A8AFF]/20 bg-white/78 p-7 text-[#0A1024] shadow-[0_20px_50px_rgba(10,17,40,0.1)]">
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <p className="text-lg font-bold text-[#0A1024]/90">{item}</p>
-              </SectionCard>
+              <Reveal key={item} delay={i * 55}>
+                <motion.div
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  transition={{ duration: 0.25, ease: "easeOut" }}
+                  className="group relative overflow-hidden rounded-3xl border border-[#0A8AFF]/25 bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(234,246,255,0.86))] p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"
+                >
+                  <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-80" />
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--brand-cyan)]/12 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/24" />
+
+                  <div className="relative z-10 flex items-center gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[#06102A] text-[var(--brand-cyan)] shadow-[0_0_24px_rgba(0,209,255,0.24)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white">
+                      <Icon className="h-6 w-6" />
+                    </div>
+
+                    <p className="font-heading text-base font-black leading-tight tracking-tight text-[#071129] md:text-lg">
+                      {item}
+                    </p>
+                  </div>
+                </motion.div>
+              </Reveal>
             );
           })}
         </div>
