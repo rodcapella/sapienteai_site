@@ -44,16 +44,6 @@ export default function GenerativeAIPolicy() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
         
         <div className="container max-w-5xl text-center px-6">
-          <Reveal>
-            <Link 
-              href={`/${lang}`}
-              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {t('nav.home')}
-            </Link>
-          </Reveal>
-
           <Reveal delay={100}>
             <div className="flex items-center justify-center gap-3 mb-6">
               <span className="text-sm text-foreground/40 uppercase tracking-[0.3em] font-black">
