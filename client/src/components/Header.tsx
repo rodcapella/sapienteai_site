@@ -65,22 +65,24 @@ export default function Header({ onContactClick }: HeaderProps) {
 
         <div className="container mx-auto px-4 sm:px-6">
           <nav className={cn("flex items-center justify-between transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
-            <Link href={`/${lang}`} className="flex items-center gap-2 transition-all duration-500 hover:opacity-90">
+            <Link href={`/${lang}`} className="flex shrink-0 items-center gap-2 transition-all duration-500 hover:opacity-90">
               <img src="/media/logos/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-[67px] w-auto object-contain md:h-[77px] lg:h-[84px]" />
             </Link>
 
-            <div className="hidden items-center gap-8 lg:flex xl:gap-10">
-              <NavLink href={`/${lang}`}>{t("nav.home")}</NavLink>
-              <NavLink href={`/${lang}/about`}>{t("nav.about")}</NavLink>
-              <NavLink href={`/${lang}/team`}>{t("nav.team")}</NavLink>
-              <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
-              <NavLink href={lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
+            <div className="hidden min-w-0 flex-1 items-center justify-end gap-5 lg:flex xl:gap-7 2xl:gap-9">
+              <div className="flex min-w-0 items-center justify-end gap-4 xl:gap-6 2xl:gap-8">
+                <NavLink href={`/${lang}`}>{t("nav.home")}</NavLink>
+                <NavLink href={`/${lang}/about`}>{t("nav.about")}</NavLink>
+                <NavLink href={`/${lang}/team`}>{t("nav.team")}</NavLink>
+                <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
+                <NavLink href={lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
+              </div>
 
-              <div className="relative" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
+              <div className="relative shrink-0" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
                 <button
                   type="button"
                   className={cn(
-                    "flex items-center gap-2 text-sm font-black uppercase tracking-widest transition-all duration-300",
+                    "flex min-w-[88px] items-center justify-center gap-2 whitespace-nowrap text-sm font-black uppercase tracking-widest transition-all duration-300",
                     isLegalOpen ? "text-[var(--brand-cyan)]" : "text-slate-700 hover:text-slate-900 dark:text-white/90 dark:hover:text-[var(--brand-cyan)]",
                   )}
                 >
@@ -104,12 +106,14 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </div>
               </div>
 
-              <div className="h-6 w-px bg-slate-200 dark:bg-white/10" />
-              <LanguageSelector />
-              <ThemeToggle />
-              <PremiumButton onClick={handleContactClick} className="scale-90" variant="secondary">
-                {t("nav.fale")}
-              </PremiumButton>
+              <div className="h-6 w-px shrink-0 bg-slate-200 dark:bg-white/10" />
+              <div className="flex shrink-0 items-center gap-3">
+                <LanguageSelector />
+                <ThemeToggle />
+                <PremiumButton onClick={handleContactClick} className="scale-90 whitespace-nowrap" variant="secondary">
+                  {t("nav.fale")}
+                </PremiumButton>
+              </div>
             </div>
 
             <div className="flex items-center gap-3 lg:hidden">
