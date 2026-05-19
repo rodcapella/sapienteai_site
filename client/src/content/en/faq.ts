@@ -76,12 +76,12 @@ export const faqEN = {
     {
       question: "Who is this service best suited for?",
       answer:
-        "It is best suited for companies, professionals, and creators who want to grow, automate processes, gain efficiency, and use technology in a practical way."
+         "For small and medium-sized businesses, professionals, and influencers who want to grow, automate processes, improve efficiency, and use technology in a practical way to their advantage.",
     },
     {
       question: "When might this not be the right solution?",
       answer:
-        "If the business is not yet ready to grow, measure results, or implement change, the impact may be limited. We deliver the most value when there is a real willingness to evolve."
+        "If the business is not yet ready to grow or implement changes, the impact may be limited. We deliver the most value when there is a real willingness to evolve."
     },
   ]
 };

@@ -65,7 +65,7 @@ export const aboutPT = {
     eyebrow: "A equipa",
     title: "Conheça quem transforma estratégia em execução.",
     text:
-      "Por trás da Sapiente.ai está uma equipa focada em criar soluções úteis, mensuráveis e alinhadas com o contexto de cada negócio.",
+      "Por trás da Sapiente.AI está uma equipa focada em criar soluções úteis, mensuráveis e alinhadas com o contexto de cada negócio.",
     link: "Conhecer a equipa"
   },
 
@@ -76,7 +76,7 @@ export const aboutPT = {
       "Cada ângulo representa direção.",
       "Cada detalhe representa intenção.",
       "",
-      "Sapiente não é sobre IA.",
+      "Sapiente.AI não é sobre IA.",
       "É sobre clareza."
     ]
   },

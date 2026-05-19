@@ -6,7 +6,6 @@ import { setSEOHead } from "@/components/SEOHead";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-import { blogArticles } from "@/lib/blogData";
 import { Icons } from "@/lib/icons";
 
 type SitemapLink = {
@@ -24,17 +23,15 @@ type SitemapGroup = {
 const copy = {
   pt: {
     label: "Mapa do site",
-    title: "Encontre rapidamente cada página da Sapiente.ai.",
+    title: "Encontre rapidamente cada página.",
     subtitle: "Uma visão organizada das áreas principais, conteúdos e páginas legais do site.",
     sections: {
       main: "Páginas principais",
-      mainTitle: "Conheça a Sapiente.ai",
+      mainTitle: "Conheça a Sapiente.AI",
       resources: "Conteúdos e recursos",
       resourcesTitle: "Explore conteúdos úteis",
       legal: "Confiança e legal",
       legalTitle: "Informação institucional",
-      blog: "Artigos do blog",
-      blogTitle: "Leituras recentes",
     },
     links: {
       home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
@@ -44,7 +41,6 @@ const copy = {
       faq: ["FAQ", "Respostas rápidas às perguntas mais frequentes."],
       quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
       newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
-      blog: ["Blog", "Insights sobre IA, tecnologia, automação e performance."],
       terms: ["Termos", "Condições de utilização do site e serviços."],
       privacy: ["Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
       trust: ["Confiança", "Princípios de segurança, ética e responsabilidade."],
@@ -54,17 +50,15 @@ const copy = {
   },
   en: {
     label: "Sitemap",
-    title: "Find every Sapiente.ai page quickly.",
+    title: "Find every page quickly.",
     subtitle: "A structured view of the main areas, content, and legal pages across the website.",
     sections: {
       main: "Main pages",
-      mainTitle: "Get to know Sapiente.ai",
+      mainTitle: "Get to know Sapiente.AI",
       resources: "Content and resources",
       resourcesTitle: "Explore useful content",
       legal: "Trust and legal",
       legalTitle: "Institutional information",
-      blog: "Blog articles",
-      blogTitle: "Recent reads",
     },
     links: {
       home: ["Home", "Overview of our solutions, services, and value proposition."],
@@ -74,7 +68,6 @@ const copy = {
       faq: ["FAQ", "Quick answers to the most common questions."],
       quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
-      blog: ["Blog", "Insights on AI, technology, automation, and performance."],
       terms: ["Terms", "Terms of use for the website and services."],
       privacy: ["Privacy", "How we collect, process, and protect personal data."],
       trust: ["Trust", "Security, ethics, and accountability principles."],
@@ -96,7 +89,6 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
           <Icon className="h-6 w-6" />
         </div>
         <div>
-          <p className="mb-2 text-xs font-black uppercase tracking-[0.24em] text-primary/70">{group.label}</p>
           <h2 className="text-2xl font-black tracking-tight text-foreground">{group.title}</h2>
         </div>
       </div>
@@ -146,7 +138,6 @@ export default function Sitemap() {
         { title: l.faq[0], description: l.faq[1], href: makeLink(lang, "/faq") },
         { title: l.quiz[0], description: l.quiz[1], href: quizHref },
         { title: l.newsletter[0], description: l.newsletter[1], href: makeLink(lang, "/newsletter") },
-        { title: l.blog[0], description: l.blog[1], href: makeLink(lang, "/blog") },
       ],
     },
     {
@@ -164,7 +155,7 @@ export default function Sitemap() {
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.label} - SAPIENTE.AI`,
+      title: `${content.label} - Sapiente.AI`,
       description: content.subtitle,
       url: `https://sapienteai.com/${lang}/sitemap`,
       type: "website",
@@ -212,56 +203,6 @@ export default function Sitemap() {
                 </Reveal>
               );
             })}
-          </div>
-        </div>
-      </Section>
-
-      <Section className="bg-ice py-24 md:py-40">
-        <div className="container mx-auto px-6">
-          <div className="mx-auto max-w-6xl">
-            <Reveal>
-              <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-                <div>
-                  <p className="mb-4 text-sm font-black uppercase tracking-[0.24em] text-primary">
-                    {content.sections.blog}
-                  </p>
-                  <h2 className="text-4xl font-black leading-none tracking-tighter text-foreground md:text-7xl">
-                    {content.sections.blogTitle}
-                  </h2>
-                </div>
-                <Link
-                  href={makeLink(lang, "/blog")}
-                  className="inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:-translate-y-1 hover:bg-primary"
-                >
-                  {l.blog[0]}
-                  <Icons.ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </Reveal>
-
-            <div className="grid gap-5 md:grid-cols-3">
-              {blogArticles.map((article, index) => (
-                <Reveal key={article.slug} delay={index * 100}>
-                  <Link
-                    href={makeLink(lang, `/blog/${article.slug}`)}
-                    className="group flex min-h-[220px] flex-col justify-between rounded-[1.5rem] border border-foreground/5 bg-white p-7 shadow-xl transition hover:-translate-y-1 hover:border-primary/20 hover:shadow-2xl"
-                  >
-                    <div>
-                      <p className="mb-6 text-xs font-black uppercase tracking-[0.22em] text-primary/60">
-                        {article.category}
-                      </p>
-                      <h3 className="text-2xl font-black leading-tight tracking-tight text-foreground">
-                        {article.title}
-                      </h3>
-                    </div>
-                    <span className="mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-primary">
-                      {lang === "pt" ? "Ler artigo" : "Read article"}
-                      <Icons.ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </div>
       </Section>

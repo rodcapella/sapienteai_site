@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
-import { ChevronDown } from "lucide-react";
-import { Icons } from "@/lib/icons";
 
 import ContactModal from "@/components/ContactModal";
 import { Section } from "@/components/ui/section/Section";
@@ -13,35 +11,70 @@ import { generateFAQSchema } from "@/lib/faqSchema";
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
+import { Icons } from "@/lib/icons";
+import { cn } from "@/lib/utils";
 
-const ArrowLeft = Icons.ArrowLeft;
+const faqIcons = [
+  Icons.HelpCircle,
+  Icons.Bot,
+  Icons.ShieldCheck,
+  Icons.Zap,
+  Icons.Target,
+  Icons.BarChart3,
+  Icons.Cpu,
+  Icons.MessageCircle,
+];
 
-const faqIcons = [Icons.HelpCircle, Icons.Bot, Icons.Shield, Icons.Zap];
-
-function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
+function FAQAccordion({ item, isOpen, onToggle, icon: Icon, index }: any) {
   return (
     <SectionCard
-      className={`cursor-pointer transition-all duration-700 bg-white/80 border-foreground/5 shadow-xl hover:shadow-2xl mb-6 p-10 md:p-12 ${isOpen ? "border-primary/40" : ""}`}
+      className={cn(
+        "group mb-5 cursor-pointer overflow-hidden rounded-[2rem] border p-0 transition-all duration-500",
+        "bg-white/88 shadow-[0_18px_45px_rgba(10,17,40,0.1)] backdrop-blur-2xl",
+        "hover:-translate-y-1 hover:border-[var(--brand-cyan)]/60 hover:shadow-[0_24px_70px_rgba(0,209,255,0.18)]",
+        isOpen ? "border-[var(--brand-cyan)]/70" : "border-primary/20",
+      )}
       onClick={onToggle}
     >
-      <div className="flex items-center justify-between gap-6">
-        <div className="flex items-center gap-4">
-          {Icon && (
-            <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-              <Icon className="w-6 h-6" />
+      <div className="relative p-6 md:p-8">
+        <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-70" />
+        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--brand-cyan)]/10 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/22" />
+
+        <div className="relative z-10 flex items-start justify-between gap-5">
+          <div className="flex items-start gap-4 md:gap-5">
+            {Icon && (
+              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/35 bg-[#06102A] text-[var(--brand-cyan)] shadow-[0_0_22px_rgba(0,209,255,0.2)] md:h-14 md:w-14">
+                <Icon className="h-6 w-6" />
+              </div>
+            )}
+
+            <div>
+              <span className="mb-2 block font-mono text-xs font-black tracking-[0.25em] text-[var(--brand-primary)]/60">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="font-heading text-xl font-black leading-tight tracking-tight text-foreground md:text-2xl">
+                {item.question}
+              </h3>
             </div>
-          )}
+          </div>
 
-          <h3 className="text-xl md:text-2xl font-black text-foreground leading-tight">{item.question}</h3>
+          <div
+            className={cn(
+              "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 md:h-12 md:w-12",
+              isOpen ? "rotate-180 bg-[var(--brand-primary)] text-white shadow-[0_0_26px_rgba(10,138,255,0.35)]" : "bg-[#EAF6FF] text-[var(--brand-primary)]",
+            )}
+          >
+            <Icons.ChevronDown className="h-6 w-6" />
+          </div>
         </div>
 
-        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 ${isOpen ? "bg-primary text-white rotate-180" : "bg-primary/5 text-primary"}`}>
-          <ChevronDown className="h-6 w-6" />
+        <div className={cn("overflow-hidden transition-all duration-700", isOpen ? "mt-7 max-h-[900px] opacity-100" : "max-h-0 opacity-0")}>
+          <div className="ml-0 border-t border-primary/15 pt-6 md:ml-[4.25rem]">
+            <p className="rounded-2xl border border-[var(--brand-cyan)]/16 bg-[#06102A]/[0.04] px-5 py-5 text-base font-medium leading-relaxed text-foreground/70 md:text-lg">
+              {item.answer}
+            </p>
+          </div>
         </div>
-      </div>
-
-      <div className={`overflow-hidden transition-all duration-700 ${isOpen ? "max-h-[800px] mt-10 opacity-100" : "max-h-0 opacity-0"}`}>
-        <p className="text-foreground/60 text-lg leading-relaxed font-medium border-t border-foreground/5 pt-10 ml-16">{item.answer}</p>
       </div>
     </SectionCard>
   );
@@ -59,7 +92,7 @@ export default function FAQ() {
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.title} - SAPIENTE.AI`,
+      title: `${content.title} - Sapiente.AI`,
       description: content.subtitle,
       url: `${window.location.origin}/${lang}/faq`,
       type: "website",
@@ -86,46 +119,69 @@ export default function FAQ() {
 
   return (
     <div className="flex flex-col">
-      <div className="page-hero-banner relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10" />
+      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
+        <div className="container max-w-5xl px-6 text-center">
 
-        <div className="container max-w-5xl text-center px-6">
           <Reveal delay={100}>
-            <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">{content.title}</h1>
+            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
+              {content.title}
+            </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">{content.subtitle}</p>
+            <p className="mx-auto max-w-4xl text-xl font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/75 drop-shadow-md md:text-3xl">
+              {content.subtitle}
+            </p>
           </Reveal>
         </div>
       </div>
 
-      <Section className="bg-blue-tint py-24 md:py-48 flex-grow">
-        <div className="max-w-4xl mx-auto px-6">
+      <Section className="relative flex-grow overflow-hidden bg-[#EAF6FF] py-24 md:py-36">
+        <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,209,255,0.14),transparent_42%)]" />
+
+        <div className="relative z-10 mx-auto max-w-5xl px-6">
+          <Reveal>
+            <div className="mb-12 rounded-[2rem] border border-primary/20 bg-white/72 p-6 text-center shadow-[0_18px_45px_rgba(10,17,40,0.1)] backdrop-blur-xl md:p-8">
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-[var(--brand-primary)]">
+                {lang === "pt" ? "Dúvidas frequentes" : "Common questions"}
+              </p>
+              <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
+                {lang === "pt"
+                  ? "Organizámos as respostas por temas práticos para ajudar a perceber onde a IA, a automação e o marketing podem gerar impacto real."
+                  : "We organised the answers around practical topics to help you understand where AI, automation and marketing can create real impact."}
+              </p>
+            </div>
+          </Reveal>
+
           {content.items.map((faq: any, idx: number) => {
             const Icon = faqIcons[idx % faqIcons.length];
 
             return (
-              <Reveal key={idx} delay={idx * 100}>
-                <FAQAccordion item={faq} icon={Icon} isOpen={openIndex === idx} onToggle={() => setOpenIndex(openIndex === idx ? null : idx)} />
+              <Reveal key={idx} delay={idx * 55}>
+                <FAQAccordion item={faq} icon={Icon} index={idx} isOpen={openIndex === idx} onToggle={() => setOpenIndex(openIndex === idx ? null : idx)} />
               </Reveal>
             );
           })}
         </div>
       </Section>
 
-      <Section className="bg-modern-gradient py-32 md:py-56 text-center">
-        <div className="max-w-4xl mx-auto px-6">
-          <SectionCard className="bg-white/80 p-16 md:p-24 shadow-2xl relative">
-            <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-neon-purple rounded-3xl flex items-center justify-center shadow-2xl">
-              <Icons.MessageSquare className="text-white w-10 h-10" />
+      <Section className="relative overflow-hidden bg-[#060B1E] py-32 text-center md:py-44 tech-grid">
+        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,209,255,0.22),transparent_45%)]" />
+
+        <div className="relative z-10 mx-auto max-w-4xl px-6">
+          <SectionCard className="relative overflow-visible rounded-[2rem] border border-[var(--brand-cyan)]/30 bg-white/8 p-10 shadow-[0_24px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl md:p-16">
+            <div className="absolute -top-12 left-1/2 flex h-24 w-24 -translate-x-1/2 items-center justify-center rounded-3xl border border-[var(--brand-cyan)]/45 bg-[#06102A] text-[var(--brand-cyan)] shadow-[0_0_35px_rgba(0,209,255,0.35)]">
+              <Icons.MessageSquare className="h-10 w-10" />
             </div>
 
-            <h2 className="text-4xl md:text-7xl font-black mb-10">{content.cta.title}</h2>
+            <h2 className="mt-8 text-4xl font-black tracking-tight text-[var(--brand-offwhite)] md:text-6xl">{content.cta.title}</h2>
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-[var(--brand-offwhite)]/72 md:text-xl">{content.cta.description}</p>
 
-            <p className="text-xl md:text-2xl text-foreground/50 mb-16">{content.cta.description}</p>
-
-            <PremiumButton onClick={() => setIsContactOpen(true)}>{content.cta.button}</PremiumButton>
+            <div className="mt-12">
+              <PremiumButton onClick={() => setIsContactOpen(true)}>{content.cta.button}</PremiumButton>
+            </div>
           </SectionCard>
         </div>
       </Section>

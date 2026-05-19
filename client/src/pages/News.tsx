@@ -25,7 +25,7 @@ export default function News() {
 
   useEffect(() => {
     setSEOHead({
-      title: 'Notícias de IA - SAPIENTE.AI',
+      title: 'Notícias de IA - Sapiente.AI',
       description: 'Últimas novidades em inteligência artificial.',
       keywords: 'IA, notícias, machine learning',
       url: 'https://sapienteai.com/noticias',
@@ -38,7 +38,7 @@ export default function News() {
       id: '1',
       title: 'OpenAI anuncia GPT-5',
       excerpt: 'Melhorias em raciocínio e criatividade...',
-      author: 'SAPIENTE.AI',
+      author: 'Sapiente.AI',
       date: '2026-02-25',
       category: 'Releases',
       tags: ['GPT-5', 'OpenAI'],

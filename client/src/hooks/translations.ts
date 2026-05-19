@@ -7,7 +7,7 @@ export const translations = {
       team: "Equipa",
       faq: "FAQ",
       contact: "Contacto",
-      fale: "Falar",
+      fale: "Contacto",
       legal: "Legal"
     },
 

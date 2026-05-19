@@ -8,7 +8,7 @@ export const teamPT = {
     eyebrow: "A equipa",
     title: "Uma equipa pequena, sénior e focada no que muda o negócio.",
     text:
-      "A Sapiente.ai nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos perto de cada cliente para transformar ideias soltas em sistemas úteis, mensuráveis e preparados para crescer.",
+      "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos perto de cada cliente para transformar ideias soltas em sistemas úteis, mensuráveis e preparados para crescer.",
     highlights: [
       {
         value: "01",
@@ -41,10 +41,10 @@ export const teamPT = {
       role: "Founder & CTO",
       focus: "Tecnologia, dados e automação",
       bio: "Desenvolve sistemas inteligentes focados em clareza, velocidade e decisão.",
-      
+
       story:
         "Com experiência em dados, automação e engenharia tem como foco criar sistemas que eliminam complexidade e aceleram decisões críticas no negócio.",
-      
+
       stack: ["AI", "Automação", "Data", "Produto", "Business Intelligence"],
 
       badges: [
@@ -63,10 +63,10 @@ export const teamPT = {
       role: "Founder & CMO",
       focus: "Marketing, marca e crescimento",
       bio: "Transforma estratégias em crescimento através de conteúdo e posicionamento.",
-      
+
       story:
         "Especialista em marketing e conteúdo estratégico, foca-se em transformar marcas em máquinas de aquisição através de posicionamento, narrativa e performance digital.",
-      
+
       stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design"],
 
       badges: [

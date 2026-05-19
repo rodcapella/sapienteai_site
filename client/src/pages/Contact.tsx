@@ -33,7 +33,7 @@ export default function Contact() {
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.title} - SAPIENTE.AI`,
+      title: `${content.title} - Sapiente.AI`,
       description: content.subtitle,
       url: `https://sapienteai.com/${lang}/contact`,
       type: 'website'

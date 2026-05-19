@@ -13,7 +13,7 @@ export const iaGenerativaPolicyPT = {
       icon: Icons.Ban,
       title: "1. Proibição de Shadow AI (Ferramentas Não Autorizadas)",
       content:
-        "É expressamente proibido aos colaboradores, parceiros e prestadores de serviço da SAPIENTE.AI utilizar contas pessoais ou versões gratuitas de ferramentas de IA generativa (como ChatGPT, Gemini, DeepSeek, Copilot pessoal ou similares) para processar, armazenar ou analisar qualquer dado confidencial, pessoal ou propriedade intelectual da empresa ou dos seus clientes. Apenas as ferramentas de IA previamente homologadas pelo departamento de Segurança e Proteção de Dados, que garantam contratualmente a não retenção de dados para treino de modelos, estão autorizadas. O incumprimento constitui violação disciplinar grave e pode implicar responsabilização individual."
+        "É expressamente proibido aos colaboradores, parceiros e prestadores de serviço da Sapiente.AI utilizar contas pessoais ou versões gratuitas de ferramentas de IA generativa (como ChatGPT, Gemini, DeepSeek, Copilot pessoal ou similares) para processar, armazenar ou analisar qualquer dado confidencial, pessoal ou propriedade intelectual da empresa ou dos seus clientes. Apenas as ferramentas de IA previamente homologadas pelo departamento de Segurança e Proteção de Dados, que garantam contratualmente a não retenção de dados para treino de modelos, estão autorizadas. O incumprimento constitui violação disciplinar grave e pode implicar responsabilização individual."
     },
     {
       id: "anonymization",
@@ -46,7 +46,7 @@ export const iaGenerativaPolicyPT = {
       icon: Icons.AlertTriangle,
       title: "5. Resposta a Incidentes de Segurança Específicos de IA",
       content: [
-        "Para além dos incidentes clássicos de segurança, a SAPIENTE.AI monitoriza ativamente:",
+        "Para além dos incidentes clássicos de segurança, a Sapiente.AI monitoriza ativamente:",
         "• Ataques de injeção de prompt – tentativas de manipular o comportamento do modelo através de entradas maliciosas;",
         "• Ataques de extração – tentativas de obter dados de treino ou informações confidenciais a partir das respostas do modelo;",
         "• Vazamento inadvertido de dados – quando o modelo reproduz informação sensível de interações anteriores.",
@@ -58,14 +58,14 @@ export const iaGenerativaPolicyPT = {
       icon: Icons.Trash2,
       title: "6. Direito ao Esquecimento e Limitação em Modelos de IA Treinados",
       content:
-        "A SAPIENTE.AI cumpre integralmente o direito ao apagamento (artigo 17.º do RGPD) relativamente a todos os dados pessoais armazenados em bases de dados tradicionais. Contudo, quando um modelo de IA já foi treinado com determinados dados, a remoção completa desses dados do modelo (desaprendizagem) é tecnicamente complexa ou mesmo impossível em muitos casos. Para mitigar este risco, a empresa adota uma política de não utilização de dados pessoais para treino de modelos generalistas e, sempre que possível, opta por modelos de IA que suportem exclusão programada de dados ou ofereçam garantias contratuais de não memorização. Caso o titular exerça o direito ao apagamento sobre dados que tenham sido usados no treino, a SAPIENTE.AI documentará a impossibilidade técnica e aplicará medidas alternativas (anonimização irreversível do dado na fonte e supressão de logs de interação)."
+        "A Sapiente.AI cumpre integralmente o direito ao apagamento (artigo 17.º do RGPD) relativamente a todos os dados pessoais armazenados em bases de dados tradicionais. Contudo, quando um modelo de IA já foi treinado com determinados dados, a remoção completa desses dados do modelo (desaprendizagem) é tecnicamente complexa ou mesmo impossível em muitos casos. Para mitigar este risco, a empresa adota uma política de não utilização de dados pessoais para treino de modelos generalistas e, sempre que possível, opta por modelos de IA que suportem exclusão programada de dados ou ofereçam garantias contratuais de não memorização. Caso o titular exerça o direito ao apagamento sobre dados que tenham sido usados no treino, a Sapiente.AI documentará a impossibilidade técnica e aplicará medidas alternativas (anonimização irreversível do dado na fonte e supressão de logs de interação)."
     },
     {
       id: "high-risk-ia",
       icon: Icons.ShieldAlert,
       title: "7. Avaliação de Impacto para IA de Risco Elevado (AIFR)",
       content:
-        "Antes da implementação de qualquer sistema de IA classificado como de «risco elevado» ao abrigo do Regulamento IA da UE (ex: recrutamento, avaliação de crédito, gestão de trabalhadores), a SAPIENTE.AI realiza uma Avaliação de Impacto sobre os Direitos Fundamentais (AIFR). Esta análise identifica, documenta e mitiga os riscos para os direitos dos cidadãos, incluindo a não discriminação, a transparência e a supervisão humana. As conclusões são revistas pelo Comité de Governança de IA e disponibilizadas às autoridades competentes quando exigido."
+        "Antes da implementação de qualquer sistema de IA classificado como de «risco elevado» ao abrigo do Regulamento IA da UE (ex: recrutamento, avaliação de crédito, gestão de trabalhadores), a Sapiente.AI realiza uma Avaliação de Impacto sobre os Direitos Fundamentais (AIFR). Esta análise identifica, documenta e mitiga os riscos para os direitos dos cidadãos, incluindo a não discriminação, a transparência e a supervisão humana. As conclusões são revistas pelo Comité de Governança de IA e disponibilizadas às autoridades competentes quando exigido."
     }
   ]
 };

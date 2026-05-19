@@ -73,17 +73,17 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
 
     // Blog Page
-    'blog.title': 'Blog SAPIENTE.AI — Inteligência Artificial Aplicada aos Negócios',
+    'blog.title': 'Blog Sapiente.AI — Inteligência Artificial Aplicada aos Negócios',
     'blog.subtitle': 'Conteúdos especializados sobre IA, machine learning, automação e tendências tecnológicas para empresas e profissionais que querem evoluir com dados e tecnologia.',
     'blog.search': 'Pesquisar artigos...',
     'blog.all': 'Todos',
     'blog.readMore': 'Ler Artigo',
     'blog.category': 'Categoria',
     'blog.date': 'Data',
-    'blog.author': 'SAPIENTE.AI',
+    'blog.author': 'Sapiente.AI',
     'blog.knowledge': 'Conhecimento • Estratégia • Inovação',
     'blog.newsletter': 'Receba Insights sobre IA',
-    'blog.newsletterDesc': 'Inscreva-se na newsletter da SAPIENTE.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.',
+    'blog.newsletterDesc': 'Inscreva-se na newsletter da Sapiente.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.',
     'blog.noArticles': 'Nenhum artigo encontrado. Tente outra busca ou categoria.',
 
     // Article Detail
@@ -104,11 +104,11 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.introduction': 'Introdução',
     'legal.content': 'Conteúdo',
     'legal.RGPD.title': 'Lei Geral de Proteção de Dados (RGPD)',
-    'legal.RGPD.intro': 'A SAPIENTE.AI está em total conformidade com a Lei Geral de Proteção de Dados (RGPD) e regulamentações internacionais de proteção de dados.',
+    'legal.RGPD.intro': 'A Sapiente.AI está em total conformidade com a Lei Geral de Proteção de Dados (RGPD) e regulamentações internacionais de proteção de dados.',
     'legal.terms.title': 'Termos de Serviço',
-    'legal.terms.intro': 'Estes termos regem o uso dos serviços da SAPIENTE.AI. Ao acessar nosso site, você concorda com estes termos.',
+    'legal.terms.intro': 'Estes termos regem o uso dos serviços da Sapiente.AI. Ao acessar nosso site, você concorda com estes termos.',
     'legal.privacy.title': 'Política de Privacidade',
-    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
+    'legal.privacy.intro': 'A Sapiente.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
 
     // Newsletter
     'newsletter.label': 'Email para Newsletter',
@@ -116,10 +116,10 @@ export const translations: Record<Language, Record<string, string>> = {
     'newsletter.subscribe': 'Inscrever',
     'newsletter.subscribing': 'Inscrevendo...',
     'newsletter.invalidEmail': 'Email inválido',
-    'newsletter.subject': 'Nova Inscrição na Newsletter - SAPIENTE.AI',
+    'newsletter.subject': 'Nova Inscrição na Newsletter - Sapiente.AI',
     'newsletter.success': 'Inscrição confirmada! Obrigado por se juntar a nós.',
     'newsletter.error': 'Erro ao inscrever. Tente novamente.',
-    'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.',
+    'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da Sapiente.AI. Sem spam, apenas conteúdo de valor.',
   },
 
   'pt-BR': {
@@ -194,17 +194,17 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.copyright': '© 2026 SAPIENTE.AI • Todos os direitos reservados',
 
     // Blog Page
-    'blog.title': 'Blog SAPIENTE.AI — Inteligência Artificial Aplicada aos Negócios',
+    'blog.title': 'Blog Sapiente.AI — Inteligência Artificial Aplicada aos Negócios',
     'blog.subtitle': 'Conteúdos especializados sobre IA, machine learning, automação e tendências tecnológicas para empresas e profissionais que querem evoluir com dados e tecnologia.',
     'blog.search': 'Pesquisar artigos...',
     'blog.all': 'Todos',
     'blog.readMore': 'Ler Artigo',
     'blog.category': 'Categoria',
     'blog.date': 'Data',
-    'blog.author': 'SAPIENTE.AI',
+    'blog.author': 'Sapiente.AI',
     'blog.knowledge': 'Conhecimento • Estratégia • Inovação',
     'blog.newsletter': 'Receba Insights sobre IA',
-    'blog.newsletterDesc': 'Inscreva-se na newsletter da SAPIENTE.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.',
+    'blog.newsletterDesc': 'Inscreva-se na newsletter da Sapiente.AI e receba conteúdos exclusivos sobre inteligência artificial, machine learning e tendências tecnológicas direto na sua caixa de entrada.',
     'blog.noArticles': 'Nenhum artigo encontrado. Tente outra busca ou categoria.',
 
     // Article Detail
@@ -225,11 +225,11 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.introduction': 'Introdução',
     'legal.content': 'Conteúdo',
     'legal.RGPD.title': 'Lei Geral de Proteção de Dados (RGPD)',
-    'legal.RGPD.intro': 'A SAPIENTE.AI está em total conformidade com a Lei Geral de Proteção de Dados (RGPD) e regulamentações internacionais de proteção de dados.',
+    'legal.RGPD.intro': 'A Sapiente.AI está em total conformidade com a Lei Geral de Proteção de Dados (RGPD) e regulamentações internacionais de proteção de dados.',
     'legal.terms.title': 'Termos de Serviço',
-    'legal.terms.intro': 'Estes termos regem o uso dos serviços da SAPIENTE.AI. Ao acessar nosso site, você concorda com estes termos.',
+    'legal.terms.intro': 'Estes termos regem o uso dos serviços da Sapiente.AI. Ao acessar nosso site, você concorda com estes termos.',
     'legal.privacy.title': 'Política de Privacidade',
-    'legal.privacy.intro': 'A SAPIENTE.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
+    'legal.privacy.intro': 'A Sapiente.AI respeita sua privacidade e está comprometida em proteger seus dados pessoais.',
 
     // Newsletter
     'newsletter.label': 'Email para Newsletter',
@@ -237,10 +237,10 @@ export const translations: Record<Language, Record<string, string>> = {
     'newsletter.subscribe': 'Inscrever',
     'newsletter.subscribing': 'Inscrevendo...',
     'newsletter.invalidEmail': 'Email inválido',
-    'newsletter.subject': 'Nova Inscrição na Newsletter - SAPIENTE.AI',
+    'newsletter.subject': 'Nova Inscrição na Newsletter - Sapiente.AI',
     'newsletter.success': 'Inscrição confirmada! Obrigado por se juntar a nós.',
     'newsletter.error': 'Erro ao inscrever. Tente novamente.',
-    'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.',
+    'newsletter.description': 'Receba insights sobre IA, tendências tecnológicas e atualizações da Sapiente.AI. Sem spam, apenas conteúdo de valor.',
   },
 
   'en': {
@@ -315,17 +315,17 @@ export const translations: Record<Language, Record<string, string>> = {
     'footer.copyright': '© 2026 SAPIENTE.AI • All rights reserved',
 
     // Blog Page
-    'blog.title': 'SAPIENTE.AI Blog — Applied Artificial Intelligence for Business',
+    'blog.title': 'Sapiente.AI Blog — Applied Artificial Intelligence for Business',
     'blog.subtitle': 'Specialized content on AI, machine learning, automation and technology trends for companies and professionals who want to evolve with data and technology.',
     'blog.search': 'Search articles...',
     'blog.all': 'All',
     'blog.readMore': 'Read Article',
     'blog.category': 'Category',
     'blog.date': 'Date',
-    'blog.author': 'SAPIENTE.AI',
+    'blog.author': 'Sapiente.AI',
     'blog.knowledge': 'Knowledge • Strategy • Innovation',
     'blog.newsletter': 'Receive AI Insights',
-    'blog.newsletterDesc': 'Subscribe to SAPIENTE.AI newsletter and receive exclusive content about artificial intelligence, machine learning and technology trends directly in your inbox.',
+    'blog.newsletterDesc': 'Subscribe to Sapiente.AI newsletter and receive exclusive content about artificial intelligence, machine learning and technology trends directly in your inbox.',
     'blog.noArticles': 'No articles found. Try another search or category.',
 
     // Article Detail
@@ -346,11 +346,11 @@ export const translations: Record<Language, Record<string, string>> = {
     'legal.introduction': 'Introduction',
     'legal.content': 'Content',
     'legal.RGPD.title': 'General Data Protection Law (RGPD)',
-    'legal.RGPD.intro': 'SAPIENTE.AI is in full compliance with the General Data Protection Law (RGPD) and international data protection regulations.',
+    'legal.RGPD.intro': 'Sapiente.AI is in full compliance with the General Data Protection Law (RGPD) and international data protection regulations.',
     'legal.terms.title': 'Terms of Service',
-    'legal.terms.intro': 'These terms govern the use of SAPIENTE.AI services. By accessing our website, you agree to these terms.',
+    'legal.terms.intro': 'These terms govern the use of Sapiente.AI services. By accessing our website, you agree to these terms.',
     'legal.privacy.title': 'Privacy Policy',
-    'legal.privacy.intro': 'SAPIENTE.AI respects your privacy and is committed to protecting your personal data.',
+    'legal.privacy.intro': 'Sapiente.AI respects your privacy and is committed to protecting your personal data.',
 
     // Newsletter
     'newsletter.label': 'Newsletter Email',
@@ -358,10 +358,10 @@ export const translations: Record<Language, Record<string, string>> = {
     'newsletter.subscribe': 'Subscribe',
     'newsletter.subscribing': 'Subscribing...',
     'newsletter.invalidEmail': 'Invalid email',
-    'newsletter.subject': 'New Newsletter Subscription - SAPIENTE.AI',
+    'newsletter.subject': 'New Newsletter Subscription - Sapiente.AI',
     'newsletter.success': 'Subscription confirmed! Thank you for joining us.',
     'newsletter.error': 'Error subscribing. Please try again.',
-    'newsletter.description': 'Receive insights about AI, technology trends and updates from SAPIENTE.AI. No spam, just valuable content.',
+    'newsletter.description': 'Receive insights about AI, technology trends and updates from Sapiente.AI. No spam, just valuable content.',
   },
 };
 

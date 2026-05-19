@@ -11,7 +11,7 @@ export const rgpdContentPT = {
       icon: Icons.Scale, // Representa a balança da justiça/conformidade legal
       title: "1. Conformidade Integral com o GDPR",
       content:
-        "A SAPIENTE.AI opera em total conformidade com o Regulamento (UE) 2016/679 (GDPR). Nossa estrutura de governança de dados foi desenhada para atender aos mais altos padrões de privacidade e segurança exigidos pelas autoridades de proteção de dados da União Europeia, garantindo um tratamento lícito, leal e transparente."
+        "A Sapiente.AI opera em total conformidade com o Regulamento (UE) 2016/679 (GDPR). Nossa estrutura de governança de dados foi desenhada para atender aos mais altos padrões de privacidade e segurança exigidos pelas autoridades de proteção de dados da União Europeia, garantindo um tratamento lícito, leal e transparente."
     },
     {
       id: "infrastructure-eu",
@@ -32,7 +32,7 @@ export const rgpdContentPT = {
       icon: Icons.Cpu, // Representa o processamento local/IA
       title: "4. IA Local e Soberania de Dados Sensíveis",
       content:
-        "Para cenários que envolvem o tratamento de categorias especiais de dados (dados sensíveis), a SAPIENTE.AI implementa arquiteturas de IA Local. Tecnicamente, esta abordagem utiliza ambientes isolados ou instâncias dedicadas (VPC), garantindo que o processamento ocorra sem comunicação com APIs externas de terceiros."
+        "Para cenários que envolvem o tratamento de categorias especiais de dados (dados sensíveis), a Sapiente.AI implementa arquiteturas de IA Local. Tecnicamente, esta abordagem utiliza ambientes isolados ou instâncias dedicadas (VPC), garantindo que o processamento ocorra sem comunicação com APIs externas de terceiros."
     },
     {
       id: "privacy-by-design",
@@ -78,7 +78,7 @@ export const rgpdContentPT = {
       icon: Icons.Mail, // Representa o canal de comunicação/DPO
       title: "10. Contacto e Proteção de Dados",
       content:
-        "A SAPIENTE.AI mantém processos internos de supervisão para garantir a conformidade contínua. Para questões relacionadas com a proteção de dados ou detalhes técnicos sobre a segurança dos nossos repositórios, utilize os nossos canais de contacto oficiais."
+        "A Sapiente.AI mantém processos internos de supervisão para garantir a conformidade contínua. Para questões relacionadas com a proteção de dados ou detalhes técnicos sobre a segurança dos nossos repositórios, utilize os nossos canais de contacto oficiais."
     }
   ]
 };

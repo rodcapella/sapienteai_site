@@ -2,7 +2,7 @@ export const trustContentPT = {
   label: "Confiança & Segurança",
   title: "Construído para confiabilidade. Projetado para confiança.",
   subtitle:
-    "A SAPIENTE.AI foi desenhada para operar com segurança, transparência e consistência em ambientes críticos.",
+    "A Sapiente.AI foi desenhada para operar com segurança, transparência e consistência em ambientes críticos.",
 
   sections: [
     {

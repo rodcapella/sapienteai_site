@@ -3,7 +3,7 @@ import { Icons } from "@/lib/icons";
 
 export const termsContentPT = {
   title: "Termos de Serviço",
-  subtitle: "Condições padrão para a utilização dos serviços e plataformas SAPIENTE.AI.",
+  subtitle: "Condições padrão para a utilização dos serviços e plataformas.",
   lastUpdated: "Última atualização: 16 de Fevereiro de 2026",
 
   sections: [
@@ -12,14 +12,14 @@ export const termsContentPT = {
       icon: Icons.CheckCircle,
       title: "1. Aceitação dos Termos",
       content:
-        "Ao aceder ou utilizar os serviços da SAPIENTE.AI, o utilizador declara ter lido, compreendido e concordado com os presentes termos. Caso utilize os serviços em nome de uma organização, declara possuir autoridade para vincular essa entidade a estas condições."
+        "Ao aceder ou utilizar os serviços da Sapiente.AI, o utilizador declara ter lido, compreendido e concordado com os presentes termos. Caso utilize os serviços em nome de uma organização, declara possuir autoridade para vincular essa entidade a estas condições."
     },
     {
       id: "services",
       icon: Icons.Zap,
       title: "2. Descrição dos Serviços",
       content:
-        "A SAPIENTE.AI disponibiliza soluções avançadas de inteligência artificial, automação e consultoria estratégica. Reservamos o direito de modificar ou atualizar funcionalidades para garantir a evolução tecnológica e segurança, desde que mantidas as obrigações contratuais base."
+        "A Sapiente.AI disponibiliza soluções avançadas de inteligência artificial, automação e consultoria estratégica. Reservamos o direito de modificar ou atualizar funcionalidades para garantir a evolução tecnológica e segurança, desde que mantidas as obrigações contratuais base."
     },
     {
       id: "usage",
@@ -37,7 +37,7 @@ export const termsContentPT = {
       icon: Icons.FileText,
       title: "4. Propriedade Intelectual",
       content:
-        "Todos os algoritmos, software, marcas e metodologias são propriedade exclusiva da SAPIENTE.AI. A utilização dos serviços não concede qualquer transferência de propriedade. Os outputs gerados podem estar sujeitos a licenças específicas definidas no contrato de serviço."
+        "Todos os algoritmos, software, marcas e metodologias são propriedade exclusiva da Sapiente.AI. A utilização dos serviços não concede qualquer transferência de propriedade. Os outputs gerados podem estar sujeitos a licenças específicas definidas no contrato de serviço."
     },
     {
       id: "data",
@@ -65,14 +65,14 @@ export const termsContentPT = {
       icon: Icons.AlertTriangle,
       title: "8. Limitação de Responsabilidade",
       content:
-        "Na máxima extensão permitida pela lei aplicável, a SAPIENTE.AI não será responsável por danos indiretos, incidentais ou consequenciais, incluindo perda de lucros ou dados, resultantes do uso ou incapacidade de uso dos sistemas de IA."
+        "Na máxima extensão permitida pela lei aplicável, a Sapiente.AI não será responsável por danos indiretos, incidentais ou consequenciais, incluindo perda de lucros ou dados, resultantes do uso ou incapacidade de uso dos sistemas de IA."
     },
     {
       id: "changes",
       icon: Icons.Info,
       title: "9. Alterações aos Termos",
       content:
-        "A SAPIENTE.AI poderá atualizar estes termos a qualquer momento. O uso continuado da plataforma após as alterações constitui a aceitação dos novos termos. Alterações significativas serão notificadas através da plataforma ou e-mail registado."
+        "A Sapiente.AI poderá atualizar estes termos a qualquer momento. O uso continuado da plataforma após as alterações constitui a aceitação dos novos termos. Alterações significativas serão notificadas através da plataforma ou e-mail registado."
     },
     {
       id: "termination",
@@ -86,7 +86,7 @@ export const termsContentPT = {
       icon: Icons.Globe,
       title: "11. Lei Aplicável e Jurisdição",
       content:
-        "Estes termos são regidos pelas leis de Portugal e da União Europeia. Qualquer litígio será submetido à jurisdição exclusiva dos tribunais da comarca de Lisboa, Portugal."
+        "Estes termos são regidos pelas leis de Portugal e da União Europeia. Qualquer litígio será submetido à jurisdição exclusiva dos tribunais da comarca do Porto, Portugal."
     }
   ]
 };

@@ -9,7 +9,7 @@ export const privacyPT = {
       id: "overview",
       icon: Icons.ShieldCheck,
       title: "1. Visão Geral",
-      content: "A SAPIENTE.AI atua como Responsável pelo Tratamento e Subcontratante sob o rigoroso enquadramento do Regulamento Geral sobre a Proteção de Dados (RGPD - Regulamento UE 2016/679). A nossa arquitetura de privacidade foi desenhada para proteger os direitos e liberdades fundamentais das pessoas singulares, nomeadamente o seu direito à proteção de dados pessoais."
+      content: "A Sapiente.AI atua como Responsável pelo Tratamento e Subcontratante sob o rigoroso enquadramento do Regulamento Geral sobre a Proteção de Dados (RGPD - Regulamento UE 2016/679). A nossa arquitetura de privacidade foi desenhada para proteger os direitos e liberdades fundamentais das pessoas singulares, nomeadamente o seu direito à proteção de dados pessoais."
     },
     {
       id: "collection",
@@ -43,7 +43,7 @@ export const privacyPT = {
       id: "sharing",
       icon: Icons.Share2,
       title: "5. Subcontratantes e Partilha de Dados",
-      content: "A SAPIENTE.AI adota uma política de seleção de fornecedores 'RGPD-first'. Os dados são partilhados apenas com subcontratantes terceiros que forneçam garantias de segurança de nível Tier-1, regidos por Acordos de Tratamento de Dados (DPA) que impõem o mesmo nível de proteção com que nos comprometemos perante os nossos utilizadores."
+      content: "A Sapiente.AI adota uma política de seleção de fornecedores 'RGPD-first'. Os dados são partilhados apenas com subcontratantes terceiros que forneçam garantias de segurança de nível Tier-1, regidos por Acordos de Tratamento de Dados (DPA) que impõem o mesmo nível de proteção com que nos comprometemos perante os nossos utilizadores."
     },
     {
       id: "transfers",
@@ -102,13 +102,7 @@ export const privacyPT = {
       id: "infrastructure",
       icon: Icons.Server,
       title: "14. Infraestrutura Sediada na UE",
-      content: "A SAPIENTE.AI prioriza a 'Soberania de Dados' ao utilizar fornecedores de cloud sediados na Europa ou zonas de dados específicas da UE. Isto minimiza a exposição legal a jurisdições fora da UE e reforça a conformidade com o RGPD."
+      content: "A Sapiente.AI prioriza a 'Soberania de Dados' ao utilizar fornecedores de cloud sediados na Europa ou zonas de dados específicas da UE. Isto minimiza a exposição legal a jurisdições fora da UE e reforça a conformidade com o RGPD."
     },
-    {
-      id: "contact",
-      icon: Icons.Send,
-      title: "15. Contacto e Encarregado de Proteção de Dados (DPO)",
-      content: "Para exercer os seus direitos ou contactar a nossa Equipa de Privacidade, entre em contacto com o nosso Encarregado de Proteção de Dados através do nosso portal oficial de suporte ou via dpo@sapiente.ai."
-    }
   ]
 };

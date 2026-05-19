@@ -76,7 +76,7 @@ export const aboutEN = {
       "Every angle represents direction.",
       "Every detail represents intention.",
       "",
-      "Sapiente is not about AI.",
+      "Sapiente.AI is not about AI.",
       "It’s about clarity."
     ]
   },

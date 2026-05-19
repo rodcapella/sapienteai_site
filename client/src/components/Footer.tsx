@@ -38,7 +38,7 @@ export default function Footer() {
     { name: "Facebook", icon: Icons.Facebook, url: "https://facebook.com/sapienteai" },
     { name: "TikTok", icon: Icons.Music2, url: "https://www.tiktok.com/@sapienteai" },
     { name: "X", icon: XIcon, url: "https://x.com/SapienteAI" },
-    { name: "Pinterest", icon: PinterestIcon, url: "#" },
+    { name: "Pinterest", icon: PinterestIcon, url: "https://www.pinterest.com/sapienteai" },
   ];
 
   return (
@@ -50,7 +50,7 @@ export default function Footer() {
         <div className="mb-20 grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-4">
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link href={`/${lang}`} className="group mb-8 inline-block">
-              <img src="/media/logos/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-[120px]" />
+              <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-[120px]" />
             </Link>
 
             <p className="max-w-sm text-lg leading-relaxed text-white/65">{t("footer.description")}</p>
@@ -91,40 +91,40 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-8 border-t border-[var(--brand-cyan)]/20 pt-10 md:flex-row">
-          <div className="flex items-center gap-3">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              const isPending = social.url === "#";
+        <div className="grid items-center gap-8 border-t border-[var(--brand-cyan)]/20 pt-10 md:grid-cols-[348px_1fr_auto]">
+          <div className="flex w-[348px] max-w-full flex-col items-center gap-4 justify-self-center md:justify-self-start">
+            <p className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80">
+              {lang === "pt" ? "Siga-nos" : "Follow us"}
+            </p>
 
-              return (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  onClick={(event) => {
-                    if (isPending) event.preventDefault();
-                  }}
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
-                  aria-label={social.name}
-                  aria-disabled={isPending ? "true" : undefined}
-                  target={isPending ? undefined : "_blank"}
-                  rel={isPending ? undefined : "noopener noreferrer nofollow"}
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              );
-            })}
+            <div className="flex w-full items-center justify-center gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
+                    aria-label={social.name}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3 text-center md:items-end md:text-right">
-            <Link
-              href={`/${lang}/sitemap`}
-              className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
-            >
-              {t("footer.sitemap")}
-            </Link>
-            <p className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65">{t("footer.copyright")}</p>
-          </div>
+          <Link
+            href={`/${lang}/sitemap`}
+            className="justify-self-center text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
+          >
+            {t("footer.sitemap")}
+          </Link>
+
+          <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
         </div>
       </div>
 

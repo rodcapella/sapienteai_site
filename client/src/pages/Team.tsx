@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 
+import ContactModal from "@/components/ContactModal";
 import { setSEOHead } from "@/components/SEOHead";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -143,10 +144,11 @@ export default function Team() {
   const lang = location.split("/")[1] || "pt";
   const content = getContent("team", lang);
   const members: Member[] = content.members;
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.hero.title} - SAPIENTE.AI`,
+      title: `${content.hero.title} - Sapiente.AI`,
       description: content.hero.subtitle,
       url: `https://sapienteai.com/${lang}/team`,
       type: "website",
@@ -157,13 +159,6 @@ export default function Team() {
     <div className="flex flex-col">
       <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
         <div className="container max-w-5xl px-6 text-center">
-          <Reveal>
-            <Link href={`/${lang}`} className="mb-8 inline-flex items-center gap-2 font-black uppercase tracking-widest text-[var(--brand-cyan)] transition-opacity hover:opacity-70">
-              <Icons.ArrowLeft className="h-4 w-4" />
-              {t("nav.home")}
-            </Link>
-          </Reveal>
-
           <Reveal delay={100}>
             <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
               {content.hero.title}
@@ -249,20 +244,20 @@ export default function Team() {
           <Reveal>
             <div className="mx-auto max-w-4xl">
               <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
-                SAPIENTE.AI
+                Sapiente.AI
               </p>
               <h2 className="mb-8 text-4xl font-black leading-none tracking-tighter text-white md:text-7xl">
                 {lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}
               </h2>
-              <Link href={`/${lang}/contact`}>
-                <PremiumButton variant="secondary">
-                  {lang === "en" ? "Talk to the team" : "Falar com a equipa"}
-                </PremiumButton>
-              </Link>
+              <PremiumButton variant="secondary" onClick={() => setIsContactOpen(true)}>
+                {lang === "en" ? "Talk to the team" : "Falar com a equipa"}
+              </PremiumButton>
             </div>
           </Reveal>
         </div>
       </Section>
+
+      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </div>
   );
 }

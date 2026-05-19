@@ -116,7 +116,7 @@ export function generateStructuredData(type: 'Organization' | 'Article' | 'Bread
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  'name': 'SAPIENTE.AI',
+  'name': 'Sapiente.AI',
   'alternateName': 'Sapiente IA',
   'url': 'https://sapienteai.com',
   'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png',
@@ -188,7 +188,7 @@ export function breadcrumbSchema(items: Array<{ name: string; url: string }>) {
 export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  'name': 'SAPIENTE.AI',
+  'name': 'Sapiente.AI',
   'description': 'Soluções de inteligência artificial aplicada',
   'url': 'https://sapienteai.com',
   'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png',

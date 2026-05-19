@@ -36,7 +36,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     setSEOHead({
-      title: 'Portfólio - SAPIENTE.AI',
+      title: 'Portfólio - Sapiente.AI',
       description: 'Produtos e soluções em IA',
       url: 'https://sapienteai.com/portfolio',
       type: 'website'
