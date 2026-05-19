@@ -39,7 +39,6 @@ export default function Home() {
   const automationIcons = [Icons.Zap, Icons.Calendar, Icons.TrendingUp];
   const conversionIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
   const keywordIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
-  const webMobileIcons = [Icons.Lightbulb, Icons.Cpu, Icons.TrendingUp];
   const brandbookIcons = [Icons.Bot, Icons.Brain, Icons.TrendingUp, Icons.PieChart, Icons.Cog, Icons.MessageCircle, Icons.ShieldCheck];
 
   return (
@@ -303,42 +302,6 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={darkSectionClass}>
-        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-        <TechBackdrop intensity="medium" />
-        <TechParticleField className="opacity-45" />
-
-        <SectionHeader>
-          <Reveal>
-            <SectionTitle label={content.webMobile.label} title={content.webMobile.title} />
-          </Reveal>
-        </SectionHeader>
-
-        <div className="relative z-10 mx-auto mt-16 grid max-w-7xl gap-7 px-6 lg:grid-cols-3">
-          {content.webMobile.pillars.map((pillar, i) => {
-            const Icon = webMobileIcons[i % webMobileIcons.length];
-
-            return (
-              <SectionCard key={pillar.title} delay={i * 0.1} variant="highlight" className="rounded-[2rem] bg-[#06102A]/62 p-8 md:p-10">
-                <div className="mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)]/15 text-[var(--brand-cyan)] shadow-[0_0_26px_rgba(0,209,255,0.32)]">
-                  <Icon className="h-8 w-8" />
-                </div>
-                <h3 className="mb-4 font-heading text-3xl font-black tracking-tight text-[var(--brand-offwhite)]">{pillar.title}</h3>
-
-                <ul className="space-y-3">
-                  {pillar.points.map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-[var(--brand-offwhite)]/82">
-                      <Icons.CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-cyan)]" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </SectionCard>
-            );
-          })}
-        </div>
-      </Section>
-
       {isPT && (
         <Section className={lightSectionClass}>
           <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
@@ -362,32 +325,6 @@ export default function Home() {
                 </SectionCard>
               );
             })}
-          </div>
-        </Section>
-      )}
-
-      {isPT && (
-        <Section className={darkSectionClass}>
-          <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-          <TechBackdrop intensity="soft" />
-          <SectionHeader>
-            <Reveal>
-              <SectionTitle label={homePT.applications.label} title={homePT.applications.title} />
-            </Reveal>
-          </SectionHeader>
-
-          <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3">
-            {homePT.applications.items.map((application, i) => (
-              <SectionCard key={application.title} delay={i * 0.06} className="rounded-[1.8rem] border border-[var(--brand-primary)]/30 bg-[#071129]/60 p-0">
-                <div className="relative h-52 overflow-hidden rounded-t-[1.8rem]">
-                  <img src={application.image} alt={application.title} className="h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#05081B] via-[#05081B]/20 to-transparent" />
-                </div>
-                <div className="p-6">
-                  <p className="font-heading text-xl font-bold text-[var(--brand-offwhite)]">{application.title}</p>
-                </div>
-              </SectionCard>
-            ))}
           </div>
         </Section>
       )}

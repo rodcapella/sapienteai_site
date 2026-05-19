@@ -127,25 +127,6 @@ export const homePT = {
     ],
   },
 
-  webMobile: {
-    label: "Desenvolvimento Web & Mobile",
-    title: "Produtos digitais à medida preparados para escalar",
-    pillars: [
-      {
-        title: "Estratégia primeiro",
-        points: ["Descoberta do produto", "Jornadas do utilizador", "Arquitetura orientada à conversão"],
-      },
-      {
-        title: "Desenvolvimento inteligente",
-        points: ["Aplicações web", "Experiências mobile", "Integrações com APIs e sistemas"],
-      },
-      {
-        title: "Entrega preparada para crescimento",
-        points: ["Otimização de performance", "Configuração de analytics", "Bases escaláveis"],
-      },
-    ],
-  },
-
   brandPersonality: {
     label: "Personalidade da marca",
     title: "Uma parceira tecnológica para performance e crescimento",
@@ -190,17 +171,6 @@ export const homePT = {
         after: "Operação eficiente e otimizada"
       }
     ]
-  },
-
-  applications: {
-    label: "Aplicações da marca",
-    title: "Execução visual coesa em todos os pontos de contacto",
-    items: [
-      { title: "Campanhas e criativos", image: "/brandbook/marketing-ia.jpeg" },
-      { title: "Automação e operações", image: "/brandbook/automacao-inteligente.jpeg" },
-      { title: "Websites e conversão", image: "/brandbook/websites-convertem.jpeg" },
-      { title: "Soluções integradas", image: "/brandbook/solucoes-completas.jpeg" },
-    ],
   },
 
   keywords: [

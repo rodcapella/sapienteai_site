@@ -127,25 +127,6 @@ export const homeEN = {
     ],
   },
 
-  webMobile: {
-    label: "Web & Mobile Development",
-    title: "Custom digital products built to scale",
-    pillars: [
-      {
-        title: "Strategy first",
-        points: ["Product discovery", "User journeys", "Conversion-oriented architecture"],
-      },
-      {
-        title: "Smart development",
-        points: ["Web apps", "Mobile experiences", "API and system integrations"],
-      },
-      {
-        title: "Growth-ready delivery",
-        points: ["Performance optimization", "Analytics setup", "Scalable foundations"],
-      },
-    ],
-  },
-
   brandPersonality: {
     label: "Brand personality",
     title: "A technology partner for performance and growth",
@@ -191,18 +172,6 @@ export const homeEN = {
       },
     ],
   },
-
-  applications: {
-    label: "Brand applications",
-    title: "Consistent execution across every touchpoint",
-    items: [
-      { title: "Campaigns & creatives", image: "/brandbook/marketing-ia.jpeg" },
-      { title: "Automation & operations", image: "/brandbook/automacao-inteligente.jpeg" },
-      { title: "Websites & conversion", image: "/brandbook/websites-convertem.jpeg" },
-      { title: "Integrated solutions", image: "/brandbook/solucoes-completas.jpeg" },
-    ],
-  },
-
   keywords: [
     "High-quality content",
     "More visibility",
