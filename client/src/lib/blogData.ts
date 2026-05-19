@@ -170,7 +170,7 @@ Machine Learning is not a single project—it's a continuous journey of learning
     id: '3',
     slug: 'ai-trends-2026-what-to-expect',
     title: 'AI Trends for 2026: What to Expect from the Market',
-    excerpt: 'Análise das principais tendências de inteligência artificial que moldarão o mercado em 2026, desde IA generativa até regulamentações e novas oportunidades.',
+    excerpt: 'Analysis of the key artificial intelligence trends shaping the market in 2026, from generative AI to regulation and new opportunities.',
     author: 'SAPIENTE.AI',
     date: '2026-02-05',
     readTime: 9,

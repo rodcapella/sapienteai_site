@@ -19,6 +19,15 @@ interface ArticleDetailProps {
 export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailProps) {
   const article = getBlogArticleBySlug(slug);
   const blogPath = `/${lang}/blog`;
+  const isPT = lang !== 'en';
+  const text = {
+    notFound: isPT ? 'Artigo não encontrado' : 'Article not found',
+    backToBlog: isPT ? 'Voltar ao blog' : 'Back to blog',
+    readTime: isPT ? 'min de leitura' : 'min read',
+    share: isPT ? 'Partilhar:' : 'Share:',
+    newsletter: isPT ? 'Receba artigos como este' : 'Get articles like this',
+    related: isPT ? 'Artigos relacionados' : 'Related articles',
+  };
 
   useEffect(() => {
     if (article) {
@@ -41,9 +50,9 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
     return (
       <div className="min-h-screen flex items-center justify-center text-white">
         <div className="text-center">
-          <h1 className="text-3xl font-semibold mb-4">Artigo não encontrado</h1>
+          <h1 className="text-3xl font-semibold mb-4">{text.notFound}</h1>
           <Link href={blogPath} className="text-cyan-400 hover:underline">
-            Voltar ao blog
+            {text.backToBlog}
           </Link>
         </div>
       </div>
@@ -100,10 +109,10 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
 
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4" />
-              {new Date(article.date).toLocaleDateString('pt-PT')}
+              {new Date(article.date).toLocaleDateString(isPT ? 'pt-PT' : 'en-US')}
             </div>
 
-            <span>{article.readTime} min leitura</span>
+            <span>{article.readTime} {text.readTime}</span>
           </div>
         </div>
       </Section>
@@ -118,7 +127,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
 
         {/* SHARE */}
         <div className="max-w-3xl mx-auto mt-12 pt-6 border-t border-white/10 flex gap-4 items-center">
-          <span className="text-sm text-slate-400">Compartilhar:</span>
+          <span className="text-sm text-slate-400">{text.share}</span>
 
           <Button variant="outline">
             <Share2 className="h-4 w-4 mr-2" />
@@ -137,7 +146,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
         <div className="max-w-3xl mx-auto">
           <SectionCard variant="highlight">
             <h3 className="text-xl font-semibold mb-4">
-              Receba artigos como este
+              {text.newsletter}
             </h3>
 
             <NewsletterForm variant="compact" />
@@ -150,7 +159,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
         <Section>
           <div className="max-w-5xl mx-auto">
             <h3 className="text-2xl font-semibold mb-8">
-              Artigos Relacionados
+              {text.related}
             </h3>
 
             <div className="grid md:grid-cols-2 gap-6">

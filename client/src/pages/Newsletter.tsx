@@ -61,7 +61,7 @@ export default function Newsletter() {
               <Icons.Send className="h-7 w-7" />
             </div>
             <h2 className="font-heading text-2xl font-black text-[var(--brand-offwhite)]">
-              {isPT ? "Registo Newsletter" : "Newsletter Registration"}
+              {isPT ? "Registo na newsletter" : "Newsletter sign-up"}
             </h2>
             <p className="mt-2 text-sm text-[var(--brand-offwhite)]/62">
               {isPT ? "Preencha os dados abaixo para receber novidades." : "Fill in the details below to receive updates."}
@@ -69,7 +69,7 @@ export default function Newsletter() {
           </div>
 
           <form className="space-y-5" action="https://formsubmit.co/sapiente.ai.oficial@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Novo registo newsletter - SAPIENTE.AI" />
+            <input type="hidden" name="_subject" value="Novo registo na newsletter - SAPIENTE.AI" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
 

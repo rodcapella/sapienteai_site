@@ -64,7 +64,7 @@ const modalText = {
       email: "Email é obrigatório.",
       message: "Mensagem é obrigatória.",
       invalidEmail: "Insira um email válido.",
-      form: "Revise os campos obrigatórios e conclua a verificação antes de enviar.",
+      form: "Reveja os campos obrigatórios e conclua a verificação antes de enviar.",
       turnstile: "Conclua a verificação de segurança antes de enviar.",
       turnstileExpired: "A verificação expirou. Por favor, confirme novamente.",
       turnstileError: "Não foi possível validar a verificação. Tente novamente.",

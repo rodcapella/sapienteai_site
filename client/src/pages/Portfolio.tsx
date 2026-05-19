@@ -53,7 +53,7 @@ export default function Portfolio() {
       benefits: ['Economia de tempo significativa', 'Redução drástica de erros', 'Melhor planeamento fiscal anual'],
       stats: [
         { label: 'Downloads', value: '100K+' },
-        { label: 'Usuários', value: '50K+' },
+        { label: 'Utilizadores', value: '50K+' },
         { label: 'Rating', value: '4.8' }
       ],
       icon: '📊',

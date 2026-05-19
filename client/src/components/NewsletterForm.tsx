@@ -82,7 +82,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="seu@email.com"
+            placeholder="o-seu@email.com"
             className="flex-1 px-3 py-2 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors text-sm"
             disabled={status.type === 'loading'}
           />
@@ -126,7 +126,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
               id="newsletter-email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t('newsletter.placeholder') || 'seu@email.com'}
+              placeholder={t('newsletter.placeholder') || 'o-seu@email.com'}
               className="w-full pl-10 pr-4 py-3 border-2 border-foreground bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:border-primary transition-colors"
               disabled={status.type === 'loading'}
             />

@@ -31,7 +31,7 @@ const clusterArticles: ClusterArticle[] = [
     keywords: ['IA generativa', 'automação', 'transformação digital']
   },
   {
-    title: 'Machine Learning para Previsão de Demanda',
+    title: 'Machine Learning para previsão de procura',
     slug: 'machine-learning-previsao-demanda',
     description: 'Algoritmos de ML para otimizar inventário e aumentar eficiência operacional em até 40%.',
     keywords: ['machine learning', 'previsão', 'otimização']
@@ -91,7 +91,7 @@ export default function AIPillar() {
 
         <div className="max-w-2xl">
           <p className="text-slate-400 mb-8">
-            Tudo o que você precisa saber sobre IA aplicada a negócios.
+            Tudo o que precisa de saber sobre IA aplicada a negócios.
           </p>
 
           <div className="flex gap-4 flex-wrap">
@@ -100,7 +100,7 @@ export default function AIPillar() {
             </Button>
 
             <Button variant="outline">
-              Fale com Especialista
+              Fale com um especialista
             </Button>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default function AIPillar() {
           {[
             {
               icon: TrendingUp,
-              title: 'Aumento de Receita',
+              title: 'Aumento de receitas',
               description: 'Aumento de vendas com personalização inteligente.'
             },
             {

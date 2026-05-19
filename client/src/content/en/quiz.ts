@@ -3,7 +3,7 @@ export const quizContentEn = {
   title: "How much do you know about",
   highlight: "Artificial Intelligence",
   subtitle:
-    "Test your knowledge about AI in business and personal context with 10 quick questions.",
+    "Test your knowledge of AI in business and everyday contexts with 10 quick questions.",
   startButton: "Start Quiz",
   duration: "10 questions · ~3 minutes",
   nextButton: "Next Question",
@@ -13,29 +13,29 @@ export const quizContentEn = {
   wrongLabel: "Wrong!",
   ctaTitle: "Ready to transform your business with AI?",
   ctaText:
-    "Sapiente.AI helps companies and professionals implement AI solutions in a strategic, practical and accessible way.",
+    "Sapiente.AI helps companies and professionals implement AI solutions in a strategic, practical, and accessible way.",
   ctaButton: "Talk to us",
   restartButton: "Retake the quiz",
   results: [
     {
       max: 3,
       title: "🌱 AI Beginner",
-      desc: "You're beginning your AI journey. Sapiente.AI can accelerate your learning!",
+      desc: "You’re at the beginning of your AI journey. Sapiente.AI can help you turn learning into business value.",
     },
     {
       max: 6,
       title: "⚡ Intermediate Knowledge",
-      desc: "You know the basics! Time to apply AI strategically in your business.",
+      desc: "You know the basics. Now it’s time to apply AI strategically to your business.",
     },
     {
       max: 9,
-      title: "🚀 Almost Expert",
+      title: "🚀 Almost an expert",
       desc: "Impressive! You have a great foundation in AI. Ready to take it to the next level?",
     },
     {
       max: 10,
       title: "🏆 AI Expert!",
-      desc: "Congratulations! You master AI concepts. Ready to turn that knowledge into results?",
+      desc: "Congratulations! You understand core AI concepts. Ready to turn that knowledge into results?",
     },
   ],
   questions: [
@@ -70,7 +70,7 @@ export const quizContentEn = {
       q: "How does AI reduce business costs through intelligent automation?",
       opts: [
         "Only by replacing employees",
-        "By automating repetitive processes, optimizing resources and reducing operational errors",
+        "By automating repetitive processes, optimizing resources, and reducing operational errors",
         "By increasing manual tasks",
         "It has no impact on costs",
       ],
@@ -83,7 +83,7 @@ export const quizContentEn = {
       q: "How can AI help in daily life?",
       opts: [
         "Only playing chess",
-        "Organizing tasks, recommending content and assisting with learning",
+        "Organizing tasks, recommending content, and supporting learning",
         "Doing physical exercises for you",
         "Replacing human relationships",
       ],
@@ -96,7 +96,7 @@ export const quizContentEn = {
       q: "How can generative AI revolutionize advertising campaigns?",
       opts: [
         "Only creating small texts",
-        "Generating personalized content at scale, optimizing targeting and increasing ROI",
+        "Generating personalized content at scale, optimizing targeting, and increasing ROI",
         "Completely replacing creatives",
         "Doesn't work for marketing",
       ],
@@ -122,7 +122,7 @@ export const quizContentEn = {
       q: "How does advanced AI-powered data analysis benefit companies?",
       opts: [
         "Only creating pretty graphs",
-        "Identifying patterns, predicting trends and informing strategic decisions",
+        "Identifying patterns, predicting trends, and informing strategic decisions",
         "Creating PDF reports",
         "Brings no real benefits",
       ],
@@ -148,7 +148,7 @@ export const quizContentEn = {
       q: "What is the main financial impact of automation with AI?",
       opts: [
         "Only saving paper",
-        "Reducing operational costs, increasing productivity and improving revenue",
+        "Reducing operational costs, increasing productivity, and improving revenue",
         "Increasing expenses",
         "No impact",
       ],
@@ -167,7 +167,7 @@ export const quizContentEn = {
       ],
       correct: 1,
       explain:
-        "Generative AI and intelligent assistants integrated into work tools are the trends with the greatest impact in coming years.",
+        "Generative AI and intelligent assistants embedded in work tools are among the highest-impact trends for the coming years.",
     },
   ],
 };

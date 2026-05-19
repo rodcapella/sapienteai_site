@@ -16,27 +16,72 @@ export const faqEN = {
     {
       question: "What exactly does Sapiente AI do?",
       answer:
-        "We develop artificial intelligence systems focused on improving decision-making and automating critical processes."
+        "We help small and medium-sized businesses, professionals, and creators grow with applied artificial intelligence. We work across customer acquisition, process automation, digital marketing, content creation, and conversion-focused websites."
     },
     {
-      question: "How long does it take to implement a project?",
+      question: "What kind of results can I expect?",
       answer:
-        "It depends on complexity, but typically between 2 to 8 weeks for initial functional delivery."
+        "Results depend on your starting point, but we typically focus on increasing qualified leads, improving conversion rates, and reducing operational costs through automation and data-driven decisions."
     },
     {
-      question: "What is the minimum investment?",
+      question: "How long does it take to see results?",
       answer:
-        "Projects can start between €5K and €15K, scaling based on results."
+        "Some impact can appear within the first few weeks. In marketing, content, and automation, more consistent results usually emerge within 3 to 6 months."
     },
     {
-      question: "How does support work?",
+      question: "Will AI replace my team?",
       answer:
-        "It includes continuous monitoring, optimization, and ongoing system evolution."
+        "No. AI works as a productivity accelerator. It automates repetitive tasks so your team can focus on higher-value work."
     },
     {
-      question: "Can it integrate with existing systems?",
+      question: "Do you also handle marketing and social media management?",
       answer:
-        "Yes. We integrate seamlessly with APIs, legacy systems, and modern tools."
-    }
+        "Yes. We create and manage strategies for Instagram, Facebook, LinkedIn, Pinterest, and TikTok, with a focus on audience growth, authority, and lead generation."
+    },
+    {
+      question: "Do you create content, images, and videos?",
+      answer:
+        "Yes. We produce visual content, videos, and creative assets designed to capture attention, communicate clearly, and convert audiences into customers."
+    },
+    {
+      question: "Do you build websites or landing pages?",
+      answer:
+        "Yes. We build conversion-focused websites and landing pages integrated with funnels, automation, and data tracking."
+    },
+    {
+      question: "Can you automate customer support and sales?",
+      answer:
+        "Yes. We implement chatbots and intelligent workflows for customer support, lead qualification, and sales enablement, available 24/7."
+    },
+    {
+      question: "Do you work with SEO, GEO, and AEO?",
+      answer:
+        "Yes. We optimize digital presence for traditional search engines, geolocated search, and AI answer engines to increase visibility and capture qualified demand."
+    },
+    {
+      question: "Can you integrate with the tools we already use?",
+      answer:
+        "Yes. We integrate CRMs, marketing platforms, APIs, and existing systems to make operations simpler, more efficient, and better connected."
+    },
+    {
+      question: "What investment is required?",
+      answer:
+        "It depends on the goals, complexity, and scope of the project. The best approach is to assess the specific case and propose a solution proportional to the expected impact."
+    },
+    {
+      question: "How does ongoing support work?",
+      answer:
+        "We provide monitoring, optimization, and continuous evolution of the solutions to maintain consistency and improve performance over time."
+    },
+    {
+      question: "Who is this service best suited for?",
+      answer:
+        "It is best suited for companies, professionals, and creators who want to grow, automate processes, gain efficiency, and use technology in a practical way."
+    },
+    {
+      question: "When might this not be the right solution?",
+      answer:
+        "If the business is not yet ready to grow, measure results, or implement change, the impact may be limited. We deliver the most value when there is a real willingness to evolve."
+    },
   ]
 };

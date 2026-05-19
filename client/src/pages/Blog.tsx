@@ -24,35 +24,40 @@ const Calendar = Icons.Calendar;
 const User = Icons.User;
 
 const articles = getAllBlogArticles();
-const categories = ['Todos', ...Array.from(new Set(articles.map(a => a.category)))];
 
 export default function Blog() {
   const { t } = useTranslation();
   const [location] = useLocation();
   const lang = location.startsWith("/en") ? "en" : "pt";
-  const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const allCategory = lang === "en" ? "All" : "Todos";
+  const categories = useMemo(() => [allCategory, ...Array.from(new Set(articles.map(a => a.category)))], [allCategory]);
+  const [selectedCategory, setSelectedCategory] = useState(allCategory);
   const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    setSelectedCategory(allCategory);
+  }, [allCategory]);
 
   useEffect(() => {
     setSEOHead({
       title: 'Blog - SAPIENTE.AI',
-      description: 'Insights sobre IA e tecnologia aplicada a negócios.',
-      keywords: 'IA, machine learning, automação',
-      url: 'https://sapienteai.com/blog',
+      description: lang === "en" ? 'Commercial insights on AI and business technology.' : 'Insights sobre IA e tecnologia aplicada ao negócio.',
+      keywords: lang === "en" ? 'AI, machine learning, automation' : 'IA, machine learning, automação',
+      url: `https://sapienteai.com/${lang}/blog`,
       type: 'website'
     });
-  }, []);
+  }, [lang]);
 
   const filteredArticles = useMemo(() => {
     return articles.filter(article => {
-      const matchesCategory = selectedCategory === 'Todos' || article.category === selectedCategory;
+      const matchesCategory = selectedCategory === allCategory || article.category === selectedCategory;
       const matchesSearch =
         article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [allCategory, selectedCategory, searchQuery]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -113,7 +118,7 @@ export default function Blog() {
                     : 'bg-white text-foreground/60 border border-foreground/5 hover:bg-foreground/5'}
                 `}
               >
-                {category === 'Todos' ? t('blog.all') : category}
+                {category === allCategory ? t('blog.all') : category}
               </button>
             ))}
           </div>
@@ -163,7 +168,7 @@ export default function Blog() {
 
                       <div className="flex items-center gap-2">
                         <Calendar className="h-4 w-4" />
-                        {new Date(article.date).toLocaleDateString('pt-PT')}
+                        {new Date(article.date).toLocaleDateString(lang === "en" ? 'en-US' : 'pt-PT')}
                       </div>
                     </div>
 

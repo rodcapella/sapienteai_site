@@ -1,9 +1,9 @@
 export const quizContentPt = {
   badge: "Quiz sobre IA",
-  title: "Quanto você sabe sobre",
+  title: "Quanto sabe sobre",
   highlight: "Inteligência Artificial",
   subtitle:
-    "Teste seus conhecimentos sobre IA no contexto empresarial e pessoal com 10 perguntas rápidas.",
+    "Teste os seus conhecimentos sobre IA no contexto empresarial e pessoal com 10 perguntas rápidas.",
   startButton: "Começar o Quiz",
   duration: "10 perguntas · ~3 minutos",
   nextButton: "Próxima Pergunta",
@@ -11,7 +11,7 @@ export const quizContentPt = {
   scoreLabel: "Pontos",
   correctLabel: "Correto!",
   wrongLabel: "Incorreto!",
-  ctaTitle: "Pronto para transformar seu negócio com IA?",
+  ctaTitle: "Pronto para transformar o seu negócio com IA?",
   ctaText:
     "A Sapiente.AI ajuda empresas e profissionais a implementar soluções de IA de forma estratégica, prática e acessível.",
   ctaButton: "Fale connosco",
@@ -20,22 +20,22 @@ export const quizContentPt = {
     {
       max: 3,
       title: "🌱 Iniciante em IA",
-      desc: "Você está começando sua jornada. A Sapiente.AI pode acelerar seu aprendizado!",
+      desc: "Está a começar a sua jornada em IA. A Sapiente.AI pode acelerar a sua aprendizagem.",
     },
     {
       max: 6,
       title: "⚡ Conhecimento Intermediário",
-      desc: "Você já sabe o básico! Hora de aplicar IA de forma estratégica no seu negócio.",
+      desc: "Já domina o essencial. Está na hora de aplicar IA de forma estratégica no seu negócio.",
     },
     {
       max: 9,
-      title: "🚀 Quase Especialista",
-      desc: "Impressionante! Você tem uma ótima base sobre IA. Vamos elevar ao próximo nível?",
+      title: "🚀 Quase especialista",
+      desc: "Excelente. Tem uma base sólida sobre IA. Vamos levá-la ao próximo nível?",
     },
     {
       max: 10,
-      title: "🏆 Expert em IA!",
-      desc: "Parabéns! Você domina os conceitos de IA. Que tal transformar esse conhecimento em resultados?",
+      title: "🏆 Especialista em IA!",
+      desc: "Parabéns. Domina os conceitos de IA. Que tal transformar esse conhecimento em resultados?",
     },
   ],
   questions: [
@@ -50,7 +50,7 @@ export const quizContentPt = {
       ],
       correct: 1,
       explain:
-        "IA são sistemas computacionais capazes de simular capacidades humanas como aprendizado, raciocínio e tomada de decisão.",
+        "IA são sistemas computacionais capazes de simular capacidades humanas como aprendizagem, raciocínio e tomada de decisão.",
     },
     {
       cat: "IA no Trabalho",
@@ -59,11 +59,11 @@ export const quizContentPt = {
         "Substituir completamente todos os funcionários",
         "Automatizar tarefas repetitivas e aumentar a produtividade",
         "Eliminar a necessidade de estratégia de negócio",
-        "Reduzir custos demitindo toda a equipe",
+        "Reduzir custos despedindo toda a equipa",
       ],
       correct: 1,
       explain:
-        "A IA complementa o trabalho humano automatizando tarefas repetitivas, permitindo que equipes foquem em atividades mais estratégicas.",
+        "A IA complementa o trabalho humano ao automatizar tarefas repetitivas, permitindo que as equipas se foquem em atividades mais estratégicas.",
     },
     {
       cat: "Ferramentas de IA",
@@ -84,29 +84,29 @@ export const quizContentPt = {
       opts: [
         "Apenas jogando xadrez",
         "Organizando tarefas, recomendando conteúdo e auxiliando estudos",
-        "Fazendo exercícios físicos por você",
+        "Fazendo exercício físico por si",
         "Substituindo relacionamentos humanos",
       ],
       correct: 1,
       explain:
-        "No cotidiano, IA ajuda com assistentes virtuais, recomendações personalizadas, organização de rotina e aprendizado.",
+        "No quotidiano, a IA ajuda com assistentes virtuais, recomendações personalizadas, organização da rotina e aprendizagem.",
     },
     {
       cat: "IA Empresarial",
       q: "Como a IA generativa pode revolucionar campanhas publicitárias?",
       opts: [
         "Apenas criando pequenos textos",
-        "Gerando conteúdo personalizado em escala, otimizando segmentação e aumentando ROI",
+        "Gerando conteúdo personalizado à escala, otimizando segmentação e aumentando o ROI",
         "Substituindo criativos completamente",
         "Não funciona para marketing",
       ],
       correct: 1,
       explain:
-        "A IA generativa cria conteúdo diverso em segundos, personaliza mensagens por público e otimiza campanhas automaticamente.",
+        "A IA generativa cria conteúdos diversos em segundos, personaliza mensagens por público e otimiza campanhas automaticamente.",
     },
     {
       cat: "Machine Learning",
-      q: "O que é Machine Learning (Aprendizado de Máquina)?",
+      q: "O que é Machine Learning (aprendizagem automática)?",
       opts: [
         "Ensinar máquinas a andar",
         "Um subcampo da IA onde sistemas aprendem com dados",
@@ -115,11 +115,11 @@ export const quizContentPt = {
       ],
       correct: 1,
       explain:
-        "Machine Learning é uma área da IA em que algoritmos aprendem padrões a partir de dados, melhorando seu desempenho com o tempo.",
+        "Machine Learning é uma área da IA em que os algoritmos aprendem padrões a partir de dados, melhorando o seu desempenho ao longo do tempo.",
     },
     {
       cat: "Análise de Dados",
-      q: "Como análise avançada de dados com IA beneficia empresas?",
+      q: "Como é que a análise avançada de dados com IA beneficia as empresas?",
       opts: [
         "Apenas gerando gráficos bonitos",
         "Identificando padrões, prevendo tendências e informando decisões estratégicas",
@@ -128,11 +128,11 @@ export const quizContentPt = {
       ],
       correct: 1,
       explain:
-        "Análise com IA descobre insights ocultos, prevê comportamentos de clientes e otimiza estratégias de negócio baseado em dados.",
+        "A análise com IA revela insights ocultos, prevê comportamentos de clientes e otimiza estratégias de negócio com base em dados.",
     },
     {
       cat: "Marketing",
-      q: "Como a IA transforma segmentação de clientes e personalização?",
+      q: "Como é que a IA transforma a segmentação de clientes e a personalização?",
       opts: [
         "Apenas dividindo por idade",
         "Analisando comportamentos em tempo real e criando experiências ultra-personalizadas",
@@ -141,33 +141,33 @@ export const quizContentPt = {
       ],
       correct: 1,
       explain:
-        "A IA analisa múltiplas variáveis de comportamento para segmentar precisamente e personalizar cada interação com clientes.",
+        "A IA analisa múltiplas variáveis de comportamento para segmentar com precisão e personalizar cada interação com clientes.",
     },
     {
       cat: "Eficiência",
       q: "Qual é o principal impacto financeiro da automatização com IA?",
       opts: [
         "Apenas economia de papel",
-        "Redução de custos operacionais, aumento de produtividade e melhoria de receita",
+        "Redução de custos operacionais, aumento de produtividade e crescimento das receitas",
         "Aumento de despesas",
         "Nenhum impacto",
       ],
       correct: 1,
       explain:
-        "Automatização com IA reduz custos fixos, aumenta output com menos recursos e libera equipes para tarefas de alto valor.",
+        "A automatização com IA reduz custos fixos, aumenta a produção com menos recursos e liberta as equipas para tarefas de alto valor.",
     },
     {
       cat: "Futuro da IA",
       q: "Qual tendência de IA tem maior impacto previsto para os próximos anos?",
       opts: [
-        "IA vai substituir a internet",
+        "A IA vai substituir a internet",
         "IA generativa e copilotos inteligentes integrados ao trabalho",
         "A IA vai deixar de existir",
         "Computadores vão se tornar conscientes",
       ],
       correct: 1,
       explain:
-        "A IA generativa e assistentes inteligentes integrados a ferramentas de trabalho são as tendências com maior impacto nos próximos anos.",
+        "A IA generativa e os assistentes inteligentes integrados em ferramentas de trabalho são as tendências com maior impacto nos próximos anos.",
     },
   ],
 };

@@ -2,7 +2,7 @@ export const aboutPT = {
   hero: {
     title: "A maioria das empresas não tem um problema de dados.",
     highlight: "Tem um problema de decisão.",
-    subtitle: "Transformamos dados em decisões que aumentam receita, reduzem custos e escalam o negócio com IA."
+    subtitle: "Transformamos dados em decisões que aumentam receitas, reduzem custos e fazem o negócio crescer com IA."
   },
 
   manifesto: [
@@ -34,7 +34,7 @@ export const aboutPT = {
   vision: {
     title: "A Visão",
     text:
-      "Criamos soluções digitais que fazem negócios crescer, automatizam operações e transformam dados em decisões estratégicas, combinando expertise humana com IA avançada."
+      "Criamos soluções digitais que fazem os negócios crescer, automatizam operações e transformam dados em decisões estratégicas, combinando especialização humana com IA avançada."
   },
 
   logo: {

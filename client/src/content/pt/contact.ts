@@ -9,7 +9,7 @@ export const contactPT = {
   },
 
   button: "Enviar mensagem",
-  sending: "Enviando...",
+  sending: "A enviar...",
   success: "Mensagem enviada com sucesso.",
   error: "Erro ao enviar. Tente novamente."
 };

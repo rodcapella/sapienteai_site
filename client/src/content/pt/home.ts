@@ -3,7 +3,7 @@ export const homePT = {
     label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO REAL",
     title: "Inteligência que impulsiona. Resultados que transformam.",
     subtitle:
-      "A Sapiente.AI ajuda empresas a aumentar vendas, reduzir custos e escalar com automação inteligente",
+      "A Sapiente.AI ajuda empresas a aumentar vendas, reduzir custos e crescer com automação inteligente",
     ctaPrimary: "Quero automatizar o meu negócio",
     ctaSecondary: "Ver como funciona"
   },
@@ -14,11 +14,11 @@ export const homePT = {
     items: [
       {
         title: "Inovação",
-        description: "Utilizamos IA para automatizar decisões, prever resultados e aumentar a eficiência em escala.",
+        description: "Utilizamos IA para automatizar decisões, prever resultados e aumentar a eficiência à escala.",
         image: "",
       },
       {
-        title: "Marketing orientado a aumento de receita",
+        title: "Marketing orientado ao aumento de receitas",
         description: "Estratégias focadas em gerar leads qualificados, diminuir custos operacionais e aumentar conversões.",
         image: "",
       },
@@ -62,7 +62,7 @@ export const homePT = {
       },
       {
         title: "Chatbots inteligentes",
-        description: "Automatize atendimento, qualificação e vendas com assistentes disponíveis 24/7.",
+        description: "Automatize o atendimento, a qualificação e as vendas com assistentes disponíveis 24/7.",
       },
       {
         title: "Gestão de redes sociais",
@@ -76,7 +76,7 @@ export const homePT = {
   },
 
   marketingAI: {
-    label: "Marketing Digital IA",
+    label: "Marketing Digital com IA",
     title: "Inovação aplicada à geração de procura e performance",
     subtitle: "Branding estratégico, conteúdos com IA e relatórios de performance para crescimento sustentável.",
     cards: [
@@ -85,7 +85,7 @@ export const homePT = {
         points: ["Posicionamento claro", "Campanhas eficientes", "Conteúdo visual de impacto"],
       },
       {
-        title: "Avatares e conteúdos IA",
+        title: "Avatares e conteúdos com IA",
         points: ["Influenciadores digitais", "Tecnologia de ponta", "Escalabilidade com consistência"],
       },
       {
@@ -122,7 +122,7 @@ export const homePT = {
       "Design responsivo",
       "UI/UX Mobile-first",
       "Resultados mensuráveis",
-      "SEO + GEO + AEO conversão",
+      "SEO + GEO + AEO para conversão",
       "Funis integrados",
     ],
   },
@@ -208,7 +208,7 @@ export const homePT = {
     "Mais reconhecimento",
     "Mais clientes",
     "Menos trabalho manual",
-    "Maior assertividade",
+    "Maior precisão",
     "Menos custos operacionais",
     "Mais lucro",
     "Crescimento",
