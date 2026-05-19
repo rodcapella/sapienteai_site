@@ -42,6 +42,14 @@ export default function Header({ onContactClick }: HeaderProps) {
     setIsLegalOpen(false);
   };
 
+  const navLinks = [
+    { href: `/${lang}`, label: t("nav.home") },
+    { href: `/${lang}/about`, label: t("nav.about") },
+    { href: `/${lang}/team`, label: t("nav.team") },
+    { href: `/${lang}/faq`, label: t("nav.faq") },
+    { href: lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
+  ];
+
   const legalLinks = [
     { name: t("legal.trust") || "Trust", href: `/${lang}/trust` },
     { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
@@ -64,25 +72,25 @@ export default function Header({ onContactClick }: HeaderProps) {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
 
         <div className="container mx-auto px-4 sm:px-6">
-          <nav className={cn("flex items-center justify-between transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
-            <Link href={`/${lang}`} className="flex shrink-0 items-center gap-2 transition-all duration-500 hover:opacity-90">
+          <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
+            <Link href={`/${lang}`} className="flex w-[180px] shrink-0 items-center gap-2 transition-all duration-500 hover:opacity-90 xl:w-[210px]">
               <img src="/media/logos/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-[67px] w-auto object-contain md:h-[77px] lg:h-[84px]" />
             </Link>
 
-            <div className="hidden min-w-0 flex-1 items-center justify-end gap-5 lg:flex xl:gap-7 2xl:gap-9">
-              <div className="flex min-w-0 items-center justify-end gap-4 xl:gap-6 2xl:gap-8">
-                <NavLink href={`/${lang}`}>{t("nav.home")}</NavLink>
-                <NavLink href={`/${lang}/about`}>{t("nav.about")}</NavLink>
-                <NavLink href={`/${lang}/team`}>{t("nav.team")}</NavLink>
-                <NavLink href={`/${lang}/faq`}>{t("nav.faq")}</NavLink>
-                <NavLink href={lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
+            <div className="hidden min-w-0 items-center justify-center lg:flex">
+              <div className="grid w-full max-w-[580px] grid-cols-5 items-center gap-2 xl:max-w-[660px] xl:gap-3">
+                {navLinks.map((link) => (
+                  <div key={link.href} className="flex min-w-0 justify-center text-center">
+                    <NavLink href={link.href}>{link.label}</NavLink>
+                  </div>
+                ))}
               </div>
 
-              <div className="relative shrink-0" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
+              <div className="relative ml-5 shrink-0 xl:ml-7" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
                 <button
                   type="button"
                   className={cn(
-                    "flex min-w-[88px] items-center justify-center gap-2 whitespace-nowrap text-sm font-black uppercase tracking-widest transition-all duration-300",
+                    "flex min-w-[96px] items-center justify-center gap-2 whitespace-nowrap text-sm font-black uppercase tracking-widest transition-all duration-300",
                     isLegalOpen ? "text-[var(--brand-cyan)]" : "text-slate-700 hover:text-slate-900 dark:text-white/90 dark:hover:text-[var(--brand-cyan)]",
                   )}
                 >
@@ -105,18 +113,18 @@ export default function Header({ onContactClick }: HeaderProps) {
                   </div>
                 </div>
               </div>
-
-              <div className="h-6 w-px shrink-0 bg-slate-200 dark:bg-white/10" />
-              <div className="flex shrink-0 items-center gap-3">
-                <LanguageSelector />
-                <ThemeToggle />
-                <PremiumButton onClick={handleContactClick} className="scale-90 whitespace-nowrap" variant="secondary">
-                  {t("nav.fale")}
-                </PremiumButton>
-              </div>
             </div>
 
-            <div className="flex items-center gap-3 lg:hidden">
+            <div className="hidden w-[305px] shrink-0 items-center justify-end gap-3 lg:flex xl:w-[330px]">
+              <div className="h-6 w-px shrink-0 bg-slate-200 dark:bg-white/10" />
+              <LanguageSelector />
+              <ThemeToggle />
+              <PremiumButton onClick={handleContactClick} className="scale-90 whitespace-nowrap" variant="secondary">
+                {t("nav.fale")}
+              </PremiumButton>
+            </div>
+
+            <div className="col-start-3 flex items-center justify-end gap-3 lg:hidden">
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -137,11 +145,11 @@ export default function Header({ onContactClick }: HeaderProps) {
               </div>
 
               <div className="flex flex-col space-y-6">
-                <NavLink variant="mobile" href={`/${lang}`} onClick={handleNavClick}>{t("nav.home")}</NavLink>
-                <NavLink variant="mobile" href={`/${lang}/about`} onClick={handleNavClick}>{t("nav.about")}</NavLink>
-                <NavLink variant="mobile" href={`/${lang}/team`} onClick={handleNavClick}>{t("nav.team")}</NavLink>
-                <NavLink variant="mobile" href={`/${lang}/faq`} onClick={handleNavClick}>{t("nav.faq")}</NavLink>
-                <NavLink variant="mobile" href={lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`} onClick={handleNavClick}>{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink>
+                {navLinks.map((link) => (
+                  <NavLink key={link.href} variant="mobile" href={link.href} onClick={handleNavClick}>
+                    {link.label}
+                  </NavLink>
+                ))}
 
                 <div className="space-y-4 border-y border-white/10 py-4">
                   <span className="text-xs font-black uppercase tracking-widest text-white/30">{t("nav.legal") || "Legal"}</span>
