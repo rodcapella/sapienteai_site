@@ -157,12 +157,6 @@ export default function Team() {
     <div className="flex flex-col">
       <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
         <div className="container max-w-5xl px-6 text-center">
-          <Reveal>
-            <Link href={`/${lang}`} className="mb-8 inline-flex items-center gap-2 font-black uppercase tracking-widest text-[var(--brand-cyan)] transition-opacity hover:opacity-70">
-              <Icons.ArrowLeft className="h-4 w-4" />
-              {t("nav.home")}
-            </Link>
-          </Reveal>
 
           <Reveal delay={100}>
             <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
