@@ -75,14 +75,6 @@ export default function About() {
                     {line}
                   </p>
                 ))}
-
-                <Link
-                  href={`/${lang}/team`}
-                  className="inline-flex items-center gap-3 rounded-full bg-foreground px-6 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:-translate-y-1 hover:bg-primary hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
-                >
-                  {content.teamCta.link}
-                  <Icons.ArrowRight className="h-4 w-4" />
-                </Link>
               </div>
             </Reveal>
           </div>

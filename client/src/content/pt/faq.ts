@@ -109,12 +109,12 @@ export const faqPT = {
     {
       question: "Para quem este serviço é mais indicado?",
       answer:
-        "Para empresas, profissionais e criadores que querem crescer, automatizar processos, ganhar eficiência e usar tecnologia de forma prática.",
+        "Para pequenas e médias empresas, profissionais e influenciadores que querem crescer, automatizar processos, ganhar eficiência e usar tecnologia de forma prática a seu favor.",
     },
     {
       question: "Quando pode não ser a melhor solução?",
       answer:
-        "Se o negócio ainda não está preparado para crescer, medir resultados ou implementar mudanças, o impacto pode ser limitado. Entregamos mais valor quando existe vontade real de evoluir.",
+        "Se o negócio ainda não está preparado para crescer ou implementar mudanças, o impacto pode ser limitado. Entregamos mais valor quando existe vontade real de evoluir.",
     },
   ],
 };
