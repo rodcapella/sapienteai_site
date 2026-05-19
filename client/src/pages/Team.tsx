@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 
+import ContactModal from "@/components/ContactModal";
 import { setSEOHead } from "@/components/SEOHead";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -143,6 +144,7 @@ export default function Team() {
   const lang = location.split("/")[1] || "pt";
   const content = getContent("team", lang);
   const members: Member[] = content.members;
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     setSEOHead({
@@ -157,7 +159,6 @@ export default function Team() {
     <div className="flex flex-col">
       <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
         <div className="container max-w-5xl px-6 text-center">
-
           <Reveal delay={100}>
             <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
               {content.hero.title}
@@ -248,15 +249,15 @@ export default function Team() {
               <h2 className="mb-8 text-4xl font-black leading-none tracking-tighter text-white md:text-7xl">
                 {lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}
               </h2>
-              <Link href={`/${lang}/contact`}>
-                <PremiumButton variant="secondary">
-                  {lang === "en" ? "Talk to the team" : "Falar com a equipa"}
-                </PremiumButton>
-              </Link>
+              <PremiumButton variant="secondary" onClick={() => setIsContactOpen(true)}>
+                {lang === "en" ? "Talk to the team" : "Falar com a equipa"}
+              </PremiumButton>
             </div>
           </Reveal>
         </div>
       </Section>
+
+      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </div>
   );
 }
