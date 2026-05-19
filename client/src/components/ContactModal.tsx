@@ -144,6 +144,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string>("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const validateField = (field: keyof FormData, value: string): string => {
     if (requiredFields.includes(field) && !value.trim()) {
@@ -199,10 +200,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     setSubmitState("idle");
     setFeedbackMessage("");
     setTurnstileToken("");
+    setHasSubmitted(false);
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setHasSubmitted(true);
     if (submitState === "loading") return;
 
     if (!validateForm()) {
@@ -244,6 +247,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       setErrors({});
       setTouched({});
       setTurnstileToken("");
+      setHasSubmitted(false);
     } catch {
       setSubmitState("error");
       setFeedbackMessage(text.errors.submit);
@@ -498,13 +502,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               }}
               onExpire={() => {
                 setTurnstileToken("");
-                setSubmitState("error");
-                setFeedbackMessage(text.errors.turnstileExpired);
+                if (hasSubmitted) {
+                  setSubmitState("error");
+                  setFeedbackMessage(text.errors.turnstileExpired);
+                }
               }}
               onError={() => {
                 setTurnstileToken("");
-                setSubmitState("error");
-                setFeedbackMessage(text.errors.turnstileError);
+                if (hasSubmitted) {
+                  setSubmitState("error");
+                  setFeedbackMessage(text.errors.turnstileError);
+                }
               }}
             />
 
