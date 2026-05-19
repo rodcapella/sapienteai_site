@@ -92,8 +92,12 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-8 border-t border-[var(--brand-cyan)]/20 pt-10 md:flex-row">
-          <div className="flex flex-col items-center gap-4 md:items-start">
-            <div className="flex items-center gap-3">
+          <div className="flex w-[348px] max-w-full flex-col items-center gap-4">
+            <p className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80">
+              {lang === "pt" ? "Siga-nos" : "Follow us"}
+            </p>
+
+            <div className="flex w-full items-center justify-center gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
 
@@ -114,7 +118,7 @@ export default function Footer() {
 
             <Link
               href={`/${lang}/sitemap`}
-              className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
+              className="block w-full text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
             >
               {t("footer.sitemap")}
             </Link>
