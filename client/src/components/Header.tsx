@@ -89,7 +89,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </button>
 
                 <div className={cn("absolute -left-4 top-full w-64 origin-top-left pt-4 transition-all duration-300", isLegalOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0")}>
-                  <div className="rounded-2xl border border-slate-200 bg-white/96 p-2 text-slate-900 shadow-[0_20px_50px_rgba(10,17,40,0.2)] backdrop-blur-2xl dark:border-cyan-400/25 dark:bg-[#06112A] dark:text-white dark:shadow-[0_20px_70px_rgba(0,0,0,0.82)]">
+                  <div className="rounded-2xl border border-slate-200 bg-white/96 p-2 text-slate-900 shadow-[0_20px_50px_rgba(10,17,40,0.2)] backdrop-blur-2xl dark:border-cyan-500/20 dark:bg-[#050B16]/96 dark:text-white dark:shadow-[0_20px_70px_rgba(0,0,0,0.82)]">
                     {legalLinks.map((link) => (
                       <Link
                         key={link.name}
