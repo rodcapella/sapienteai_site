@@ -146,7 +146,7 @@ export default function Team() {
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.hero.title} - SAPIENTE.AI`,
+      title: `${content.hero.title} - Sapiente.AI`,
       description: content.hero.subtitle,
       url: `https://sapienteai.com/${lang}/team`,
       type: "website",
@@ -243,7 +243,7 @@ export default function Team() {
           <Reveal>
             <div className="mx-auto max-w-4xl">
               <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
-                SAPIENTE.AI
+                Sapiente.AI
               </p>
               <h2 className="mb-8 text-4xl font-black leading-none tracking-tighter text-white md:text-7xl">
                 {lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}

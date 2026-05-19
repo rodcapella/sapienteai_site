@@ -92,7 +92,7 @@ export default function FAQ() {
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.title} - SAPIENTE.AI`,
+      title: `${content.title} - Sapiente.AI`,
       description: content.subtitle,
       url: `${window.location.origin}/${lang}/faq`,
       type: "website",

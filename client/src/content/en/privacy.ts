@@ -9,7 +9,7 @@ export const privacyEN = {
       id: "overview",
       icon: Icons.ShieldCheck,
       title: "1. General Overview",
-      content: "SAPIENTE.AI operates as a Data Controller and Processor under the strict framework of the General Data Protection Regulation (GDPR - Regulation EU 2016/679). Our privacy architecture is designed to protect the fundamental rights and freedoms of natural persons, particularly their right to the protection of personal data."
+      content: "Sapiente.AI operates as a Data Controller and Processor under the strict framework of the General Data Protection Regulation (GDPR - Regulation EU 2016/679). Our privacy architecture is designed to protect the fundamental rights and freedoms of natural persons, particularly their right to the protection of personal data."
     },
     {
       id: "collection",
@@ -43,7 +43,7 @@ export const privacyEN = {
       id: "sharing",
       icon: Icons.Share2,
       title: "5. Sub-processors & Data Sharing",
-      content: "SAPIENTE.AI employs a 'GDPR-first' vendor selection policy. Data is only shared with third-party sub-processors that provide Tier-1 security guarantees, governed by robust Data Processing Agreements (DPA) that enforce the same level of protection we commit to our users."
+      content: "Sapiente.AI employs a 'GDPR-first' vendor selection policy. Data is only shared with third-party sub-processors that provide Tier-1 security guarantees, governed by robust Data Processing Agreements (DPA) that enforce the same level of protection we commit to our users."
     },
     {
       id: "transfers",
@@ -102,7 +102,7 @@ export const privacyEN = {
       id: "infrastructure",
       icon: Icons.Server,
       title: "14. EU-Based Infrastructure",
-      content: "SAPIENTE.AI prioritizes 'Data Sovereignty' by utilizing European-headquartered cloud providers or EU-specific data zones. This minimizes legal exposure to non-EU jurisdictional reach (e.g., US Cloud Act) and reinforces GDPR compliance."
+      content: "Sapiente.AI prioritizes 'Data Sovereignty' by utilizing European-headquartered cloud providers or EU-specific data zones. This minimizes legal exposure to non-EU jurisdictional reach (e.g., US Cloud Act) and reinforces GDPR compliance."
     },
   ]
 };

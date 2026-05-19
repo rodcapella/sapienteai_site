@@ -38,7 +38,7 @@ export const articlesData: Article[] = [
 
 As aplicações práticas vão desde automação de atendimento ao cliente até análise de dados em tempo real. Empresas que adotam IA generativa relatam redução de custos operacionais de até 40% e aumento significativo na produtividade.
 
-A SAPIENTE.AI oferece soluções customizadas de IA generativa que se integram perfeitamente aos seus processos existentes, garantindo ROI mensurável e implementação segura.`,
+A Sapiente.AI oferece soluções customizadas de IA generativa que se integram perfeitamente aos seus processos existentes, garantindo ROI mensurável e implementação segura.`,
     category: 'IA Generativa',
     author: 'Dr. Carlos Silva',
     date: '2026-02-10',
@@ -56,7 +56,7 @@ A SAPIENTE.AI oferece soluções customizadas de IA generativa que se integram p
 
 Isso resulta em redução de custos de armazenamento, menos produtos obsoletos e melhor atendimento ao cliente. Nossos clientes reportam economia média de 35% em custos de inventário após implementação de nossas soluções de ML.
 
-A SAPIENTE.AI utiliza as técnicas mais avançadas de machine learning para criar modelos preditivos que se adaptam continuamente aos seus dados.`,
+A Sapiente.AI utiliza as técnicas mais avançadas de machine learning para criar modelos preditivos que se adaptam continuamente aos seus dados.`,
     category: 'Machine Learning',
     author: 'Eng. Maria Santos',
     date: '2026-02-08',
@@ -73,7 +73,7 @@ A SAPIENTE.AI utiliza as técnicas mais avançadas de machine learning para cria
 
 Implementar boas práticas como validação robusta de dados, monitoramento contínuo, versionamento de modelos e testes de adversarialidade é essencial para manter a integridade e confiabilidade dos sistemas.
 
-A SAPIENTE.AI implementa os mais altos padrões de segurança em todos os seus projetos, garantindo conformidade com RGPD, GDPR e outras regulamentações.`,
+A Sapiente.AI implementa os mais altos padrões de segurança em todos os seus projetos, garantindo conformidade com RGPD, GDPR e outras regulamentações.`,
     category: 'Segurança',
     author: 'Esp. João Oliveira',
     date: '2026-02-06',
@@ -90,7 +90,7 @@ A SAPIENTE.AI implementa os mais altos padrões de segurança em todos os seus p
 
 Além disso, questões regulatórias e éticas ganham cada vez mais importância, com governos estabelecendo frameworks para uso responsável de IA.
 
-A SAPIENTE.AI acompanha de perto essas tendências e oferece soluções que estão sempre à frente da curva tecnológica.`,
+A Sapiente.AI acompanha de perto essas tendências e oferece soluções que estão sempre à frente da curva tecnológica.`,
     category: 'Tendências',
     author: 'Analista Tech. Ana Costa',
     date: '2026-02-04',
@@ -108,7 +108,7 @@ A SAPIENTE.AI acompanha de perto essas tendências e oferece soluções que est�
 
 Tecnologias como YOLO, ResNet e Vision Transformers abrem novas possibilidades para automação inteligente. Aplicações práticas incluem inspeção de qualidade, segurança, análise médica e muito mais.
 
-A SAPIENTE.AI desenvolve soluções customizadas de visão computacional que se adaptam aos seus casos de uso específicos.`,
+A Sapiente.AI desenvolve soluções customizadas de visão computacional que se adaptam aos seus casos de uso específicos.`,
     category: 'Deep Learning',
     author: 'Dr. Pedro Ferreira',
     date: '2026-02-02',
@@ -125,7 +125,7 @@ A SAPIENTE.AI desenvolve soluções customizadas de visão computacional que se 
 
 Uma abordagem holística que combine métricas técnicas com KPIs de negócio fornece uma visão completa do sucesso do projeto.
 
-A SAPIENTE.AI trabalha com você para definir métricas significativas e acompanhar o progresso continuamente.`,
+A Sapiente.AI trabalha com você para definir métricas significativas e acompanhar o progresso continuamente.`,
     category: 'Negócios',
     author: 'Consultor de Negócios Rafael Lima',
     date: '2026-01-31',

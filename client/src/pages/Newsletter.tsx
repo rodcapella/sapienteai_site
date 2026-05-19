@@ -14,10 +14,10 @@ export default function Newsletter() {
 
   useEffect(() => {
     setSEOHead({
-      title: isPT ? "Newsletter - SAPIENTE.AI" : "Newsletter - SAPIENTE.AI",
+      title: isPT ? "Newsletter - Sapiente.AI" : "Newsletter - Sapiente.AI",
       description: isPT
-        ? "Registe-se na newsletter da SAPIENTE.AI para receber insights sobre IA, automação e crescimento digital."
-        : "Subscribe to the SAPIENTE.AI newsletter for insights on AI, automation and digital growth.",
+        ? "Registe-se na newsletter da Sapiente.AI para receber insights sobre IA, automação e crescimento digital."
+        : "Subscribe to the Sapiente.AI newsletter for insights on AI, automation and digital growth.",
       url: `https://sapienteai.com/${lang}/newsletter`,
       type: "website",
     });
@@ -69,7 +69,7 @@ export default function Newsletter() {
           </div>
 
           <form className="space-y-5" action="https://formsubmit.co/sapiente.ai.oficial@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Novo registo na newsletter - SAPIENTE.AI" />
+            <input type="hidden" name="_subject" value="Novo registo na newsletter - Sapiente.AI" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
 
@@ -99,8 +99,8 @@ export default function Newsletter() {
               <input type="checkbox" required checked={accepted} onChange={(event) => setAccepted(event.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-cyan)]/40 bg-black" />
               <span>
                 {isPT
-                  ? "Li e compreendi a Política de Privacidade e autorizo o tratamento dos meus dados para receber comunicações da SAPIENTE.AI."
-                  : "I have read and understood the Privacy Policy and authorize the processing of my data to receive communications from SAPIENTE.AI."}
+                  ? "Li e compreendi a Política de Privacidade e autorizo o tratamento dos meus dados para receber comunicações da Sapiente.AI."
+                  : "I have read and understood the Privacy Policy and authorize the processing of my data to receive communications from Sapiente.AI."}
               </span>
             </label>
 

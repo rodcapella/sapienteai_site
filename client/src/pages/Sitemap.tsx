@@ -23,11 +23,11 @@ type SitemapGroup = {
 const copy = {
   pt: {
     label: "Mapa do site",
-    title: "Encontre rapidamente cada página da Sapiente.ai.",
+    title: "Encontre rapidamente cada página.",
     subtitle: "Uma visão organizada das áreas principais, conteúdos e páginas legais do site.",
     sections: {
       main: "Páginas principais",
-      mainTitle: "Conheça a Sapiente.ai",
+      mainTitle: "Conheça a Sapiente.AI",
       resources: "Conteúdos e recursos",
       resourcesTitle: "Explore conteúdos úteis",
       legal: "Confiança e legal",
@@ -50,11 +50,11 @@ const copy = {
   },
   en: {
     label: "Sitemap",
-    title: "Find every Sapiente.ai page quickly.",
+    title: "Find every page quickly.",
     subtitle: "A structured view of the main areas, content, and legal pages across the website.",
     sections: {
       main: "Main pages",
-      mainTitle: "Get to know Sapiente.ai",
+      mainTitle: "Get to know Sapiente.AI",
       resources: "Content and resources",
       resourcesTitle: "Explore useful content",
       legal: "Trust and legal",
@@ -89,7 +89,6 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
           <Icon className="h-6 w-6" />
         </div>
         <div>
-          <p className="mb-2 text-xs font-black uppercase tracking-[0.24em] text-primary/70">{group.label}</p>
           <h2 className="text-2xl font-black tracking-tight text-foreground">{group.title}</h2>
         </div>
       </div>
@@ -156,7 +155,7 @@ export default function Sitemap() {
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.label} - SAPIENTE.AI`,
+      title: `${content.label} - Sapiente.AI`,
       description: content.subtitle,
       url: `https://sapienteai.com/${lang}/sitemap`,
       type: "website",

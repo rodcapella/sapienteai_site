@@ -43,8 +43,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "newsletter.placeholder": "o-seu@email.com",
     "newsletter.subscribe": "Subscrever",
     "newsletter.subscribing": "A subscrever...",
-    "newsletter.description": "Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI.",
-    "newsletter.subject": "Nova Inscrição na Newsletter - SAPIENTE.AI",
+    "newsletter.description": "Receba insights sobre IA, tendências tecnológicas e atualizações da Sapiente.AI.",
+    "newsletter.subject": "Nova Inscrição na Newsletter - Sapiente.AI",
     "newsletter.invalidEmail": "Email inválido",
     "newsletter.success": "Inscrição confirmada!",
     "newsletter.error": "Erro ao subscrever.",
@@ -61,13 +61,13 @@ export const translations: Record<Language, Record<string, string>> = {
     "contact.error": "Erro ao enviar mensagem.",
 
     // Blog
-    "blog.title": "Blog SAPIENTE.AI",
+    "blog.title": "Blog Sapiente.AI",
     "blog.subtitle": "Insights sobre IA, automação e crescimento digital.",
     "blog.search": "Pesquisar artigos...",
     "blog.all": "Todos",
     "blog.noArticles": "Nenhum artigo encontrado. Experimente outra pesquisa ou categoria.",
     "blog.newsletter": "Receba insights sobre IA",
-    "blog.newsletterDesc": "Subscreva a newsletter da SAPIENTE.AI e receba conteúdos práticos sobre inteligência artificial, automação e tecnologia aplicada ao negócio.",
+    "blog.newsletterDesc": "Subscreva a newsletter da Sapiente.AI e receba conteúdos práticos sobre inteligência artificial, automação e tecnologia aplicada ao negócio.",
   },
 
   en: {
@@ -112,8 +112,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "newsletter.placeholder": "your@email.com",
     "newsletter.subscribe": "Subscribe",
     "newsletter.subscribing": "Subscribing...",
-    "newsletter.description": "Receive AI insights, tech trends and SAPIENTE.AI updates.",
-    "newsletter.subject": "New Newsletter Subscription - SAPIENTE.AI",
+    "newsletter.description": "Receive AI insights, tech trends and Sapiente.AI updates.",
+    "newsletter.subject": "New Newsletter Subscription - Sapiente.AI",
     "newsletter.invalidEmail": "Invalid email",
     "newsletter.success": "Subscription confirmed!",
     "newsletter.error": "Error subscribing.",
@@ -130,12 +130,12 @@ export const translations: Record<Language, Record<string, string>> = {
     "contact.error": "Error sending message.",
 
     // Blog
-    "blog.title": "SAPIENTE.AI Blog",
+    "blog.title": "Sapiente.AI Blog",
     "blog.subtitle": "Commercial insights on AI, automation, and digital growth.",
     "blog.search": "Search articles...",
     "blog.all": "All",
     "blog.noArticles": "No articles found. Try another search or category.",
     "blog.newsletter": "Get practical AI insights",
-    "blog.newsletterDesc": "Subscribe to the SAPIENTE.AI newsletter for practical ideas on artificial intelligence, automation, and business technology.",
+    "blog.newsletterDesc": "Subscribe to the Sapiente.AI newsletter for practical ideas on artificial intelligence, automation, and business technology.",
   },
 };

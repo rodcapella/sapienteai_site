@@ -49,7 +49,7 @@ export default function Footer({ onContactClick }: FooterProps) {
       <div className="col-span-1 sm:col-span-2 lg:col-span-1">
         <img
           src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/JsygqIGdbHNWJuIo.png"
-          alt="SAPIENTE.AI"
+          alt="Sapiente.AI"
           className="h-12 mb-8 invert"
         />
 

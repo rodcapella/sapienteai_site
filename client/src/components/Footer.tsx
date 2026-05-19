@@ -50,7 +50,7 @@ export default function Footer() {
         <div className="mb-20 grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-4">
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link href={`/${lang}`} className="group mb-8 inline-block">
-              <img src="/media/logos/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-[120px]" />
+              <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-[120px]" />
             </Link>
 
             <p className="max-w-sm text-lg leading-relaxed text-white/65">{t("footer.description")}</p>

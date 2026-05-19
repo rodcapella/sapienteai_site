@@ -31,7 +31,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
     try {
       const formData = new FormData();
       formData.append('email', email);
-      formData.append('_subject', t('newsletter.subject') || 'Nova Inscrição na Newsletter - SAPIENTE.AI');
+      formData.append('_subject', t('newsletter.subject') || 'Nova Inscrição na Newsletter - Sapiente.AI');
       formData.append('_captcha', 'false');
 
       const response = await fetch('https://formsubmit.co/sapiente.ai.oficial@gmail.com', {
@@ -142,7 +142,7 @@ export default function NewsletterForm({ variant = 'default' }: { variant?: 'def
       </div>
 
       <p className="text-xs text-muted-foreground">
-        {t('newsletter.description') || 'Receba insights sobre IA, tendências tecnológicas e atualizações da SAPIENTE.AI. Sem spam, apenas conteúdo de valor.'}
+        {t('newsletter.description') || 'Receba insights sobre IA, tendências tecnológicas e atualizações da Sapiente.AI. Sem spam, apenas conteúdo de valor.'}
       </p>
     </form>
   );

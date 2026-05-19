@@ -11,7 +11,7 @@ export const gdprContentEN = {
       icon: Icons.Scale,
       title: "1. Full GDPR Compliance",
       content:
-        "SAPIENTE.AI operates in full compliance with Regulation (EU) 2016/679 (GDPR). Our data governance framework is designed to meet the highest standards of privacy and security required by European data protection authorities, ensuring lawful, fair, and transparent processing."
+        "Sapiente.AI operates in full compliance with Regulation (EU) 2016/679 (GDPR). Our data governance framework is designed to meet the highest standards of privacy and security required by European data protection authorities, ensuring lawful, fair, and transparent processing."
     },
     {
       id: "infrastructure-eu",
@@ -32,7 +32,7 @@ export const gdprContentEN = {
       icon: Icons.Cpu,
       title: "4. Local AI & Sensitive Data Sovereignty",
       content:
-        "For scenarios involving the processing of special categories of data (sensitive data), SAPIENTE.AI implements Local AI architectures. This approach uses isolated environments or dedicated instances (VPCs), ensuring processing occurs without communication with external third-party APIs."
+        "For scenarios involving the processing of special categories of data (sensitive data), Sapiente.AI implements Local AI architectures. This approach uses isolated environments or dedicated instances (VPCs), ensuring processing occurs without communication with external third-party APIs."
     },
     {
       id: "privacy-by-design",
@@ -78,7 +78,7 @@ export const gdprContentEN = {
       icon: Icons.Mail,
       title: "10. Contact & Data Protection",
       content:
-        "SAPIENTE.AI maintains internal oversight processes to ensure continuous compliance. For any data protection inquiries or technical questions regarding repository security, please use our official contact channels."
+        "Sapiente.AI maintains internal oversight processes to ensure continuous compliance. For any data protection inquiries or technical questions regarding repository security, please use our official contact channels."
     }
   ]
 };

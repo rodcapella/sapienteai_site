@@ -13,7 +13,7 @@ export const iaGenerativaPolicyEN = {
       icon: Icons.Ban,
       title: "1. Prohibition of Shadow AI (Unauthorized Tools)",
       content:
-        "Employees, partners, and service providers of SAPIENTE.AI are expressly forbidden from using personal accounts or free versions of generative AI tools (such as ChatGPT, Gemini, DeepSeek, personal Copilot, or similar) to process, store, or analyze any confidential data, personal data, or intellectual property of the company or its clients. Only AI tools previously approved by the Security and Data Protection department, which contractually guarantee non-retention of data for model training, are authorized. Non-compliance constitutes a serious disciplinary violation and may result in individual liability."
+        "Employees, partners, and service providers of Sapiente.AI are expressly forbidden from using personal accounts or free versions of generative AI tools (such as ChatGPT, Gemini, DeepSeek, personal Copilot, or similar) to process, store, or analyze any confidential data, personal data, or intellectual property of the company or its clients. Only AI tools previously approved by the Security and Data Protection department, which contractually guarantee non-retention of data for model training, are authorized. Non-compliance constitutes a serious disciplinary violation and may result in individual liability."
     },
     {
       id: "anonymization",
@@ -46,7 +46,7 @@ export const iaGenerativaPolicyEN = {
       icon: Icons.AlertTriangle,
       title: "5. Response to AI-Specific Security Incidents",
       content: [
-        "In addition to classic security incidents, SAPIENTE.AI actively monitors:",
+        "In addition to classic security incidents, Sapiente.AI actively monitors:",
         "• Prompt injection attacks – attempts to manipulate model behavior through malicious inputs;",
         "• Extraction attacks – attempts to obtain training data or confidential information from model responses;",
         "• Inadvertent data leakage – when the model reproduces sensitive information from previous interactions.",
@@ -58,14 +58,14 @@ export const iaGenerativaPolicyEN = {
       icon: Icons.Trash2,
       title: "6. Right to be Forgotten and Limitations in Trained AI Models",
       content:
-        "SAPIENTE.AI fully complies with the right to erasure (Article 17 of the GDPR) with respect to all personal data stored in traditional databases. However, when an AI model has already been trained on certain data, the complete removal of that data from the model (unlearning) is technically complex or even impossible in many cases. To mitigate this risk, the company adopts a policy of not using personal data for training generalist models and, whenever possible, opts for AI models that support scheduled data deletion or offer contractual guarantees of non-memorization. If a data subject exercises the right to erasure over data that has been used in training, SAPIENTE.AI will document the technical impossibility and apply alternative measures (irreversible anonymization of the data at source and deletion of interaction logs)."
+        "Sapiente.AI fully complies with the right to erasure (Article 17 of the GDPR) with respect to all personal data stored in traditional databases. However, when an AI model has already been trained on certain data, the complete removal of that data from the model (unlearning) is technically complex or even impossible in many cases. To mitigate this risk, the company adopts a policy of not using personal data for training generalist models and, whenever possible, opts for AI models that support scheduled data deletion or offer contractual guarantees of non-memorization. If a data subject exercises the right to erasure over data that has been used in training, Sapiente.AI will document the technical impossibility and apply alternative measures (irreversible anonymization of the data at source and deletion of interaction logs)."
     },
     {
       id: "high-risk-ia",
       icon: Icons.ShieldAlert,
       title: "7. Fundamental Rights Impact Assessment for High-Risk AI (FRIA)",
       content:
-        "Before implementing any AI system classified as «high-risk» under the EU AI Act (e.g., recruitment, credit assessment, worker management), SAPIENTE.AI conducts a Fundamental Rights Impact Assessment (FRIA). This assessment identifies, documents, and mitigates risks to individuals' rights, including non-discrimination, transparency, and human oversight. The findings are reviewed by the AI Governance Committee and made available to competent authorities when required."
+        "Before implementing any AI system classified as «high-risk» under the EU AI Act (e.g., recruitment, credit assessment, worker management), Sapiente.AI conducts a Fundamental Rights Impact Assessment (FRIA). This assessment identifies, documents, and mitigates risks to individuals' rights, including non-discrimination, transparency, and human oversight. The findings are reviewed by the AI Governance Committee and made available to competent authorities when required."
     }
   ]
 };

@@ -12,14 +12,14 @@ export const termsContentEN = {
       icon: Icons.CheckCircle,
       title: "1. Acceptance of Terms",
       content:
-        "By accessing or using SAPIENTE.AI services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you are using the services on behalf of an organization, you represent that you have the authority to bind that entity to these conditions."
+        "By accessing or using Sapiente.AI services, you acknowledge that you have read, understood, and agree to be bound by these Terms. If you are using the services on behalf of an organization, you represent that you have the authority to bind that entity to these conditions."
     },
     {
       id: "services",
       icon: Icons.Zap,
       title: "2. Description of Services",
       content:
-        "SAPIENTE.AI provides advanced artificial intelligence solutions, automation, and strategic consulting. We reserve the right to modify, update, or deprecate features to ensure technological evolution and security, provided that core contractual obligations are maintained."
+        "Sapiente.AI provides advanced artificial intelligence solutions, automation, and strategic consulting. We reserve the right to modify, update, or deprecate features to ensure technological evolution and security, provided that core contractual obligations are maintained."
     },
     {
       id: "usage",
@@ -37,7 +37,7 @@ export const termsContentEN = {
       icon: Icons.FileText, // Representing IP and Documentation
       title: "4. Intellectual Property",
       content:
-        "All algorithms, software, trademarks, and methodologies are the exclusive property of SAPIENTE.AI. Usage of our services does not grant any transfer of ownership. Any output generated may be subject to specific licensing agreements defined in your service contract."
+        "All algorithms, software, trademarks, and methodologies are the exclusive property of Sapiente.AI. Usage of our services does not grant any transfer of ownership. Any output generated may be subject to specific licensing agreements defined in your service contract."
     },
     {
       id: "data",
@@ -65,14 +65,14 @@ export const termsContentEN = {
       icon: Icons.AlertTriangle,
       title: "8. Limitation of Liability",
       content:
-        "To the maximum extent permitted by applicable law, SAPIENTE.AI shall not be liable for indirect, incidental, or consequential damages, including loss of profits or data, resulting from the use or inability to use our AI systems."
+        "To the maximum extent permitted by applicable law, Sapiente.AI shall not be liable for indirect, incidental, or consequential damages, including loss of profits or data, resulting from the use or inability to use our AI systems."
     },
     {
       id: "changes",
       icon: Icons.Info,
       title: "9. Modifications to Terms",
       content:
-        "SAPIENTE.AI reserves the right to update these terms at any time. Continued use of the platform after such changes constitutes acceptance of the new terms. Significant changes will be notified via the platform or registered email."
+        "Sapiente.AI reserves the right to update these terms at any time. Continued use of the platform after such changes constitutes acceptance of the new terms. Significant changes will be notified via the platform or registered email."
     },
     {
       id: "termination",

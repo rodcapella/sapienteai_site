@@ -45,7 +45,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.title} - SAPIENTE.AI`,
+      title: `${content.title} - Sapiente.AI`,
       description: content.subtitle || fallbackDescription,
       url: `https://sapienteai.com/${lang}/${slug}`,
       type: "website",

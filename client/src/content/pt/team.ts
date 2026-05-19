@@ -8,7 +8,7 @@ export const teamPT = {
     eyebrow: "A equipa",
     title: "Uma equipa pequena, sénior e focada no que muda o negócio.",
     text:
-      "A Sapiente.ai nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos perto de cada cliente para transformar ideias soltas em sistemas úteis, mensuráveis e preparados para crescer.",
+      "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos perto de cada cliente para transformar ideias soltas em sistemas úteis, mensuráveis e preparados para crescer.",
     highlights: [
       {
         value: "01",

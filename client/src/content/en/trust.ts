@@ -2,7 +2,7 @@ export const trustContentEN = {
   label: "Trust & Security",
   title: "Built for reliability. Designed for trust.",
   subtitle:
-    "SAPIENTE.AI is engineered to operate with security, transparency, and consistency in critical environments.",
+    "Sapiente.AI is engineered to operate with security, transparency, and consistency in critical environments.",
 
   sections: [
     {
