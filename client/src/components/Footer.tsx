@@ -91,8 +91,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-8 border-t border-[var(--brand-cyan)]/20 pt-10 md:flex-row">
-          <div className="flex w-[348px] max-w-full flex-col items-center gap-4">
+        <div className="grid items-center gap-8 border-t border-[var(--brand-cyan)]/20 pt-10 md:grid-cols-[348px_1fr_auto]">
+          <div className="flex w-[348px] max-w-full flex-col items-center gap-4 justify-self-center md:justify-self-start">
             <p className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80">
               {lang === "pt" ? "Siga-nos" : "Follow us"}
             </p>
@@ -115,14 +115,14 @@ export default function Footer() {
                 );
               })}
             </div>
-
-            <Link
-              href={`/${lang}/sitemap`}
-              className="block w-full text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
-            >
-              {t("footer.sitemap")}
-            </Link>
           </div>
+
+          <Link
+            href={`/${lang}/sitemap`}
+            className="justify-self-center text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
+          >
+            {t("footer.sitemap")}
+          </Link>
 
           <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
         </div>
