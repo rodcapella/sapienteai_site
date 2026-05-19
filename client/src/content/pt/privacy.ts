@@ -104,11 +104,5 @@ export const privacyPT = {
       title: "14. Infraestrutura Sediada na UE",
       content: "A SAPIENTE.AI prioriza a 'Soberania de Dados' ao utilizar fornecedores de cloud sediados na Europa ou zonas de dados específicas da UE. Isto minimiza a exposição legal a jurisdições fora da UE e reforça a conformidade com o RGPD."
     },
-    {
-      id: "contact",
-      icon: Icons.Send,
-      title: "15. Contacto e Encarregado de Proteção de Dados (DPO)",
-      content: "Para exercer os seus direitos ou contactar a nossa Equipa de Privacidade, entre em contacto com o nosso Encarregado de Proteção de Dados através do nosso portal oficial de suporte ou via dpo@sapiente.ai."
-    }
   ]
 };

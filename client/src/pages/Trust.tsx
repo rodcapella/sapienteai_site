@@ -10,7 +10,6 @@ import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from '@/hooks/useTranslation';
 
-const ArrowLeft = Icons.ArrowLeft;
 const Shield = Icons.ShieldCheck || Icons.Shield;
 
 export default function Trust() {
@@ -83,24 +82,6 @@ export default function Trust() {
                 </SectionCard>
               </Reveal>
             ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* FOOTER CALLOUT - Modern Gradient */}
-      <Section className="bg-modern-gradient py-32 md:py-56 text-center relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-purple/5 blur-[100px] rounded-full -z-10"></div>
-        
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <Reveal>
-              <h2 className="text-4xl md:text-7xl font-black mb-10 text-foreground tracking-tighter leading-none">
-                SAPIENTE.AI
-              </h2>
-              <p className="text-xl md:text-2xl text-foreground/50 font-medium max-w-2xl mx-auto">
-                {lang === 'en' ? 'Built on trust, powered by intelligence.' : 'Construído sobre confiança, movido por inteligência.'}
-              </p>
-            </Reveal>
           </div>
         </div>
       </Section>

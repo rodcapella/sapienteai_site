@@ -3,7 +3,7 @@ import { Icons } from "@/lib/icons";
 
 export const termsContentEN = {
   title: "Terms of Service",
-  subtitle: "Standard conditions for the use of SAPIENTE.AI services and platforms.",
+  subtitle: "Standard conditions for the use of services and platforms.",
   lastUpdated: "Last updated: February 16, 2026",
 
   sections: [
@@ -86,7 +86,7 @@ export const termsContentEN = {
       icon: Icons.Globe,
       title: "11. Governing Law and Jurisdiction",
       content:
-        "These terms are governed by and construed in accordance with the laws of Portugal and the European Union. Any disputes shall be subject to the exclusive jurisdiction of the courts of Lisbon, Portugal."
+        "These terms are governed by and construed in accordance with the laws of Portugal and the European Union. Any disputes shall be subject to the exclusive jurisdiction of the courts of Porto, Portugal."
     }
   ]
 };

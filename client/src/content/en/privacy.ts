@@ -104,11 +104,5 @@ export const privacyEN = {
       title: "14. EU-Based Infrastructure",
       content: "SAPIENTE.AI prioritizes 'Data Sovereignty' by utilizing European-headquartered cloud providers or EU-specific data zones. This minimizes legal exposure to non-EU jurisdictional reach (e.g., US Cloud Act) and reinforces GDPR compliance."
     },
-    {
-      id: "contact",
-      icon: Icons.Send,
-      title: "15. Contact & DPO",
-      content: "To exercise your rights or engage with our Privacy Team, please contact our Data Protection Officer through our official support portal or via dpo@sapiente.ai."
-    }
   ]
 };

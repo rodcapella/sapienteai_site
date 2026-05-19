@@ -3,7 +3,7 @@ import { Icons } from "@/lib/icons";
 
 export const termsContentPT = {
   title: "Termos de Serviço",
-  subtitle: "Condições padrão para a utilização dos serviços e plataformas SAPIENTE.AI.",
+  subtitle: "Condições padrão para a utilização dos serviços e plataformas.",
   lastUpdated: "Última atualização: 16 de Fevereiro de 2026",
 
   sections: [
@@ -86,7 +86,7 @@ export const termsContentPT = {
       icon: Icons.Globe,
       title: "11. Lei Aplicável e Jurisdição",
       content:
-        "Estes termos são regidos pelas leis de Portugal e da União Europeia. Qualquer litígio será submetido à jurisdição exclusiva dos tribunais da comarca de Lisboa, Portugal."
+        "Estes termos são regidos pelas leis de Portugal e da União Europeia. Qualquer litígio será submetido à jurisdição exclusiva dos tribunais da comarca do Porto, Portugal."
     }
   ]
 };
