@@ -18,6 +18,7 @@ export default function Header({ onContactClick }: HeaderProps) {
   const { t } = useTranslation();
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
+  const contactLabel = lang === "en" ? "Contact" : "Contacto";
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -124,7 +125,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 <ThemeToggle />
               </div>
               <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-3 text-sm" variant="secondary">
-                {t("nav.fale")}
+                {contactLabel}
               </PremiumButton>
             </div>
 
@@ -170,7 +171,7 @@ export default function Header({ onContactClick }: HeaderProps) {
 
               <div className="mt-auto pt-8">
                 <PremiumButton onClick={handleContactClick} className="w-full py-6 text-base" variant="primary">
-                  {t("nav.fale")}
+                  {contactLabel}
                 </PremiumButton>
               </div>
             </div>
