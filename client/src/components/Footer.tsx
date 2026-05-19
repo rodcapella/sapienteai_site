@@ -14,6 +14,14 @@ function XIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+function PinterestIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M12.04 2C6.58 2 3 5.78 3 10.74c0 2.31 1.3 5.19 3.38 6.1.32.14.49.08.56-.23.06-.23.34-1.37.47-1.9.04-.17.02-.31-.12-.47-.68-.82-1.23-2.32-1.23-3.72 0-3.47 2.63-6.83 7.11-6.83 3.87 0 6.58 2.64 6.58 6.41 0 4.26-2.15 7.21-4.95 7.21-1.55 0-2.71-1.28-2.34-2.85.45-1.87 1.31-3.89 1.31-5.24 0-1.21-.65-2.22-1.99-2.22-1.58 0-2.85 1.63-2.85 3.82 0 1.39.47 2.34.47 2.34s-1.56 6.61-1.85 7.84c-.32 1.35-.2 3.25-.06 4.49.04.36.51.49.7.18.66-1.08 1.75-2.97 2.1-4.29.13-.5.67-2.56.67-2.56.35.66 1.37 1.22 2.45 1.22 3.22 0 5.55-2.96 5.55-6.64C21 6.17 17.79 2 12.04 2Z" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const { t } = useTranslation();
   const [location] = useLocation();
@@ -30,6 +38,7 @@ export default function Footer() {
     { name: "Facebook", icon: Icons.Facebook, url: "https://facebook.com/sapienteai" },
     { name: "TikTok", icon: Icons.Music2, url: "https://www.tiktok.com/@sapienteai" },
     { name: "X", icon: XIcon, url: "https://x.com/SapienteAI" },
+    { name: "Pinterest", icon: PinterestIcon, url: "#" },
   ];
 
   return (
@@ -66,7 +75,6 @@ export default function Footer() {
               <li><NavLink href={`/${lang}/trust`} variant="footer">{t("legal.trust") || "Trust"}</NavLink></li>
               <li><NavLink href={`/${lang}/rgpd`} variant="footer">{t("footer.rgpd")}</NavLink></li>
               <li><NavLink href={`/${lang}/generative-ai-policy`} variant="footer">{t("footer.generative-ai-policy")}</NavLink></li>
-              <li><NavLink href={`/${lang}/sitemap`} variant="footer">{t("footer.sitemap")}</NavLink></li>
             </ul>
           </div>
 
@@ -87,15 +95,20 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             {socialLinks.map((social) => {
               const Icon = social.icon;
+              const isPending = social.url === "#";
 
               return (
                 <a
                   key={social.name}
                   href={social.url}
+                  onClick={(event) => {
+                    if (isPending) event.preventDefault();
+                  }}
                   className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
                   aria-label={social.name}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
+                  aria-disabled={isPending ? "true" : undefined}
+                  target={isPending ? undefined : "_blank"}
+                  rel={isPending ? undefined : "noopener noreferrer nofollow"}
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -103,7 +116,15 @@ export default function Footer() {
             })}
           </div>
 
-          <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
+          <div className="flex flex-col items-center gap-3 text-center md:items-end md:text-right">
+            <Link
+              href={`/${lang}/sitemap`}
+              className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
+            >
+              {t("footer.sitemap")}
+            </Link>
+            <p className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65">{t("footer.copyright")}</p>
+          </div>
         </div>
       </div>
 
