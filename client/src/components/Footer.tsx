@@ -18,12 +18,10 @@ export default function Footer() {
   const { t } = useTranslation();
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
+  const quizHref = lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`;
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const socialLinks = [
@@ -43,7 +41,7 @@ export default function Footer() {
         <div className="mb-20 grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-4">
           <div className="col-span-1 sm:col-span-2 lg:col-span-1">
             <Link href={`/${lang}`} className="group mb-8 inline-block">
-              <img src="/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-24 md:h-[120px] w-auto object-contain transition-transform duration-500 group-hover:scale-105" />
+              <img src="/media/logos/logo_sapiente_transparente.png" alt="SAPIENTE.AI" className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-[120px]" />
             </Link>
 
             <p className="max-w-sm text-lg leading-relaxed text-white/65">{t("footer.description")}</p>
@@ -56,7 +54,7 @@ export default function Footer() {
               <li><NavLink href={`/${lang}/about`} variant="footer">{t("nav.about")}</NavLink></li>
               <li><NavLink href={`/${lang}/team`} variant="footer">{t("nav.team")}</NavLink></li>
               <li><NavLink href={`/${lang}/faq`} variant="footer">{t("nav.faq")}</NavLink></li>
-              <li><NavLink href={`/${lang}/quiz-ai`} variant="footer">{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink></li>
+              <li><NavLink href={quizHref} variant="footer">{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink></li>
             </ul>
           </div>
 
@@ -76,21 +74,10 @@ export default function Footer() {
               {t("footer.newsletter")}
             </h4>
 
-            <Link href={`/${lang}/newsletter`}>
-              <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <PremiumButton
-                  className="w-full rounded-2xl py-4"
-                  variant="secondary"
-                >
-                  {lang === "pt"
-                    ? "Abrir Newsletter"
-                    : "Open Newsletter"}
-                </PremiumButton>
-              </a>
+            <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
+              <PremiumButton className="w-full rounded-2xl py-4" variant="secondary">
+                {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
+              </PremiumButton>
             </Link>
           </div>
         </div>
@@ -118,25 +105,12 @@ export default function Footer() {
           <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
         </div>
       </div>
+
       <button
         type="button"
         onClick={scrollToTop}
         aria-label="Back to top"
-        className="
-          absolute bottom-8 right-8
-          inline-flex h-14 w-14 items-center justify-center
-          rounded-2xl
-          border border-[var(--brand-cyan)]/35
-          bg-[#08112a]/85
-          text-[var(--brand-cyan)]
-          backdrop-blur-xl
-          transition-all duration-300
-          hover:-translate-y-1
-          hover:border-[var(--brand-cyan)]
-          hover:bg-[var(--brand-cyan)]/15
-          hover:text-white
-          hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]
-        "
+        className="absolute bottom-8 right-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/35 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/15 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
       >
         <Icons.ArrowUp className="h-5 w-5" />
       </button>
