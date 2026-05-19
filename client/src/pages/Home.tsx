@@ -251,33 +251,69 @@ export default function Home() {
           </Reveal>
         </SectionHeader>
 
-        <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
-          {content.conversionWebsites.items.map((item, i) => {
-            const Icon = conversionIcons[i % conversionIcons.length];
+        <div className="relative z-10 mx-auto mt-14 max-w-7xl px-6">
+          <div className="grid gap-6 lg:grid-cols-4">
+            {content.conversionWebsites.items.slice(0, 4).map((item, i) => {
+              const Icon = conversionIcons[i % conversionIcons.length];
 
-            return (
-              <Reveal key={item} delay={i * 55}>
-                <motion.div
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="group relative overflow-hidden rounded-3xl border border-[#0A8AFF]/25 bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(234,246,255,0.86))] p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"
-                >
-                  <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-80" />
-                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--brand-cyan)]/12 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/24" />
+              return (
+                <Reveal key={item} delay={i * 80}>
+                  <motion.div
+                    whileHover={{ y: -10, scale: 1.025 }}
+                    transition={{ duration: 0.28, ease: "easeOut" }}
+                    className="group relative min-h-[190px] overflow-hidden rounded-[2rem] border border-[var(--brand-cyan)]/45 bg-[#06102A] p-6 shadow-[0_24px_70px_rgba(10,17,40,0.22)] transition-all duration-500 hover:border-[var(--brand-cyan)] hover:shadow-[0_28px_90px_rgba(0,209,255,0.34)]"
+                  >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(0,240,255,0.28),transparent_36%),linear-gradient(145deg,rgba(10,138,255,0.34),rgba(123,129,255,0.14),transparent)]" />
+                    <div className="absolute inset-x-0 top-0 h-1.5 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]" />
+                    <div className="absolute -bottom-10 -right-10 h-32 w-32 rounded-full bg-[var(--brand-cyan)]/20 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/35" />
 
-                  <div className="relative z-10 flex items-center gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[#06102A] text-[var(--brand-cyan)] shadow-[0_0_24px_rgba(0,209,255,0.24)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white">
-                      <Icon className="h-6 w-6" />
+                    <div className="relative z-10 flex h-full flex-col justify-between gap-8">
+                      <div className="flex items-center justify-between">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/45 bg-white/8 text-[var(--brand-cyan)] shadow-[0_0_28px_rgba(0,209,255,0.28)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)] group-hover:text-[#06102A]">
+                          <Icon className="h-7 w-7" />
+                        </div>
+                        <span className="font-mono text-xs font-black text-[var(--brand-cyan)]/55">0{i + 1}</span>
+                      </div>
+
+                      <p className="font-heading text-2xl font-black leading-tight tracking-tight text-[var(--brand-offwhite)] drop-shadow-[0_0_22px_rgba(0,209,255,0.18)]">
+                        {item}
+                      </p>
                     </div>
+                  </motion.div>
+                </Reveal>
+              );
+            })}
+          </div>
 
-                    <p className="font-heading text-base font-black leading-tight tracking-tight text-[#071129] md:text-lg">
-                      {item}
-                    </p>
-                  </div>
-                </motion.div>
-              </Reveal>
-            );
-          })}
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {content.conversionWebsites.items.slice(4).map((item, i) => {
+              const realIndex = i + 4;
+              const Icon = conversionIcons[realIndex % conversionIcons.length];
+
+              return (
+                <Reveal key={item} delay={realIndex * 60}>
+                  <motion.div
+                    whileHover={{ y: -5, scale: 1.015 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    className="group relative overflow-hidden rounded-3xl border border-[#0A8AFF]/25 bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(234,246,255,0.86))] p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"
+                  >
+                    <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-80" />
+                    <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--brand-cyan)]/12 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/24" />
+
+                    <div className="relative z-10 flex items-center gap-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[#06102A] text-[var(--brand-cyan)] shadow-[0_0_24px_rgba(0,209,255,0.24)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-primary)] group-hover:text-white">
+                        <Icon className="h-6 w-6" />
+                      </div>
+
+                      <p className="font-heading text-base font-black leading-tight tracking-tight text-[#071129] md:text-lg">
+                        {item}
+                      </p>
+                    </div>
+                  </motion.div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </Section>
 
