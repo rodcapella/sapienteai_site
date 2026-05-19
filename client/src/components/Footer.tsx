@@ -92,39 +92,40 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-8 border-t border-[var(--brand-cyan)]/20 pt-10 md:flex-row">
-          <div className="flex items-center gap-3">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              const isPending = social.url === "#";
+          <div className="flex flex-col items-center gap-4 md:items-start">
+            <div className="flex items-center gap-3">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                const isPending = social.url === "#";
 
-              return (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  onClick={(event) => {
-                    if (isPending) event.preventDefault();
-                  }}
-                  className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
-                  aria-label={social.name}
-                  aria-disabled={isPending ? "true" : undefined}
-                  target={isPending ? undefined : "_blank"}
-                  rel={isPending ? undefined : "noopener noreferrer nofollow"}
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              );
-            })}
-          </div>
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    onClick={(event) => {
+                      if (isPending) event.preventDefault();
+                    }}
+                    className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
+                    aria-label={social.name}
+                    aria-disabled={isPending ? "true" : undefined}
+                    target={isPending ? undefined : "_blank"}
+                    rel={isPending ? undefined : "noopener noreferrer nofollow"}
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
 
-          <div className="flex flex-col items-center gap-3 text-center md:items-end md:text-right">
             <Link
               href={`/${lang}/sitemap`}
               className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/80 transition hover:text-white"
             >
               {t("footer.sitemap")}
             </Link>
-            <p className="text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65">{t("footer.copyright")}</p>
           </div>
+
+          <p className="text-center text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
         </div>
       </div>
 
