@@ -37,6 +37,41 @@ export const faqPT = {
         "Sim. Criamos e gerimos estratégias para Instagram, Facebook, LinkedIn, Pinterest e TikTok, com foco em crescimento de audiência, autoridade e geração de leads.",
     },
     {
+      question: "A gestão de redes sociais inclui criação de calendário editorial?",
+      answer:
+        "Sim. Estruturamos um calendário editorial com temas, formatos, frequência de publicação e objetivos por conteúdo. A ideia é evitar publicações soltas e criar uma presença digital consistente, alinhada ao posicionamento da marca.",
+    },
+    {
+      question: "Criam os textos, legendas e ideias para os posts?",
+      answer:
+        "Sim. Criamos ideias, textos, legendas, chamadas para ação e variações de conteúdo adaptadas a cada rede social. O conteúdo é pensado para atrair atenção, educar o público, reforçar autoridade e estimular contacto ou conversão.",
+    },
+    {
+      question: "Também criam as artes e conteúdos visuais para redes sociais?",
+      answer:
+        "Sim. Desenvolvemos peças visuais para posts, carrosséis, stories, anúncios e campanhas digitais, mantendo coerência com a identidade visual da marca e com os objetivos de comunicação.",
+    },
+    {
+      question: "Podem adaptar o mesmo conteúdo para diferentes redes sociais?",
+      answer:
+        "Sim. Um mesmo tema pode ser transformado em diferentes formatos, como carrossel para Instagram, publicação para LinkedIn, vídeo curto para TikTok ou story interativo. Adaptamos linguagem, formato e intenção para cada canal.",
+    },
+    {
+      question: "A criação de conteúdo inclui vídeos curtos e reels?",
+      answer:
+        "Sim. Podemos criar roteiros, ideias, estruturas de vídeo, peças visuais e conteúdos curtos orientados para redes sociais. O nível de produção depende do pacote contratado e dos materiais disponíveis da marca.",
+    },
+    {
+      question: "Como funciona a aprovação dos conteúdos?",
+      answer:
+        "Normalmente organizamos os conteúdos por ciclos de produção. O cliente recebe os materiais para validação antes da publicação, podendo solicitar ajustes dentro do fluxo acordado.",
+    },
+    {
+      question: "Recebo relatórios sobre o desempenho das redes sociais?",
+      answer:
+        "Sim. Podemos acompanhar métricas como alcance, interações, crescimento, cliques, leads e desempenho por tipo de conteúdo. Os relatórios ajudam a perceber o que funciona e a orientar as próximas ações.",
+    },
+    {
       question: "Criam conteúdos, imagens e vídeos?",
       answer:
         "Sim. Produzimos conteúdos visuais, vídeos e peças criativas pensadas para captar atenção, comunicar melhor e converter público em clientes.",
