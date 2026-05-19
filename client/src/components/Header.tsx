@@ -115,11 +115,15 @@ export default function Header({ onContactClick }: HeaderProps) {
               </div>
             </div>
 
-            <div className="hidden w-[305px] shrink-0 items-center justify-end gap-3 lg:flex xl:w-[330px]">
+            <div className="hidden w-[380px] shrink-0 items-center justify-end gap-4 lg:flex xl:w-[420px]">
               <div className="h-6 w-px shrink-0 bg-slate-200 dark:bg-white/10" />
-              <LanguageSelector />
-              <ThemeToggle />
-              <PremiumButton onClick={handleContactClick} className="scale-90 whitespace-nowrap" variant="secondary">
+              <div className="shrink-0 scale-100">
+                <LanguageSelector />
+              </div>
+              <div className="shrink-0 scale-100">
+                <ThemeToggle />
+              </div>
+              <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-3 text-sm" variant="secondary">
                 {t("nav.fale")}
               </PremiumButton>
             </div>
