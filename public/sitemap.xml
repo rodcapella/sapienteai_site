@@ -10,7 +10,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/portfolio</loc>
+    <loc>https://sapienteai.com/pt/team</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -18,19 +18,39 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/privacy</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://sapienteai.com/pt/terms</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/team</loc>
+    <loc>https://sapienteai.com/pt/privacy</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/RGPD</loc>
+    <loc>https://sapienteai.com/pt/trust</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/pt/rgpd</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/pt/generative-ai-policy</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/pt/blog</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/pt/contact</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/pt/newsletter</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/pt/quiz-ia</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -42,7 +62,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/portfolio</loc>
+    <loc>https://sapienteai.com/en/team</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -50,19 +70,39 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/privacy</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://sapienteai.com/en/terms</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/team</loc>
+    <loc>https://sapienteai.com/en/privacy</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/RGPD</loc>
+    <loc>https://sapienteai.com/en/trust</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/rgpd</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/generative-ai-policy</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/blog</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/contact</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/newsletter</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/quiz-ai</loc>
     <priority>0.8</priority>
   </url>
 </urlset>

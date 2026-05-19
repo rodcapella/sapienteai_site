@@ -18,9 +18,7 @@ export default function GenerativeAIPolicy() {
   const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
 
-  // Certifique-se de que o content type está registado no seu sistema de conteúdos
-  // O getContent deve saber carregar "GenerativeAIPolicy" para a língua atual
-  const content = getContent("GenerativeAIPolicy", lang);
+  const content = getContent("generativeAIPolicy", lang);
 
   useEffect(() => {
     setSEOHead({

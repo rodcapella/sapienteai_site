@@ -29,6 +29,11 @@ export default function App() {
     const savedLang = localStorage.getItem("lang");
     const currentLang = location.split("/")[1];
 
+    if (currentLang === "blog") {
+      setLocation(`/pt${location}`);
+      return;
+    }
+
     if (savedLang && currentLang !== savedLang && !["pt", "en"].includes(currentLang)) {
       setLocation(`/${savedLang}`);
       return;
@@ -58,6 +63,10 @@ export default function App() {
       <Route path="/">
         <Redirect to="/pt" />
       </Route>
+      <Route path="/blog">
+        <Redirect to="/pt/blog" />
+      </Route>
+      <Route path="/blog/:slug">{(params) => <Redirect to={`/pt/blog/${params.slug}`} />}</Route>
 
       <MainLayout>
         <PageTransition>

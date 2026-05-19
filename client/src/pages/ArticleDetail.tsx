@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
-import { useRoute } from 'wouter';
+import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Calendar, User, Tag, Share2 } from 'lucide-react';
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import NewsletterForm from '@/components/NewsletterForm';
 
 import { Section } from "@/components/ui/section/Section";
@@ -13,10 +11,14 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 import { updateMetaTags, articleSchema, generateStructuredData } from '@/lib/seo';
 import { getBlogArticleBySlug, getAllBlogArticles } from '@/lib/blogData';
 
-export default function ArticleDetail() {
-  const [, params] = useRoute('/blog/:slug');
-  const slug = params?.slug as string;
+interface ArticleDetailProps {
+  lang?: string;
+  slug?: string;
+}
+
+export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailProps) {
   const article = getBlogArticleBySlug(slug);
+  const blogPath = `/${lang}/blog`;
 
   useEffect(() => {
     if (article) {
@@ -25,7 +27,7 @@ export default function ArticleDetail() {
         description: article.excerpt,
         keywords: [article.category, 'IA', 'inteligência artificial'],
         image: article.image,
-        url: `https://sapienteai.com/blog/${article.id}`,
+        url: `https://sapienteai.com/${lang}/blog/${article.slug}`,
         type: 'article',
         author: article.author,
         publishedDate: article.date,
@@ -33,16 +35,16 @@ export default function ArticleDetail() {
 
       generateStructuredData('Article', articleSchema(article));
     }
-  }, [article]);
+  }, [article, lang]);
 
   if (!article) {
     return (
       <div className="min-h-screen flex items-center justify-center text-white">
         <div className="text-center">
           <h1 className="text-3xl font-semibold mb-4">Artigo não encontrado</h1>
-          <a href="/blog" className="text-cyan-400 hover:underline">
+          <Link href={blogPath} className="text-cyan-400 hover:underline">
             Voltar ao blog
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -66,11 +68,8 @@ export default function ArticleDetail() {
         <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
       </div>
-
-      <Header />
-
       {/* HERO IMAGE */}
-      <div className="pt-28">
+      <div>
         <div className="w-full h-80 md:h-[420px] overflow-hidden">
           <img 
             src={article.image}
@@ -156,7 +155,7 @@ export default function ArticleDetail() {
 
             <div className="grid md:grid-cols-2 gap-6">
               {relatedArticles.map(post => (
-                <a key={post.id} href={`/blog/${post.slug}`}>
+                <Link key={post.id} href={`${blogPath}/${post.slug}`}>
                   <SectionCard className="group cursor-pointer">
 
                     <img 
@@ -174,14 +173,12 @@ export default function ArticleDetail() {
                     </p>
 
                   </SectionCard>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
         </Section>
       )}
-
-      <Footer />
     </div>
   );
 }

@@ -22,6 +22,9 @@ import { trustContentEN } from "@/content/en/trust";
 import { rgpdContentPT } from "@/content/pt/rgpd";
 import { gdprContentEN } from "@/content/en/gdpr";
 
+import { iaGenerativaPolicyPT } from "@/content/pt/iaGenerativaPolicy";
+import { iaGenerativaPolicyEN } from "@/content/en/iaGenerativaPolicy";
+
 import { contactPT } from "@/content/pt/contact";
 import { contactEN } from "@/content/en/contact";
 
@@ -61,6 +64,10 @@ const contentMap = {
   rgpd: {
     pt: rgpdContentPT,
     en: gdprContentEN,
+  },
+  generativeAIPolicy: {
+    pt: iaGenerativaPolicyPT,
+    en: iaGenerativaPolicyEN,
   },
   contact: {
     pt: contactPT,

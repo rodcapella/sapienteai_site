@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { Link, useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Icons } from "@/lib/icons";
 
@@ -27,6 +28,8 @@ const categories = ['Todos', ...Array.from(new Set(articles.map(a => a.category)
 
 export default function Blog() {
   const { t } = useTranslation();
+  const [location] = useLocation();
+  const lang = location.startsWith("/en") ? "en" : "pt";
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -123,7 +126,7 @@ export default function Blog() {
           {filteredArticles.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
               {filteredArticles.map(article => (
-                <a key={article.id} href={`/blog/${article.slug}`} className="group h-full">
+                <Link key={article.id} href={`/${lang}/blog/${article.slug}`} className="group h-full">
                   <SectionCard className="bg-white border-foreground/5 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-8">
 
                     {/* IMAGE */}
@@ -165,7 +168,7 @@ export default function Blog() {
                     </div>
 
                   </SectionCard>
-                </a>
+                </Link>
               ))}
             </div>
           ) : (
