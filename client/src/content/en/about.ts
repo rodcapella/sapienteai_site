@@ -9,6 +9,30 @@ export const aboutEN = {
     "To become a leading force in technological innovation for SMEs, professionals, and digital creators in the Portuguese-speaking market, applying AI with engineering rigor and human validation to drive sustainable growth."
   ],
 
+  proof: {
+    eyebrow: "How we work",
+    title: "AI applied with clarity, method, and accountability.",
+    text:
+      "We combine strategy, engineering, and experience design to turn scattered opportunities into digital systems your team can use, measure, and improve.",
+    items: [
+      {
+        value: "01",
+        title: "Diagnosis before technology",
+        text: "We map objectives, data, processes, and friction points before recommending tools."
+      },
+      {
+        value: "02",
+        title: "Built for adoption",
+        text: "We design simple flows, clear interfaces, and automations aligned with real work."
+      },
+      {
+        value: "03",
+        title: "Continuous measurement",
+        text: "We define indicators to track impact on productivity, acquisition, and revenue."
+      }
+    ]
+  },
+
   shift: {
     title: "The shift.",
     items: [
@@ -35,6 +59,14 @@ export const aboutEN = {
     title: "The Vision",
     text:
       "We build digital solutions that drive growth, automate operations, and turn data into strategic decisions, combining human expertise with advanced AI."
+  },
+
+  teamCta: {
+    eyebrow: "The team",
+    title: "Meet the people turning strategy into execution.",
+    text:
+      "Behind Sapiente.ai is a team focused on building useful, measurable solutions aligned with each business context.",
+    link: "Meet the team"
   },
 
   logo: {

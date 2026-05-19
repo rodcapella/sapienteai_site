@@ -9,6 +9,30 @@ export const aboutPT = {
     "Ser uma referência em inovação tecnológica para PMEs, profissionais e criadores digitais no mercado lusófono, aplicando IA com rigor de engenharia e validação humana para gerar crescimento sustentável."
   ],
 
+  proof: {
+    eyebrow: "Como trabalhamos",
+    title: "IA aplicada com clareza, método e responsabilidade.",
+    text:
+      "Unimos estratégia, engenharia e desenho de experiência para transformar oportunidades dispersas em sistemas digitais que a equipa consegue usar, medir e evoluir.",
+    items: [
+      {
+        value: "01",
+        title: "Diagnóstico antes da tecnologia",
+        text: "Mapeamos objetivos, dados, processos e pontos de fricção antes de recomendar ferramentas."
+      },
+      {
+        value: "02",
+        title: "Soluções pensadas para adoção",
+        text: "Criamos fluxos simples, interfaces claras e automações alinhadas com o trabalho real."
+      },
+      {
+        value: "03",
+        title: "Medição contínua",
+        text: "Definimos indicadores para acompanhar impacto em produtividade, aquisição e receita."
+      }
+    ]
+  },
+
   shift: {
     title: "A mudança.",
     items: [
@@ -35,6 +59,14 @@ export const aboutPT = {
     title: "A Visão",
     text:
       "Criamos soluções digitais que fazem os negócios crescer, automatizam operações e transformam dados em decisões estratégicas, combinando especialização humana com IA avançada."
+  },
+
+  teamCta: {
+    eyebrow: "A equipa",
+    title: "Conheça quem transforma estratégia em execução.",
+    text:
+      "Por trás da Sapiente.ai está uma equipa focada em criar soluções úteis, mensuráveis e alinhadas com o contexto de cada negócio.",
+    link: "Conhecer a equipa"
   },
 
   logo: {
