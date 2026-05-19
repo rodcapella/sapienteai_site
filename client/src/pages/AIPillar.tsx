@@ -1,4 +1,3 @@
-import { ArrowRight, CheckCircle, TrendingUp, Zap, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import ContactModal from '@/components/ContactModal';
@@ -69,14 +68,14 @@ export default function AIPillar() {
     <div className="
       min-h-screen 
       bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
-      text-white
+      text-[var(--brand-offwhite)]
       relative
       overflow-hidden
     ">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--brand-cyan)]/10 blur-3xl rounded-full"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
       </div>
 
@@ -90,7 +89,7 @@ export default function AIPillar() {
         </SectionHeader>
 
         <div className="max-w-2xl">
-          <p className="text-slate-400 mb-8">
+          <p className="text-[var(--brand-offwhite)]/60 mb-8">
             Tudo o que precisa de saber sobre IA aplicada a negócios.
           </p>
 
@@ -110,13 +109,13 @@ export default function AIPillar() {
 
       {/* DEFINIÇÃO */}
       <Section id="definition">
-        <div className="max-w-3xl space-y-6 text-slate-400 leading-relaxed">
-          <h2 className="text-3xl md:text-4xl font-semibold text-white">
+        <div className="max-w-3xl space-y-6 text-[var(--brand-offwhite)]/60 leading-relaxed">
+          <h2 className="font-heading text-3xl font-black text-[var(--brand-offwhite)] md:text-4xl">
             O que é Inteligência Artificial para Empresas?
           </h2>
 
           <p>
-            <strong className="text-white">IA aplicada a negócios</strong> usa dados e algoritmos para decisões mais rápidas e precisas.
+            <strong className="text-[var(--brand-offwhite)]">IA aplicada a negócios</strong> usa dados e algoritmos para decisões mais rápidas e precisas.
           </p>
 
           <p>
@@ -124,7 +123,7 @@ export default function AIPillar() {
           </p>
 
           <p>
-            O foco é gerar <strong className="text-white">ROI real</strong> e crescimento sustentável.
+            O foco é gerar <strong className="text-[var(--brand-offwhite)]">ROI real</strong> e crescimento sustentável.
           </p>
         </div>
       </Section>
@@ -162,9 +161,9 @@ export default function AIPillar() {
 
             return (
               <SectionCard key={i}>
-                <Icon className="h-10 w-10 text-cyan-400 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{b.title}</h3>
-                <p className="text-slate-400">{b.description}</p>
+                <Icon className="h-10 w-10 text-[var(--brand-cyan)] mb-4" />
+                <h3 className="mb-2 font-heading text-xl font-black">{b.title}</h3>
+                <p className="text-[var(--brand-offwhite)]/60">{b.description}</p>
               </SectionCard>
             );
           })}
@@ -184,12 +183,12 @@ export default function AIPillar() {
             { sector: 'Saúde', apps: ['Diagnóstico', 'Análise'] }
           ].map((item, i) => (
             <SectionCard key={i} variant="subtle">
-              <h3 className="text-xl font-semibold mb-4">{item.sector}</h3>
+              <h3 className="mb-4 font-heading text-xl font-black">{item.sector}</h3>
 
               <ul className="grid md:grid-cols-2 gap-3">
                 {item.apps.map((app, idx) => (
-                  <li key={idx} className="flex gap-2 items-center text-slate-400">
-                    <CheckCircle className="h-4 w-4 text-cyan-400" />
+                  <li key={idx} className="flex gap-2 items-center text-[var(--brand-offwhite)]/60">
+                    <CheckCircle className="h-4 w-4 text-[var(--brand-cyan)]" />
                     {app}
                   </li>
                 ))}
@@ -208,17 +207,17 @@ export default function AIPillar() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {clusterArticles.map((article, i) => (
             <SectionCard key={i} className="group cursor-pointer">
-              <h3 className="text-lg font-semibold mb-3 group-hover:text-cyan-400 transition">
+              <h3 className="mb-3 font-heading text-lg font-black transition group-hover:text-[var(--brand-cyan)]">
                 {article.title}
               </h3>
 
-              <p className="text-slate-400 mb-4">
+              <p className="text-[var(--brand-offwhite)]/60 mb-4">
                 {article.description}
               </p>
 
               <div className="flex flex-wrap gap-2">
                 {article.keywords.map((k, idx) => (
-                  <span key={idx} className="text-xs px-3 py-1 rounded-full bg-cyan-400/10 text-cyan-300">
+                  <span key={idx} className="text-xs px-3 py-1 rounded-full bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)]">
                     {k}
                   </span>
                 ))}
@@ -231,11 +230,11 @@ export default function AIPillar() {
       {/* CTA */}
       <Section id="cta" className="text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-4xl font-semibold mb-6">
+          <h2 className="mb-6 font-heading text-4xl font-black">
             Pronto para implementar IA?
           </h2>
 
-          <p className="text-slate-400 mb-10">
+          <p className="text-[var(--brand-offwhite)]/60 mb-10">
             Descubra como gerar resultados reais.
           </p>
 

@@ -48,10 +48,10 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
 
   if (!article) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-white">
+      <div className="flex min-h-screen items-center justify-center text-[var(--brand-offwhite)]">
         <div className="text-center">
-          <h1 className="text-3xl font-semibold mb-4">{text.notFound}</h1>
-          <Link href={blogPath} className="text-cyan-400 hover:underline">
+          <h1 className="mb-4 font-heading text-3xl font-black">{text.notFound}</h1>
+          <Link href={blogPath} className="text-[var(--brand-cyan)] hover:underline">
             {text.backToBlog}
           </Link>
         </div>
@@ -67,14 +67,14 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
     <div className="
       min-h-screen 
       bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
-      text-white
+      text-[var(--brand-offwhite)]
       relative
       overflow-hidden
     ">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--brand-cyan)]/10 blur-3xl rounded-full"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
       </div>
       {/* HERO IMAGE */}
@@ -92,16 +92,16 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
       <Section>
         <div className="max-w-3xl mx-auto">
 
-          <div className="flex items-center gap-2 mb-4 text-cyan-400 text-sm uppercase tracking-wider">
+          <div className="mb-4 flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]">
             <Tag className="h-4 w-4" />
             {article.category}
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight mb-6">
+          <h1 className="mb-6 font-heading text-4xl font-black leading-tight md:text-6xl">
             {article.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400 pb-6 border-b border-white/10">
+          <div className="flex flex-wrap items-center gap-6 border-b border-white/10 pb-6 text-sm text-[var(--brand-offwhite)]/55">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4" />
               {article.author}
@@ -119,7 +119,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
 
       {/* CONTENT */}
       <Section>
-        <div className="max-w-3xl mx-auto space-y-6 text-slate-300 leading-relaxed">
+        <div className="mx-auto max-w-3xl space-y-6 leading-relaxed text-[var(--brand-offwhite)]/72">
           {article.content.split('\n\n').map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -127,7 +127,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
 
         {/* SHARE */}
         <div className="max-w-3xl mx-auto mt-12 pt-6 border-t border-white/10 flex gap-4 items-center">
-          <span className="text-sm text-slate-400">{text.share}</span>
+          <span className="text-sm text-[var(--brand-offwhite)]/55">{text.share}</span>
 
           <Button variant="outline">
             <Share2 className="h-4 w-4 mr-2" />
@@ -145,7 +145,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
       <Section>
         <div className="max-w-3xl mx-auto">
           <SectionCard variant="highlight">
-            <h3 className="text-xl font-semibold mb-4">
+            <h3 className="mb-4 font-heading text-xl font-black">
               {text.newsletter}
             </h3>
 
@@ -158,7 +158,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
       {relatedArticles.length > 0 && (
         <Section>
           <div className="max-w-5xl mx-auto">
-            <h3 className="text-2xl font-semibold mb-8">
+            <h3 className="mb-8 font-heading text-2xl font-black">
               {text.related}
             </h3>
 
@@ -173,11 +173,11 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
                       className="w-full h-40 object-cover rounded-lg mb-4 group-hover:scale-[1.02] transition"
                     />
 
-                    <h4 className="font-semibold mb-2 group-hover:text-cyan-400 transition">
+                    <h4 className="mb-2 font-heading font-black transition group-hover:text-[var(--brand-cyan)]">
                       {post.title}
                     </h4>
 
-                    <p className="text-sm text-slate-400">
+                    <p className="text-sm text-[var(--brand-offwhite)]/55">
                       {post.excerpt}
                     </p>
 

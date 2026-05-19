@@ -88,7 +88,7 @@ body {
   overflow-x: hidden;
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
 }
 
 body::before {
@@ -147,6 +147,15 @@ body::before {
   --shadow-neon-blue: 0 0 0 1px rgba(10, 138, 255, 0.4), 0 0 46px rgba(0, 209, 255, 0.34);
   --shadow-neon-purple: 0 0 0 1px rgba(123, 129, 255, 0.34), 0 0 46px rgba(123, 129, 255, 0.3);
   --radius: 1.5rem;
+
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Sora", "Inter", system-ui, -apple-system, sans-serif;
+  --type-hero: clamp(2.5rem, 7vw, 6rem);
+  --type-section-title: clamp(2.25rem, 5vw, 4.5rem);
+  --type-card-title: clamp(1.5rem, 2.2vw, 2rem);
+  --type-body-lg: clamp(1.125rem, 1.7vw, 1.5rem);
+  --type-body: 1rem;
+  --type-label: 0.75rem;
 }
 
 .dark {
@@ -201,9 +210,60 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Sora", "Inter", sans-serif;
-  letter-spacing: -0.028em;
+  font-family: var(--font-heading);
+  letter-spacing: 0;
   text-wrap: balance;
+}
+
+:where(h1, h2, h3, h4, h5, h6)[class*="tracking-tight"],
+:where(h1, h2, h3, h4, h5, h6)[class*="tracking-tighter"] {
+  letter-spacing: 0;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+  letter-spacing: 0;
+}
+
+.type-label {
+  font-size: var(--type-label);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.type-body {
+  font-size: var(--type-body);
+  line-height: 1.75;
+}
+
+.type-body-lg {
+  font-size: var(--type-body-lg);
+  line-height: 1.65;
+}
+
+.type-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--type-card-title);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.type-section-title {
+  font-family: var(--font-heading);
+  font-size: var(--type-section-title);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.type-hero {
+  font-family: var(--font-heading);
+  font-size: var(--type-hero);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: 0;
 }
 
 .bg-ice {

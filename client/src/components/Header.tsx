@@ -55,7 +55,7 @@ export default function Header({ onContactClick }: HeaderProps) {
       <header
         className={cn(
           "fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500",
-          "border-slate-200 text-slate-900 dark:border-cyan-500/20 dark:text-white",
+          "border-foreground/10 text-foreground dark:border-[var(--brand-cyan)]/20 dark:text-[var(--brand-offwhite)]",
           scrolled
             ? "bg-white/96 shadow-[0_18px_40px_rgba(10,17,40,0.14)] backdrop-blur-2xl dark:bg-[#050B16]/96 dark:shadow-[0_18px_60px_rgba(0,0,0,0.65)]"
             : "bg-white/92 backdrop-blur-xl dark:bg-[#050B16]/92",
@@ -83,7 +83,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                   type="button"
                   className={cn(
                     "flex min-w-[88px] items-center justify-center gap-2 whitespace-nowrap text-sm font-black uppercase tracking-widest transition-all duration-300",
-                    isLegalOpen ? "text-[var(--brand-cyan)]" : "text-slate-700 hover:text-slate-900 dark:text-white/90 dark:hover:text-[var(--brand-cyan)]",
+                    isLegalOpen ? "text-[var(--brand-cyan)]" : "text-foreground/75 hover:text-foreground dark:text-[var(--brand-offwhite)]/90 dark:hover:text-[var(--brand-cyan)]",
                   )}
                 >
                   {t("nav.legal") || "Legal"}
@@ -91,12 +91,12 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </button>
 
                 <div className={cn("absolute -left-4 top-full w-64 origin-top-left pt-4 transition-all duration-300", isLegalOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0")}>
-                  <div className="legal-dropdown rounded-2xl border border-slate-200 bg-white/96 p-2 text-slate-900 shadow-[0_20px_50px_rgba(10,17,40,0.2)] backdrop-blur-2xl">
+                  <div className="legal-dropdown rounded-2xl border border-foreground/10 bg-white/96 p-2 text-foreground shadow-[0_20px_50px_rgba(10,17,40,0.2)] backdrop-blur-2xl">
                     {legalLinks.map((link) => (
                       <Link
                         key={link.name}
                         href={link.href}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-slate-700 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-slate-900 dark:text-white/90 dark:hover:bg-cyan-400/10 dark:hover:text-[var(--brand-cyan)]"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/75 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-foreground dark:text-[var(--brand-offwhite)]/90 dark:hover:bg-[var(--brand-cyan)]/10 dark:hover:text-[var(--brand-cyan)]"
                       >
                         <Icons.ShieldCheck className="h-4 w-4 shrink-0 text-[var(--brand-cyan)]" />
                         <span className="text-inherit">{link.name}</span>
@@ -106,7 +106,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </div>
               </div>
 
-              <div className="h-6 w-px shrink-0 bg-slate-200 dark:bg-white/10" />
+              <div className="h-6 w-px shrink-0 bg-foreground/10 dark:bg-white/10" />
               <div className="flex shrink-0 items-center gap-3">
                 <LanguageSelector />
                 <ThemeToggle />
@@ -120,7 +120,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-slate-200 bg-white p-2.5 text-slate-800 transition-all duration-300 hover:border-[var(--brand-cyan)] hover:text-[var(--brand-cyan)] dark:border-cyan-500/20 dark:bg-[#081120] dark:text-white"
+                className="rounded-2xl border border-foreground/10 bg-white p-2.5 text-foreground transition-all duration-300 hover:border-[var(--brand-cyan)] hover:text-[var(--brand-cyan)] dark:border-[var(--brand-cyan)]/20 dark:bg-[#081120] dark:text-[var(--brand-offwhite)]"
                 aria-label="Toggle menu"
                 type="button"
               >

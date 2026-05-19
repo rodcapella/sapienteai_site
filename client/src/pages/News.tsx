@@ -55,14 +55,14 @@ export default function News() {
     <div className="
       min-h-screen
       bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
-      text-white
+      text-[var(--brand-offwhite)]
       relative
       overflow-hidden
     ">
 
       {/* BG */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--brand-cyan)]/10 blur-3xl rounded-full"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
       </div>
 
@@ -77,14 +77,14 @@ export default function News() {
           />
         </SectionHeader>
 
-        <div className="max-w-2xl mx-auto text-slate-400 text-center">
+        <div className="max-w-2xl mx-auto text-[var(--brand-offwhite)]/60 text-center">
           <p>
             Acompanhe as tendências e lançamentos mais relevantes em IA.
           </p>
 
           {/* SEARCH */}
           <div className="relative mt-6">
-            <Search className="absolute left-4 top-3.5 h-4 w-4 text-slate-500" />
+            <Search className="absolute left-4 top-3.5 h-4 w-4 text-[var(--brand-offwhite)]/45" />
             <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -95,8 +95,8 @@ export default function News() {
                 bg-white/5
                 border border-white/10
                 text-white
-                placeholder:text-slate-500
-                focus:border-cyan-400
+                placeholder:text-[var(--brand-offwhite)]/45
+                focus:border-[var(--brand-cyan)]
                 outline-none
               "
             />
@@ -122,7 +122,7 @@ export default function News() {
                 </div>
 
                 {/* META */}
-                <div className="flex items-center gap-4 text-xs text-slate-500 mb-3">
+                <div className="flex items-center gap-4 text-xs text-[var(--brand-offwhite)]/45 mb-3">
                   <span className="flex items-center gap-1">
                     <Calendar className="h-3 w-3" />
                     {new Date(article.date).toLocaleDateString('pt-PT')}
@@ -135,12 +135,12 @@ export default function News() {
                 </div>
 
                 {/* TITLE */}
-                <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition">
+                <h3 className="mb-2 font-heading text-lg font-black transition group-hover:text-[var(--brand-cyan)]">
                   {article.title}
                 </h3>
 
                 {/* EXCERPT */}
-                <p className="text-sm text-slate-400 mb-4">
+                <p className="text-sm text-[var(--brand-offwhite)]/60 mb-4">
                   {article.excerpt}
                 </p>
 
@@ -149,7 +149,7 @@ export default function News() {
                   {article.tags.map(tag => (
                     <span
                       key={tag}
-                      className="text-xs bg-white/5 px-2 py-1 rounded text-cyan-400"
+                      className="text-xs bg-white/5 px-2 py-1 rounded text-[var(--brand-cyan)]"
                     >
                       {tag}
                     </span>
@@ -157,7 +157,7 @@ export default function News() {
                 </div>
 
                 {/* CTA */}
-                <span className="text-cyan-400 text-sm font-medium">
+                <span className="text-[var(--brand-cyan)] text-sm font-black">
                   Ler mais →
                 </span>
 
@@ -166,7 +166,7 @@ export default function News() {
 
           </div>
         ) : (
-          <div className="text-center text-slate-400">
+          <div className="text-center text-[var(--brand-offwhite)]/60">
             Nenhum artigo encontrado.
           </div>
         )}
@@ -177,11 +177,11 @@ export default function News() {
         <div className="max-w-xl mx-auto text-center">
           <SectionCard variant="highlight">
 
-            <h2 className="text-2xl font-semibold mb-4">
+            <h2 className="mb-4 font-heading text-2xl font-black">
               Receba atualizações
             </h2>
 
-            <p className="text-slate-400 mb-6">
+            <p className="text-[var(--brand-offwhite)]/60 mb-6">
               Conteúdo direto sobre IA, sem ruído.
             </p>
 
@@ -190,7 +190,7 @@ export default function News() {
                 className="flex-1 px-4 py-2 rounded-xl bg-white/5 border border-white/10"
                 placeholder="Email"
               />
-              <button className="bg-cyan-400 text-black px-4 rounded-xl">
+              <button className="bg-[var(--brand-cyan)] text-[var(--brand-night)] px-4 rounded-xl">
                 Inscrever
               </button>
             </div>

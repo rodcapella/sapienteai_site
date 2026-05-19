@@ -18,12 +18,12 @@ import { homeEN } from "@/content/en/home";
 
 const pillarBorder = [
   "border-[#00D1FF]/55",
-  "border-[#0A8AFF]/55",
+  "border-[var(--brand-primary)]/55",
   "border-[#7B81FF]/55",
   "border-[#00F0FF]/55",
 ];
 
-const lightSectionClass = "relative overflow-hidden bg-[#EAF6FF] py-24 text-[#0A1024] md:py-36";
+const lightSectionClass = "relative overflow-hidden bg-[#EAF6FF] py-24 text-foreground md:py-36";
 const darkSectionClass = "relative overflow-hidden border-y border-[var(--tech-border)] bg-[#060B1E] tech-grid py-24 md:py-36";
 
 export default function Home() {
@@ -158,8 +158,8 @@ export default function Home() {
                 </div>
 
                 <div className="p-7 md:p-8">
-                  <h3 className="font-heading text-2xl font-black tracking-tight text-[#0A1024]">{pillar.title}</h3>
-                  <p className="mt-3 text-[#0A1024]/76">{pillar.description}</p>
+                  <h3 className="font-heading text-2xl font-black tracking-tight text-foreground">{pillar.title}</h3>
+                  <p className="mt-3 text-foreground/75">{pillar.description}</p>
                 </div>
               </SectionCard>
             ))}
@@ -208,16 +208,16 @@ export default function Home() {
             const Icon = marketingIcons[i % marketingIcons.length];
 
             return (
-              <SectionCard key={card.title} delay={i * 0.1} variant="highlight" className="rounded-[2rem] border border-[#0A8AFF]/25 bg-white/82 p-8 text-[#0A1024] shadow-[0_20px_50px_rgba(10,17,40,0.12)] md:p-10">
+              <SectionCard key={card.title} delay={i * 0.1} variant="highlight" className="rounded-[2rem] border border-primary/25 bg-white/82 p-8 text-foreground shadow-[0_20px_50px_rgba(10,17,40,0.12)] md:p-10">
                 <div className="mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-primary)]/40 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] shadow-[0_0_26px_rgba(0,209,255,0.18)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)]/20">
                   <Icon className="h-8 w-8" />
                 </div>
 
-                <h3 className="mb-4 font-heading text-3xl font-black tracking-tight text-[#0A1024]">{card.title}</h3>
+                <h3 className="mb-4 font-heading text-3xl font-black tracking-tight text-foreground">{card.title}</h3>
 
                 <ul className="space-y-3">
                   {card.points.map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-[#0A1024]/82">
+                    <li key={point} className="flex items-start gap-3 text-foreground/80">
                       <Icons.CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-primary)]" />
                       <span>{point}</span>
                     </li>
@@ -282,7 +282,7 @@ export default function Home() {
                 <motion.div
                   whileHover={{ y: -6, scale: 1.02 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="group relative overflow-hidden rounded-3xl border border-[#0A8AFF]/25 bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(234,246,255,0.86))] p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"
+                  className="group relative overflow-hidden rounded-3xl border border-primary/25 bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(234,246,255,0.86))] p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"
                 >
                   <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-80" />
                   <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--brand-cyan)]/12 blur-2xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/24" />
@@ -292,7 +292,7 @@ export default function Home() {
                       <Icon className="h-6 w-6" />
                     </div>
 
-                    <p className="font-heading text-base font-black leading-tight tracking-tight text-[#071129] md:text-lg">
+                    <p className="font-heading text-base font-black leading-tight tracking-tight text-foreground md:text-lg">
                       {item}
                     </p>
                   </div>
@@ -353,12 +353,12 @@ export default function Home() {
               const Icon = brandbookIcons[i % brandbookIcons.length];
 
               return (
-                <SectionCard key={trait.title} delay={i * 0.07} variant="subtle" className="rounded-3xl border border-[#0A8AFF]/20 bg-white/78 p-6 text-[#0A1024] shadow-[0_20px_50px_rgba(10,17,40,0.1)]">
+                <SectionCard key={trait.title} delay={i * 0.07} variant="subtle" className="rounded-3xl border border-primary/20 bg-white/78 p-6 text-foreground shadow-[0_20px_50px_rgba(10,17,40,0.1)]">
                   <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)]">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="font-heading text-xl font-extrabold text-[#0A1024]">{trait.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-[#0A1024]/75">{trait.description}</p>
+                  <h3 className="font-heading text-xl font-extrabold text-foreground">{trait.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-foreground/75">{trait.description}</p>
                 </SectionCard>
               );
             })}
@@ -397,14 +397,14 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           <Reveal>
-            <div className="inline-flex items-center gap-3 rounded-full border border-[#0A8AFF]/25 bg-white/80 px-6 py-2.5 text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-primary)] shadow-[0_16px_40px_rgba(10,17,40,0.1)]">
+            <div className="inline-flex items-center gap-3 rounded-full border border-primary/25 bg-white/80 px-6 py-2.5 text-xs font-black uppercase tracking-[0.28em] text-primary shadow-[0_16px_40px_rgba(10,17,40,0.1)]">
               <Icons.Brain className="h-4 w-4" />
               {isPT ? "Quiz interativo" : "Interactive quiz"}
             </div>
           </Reveal>
 
           <Reveal delay={120}>
-            <h2 className="mt-8 font-heading text-4xl font-black tracking-tight text-[#0A1024] sm:text-5xl md:text-6xl">
+            <h2 className="mt-8 font-heading text-4xl font-black tracking-tight text-foreground sm:text-5xl md:text-6xl">
               {isPT
                 ? "Quanto sabe sobre Inteligência Artificial?"
                 : "How much do you know about Artificial Intelligence?"}
@@ -412,7 +412,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={180}>
-            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-[#0A1024]/75 sm:text-xl">
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-foreground/75 sm:text-xl">
               {isPT
                 ? "Faça o nosso quiz rápido e descubra o seu nível de conhecimento sobre IA, automação, marketing inteligente e produtividade."
                 : "Take our quick quiz and discover your knowledge level about AI, automation, smart marketing and productivity."}

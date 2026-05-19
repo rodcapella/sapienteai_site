@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Button } from '@/components/ui/button';
 import { Icons } from "@/lib/icons";
 
 import Header from '@/components/Header';
@@ -8,10 +7,7 @@ import Footer from '@/components/Footer';
 import NewsletterForm from '@/components/NewsletterForm';
 
 import { Section } from "@/components/ui/section/Section";
-import { SectionHeader } from "@/components/ui/section/SectionHeader";
-import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-import { PremiumButton } from "@/components/ui/button/PremiumButton";
 
 import { useTranslation } from '@/hooks/useTranslation';
 import { getAllBlogArticles } from '@/lib/blogData';
@@ -72,10 +68,10 @@ export default function Blog() {
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-6">
           <div className="container max-w-4xl text-center">
-            <h1 className="text-4xl md:text-7xl font-bold text-white tracking-tight drop-shadow-lg">
+            <h1 className="font-heading text-4xl font-black text-[var(--brand-offwhite)] drop-shadow-lg md:text-7xl">
               {t('blog.title')}
             </h1>
-            <p className="text-lg md:text-2xl text-white/90 mt-6 drop-shadow-md max-w-2xl mx-auto">
+            <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-[var(--brand-offwhite)]/85 drop-shadow-md md:text-2xl">
               {t('blog.subtitle')}
             </p>
 
@@ -112,7 +108,7 @@ export default function Blog() {
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`
-                  px-6 py-2.5 rounded-full text-sm font-bold transition-all
+                  px-6 py-2.5 rounded-full text-sm font-black transition-all
                   ${selectedCategory === category
                     ? 'bg-primary text-primary-foreground shadow-lg'
                     : 'bg-white text-foreground/60 border border-foreground/5 hover:bg-foreground/5'}
@@ -144,23 +140,23 @@ export default function Blog() {
                     </div>
 
                     {/* CATEGORY */}
-                    <div className="flex items-center gap-2 mb-4 text-primary text-xs font-bold uppercase tracking-widest">
+                    <div className="mb-4 flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-primary">
                       <Tag className="h-3 w-3" />
                       {article.category}
                     </div>
 
                     {/* TITLE */}
-                    <h3 className="text-2xl font-bold mb-4 text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="mb-4 font-heading text-2xl font-black text-foreground transition-colors line-clamp-2 group-hover:text-primary">
                       {article.title}
                     </h3>
 
                     {/* EXCERPT */}
-                    <p className="text-foreground/70 mb-8 line-clamp-3 leading-relaxed">
+                    <p className="mb-8 line-clamp-3 leading-relaxed text-foreground/70">
                       {article.excerpt}
                     </p>
 
                     {/* META */}
-                    <div className="mt-auto pt-6 border-t border-foreground/5 flex items-center justify-between text-sm text-foreground/40">
+                    <div className="mt-auto flex items-center justify-between border-t border-foreground/5 pt-6 text-sm text-foreground/45">
                       <div className="flex items-center gap-2">
                         <User className="h-4 w-4" />
                         {article.author}
@@ -189,11 +185,11 @@ export default function Blog() {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <SectionCard className="bg-white p-10 md:p-16 shadow-xl border-primary/10 text-center">
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+              <h2 className="mb-6 font-heading text-3xl font-black text-foreground md:text-5xl">
                 {t('blog.newsletter')}
               </h2>
 
-              <p className="text-xl text-foreground/60 mb-10 leading-relaxed">
+              <p className="mb-10 text-xl leading-relaxed text-foreground/60">
                 {t('blog.newsletterDesc')}
               </p>
 

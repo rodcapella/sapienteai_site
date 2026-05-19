@@ -6,7 +6,7 @@ const buttonVariants = cva(
   `
   inline-flex items-center justify-center gap-2
   rounded-full
-  font-medium
+  font-heading font-extrabold uppercase tracking-[0.16em]
 
   transition-all duration-300
   active:scale-[0.97]
@@ -18,7 +18,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: `
-          bg-cyan-400 text-black
+          bg-[var(--brand-cyan)] text-[var(--brand-night)]
           shadow-[0_10px_40px_rgba(0,255,255,0.25)]
 
           hover:scale-[1.04]
@@ -26,7 +26,7 @@ const buttonVariants = cva(
         `,
 
         secondary: `
-          bg-white/5 text-white
+          bg-white/5 text-[var(--brand-offwhite)]
           border border-white/10
 
           hover:bg-white/10
@@ -34,13 +34,13 @@ const buttonVariants = cva(
         `,
 
         ghost: `
-          text-white/80
-          hover:text-white
+          text-[var(--brand-offwhite)]/80
+          hover:text-[var(--brand-offwhite)]
           hover:bg-white/5
         `,
 
         outline: `
-          border border-white/20 text-white
+          border border-white/20 text-[var(--brand-offwhite)]
           hover:bg-white/10
           hover:border-white/30
         `
