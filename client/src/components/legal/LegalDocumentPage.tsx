@@ -56,19 +56,6 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
     <div className="flex flex-col">
       <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
         <div className="container max-w-5xl px-6 text-center">
-          <Reveal>
-            <Link href={`/${lang}`} className="mb-8 inline-flex items-center gap-2 font-black uppercase tracking-widest text-[var(--brand-cyan)] transition-opacity hover:opacity-70">
-              <Icons.ArrowLeft className="h-4 w-4" />
-              {t("nav.home")}
-            </Link>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-[1.6rem] border border-[var(--brand-cyan)]/45 bg-[#06102A]/80 text-[var(--brand-cyan)] shadow-[0_0_34px_rgba(0,209,255,0.32)] backdrop-blur-xl">
-              <Icons.ShieldCheck className="h-9 w-9" />
-            </div>
-          </Reveal>
-
           <Reveal delay={160}>
             <h1 className="mb-8 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
               {content.title}
@@ -116,9 +103,6 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
                         </div>
 
                         <div>
-                          <span className="mb-2 block font-mono text-xs font-black tracking-[0.25em] text-[var(--brand-primary)]/60">
-                            {String(idx + 1).padStart(2, "0")}
-                          </span>
                           <h2 className="font-heading text-2xl font-black leading-tight tracking-tight text-[#0A1024] md:text-3xl">
                             {section.title}
                           </h2>
