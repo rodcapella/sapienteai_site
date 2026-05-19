@@ -4,6 +4,7 @@ import { Icons } from "@/lib/icons";
 
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { setSEOHead } from '@/components/SEOHead';
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -189,28 +190,28 @@ export default function About() {
       </Section>
 
       {/* TEAM CTA */}
-      <Section className="bg-foreground py-24 md:py-40">
-        <div className="container mx-auto px-6">
-          <Reveal>
-            <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_auto] md:items-center">
-              <div>
-                <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
-                  {content.teamCta.eyebrow}
-                </p>
-                <h2 className="mb-6 max-w-3xl text-4xl font-black leading-none tracking-tighter text-white md:text-7xl">
-                  {content.teamCta.title}
-                </h2>
-                <p className="max-w-2xl text-lg font-medium leading-relaxed text-white/60 md:text-2xl">
-                  {content.teamCta.text}
-                </p>
-              </div>
+      <Section className="relative overflow-hidden bg-[linear-gradient(135deg,#05081B_0%,#06102A_44%,#0A2F66_72%,#7B81FF_100%)] py-24 text-center md:py-36 tech-grid">
+        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,209,255,0.22),transparent_45%)]" />
 
-              <Link
-                href={`/${lang}/team`}
-                className="inline-flex items-center justify-center gap-3 rounded-full bg-[var(--brand-cyan)] px-8 py-5 text-sm font-black uppercase tracking-[0.18em] text-foreground transition hover:-translate-y-1 hover:bg-white"
-              >
-                {content.teamCta.link}
-                <Icons.Users className="h-5 w-5" />
+        <div className="relative z-10 container mx-auto px-6">
+          <Reveal>
+            <div className="mx-auto max-w-5xl">
+              <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+                {content.teamCta.eyebrow}
+              </p>
+              <h2 className="mb-8 text-4xl font-black leading-none tracking-tighter text-[var(--brand-offwhite)] md:text-7xl">
+                {content.teamCta.title}
+              </h2>
+              <p className="mx-auto mb-12 max-w-3xl text-lg font-medium leading-relaxed text-[var(--brand-offwhite)]/72 md:text-2xl">
+                {content.teamCta.text}
+              </p>
+
+              <Link href={`/${lang}/team`}>
+                <PremiumButton variant="primary" size="lg">
+                  {content.teamCta.link}
+                  <Icons.Users className="h-5 w-5" />
+                </PremiumButton>
               </Link>
             </div>
           </Reveal>
