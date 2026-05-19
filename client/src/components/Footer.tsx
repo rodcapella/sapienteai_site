@@ -38,7 +38,7 @@ export default function Footer() {
     { name: "Facebook", icon: Icons.Facebook, url: "https://facebook.com/sapienteai" },
     { name: "TikTok", icon: Icons.Music2, url: "https://www.tiktok.com/@sapienteai" },
     { name: "X", icon: XIcon, url: "https://x.com/SapienteAI" },
-    { name: "Pinterest", icon: PinterestIcon, url: "#" },
+    { name: "Pinterest", icon: PinterestIcon, url: "https://www.pinterest.com/sapienteai" },
   ];
 
   return (
@@ -96,20 +96,15 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
-                const isPending = social.url === "#";
 
                 return (
                   <a
                     key={social.name}
                     href={social.url}
-                    onClick={(event) => {
-                      if (isPending) event.preventDefault();
-                    }}
                     className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
                     aria-label={social.name}
-                    aria-disabled={isPending ? "true" : undefined}
-                    target={isPending ? undefined : "_blank"}
-                    rel={isPending ? undefined : "noopener noreferrer nofollow"}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
                   >
                     <Icon className="h-4 w-4" />
                   </a>
