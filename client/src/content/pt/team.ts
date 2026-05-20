@@ -1,7 +1,7 @@
 export const teamPT = {
   hero: {
-    title: "Quem está por trás",
-    subtitle: "Tecnologia, estratégia e execução orientadas a resultados."
+    title: "Mentes que transformam dados em crescimento",
+    subtitle: "Unimos tecnologia, inteligência e execução para acelerar empresas."
   },
 
   intro: {
@@ -43,15 +43,17 @@ export const teamPT = {
       bio: "Desenvolve sistemas inteligentes focados em clareza, velocidade e decisão.",
 
       story:
-        "Com experiência em dados, automação e engenharia tem como foco criar sistemas que eliminam complexidade e aceleram decisões críticas no negócio.",
+        "Com experiência em dados (análise, engenharia e arquitetura), automação e desenvolvimento web tem como foco criar sistemas que eliminam complexidade e aceleram decisões críticas no negócio.",
 
-      stack: ["AI", "Automação", "Data", "Produto", "Business Intelligence"],
+      stack: ["AI", "Automação", "Data", "Produto", "Business Intelligence", "Web Developer", "Metodologia Ágil"],
 
       badges: [
-        "AI Systems",
-        "Automation Architect",
+        "AI",
+        "Automações",
+        "Arquiteto, Engenheiro e Analista de Dados",
         "Data-Driven",
-        "Scalable Systems"
+        "Sistema escaláveis",
+        "SCRUM"
       ],
 
       image: "",
@@ -65,16 +67,17 @@ export const teamPT = {
       bio: "Transforma estratégias em crescimento através de conteúdo e posicionamento.",
 
       story:
-        "Especialista em marketing e conteúdo estratégico, foca-se em transformar marcas em máquinas de aquisição através de posicionamento, narrativa e performance digital.",
+        "Especialista em publicidade, marketing digital e design, foca-se em transformar marcas em máquinas de aquisição através de posicionamento, narrativa e performance digital.",
 
-      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design"],
+      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Publicidade"],
 
       badges: [
-        "Growth Strategy",
-        "Content Systems",
+        "Estratégia de Crescimento",
+        "Marketing Digital",
         "SEO / GEO / AEO",
-        "Brand Positioning",
-        "Designer"
+        "Posicionamento da Marca",
+        "Designer",
+        "Gestão de Redes Sociais"
       ],
 
       image: "",

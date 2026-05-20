@@ -1,8 +1,8 @@
 export const aboutEN = {
   hero: {
-    title: "Most businesses don’t have a data problem.",
-    highlight: "They have a decision problem.",
-    subtitle: "We turn data into decisions that increase revenue, reduce costs, and scale your business with AI."
+    title: "Most companies have a decision problem,",
+    highlight: "not a data problem.",
+    subtitle: "We turn data into decisions that increase revenue, reduce costs, and drive business growth."
   },
 
   manifesto: [
@@ -67,19 +67,5 @@ export const aboutEN = {
     text:
       "Behind Sapiente.ai is a team focused on building useful, measurable solutions aligned with each business context.",
     link: "Meet the team"
-  },
-
-  logo: {
-    title: "The symbol matters.",
-    text: [
-      "Every line represents structure.",
-      "Every angle represents direction.",
-      "Every detail represents intention.",
-      "",
-      "Sapiente.AI is not about AI.",
-      "It’s about clarity."
-    ]
-  },
-
-  closing: "Clarity is power."
+  }
 };

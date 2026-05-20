@@ -217,37 +217,6 @@ export default function About() {
           </Reveal>
         </div>
       </Section>
-
-      {/* SYMBOL - Solid Ice White */}
-      <Section className="bg-ice py-24 md:py-48">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <Reveal>
-              <h3 className="text-4xl md:text-7xl font-black text-foreground tracking-tighter leading-none mb-16">
-                {content.logo.title}
-              </h3>
-            </Reveal>
-
-            <div className="space-y-6">
-              {content.logo.text.map((line: string, i: number) => (
-                <Reveal key={i} delay={i * 50}>
-                  <p className={`text-xl md:text-3xl font-bold tracking-tight ${line === "" ? "h-8" : "text-foreground/50"}`}>
-                    {line}
-                  </p>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={400}>
-              <div className="mt-24 pt-24 border-t border-foreground/5">
-                <p className="text-5xl md:text-9xl font-black text-primary tracking-tighter opacity-10 uppercase select-none">
-                  {content.closing}
-                </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </Section>
     </div>
   );
 }

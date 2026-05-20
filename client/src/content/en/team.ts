@@ -1,7 +1,7 @@
 export const teamEN = {
   hero: {
-    title: "Who’s behind it",
-    subtitle: "Technology, strategy, and execution driven by results."
+    title: "Minds that turn data into growth",
+    subtitle: "We combine technology, intelligence, and execution to accelerate business growth."
   },
 
   intro: {
@@ -36,49 +36,51 @@ export const teamEN = {
   },
 
   members: [
-    {
-      name: "Rodrigo Póvoa",
-      role: "Founder & CTO",
-      focus: "Technology, data, and automation",
-      bio: "Builds intelligent systems focused on clarity, speed, and decision-making.",
-      
-      story:
-        "With a background in data, automation, and engineering, he focuses on building systems that eliminate complexity and accelerate critical business decisions.",
-      
-      stack: ["AI", "Automation", "Data", "Product", "Business Intelligence"],
+  {
+    name: "Rodrigo Póvoa",
+    role: "Founder & CTO",
+    focus: "Technology, data, and automation",
+    bio: "Builds intelligent systems focused on clarity, speed, and decision-making.",
 
-      badges: [
-        "AI Systems",
-        "Automation Architect",
-        "Data-Driven",
-        "Scalable Systems"
-      ],
+    story:
+      "With experience in data (analytics, engineering, and architecture), automation, and web development, his focus is on building systems that eliminate complexity and accelerate critical business decisions.",
 
-      image: "",
-      link: "https://www.rpovoadata.tech"
-    },
+    stack: ["AI", "Automation", "Data", "Product", "Business Intelligence", "Web Development", "Agile Methodology"],
 
-    {
-      name: "Tatiane Gomes",
-      role: "Founder & CMO",
-      focus: "Marketing, brand, and growth",
-      bio: "Turns strategy into growth through content and positioning.",
-      
-      story:
-        "Specialized in marketing and strategic content, she focuses on turning brands into acquisition engines through positioning, narrative, and digital performance.",
-      
-      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design"],
+    badges: [
+      "AI",
+      "Automation",
+      "Data Architect, Engineer & Analyst",
+      "Data-Driven",
+      "Scalable Systems",
+      "SCRUM"
+    ],
 
-      badges: [
-        "Growth Strategy",
-        "Content Systems",
-        "SEO / GEO / AEO",
-        "Brand Positioning",
-        "Design"
-      ],
+    image: "",
+    link: "https://www.rpovoadata.tech"
+  },
 
-      image: "",
-      link: "#"
-    }
-  ]
-};
+  {
+    name: "Tatiane Gomes",
+    role: "Founder & CMO",
+    focus: "Marketing, brand, and growth",
+    bio: "Turns strategies into growth through content and positioning.",
+
+    story:
+      "Specialist in advertising, digital marketing, and design, focused on turning brands into acquisition machines through positioning, storytelling, and digital performance.",
+
+    stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Advertising"],
+
+    badges: [
+      "Growth Strategy",
+      "Digital Marketing",
+      "SEO / GEO / AEO",
+      "Brand Positioning",
+      "Designer",
+      "Social Media Management"
+    ],
+
+    image: "",
+    link: "#"
+  }
+];
