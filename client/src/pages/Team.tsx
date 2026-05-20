@@ -7,8 +7,6 @@ import { setSEOHead } from "@/components/SEOHead";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
-import { SectionCard } from "@/components/ui/section/SectionCard";
-import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 
@@ -82,53 +80,55 @@ function TeamCard({ member }: { member: Member }) {
         }}
       />
 
-      <div className="relative flex h-full flex-col rounded-[1.75rem] border border-foreground/5 bg-white/85 p-8 text-left backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] md:p-10">
-        <div className="mb-8 flex items-start gap-5">
-          <div className="h-24 w-24 shrink-0 overflow-hidden rounded-3xl border border-primary/10 bg-primary/10">
+      <div className="team-member-card flex h-full flex-col p-7 text-left transition-all duration-300 group-hover:-translate-y-2 md:p-9">
+        <div className="relative z-10 mb-8 flex flex-col gap-6 sm:flex-row sm:items-start">
+          <div className="team-avatar-frame">
             {member.image ? (
               <img src={member.image} alt={member.name} className="h-full w-full object-cover" />
             ) : (
-              <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/20 to-[var(--brand-cyan)]/20 text-3xl font-black text-primary">
+              <div className="relative z-10 text-4xl font-black">
                 {getInitials(member.name)}
               </div>
             )}
           </div>
 
-          <div>
-            <p className="mb-2 text-xs font-black uppercase tracking-[0.24em] text-primary/70">
+          <div className="min-w-0 pt-1">
+            <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-primary/70">
               {member.role}
             </p>
-            <h3 className="mb-3 text-3xl font-black tracking-tight text-foreground">{member.name}</h3>
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-foreground/45">
+            <h3 className="mb-4 text-3xl font-black leading-none text-foreground md:text-4xl">{member.name}</h3>
+            <p className="inline-flex rounded-full border border-primary/10 bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-foreground/55">
               {member.focus}
             </p>
           </div>
         </div>
 
-        <p className="mb-5 text-lg font-black leading-relaxed tracking-tight text-foreground">{member.bio}</p>
+        <div className="relative z-10 mb-7 rounded-3xl border border-primary/10 bg-white/55 p-5">
+          <p className="text-xl font-black leading-snug text-foreground">{member.bio}</p>
+        </div>
 
-        {member.story && <p className="mb-8 text-base font-medium leading-relaxed text-foreground/55">{member.story}</p>}
+        {member.story && <p className="relative z-10 mb-8 text-base font-medium leading-relaxed text-foreground/60">{member.story}</p>}
 
         {member.badges && (
-          <div className="mb-8 flex flex-wrap gap-2">
+          <div className="relative z-10 mb-8 flex flex-wrap gap-2">
             {member.badges.map((badge) => (
-              <span key={badge} className="rounded-full bg-foreground/5 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-foreground/70">
+              <span key={badge} className="team-chip">
                 {badge}
               </span>
             ))}
           </div>
         )}
 
-        <div className="mt-auto flex flex-wrap gap-3 border-t border-foreground/5 pt-8">
+        <div className="relative z-10 mt-auto flex flex-wrap gap-3 border-t border-primary/10 pt-8">
           {member.stack.map((tech) => (
-            <span key={tech} className="rounded-full bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-widest text-primary transition hover:bg-primary/10">
+            <span key={tech} className="team-stack-chip">
               {tech}
             </span>
           ))}
         </div>
 
         {member.link !== "#" && (
-          <span className="mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-primary">
+          <span className="relative z-10 mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-primary">
             Website
             <Icons.ExternalLink className="h-4 w-4" />
           </span>
@@ -140,7 +140,6 @@ function TeamCard({ member }: { member: Member }) {
 
 export default function Team() {
   const [location] = useLocation();
-  const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
   const content = getContent("team", lang);
   const members: Member[] = content.members;
@@ -173,39 +172,55 @@ export default function Team() {
         </div>
       </div>
 
-      <Section className="bg-ice py-24 md:py-40">
+      <Section className="team-section-shell bg-ice py-24 md:py-40">
         <div className="container mx-auto px-6">
-          <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
             <Reveal>
-              <div>
-                <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">
-                  {content.intro.eyebrow}
-                </p>
-                <h2 className="mb-8 text-4xl font-black leading-none tracking-tighter text-foreground md:text-7xl">
-                  {content.intro.title}
-                </h2>
-                <p className="text-lg font-medium leading-relaxed text-foreground/60 md:text-2xl">
-                  {content.intro.text}
-                </p>
+              <div className="team-intro-panel h-full p-7 md:p-10">
+                <div className="relative z-10">
+                  <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">
+                    {content.intro.eyebrow}
+                  </p>
+                  <h2 className="mb-8 text-4xl font-black leading-none text-foreground md:text-6xl">
+                    {content.intro.title}
+                  </h2>
+                  <p className="text-lg font-medium leading-relaxed text-foreground/65 md:text-2xl">
+                    {content.intro.text}
+                  </p>
+                  <div className="mt-10 grid grid-cols-3 gap-3 border-t border-primary/10 pt-8">
+                    <div>
+                      <p className="text-3xl font-black text-primary">AI</p>
+                      <p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Systems</p>
+                    </div>
+                    <div>
+                      <p className="text-3xl font-black text-primary">SEO</p>
+                      <p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Growth</p>
+                    </div>
+                    <div>
+                      <p className="text-3xl font-black text-primary">BI</p>
+                      <p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Data</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </Reveal>
 
             <div className="grid gap-5">
               {content.intro.highlights.map((item: Highlight, index: number) => (
                 <Reveal key={item.value} delay={index * 100}>
-                  <SectionCard className="grid gap-5 border-foreground/5 bg-white/85 p-6 shadow-xl md:grid-cols-[80px_1fr] md:p-8">
-                    <div className="text-4xl font-black leading-none tracking-tighter text-primary/35">
+                  <div className="team-highlight-card grid gap-5 p-6 transition duration-500 hover:-translate-y-1 hover:border-[var(--brand-cyan)]/40 hover:shadow-[0_24px_64px_rgba(0,209,255,0.16)] md:grid-cols-[80px_1fr] md:p-8">
+                    <div className="text-4xl font-black leading-none text-primary/35">
                       {item.value}
                     </div>
                     <div>
-                      <h3 className="mb-3 text-2xl font-black tracking-tight text-foreground">
+                      <h3 className="mb-3 text-2xl font-black text-foreground">
                         {item.title}
                       </h3>
                       <p className="text-base font-medium leading-relaxed text-foreground/60">
                         {item.text}
                       </p>
                     </div>
-                  </SectionCard>
+                  </div>
                 </Reveal>
               ))}
             </div>
@@ -213,14 +228,14 @@ export default function Team() {
         </div>
       </Section>
 
-      <Section className="bg-blue-tint py-24 md:py-40">
+      <Section className="team-section-shell bg-blue-tint py-24 md:py-40">
         <div className="container mx-auto px-6">
           <Reveal>
-            <div className="mx-auto mb-16 max-w-4xl text-center">
+            <div className="relative z-10 mx-auto mb-16 max-w-4xl text-center">
               <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">
                 {content.presentation.eyebrow}
               </p>
-              <h2 className="mb-8 text-4xl font-black leading-none tracking-tighter text-foreground md:text-7xl">
+              <h2 className="mb-8 text-4xl font-black leading-none text-foreground md:text-7xl">
                 {content.presentation.title}
               </h2>
               <p className="text-lg font-medium leading-relaxed text-foreground/60 md:text-2xl">
@@ -229,7 +244,7 @@ export default function Team() {
             </div>
           </Reveal>
 
-          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
+          <div className="relative z-10 mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
             {members.map((member) => (
               <Reveal key={member.name}>
                 <TeamCard member={member} />
@@ -239,14 +254,14 @@ export default function Team() {
         </div>
       </Section>
 
-      <Section className="bg-foreground py-24 text-center md:py-36">
+      <Section className="team-cta-panel py-24 text-center md:py-36">
         <div className="container mx-auto px-6">
           <Reveal>
-            <div className="mx-auto max-w-4xl">
+            <div className="relative z-10 mx-auto max-w-4xl">
               <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
                 Sapiente.AI
               </p>
-              <h2 className="mb-8 text-4xl font-black leading-none tracking-tighter text-white md:text-7xl">
+              <h2 className="mb-8 text-4xl font-black leading-none text-[var(--brand-offwhite)] md:text-7xl">
                 {lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}
               </h2>
               <PremiumButton variant="secondary" onClick={() => setIsContactOpen(true)}>

@@ -407,6 +407,162 @@ h6 {
   animation: tech-float 4.2s ease-in-out infinite;
 }
 
+.team-section-shell {
+  position: relative;
+  overflow: hidden;
+}
+
+.team-section-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(0, 209, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 8%, rgba(123, 129, 255, 0.14), transparent 32%);
+}
+
+.team-intro-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(10, 138, 255, 0.16);
+  border-radius: 2rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(234, 246, 255, 0.72));
+  box-shadow: 0 24px 70px rgba(10, 17, 40, 0.1);
+  backdrop-filter: blur(22px);
+}
+
+.team-intro-panel::after {
+  content: "";
+  position: absolute;
+  right: -5rem;
+  top: -5rem;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 999px;
+  background: rgba(0, 209, 255, 0.18);
+  filter: blur(55px);
+}
+
+.team-highlight-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(10, 138, 255, 0.14);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 18px 48px rgba(10, 17, 40, 0.08);
+}
+
+.team-highlight-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-cyan), var(--brand-purple));
+  opacity: 0.78;
+}
+
+.team-member-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+  border: 1px solid rgba(10, 138, 255, 0.16);
+  border-radius: 2rem;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(234, 246, 255, 0.78)),
+    radial-gradient(circle at top right, rgba(0, 209, 255, 0.16), transparent 36%);
+  box-shadow: 0 24px 70px rgba(10, 17, 40, 0.12);
+  backdrop-filter: blur(24px);
+}
+
+.team-member-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--brand-primary), var(--brand-cyan), var(--brand-purple));
+}
+
+.team-avatar-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 7.5rem;
+  height: 7.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0, 209, 255, 0.4);
+  border-radius: 1.75rem;
+  background:
+    linear-gradient(145deg, rgba(5, 8, 27, 0.96), rgba(10, 24, 58, 0.9)),
+    radial-gradient(circle at 35% 25%, rgba(0, 209, 255, 0.34), transparent 42%);
+  color: var(--brand-cyan);
+  box-shadow: 0 0 0 1px rgba(0, 209, 255, 0.12), 0 20px 48px rgba(10, 17, 40, 0.2);
+}
+
+.team-avatar-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, transparent 25%, rgba(255, 255, 255, 0.2), transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+
+.team-member-card:hover .team-avatar-frame::after {
+  transform: translateX(120%);
+}
+
+.team-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(10, 138, 255, 0.13);
+  background: rgba(10, 138, 255, 0.06);
+  padding: 0.45rem 0.8rem;
+  color: rgba(10, 16, 36, 0.72);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.team-stack-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: rgba(0, 209, 255, 0.1);
+  padding: 0.55rem 0.9rem;
+  color: var(--brand-primary);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.team-cta-panel {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(0, 209, 255, 0.24), transparent 42%),
+    linear-gradient(135deg, #05081b 0%, #06102a 44%, #0a2f66 72%, #7b81ff 100%);
+}
+
+.team-cta-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(0, 212, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.18;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -36,51 +36,52 @@ export const teamEN = {
   },
 
   members: [
-  {
-    name: "Rodrigo Póvoa",
-    role: "Founder & CTO",
-    focus: "Technology, data, and automation",
-    bio: "Builds intelligent systems focused on clarity, speed, and decision-making.",
+    {
+      name: "Rodrigo Póvoa",
+      role: "Founder & CTO",
+      focus: "Technology, data, and automation",
+      bio: "Builds intelligent systems focused on clarity, speed, and decision-making.",
 
-    story:
-      "With experience in data (analytics, engineering, and architecture), automation, and web development, his focus is on building systems that eliminate complexity and accelerate critical business decisions.",
+      story:
+        "With experience in data (analytics, engineering, and architecture), automation, and web development, his focus is on building systems that eliminate complexity and accelerate critical business decisions.",
 
-    stack: ["AI", "Automation", "Data", "Product", "Business Intelligence", "Web Development", "Agile Methodology"],
+      stack: ["AI", "Automation", "Data", "Product", "Business Intelligence", "Web Development", "Agile Methodology"],
 
-    badges: [
-      "AI",
-      "Automation",
-      "Data Architect, Engineer & Analyst",
-      "Data-Driven",
-      "Scalable Systems",
-      "SCRUM"
-    ],
+      badges: [
+        "AI",
+        "Automation",
+        "Data Architect, Engineer & Analyst",
+        "Data-Driven",
+        "Scalable Systems",
+        "SCRUM"
+      ],
 
-    image: "",
-    link: "https://www.rpovoadata.tech"
-  },
+      image: "",
+      link: "https://www.rpovoadata.tech"
+    },
 
-  {
-    name: "Tatiane Gomes",
-    role: "Founder & CMO",
-    focus: "Marketing, brand, and growth",
-    bio: "Turns strategies into growth through content and positioning.",
+    {
+      name: "Tatiane Gomes",
+      role: "Founder & CMO",
+      focus: "Marketing, brand, and growth",
+      bio: "Turns strategies into growth through content and positioning.",
 
-    story:
-      "Specialist in advertising, digital marketing, and design, focused on turning brands into acquisition machines through positioning, storytelling, and digital performance.",
+      story:
+        "Specialist in advertising, digital marketing, and design, focused on turning brands into acquisition machines through positioning, storytelling, and digital performance.",
 
-    stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Advertising"],
+      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Advertising"],
 
-    badges: [
-      "Growth Strategy",
-      "Digital Marketing",
-      "SEO / GEO / AEO",
-      "Brand Positioning",
-      "Designer",
-      "Social Media Management"
-    ],
+      badges: [
+        "Growth Strategy",
+        "Digital Marketing",
+        "SEO / GEO / AEO",
+        "Brand Positioning",
+        "Designer",
+        "Social Media Management"
+      ],
 
-    image: "",
-    link: "#"
-  }
-];
+      image: "",
+      link: "#"
+    }
+  ]
+};
