@@ -267,9 +267,6 @@ export default function Team() {
         <div className="container mx-auto px-6">
           <Reveal>
             <div className="relative z-10 mx-auto max-w-4xl">
-              <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
-                Sapiente.AI
-              </p>
               <h2 className="mb-8 text-4xl font-black leading-none text-[var(--brand-offwhite)] md:text-7xl">
                 {lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}
               </h2>
