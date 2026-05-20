@@ -7,6 +7,7 @@ import { setSEOHead } from "@/components/SEOHead";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
+import { TechBackdrop, TechParticleField } from "@/components/ui/tech/TechBackground";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 
@@ -17,7 +18,6 @@ type Member = {
   bio: string;
   story?: string;
   stack: string[];
-  badges?: string[];
   image: string;
   link: string;
 };
@@ -103,28 +103,21 @@ function TeamCard({ member }: { member: Member }) {
           </div>
         </div>
 
-        <div className="relative z-10 mb-7 rounded-3xl border border-primary/10 bg-white/55 p-5">
-          <p className="text-xl font-black leading-snug text-foreground">{member.bio}</p>
+        <div className="team-member-description relative z-10 mb-7 p-6">
+          <p className="text-2xl font-black leading-tight text-foreground">{member.bio}</p>
         </div>
 
-        {member.story && <p className="relative z-10 mb-8 text-base font-medium leading-relaxed text-foreground/60">{member.story}</p>}
+        {member.story && <p className="relative z-10 mb-8 text-lg font-medium leading-relaxed text-foreground/70">{member.story}</p>}
 
-        {member.badges && (
-          <div className="relative z-10 mb-8 flex flex-wrap gap-2">
-            {member.badges.map((badge) => (
-              <span key={badge} className="team-chip">
-                {badge}
+        <div className="team-stack-panel relative z-10 mt-auto">
+          <p className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-primary/70">Stack & foco</p>
+          <div className="flex flex-wrap gap-3">
+            {member.stack.map((tech) => (
+              <span key={tech} className="team-stack-chip">
+                {tech}
               </span>
             ))}
           </div>
-        )}
-
-        <div className="relative z-10 mt-auto flex flex-wrap gap-3 border-t border-primary/10 pt-8">
-          {member.stack.map((tech) => (
-            <span key={tech} className="team-stack-chip">
-              {tech}
-            </span>
-          ))}
         </div>
 
         {member.link !== "#" && (
@@ -156,23 +149,39 @@ export default function Team() {
 
   return (
     <div className="flex flex-col">
-      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
-        <div className="container max-w-5xl px-6 text-center">
+      <Section className="relative flex min-h-[68vh] items-center justify-center overflow-hidden bg-modern-gradient tech-grid scanlines pt-28 pb-20 md:min-h-[78vh] md:pt-36 md:pb-28">
+        <div className="absolute inset-0">
+          <img src="/media/banners/hero-banner.webp" alt="Sapiente.AI team" className="h-full w-full object-cover opacity-[0.24]" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.97),rgba(26,31,46,0.88),rgba(10,138,255,0.48))]" />
+        </div>
+        <TechBackdrop intensity="strong" />
+        <TechParticleField className="opacity-70" />
+
+        <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,240,255,0.24),transparent_52%)]" animate={{ opacity: [0.15, 0.42, 0.15] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
+
+        <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
+          <Reveal>
+            <div className="glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)] sm:text-sm">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_20px_rgba(0,240,255,0.95)]" />
+              Sapiente.AI Team
+            </div>
+          </Reveal>
+
           <Reveal delay={100}>
-            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
+            <h1 className="mt-10 font-heading text-4xl font-extrabold leading-[0.95] text-[var(--brand-offwhite)] drop-shadow-[0_0_35px_rgba(0,240,255,0.25)] sm:text-6xl md:text-7xl lg:text-8xl">
               {content.hero.title}
             </h1>
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-xl font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/75 drop-shadow-md md:text-3xl">
+            <p className="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-[var(--brand-offwhite)]/85 sm:text-xl md:text-2xl">
               {content.hero.subtitle}
             </p>
           </Reveal>
         </div>
-      </div>
+      </Section>
 
-      <Section className="team-section-shell bg-ice py-24 md:py-40">
+      <Section className="team-section-shell team-intro-section bg-ice py-24 md:py-40">
         <div className="container mx-auto px-6">
           <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
             <Reveal>
@@ -232,13 +241,13 @@ export default function Team() {
         <div className="container mx-auto px-6">
           <Reveal>
             <div className="relative z-10 mx-auto mb-16 max-w-4xl text-center">
-              <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">
+              <p className="mx-auto mb-7 inline-flex rounded-full border border-primary/20 bg-white/60 px-5 py-2 text-sm font-black uppercase tracking-[0.24em] text-primary shadow-[0_18px_40px_rgba(10,17,40,0.08)] backdrop-blur-xl">
                 {content.presentation.eyebrow}
               </p>
-              <h2 className="mb-8 text-4xl font-black leading-none text-foreground md:text-7xl">
+              <h2 className="team-founders-title mb-8 text-4xl font-black leading-none md:text-7xl">
                 {content.presentation.title}
               </h2>
-              <p className="text-lg font-medium leading-relaxed text-foreground/60 md:text-2xl">
+              <p className="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-foreground/70 md:text-2xl">
                 {content.presentation.text}
               </p>
             </div>
