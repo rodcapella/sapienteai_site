@@ -69,7 +69,7 @@ export const teamPT = {
       story:
         "Especialista em publicidade, marketing digital e design, foca-se em transformar marcas em máquinas de aquisição através de posicionamento, narrativa e performance digital.",
 
-      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Publicidade"],
+      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Publicidade", "Ads"],
 
       badges: [
         "Estratégia de Crescimento",
@@ -81,7 +81,7 @@ export const teamPT = {
       ],
 
       image: "",
-      link: "#"
+      link: "https://www.instagram.com/tatianegomespovoa"
     }
   ]
 };

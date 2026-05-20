@@ -69,7 +69,7 @@ export const teamEN = {
       story:
         "Specialist in advertising, digital marketing, and design, focused on turning brands into acquisition machines through positioning, storytelling, and digital performance.",
 
-      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Advertising"],
+      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Advertising", "Ads"],
 
       badges: [
         "Growth Strategy",
@@ -81,7 +81,7 @@ export const teamEN = {
       ],
 
       image: "",
-      link: "#"
+      link: "https://www.instagram.com/tatianegomespovoa"
     }
   ]
 };
