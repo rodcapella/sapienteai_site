@@ -121,7 +121,7 @@ function TeamCard({ member }: { member: Member }) {
         </div>
 
         {member.link !== "#" && (
-          <span className="relative z-10 mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-primary">
+          <span className="relative z-10 mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]/80 transition-colors group-hover:text-white">
             Website
             <Icons.ExternalLink className="h-4 w-4" />
           </span>
