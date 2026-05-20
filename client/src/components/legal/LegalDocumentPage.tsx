@@ -140,9 +140,6 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,209,255,0.22),transparent_45%)]" />
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <Reveal>
-            <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
-              Sapiente.AI
-            </p>
             <h2 className="font-heading text-4xl font-black tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl">
               {lang === "pt" ? "Precisa de ajuda para aplicar isto ao seu negócio?" : "Need help applying this to your business?"}
             </h2>
