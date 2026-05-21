@@ -1,7 +1,8 @@
 export const homePT = {
   hero: {
     label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO REAL",
-    title: "Inteligência que impulsiona. Resultados que transformam.",
+    title: "Inteligência que impulsiona.",
+    highlight: "Resultados que transformam.",
     subtitle:
       "Ajudamos PMEs empresas a aumentar vendas, reduzir custos e crescer com automação inteligente",
     ctaPrimary: "Quero automatizar o meu negócio",
