@@ -11,7 +11,7 @@ import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from '@/hooks/useTranslation';
 
-const ctaSectionClass = "relative overflow-hidden bg-[linear-gradient(135deg,#05081B_0%,#06102A_44%,#0A2F66_72%,#7B81FF_100%)] py-24 text-center md:py-36 tech-grid";
+const ctaSectionClass = "relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid";
 
 export default function About() {
   const [location] = useLocation();

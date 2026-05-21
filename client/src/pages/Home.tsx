@@ -17,15 +17,15 @@ import { homePT } from "@/content/pt/home";
 import { homeEN } from "@/content/en/home";
 
 const pillarBorder = [
-  "border-[#00D1FF]/55",
+  "border-[var(--brand-cyan)]/45",
   "border-[var(--brand-primary)]/55",
-  "border-[#7B81FF]/55",
-  "border-[#00F0FF]/55",
+  "border-[#3f2f9f]/55",
+  "border-[#1f2475]/55",
 ];
 
 const lightSectionClass = "relative overflow-hidden bg-[#EAF6FF] py-24 text-foreground md:py-36";
 const darkSectionClass = "relative overflow-hidden border-y border-[var(--tech-border)] bg-[#060B1E] tech-grid py-24 md:py-36";
-const ctaSectionClass = "relative overflow-hidden bg-[linear-gradient(135deg,#05081B_0%,#06102A_44%,#0A2F66_72%,#7B81FF_100%)] py-24 text-center md:py-36 tech-grid";
+const ctaSectionClass = "relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid";
 
 export default function Home() {
   const [location] = useLocation();
@@ -39,7 +39,7 @@ export default function Home() {
   const marketingIcons = [Icons.Target, Icons.Brain, Icons.BarChart3];
   const automationIcons = [Icons.Zap, Icons.Calendar, Icons.TrendingUp];
   const conversionIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
-  const keywordIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
+  const keywordIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Cog, Icons.TrendingUp, Icons.BarChart3];
   const brandbookIcons = [Icons.Bot, Icons.Brain, Icons.TrendingUp, Icons.PieChart, Icons.Cog, Icons.MessageCircle, Icons.ShieldCheck];
 
   return (
@@ -88,20 +88,42 @@ export default function Home() {
       </Section>
 
       {isPT && (
-        <Section className={lightSectionClass.replace("py-24 md:py-36", "py-12")}>
-          <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,209,255,0.2),transparent_45%)]" />
-          <div className="relative z-10 mx-auto grid max-w-7xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Section className="relative overflow-hidden bg-[#E6F1FF] py-[4.5rem] text-[#001547] md:py-24">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(85,212,242,.08),transparent_45%)]" />
+          <div className="pointer-events-none absolute inset-0 tech-grid opacity-[0.02]" />
+          <div className="pointer-events-none absolute inset-0 dots-matrix opacity-[0.03]" />
+
+          <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
+            <Reveal>
+              <p className="font-detail text-xs font-black uppercase tracking-[0.32em] text-[#0AB4FF] md:text-sm">
+                Resultados que a IA gera
+              </p>
+              <div className="mx-auto mt-3 h-0.5 w-20 rounded-full bg-[#0AB4FF]" />
+              <h2 className="mx-auto mt-7 max-w-5xl font-heading text-4xl font-black leading-none tracking-tight text-[#050A30] md:text-6xl">
+                O que a <span className="text-[#0AB4FF]">IA</span> entrega ao seu negócio
+              </h2>
+              <p className="mx-auto mt-6 max-w-3xl text-lg font-medium leading-relaxed text-[#001547]/68 md:text-2xl">
+                Mais eficiência. Menos esforço. Crescimento real.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="relative z-10 mx-auto mt-12 grid max-w-7xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
             {homePT.keywords.map((keyword, i) => {
               const Icon = keywordIcons[i % keywordIcons.length];
               return (
                 <Reveal key={keyword} delay={i * 45}>
-                  <motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative min-h-[118px] overflow-hidden rounded-3xl border border-[var(--brand-cyan)]/35 bg-[linear-gradient(145deg,rgba(5,8,27,0.96),rgba(10,24,58,0.92))] p-5 shadow-[0_18px_48px_rgba(0,0,0,0.28)] transition-all duration-500 hover:border-[var(--brand-cyan)] hover:shadow-[0_24px_70px_rgba(0,209,255,0.28)]">
-                    <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]" />
-                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-[var(--brand-cyan)]/18 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/32" />
-                    <div className="relative z-10 flex h-full items-center gap-4">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/45 bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)] shadow-[0_0_26px_rgba(0,209,255,0.26)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)] group-hover:text-[#06102A]"><Icon className="h-6 w-6" /></div>
-                      <p className="font-heading text-lg font-black leading-tight tracking-tight text-[var(--brand-offwhite)] md:text-xl">{keyword}</p>
+                  <motion.div
+                    whileHover={{ y: -4 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="group relative flex min-h-[194px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#DCEAF8] bg-white p-6 text-center shadow-[0_8px_30px_rgba(0,21,71,.06)] transition-all duration-300 hover:bg-[#001547] hover:shadow-[0_14px_38px_rgba(0,21,71,.16)]"
+                  >
+                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#EAF6FF] text-[#0AB4FF] transition-all duration-300 group-hover:bg-white/10 group-hover:text-[#55D4F2]">
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <div className="mb-4 h-0.5 w-5 rounded-full bg-[#0AB4FF] transition-all duration-300 group-hover:bg-[#55D4F2]" />
+                    <div className="relative z-10 flex min-h-[3.2rem] items-center justify-center">
+                      <p className="max-w-[12rem] font-heading text-xl font-black leading-tight tracking-tight text-[#050A30] transition-colors duration-300 group-hover:text-white md:text-2xl">{keyword}</p>
                     </div>
                   </motion.div>
                 </Reveal>
@@ -135,7 +157,7 @@ export default function Home() {
             return (
               <Reveal key={card.title} delay={i * 70}>
                 <motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-[var(--brand-cyan)]/35 bg-[linear-gradient(145deg,rgba(5,8,27,0.96),rgba(10,24,58,0.92))] p-8 shadow-[0_18px_48px_rgba(0,0,0,0.28)] transition-all duration-500 hover:border-[var(--brand-cyan)] hover:shadow-[0_24px_70px_rgba(0,209,255,0.28)] md:p-10">
-                  <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]" />
+                  <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)]" />
                   <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--brand-cyan)]/18 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/32" />
 
                   <div className="relative z-10 mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/45 bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)] shadow-[0_0_26px_rgba(0,209,255,0.26)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)] group-hover:text-[#06102A]">
@@ -180,7 +202,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">
           {content.conversionWebsites.items.map((item, i) => { const Icon = conversionIcons[i % conversionIcons.length]; return (
             <Reveal key={item} delay={i * 55}><motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative overflow-hidden rounded-3xl border border-primary/25 bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(234,246,255,0.86))] p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]">
-              <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-80" /><div className="relative z-10 flex items-center gap-4"><div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[#06102A] text-[var(--brand-cyan)]"><Icon className="h-6 w-6" /></div><p className="font-heading text-base font-black leading-tight tracking-tight text-foreground md:text-lg">{item}</p></div>
+              <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-80" /><div className="relative z-10 flex items-center gap-4"><div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[#06102A] text-[var(--brand-cyan)]"><Icon className="h-6 w-6" /></div><p className="font-heading text-base font-black leading-tight tracking-tight text-foreground md:text-lg">{item}</p></div>
             </motion.div></Reveal>
           ); })}
         </div>

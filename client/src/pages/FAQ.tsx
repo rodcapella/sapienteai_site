@@ -38,7 +38,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon, index }: any) {
       onClick={onToggle}
     >
       <div className="relative p-6 md:p-8">
-        <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-70" />
+        <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-70" />
         <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--brand-cyan)]/10 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/22" />
 
         <div className="relative z-10 flex items-start justify-between gap-5">

@@ -84,9 +84,9 @@ function makeLink(lang: string, path = "") {
 
 function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
   return (
-    <SectionCard className="h-full border-foreground/5 bg-white/85 p-8 shadow-xl md:p-10">
-      <div className="mb-8 flex items-start gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+    <SectionCard className="h-full border-foreground/5 bg-white/85 p-6 shadow-xl md:p-8">
+      <div className="mb-6 flex items-start gap-4">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl [background:var(--brand-gradient)] text-white shadow-[0_12px_24px_rgba(1,32,80,0.16)]">
           <Icon className="h-6 w-6" />
         </div>
         <div>
@@ -94,13 +94,10 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
         </div>
       </div>
 
-      <ul className="space-y-4">
+      <ul className="space-y-3">
         {group.links.map((link) => (
           <li key={link.href}>
-            <Link
-              href={link.href}
-              className="group grid gap-2 rounded-2xl border border-transparent bg-foreground/[0.03] p-5 transition hover:-translate-y-1 hover:border-primary/20 hover:bg-primary/5"
-            >
+            <Link href={link.href} className="site-action-link group">
               <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-foreground">
                 {link.title}
                 <Icons.ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1" />

@@ -98,7 +98,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
                 <Reveal key={`${section.title}-${idx}`} delay={idx * 45}>
                   <SectionCard className="group h-full rounded-[2rem] border border-[var(--brand-primary)]/18 bg-[rgba(234,246,255,0.88)] p-0 shadow-[0_18px_45px_rgba(8,18,40,0.1)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-cyan)]/60 hover:shadow-[0_24px_70px_rgba(0,209,255,0.18)]">
                     <div className="relative h-full overflow-hidden rounded-[2rem] p-7 md:p-8">
-                      <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))] opacity-75" />
+                      <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-75" />
                       <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[var(--brand-cyan)]/10 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/22" />
 
                       <div className="relative z-10 flex items-start gap-5">
@@ -136,7 +136,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
         </div>
       </Section>
 
-      <Section className="relative overflow-hidden bg-[linear-gradient(135deg,#050816_0%,#06102A_44%,#0A2F66_72%,#7B61FF_100%)] py-24 text-center md:py-36 tech-grid">
+      <Section className="relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid">
         <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,209,255,0.22),transparent_45%)]" />
         <div className="relative z-10 mx-auto max-w-5xl px-6">

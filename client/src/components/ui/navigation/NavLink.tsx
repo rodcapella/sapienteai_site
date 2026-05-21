@@ -18,7 +18,7 @@ const navLinkVariants = cva(
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full
-          after:bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]
+          after:bg-[var(--brand-gradient-border)]
           after:rounded-full
           after:origin-left after:scale-x-0
           after:transition-transform after:duration-500
@@ -45,7 +45,7 @@ const navLinkVariants = cva(
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full
-          after:bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]
+          after:bg-[var(--brand-gradient-border)]
           after:rounded-full
           after:scale-x-100
         `
