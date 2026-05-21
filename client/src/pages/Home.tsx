@@ -111,29 +111,7 @@ export default function Home() {
         </Section>
       )}
 
-      {isPT && (
-        <Section className={lightSectionClass}>
-          <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
-          <SectionHeader><Reveal><SectionTitle label={homePT.brandPillars.label} title={homePT.brandPillars.title} variant="light" /></Reveal></SectionHeader>
-          <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-6 px-6 md:grid-cols-2">
-            {homePT.brandPillars.items.map((pillar, i) => (
-              <SectionCard key={pillar.title} delay={i * 0.08} className={`rounded-[2rem] border bg-white/80 p-0 shadow-[0_20px_50px_rgba(10,17,40,0.12)] ${pillarBorder[i % pillarBorder.length]}`}>
-                <div className="relative h-56 w-full overflow-hidden rounded-t-[2rem] bg-[#DCEEFF]">
-                  {pillar.image && <img src={pillar.image} alt={pillar.title} className="h-full w-full object-cover opacity-70" />}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white via-white/25 to-transparent" />
-                </div>
-
-                <div className="p-7 md:p-8">
-                  <h3 className="font-heading text-2xl font-black tracking-tight text-foreground">{pillar.title}</h3>
-                  <p className="mt-3 text-foreground/75">{pillar.description}</p>
-                </div>
-              </SectionCard>
-            ))}
-          </div>
-        </Section>
-      )}
-
-      <Section id="core-services" className={darkSectionClass}>
+      <Section id="core-services" className={lightSectionClass}>
         <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
         <TechBackdrop intensity="soft" className="opacity-75" />
         <SectionHeader><Reveal><SectionTitle label={content.coreServices.label} title={content.coreServices.title} /></Reveal></SectionHeader>
@@ -147,7 +125,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={lightSectionClass}>
+      <Section className={darkSectionClass}>
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader><Reveal><SectionTitle label={content.marketingAI.label} title={content.marketingAI.title} description={content.marketingAI.subtitle} variant="light" /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-7 px-6 lg:grid-cols-3 md:gap-9">

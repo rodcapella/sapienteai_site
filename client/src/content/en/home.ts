@@ -7,39 +7,7 @@ export const homeEN = {
     ctaPrimary: "Automate my business",
     ctaSecondary: "See how it works",
   },
-
-  brandPillars: {
-    label: "Real results",
-    title: "Technology applied directly to your business growth",
-    items: [
-      {
-        title: "AI-driven innovation",
-        description: "We use artificial intelligence to automate decisions, predict outcomes, and scale efficiency.",
-        image: "",
-      },
-      {
-        title: "Revenue-focused marketing",
-        description: "Strategies designed to generate qualified leads, reduce operational costs, and increase conversions.",
-        image: "",
-      },
-      {
-        title: "Actionable data",
-        description: "Dashboards and insights that enable fast, strategic decision-making.",
-        image: "",
-      },
-      {
-        title: "Smart automation",
-        description: "We eliminate repetitive tasks and build systems that work for you 24/7.",
-        image: "",
-      },
-      {
-        title: "Scalable technology",
-        description: "Robust solutions built to grow with your business without technical limitations.",
-        image: "",
-      },
-    ],
-  },
-
+  
   coreServices: {
     label: "How we help",
     title: "Where AI directly impacts your business",
