@@ -10,8 +10,8 @@
   <style>
 html, body { height: 100%; margin: 0; }
 * { box-sizing: border-box; }
-body { font-family: 'DM Sans', sans-serif; }
-.font-display { font-family: 'Syne', sans-serif; }
+body { font-family: 'DM Sans', 'Inter'; }
+.font-display { font-family: 'Syne', 'Inter'; }
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -325,8 +325,8 @@ window.elementSdk.init({
     applyColors(config);
     const ff = config.font_family || defaultConfig.font_family;
     const fs = config.font_size || defaultConfig.font_size;
-    document.querySelectorAll('.font-display').forEach(el => el.style.fontFamily = `${ff}, sans-serif`);
-    document.body.style.fontFamily = `'DM Sans', ${ff}, sans-serif`;
+    document.querySelectorAll('.font-display').forEach(el => el.style.fontFamily = `${ff}, Inter`);
+    document.body.style.fontFamily = `'DM Sans', ${ff}, Inter`;
     
     // Update logo
     const logoImg = document.getElementById('logo-img');

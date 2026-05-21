@@ -149,8 +149,8 @@ body::before {
   --shadow-neon-purple: 0 0 0 1px rgba(123, 97, 255, 0.36), 0 0 46px rgba(123, 97, 255, 0.32);
   --radius: 1.5rem;
 
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
-  --font-heading: "Sora", "Inter", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter";
+  --font-heading: "Sora", "Inter";
   --type-hero: clamp(2.5rem, 7vw, 6rem);
   --type-section-title: clamp(2.25rem, 5vw, 4.5rem);
   --type-card-title: clamp(1.5rem, 2.2vw, 2rem);
