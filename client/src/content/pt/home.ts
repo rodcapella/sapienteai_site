@@ -8,38 +8,6 @@ export const homePT = {
     ctaSecondary: "Ver como funciona"
   },
 
-  brandPillars: {
-    label: "Resultados reais",
-    title: "Tecnologia aplicada diretamente ao crescimento do seu negócio",
-    items: [
-      {
-        title: "Inovação",
-        description: "Utilizamos IA para automatizar decisões, prever resultados e aumentar a eficiência à escala.",
-        image: "",
-      },
-      {
-        title: "Marketing orientado ao aumento de receitas",
-        description: "Estratégias focadas em gerar leads qualificados, diminuir custos operacionais e aumentar conversões.",
-        image: "",
-      },
-      {
-        title: "Dados que geram ação",
-        description: "Dashboards e insights para decisões rápidas e estratégicas.",
-        image: "",
-      },
-      {
-        title: "Automação inteligente",
-        description: "Eliminamos tarefas repetitivas e criamos fluxos que trabalham por si 24/7.",
-        image: "",
-      },
-      {
-        title: "Tecnologia escalável",
-        description: "Soluções robustas preparadas para crescimento sem limitações técnicas.",
-        image: "",
-      },
-    ],
-  },
-
   coreServices: {
     label: "Como ajudamos",
     title: "Onde a IA impacta diretamente o seu negócio",
