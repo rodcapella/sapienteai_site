@@ -111,6 +111,8 @@ h1,h2,h3,h4,h5,h6 { font-family:var(--font-heading); letter-spacing:0; text-wrap
 .type-card-title { font-family:var(--font-heading); font-size:var(--type-card-title); font-weight:900; line-height:1.15; letter-spacing:0; }
 .type-section-title { font-family:var(--font-heading); font-size:var(--type-section-title); font-weight:900; line-height:1; letter-spacing:0; }
 .type-hero { font-family:var(--font-heading); font-size:var(--type-hero); font-weight:900; line-height:.95; letter-spacing:0; }
+.internal-hero-highlight{display:inline-block;position:relative;background:linear-gradient(90deg,#55d4f2 0%,#0ab4ff 50%,#7a5cfc 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 12px rgba(85,212,242,.18)}
+.internal-hero-highlight::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:3px;border-radius:999px;background:linear-gradient(90deg,#55d4f2,#0ab4ff,#7a5cfc);opacity:.75}
 
 .standard-section-bg {
   position: relative;
