@@ -112,6 +112,23 @@ h1,h2,h3,h4,h5,h6 { font-family:var(--font-heading); letter-spacing:0; text-wrap
 .type-section-title { font-family:var(--font-heading); font-size:var(--type-section-title); font-weight:900; line-height:1; letter-spacing:0; }
 .type-hero { font-family:var(--font-heading); font-size:var(--type-hero); font-weight:900; line-height:.95; letter-spacing:0; }
 
+.standard-section-bg {
+  position: relative;
+  isolation: isolate;
+  background-image:
+    linear-gradient(180deg, rgba(234,246,255,.88), rgba(234,246,255,.88)),
+    url('/media/bg/bg_standard.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dark .standard-section-bg {
+  background-image:
+    linear-gradient(180deg, rgba(0,21,71,.88), rgba(0,21,71,.88)),
+    url('/media/bg/bg_standard.jpeg');
+}
+
 .bg-ice,.lightSection { background-color:#eaf6ff; }
 .bg-blue-tint { background-color:#eaf6ff; }
 .dark .bg-ice,.dark .bg-blue-tint,.dark .lightSection,.dark .darklightSection { background-color:#001547; }
