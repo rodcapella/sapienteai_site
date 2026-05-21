@@ -11,7 +11,7 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
       className={cn(
-        "group relative inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl",
+        "group relative inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-full",
         "border border-[var(--tech-border)] bg-[var(--glass-bg)] text-foreground/80",
         "backdrop-blur-xl transition-all duration-500",
         "hover:-translate-y-0.5 hover:border-primary/60 hover:text-foreground hover:shadow-[var(--shadow-neon-blue)]",
