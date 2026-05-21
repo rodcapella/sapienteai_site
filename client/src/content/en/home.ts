@@ -3,11 +3,11 @@ export const homeEN = {
     label: "INTELLIGENCE • AUTOMATION • REAL GROWTH",
     title: "Intelligence that drives growth. Results that scale.",
     subtitle:
-      "Sapiente.AI helps companies increase revenue, reduce costs, and scale operations through intelligent automation.",
+      "We help SMEs increase sales, reduce costs, and grow through intelligent automation.",
     ctaPrimary: "Automate my business",
     ctaSecondary: "See how it works",
   },
-  
+
   coreServices: {
     label: "How we help",
     title: "Where AI directly impacts your business",

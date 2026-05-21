@@ -3,7 +3,7 @@ export const homePT = {
     label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO REAL",
     title: "Inteligência que impulsiona. Resultados que transformam.",
     subtitle:
-      "A Sapiente.AI ajuda empresas a aumentar vendas, reduzir custos e crescer com automação inteligente",
+      "Ajudamos PMEs empresas a aumentar vendas, reduzir custos e crescer com automação inteligente",
     ctaPrimary: "Quero automatizar o meu negócio",
     ctaSecondary: "Ver como funciona"
   },

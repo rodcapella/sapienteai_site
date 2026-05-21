@@ -159,7 +159,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={darkSectionClass}>
+      <Section className={lightSectionClass}>
         <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
         <TechBackdrop intensity="soft" />
         <SectionHeader><Reveal><SectionTitle label={content.smartAutomation.label} title={content.smartAutomation.title} /></Reveal></SectionHeader>
@@ -174,7 +174,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={lightSectionClass}>
+      <Section className={darkSectionClass}>
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader><Reveal><SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} variant="light" /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -186,7 +186,7 @@ export default function Home() {
         </div>
       </Section>
       {isPT && (
-        <Section className={darkSectionClass}>
+        <Section className={lightSectionClass}>
           <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
           <SectionHeader><Reveal><SectionTitle label={homePT.brandPersonality.label} title={homePT.brandPersonality.title} /></Reveal></SectionHeader>
           <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-6 px-6 md:grid-cols-2 xl:grid-cols-5">
