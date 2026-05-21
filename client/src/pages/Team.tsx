@@ -96,18 +96,18 @@ function TeamCard({ member }: { member: Member }) {
             <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-primary/70">
               {member.role}
             </p>
-            <h3 className="mb-4 text-3xl font-black leading-none text-foreground md:text-4xl">{member.name}</h3>
-            <p className="inline-flex rounded-full border border-primary/10 bg-primary/5 px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-foreground/55">
+            <h3 className="team-member-name mb-4 text-3xl font-black leading-none md:text-4xl">{member.name}</h3>
+            <p className="team-member-focus inline-flex rounded-full px-4 py-2 text-xs font-black uppercase tracking-[0.14em]">
               {member.focus}
             </p>
           </div>
         </div>
 
         <div className="team-member-description relative z-10 mb-7 p-6">
-          <p className="text-2xl font-black leading-tight text-foreground">{member.bio}</p>
+          <p className="team-member-bio text-2xl font-black leading-tight">{member.bio}</p>
         </div>
 
-        {member.story && <p className="relative z-10 mb-8 text-lg font-medium leading-relaxed text-foreground/70">{member.story}</p>}
+        {member.story && <p className="team-member-story relative z-10 mb-8 text-lg font-medium leading-relaxed">{member.story}</p>}
 
         <div className="team-stack-panel relative z-10 mt-auto">
           <p className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-primary/70">Stack & foco</p>
@@ -121,7 +121,7 @@ function TeamCard({ member }: { member: Member }) {
         </div>
 
         {member.link !== "#" && (
-          <span className="relative z-10 mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]/80 transition-colors group-hover:text-white">
+          <span className="team-website-link relative z-10 mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em]">
             Website
             <Icons.ExternalLink className="h-4 w-4" />
           </span>

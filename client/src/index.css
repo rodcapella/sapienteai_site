@@ -475,6 +475,10 @@ h6 {
   backdrop-filter: blur(24px);
 }
 
+.team-member-card .text-primary\/70 {
+  color: rgba(10, 138, 255, 0.74);
+}
+
 .team-member-card::before {
   content: "";
   position: absolute;
@@ -515,6 +519,16 @@ h6 {
   transform: translateX(120%);
 }
 
+.team-member-name {
+  color: var(--brand-deep);
+}
+
+.team-member-focus {
+  border: 1px solid rgba(10, 138, 255, 0.14);
+  background: rgba(10, 138, 255, 0.06);
+  color: rgba(10, 47, 102, 0.72);
+}
+
 .team-member-description {
   overflow: hidden;
   border: 1px solid rgba(0, 209, 255, 0.18);
@@ -522,6 +536,14 @@ h6 {
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(234, 246, 255, 0.62)),
     radial-gradient(circle at 100% 0%, rgba(0, 209, 255, 0.18), transparent 44%);
+}
+
+.team-member-bio {
+  color: var(--brand-primary);
+}
+
+.team-member-story {
+  color: rgba(10, 47, 102, 0.78);
 }
 
 .team-stack-panel {
@@ -563,6 +585,16 @@ h6 {
   background-clip: text;
   color: transparent;
   filter: drop-shadow(0 18px 34px rgba(0, 209, 255, 0.12));
+}
+
+.team-website-link {
+  color: rgba(0, 209, 255, 0.8);
+  transition: transform 300ms ease;
+}
+
+.team-member-card:hover .team-website-link {
+  color: rgba(0, 209, 255, 0.8);
+  transform: translateX(0.25rem);
 }
 
 .team-cta-panel {
@@ -705,6 +737,52 @@ h6 {
 
 .dark .text-foreground{
  color:#fff!important;
+}
+
+.dark .team-member-card {
+  border-color: rgba(0, 209, 255, 0.34);
+  background:
+    linear-gradient(145deg, rgba(5, 8, 27, 0.96), rgba(10, 24, 58, 0.9)),
+    radial-gradient(circle at top right, rgba(0, 209, 255, 0.2), transparent 38%);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+}
+
+.dark .team-member-card .text-primary\/70 {
+  color: rgba(0, 209, 255, 0.82);
+}
+
+.dark .team-member-name {
+  color: var(--brand-cyan);
+}
+
+.dark .team-member-focus {
+  border-color: rgba(0, 209, 255, 0.24);
+  background: rgba(0, 209, 255, 0.1);
+  color: rgba(234, 246, 255, 0.72);
+}
+
+.dark .team-member-description {
+  border-color: rgba(0, 209, 255, 0.24);
+  background:
+    linear-gradient(135deg, rgba(8, 18, 42, 0.86), rgba(10, 47, 102, 0.46)),
+    radial-gradient(circle at 100% 0%, rgba(0, 209, 255, 0.16), transparent 44%);
+}
+
+.dark .team-member-bio {
+  color: var(--brand-cyan-bright);
+}
+
+.dark .team-member-story {
+  color: rgba(234, 246, 255, 0.78);
+}
+
+.dark .team-stack-panel {
+  border-top-color: rgba(0, 209, 255, 0.2);
+}
+
+.dark .team-website-link,
+.dark .team-member-card:hover .team-website-link {
+  color: rgba(0, 209, 255, 0.8);
 }
 
 /* separadores */
