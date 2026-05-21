@@ -2,7 +2,6 @@ export type Language = "pt-PT" | "en";
 
 export const translations: Record<Language, Record<string, string>> = {
   "pt-PT": {
-    // Navigation
     "nav.home": "Início",
     "nav.about": "Sobre",
     "nav.team": "Equipa",
@@ -13,18 +12,14 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.legal": "Legal",
     "nav.language": "Idioma",
     "nav.fale": "Contacto",
-
-    // Legal dropdown
     "legal.trust": "Confiança",
     "legal.privacy": "Privacidade",
     "legal.terms": "Termos",
     "legal.RGPD": "RGPD",
     "legal.rgpd": "RGPD",
     "legal.generative-ai-policy": "Política de IA Generativa",
-
-    // Footer
     "footer.home": "Início",
-    "footer.description": "Transformação digital com inteligência artificial aplicada",
+    "footer.description": "Inteligência Artificial aplicada a resultados reais. Transformamos tecnologia em crescimento para o seu negócio.",
     "footer.navigation": "Navegação",
     "footer.legal": "Legal",
     "footer.terms": "Termos",
@@ -36,9 +31,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.generative-ai-policy": "Política de IA Generativa",
     "footer.sitemap": "Mapa do site",
     "footer.newsletter": "Newsletter",
+    "footer.newsletterDescription": "Receba insights, novidades e tendências sobre IA, dados e automação.",
+    "footer.contact": "Contacto",
     "footer.copyright": "© 2026 SAPIENTE.AI • Todos os direitos reservados",
-
-    // Newsletter
     "newsletter.label": "E-mail para a newsletter",
     "newsletter.placeholder": "o-seu@email.com",
     "newsletter.subscribe": "Subscrever",
@@ -48,8 +43,6 @@ export const translations: Record<Language, Record<string, string>> = {
     "newsletter.invalidEmail": "Email inválido",
     "newsletter.success": "Inscrição confirmada!",
     "newsletter.error": "Erro ao subscrever.",
-
-    // Contact Page
     "contact.title": "Entre em contacto",
     "contact.subtitle": "Estamos prontos para impulsionar o seu negócio com IA.",
     "contact.form.name": "Nome Completo",
@@ -59,8 +52,6 @@ export const translations: Record<Language, Record<string, string>> = {
     "contact.sending": "A enviar...",
     "contact.success": "Mensagem enviada com sucesso!",
     "contact.error": "Erro ao enviar mensagem.",
-
-    // Blog
     "blog.title": "Blog Sapiente.AI",
     "blog.subtitle": "Insights sobre IA, automação e crescimento digital.",
     "blog.search": "Pesquisar artigos...",
@@ -69,9 +60,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "blog.newsletter": "Receba insights sobre IA",
     "blog.newsletterDesc": "Subscreva a newsletter da Sapiente.AI e receba conteúdos práticos sobre inteligência artificial, automação e tecnologia aplicada ao negócio.",
   },
-
   en: {
-    // Navigation
     "nav.home": "Home",
     "nav.about": "About",
     "nav.team": "Team",
@@ -82,18 +71,14 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.legal": "Legal",
     "nav.language": "Language",
     "nav.fale": "Contact",
-
-    // Legal dropdown
     "legal.trust": "Trust",
     "legal.privacy": "Privacy",
     "legal.terms": "Terms",
     "legal.RGPD": "GDPR",
     "legal.rgpd": "GDPR",
     "legal.generative-ai-policy": "Generative AI Policy",
-
-    // Footer
     "footer.home": "Home",
-    "footer.description": "Digital transformation with applied artificial intelligence",
+    "footer.description": "Artificial intelligence applied to real business outcomes. We turn technology into growth for your business.",
     "footer.navigation": "Navigation",
     "footer.legal": "Legal",
     "footer.terms": "Terms",
@@ -105,9 +90,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "footer.generative-ai-policy": "Generative AI Policy",
     "footer.sitemap": "Sitemap",
     "footer.newsletter": "Newsletter",
+    "footer.newsletterDescription": "Receive insights, updates and trends on AI, data and automation.",
+    "footer.contact": "Contact",
     "footer.copyright": "© 2026 SAPIENTE.AI • All rights reserved",
-
-    // Newsletter
     "newsletter.label": "Newsletter Email",
     "newsletter.placeholder": "your@email.com",
     "newsletter.subscribe": "Subscribe",
@@ -117,8 +102,6 @@ export const translations: Record<Language, Record<string, string>> = {
     "newsletter.invalidEmail": "Invalid email",
     "newsletter.success": "Subscription confirmed!",
     "newsletter.error": "Error subscribing.",
-
-    // Contact Page
     "contact.title": "Get in Touch",
     "contact.subtitle": "We are ready to boost your business with AI.",
     "contact.form.name": "Full Name",
@@ -128,8 +111,6 @@ export const translations: Record<Language, Record<string, string>> = {
     "contact.sending": "Sending...",
     "contact.success": "Message sent successfully!",
     "contact.error": "Error sending message.",
-
-    // Blog
     "blog.title": "Sapiente.AI Blog",
     "blog.subtitle": "Commercial insights on AI, automation, and digital growth.",
     "blog.search": "Search articles...",
