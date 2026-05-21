@@ -35,12 +35,12 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-background">
-      <Section className="hero relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-28 pb-20 md:pt-40 md:pb-28">
+      <Section className="hero relative flex min-h-[90vh] items-center justify-start overflow-hidden pt-28 pb-20 md:pt-40 md:pb-28">
         <div className="absolute inset-0">
           <img src="/media/bg/bg_hero.jpeg" alt="Sapiente.AI" className="h-full w-full object-cover" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
+        <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
           <Reveal>
             <div className="glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)] sm:text-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_20px_rgba(0,240,255,0.95)]" />
@@ -49,7 +49,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="mx-auto mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">
+            <h1 className="mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">
               {content.hero.title}
               {content.hero.highlight && (
                 <>
@@ -61,11 +61,11 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={190}>
-            <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">{content.hero.subtitle}</p>
+            <p className="mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">{content.hero.subtitle}</p>
           </Reveal>
 
           <Reveal delay={260}>
-            <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
+            <div className="mt-12 flex flex-col items-start justify-start gap-5 sm:flex-row sm:gap-8">
               <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full sm:w-auto">
                 {content.hero.ctaPrimary}
               </PremiumButton>
