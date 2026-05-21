@@ -25,7 +25,7 @@ const pillarBorder = [
 
 const lightSectionClass = "relative overflow-hidden bg-[#EAF6FF] py-24 text-foreground md:py-36";
 const darkSectionClass = "relative overflow-hidden border-y border-[var(--tech-border)] bg-[#060B1E] tech-grid py-24 md:py-36";
-const ctaSectionClass = "final-cta relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid";
+const ctaSectionClass = "final-cta relative overflow-hidden bg-modern-gradient py-24 text-center md:py-36 tech-grid scanlines";
 
 export default function Home() {
   const [location] = useLocation();
