@@ -11,20 +11,11 @@ import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { TechBackdrop } from "@/components/ui/tech/TechBackground";
 
 import { homePT } from "@/content/pt/home";
 import { homeEN } from "@/content/en/home";
 
-const pillarBorder = [
-  "border-[var(--brand-cyan)]/45",
-  "border-[var(--brand-primary)]/55",
-  "border-[#3f2f9f]/55",
-  "border-[#1f2475]/55",
-];
-
-const lightSectionClass = "relative overflow-hidden bg-[#EAF6FF] py-24 text-foreground md:py-36";
-const darkSectionClass = "relative overflow-hidden border-y border-[var(--tech-border)] bg-[#060B1E] tech-grid py-24 md:py-36";
+const homeSectionClass = "home-standard-section relative overflow-hidden py-24 text-foreground md:py-36";
 const ctaSectionClass = "final-cta relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid";
 
 export default function Home() {
@@ -91,11 +82,7 @@ export default function Home() {
       </Section>
 
       {isPT && (
-        <Section className="relative overflow-hidden bg-[#E6F1FF] py-[4.5rem] text-[#001547] md:py-24">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(85,212,242,.08),transparent_45%)]" />
-          <div className="pointer-events-none absolute inset-0 tech-grid opacity-[0.02]" />
-          <div className="pointer-events-none absolute inset-0 dots-matrix opacity-[0.03]" />
-
+        <Section className={homeSectionClass}>
           <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
             <Reveal>
               <p className="font-detail text-xs font-black uppercase tracking-[0.32em] text-[#0AB4FF] md:text-sm">
@@ -136,9 +123,7 @@ export default function Home() {
         </Section>
       )}
 
-      <Section id="core-services" className={lightSectionClass}>
-        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-        <TechBackdrop intensity="soft" className="opacity-75" />
+      <Section id="core-services" className={homeSectionClass}>
         <SectionHeader><Reveal><SectionTitle label={content.coreServices.label} title={content.coreServices.title} /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-16 grid max-w-7xl gap-6 px-6 sm:grid-cols-2 xl:grid-cols-3 md:gap-8">
           {content.coreServices.items.map((service, i) => { const Icon = coreServiceIcons[i % coreServiceIcons.length]; return (
@@ -150,8 +135,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={lightSectionClass}>
-        <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
+      <Section className={homeSectionClass}>
         <SectionHeader><Reveal><SectionTitle label={content.marketingAI.label} title={content.marketingAI.title} description={content.marketingAI.subtitle} variant="light" /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-7 px-6 lg:grid-cols-3 md:gap-9">
           {content.marketingAI.cards.map((card, i) => {
@@ -184,9 +168,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={lightSectionClass}>
-        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-        <TechBackdrop intensity="soft" />
+      <Section className={homeSectionClass}>
         <SectionHeader><Reveal><SectionTitle label={content.smartAutomation.label} title={content.smartAutomation.title} /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-16 grid max-w-7xl gap-7 px-6 lg:grid-cols-3 md:gap-9">
           {content.smartAutomation.columns.map((column, i) => { const Icon = automationIcons[i % automationIcons.length]; return (
@@ -199,8 +181,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={lightSectionClass}>
-        <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
+      <Section className={homeSectionClass}>
         <SectionHeader><Reveal><SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} variant="light" /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">
           {content.conversionWebsites.items.map((item, i) => { const Icon = conversionIcons[i % conversionIcons.length]; return (
@@ -211,8 +192,7 @@ export default function Home() {
         </div>
       </Section>
       {isPT && (
-        <Section className={lightSectionClass}>
-          <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
+        <Section className={homeSectionClass}>
           <SectionHeader><Reveal><SectionTitle label={homePT.brandPersonality.label} title={homePT.brandPersonality.title} /></Reveal></SectionHeader>
           <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-6 px-6 md:grid-cols-2 xl:grid-cols-5">
             {homePT.brandPersonality.traits.map((trait, i) => { const Icon = brandbookIcons[i % brandbookIcons.length]; return (

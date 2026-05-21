@@ -129,6 +129,12 @@ h1,h2,h3,h4,h5,h6 { font-family:var(--font-heading); letter-spacing:0; text-wrap
   background-image: url('/media/bg/bg_standard.jpeg');
 }
 
+.home-standard-section > * { position:relative; z-index:1; }
+.home-standard-section::before { content:""; position:absolute; inset:0; pointer-events:none; z-index:0; background:radial-gradient(circle at top, rgba(85,212,242,.08), transparent 45%); }
+.home-standard-section::after { content:""; position:absolute; inset:0; pointer-events:none; z-index:0; background-image:linear-gradient(to right, rgba(85,212,242,.09) 1px, transparent 1px),linear-gradient(to bottom, rgba(85,212,242,.07) 1px, transparent 1px),radial-gradient(rgba(85,212,242,.12) .8px, transparent .8px); background-size:48px 48px,48px 48px,13px 13px; opacity:.045; }
+.dark .home-standard-section::before { background:radial-gradient(circle at top, rgba(85,212,242,.10), transparent 45%); }
+.dark .home-standard-section::after { opacity:.07; }
+
 .bg-ice,.lightSection { background-color:#eaf6ff; }
 .bg-blue-tint { background-color:#eaf6ff; }
 .dark .bg-ice,.dark .bg-blue-tint,.dark .lightSection,.dark .darklightSection { background-color:#001547; }
