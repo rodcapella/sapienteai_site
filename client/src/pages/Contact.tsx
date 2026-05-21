@@ -6,6 +6,7 @@ import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { setSEOHead } from "@/components/SEOHead";
 
 import { getContent } from "@/lib/content";
@@ -79,35 +80,15 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col">
-      {/* HERO BANNER - Modern Gradient */}
-      <div className="relative w-full h-[400px] md:h-[600px] overflow-hidden bg-modern-gradient flex items-center justify-center">
-        {/* DECORATIVE ELEMENTS */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/10 blur-[120px] rounded-full -z-10"></div>
-        
-        <div className="container max-w-5xl text-center px-6">
-          <Reveal>
-            <Link 
-              href={`/${lang}`}
-              className="inline-flex items-center gap-2 text-primary font-black uppercase tracking-widest mb-8 hover:opacity-70 transition-opacity"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              {t('nav.home')}
-            </Link>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <h1 className="text-4xl md:text-8xl font-black text-foreground tracking-tighter leading-[0.9] mb-10">
-              {content.title}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="text-xl md:text-3xl text-foreground/60 font-black uppercase tracking-[0.2em] drop-shadow-md">
-              {content.subtitle}
-            </p>
-          </Reveal>
-        </div>
-      </div>
+      <InternalHero label={lang === "pt" ? "Contacto" : "Contact"} title={content.title} subtitle={content.subtitle}>
+        <Link
+          href={`/${lang}`}
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-cyan)]/35 bg-[#08112a]/70 px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/15 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.35)]"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          {t('nav.home')}
+        </Link>
+      </InternalHero>
 
       {/* FORM SECTION - Solid Ice White */}
       <Section className="bg-ice py-24 md:py-48">

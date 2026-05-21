@@ -3,6 +3,7 @@ import type { ElementType } from "react";
 import { Link, useLocation } from "wouter";
 
 import { setSEOHead } from "@/components/SEOHead";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
@@ -164,32 +165,7 @@ export default function Sitemap() {
 
   return (
     <div className="flex flex-col">
-      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden bg-modern-gradient md:h-[600px]">
-        <div className="absolute left-1/2 top-1/2 -z-10 h-[400px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[120px]" />
-
-        <div className="container max-w-5xl px-6 text-center">
-          <Reveal>
-            <div className="mb-8 flex items-center justify-center gap-3">
-              <Icons.Globe className="h-6 w-6 text-primary" />
-              <span className="text-sm font-black uppercase tracking-[0.3em] text-foreground/45">
-                {content.label}
-              </span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-foreground md:text-8xl">
-              {content.title}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="mx-auto max-w-3xl text-xl font-black uppercase tracking-[0.18em] text-foreground/60 md:text-2xl">
-              {content.subtitle}
-            </p>
-          </Reveal>
-        </div>
-      </div>
+      <InternalHero label={content.label} title={content.title} subtitle={content.subtitle} compact />
 
       <Section className="bg-blue-tint py-24 md:py-40">
         <div className="container mx-auto px-6">

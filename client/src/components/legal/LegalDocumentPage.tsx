@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 
 import ContactModal from "@/components/ContactModal";
 import { setSEOHead } from "@/components/SEOHead";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
@@ -57,21 +58,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
   return (
     <div className="flex flex-col">
-      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
-        <div className="container max-w-5xl px-6 text-center">
-          <Reveal delay={160}>
-            <h1 className="mb-8 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
-              {content.title}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={220}>
-            <p className="mx-auto max-w-4xl text-lg font-black uppercase tracking-[0.18em] text-[var(--brand-offwhite)]/75 drop-shadow-md md:text-2xl">
-              {content.subtitle || content.lastUpdated}
-            </p>
-          </Reveal>
-        </div>
-      </div>
+      <InternalHero label={lang === "pt" ? "Documento legal" : "Legal document"} title={content.title} subtitle={content.subtitle || content.lastUpdated} compact />
 
       <Section className="relative overflow-hidden bg-[#EAF6FF] py-24 text-[#0A1024] md:py-36">
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />

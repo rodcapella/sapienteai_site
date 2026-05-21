@@ -5,9 +5,9 @@ import { useLocation } from "wouter";
 import ContactModal from "@/components/ContactModal";
 import { setSEOHead } from "@/components/SEOHead";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
-import { TechBackdrop, TechParticleField } from "@/components/ui/tech/TechBackground";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 
@@ -149,37 +149,7 @@ export default function Team() {
 
   return (
     <div className="flex flex-col">
-      <Section className="relative flex min-h-[68vh] items-center justify-center overflow-hidden bg-modern-gradient tech-grid scanlines pt-28 pb-20 md:min-h-[78vh] md:pt-36 md:pb-28">
-        <div className="absolute inset-0">
-          <img src="/media/banners/hero-banner.webp" alt="Sapiente.AI team" className="h-full w-full object-cover opacity-[0.24]" />
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.97),rgba(26,31,46,0.88),rgba(10,138,255,0.48))]" />
-        </div>
-        <TechBackdrop intensity="strong" />
-        <TechParticleField className="opacity-70" />
-
-        <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,240,255,0.24),transparent_52%)]" animate={{ opacity: [0.15, 0.42, 0.15] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
-
-        <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
-          <Reveal>
-            <div className="glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)] sm:text-sm">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_20px_rgba(0,240,255,0.95)]" />
-              Sapiente.AI Team
-            </div>
-          </Reveal>
-
-          <Reveal delay={100}>
-            <h1 className="mt-10 font-heading text-4xl font-extrabold leading-[0.95] text-[var(--brand-offwhite)] drop-shadow-[0_0_35px_rgba(0,240,255,0.25)] sm:text-6xl md:text-7xl lg:text-8xl">
-              {content.hero.title}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-[var(--brand-offwhite)]/85 sm:text-xl md:text-2xl">
-              {content.hero.subtitle}
-            </p>
-          </Reveal>
-        </div>
-      </Section>
+      <InternalHero label="Sapiente.AI Team" title={content.hero.title} subtitle={content.hero.subtitle} imageAlt="Sapiente.AI team" />
 
       <Section className="team-section-shell team-intro-section bg-ice py-24 md:py-40">
         <div className="container mx-auto px-6">

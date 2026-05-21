@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { Link } from 'wouter';
 import { Button } from '@/components/ui/button';
-import { Calendar, User, Tag, Share2 } from 'lucide-react';
+import { Calendar, User, Share2 } from 'lucide-react';
 
 import NewsletterForm from '@/components/NewsletterForm';
 
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 
@@ -77,31 +78,8 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
         <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--brand-cyan)]/10 blur-3xl rounded-full"></div>
         <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
       </div>
-      {/* HERO IMAGE */}
-      <div>
-        <div className="w-full h-80 md:h-[420px] overflow-hidden">
-          <img 
-            src={article.image}
-            alt={article.title}
-            className="w-full h-full object-cover opacity-90"
-          />
-        </div>
-      </div>
-
-      {/* HEADER */}
-      <Section>
-        <div className="max-w-3xl mx-auto">
-
-          <div className="mb-4 flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]">
-            <Tag className="h-4 w-4" />
-            {article.category}
-          </div>
-
-          <h1 className="mb-6 font-heading text-4xl font-black leading-tight md:text-6xl">
-            {article.title}
-          </h1>
-
-          <div className="flex flex-wrap items-center gap-6 border-b border-white/10 pb-6 text-sm text-[var(--brand-offwhite)]/55">
+      <InternalHero label={article.category} title={article.title} subtitle={article.excerpt} image={article.image} imageAlt={article.title} compact>
+        <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--brand-offwhite)]/70">
             <div className="flex items-center gap-2">
               <User className="h-4 w-4" />
               {article.author}
@@ -114,8 +92,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
 
             <span>{article.readTime} {text.readTime}</span>
           </div>
-        </div>
-      </Section>
+      </InternalHero>
 
       {/* CONTENT */}
       <Section>

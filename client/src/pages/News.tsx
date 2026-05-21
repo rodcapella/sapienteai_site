@@ -4,24 +4,18 @@ import { Icons } from "@/lib/icons";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Section } from "@/components/ui/section/Section";
-import { SectionHeader } from "@/components/ui/section/SectionHeader";
-import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 
-import { useTranslation } from '@/hooks/useTranslation';
 import { setSEOHead } from '@/components/SEOHead';
 
 const Search = Icons.Search; 
 const Calendar = Icons.Calendar; 
 const User = Icons.User; 
-const Tag = Icons.Tag; 
 
 export default function News() {
-  const { t } = useTranslation();
-
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
 
   useEffect(() => {
     setSEOHead({
@@ -68,22 +62,8 @@ export default function News() {
 
       <Header />
 
-      {/* HERO */}
-      <Section>
-        <SectionHeader>
-          <SectionTitle
-            label="News"
-            title="AI Updates & Releases"
-          />
-        </SectionHeader>
-
-        <div className="max-w-2xl mx-auto text-[var(--brand-offwhite)]/60 text-center">
-          <p>
-            Acompanhe as tendências e lançamentos mais relevantes em IA.
-          </p>
-
-          {/* SEARCH */}
-          <div className="relative mt-6">
+      <InternalHero label="News" title="AI Updates & Releases" subtitle="Acompanhe as tendências e lançamentos mais relevantes em IA." compact>
+          <div className="relative mx-auto max-w-xl">
             <Search className="absolute left-4 top-3.5 h-4 w-4 text-[var(--brand-offwhite)]/45" />
             <input
               value={searchQuery}
@@ -101,8 +81,7 @@ export default function News() {
               "
             />
           </div>
-        </div>
-      </Section>
+      </InternalHero>
 
       {/* GRID */}
       <Section>

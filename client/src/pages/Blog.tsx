@@ -6,6 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsletterForm from '@/components/NewsletterForm';
 
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 
@@ -59,45 +60,24 @@ export default function Blog() {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      {/* HERO BANNER */}
-      <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
-        <img 
-          src="/media/banners/hero-banner.webp" 
-          alt="Sapiente AI Blog Banner" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center px-6">
-          <div className="container max-w-4xl text-center">
-            <h1 className="font-heading text-4xl font-black text-[var(--brand-offwhite)] drop-shadow-lg md:text-7xl">
-              {t('blog.title')}
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg font-medium leading-relaxed text-[var(--brand-offwhite)]/85 drop-shadow-md md:text-2xl">
-              {t('blog.subtitle')}
-            </p>
-
-            {/* SEARCH */}
-            <div className="relative mt-10 max-w-xl mx-auto">
-              <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-white/50" />
-              <input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={t('blog.search')}
-                className="
-                  w-full pl-14 pr-6 py-4
-                  rounded-full
-                  bg-white/10 backdrop-blur-md
-                  border border-white/20
-                  text-white
-                  placeholder:text-white/50
-                  focus:outline-none
-                  focus:ring-2 focus:ring-primary/50
-                  transition-all
-                "
-              />
-            </div>
-          </div>
+      <InternalHero label="Sapiente.AI Blog" title={t('blog.title')} subtitle={t('blog.subtitle')} compact>
+        <div className="relative mx-auto max-w-xl">
+          <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-white/50" />
+          <input
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder={t('blog.search')}
+            className="
+              w-full rounded-full border border-white/20
+              bg-white/10 py-4 pl-14 pr-6
+              text-white backdrop-blur-md
+              placeholder:text-white/50
+              transition-all
+              focus:outline-none focus:ring-2 focus:ring-primary/50
+            "
+          />
         </div>
-      </div>
+      </InternalHero>
 
       {/* FILTER - Ice White */}
       <Section className="bg-ice py-12 md:py-20">

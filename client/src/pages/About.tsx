@@ -5,6 +5,7 @@ import { Icons } from "@/lib/icons";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { setSEOHead } from '@/components/SEOHead';
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -30,22 +31,16 @@ export default function About() {
 
   return (
     <div className="flex flex-col">
-      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
-        <div className="container max-w-5xl px-6 text-center">
-          <Reveal>
-            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
-              {content.hero.title} <br/>
-              <span className="text-[var(--brand-cyan)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">{content.hero.highlight}</span>
-            </h1>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="text-xl font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/75 drop-shadow-md md:text-3xl">
-              {content.hero.subtitle}
-            </p>
-          </Reveal>
-        </div>
-      </div>
+      <InternalHero
+        label="Sapiente.AI"
+        title={
+          <>
+            {content.hero.title} <br />
+            <span className="text-[var(--brand-cyan)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">{content.hero.highlight}</span>
+          </>
+        }
+        subtitle={content.hero.subtitle}
+      />
 
       <Section className="bg-ice py-24 md:py-48">
         <div className="container mx-auto px-6">

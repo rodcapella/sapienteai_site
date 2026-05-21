@@ -7,6 +7,7 @@ import { Section } from "@/components/ui/section/Section";
 import { SectionHeader } from "@/components/ui/section/SectionHeader";
 import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 
 interface ClusterArticle {
   title: string;
@@ -79,21 +80,13 @@ export default function AIPillar() {
         <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
       </div>
 
-      {/* HERO */}
-      <Section id="home">
-        <SectionHeader>
-          <SectionTitle
-            label="GUIA COMPLETO"
-            title="Inteligência Artificial para Empresas"
-          />
-        </SectionHeader>
-
-        <div className="max-w-2xl">
-          <p className="text-[var(--brand-offwhite)]/60 mb-8">
-            Tudo o que precisa de saber sobre IA aplicada a negócios.
-          </p>
-
-          <div className="flex gap-4 flex-wrap">
+      <InternalHero
+        label="Guia completo"
+        title="Inteligência Artificial para Empresas"
+        subtitle="Tudo o que precisa de saber sobre IA aplicada a negócios."
+        compact
+      >
+          <div className="flex flex-wrap justify-center gap-4">
             <Button onClick={() => setIsContactOpen(true)}>
               Solicitar Diagnóstico <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
@@ -102,8 +95,7 @@ export default function AIPillar() {
               Fale com um especialista
             </Button>
           </div>
-        </div>
-      </Section>
+      </InternalHero>
 
       <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 

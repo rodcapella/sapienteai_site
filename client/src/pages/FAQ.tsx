@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 
 import ContactModal from "@/components/ContactModal";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
@@ -119,22 +120,7 @@ export default function FAQ() {
 
   return (
     <div className="flex flex-col">
-      <div className="page-hero-banner relative flex h-[400px] w-full items-center justify-center overflow-hidden md:h-[600px]">
-        <div className="container max-w-5xl px-6 text-center">
-
-          <Reveal delay={100}>
-            <h1 className="mb-10 text-4xl font-black leading-[0.9] tracking-tighter text-[var(--brand-offwhite)] md:text-8xl">
-              {content.title}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <p className="mx-auto max-w-4xl text-xl font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/75 drop-shadow-md md:text-3xl">
-              {content.subtitle}
-            </p>
-          </Reveal>
-        </div>
-      </div>
+      <InternalHero label={lang === "pt" ? "Dúvidas frequentes" : "Common questions"} title={content.title} subtitle={content.subtitle} />
 
       <Section className="relative flex-grow overflow-hidden bg-[#EAF6FF] py-24 md:py-36">
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
