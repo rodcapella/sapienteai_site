@@ -151,7 +151,6 @@ export default function About() {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,209,255,0.22),transparent_45%)]" />
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <Reveal>
-            <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{content.teamCta.eyebrow}</p>
             <h2 className="font-heading text-4xl font-black tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl">{content.teamCta.title}</h2>
           </Reveal>
           <Reveal delay={110}>

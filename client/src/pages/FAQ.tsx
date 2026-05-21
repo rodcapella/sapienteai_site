@@ -50,9 +50,6 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon, index }: any) {
             )}
 
             <div>
-              <span className="mb-2 block font-mono text-xs font-black tracking-[0.25em] text-[var(--brand-primary)]/60">
-                {String(index + 1).padStart(2, "0")}
-              </span>
               <h3 className="font-heading text-xl font-black leading-tight tracking-tight text-foreground md:text-2xl">
                 {item.question}
               </h3>
