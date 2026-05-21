@@ -1,7 +1,8 @@
 export const homeEN = {
   hero: {
     label: "INTELLIGENCE • AUTOMATION • REAL GROWTH",
-    title: "Intelligence that drives growth. Results that scale.",
+    title: "Intelligence that drives growth.",
+    highlight: "Results that scale.",
     subtitle:
       "We help SMEs increase sales, reduce costs, and grow through intelligent automation.",
     ctaPrimary: "Automate my business",
@@ -152,8 +153,8 @@ export const homeEN = {
   ],
 
   finalCta: {
-    title: "You’re losing money every day — you just don’t see where",
-    subtitle: "We run a free diagnosis and show exactly where you can automate, reduce costs, and increase revenue.",
+    title: "Find where your business can improve performance",
+    subtitle: "We run a free diagnosis and show where you can automate, reduce costs, and increase revenue.",
     button: "Get my free diagnosis",
   },
 };
