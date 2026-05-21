@@ -41,10 +41,23 @@ const fallbackIcons = [
   Icons.Mail,
 ];
 
+function getLegalPageTitle(slug: string, lang: string) {
+  const titles: Record<string, Record<string, string>> = {
+    terms: { pt: "Termos", en: "Terms" },
+    privacy: { pt: "Privacidade", en: "Privacy" },
+    trust: { pt: "Confiança", en: "Trust" },
+    rgpd: { pt: "RGPD", en: "GDPR" },
+    "generative-ai-policy": { pt: "Política de IA Generativa", en: "Generative AI Policy" },
+  };
+
+  return titles[slug]?.[lang === "en" ? "en" : "pt"];
+}
+
 export default function LegalDocumentPage({ content, slug, fallbackDescription }: LegalDocumentPageProps) {
   const [location] = useLocation();
   const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
+  const pageTitle = getLegalPageTitle(slug, lang) || content.title;
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
@@ -58,7 +71,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={lang === "pt" ? "Documento legal" : "Legal document"} title={content.title} subtitle={content.subtitle || content.lastUpdated} compact />
+      <InternalHero label={lang === "pt" ? "Documento legal" : "Legal document"} title={pageTitle} subtitle={content.subtitle || content.lastUpdated} compact />
 
       <Section className="relative overflow-hidden bg-[#EAF6FF] py-24 text-[#0A1024] md:py-36">
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />

@@ -33,12 +33,7 @@ export default function About() {
     <div className="flex flex-col">
       <InternalHero
         label="Sapiente.AI"
-        title={
-          <>
-            {content.hero.title} <br />
-            <span className="text-[var(--brand-cyan)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">{content.hero.highlight}</span>
-          </>
-        }
+        title={t("nav.about")}
         subtitle={content.hero.subtitle}
       />
 

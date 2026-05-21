@@ -62,7 +62,7 @@ export default function News() {
 
       <Header />
 
-      <InternalHero label="News" title="AI Updates & Releases" subtitle="Acompanhe as tendências e lançamentos mais relevantes em IA." compact>
+      <InternalHero label="News" title="News" subtitle="Acompanhe as tendências e lançamentos mais relevantes em IA." compact>
           <div className="relative mx-auto max-w-xl">
             <Search className="absolute left-4 top-3.5 h-4 w-4 text-[var(--brand-offwhite)]/45" />
             <input

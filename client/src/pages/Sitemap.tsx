@@ -165,7 +165,7 @@ export default function Sitemap() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={content.label} title={content.title} subtitle={content.subtitle} compact />
+      <InternalHero label={content.label} title={content.label} subtitle={content.subtitle} compact />
 
       <Section className="bg-blue-tint py-24 md:py-40">
         <div className="container mx-auto px-6">

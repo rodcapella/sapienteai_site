@@ -80,7 +80,7 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={lang === "pt" ? "Contacto" : "Contact"} title={content.title} subtitle={content.subtitle}>
+      <InternalHero label={t("nav.contact")} title={t("nav.contact")} subtitle={content.subtitle}>
         <Link
           href={`/${lang}`}
           className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-cyan)]/35 bg-[#08112a]/70 px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/15 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.35)]"
