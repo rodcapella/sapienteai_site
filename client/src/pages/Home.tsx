@@ -155,22 +155,27 @@ export default function Home() {
             const Icon = marketingIcons[i % marketingIcons.length];
 
             return (
-              <SectionCard key={card.title} delay={i * 0.1} variant="highlight" className="rounded-[2rem] border border-primary/25 bg-white/82 p-8 text-foreground shadow-[0_20px_50px_rgba(10,17,40,0.12)] md:p-10">
-                <div className="mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-primary)]/40 bg-[var(--brand-primary)]/10 text-[var(--brand-primary)] shadow-[0_0_26px_rgba(0,209,255,0.18)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)]/20">
-                  <Icon className="h-8 w-8" />
-                </div>
+              <Reveal key={card.title} delay={i * 70}>
+                <motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-[var(--brand-cyan)]/35 bg-[linear-gradient(145deg,rgba(5,8,27,0.96),rgba(10,24,58,0.92))] p-8 shadow-[0_18px_48px_rgba(0,0,0,0.28)] transition-all duration-500 hover:border-[var(--brand-cyan)] hover:shadow-[0_24px_70px_rgba(0,209,255,0.28)] md:p-10">
+                  <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]" />
+                  <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--brand-cyan)]/18 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/32" />
 
-                <h3 className="mb-4 font-heading text-3xl font-black tracking-tight text-foreground">{card.title}</h3>
+                  <div className="relative z-10 mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/45 bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)] shadow-[0_0_26px_rgba(0,209,255,0.26)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)] group-hover:text-[#06102A]">
+                    <Icon className="h-8 w-8" />
+                  </div>
 
-                <ul className="space-y-3">
-                  {card.points.map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-foreground/80">
-                      <Icons.CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-primary)]" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </SectionCard>
+                  <h3 className="relative z-10 mb-5 font-heading text-3xl font-black leading-tight tracking-tight text-[var(--brand-offwhite)]">{card.title}</h3>
+
+                  <ul className="relative z-10 space-y-4">
+                    {card.points.map((point) => (
+                      <li key={point} className="flex items-start gap-3 text-[var(--brand-offwhite)]/82">
+                        <Icons.CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-cyan)]" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </Reveal>
             );
           })}
         </div>
