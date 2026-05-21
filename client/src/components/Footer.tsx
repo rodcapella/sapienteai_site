@@ -103,7 +103,7 @@ export default function Footer() {
               return (
                 <li key={item.text}>
                   {item.href ? (
-                    
+                    <a
                       href={item.href}
                       target={item.href.startsWith("https://wa.me") ? "_blank" : undefined}
                       rel={item.href.startsWith("https://wa.me") ? "noopener noreferrer" : undefined}
