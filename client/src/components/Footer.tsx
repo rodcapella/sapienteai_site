@@ -41,14 +41,20 @@ export default function Footer() {
     { name: "Pinterest", icon: PinterestIcon, url: "https://www.pinterest.com/sapienteai" },
   ];
 
+  const contactItems = [
+    { icon: Icons.Mail, text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
+    { icon: Icons.Phone, text: "+351 910567575", href: "tel:+351910567575" },
+    { icon: Icons.MapPin, text: "Aveiro, Portugal" },
+  ];
+
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/25 bg-[#050816] text-[var(--brand-offwhite)] tech-grid scanlines">
+    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/20 bg-[#001547] text-[var(--brand-offwhite)] tech-grid scanlines">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(31,36,117,0.28),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(90,67,200,0.16),transparent_36%)]" />
-      <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
+      <div className="pointer-events-none absolute inset-0 dots-matrix opacity-10" />
 
       <div className="container relative z-10 mx-auto px-6 py-8 md:py-11">
-        <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+        <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="col-span-1 sm:col-span-2 xl:col-span-1">
             <Link href={`/${lang}`} className="group mb-3 inline-block">
               <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-16" />
             </Link>
@@ -70,7 +76,7 @@ export default function Footer() {
           <div>
             <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
             <ul className="space-y-2">
-              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms")|| "Terms of Service"}</NavLink></li>
+              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms") || "Terms of Service"}</NavLink></li>
               <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
               <li><NavLink href={`/${lang}/trust`} variant="footer">{t("footer.trust") || "Trust"}</NavLink></li>
               <li><NavLink href={`/${lang}/rgpd`} variant="footer">{t("footer.rgpd")}</NavLink></li>
@@ -80,8 +86,37 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+              {t("footer.contact")}
+            </h4>
+            <ul className="space-y-2.5">
+              {contactItems.map((item) => {
+                const Icon = item.icon;
+                const content = (
+                  <span className="group flex items-center gap-2.5 text-sm font-medium leading-relaxed text-white/70 transition hover:text-white">
+                    <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/20 bg-[#08112a]/75 text-[var(--brand-cyan)]">
+                      <Icon className="h-3.5 w-3.5" />
+                    </span>
+                    {item.text}
+                  </span>
+                );
+
+                return (
+                  <li key={item.text}>
+                    {item.href ? <a href={item.href}>{content}</a> : content}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
               {t("footer.newsletter")}
             </h4>
+
+            <p className="mb-4 text-sm leading-relaxed text-white/70">
+              {t("footer.newsletterDescription")}
+            </p>
 
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
               <PremiumButton className="w-full rounded-2xl py-2.5 text-xs" variant="secondary">

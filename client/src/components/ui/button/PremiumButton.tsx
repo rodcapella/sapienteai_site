@@ -34,8 +34,8 @@ export function PremiumButton({
     const dx = e.clientX - (rect.left + rect.width / 2);
     const dy = e.clientY - (rect.top + rect.height / 2);
 
-    x.set(dx * 0.1);
-    y.set(dy * 0.1);
+    x.set(dx * 0.08);
+    y.set(dy * 0.08);
 
     ref.current?.style.setProperty("--x", `${e.clientX - rect.left}px`);
     ref.current?.style.setProperty("--y", `${e.clientY - rect.top}px`);
@@ -74,7 +74,7 @@ export function PremiumButton({
       onMouseLeave={reset}
       style={{ x: springX, y: springY }}
       className={cn(
-        "neon-shimmer group relative overflow-hidden rounded-full border border-[rgba(255,255,255,0.12)] font-heading font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.04] active:scale-95",
+        "neon-shimmer group relative overflow-hidden rounded-full border border-[rgba(255,255,255,0.12)] font-heading font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.03] active:scale-95",
         variantClasses[variant],
         sizeClasses[size],
         className,
