@@ -12,7 +12,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contacto",
     "nav.legal": "Legal",
     "nav.language": "Idioma",
-    "nav.fale": "Fale com um especialista",
+    "nav.fale": "Contacto",
 
     // Legal dropdown
     "legal.trust": "Confiança",
@@ -81,7 +81,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.legal": "Legal",
     "nav.language": "Language",
-    "nav.fale": "Contact Expert",
+    "nav.fale": "Contact",
 
     // Legal dropdown
     "legal.trust": "Trust",
