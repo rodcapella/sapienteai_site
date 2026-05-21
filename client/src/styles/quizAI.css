@@ -11,12 +11,12 @@
   background: var(--bg);
   color: var(--text);
   font-family: "DM Sans", "Inter";
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 .quiz-bg-radials,
 .quiz-bg-dots {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
 }
@@ -152,6 +152,7 @@
 .quiz-container {
   width: 100%;
   max-width: 768px;
+  overflow: visible;
 }
 
 .quiz-topline {
