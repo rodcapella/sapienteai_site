@@ -120,7 +120,7 @@ export default function FAQ() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={lang === "pt" ? "Dúvidas frequentes" : "Common questions"} title={t("nav.faq")} subtitle={content.subtitle} />
+      <InternalHero label={t("nav.faq")} title={content.title} subtitle={content.subtitle} />
 
       <Section className="relative flex-grow overflow-hidden bg-[#EAF6FF] py-24 md:py-36">
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />

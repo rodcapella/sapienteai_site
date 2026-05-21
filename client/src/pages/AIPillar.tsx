@@ -81,8 +81,8 @@ export default function AIPillar() {
       </div>
 
       <InternalHero
-        label="Guia completo"
-        title="IA para Empresas"
+        label="IA para Empresas"
+        title="Inteligência Artificial para Empresas"
         subtitle="Tudo o que precisa de saber sobre IA aplicada a negócios."
         compact
       >

@@ -71,7 +71,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={lang === "pt" ? "Documento legal" : "Legal document"} title={pageTitle} subtitle={content.subtitle || content.lastUpdated} compact />
+      <InternalHero label={pageTitle} title={content.title} subtitle={content.subtitle || content.lastUpdated} compact />
 
       <Section className="relative overflow-hidden bg-[#EAF6FF] py-24 text-[#0A1024] md:py-36">
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />

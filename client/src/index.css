@@ -319,6 +319,22 @@ h6 {
   box-shadow: var(--shadow-soft);
 }
 
+.internal-hero-label {
+  border-color: rgba(123, 97, 255, 0.32);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--brand-purple);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 14px 34px rgba(123, 97, 255, 0.16);
+}
+
+.dark .internal-hero-label {
+  border-color: var(--tech-border);
+  background: var(--glass-bg);
+  color: var(--brand-cyan);
+  backdrop-filter: blur(24px);
+  box-shadow: var(--shadow-soft);
+}
+
 .cyber-border {
   position: relative;
 }

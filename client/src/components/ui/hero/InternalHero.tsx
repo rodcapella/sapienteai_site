@@ -54,7 +54,7 @@ export function InternalHero({
       <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
         {label && (
           <Reveal>
-            <div className="glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-cyan)] sm:text-sm">
+            <div className="internal-hero-label glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] sm:text-sm">
               <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_20px_rgba(0,240,255,0.95)]" />
               {label}
             </div>

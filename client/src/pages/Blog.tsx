@@ -60,7 +60,7 @@ export default function Blog() {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      <InternalHero label="Sapiente.AI Blog" title={t('nav.blog')} subtitle={t('blog.subtitle')} compact>
+      <InternalHero label={t('nav.blog')} title={t('blog.title')} subtitle={t('blog.subtitle')} compact>
         <div className="relative mx-auto max-w-xl">
           <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-white/50" />
           <input
