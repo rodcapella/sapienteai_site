@@ -63,11 +63,11 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="mt-10 font-heading text-4xl font-extrabold leading-[0.95] tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl lg:text-8xl drop-shadow-[0_0_35px_rgba(0,240,255,0.25)]">{content.hero.title}</h1>
+            <h1 className="mx-auto mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">{content.hero.title}</h1>
           </Reveal>
 
           <Reveal delay={190}>
-            <p className="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-[var(--brand-offwhite)]/85 sm:text-xl md:text-2xl">{content.hero.subtitle}</p>
+            <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">{content.hero.subtitle}</p>
           </Reveal>
 
           <Reveal delay={260}>

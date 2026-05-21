@@ -25,8 +25,8 @@ export function InternalHero({
   compact = false,
 }: InternalHeroProps) {
   const titleClass = compact
-    ? "text-[clamp(2.5rem,6vw,5.6rem)]"
-    : "text-[clamp(2.75rem,7vw,6.5rem)]";
+    ? "text-[clamp(2.35rem,5.2vw,4.9rem)]"
+    : "text-[clamp(2.5rem,6vw,5.6rem)]";
 
   return (
     <Section
@@ -62,7 +62,7 @@ export function InternalHero({
         )}
 
         <Reveal delay={100}>
-          <h1 className={`${titleClass} mx-auto mt-10 max-w-5xl font-heading font-extrabold leading-[0.98] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.52)] [text-shadow:0_0_28px_rgba(0,209,255,0.24),0_2px_10px_rgba(5,8,27,0.64)]`}>
+          <h1 className={`${titleClass} mx-auto mt-10 max-w-5xl font-heading font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]`}>
             {title}
           </h1>
         </Reveal>
