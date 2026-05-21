@@ -20,7 +20,7 @@ import { trustContentPT } from "@/content/pt/trust";
 import { trustContentEN } from "@/content/en/trust";
 
 import { rgpdContentPT } from "@/content/pt/rgpd";
-import { gdprContentEN } from "@/content/en/gdpr";
+import { rgpdContentEN } from "@/content/en/gdpr";
 
 import { iaGenerativaPolicyPT } from "@/content/pt/iaGenerativaPolicy";
 import { iaGenerativaPolicyEN } from "@/content/en/iaGenerativaPolicy";
@@ -59,11 +59,11 @@ const contentMap = {
   },
   RGPD: {
     pt: rgpdContentPT,
-    en: gdprContentEN,
+    en: rgpdContentEN,
   },
   rgpd: {
     pt: rgpdContentPT,
-    en: gdprContentEN,
+    en: rgpdContentEN,
   },
   generativeAIPolicy: {
     pt: iaGenerativaPolicyPT,
@@ -72,7 +72,7 @@ const contentMap = {
   contact: {
     pt: contactPT,
     en: contactEN,
-},
+  },
 } as const;
 
 export function getContent(page: keyof typeof contentMap, lang: string) {
