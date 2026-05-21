@@ -24,6 +24,10 @@ export function InternalHero({
   children,
   compact = false,
 }: InternalHeroProps) {
+  const titleClass = compact
+    ? "text-[clamp(2.5rem,6vw,5.6rem)]"
+    : "text-[clamp(2.75rem,7vw,6.5rem)]";
+
   return (
     <Section
       className={[
@@ -32,8 +36,9 @@ export function InternalHero({
       ].join(" ")}
     >
       <div className="absolute inset-0">
-        <img src={image} alt={imageAlt} className="h-full w-full object-cover opacity-[0.24]" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.97),rgba(26,31,46,0.88),rgba(10,138,255,0.48))]" />
+        <img src={image} alt={imageAlt} className="h-full w-full object-cover opacity-[0.2]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.99),rgba(8,18,42,0.94),rgba(10,66,122,0.82))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_34%,rgba(0,209,255,0.22),rgba(5,8,27,0.42)_52%,rgba(5,8,27,0.82)_100%)]" />
       </div>
 
       <TechBackdrop intensity="strong" />
@@ -57,14 +62,14 @@ export function InternalHero({
         )}
 
         <Reveal delay={100}>
-          <h1 className="mx-auto mt-10 max-w-5xl font-heading text-4xl font-extrabold leading-[0.95] text-[var(--brand-offwhite)] drop-shadow-[0_0_35px_rgba(0,240,255,0.25)] sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className={`${titleClass} mx-auto mt-10 max-w-5xl font-heading font-extrabold leading-[0.98] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.52)] [text-shadow:0_0_28px_rgba(0,209,255,0.24),0_2px_10px_rgba(5,8,27,0.64)]`}>
             {title}
           </h1>
         </Reveal>
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mx-auto mt-8 max-w-4xl text-lg leading-relaxed text-[var(--brand-offwhite)]/85 sm:text-xl md:text-2xl">
+            <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">
               {subtitle}
             </p>
           </Reveal>
