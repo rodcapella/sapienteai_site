@@ -302,6 +302,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     ].join(" ");
   };
 
+  const selectClass = (field: keyof FormData) => `${fieldClass(field)} contact-modal-select cursor-pointer appearance-none pr-10 text-[var(--brand-offwhite)]`;
+
   const statusNode = useMemo(() => {
     if (submitState === "idle") return null;
 
@@ -382,18 +384,24 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <label htmlFor="contact-source" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.source}</label>
-                <select id="contact-source" name="source" value={formData.source} onChange={(e) => handleChange("source", e.target.value)} onBlur={() => handleBlur("source")} className={fieldClass("source")} disabled={submitState === "loading"}>
-                  <option value="">{text.placeholders.source}</option>
-                  {sourceOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
-                </select>
+                <div className="relative">
+                  <select id="contact-source" name="source" value={formData.source} onChange={(e) => handleChange("source", e.target.value)} onBlur={() => handleBlur("source")} className={selectClass("source")} disabled={submitState === "loading"}>
+                    <option value="">{text.placeholders.source}</option>
+                    {sourceOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                  <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+                </div>
               </div>
 
               <div className="space-y-1.5">
                 <label htmlFor="contact-topic" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.topic}</label>
-                <select id="contact-topic" name="topic" value={formData.topic} onChange={(e) => handleChange("topic", e.target.value)} onBlur={() => handleBlur("topic")} className={fieldClass("topic")} aria-required="true" aria-invalid={Boolean(touched.topic && errors.topic)} aria-describedby={errors.topic ? "contact-topic-error" : undefined} disabled={submitState === "loading"}>
-                  <option value="">{text.placeholders.topic}</option>
-                  {topicOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
-                </select>
+                <div className="relative">
+                  <select id="contact-topic" name="topic" value={formData.topic} onChange={(e) => handleChange("topic", e.target.value)} onBlur={() => handleBlur("topic")} className={selectClass("topic")} aria-required="true" aria-invalid={Boolean(touched.topic && errors.topic)} aria-describedby={errors.topic ? "contact-topic-error" : undefined} disabled={submitState === "loading"}>
+                    <option value="">{text.placeholders.topic}</option>
+                    {topicOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                  <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+                </div>
                 {touched.topic && errors.topic && <p id="contact-topic-error" className="text-xs text-red-300">{errors.topic}</p>}
               </div>
             </div>
