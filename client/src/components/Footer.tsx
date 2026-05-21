@@ -52,18 +52,18 @@ export default function Footer() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(31,36,117,0.28),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(90,67,200,0.16),transparent_36%)]" />
       <div className="pointer-events-none absolute inset-0 dots-matrix opacity-10" />
 
-      <div className="container relative z-10 mx-auto px-6 py-8 md:py-11">
-        <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-5">
+      <div className="container relative z-10 mx-auto px-6 py-5 md:py-7">
+        <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
             <Link href={`/${lang}`} className="group mb-3 inline-block">
               <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-16" />
             </Link>
 
-            <p className="max-w-sm text-sm leading-relaxed text-white/65">{t("footer.description")}</p>
+            <p className="max-w-sm text-sm leading-relaxed text-white/70">{t("footer.description")}</p>
           </div>
 
           <div>
-            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.navigation")}</h4>
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.navigation")}</h4>
             <ul className="space-y-2">
               <li><NavLink href={`/${lang}`} variant="footer">{t("nav.home")}</NavLink></li>
               <li><NavLink href={`/${lang}/about`} variant="footer">{t("nav.about")}</NavLink></li>
@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
             <ul className="space-y-2">
               <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms") || "Terms of Service"}</NavLink></li>
               <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
@@ -85,15 +85,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
               {t("footer.contact")}
             </h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-1.5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
-                  <span className="group flex items-center gap-2.5 text-sm font-medium leading-relaxed text-white/70 transition hover:text-white">
-                    <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/20 bg-[#08112a]/75 text-[var(--brand-cyan)]">
+                  <span className="group flex items-center gap-2.5 text-sm leading-relaxed text-white/70 transition hover:text-white">
+                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/20 bg-[#08112a]/75 text-[var(--brand-cyan)]">
                       <Icon className="h-3.5 w-3.5" />
                     </span>
                     {item.text}
@@ -110,7 +110,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
               {t("footer.newsletter")}
             </h4>
 
@@ -119,18 +119,18 @@ export default function Footer() {
             </p>
 
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
-              <PremiumButton className="w-full rounded-2xl !bg-[#55D4F2] !py-2.5 !text-xs !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white" variant="secondary">
+              <PremiumButton className="w-full rounded-2xl !bg-[#55D4F2] !py-1.5 !text-xs !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white" variant="secondary">
                 {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
               </PremiumButton>
             </Link>
           </div>
         </div>
 
-        <div className="grid items-center gap-4 border-t border-[var(--brand-cyan)]/20 pt-4 md:grid-cols-[300px_1fr_auto]">
+        <div className="grid items-center gap-3 border-t border-[var(--brand-cyan)]/20 pt-4 md:grid-cols-[300px_1fr_auto]">
           <div className="flex w-[300px] max-w-full flex-col items-center gap-2 justify-self-center md:justify-self-start">
-            <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/80">
-              {lang === "pt" ? "Siga-nos" : "Follow us"}
-            </p>
+            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+             {lang === "pt" ? "Siga-nos" : "Follow us"}
+            </h4>
 
             <div className="flex w-full items-center justify-center gap-2">
               {socialLinks.map((social) => {
@@ -158,19 +158,21 @@ export default function Footer() {
           >
             {t("footer.sitemap")}
           </Link>
-
-          <p className="text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
+          <div className="flex items-center justify-center gap-2 md:justify-end">
+           <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/65">
+             {t("footer.copyright")}
+           </p>
+           <button
+             type="button"
+             onClick={scrollToTop}
+             aria-label="Back to top"
+             className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/30 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]"
+           >
+             <Icons.ArrowUp className="h-3.5 w-3.5" />
+           </button>
+         </div>      
         </div>
       </div>
-
-      <button
-        type="button"
-        onClick={scrollToTop}
-        aria-label="Back to top"
-        className="absolute bottom-4 right-4 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/30 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]"
-      >
-        <Icons.ArrowUp className="h-3.5 w-3.5" />
-      </button>
     </footer>
   );
 }
