@@ -119,7 +119,7 @@ export default function Footer() {
             </p>
 
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
-              <PremiumButton className="w-full rounded-2xl py-4" variant="secondary">
+              <PremiumButton className="w-full rounded-2xl !bg-[#55D4F2] !py-4 !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white" variant="secondary">
                 {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
               </PremiumButton>
             </Link>
