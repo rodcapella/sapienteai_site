@@ -7,6 +7,7 @@ import { TechBackdrop, TechParticleField } from "@/components/ui/tech/TechBackgr
 
 type InternalHeroProps = {
   title: ReactNode;
+  highlight?: ReactNode;
   subtitle?: ReactNode;
   label?: ReactNode;
   image?: string;
@@ -17,6 +18,7 @@ type InternalHeroProps = {
 
 export function InternalHero({
   title,
+  highlight,
   subtitle,
   label,
   image = "/media/banners/hero-banner.webp",
@@ -37,8 +39,8 @@ export function InternalHero({
     >
       <div className="absolute inset-0">
         <img src={image} alt={imageAlt} className="h-full w-full object-cover opacity-[0.2]" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.99),rgba(8,18,42,0.94),rgba(10,66,122,0.82))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_34%,rgba(0,209,255,0.22),rgba(5,8,27,0.42)_52%,rgba(5,8,27,0.82)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,21,71,0.99),rgba(1,32,80,0.94),rgba(10,180,255,0.32))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_34%,rgba(85,212,242,0.12),rgba(0,21,71,0.42)_52%,rgba(0,21,71,0.82)_100%)]" />
       </div>
 
       <TechBackdrop intensity="strong" />
@@ -46,8 +48,8 @@ export function InternalHero({
 
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,240,255,0.24),transparent_52%)]"
-        animate={{ opacity: [0.15, 0.42, 0.15] }}
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(85,212,242,0.12),transparent_52%)]"
+        animate={{ opacity: [0.08, 0.22, 0.08] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
 
@@ -55,21 +57,27 @@ export function InternalHero({
         {label && (
           <Reveal>
             <div className="internal-hero-label glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] sm:text-sm">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_20px_rgba(0,240,255,0.95)]" />
+              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_10px_rgba(85,212,242,0.45)]" />
               {label}
             </div>
           </Reveal>
         )}
 
         <Reveal delay={100}>
-          <h1 className={`${titleClass} mx-auto mt-10 max-w-5xl font-heading font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]`}>
+          <h1 className={`${titleClass} mx-auto mt-10 max-w-5xl font-heading font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_24px_rgba(0,0,0,0.34)] [text-shadow:0_0_14px_rgba(85,212,242,0.11),0_2px_10px_rgba(0,21,71,0.62)]`}>
             {title}
+            {highlight && (
+              <>
+                <br />
+                <span className="internal-hero-highlight">{highlight}</span>
+              </>
+            )}
           </h1>
         </Reveal>
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">
+            <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_14px_rgba(0,0,0,0.32)] sm:text-xl md:text-2xl">
               {subtitle}
             </p>
           </Reveal>
