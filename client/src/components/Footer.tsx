@@ -158,21 +158,20 @@ export default function Footer() {
           >
             {t("footer.sitemap")}
           </Link>
-          <div className="flex items-center justify-center gap-2 md:justify-end">
-           <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/65">
-             {t("footer.copyright")}
-           </p>
-           <button
-             type="button"
-             onClick={scrollToTop}
-             aria-label="Back to top"
-             className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/30 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]"
-           >
-             <Icons.ArrowUp className="h-3.5 w-3.5" />
-           </button>
-         </div>      
+          <p className="text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/65 md:text-right">
+            {t("footer.copyright")}
+          </p>
         </div>
       </div>
+
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/30 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]"
+      >
+        <Icons.ArrowUp className="h-3.5 w-3.5" />
+      </button>
     </footer>
   );
 }

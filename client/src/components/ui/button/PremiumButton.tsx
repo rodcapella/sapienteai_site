@@ -47,16 +47,16 @@ export function PremiumButton({
   };
 
   const standardBlue =
-    "[background:var(--brand-gradient)] text-white shadow-[0_12px_30px_rgba(1,32,80,0.28)] hover:[background:var(--brand-gradient-hover)] hover:text-white hover:shadow-[0_0_0_1px_rgba(90,67,200,0.34),0_18px_42px_rgba(1,32,80,0.26)]";
+    "bg-[#001547] text-white shadow-[0_12px_30px_rgba(0,21,71,0.28)] hover:bg-[#012050] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.22),0_18px_42px_rgba(0,21,71,0.24)]";
 
   const variantClasses = {
     primary: standardBlue,
     secondary: standardBlue,
     purple: standardBlue,
     outline:
-      "border-2 border-[var(--brand-primary)] bg-[rgba(234,246,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,132,255,0.14)] hover:border-[var(--brand-purple)]/55 hover:[background:var(--brand-gradient)] hover:text-white hover:shadow-[0_0_0_1px_rgba(90,67,200,0.26),0_18px_42px_rgba(1,32,80,0.2)]",
+      "border-2 border-[#001547] bg-[rgba(234,246,255,0.2)] text-[#001547] shadow-[0_10px_26px_rgba(0,21,71,0.12)] hover:border-[#012050] hover:bg-[#001547] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.18),0_18px_42px_rgba(0,21,71,0.18)] dark:border-[var(--brand-cyan)] dark:text-[var(--brand-cyan)] dark:hover:bg-[#012050] dark:hover:text-white",
     black:
-      "bg-[linear-gradient(135deg,var(--brand-night),var(--brand-deep))] text-white shadow-[0_12px_30px_rgba(5,8,22,0.35)] hover:[background:var(--brand-gradient-hover)] hover:text-white hover:shadow-[0_0_0_1px_rgba(90,67,200,0.3),0_18px_42px_rgba(1,32,80,0.24)]",
+      "bg-[#001547] text-white shadow-[0_12px_30px_rgba(5,8,22,0.35)] hover:bg-[#012050] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.2),0_18px_42px_rgba(0,21,71,0.22)]",
   };
 
   const sizeClasses = {

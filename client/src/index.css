@@ -115,18 +115,16 @@ h1,h2,h3,h4,h5,h6 { font-family:var(--font-heading); letter-spacing:0; text-wrap
 .standard-section-bg {
   position: relative;
   isolation: isolate;
-  background-image:
-    linear-gradient(180deg, rgba(234,246,255,.88), rgba(234,246,255,.88)),
-    url('/media/bg/bg_standard.jpeg');
+  background-color: #eaf6ff;
+  background-image: url('/media/bg/bg_standard.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .dark .standard-section-bg {
-  background-image:
-    linear-gradient(180deg, rgba(0,21,71,.88), rgba(0,21,71,.88)),
-    url('/media/bg/bg_standard.jpeg');
+  background-color: #001547;
+  background-image: url('/media/bg/bg_standard.jpeg');
 }
 
 .bg-ice,.lightSection { background-color:#eaf6ff; }
