@@ -47,16 +47,16 @@ export function PremiumButton({
   };
 
   const standardBlue =
-    "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,138,255,0.35)] hover:bg-[var(--brand-purple)] hover:text-white hover:shadow-[0_0_0_1px_rgba(123,129,255,0.55),0_0_44px_rgba(123,129,255,0.42)]";
+    "bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-cyan))] text-white shadow-[0_12px_30px_rgba(10,132,255,0.35)] hover:bg-[linear-gradient(135deg,var(--brand-purple),var(--brand-cyan-bright))] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,240,255,0.55),0_0_44px_rgba(0,209,255,0.38),0_0_60px_rgba(123,97,255,0.22)]";
 
   const variantClasses = {
     primary: standardBlue,
     secondary: standardBlue,
     purple: standardBlue,
     outline:
-      "border-2 border-[var(--brand-primary)] bg-transparent text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,138,255,0.18)] hover:border-[var(--brand-purple)] hover:bg-[var(--brand-purple)] hover:text-white hover:shadow-[0_0_0_1px_rgba(123,129,255,0.55),0_0_44px_rgba(123,129,255,0.42)]",
+      "border-2 border-[var(--brand-primary)] bg-[rgba(234,246,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,132,255,0.18)] hover:border-[var(--brand-cyan)] hover:bg-[linear-gradient(135deg,var(--brand-deep),var(--brand-primary))] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,209,255,0.55),0_0_44px_rgba(0,209,255,0.34)]",
     black:
-      "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,138,255,0.35)] hover:bg-[var(--brand-purple)] hover:text-white hover:shadow-[0_0_0_1px_rgba(123,129,255,0.55),0_0_44px_rgba(123,129,255,0.42)]",
+      "bg-[linear-gradient(135deg,var(--brand-night),var(--brand-deep))] text-white shadow-[0_12px_30px_rgba(5,8,22,0.35)] hover:bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-cyan))] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,209,255,0.55),0_0_44px_rgba(0,209,255,0.36)]",
   };
 
   const sizeClasses = {

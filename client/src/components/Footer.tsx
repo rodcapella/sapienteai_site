@@ -42,8 +42,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/25 bg-[#05081B] text-[var(--brand-offwhite)] tech-grid scanlines">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(10,138,255,0.34),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(0,209,255,0.22),transparent_38%)]" />
+    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/25 bg-[#050816] text-[var(--brand-offwhite)] tech-grid scanlines">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(10,132,255,0.34),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(0,209,255,0.22),transparent_38%)]" />
       <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
 
       <div className="container relative z-10 mx-auto px-6 py-18 md:py-24">

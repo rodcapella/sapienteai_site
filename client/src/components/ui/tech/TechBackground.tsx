@@ -17,11 +17,11 @@ export function TechBackdrop({ className, intensity = "medium" }: TechBackdropPr
       className={cn("pointer-events-none absolute inset-0 overflow-hidden", intensityMap[intensity], className)}
       aria-hidden="true"
     >
-      <div className="absolute -left-28 top-[-18%] h-80 w-80 rounded-full bg-[#0A8AFF]/35 blur-[130px]" />
+      <div className="absolute -left-28 top-[-18%] h-80 w-80 rounded-full bg-[#0A84FF]/35 blur-[130px]" />
       <div className="absolute -right-24 bottom-[-20%] h-96 w-96 rounded-full bg-[#00D1FF]/28 blur-[150px]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,240,255,0.2),transparent_55%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,209,255,0.16)_1px,transparent_1px),linear-gradient(to_bottom,rgba(123,129,255,0.14)_1px,transparent_1px)] bg-[size:56px_56px] opacity-[0.2]" />
-      <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0,transparent_44px,rgba(123,129,255,0.08)_45px,transparent_46px)] opacity-60" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,209,255,0.16)_1px,transparent_1px),linear-gradient(to_bottom,rgba(123,97,255,0.14)_1px,transparent_1px)] bg-[size:56px_56px] opacity-[0.2]" />
+      <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,transparent_0,transparent_44px,rgba(123,97,255,0.08)_45px,transparent_46px)] opacity-60" />
     </div>
   );
 }

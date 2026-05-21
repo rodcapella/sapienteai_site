@@ -105,47 +105,48 @@ body::before {
 :root {
   color-scheme: light;
 
-  --brand-night: #05081b;
+  --brand-night: #050816;
   --brand-deep: #1a1f2e;
-  --brand-primary: #0a8aff;
+  --brand-primary: #0a84ff;
   --brand-cyan: #00d1ff;
   --brand-cyan-bright: #00f0ff;
-  --brand-purple: #7b81ff;
+  --brand-purple: #7b61ff;
   --brand-offwhite: #eaf6ff;
+  --brand-ink: #081228;
 
   --primary: var(--brand-primary);
   --primary-foreground: #f7fbff;
   --accent-purple: var(--brand-purple);
   --accent-purple-foreground: #f7fbff;
 
-  --background: #f2f8ff;
+  --background: #eef7ff;
   --foreground: #0a1024;
 
-  --section-ice: #f8fcff;
-  --section-blue-tint: #eaf4ff;
-  --section-gradient: linear-gradient(132deg, #05081b 0%, #1a1f2e 42%, #0a8aff 72%, #00f0ff 100%);
+  --section-ice: #f5fbff;
+  --section-blue-tint: #e6f3ff;
+  --section-gradient: linear-gradient(132deg, #050816 0%, #081228 38%, #0a84ff 72%, #00f0ff 100%);
 
-  --card: rgba(255, 255, 255, 0.78);
+  --card: rgba(234, 246, 255, 0.82);
   --card-foreground: #0a1024;
 
-  --glass-bg: rgba(255, 255, 255, 0.64);
-  --glass-bg-soft: rgba(255, 255, 255, 0.5);
+  --glass-bg: rgba(234, 246, 255, 0.7);
+  --glass-bg-soft: rgba(214, 238, 255, 0.56);
 
   --tech-border: rgba(10, 138, 255, 0.34);
   --border: rgba(26, 31, 46, 0.22);
   --input: rgba(10, 138, 255, 0.3);
   --ring: var(--brand-cyan);
 
-  --secondary: rgba(10, 138, 255, 0.16);
+  --secondary: rgba(10, 132, 255, 0.16);
   --secondary-foreground: #0a1024;
   --muted: rgba(10, 16, 36, 0.08);
   --muted-foreground: rgba(10, 16, 36, 0.68);
   --accent: rgba(0, 209, 255, 0.2);
   --accent-foreground: #0a1024;
 
-  --shadow-soft: 0 22px 52px rgba(8, 14, 30, 0.16);
-  --shadow-neon-blue: 0 0 0 1px rgba(10, 138, 255, 0.4), 0 0 46px rgba(0, 209, 255, 0.34);
-  --shadow-neon-purple: 0 0 0 1px rgba(123, 129, 255, 0.34), 0 0 46px rgba(123, 129, 255, 0.3);
+  --shadow-soft: 0 22px 52px rgba(8, 18, 40, 0.16);
+  --shadow-neon-blue: 0 0 0 1px rgba(10, 132, 255, 0.42), 0 0 46px rgba(0, 209, 255, 0.36);
+  --shadow-neon-purple: 0 0 0 1px rgba(123, 97, 255, 0.36), 0 0 46px rgba(123, 97, 255, 0.32);
   --radius: 1.5rem;
 
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
@@ -161,13 +162,14 @@ body::before {
 .dark {
   color-scheme: dark;
 
-  --brand-night: #05081b;
+  --brand-night: #050816;
   --brand-deep: #1a1f2e;
-  --brand-primary: #0a8aff;
+  --brand-primary: #0a84ff;
   --brand-cyan: #00d1ff;
   --brand-cyan-bright: #00f0ff;
-  --brand-purple: #7b81ff;
+  --brand-purple: #7b61ff;
   --brand-offwhite: #eaf6ff;
+  --brand-ink: #081228;
 
   --primary: var(--brand-primary);
   --primary-foreground: var(--brand-offwhite);
@@ -177,9 +179,9 @@ body::before {
   --background: var(--brand-night);
   --foreground: var(--brand-offwhite);
 
-  --section-ice: #05081b;
+  --section-ice: #050816;
   --section-blue-tint: #111931;
-  --section-gradient: linear-gradient(132deg, #05081b 0%, #1a1f2e 44%, #0a8aff 75%, #00f0ff 100%);
+  --section-gradient: linear-gradient(132deg, #050816 0%, #081228 44%, #0a84ff 75%, #00f0ff 100%);
 
   --card: rgba(8, 13, 32, 0.78);
   --card-foreground: #eaf6ff;
@@ -602,7 +604,7 @@ h6 {
   overflow: hidden;
   background:
     radial-gradient(circle at 50% 30%, rgba(0, 209, 255, 0.24), transparent 42%),
-    linear-gradient(135deg, #05081b 0%, #06102a 44%, #0a2f66 72%, #7b81ff 100%);
+    linear-gradient(135deg, #050816 0%, #06102a 44%, #0a2f66 72%, #7b61ff 100%);
 }
 
 .team-cta-panel::before {

@@ -66,8 +66,8 @@ export default function Header({ onContactClick }: HeaderProps) {
           "fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500",
           "border-foreground/10 text-foreground dark:border-[var(--brand-cyan)]/20 dark:text-[var(--brand-offwhite)]",
           scrolled
-            ? "bg-white/96 shadow-[0_18px_40px_rgba(10,17,40,0.14)] backdrop-blur-2xl dark:bg-[#050B16]/96 dark:shadow-[0_18px_60px_rgba(0,0,0,0.65)]"
-            : "bg-white/92 backdrop-blur-xl dark:bg-[#050B16]/92",
+            ? "bg-[rgba(234,246,255,0.94)] shadow-[0_18px_40px_rgba(8,18,40,0.14)] backdrop-blur-2xl dark:bg-[#050B16]/96 dark:shadow-[0_18px_60px_rgba(0,0,0,0.65)]"
+            : "bg-[rgba(234,246,255,0.88)] backdrop-blur-xl dark:bg-[#050B16]/92",
         )}
       >
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
@@ -100,12 +100,12 @@ export default function Header({ onContactClick }: HeaderProps) {
                 </button>
 
                 <div className={cn("absolute -left-4 top-full w-64 origin-top-left pt-4 transition-all duration-300", isLegalOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0")}>
-                  <div className="legal-dropdown rounded-2xl border border-foreground/10 bg-white/96 p-2 text-foreground shadow-[0_20px_50px_rgba(10,17,40,0.2)] backdrop-blur-2xl">
+                  <div className="legal-dropdown rounded-2xl border border-[var(--brand-cyan)]/18 bg-[rgba(234,246,255,0.96)] p-2 text-foreground shadow-[0_20px_50px_rgba(8,18,40,0.2)] backdrop-blur-2xl">
                     {legalLinks.map((link) => (
                       <Link
                         key={link.name}
                         href={link.href}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/75 transition-all hover:bg-[var(--brand-primary)]/10 hover:text-foreground dark:text-[var(--brand-offwhite)]/90 dark:hover:bg-[var(--brand-cyan)]/10 dark:hover:text-[var(--brand-cyan)]"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/75 transition-all hover:bg-[linear-gradient(135deg,rgba(10,132,255,0.12),rgba(0,209,255,0.1))] hover:text-[var(--brand-primary)] dark:text-[var(--brand-offwhite)]/90 dark:hover:bg-[var(--brand-cyan)]/10 dark:hover:text-[var(--brand-cyan)]"
                       >
                         <Icons.ShieldCheck className="h-4 w-4 shrink-0 text-[var(--brand-cyan)]" />
                         <span className="text-inherit">{link.name}</span>
@@ -133,7 +133,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-foreground/10 bg-white p-2.5 text-foreground transition-all duration-300 hover:border-[var(--brand-cyan)] hover:text-[var(--brand-cyan)] dark:border-[var(--brand-cyan)]/20 dark:bg-[#081120] dark:text-[var(--brand-offwhite)]"
+                className="rounded-2xl border border-[var(--brand-cyan)]/18 bg-[rgba(234,246,255,0.9)] p-2.5 text-foreground transition-all duration-300 hover:border-[var(--brand-cyan)] hover:bg-[rgba(0,209,255,0.12)] hover:text-[var(--brand-primary)] dark:border-[var(--brand-cyan)]/20 dark:bg-[#081120] dark:text-[var(--brand-offwhite)]"
                 aria-label="Toggle menu"
                 type="button"
               >

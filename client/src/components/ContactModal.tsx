@@ -340,7 +340,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               className="absolute inset-0"
               style={{
                 backgroundImage:
-                  "repeating-linear-gradient(0deg, rgba(0,209,255,0.06) 0px, rgba(0,209,255,0.06) 1px, transparent 1px, transparent 28px), repeating-linear-gradient(90deg, rgba(10,138,255,0.05) 0px, rgba(10,138,255,0.05) 1px, transparent 1px, transparent 28px)",
+                  "repeating-linear-gradient(0deg, rgba(0,209,255,0.06) 0px, rgba(0,209,255,0.06) 1px, transparent 1px, transparent 28px), repeating-linear-gradient(90deg, rgba(10,132,255,0.05) 0px, rgba(10,132,255,0.05) 1px, transparent 1px, transparent 28px)",
               }}
             />
             <div className="absolute -top-28 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.45)_0%,rgba(0,209,255,0)_70%)] blur-3xl" />

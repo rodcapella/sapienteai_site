@@ -14,11 +14,11 @@ const navLinkVariants = cva(
     variants: {
       variant: {
         default: `
-          text-foreground/70 hover:text-foreground
+          text-foreground/70 hover:text-[var(--brand-primary)]
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full
-          after:bg-primary
+          after:bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]
           after:rounded-full
           after:origin-left after:scale-x-0
           after:transition-transform after:duration-500
@@ -41,11 +41,11 @@ const navLinkVariants = cva(
 
       active: {
         true: `
-          text-foreground
+          text-[var(--brand-primary)]
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full
-          after:bg-primary
+          after:bg-[linear-gradient(90deg,var(--brand-primary),var(--brand-cyan),var(--brand-purple))]
           after:rounded-full
           after:scale-x-100
         `

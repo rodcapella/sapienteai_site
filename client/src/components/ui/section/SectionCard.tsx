@@ -16,31 +16,33 @@ const sectionCardVariants = cva(
     variants: {
       variant: {
         default: `
-          bg-[var(--glass-bg)]
-          border-[var(--tech-border)]
-          shadow-[var(--shadow-soft)]
+          bg-[linear-gradient(145deg,rgba(234,246,255,0.82),rgba(208,235,255,0.56))]
+          border-[rgba(10,132,255,0.26)]
+          shadow-[0_20px_52px_rgba(8,18,40,0.13)]
           hover:-translate-y-2
           hover:border-[var(--brand-cyan)]/70
-          hover:shadow-[0_0_0_1px_rgba(0,209,255,0.45),0_0_48px_rgba(0,209,255,0.42)]
+          hover:bg-[linear-gradient(145deg,rgba(234,246,255,0.9),rgba(0,209,255,0.12))]
+          hover:shadow-[0_0_0_1px_rgba(0,209,255,0.45),0_0_48px_rgba(0,209,255,0.34),0_24px_70px_rgba(8,18,40,0.16)]
         `,
 
         highlight: `
-          bg-[linear-gradient(138deg,rgba(5,8,27,0.78),rgba(26,31,46,0.62),rgba(10,138,255,0.3))]
-          border-[var(--brand-primary)]/35
-          shadow-[var(--shadow-soft)]
+          bg-[linear-gradient(138deg,rgba(5,8,22,0.9),rgba(8,18,40,0.78),rgba(10,132,255,0.36))]
+          border-[var(--brand-cyan)]/34
+          shadow-[0_22px_58px_rgba(5,8,22,0.32)]
           hover:-translate-y-2
           hover:border-[var(--brand-cyan)]/72
-          hover:shadow-[0_0_0_1px_rgba(123,129,255,0.45),0_0_56px_rgba(0,209,255,0.34)]
+          hover:shadow-[0_0_0_1px_rgba(123,97,255,0.45),0_0_56px_rgba(0,209,255,0.34)]
         `,
 
         subtle: `
-          bg-[var(--glass-bg-soft)]
-          border-[var(--tech-border)]
-          hover:border-[var(--brand-primary)]/45
+          bg-[linear-gradient(145deg,rgba(234,246,255,0.58),rgba(123,97,255,0.08))]
+          border-[rgba(0,209,255,0.24)]
+          hover:border-[var(--brand-purple)]/45
+          hover:shadow-[0_18px_46px_rgba(123,97,255,0.14)]
         `,
 
         solid: `
-          bg-[#05081B]
+          bg-[#050816]
           border-white/15
           text-white
           hover:border-[var(--brand-cyan)]/55
@@ -77,11 +79,11 @@ export function SectionCard({ className, variant, children, delay = 0, ...props 
       {...props}
     >
       <div
-        className="pointer-events-none absolute h-72 w-72 rounded-full bg-gradient-to-br from-[#00D1FF]/35 to-[#7B81FF]/20 blur-[95px] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        className="pointer-events-none absolute h-72 w-72 rounded-full bg-gradient-to-br from-[#00D1FF]/35 to-[#7B61FF]/20 blur-[95px] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
         style={{ left: position.x - 140, top: position.y - 140 }}
       />
 
-      <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [background:linear-gradient(130deg,rgba(0,209,255,0.55),transparent_50%,rgba(123,129,255,0.62))_border-box] [mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [mask-composite:exclude] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [background:linear-gradient(130deg,rgba(0,209,255,0.55),transparent_50%,rgba(123,97,255,0.62))_border-box] [mask:linear-gradient(#fff_0_0)_padding-box,linear-gradient(#fff_0_0)] [mask-composite:exclude] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
       <div className="relative z-10 flex h-full flex-col">{children}</div>
     </motion.div>
