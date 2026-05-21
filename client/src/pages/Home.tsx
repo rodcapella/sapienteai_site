@@ -25,7 +25,7 @@ const pillarBorder = [
 
 const lightSectionClass = "relative overflow-hidden bg-[#EAF6FF] py-24 text-foreground md:py-36";
 const darkSectionClass = "relative overflow-hidden border-y border-[var(--tech-border)] bg-[#060B1E] tech-grid py-24 md:py-36";
-const ctaSectionClass = "relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid";
+const ctaSectionClass = "final-cta relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid";
 
 export default function Home() {
   const [location] = useLocation();
@@ -63,7 +63,15 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="mx-auto mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">{content.hero.title}</h1>
+            <h1 className="mx-auto mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">
+              {content.hero.title}
+              {content.hero.highlight && (
+                <>
+                  <br />
+                  <span className="internal-hero-highlight">{content.hero.highlight}</span>
+                </>
+              )}
+            </h1>
           </Reveal>
 
           <Reveal delay={190}>
