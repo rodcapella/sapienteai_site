@@ -1,9 +1,7 @@
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
 
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
-import { TechBackdrop, TechParticleField } from "@/components/ui/tech/TechBackground";
 
 type InternalHeroProps = {
   title: ReactNode;
@@ -21,7 +19,7 @@ export function InternalHero({
   highlight,
   subtitle,
   label,
-  image = "/media/banners/hero-banner.webp",
+  image = "/media/bg/bg_hero.jpeg",
   imageAlt = "Sapiente.AI",
   children,
   compact = false,
@@ -33,25 +31,13 @@ export function InternalHero({
   return (
     <Section
       className={[
-        "relative flex items-center justify-center overflow-hidden bg-modern-gradient tech-grid scanlines",
+        "InternalHero relative flex items-center justify-center overflow-hidden",
         compact ? "min-h-[58vh] pt-28 pb-16 md:min-h-[66vh] md:pt-36 md:pb-24" : "min-h-[68vh] pt-28 pb-20 md:min-h-[78vh] md:pt-36 md:pb-28",
       ].join(" ")}
     >
       <div className="absolute inset-0">
-        <img src={image} alt={imageAlt} className="h-full w-full object-cover opacity-[0.2]" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(0,21,71,0.99),rgba(1,32,80,0.94),rgba(10,180,255,0.32))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_34%,rgba(85,212,242,0.12),rgba(0,21,71,0.42)_52%,rgba(0,21,71,0.82)_100%)]" />
+        <img src={image} alt={imageAlt} className="h-full w-full object-cover" />
       </div>
-
-      <TechBackdrop intensity="strong" />
-      <TechParticleField className="opacity-70" />
-
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(85,212,242,0.12),transparent_52%)]"
-        animate={{ opacity: [0.08, 0.22, 0.08] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-      />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
         {label && (

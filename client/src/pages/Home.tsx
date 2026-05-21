@@ -11,7 +11,7 @@ import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { TechBackdrop, TechParticleField } from "@/components/ui/tech/TechBackground";
+import { TechBackdrop } from "@/components/ui/tech/TechBackground";
 
 import { homePT } from "@/content/pt/home";
 import { homeEN } from "@/content/en/home";
@@ -44,15 +44,10 @@ export default function Home() {
 
   return (
     <div className="flex flex-col bg-background">
-      <Section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-modern-gradient tech-grid scanlines pt-28 pb-20 md:pt-40 md:pb-28">
+      <Section className="hero relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-28 pb-20 md:pt-40 md:pb-28">
         <div className="absolute inset-0">
-          <img src="/media/banners/hero-banner.webp" alt="Sapiente.AI" className="h-full w-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(5,8,27,0.96),rgba(26,31,46,0.88),rgba(10,138,255,0.45))]" />
+          <img src="/media/bg/bg_hero.jpeg" alt="Sapiente.AI" className="h-full w-full object-cover" />
         </div>
-        <TechBackdrop intensity="strong" />
-        <TechParticleField className="opacity-75" />
-
-        <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,240,255,0.24),transparent_52%)]" animate={{ opacity: [0.15, 0.4, 0.15] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 text-center">
           <Reveal>
