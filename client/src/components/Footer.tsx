@@ -41,19 +41,25 @@ export default function Footer() {
     { name: "Pinterest", icon: PinterestIcon, url: "https://www.pinterest.com/sapienteai" },
   ];
 
+  const contactItems = [
+    { icon: Icons.Mail, text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
+    { icon: Icons.Phone, text: "+351 910567575", href: "tel:+351910567575" },
+    { icon: Icons.MapPin, text: "Aveiro, Portugal" },
+  ];
+
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/25 bg-[#050816] text-[var(--brand-offwhite)] tech-grid scanlines">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(10,132,255,0.34),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(0,209,255,0.22),transparent_38%)]" />
-      <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
+    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/20 bg-[#001547] text-[var(--brand-offwhite)] tech-grid scanlines">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(10,180,255,0.16),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(122,92,252,0.12),transparent_38%)]" />
+      <div className="pointer-events-none absolute inset-0 dots-matrix opacity-10" />
 
       <div className="container relative z-10 mx-auto px-6 py-18 md:py-24">
-        <div className="mb-20 grid grid-cols-1 gap-14 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+        <div className="mb-20 grid grid-cols-1 gap-14 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="col-span-1 sm:col-span-2 xl:col-span-1">
             <Link href={`/${lang}`} className="group mb-8 inline-block">
               <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-24 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-[120px]" />
             </Link>
 
-            <p className="max-w-sm text-lg leading-relaxed text-white/65">{t("footer.description")}</p>
+            <p className="max-w-sm text-lg leading-relaxed text-white/70">{t("footer.description")}</p>
           </div>
 
           <div>
@@ -70,7 +76,7 @@ export default function Footer() {
           <div>
             <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
             <ul className="space-y-5">
-              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms")|| "Terms of Service"}</NavLink></li>
+              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms") || "Terms of Service"}</NavLink></li>
               <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
               <li><NavLink href={`/${lang}/trust`} variant="footer">{t("footer.trust") || "Trust"}</NavLink></li>
               <li><NavLink href={`/${lang}/rgpd`} variant="footer">{t("footer.rgpd")}</NavLink></li>
@@ -80,8 +86,37 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">
+              {t("footer.contact")}
+            </h4>
+            <ul className="space-y-4">
+              {contactItems.map((item) => {
+                const Icon = item.icon;
+                const content = (
+                  <span className="group flex items-center gap-3 text-sm font-medium leading-relaxed text-white/75 transition hover:text-white">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/20 bg-[#012050] text-[var(--brand-cyan)]">
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    {item.text}
+                  </span>
+                );
+
+                return (
+                  <li key={item.text}>
+                    {item.href ? <a href={item.href}>{content}</a> : content}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">
               {t("footer.newsletter")}
             </h4>
+
+            <p className="mb-6 text-sm leading-relaxed text-white/75">
+              {t("footer.newsletterDescription")}
+            </p>
 
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
               <PremiumButton className="w-full rounded-2xl py-4" variant="secondary">
@@ -105,7 +140,7 @@ export default function Footer() {
                   <a
                     key={social.name}
                     href={social.url}
-                    className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/30 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/20 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
+                    className="group inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-cyan)]/25 bg-[#012050]/80 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/12 hover:text-white hover:shadow-[0_0_18px_rgba(85,212,242,0.18)]"
                     aria-label={social.name}
                     target="_blank"
                     rel="noopener noreferrer nofollow"
@@ -132,7 +167,7 @@ export default function Footer() {
         type="button"
         onClick={scrollToTop}
         aria-label="Back to top"
-        className="absolute bottom-8 right-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/35 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/15 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.45)]"
+        className="absolute bottom-8 right-8 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/25 bg-[#012050]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/12 hover:text-white hover:shadow-[0_0_18px_rgba(85,212,242,0.18)]"
       >
         <Icons.ArrowUp className="h-5 w-5" />
       </button>
