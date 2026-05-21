@@ -1,6 +1,7 @@
 export const teamPT = {
   hero: {
-    title: "Mentes que transformam dados em crescimento",
+    title: "Mentes que transformam dados",
+    highlight: "em crescimento.",
     subtitle: "Unimos tecnologia, inteligência e execução para acelerar empresas."
   },
 

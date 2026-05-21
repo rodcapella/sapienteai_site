@@ -4,8 +4,8 @@ import { Icons } from "@/lib/icons";
 export const iaGenerativaPolicyPT = {
   label: "IA Generativa",
   title: "Política de Utilização de IA Generativa",
-  subtitle:
-    "Regras claras para uma utilização responsável, transparente e segura da inteligência artificial generativa, em conformidade com o RGPD e o Regulamento IA da UE.",
+  subtitle: "Regras claras para uma utilização responsável, transparente e segura da ",
+  highlight: "inteligência artificial generativa, em conformidade com o RGPD e o Regulamento IA da UE.",
 
   sections: [
     {

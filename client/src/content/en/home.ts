@@ -3,8 +3,7 @@ export const homeEN = {
     label: "INTELLIGENCE • AUTOMATION • REAL GROWTH",
     title: "Intelligence that drives growth.",
     highlight: "Results that scale.",
-    subtitle:
-      "We help SMEs increase sales, reduce costs, and grow through intelligent automation.",
+    subtitle: "We apply Artificial Intelligence, data analytics, and automation to accelerate decision-making, reduce costs, and drive real business growth.",
     ctaPrimary: "Automate my business",
     ctaSecondary: "See how it works",
   },

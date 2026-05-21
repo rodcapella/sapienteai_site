@@ -4,8 +4,8 @@ import { Icons } from "@/lib/icons";
 export const iaGenerativaPolicyEN = {
   label: "Generative AI",
   title: "Generative AI Usage Policy",
-  subtitle:
-    "Clear rules for the responsible, transparent, and secure use of generative artificial intelligence, in compliance with the GDPR and the EU AI Act.",
+  subtitle: "Clear rules for the responsible, transparent, and secure use of",
+  highlight: "generative artificial intelligence, in compliance with the GDPR and the EU AI Act.",
 
   sections: [
     {

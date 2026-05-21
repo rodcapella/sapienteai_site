@@ -54,7 +54,7 @@ export default function Header({ onContactClick }: HeaderProps) {
   const legalLinks = [
     { name: t("legal.trust") || "Trust", href: `/${lang}/trust` },
     { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
-    { name: t("legal.terms") || "Terms", href: `/${lang}/terms` },
+    { name: t("legal.terms") || "Terms of Service", href: `/${lang}/terms` },
     { name: t("legal.rgpd") || "RGPD", href: `/${lang}/rgpd` },
     { name: t("legal.generative-ai-policy") || "Generative AI Policy", href: `/${lang}/generative-ai-policy` },
   ];

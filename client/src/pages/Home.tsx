@@ -88,7 +88,7 @@ export default function Home() {
       </Section>
 
       {isPT && (
-        <Section className={darkSectionClass.replace("py-24 md:py-36", "py-12")}>
+        <Section className={lightSectionClass.replace("py-24 md:py-36", "py-12")}>
           <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,209,255,0.2),transparent_45%)]" />
           <div className="relative z-10 mx-auto grid max-w-7xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -125,7 +125,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={darkSectionClass}>
+      <Section className={lightSectionClass}>
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader><Reveal><SectionTitle label={content.marketingAI.label} title={content.marketingAI.title} description={content.marketingAI.subtitle} variant="light" /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-7 px-6 lg:grid-cols-3 md:gap-9">
@@ -174,7 +174,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className={darkSectionClass}>
+      <Section className={lightSectionClass}>
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
         <SectionHeader><Reveal><SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} variant="light" /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">

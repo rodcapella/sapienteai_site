@@ -1,6 +1,7 @@
 export const teamEN = {
   hero: {
-    title: "Minds that turn data into growth",
+    title: "Minds that turn data",
+    highlight: "into growth.",
     subtitle: "We combine technology, intelligence, and execution to accelerate business growth."
   },
 

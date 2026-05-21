@@ -70,9 +70,9 @@ export default function Footer() {
           <div>
             <h4 className="mb-8 font-heading text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
             <ul className="space-y-5">
-              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms")}</NavLink></li>
+              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms")|| "Terms of Service"}</NavLink></li>
               <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
-              <li><NavLink href={`/${lang}/trust`} variant="footer">{t("legal.trust") || "Trust"}</NavLink></li>
+              <li><NavLink href={`/${lang}/trust`} variant="footer">{t("footer.trust") || "Trust"}</NavLink></li>
               <li><NavLink href={`/${lang}/rgpd`} variant="footer">{t("footer.rgpd")}</NavLink></li>
               <li><NavLink href={`/${lang}/generative-ai-policy`} variant="footer">{t("footer.generative-ai-policy")}</NavLink></li>
             </ul>

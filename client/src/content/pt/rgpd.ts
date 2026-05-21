@@ -3,7 +3,8 @@ import { Icons } from "@/lib/icons";
 export const rgpdContentPT = {
   label: "Documento Legal",
   title: "GDPR Compliance",
-  subtitle: "Conformidade rigorosa com o Regulamento Geral sobre a Proteção de Dados da União Europeia.",
+  subtitle: "Conformidade rigorosa com o RGPD da UE",
+  highlight: "(Regulamento Geral sobre a Proteção de Dados da União Europeia).",
 
   sections: [
     {

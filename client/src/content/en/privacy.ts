@@ -3,7 +3,10 @@ import { Icons } from "@/lib/icons";
 
 export const privacyEN = {
   title: "Privacy Policy",
+  subtitle: "Transparency, security, and protection of your data",
+  highlight: "In compliance with the European Union GDPR.",
   lastUpdated: "Last updated: February 16, 2026",
+  
   sections: [
     {
       id: "overview",

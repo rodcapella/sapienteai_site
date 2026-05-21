@@ -3,7 +3,10 @@ import { Icons } from "@/lib/icons";
 
 export const privacyPT = {
   title: "Política de Privacidade",
+  subtitle: "Transparência, segurança e proteção dos seus dados",
+  highlight: "Em conformidade com o RGPD da União Europeia.",
   lastUpdated: "Última atualização: 16 de fevereiro de 2026",
+
   sections: [
     {
       id: "overview",

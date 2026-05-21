@@ -1,9 +1,10 @@
 import { Icons } from "@/lib/icons";
 
-export const gdprContentEN = {
+export const rgpdContentEN = {
   label: "Legal Document",
   title: "GDPR Compliance",
-  subtitle: "Strict compliance with the European Union’s General Data Protection Regulation.",
+  subtitle: "Strict compliance with the EU GDPR",
+  highlight: "(General Data Protection Regulation of the European Union).",
 
   sections: [
     {
