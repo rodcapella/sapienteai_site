@@ -107,7 +107,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                         href={link.href}
                         className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/75 transition-all hover:bg-[linear-gradient(135deg,rgba(10,132,255,0.12),rgba(0,209,255,0.1))] hover:text-[var(--brand-primary)] dark:text-[var(--brand-offwhite)]/90 dark:hover:bg-[var(--brand-cyan)]/10 dark:hover:text-[var(--brand-cyan)]"
                       >
-                        <Icons.ShieldCheck className="h-4 w-4 shrink-0 text-[var(--brand-cyan)]" />
+                        <Icons.ShieldCheck className="h-4 w-4 shrink-0 text-[#012050] dark:text-[var(--brand-cyan)]" />
                         <span className="text-inherit">{link.name}</span>
                       </Link>
                     ))}
