@@ -43,7 +43,7 @@ export default function Footer() {
 
   const contactItems = [
     { icon: Icons.Mail, text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
-    { icon: Icons.Phone, text: "+351 910567575", href: "tel:+351910567575" },
+    { icon: Icons.Phone, text: "+351 910567575", href: "https://wa.me/351910567575?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Sapiente.AI" },
     { icon: Icons.MapPin, text: "Aveiro, Portugal" },
   ];
 
@@ -84,30 +84,40 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
-              {t("footer.contact")}
-            </h4>
-            <ul className="space-y-1.5">
-              {contactItems.map((item) => {
-                const Icon = item.icon;
-                const content = (
-                  <span className="group flex items-center gap-2.5 text-sm leading-relaxed text-white/70 transition hover:text-white">
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/20 bg-[#08112a]/75 text-[var(--brand-cyan)]">
-                      <Icon className="h-3.5 w-3.5" />
-                    </span>
-                    {item.text}
+        <div>
+          <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+            {t("footer.contact")}
+          </h4>
+          <ul className="space-y-1.5">
+            {contactItems.map((item) => {
+              const Icon = item.icon;
+              const content = (
+                <span className="group flex items-center gap-2.5 text-sm leading-relaxed text-white/70 transition hover:text-white">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/20 bg-[#08112a]/75 text-[var(--brand-cyan)]">
+                    <Icon className="h-3.5 w-3.5" />
                   </span>
-                );
+                  {item.text}
+                </span>
+              );
 
-                return (
-                  <li key={item.text}>
-                    {item.href ? <a href={item.href}>{content}</a> : content}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+              return (
+                <li key={item.text}>
+                  {item.href ? (
+                    
+                      href={item.href}
+                      target={item.href.startsWith("https://wa.me") ? "_blank" : undefined}
+                      rel={item.href.startsWith("https://wa.me") ? "noopener noreferrer" : undefined}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    content
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
           <div>
             <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
