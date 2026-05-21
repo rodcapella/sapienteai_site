@@ -34,8 +34,8 @@ export function PremiumButton({
     const dx = e.clientX - (rect.left + rect.width / 2);
     const dy = e.clientY - (rect.top + rect.height / 2);
 
-    x.set(dx * 0.1);
-    y.set(dy * 0.1);
+    x.set(dx * 0.08);
+    y.set(dy * 0.08);
 
     ref.current?.style.setProperty("--x", `${e.clientX - rect.left}px`);
     ref.current?.style.setProperty("--y", `${e.clientY - rect.top}px`);
@@ -47,16 +47,15 @@ export function PremiumButton({
   };
 
   const standardBlue =
-    "bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-cyan))] text-white shadow-[0_12px_30px_rgba(10,132,255,0.35)] hover:bg-[linear-gradient(135deg,var(--brand-purple),var(--brand-cyan-bright))] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,240,255,0.55),0_0_44px_rgba(0,209,255,0.38),0_0_60px_rgba(123,97,255,0.22)]";
+    "bg-[#012050] text-white shadow-[0_10px_22px_rgba(1,32,80,0.22)] hover:bg-[var(--brand-purple)] hover:text-white hover:shadow-[0_0_0_1px_rgba(85,212,242,0.24),0_0_22px_rgba(85,212,242,0.16)]";
 
   const variantClasses = {
     primary: standardBlue,
     secondary: standardBlue,
     purple: standardBlue,
     outline:
-      "border-2 border-[var(--brand-primary)] bg-[rgba(234,246,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,132,255,0.18)] hover:border-[var(--brand-cyan)] hover:bg-[linear-gradient(135deg,var(--brand-deep),var(--brand-primary))] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,209,255,0.55),0_0_44px_rgba(0,209,255,0.34)]",
-    black:
-      "bg-[linear-gradient(135deg,var(--brand-night),var(--brand-deep))] text-white shadow-[0_12px_30px_rgba(5,8,22,0.35)] hover:bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-cyan))] hover:text-white hover:shadow-[0_0_0_1px_rgba(0,209,255,0.55),0_0_44px_rgba(0,209,255,0.36)]",
+      "border-2 border-[#012050] bg-transparent text-[#012050] shadow-[0_8px_18px_rgba(1,32,80,0.12)] hover:border-[var(--brand-purple)] hover:bg-[#012050] hover:text-white hover:shadow-[0_0_0_1px_rgba(85,212,242,0.18),0_0_18px_rgba(85,212,242,0.12)] dark:border-[var(--brand-cyan)] dark:text-[var(--brand-cyan)] dark:hover:bg-[#012050] dark:hover:text-white",
+    black: standardBlue,
   };
 
   const sizeClasses = {
@@ -74,7 +73,7 @@ export function PremiumButton({
       onMouseLeave={reset}
       style={{ x: springX, y: springY }}
       className={cn(
-        "neon-shimmer group relative overflow-hidden rounded-full border border-[rgba(255,255,255,0.12)] font-heading font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.04] active:scale-95",
+        "neon-shimmer group relative overflow-hidden rounded-full border border-[rgba(255,255,255,0.12)] font-heading font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.03] active:scale-95",
         variantClasses[variant],
         sizeClasses[size],
         className,
@@ -83,11 +82,11 @@ export function PremiumButton({
       <span
         className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          background: "radial-gradient(180px circle at var(--x) var(--y), rgba(255,255,255,0.32), transparent 70%)",
+          background: "radial-gradient(180px circle at var(--x) var(--y), rgba(255,255,255,0.18), transparent 70%)",
         }}
       />
 
-      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.42),transparent_55%)] opacity-18" />
+      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.22),transparent_55%)] opacity-18" />
 
       <span className="relative z-10 flex items-center justify-center gap-3 text-white">{children}</span>
     </motion.button>
