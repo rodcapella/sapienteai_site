@@ -1,17 +1,15 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Icons } from "@/lib/icons";
 
+import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { setSEOHead } from '@/components/SEOHead';
 import { getContent } from "@/lib/content";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from '@/hooks/useTranslation';
-
-const ctaSectionClass = "relative overflow-hidden [background:var(--brand-gradient)] py-24 text-center md:py-36 tech-grid";
 
 export default function About() {
   const [location] = useLocation();
@@ -33,14 +31,8 @@ export default function About() {
     <div className="flex flex-col">
       <InternalHero
         label={t("nav.about")}
-        title={
-          <>
-            {content.hero.title} <br />
-            <span className="text-[var(--brand-cyan)] drop-shadow-[0_0_30px_rgba(34,211,238,0.3)]">
-              {content.hero.highlight}
-            </span>
-          </>
-        }
+        title={content.hero.title}
+        highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
       />
 
@@ -146,28 +138,12 @@ export default function About() {
         </div>
       </Section>
 
-      <Section className={ctaSectionClass}>
-        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(0,209,255,0.22),transparent_45%)]" />
-        <div className="relative z-10 mx-auto max-w-5xl px-6">
-          <Reveal>
-            <h2 className="font-heading text-4xl font-black tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl">{content.teamCta.title}</h2>
-          </Reveal>
-          <Reveal delay={110}>
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[var(--brand-offwhite)]/78 sm:text-2xl">{content.teamCta.text}</p>
-          </Reveal>
-          <Reveal delay={220}>
-            <div className="mt-12 inline-block">
-              <Link href={`/${lang}/team`}>
-                <PremiumButton variant="primary" size="lg">
-                  {content.teamCta.link}
-                  <Icons.Users className="h-5 w-5" />
-                </PremiumButton>
-              </Link>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
+      <FinalCTA
+        title={content.teamCta.title}
+        description={content.teamCta.text}
+        button={content.teamCta.link}
+        href={`/${lang}/team`}
+      />
     </div>
   );
 }

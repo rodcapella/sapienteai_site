@@ -1,13 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useLocation } from "wouter";
 
-import ContactModal from "@/components/ContactModal";
-import { setSEOHead } from "@/components/SEOHead";
-import { PremiumButton } from "@/components/ui/button/PremiumButton";
+import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
+import { setSEOHead } from "@/components/SEOHead";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 
@@ -75,31 +74,19 @@ function TeamCard({ member }: { member: Member }) {
     >
       <span
         className="absolute inset-0 rounded-[1.75rem] opacity-0 transition group-hover:opacity-100"
-        style={{
-          background: "radial-gradient(300px circle at var(--x) var(--y), rgba(34,211,238,0.15), transparent 40%)",
-        }}
+        style={{ background: "radial-gradient(300px circle at var(--x) var(--y), rgba(34,211,238,0.15), transparent 40%)" }}
       />
 
       <div className="team-member-card flex h-full flex-col p-7 text-left transition-all duration-300 group-hover:-translate-y-2 md:p-9">
         <div className="relative z-10 mb-8 flex flex-col gap-6 sm:flex-row sm:items-start">
           <div className="team-avatar-frame">
-            {member.image ? (
-              <img src={member.image} alt={member.name} className="h-full w-full object-cover" />
-            ) : (
-              <div className="relative z-10 text-4xl font-black">
-                {getInitials(member.name)}
-              </div>
-            )}
+            {member.image ? <img src={member.image} alt={member.name} className="h-full w-full object-cover" /> : <div className="relative z-10 text-4xl font-black">{getInitials(member.name)}</div>}
           </div>
 
           <div className="min-w-0 pt-1">
-            <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-primary/70">
-              {member.role}
-            </p>
+            <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-primary/70">{member.role}</p>
             <h3 className="team-member-name mb-4 text-3xl font-black leading-none md:text-4xl">{member.name}</h3>
-            <p className="team-member-focus inline-flex rounded-full px-4 py-2 text-xs font-black uppercase tracking-[0.14em]">
-              {member.focus}
-            </p>
+            <p className="team-member-focus inline-flex rounded-full px-4 py-2 text-xs font-black uppercase tracking-[0.14em]">{member.focus}</p>
           </div>
         </div>
 
@@ -112,11 +99,7 @@ function TeamCard({ member }: { member: Member }) {
         <div className="team-stack-panel relative z-10 mt-auto">
           <p className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-primary/70">Stack & foco</p>
           <div className="flex flex-wrap gap-3">
-            {member.stack.map((tech) => (
-              <span key={tech} className="team-stack-chip">
-                {tech}
-              </span>
-            ))}
+            {member.stack.map((tech) => <span key={tech} className="team-stack-chip">{tech}</span>)}
           </div>
         </div>
 
@@ -136,7 +119,6 @@ export default function Team() {
   const lang = location.split("/")[1] || "pt";
   const content = getContent("team", lang);
   const members: Member[] = content.members;
-  const [isContactOpen, setIsContactOpen] = useState(false);
 
   useEffect(() => {
     setSEOHead({
@@ -149,7 +131,7 @@ export default function Team() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={lang === "en" ? "Team" : "Equipa"} title={content.hero.title} subtitle={content.hero.subtitle} imageAlt="Sapiente.AI team" />
+      <InternalHero label={lang === "en" ? "Team" : "Equipa"} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle} imageAlt="Sapiente.AI team" />
 
       <Section className="team-section-shell team-intro-section bg-ice py-24 md:py-40">
         <div className="container mx-auto px-6">
@@ -157,28 +139,13 @@ export default function Team() {
             <Reveal>
               <div className="team-intro-panel h-full p-7 md:p-10">
                 <div className="relative z-10">
-                  <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">
-                    {content.intro.eyebrow}
-                  </p>
-                  <h2 className="mb-8 text-4xl font-black leading-none text-foreground md:text-6xl">
-                    {content.intro.title}
-                  </h2>
-                  <p className="text-lg font-medium leading-relaxed text-foreground/65 md:text-2xl">
-                    {content.intro.text}
-                  </p>
+                  <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">{content.intro.eyebrow}</p>
+                  <h2 className="mb-8 text-4xl font-black leading-none text-foreground md:text-6xl">{content.intro.title}</h2>
+                  <p className="text-lg font-medium leading-relaxed text-foreground/65 md:text-2xl">{content.intro.text}</p>
                   <div className="mt-10 grid grid-cols-3 gap-3 border-t border-primary/10 pt-8">
-                    <div>
-                      <p className="text-3xl font-black text-primary">AI</p>
-                      <p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Systems</p>
-                    </div>
-                    <div>
-                      <p className="text-3xl font-black text-primary">SEO</p>
-                      <p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Growth</p>
-                    </div>
-                    <div>
-                      <p className="text-3xl font-black text-primary">BI</p>
-                      <p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Data</p>
-                    </div>
+                    <div><p className="text-3xl font-black text-primary">AI</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Systems</p></div>
+                    <div><p className="text-3xl font-black text-primary">SEO</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Growth</p></div>
+                    <div><p className="text-3xl font-black text-primary">BI</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Data</p></div>
                   </div>
                 </div>
               </div>
@@ -188,16 +155,10 @@ export default function Team() {
               {content.intro.highlights.map((item: Highlight, index: number) => (
                 <Reveal key={item.value} delay={index * 100}>
                   <div className="team-highlight-card grid gap-5 p-6 transition duration-500 hover:-translate-y-1 hover:border-[var(--brand-cyan)]/40 hover:shadow-[0_24px_64px_rgba(0,209,255,0.16)] md:grid-cols-[80px_1fr] md:p-8">
-                    <div className="text-4xl font-black leading-none text-primary/35">
-                      {item.value}
-                    </div>
+                    <div className="text-4xl font-black leading-none text-primary/35">{item.value}</div>
                     <div>
-                      <h3 className="mb-3 text-2xl font-black text-foreground">
-                        {item.title}
-                      </h3>
-                      <p className="text-base font-medium leading-relaxed text-foreground/60">
-                        {item.text}
-                      </p>
+                      <h3 className="mb-3 text-2xl font-black text-foreground">{item.title}</h3>
+                      <p className="text-base font-medium leading-relaxed text-foreground/60">{item.text}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -211,44 +172,24 @@ export default function Team() {
         <div className="container mx-auto px-6">
           <Reveal>
             <div className="relative z-10 mx-auto mb-16 max-w-4xl text-center">
-              <p className="mx-auto mb-7 inline-flex rounded-full border border-primary/20 bg-white/60 px-5 py-2 text-sm font-black uppercase tracking-[0.24em] text-primary shadow-[0_18px_40px_rgba(10,17,40,0.08)] backdrop-blur-xl">
-                {content.presentation.eyebrow}
-              </p>
-              <h2 className="team-founders-title mb-8 text-4xl font-black leading-none md:text-7xl">
-                {content.presentation.title}
-              </h2>
-              <p className="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-foreground/70 md:text-2xl">
-                {content.presentation.text}
-              </p>
+              <p className="mx-auto mb-7 inline-flex rounded-full border border-primary/20 bg-white/60 px-5 py-2 text-sm font-black uppercase tracking-[0.24em] text-primary shadow-[0_18px_40px_rgba(10,17,40,0.08)] backdrop-blur-xl">{content.presentation.eyebrow}</p>
+              <h2 className="team-founders-title mb-8 text-4xl font-black leading-none md:text-7xl">{content.presentation.title}</h2>
+              <p className="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-foreground/70 md:text-2xl">{content.presentation.text}</p>
             </div>
           </Reveal>
 
           <div className="relative z-10 mx-auto grid max-w-6xl gap-8 lg:grid-cols-2">
             {members.map((member) => (
-              <Reveal key={member.name}>
-                <TeamCard member={member} />
-              </Reveal>
+              <Reveal key={member.name}><TeamCard member={member} /></Reveal>
             ))}
           </div>
         </div>
       </Section>
 
-      <Section className="team-cta-panel py-24 text-center md:py-36">
-        <div className="container mx-auto px-6">
-          <Reveal>
-            <div className="relative z-10 mx-auto max-w-4xl">
-              <h2 className="mb-8 text-4xl font-black leading-none text-[var(--brand-offwhite)] md:text-7xl">
-                {lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}
-              </h2>
-              <PremiumButton variant="secondary" onClick={() => setIsContactOpen(true)}>
-                {lang === "en" ? "Talk to the team" : "Falar com a equipa"}
-              </PremiumButton>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
-
-      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
+      <FinalCTA
+        title={lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}
+        button={lang === "en" ? "Talk to the team" : "Falar com a equipa"}
+      />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 
-import ContactModal from "@/components/ContactModal";
+import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { quizContentEn } from "@/content/en/quiz";
 import { quizContentPt } from "@/content/pt/quiz";
@@ -25,7 +25,6 @@ export default function QuizAI() {
   const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
-  const [isContactOpen, setIsContactOpen] = useState(false);
 
   const content = quizContent[lang];
   const questions = content.questions;
@@ -69,13 +68,7 @@ export default function QuizAI() {
 
   return (
     <main className="quiz-ai-page">
-      <InternalHero
-        label={content.badge}
-        title={content.title}
-        highlight={`${content.highlight}?`}
-        subtitle={content.subtitle}
-        compact
-      />
+      <InternalHero label={content.badge} title={content.title} highlight={`${content.highlight}?`} subtitle={content.subtitle} compact />
 
       <section className="quiz-experience tech-grid scanlines">
         <div className="quiz-bg-radials" />
@@ -127,13 +120,7 @@ export default function QuizAI() {
                     const isWrong = selected === index && !isCorrect;
 
                     return (
-                      <button
-                        type="button"
-                        key={option}
-                        disabled={selected !== null}
-                        onClick={() => selectAnswer(index)}
-                        className={["quiz-option", selected !== null && isCorrect ? "option-correct" : "", isWrong ? "option-wrong" : ""].filter(Boolean).join(" ")}
-                      >
+                      <button type="button" key={option} disabled={selected !== null} onClick={() => selectAnswer(index)} className={["quiz-option", selected !== null && isCorrect ? "option-correct" : "", isWrong ? "option-wrong" : ""].filter(Boolean).join(" ")}>
                         <span>{String.fromCharCode(65 + index)}</span>
                         {option}
                       </button>
@@ -178,17 +165,6 @@ export default function QuizAI() {
               <h2>{result.title}</h2>
               <p>{result.desc}</p>
 
-              <div className="quiz-cta-card">
-                <div className="quiz-cta-icon">
-                  <Icons.Rocket size={26} />
-                </div>
-                <h3>{content.ctaTitle}</h3>
-                <p>{content.ctaText}</p>
-                <button type="button" onClick={() => setIsContactOpen(true)} className="quiz-main-btn">
-                  {content.ctaButton}
-                </button>
-              </div>
-
               <button type="button" onClick={restartQuiz} className="quiz-restart">
                 <Icons.RotateCcw size={16} />
                 {content.restartButton}
@@ -198,7 +174,7 @@ export default function QuizAI() {
         )}
       </section>
 
-      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
+      <FinalCTA title={content.ctaTitle} description={content.ctaText} button={content.ctaButton} />
     </main>
   );
 }
