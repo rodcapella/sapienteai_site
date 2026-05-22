@@ -74,7 +74,7 @@ function TeamCard({ member }: { member: Member }) {
     >
       <span
         className="absolute inset-0 rounded-[1.75rem] opacity-0 transition group-hover:opacity-100"
-        style={{ background: "radial-gradient(300px circle at var(--x) var(--y), rgba(34,211,238,0.15), transparent 40%)" }}
+        style={{ background: "radial-gradient(300px circle at var(--x) var(--y), rgba(0,209,255,0.15), transparent 40%)" }}
       />
 
       <div className="team-member-card flex h-full flex-col p-7 text-left transition-all duration-300 group-hover:-translate-y-2 md:p-9">
@@ -154,7 +154,7 @@ export default function Team() {
             <div className="grid gap-5">
               {content.intro.highlights.map((item: Highlight, index: number) => (
                 <Reveal key={item.value} delay={index * 100}>
-                  <div className="team-highlight-card grid gap-5 p-6 transition duration-500 hover:-translate-y-1 hover:border-[var(--brand-cyan)]/40 hover:shadow-[0_24px_64px_rgba(0,209,255,0.16)] md:grid-cols-[80px_1fr] md:p-8">
+                  <div className="team-highlight-card grid gap-5 p-6 transition duration-500 hover:-translate-y-1 hover:border-[#00D1FF]/40 hover:shadow-[0_24px_64px_rgba(0,209,255,0.16)] md:grid-cols-[80px_1fr] md:p-8">
                     <div className="text-4xl font-black leading-none text-primary/35">{item.value}</div>
                     <div>
                       <h3 className="mb-3 text-2xl font-black text-foreground">{item.title}</h3>
@@ -172,7 +172,7 @@ export default function Team() {
         <div className="container mx-auto px-6">
           <Reveal>
             <div className="relative z-10 mx-auto mb-16 max-w-4xl text-center">
-              <p className="mx-auto mb-7 inline-flex rounded-full border border-primary/20 bg-white/60 px-5 py-2 text-sm font-black uppercase tracking-[0.24em] text-primary shadow-[0_18px_40px_rgba(10,17,40,0.08)] backdrop-blur-xl">{content.presentation.eyebrow}</p>
+              <p className="mx-auto mb-7 inline-flex rounded-full border border-primary/20 bg-[#EAF6FF]/60 px-5 py-2 text-sm font-black uppercase tracking-[0.24em] text-primary shadow-[0_18px_40px_rgba(26,31,46,0.08)] backdrop-blur-xl">{content.presentation.eyebrow}</p>
               <h2 className="team-founders-title mb-8 text-4xl font-black leading-none md:text-7xl">{content.presentation.title}</h2>
               <p className="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-foreground/70 md:text-2xl">{content.presentation.text}</p>
             </div>

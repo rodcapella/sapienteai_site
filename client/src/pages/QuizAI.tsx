@@ -152,7 +152,7 @@ export default function QuizAI() {
             <div className="quiz-result-inner">
               <div className="quiz-score-ring">
                 <svg viewBox="0 0 160 160" aria-hidden="true">
-                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(85,212,242,0.1)" strokeWidth="8" />
+                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(0,209,255,0.1)" strokeWidth="8" />
                   <circle cx="80" cy="80" r="70" fill="none" strokeWidth="8" strokeLinecap="round" strokeDasharray="440" strokeDashoffset={circleOffset} transform="rotate(-90 80 80)" className="score-ring" />
                 </svg>
                 <div>

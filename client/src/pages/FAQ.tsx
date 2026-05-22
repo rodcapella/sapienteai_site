@@ -29,20 +29,20 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
     <SectionCard
       className={cn(
         "group mb-5 cursor-pointer overflow-hidden rounded-[2rem] border p-0 transition-all duration-500",
-        "bg-white/88 shadow-[0_18px_45px_rgba(10,17,40,0.1)] backdrop-blur-2xl",
-        "hover:-translate-y-1 hover:border-[var(--brand-cyan)]/60 hover:shadow-[0_24px_70px_rgba(0,209,255,0.18)]",
-        isOpen ? "border-[var(--brand-cyan)]/70" : "border-primary/20",
+        "bg-[#EAF6FF]/88 shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-2xl",
+        "hover:-translate-y-1 hover:border-[#00D1FF]/60 hover:shadow-[0_24px_70px_rgba(0,209,255,0.18)]",
+        isOpen ? "border-[#00D1FF]/70" : "border-primary/20",
       )}
       onClick={onToggle}
     >
       <div className="relative p-6 md:p-8">
         <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-70" />
-        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--brand-cyan)]/10 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/22" />
+        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#00D1FF]/10 blur-3xl transition-all duration-500 group-hover:bg-[#00D1FF]/22" />
 
         <div className="relative z-10 flex items-start justify-between gap-5">
           <div className="flex items-start gap-4 md:gap-5">
             {Icon && (
-              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/35 bg-[#06102A] text-[var(--brand-cyan)] shadow-[0_0_22px_rgba(0,209,255,0.2)] md:h-14 md:w-14">
+              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-[#00D1FF]/35 bg-[#050816] text-[#00D1FF] shadow-[0_0_22px_rgba(0,209,255,0.2)] md:h-14 md:w-14">
                 <Icon className="h-6 w-6" />
               </div>
             )}
@@ -57,7 +57,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
           <div
             className={cn(
               "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 md:h-12 md:w-12",
-              isOpen ? "rotate-180 bg-[var(--brand-primary)] text-white shadow-[0_0_26px_rgba(10,138,255,0.35)]" : "bg-[#EAF6FF] text-[var(--brand-primary)]",
+              isOpen ? "rotate-180 bg-[#0A84FF] text-[#EAF6FF] shadow-[0_0_26px_rgba(10,132,255,0.35)]" : "bg-[#EAF6FF] text-[#0A84FF]",
             )}
           >
             <Icons.ChevronDown className="h-6 w-6" />
@@ -66,7 +66,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
 
         <div className={cn("overflow-hidden transition-all duration-700", isOpen ? "mt-7 max-h-[900px] opacity-100" : "max-h-0 opacity-0")}>
           <div className="ml-0 border-t border-primary/15 pt-6 md:ml-[4.25rem]">
-            <p className="rounded-2xl border border-[var(--brand-cyan)]/16 bg-[#06102A]/[0.04] px-5 py-5 text-base font-medium leading-relaxed text-foreground/70 md:text-lg">
+            <p className="rounded-2xl border border-[#00D1FF]/16 bg-[#050816]/[0.04] px-5 py-5 text-base font-medium leading-relaxed text-foreground/70 md:text-lg">
               {item.answer}
             </p>
           </div>
@@ -118,8 +118,8 @@ export default function FAQ() {
       <Section className="standard-section-bg relative flex-grow overflow-hidden py-24 md:py-36">
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <Reveal>
-            <div className="mb-12 rounded-[2rem] border border-primary/20 bg-white/72 p-6 text-center shadow-[0_18px_45px_rgba(10,17,40,0.1)] backdrop-blur-xl md:p-8">
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-[var(--brand-primary)]">
+            <div className="mb-12 rounded-[2rem] border border-primary/20 bg-[#EAF6FF]/72 p-6 text-center shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-xl md:p-8">
+              <p className="text-sm font-black uppercase tracking-[0.28em] text-[#0A84FF]">
                 {lang === "pt" ? "Dúvidas frequentes" : "Common questions"}
               </p>
               <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">

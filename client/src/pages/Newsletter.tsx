@@ -24,43 +24,43 @@ export default function Newsletter() {
   }, [isPT, lang]);
 
   return (
-    <main className="standard-section-bg relative min-h-screen overflow-hidden pt-28 text-[var(--brand-offwhite)] md:pt-36">
+    <main className="standard-section-bg relative min-h-screen overflow-hidden pt-28 text-[#EAF6FF] md:pt-36">
       <section className="relative z-10 mx-auto grid min-h-[calc(100vh-9rem)] max-w-6xl items-center gap-10 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
-          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--brand-cyan)]/35 bg-[#071129]/70 px-5 py-2 text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-cyan)] backdrop-blur-xl">
+          <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#00D1FF]/35 bg-[#050816]/70 px-5 py-2 text-xs font-black uppercase tracking-[0.28em] text-[#00D1FF] backdrop-blur-xl">
             <Icons.Mail className="h-4 w-4" />
             {isPT ? "Newsletter Sapiente.AI" : "Sapiente.AI Newsletter"}
           </div>
 
-          <h1 className="font-heading text-4xl font-black leading-[0.95] tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl">
+          <h1 className="font-heading text-4xl font-black leading-[0.95] tracking-tight text-[#EAF6FF] sm:text-6xl md:text-7xl">
             {isPT ? "Registe-se na nossa newsletter" : "Subscribe to our newsletter"}
           </h1>
 
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-[var(--brand-offwhite)]/75 sm:text-xl">
+          <p className="mt-7 max-w-xl text-lg leading-relaxed text-[#EAF6FF]/75 sm:text-xl">
             {isPT
               ? "Receba conteúdos sobre inteligência artificial, automação, marketing digital e formas práticas de tornar o seu negócio mais eficiente."
               : "Get insights on artificial intelligence, automation, digital marketing and practical ways to make your business more efficient."}
           </p>
 
-          <div className="mt-8 grid gap-3 text-sm text-[var(--brand-offwhite)]/72 sm:grid-cols-2">
+          <div className="mt-8 grid gap-3 text-sm text-[#EAF6FF]/72 sm:grid-cols-2">
             {[isPT ? "IA aplicada ao negócio" : "Business AI", isPT ? "Automação inteligente" : "Smart automation", isPT ? "Marketing e crescimento" : "Marketing and growth", isPT ? "Dicas práticas" : "Practical insights"].map((item) => (
-              <div key={item} className="flex items-center gap-3 rounded-2xl border border-[var(--brand-cyan)]/20 bg-[#071129]/55 px-4 py-3 backdrop-blur-xl">
-                <Icons.CheckCircle className="h-4 w-4 shrink-0 text-[var(--brand-cyan)]" />
+              <div key={item} className="flex items-center gap-3 rounded-2xl border border-[#00D1FF]/20 bg-[#050816]/55 px-4 py-3 backdrop-blur-xl">
+                <Icons.CheckCircle className="h-4 w-4 shrink-0 text-[#00D1FF]" />
                 <span>{item}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-[var(--brand-cyan)]/30 bg-[#071129]/72 p-6 shadow-[0_0_60px_rgba(0,209,255,0.18)] backdrop-blur-2xl sm:p-8 md:p-10">
+        <div className="rounded-[2rem] border border-[#00D1FF]/30 bg-[#050816]/72 p-6 shadow-[0_0_60px_rgba(0,209,255,0.18)] backdrop-blur-2xl sm:p-8 md:p-10">
           <div className="mb-8 text-center">
-            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[var(--brand-cyan)]/12 text-[var(--brand-cyan)]">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-[#00D1FF]/40 bg-[#00D1FF]/12 text-[#00D1FF]">
               <Icons.Send className="h-7 w-7" />
             </div>
-            <h2 className="font-heading text-2xl font-black text-[var(--brand-offwhite)]">
+            <h2 className="font-heading text-2xl font-black text-[#EAF6FF]">
               {isPT ? "Registo na newsletter" : "Newsletter sign-up"}
             </h2>
-            <p className="mt-2 text-sm text-[var(--brand-offwhite)]/62">
+            <p className="mt-2 text-sm text-[#EAF6FF]/62">
               {isPT ? "Preencha os dados abaixo para receber novidades." : "Fill in the details below to receive updates."}
             </p>
           </div>
@@ -71,29 +71,29 @@ export default function Newsletter() {
             <input type="hidden" name="_template" value="table" />
 
             <label className="block">
-              <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]">{isPT ? "Nome" : "Name"}</span>
-              <input name="name" required type="text" className="w-full rounded-2xl border border-[var(--brand-cyan)]/24 bg-black/40 px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--brand-cyan)] focus:ring-2 focus:ring-[var(--brand-cyan)]/30" />
+              <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#00D1FF]">{isPT ? "Nome" : "Name"}</span>
+              <input name="name" required type="text" className="w-full rounded-2xl border border-[#00D1FF]/24 bg-[#050816]/40 px-4 py-3 text-sm text-[#EAF6FF] outline-none transition focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/30" />
             </label>
 
             <label className="block">
-              <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]">E-mail</span>
-              <input name="email" required type="email" className="w-full rounded-2xl border border-[var(--brand-cyan)]/24 bg-black/40 px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--brand-cyan)] focus:ring-2 focus:ring-[var(--brand-cyan)]/30" />
+              <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#00D1FF]">E-mail</span>
+              <input name="email" required type="email" className="w-full rounded-2xl border border-[#00D1FF]/24 bg-[#050816]/40 px-4 py-3 text-sm text-[#EAF6FF] outline-none transition focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/30" />
             </label>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="block">
-                <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]">{isPT ? "Cargo" : "Role"}</span>
-                <input name="role" type="text" className="w-full rounded-2xl border border-[var(--brand-cyan)]/24 bg-black/40 px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--brand-cyan)] focus:ring-2 focus:ring-[var(--brand-cyan)]/30" />
+                <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#00D1FF]">{isPT ? "Cargo" : "Role"}</span>
+                <input name="role" type="text" className="w-full rounded-2xl border border-[#00D1FF]/24 bg-[#050816]/40 px-4 py-3 text-sm text-[#EAF6FF] outline-none transition focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/30" />
               </label>
 
               <label className="block">
-                <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)]">{isPT ? "Empresa" : "Company"}</span>
-                <input name="company" type="text" className="w-full rounded-2xl border border-[var(--brand-cyan)]/24 bg-black/40 px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--brand-cyan)] focus:ring-2 focus:ring-[var(--brand-cyan)]/30" />
+                <span className="mb-2 block text-xs font-black uppercase tracking-[0.18em] text-[#00D1FF]">{isPT ? "Empresa" : "Company"}</span>
+                <input name="company" type="text" className="w-full rounded-2xl border border-[#00D1FF]/24 bg-[#050816]/40 px-4 py-3 text-sm text-[#EAF6FF] outline-none transition focus:border-[#00D1FF] focus:ring-2 focus:ring-[#00D1FF]/30" />
               </label>
             </div>
 
-            <label className="flex items-start gap-3 rounded-2xl border border-[var(--brand-cyan)]/18 bg-black/28 p-4 text-sm leading-relaxed text-[var(--brand-offwhite)]/70">
-              <input type="checkbox" required checked={accepted} onChange={(event) => setAccepted(event.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-cyan)]/40 bg-black" />
+            <label className="flex items-start gap-3 rounded-2xl border border-[#00D1FF]/18 bg-[#050816]/28 p-4 text-sm leading-relaxed text-[#EAF6FF]/70">
+              <input type="checkbox" required checked={accepted} onChange={(event) => setAccepted(event.target.checked)} className="mt-1 h-4 w-4 rounded border-[#00D1FF]/40 bg-[#050816]" />
               <span>
                 {isPT
                   ? "Li e compreendi a Política de Privacidade e autorizo o tratamento dos meus dados para receber comunicações da Sapiente.AI."

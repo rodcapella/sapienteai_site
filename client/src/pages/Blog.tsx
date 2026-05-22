@@ -62,16 +62,16 @@ export default function Blog() {
 
       <InternalHero label={t('nav.blog')} title={t('blog.title')} subtitle={t('blog.subtitle')} compact>
         <div className="relative mx-auto max-w-xl">
-          <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-white/50" />
+          <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[#EAF6FF]/50" />
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t('blog.search')}
             className="
-              w-full rounded-full border border-white/20
-              bg-white/10 py-4 pl-14 pr-6
-              text-white backdrop-blur-md
-              placeholder:text-white/50
+              w-full rounded-full border border-[#EAF6FF]/20
+              bg-[#EAF6FF]/10 py-4 pl-14 pr-6
+              text-[#EAF6FF] backdrop-blur-md
+              placeholder:text-[#EAF6FF]/50
               transition-all
               focus:outline-none focus:ring-2 focus:ring-primary/50
             "
@@ -91,7 +91,7 @@ export default function Blog() {
                   px-6 py-2.5 rounded-full text-sm font-black transition-all
                   ${selectedCategory === category
                     ? 'bg-primary text-primary-foreground shadow-lg'
-                    : 'bg-white text-foreground/60 border border-foreground/5 hover:bg-foreground/5'}
+                    : 'bg-[#EAF6FF] text-foreground/60 border border-foreground/5 hover:bg-foreground/5'}
                 `}
               >
                 {category === allCategory ? t('blog.all') : category}
@@ -108,7 +108,7 @@ export default function Blog() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
               {filteredArticles.map(article => (
                 <Link key={article.id} href={`/${lang}/blog/${article.slug}`} className="group h-full">
-                  <SectionCard className="bg-white border-foreground/5 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-8">
+                  <SectionCard className="bg-[#EAF6FF] border-foreground/5 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-8">
 
                     {/* IMAGE */}
                     <div className="h-56 -mx-8 -mt-8 mb-8 overflow-hidden rounded-t-2xl">
@@ -164,7 +164,7 @@ export default function Blog() {
       <Section className="bg-ice py-24 md:py-40">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
-            <SectionCard className="bg-white p-10 md:p-16 shadow-xl border-primary/10 text-center">
+            <SectionCard className="bg-[#EAF6FF] p-10 md:p-16 shadow-xl border-primary/10 text-center">
               <h2 className="mb-6 font-heading text-3xl font-black text-foreground md:text-5xl">
                 {t('blog.newsletter')}
               </h2>

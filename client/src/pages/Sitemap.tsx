@@ -82,9 +82,9 @@ function makeLink(lang: string, path = "") {
 
 function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
   return (
-    <SectionCard className="h-full border-foreground/5 bg-white/85 p-6 shadow-xl md:p-8">
+    <SectionCard className="h-full border-foreground/5 bg-[#EAF6FF]/85 p-6 shadow-xl md:p-8">
       <div className="mb-6 flex items-start gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl [background:var(--brand-gradient)] text-white shadow-[0_12px_24px_rgba(1,32,80,0.16)]">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl [background:var(--brand-gradient)] text-[#EAF6FF] shadow-[0_12px_24px_rgba(26,31,46,0.16)]">
           <Icon className="h-6 w-6" />
         </div>
         <div>
