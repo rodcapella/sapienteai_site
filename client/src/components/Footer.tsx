@@ -2,12 +2,11 @@ import { type SVGProps } from "react";
 import { Link, useLocation } from "wouter";
 
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
-import { NavLink } from "@/components/ui/navigation/NavLink";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
-const footerTitleClass = "mb-2 font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]";
-const footerTextClass = "font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]";
+const footerTitleClass = "mb-2 bg-[linear-gradient(90deg,#5de0e6,#004aad)] bg-clip-text font-serif text-[14px] font-black uppercase tracking-[0.24em] text-transparent";
+const footerColumnClass = "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,#050816,#004aad,#050816)]";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -63,8 +62,8 @@ export default function Footer() {
             <p className="max-w-sm font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.description")}</p>
           </div>
 
-          <div>
-            <h4 className={footerTitleClass}>{t("footer.navigation")}</h4>
+          <div className={footerColumnClass}>
+            <p className={footerTitleClass}>{t("footer.navigation")}</p>
             <ul className="space-y-2">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
@@ -81,8 +80,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className={footerTitleClass}>{t("footer.legal")}</h4>
+          <div className={footerColumnClass}>
+            <p className={footerTitleClass}>{t("footer.legal")}</p>
             <ul className="space-y-2">
               {[
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
@@ -100,8 +99,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className={footerTitleClass}>{t("footer.contact")}</h4>
+          <div className={footerColumnClass}>
+            <p className={footerTitleClass}>{t("footer.contact")}</p>
             <ul className="space-y-1.5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
@@ -127,8 +126,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
-            <h4 className={footerTitleClass}>{t("footer.newsletter")}</h4>
+          <div className={footerColumnClass}>
+            <p className={footerTitleClass}>{t("footer.newsletter")}</p>
             <p className="mb-4 font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.newsletterDescription")}</p>
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
               <PremiumButton className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
@@ -138,11 +137,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid items-center gap-3 border-t border-[var(--brand-primary)]/30 pt-4 md:grid-cols-[300px_1fr_auto]">
-          <div className="flex w-[300px] max-w-full flex-col items-center gap-2 justify-self-center md:justify-self-start">
-            <h4 className="mb-3 font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
+        <div className="grid items-center gap-4 pt-3">
+          <div className="flex w-[300px] max-w-full flex-col items-center gap-2 justify-self-center">
+            <p className="mb-3 font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
               {lang === "pt" ? "Siga-nos" : "Follow us"}
-            </h4>
+            </p>
             <div className="flex w-full items-center justify-center gap-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
@@ -158,7 +157,10 @@ export default function Footer() {
           <Link href={`/${lang}/sitemap`} className="justify-self-center text-center font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)] transition hover:text-[var(--brand-cyan-bright)]">
             {t("footer.sitemap")}
           </Link>
-          <p className="text-center font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)] md:text-right">{t("footer.copyright")}</p>
+
+          <div className="h-px w-full bg-[linear-gradient(90deg,#050816,#004aad,#050816)]" />
+
+          <p className="text-center font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[#FFFFFF]">{t("footer.copyright")}</p>
         </div>
       </div>
 
