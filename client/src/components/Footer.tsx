@@ -5,17 +5,8 @@ import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
-const footerTitleClass = "mb-2 bg-[linear-gradient(90deg,#5de0e6,#004aad)] bg-clip-text font-serif text-[14px] font-black uppercase tracking-[0.24em] text-transparent";
+const footerTitleClass = "mb-2 font-serif text-[14px] font-bold uppercase tracking-[0.24em] text-[var(--brand-offwhite)]";
 const footerColumnClass = "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,rgba(5,8,22,0),#050816_12%,#004aad_50%,#050816_88%,rgba(5,8,22,0))]";
-const footerTitleStyle = {
-  background: "linear-gradient(90deg, #5de0e6, #004aad)",
-  WebkitBackgroundClip: "text",
-  backgroundClip: "text",
-  color: "transparent",
-  fontFamily: "'Playfair Display', serif",
-  fontSize: "14px",
-  lineHeight: "1.2",
-} as const;
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -64,16 +55,21 @@ export default function Footer() {
 
       <div className="container relative z-10 mx-auto px-6 py-5 md:py-7">
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
+
+          {/* Logo + descrição */}
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
             <div className="mb-3 inline-block">
               <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-40 w-auto object-contain md:h-48" />
             </div>
-            <p className="max-w-sm font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.description")}</p>
+            <p className="max-w-sm font-serif text-[16px] leading-relaxed text-[var(--brand-offwhite)]">
+              {t("footer.description")}
+            </p>
           </div>
 
+          {/* Navegação */}
           <div className={footerColumnClass}>
-            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.navigation")}</p>
-            <ul className="space-y-2">
+            <p className={footerTitleClass}>{t("footer.navigation")}</p>
+            <ul className="space-y-3">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
                 { href: `/${lang}/team`, label: t("nav.team") },
@@ -81,7 +77,7 @@ export default function Footer() {
                 { href: quizHref, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="font-serif text-[12px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
+                  <Link href={item.href} className="font-serif text-[16px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
                     {item.label}
                   </Link>
                 </li>
@@ -89,9 +85,10 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Legal */}
           <div className={footerColumnClass}>
-            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.legal")}</p>
-            <ul className="space-y-2">
+            <p className={footerTitleClass}>{t("footer.legal")}</p>
+            <ul className="space-y-3">
               {[
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
                 { href: `/${lang}/privacy`, label: t("footer.privacy") },
@@ -100,7 +97,7 @@ export default function Footer() {
                 { href: `/${lang}/generative-ai-policy`, label: t("footer.generative-ai-policy") },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="font-serif text-[12px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
+                  <Link href={item.href} className="font-serif text-[16px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
                     {item.label}
                   </Link>
                 </li>
@@ -108,20 +105,20 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Contacto */}
           <div className={footerColumnClass}>
-            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.contact")}</p>
-            <ul className="space-y-1.5">
+            <p className={footerTitleClass}>{t("footer.contact")}</p>
+            <ul className="space-y-3">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
-                  <span className="group flex items-center gap-2.5 font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan-bright)]">
+                  <span className="group flex items-center gap-2.5 font-serif text-[16px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan-bright)]">
                     <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-primary)]/30 bg-[var(--brand-deep)]/75 text-[var(--brand-cyan)]">
                       <Icon className="h-3.5 w-3.5" />
                     </span>
                     {item.text}
                   </span>
                 );
-
                 return (
                   <li key={item.text}>
                     {item.href ? (
@@ -135,41 +132,46 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Newsletter */}
           <div className={footerColumnClass}>
-            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.newsletter")}</p>
-            <p className="mb-4 font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.newsletterDescription")}</p>
+            <p className={footerTitleClass}>{t("footer.newsletter")}</p>
+            <p className="mb-4 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
+              {t("footer.newsletterDescription")}
+            </p>
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
               <PremiumButton className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
                 {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
               </PremiumButton>
             </Link>
-          </div>
-        </div>
-
-        <div className="grid items-center gap-4 pt-3">
-          <div className="flex w-[300px] max-w-full flex-col items-center gap-2 justify-self-center">
-            <p className="mb-3 font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
-              {lang === "pt" ? "Siga-nos" : "Follow us"}
-            </p>
-            <div className="flex w-full items-center justify-center gap-2">
-              {socialLinks.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a key={social.name} href={social.url} className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]" aria-label={social.name} target="_blank" rel="noopener noreferrer nofollow">
-                    <Icon className="h-3.5 w-3.5" />
-                  </a>
-                );
-              })}
+            <div className="mt-4">
+              <Link href={`/${lang}/sitemap`} className="font-serif text-[16px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
+                {t("footer.sitemap")}
+              </Link>
             </div>
           </div>
 
-          <Link href={`/${lang}/sitemap`} className="justify-self-center text-center font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)] transition hover:text-[var(--brand-cyan-bright)]">
-            {t("footer.sitemap")}
-          </Link>
+        </div>
+
+        {/* Barra inferior */}
+        <div className="flex flex-col items-center gap-4 pt-3">
+          <p className="font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
+            {lang === "pt" ? "Siga-nos" : "Follow us"}
+          </p>
+          <div className="flex items-center justify-center gap-2">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a key={social.name} href={social.url} className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]" aria-label={social.name} target="_blank" rel="noopener noreferrer nofollow">
+                  <Icon className="h-3.5 w-3.5" />
+                </a>
+              );
+            })}
+          </div>
 
           <div className="h-px w-full bg-[linear-gradient(90deg,#050816,#004aad,#050816)]" />
-
-          <p className="text-center font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[#FFFFFF]">{t("footer.copyright")}</p>
+          <p className="text-center font-serif text-[10px] italic font-black uppercase tracking-[0.24em] text-[#FFFFFF]">
+            {t("footer.copyright")}
+          </p>
         </div>
       </div>
 
