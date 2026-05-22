@@ -27,7 +27,6 @@ export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const coreServiceIcons = [Icons.Bot, Icons.Cog, Icons.Cpu, Icons.ShieldCheck, Icons.BarChart3, Icons.MessageCircle];
-  const marketingIcons = [Icons.Target, Icons.Brain, Icons.BarChart3];
   const automationIcons = [Icons.Zap, Icons.Calendar, Icons.TrendingUp];
   const conversionIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
   const keywordIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Cog, Icons.TrendingUp, Icons.BarChart3];
@@ -119,22 +118,14 @@ export default function Home() {
       </Section>
 
       <Section className={homeSectionClass}>
-        <SectionHeader><Reveal><SectionTitle label={content.marketingAI.label} title={content.marketingAI.title} description={content.marketingAI.subtitle} variant="light" /></Reveal></SectionHeader>
-        <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-7 px-6 lg:grid-cols-3 md:gap-9">
-          {content.marketingAI.cards.map((card, i) => {
-            const Icon = marketingIcons[i % marketingIcons.length];
-            return (
-              <Reveal key={card.title} delay={i * 70}>
-                <motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative h-full min-h-[360px] overflow-hidden rounded-3xl border border-[var(--brand-cyan)]/35 bg-[linear-gradient(145deg,rgba(5,8,27,0.96),rgba(10,24,58,0.92))] p-8 shadow-[0_18px_48px_rgba(0,0,0,0.28)] transition-all duration-500 hover:border-[var(--brand-cyan)] hover:shadow-[0_24px_70px_rgba(0,209,255,0.28)] md:p-10">
-                  <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)]" />
-                  <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[var(--brand-cyan)]/18 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/32" />
-                  <div className="relative z-10 mb-7 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/45 bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)] shadow-[0_0_26px_rgba(0,209,255,0.26)] transition-all duration-500 group-hover:scale-110 group-hover:bg-[var(--brand-cyan)] group-hover:text-[#06102A]"><Icon className="h-8 w-8" /></div>
-                  <h3 className="relative z-10 mb-5 font-heading text-3xl font-black leading-tight tracking-tight text-[var(--brand-offwhite)]">{card.title}</h3>
-                  <ul className="relative z-10 space-y-4">{card.points.map((point) => <li key={point} className="flex items-start gap-3 text-[var(--brand-offwhite)]/82"><Icons.CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-cyan)]" /><span>{point}</span></li>)}</ul>
-                </motion.div>
-              </Reveal>
-            );
-          })}
+        <div className="relative z-10 mx-auto max-w-7xl px-6">
+          <Reveal>
+            <img
+              src="/media/banners/home_marketing_digital_ia.jpeg"
+              alt={content.marketingAI.title}
+              className="w-full rounded-[2rem] border border-[var(--brand-cyan)]/20 object-cover shadow-[0_24px_70px_rgba(1,32,80,0.16)]"
+            />
+          </Reveal>
         </div>
       </Section>
 
