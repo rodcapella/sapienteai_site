@@ -3,15 +3,27 @@ import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { useState } from "react";
+import { Link } from "wouter";
 
 type FinalCTAProps = {
   title: string;
   description?: string;
   button: string;
+  href?: string;
 };
 
-export function FinalCTA({ title, description, button }: FinalCTAProps) {
+export function FinalCTA({ title, description, button, href }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const buttonElement = (
+    <PremiumButton
+      onClick={href ? undefined : () => setIsContactOpen(true)}
+      className="!bg-[#55D4F2] !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white"
+      size="lg"
+    >
+      {button}
+    </PremiumButton>
+  );
 
   return (
     <>
@@ -36,19 +48,13 @@ export function FinalCTA({ title, description, button }: FinalCTAProps) {
 
           <Reveal delay={220}>
             <div className="mt-12 inline-block">
-              <PremiumButton
-                onClick={() => setIsContactOpen(true)}
-                className="!bg-[#55D4F2] !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white"
-                size="lg"
-              >
-                {button}
-              </PremiumButton>
+              {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </div>
           </Reveal>
         </div>
       </Section>
 
-      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
+      {!href && isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </>
   );
 }
