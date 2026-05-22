@@ -50,7 +50,7 @@ export function InternalHero({
         )}
 
         <Reveal delay={100}>
-          <h1 className={`${titleClass} mx-auto mt-10 max-w-5xl font-heading font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_24px_rgba(0,0,0,0.34)] [text-shadow:0_0_14px_rgba(85,212,242,0.11),0_2px_10px_rgba(0,21,71,0.62)]`}>
+          <h1 className={`${titleClass} mx-auto mt-10 max-w-5xl font-heading font-extrabold leading-[1.02] text-[var(--brand-offwhite)] drop-shadow-[0_8px_24px_rgba(0,0,0,0.34)] [text-shadow:0_0_14px_rgba(85,212,242,0.11),0_2px_10px_rgba(0,21,71,0.62)]`}>
             {title}
             {highlight && (
               <>
@@ -63,7 +63,7 @@ export function InternalHero({
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_14px_rgba(0,0,0,0.32)] sm:text-xl md:text-2xl">
+            <p className="mx-auto mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[var(--brand-offwhite)]/88 drop-shadow-[0_4px_14px_rgba(0,0,0,0.32)] sm:text-xl md:text-2xl">
               {subtitle}
             </p>
           </Reveal>
