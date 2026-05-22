@@ -187,7 +187,7 @@ export default function Team() {
       </Section>
 
       <FinalCTA
-        title={lang === "en" ? "Strategy, AI, and execution ", "working as one." : "Estratégia, IA e execução", "a trabalhar como uma só."}
+        title={lang === "en" ? "Strategy, AI, and execution working as one." : "Estratégia, IA e execução a trabalhar como uma só."}
         button={lang === "en" ? "Talk to the team" : "Falar com a equipa"}
       />
     </div>
