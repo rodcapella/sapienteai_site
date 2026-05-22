@@ -348,7 +348,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           </button>
 
           <DialogHeader className="relative z-10 mb-7 space-y-3 text-left">
-            <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight text-[var(--brand-offwhite)] sm:text-3xl">
+            <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
               <span className="inline-flex items-center gap-2"><Icons.MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />{text.title}</span>
             </DialogTitle>
             <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[rgba(234,246,255,0.76)] sm:text-base">{text.description}</DialogDescription>
@@ -417,7 +417,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
 
             <div className="pt-2">
-              <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !px-6 !py-4 !text-sm !tracking-[0.16em] ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
+              <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[#55D4F2] !px-6 !py-4 !text-sm !text-[#001547] !tracking-[0.16em] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
                 {submitState === "loading" ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.processing}</> : submitState === "success" ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.successButton}</> : <><Icons.MessageSquareText className="h-4 w-4" />{text.submit.idle}</>}
               </PremiumButton>
             </div>
