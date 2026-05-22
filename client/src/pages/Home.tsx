@@ -83,14 +83,16 @@ export default function Home() {
 
       {isPT && (
         <Section className={homeSectionClass}>
-          <div className="relative z-10 mx-auto max-w-7xl px-6 text-center">
+          <SectionHeader>
             <Reveal>
-              <p className="font-detail text-xs font-black uppercase tracking-[0.32em] text-[#0AB4FF] md:text-sm">Resultados que a IA gera</p>
-              <div className="mx-auto mt-3 h-0.5 w-20 rounded-full bg-[#0AB4FF]" />
-              <h2 className="mx-auto mt-7 max-w-5xl font-heading text-4xl font-black leading-none tracking-tight text-[#050A30] md:text-6xl">O que a <span className="text-[#0AB4FF]">IA</span> entrega ao seu negócio</h2>
-              <p className="mx-auto mt-6 max-w-3xl text-lg font-medium leading-relaxed text-[#001547]/68 md:text-2xl">Mais eficiência. Menos esforço. Crescimento real.</p>
+              <SectionTitle
+                label="Resultados que a IA gera"
+                title="O que a IA entrega ao seu negócio"
+                description="Mais eficiência. Menos esforço. Crescimento real."
+                variant="light"
+              />
             </Reveal>
-          </div>
+          </SectionHeader>
 
           <div className="relative z-10 mx-auto mt-12 grid max-w-7xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
             {homePT.keywords.map((keyword, i) => {
