@@ -5,7 +5,7 @@ import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
-const footerTitleClass = "mb-2 font-serif text-[14px] font-bold uppercase tracking-[0.24em] text-[var(--brand-offwhite)]";
+const footerTitleClass = "mb-2 font-serif text-[14px] font-bold uppercase tracking-[0.24em] bg-[linear-gradient(90deg,#00F0FF,#0047AB)] bg-clip-text text-transparent";
 const footerColumnClass = "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,rgba(5,8,22,0),#050816_12%,#004aad_50%,#050816_88%,rgba(5,8,22,0))]";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
@@ -69,7 +69,7 @@ export default function Footer() {
           {/* Navegação */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.navigation")}</p>
-            <ul className="space-y-3">
+            <ul className="space-y-5">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
                 { href: `/${lang}/team`, label: t("nav.team") },
@@ -88,7 +88,7 @@ export default function Footer() {
           {/* Legal */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.legal")}</p>
-            <ul className="space-y-3">
+            <ul className="space-y-5">
               {[
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
                 { href: `/${lang}/privacy`, label: t("footer.privacy") },
@@ -108,7 +108,7 @@ export default function Footer() {
           {/* Contacto */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.contact")}</p>
-            <ul className="space-y-3">
+            <ul className="space-y-5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
@@ -143,7 +143,7 @@ export default function Footer() {
                 {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
               </PremiumButton>
             </Link>
-            <div className="mt-4">
+            <div className="mt-12">
               <Link href={`/${lang}/sitemap`} className="font-serif text-[16px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
                 {t("footer.sitemap")}
               </Link>
