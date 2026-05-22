@@ -33,14 +33,14 @@ export function FinalCTA({ title, description, button, href }: FinalCTAProps) {
 
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <Reveal>
-            <h2 className="mx-auto max-w-4xl font-heading text-4xl font-black leading-[1.05] tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl">
+            <h2 className="mx-auto max-w-4xl font-black leading-[1.05] tracking-tight" style={{ fontFamily: "'Inter', sans-serif", color: "#EAF6FF", fontSize: "40px" }}>
               {title}
             </h2>
           </Reveal>
 
           {description && (
             <Reveal delay={110}>
-              <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[var(--brand-offwhite)]/72 sm:text-xl">
+              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#00F0FF", fontSize: "24px" }}>
                 {description}
               </p>
             </Reveal>

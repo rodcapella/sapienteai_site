@@ -40,20 +40,19 @@ export function InternalHero({
       <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
         {label && (
           <Reveal>
-            <div className="internal-hero-label glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] sm:text-sm">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_10px_rgba(85,212,242,0.45)]" />
+            <div className="inline-flex items-center rounded-full border border-[var(--brand-cyan)]/25 px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-offwhite)]/60 shadow-[0_0_18px_rgba(85,212,242,0.07),inset_0_0_12px_rgba(85,212,242,0.04)] backdrop-blur-sm sm:text-sm">
               {label}
             </div>
           </Reveal>
         )}
 
         <Reveal delay={100}>
-          <h1 className={`${titleClass} mt-10 max-w-5xl font-heading font-extrabold leading-[1.02] text-[var(--brand-offwhite)] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]`}>
+          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)]" style={{ fontFamily: "'Inter', sans-serif", color: "#FFFFFF", fontSize: "42px" }}>
             {title}
             {highlight && (
               <>
                 <br />
-                <span className="internal-hero-highlight">{highlight}</span>
+                <span style={{ fontFamily: "'Inter', sans-serif", color: "#0A84FF", fontSize: "42px" }}>{highlight}</span>
               </>
             )}
           </h1>
@@ -61,7 +60,7 @@ export function InternalHero({
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mt-8 max-w-4xl font-[var(--font-body)] text-[14px] font-medium leading-relaxed text-[var(--brand-offwhite)] drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]">
+            <p className="mt-8 max-w-4xl leading-relaxed drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]" style={{ fontFamily: "'Playfair Display', serif", color: "#FFFFFF", fontSize: "18px" }}>
               {subtitle}
             </p>
           </Reveal>
