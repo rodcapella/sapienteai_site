@@ -6,6 +6,9 @@ import { NavLink } from "@/components/ui/navigation/NavLink";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
+const footerTitleClass = "mb-2 font-serif text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]";
+const footerTextClass = "font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]";
+
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -46,8 +49,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--brand-cyan)]/20 bg-[#001547] text-[var(--brand-offwhite)] tech-grid scanlines">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(31,36,117,0.28),transparent_38%),radial-gradient(circle_at_80%_80%,rgba(90,67,200,0.16),transparent_36%)]" />
+    <footer className="relative overflow-hidden border-t border-[var(--brand-purple)]/30 bg-[var(--brand-night)] font-serif text-[var(--brand-offwhite)] tech-grid scanlines">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-primary)_22%,transparent),transparent_38%),radial-gradient(circle_at_80%_80%,color-mix(in_srgb,var(--brand-cyan)_14%,transparent),transparent_36%)]" />
       <div className="pointer-events-none absolute inset-0 dots-matrix opacity-10" />
 
       <div className="container relative z-10 mx-auto px-6 py-5 md:py-7">
@@ -56,12 +59,12 @@ export default function Footer() {
             <Link href={`/${lang}`} className="group mb-3 inline-block">
               <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-16" />
             </Link>
-            <p className="max-w-sm text-sm leading-relaxed text-white/70">{t("footer.description")}</p>
+            <p className="max-w-sm font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.description")}</p>
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.navigation")}</h4>
-            <ul className="space-y-2">
+            <h4 className={footerTitleClass}>{t("footer.navigation")}</h4>
+            <ul className="space-y-2 [&_a]:!font-serif [&_a]:!text-[12px] [&_a]:!text-[var(--brand-offwhite)] hover:[&_a]:!text-[var(--brand-cyan-bright)]">
               <li><NavLink href={`/${lang}`} variant="footer">{t("nav.home")}</NavLink></li>
               <li><NavLink href={`/${lang}/team`} variant="footer">{t("nav.team")}</NavLink></li>
               <li><NavLink href={`/${lang}/faq`} variant="footer">{t("nav.faq")}</NavLink></li>
@@ -70,8 +73,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
-            <ul className="space-y-2">
+            <h4 className={footerTitleClass}>{t("footer.legal")}</h4>
+            <ul className="space-y-2 [&_a]:!font-serif [&_a]:!text-[12px] [&_a]:!text-[var(--brand-offwhite)] hover:[&_a]:!text-[var(--brand-cyan-bright)]">
               <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms") || "Terms of Service"}</NavLink></li>
               <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
               <li><NavLink href={`/${lang}/trust`} variant="footer">{t("footer.trust") || "Trust"}</NavLink></li>
@@ -81,13 +84,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.contact")}</h4>
+            <h4 className={footerTitleClass}>{t("footer.contact")}</h4>
             <ul className="space-y-1.5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
-                  <span className="group flex items-center gap-2.5 text-sm leading-relaxed text-white/70 transition hover:text-white">
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/20 bg-[#08112a]/75 text-[var(--brand-cyan)]">
+                  <span className="group flex items-center gap-2.5 font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan-bright)]">
+                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-purple)]/30 bg-[var(--brand-deep)]/75 text-[var(--brand-cyan)]">
                       <Icon className="h-3.5 w-3.5" />
                     </span>
                     {item.text}
@@ -108,26 +111,26 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.newsletter")}</h4>
-            <p className="mb-4 text-sm leading-relaxed text-white/70">{t("footer.newsletterDescription")}</p>
+            <h4 className={footerTitleClass}>{t("footer.newsletter")}</h4>
+            <p className="mb-4 font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.newsletterDescription")}</p>
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
-              <PremiumButton className="w-full rounded-2xl !bg-[#55D4F2] !py-1.5 !text-xs !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white" variant="secondary">
+              <PremiumButton className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
                 {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
               </PremiumButton>
             </Link>
           </div>
         </div>
 
-        <div className="grid items-center gap-3 border-t border-[var(--brand-cyan)]/20 pt-4 md:grid-cols-[300px_1fr_auto]">
+        <div className="grid items-center gap-3 border-t border-[var(--brand-purple)]/30 pt-4 md:grid-cols-[300px_1fr_auto]">
           <div className="flex w-[300px] max-w-full flex-col items-center gap-2 justify-self-center md:justify-self-start">
-            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+            <h4 className="mb-3 font-serif text-sm font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
               {lang === "pt" ? "Siga-nos" : "Follow us"}
             </h4>
             <div className="flex w-full items-center justify-center gap-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <a key={social.name} href={social.url} className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/25 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]" aria-label={social.name} target="_blank" rel="noopener noreferrer nofollow">
+                  <a key={social.name} href={social.url} className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-purple)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]" aria-label={social.name} target="_blank" rel="noopener noreferrer nofollow">
                     <Icon className="h-3.5 w-3.5" />
                   </a>
                 );
@@ -135,14 +138,14 @@ export default function Footer() {
             </div>
           </div>
 
-          <Link href={`/${lang}/sitemap`} className="justify-self-center text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/80 transition hover:text-white">
+          <Link href={`/${lang}/sitemap`} className="justify-self-center text-center font-serif text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)] transition hover:text-[var(--brand-cyan-bright)]">
             {t("footer.sitemap")}
           </Link>
-          <p className="text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
+          <p className="text-center font-serif text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)] md:text-right">{t("footer.copyright")}</p>
         </div>
       </div>
 
-      <button type="button" onClick={scrollToTop} aria-label="Back to top" className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/30 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]">
+      <button type="button" onClick={scrollToTop} aria-label="Back to top" className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-purple)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]">
         <Icons.ArrowUp className="h-3.5 w-3.5" />
       </button>
     </footer>
