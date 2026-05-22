@@ -8,11 +8,12 @@ import { Link } from "wouter";
 type FinalCTAProps = {
   title: string;
   description?: string;
+  highlight?: string;
   button: string;
   href?: string;
 };
 
-export function FinalCTA({ title, description, button, href }: FinalCTAProps) {
+export function FinalCTA({ title, description, highlight, button, href }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const buttonElement = (
@@ -27,20 +28,29 @@ export function FinalCTA({ title, description, button, href }: FinalCTAProps) {
 
   return (
     <>
-      <Section className="final-cta relative overflow-hidden bg-modern-gradient py-24 text-center md:py-36 tech-grid scanlines">
-        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(85,212,242,0.16),transparent_45%)]" />
+    <Section className="final-cta relative overflow-hidden py-24 text-center md:py-36">
+        <div className="pointer-events-none absolute inset-0">
+          <img src="/media/bg/bg_finalCTA.png" alt="" className="h-full w-full object-cover" />
+        </div>
 
-        <div className="relative z-10 mx-auto max-w-5xl px-6">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 pl-12 text-left">
           <Reveal>
             <h2 className="mx-auto max-w-4xl font-black leading-[1.05] tracking-tight" style={{ fontFamily: "'Inter', sans-serif", color: "#EAF6FF", fontSize: "40px" }}>
               {title}
+              {highlight && (
+                <>
+                  <br />
+                  <span className="!text-[#0057FF]" style={{ fontFamily: "'Inter', sans-serif", fontSize: "40px" }}>
+                    {highlight}
+                  </span>
+                </>
+              )}
             </h2>
           </Reveal>
 
           {description && (
             <Reveal delay={110}>
-              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#00F0FF", fontSize: "24px" }}>
+              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#000000", fontSize: "24px" }}>
                 {description}
               </p>
             </Reveal>
