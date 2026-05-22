@@ -16,7 +16,7 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 import { homePT } from "@/content/pt/home";
 import { homeEN } from "@/content/en/home";
 
-const homeSectionClass = "home-standard-section relative overflow-hidden py-24 text-foreground md:py-36";
+const homeSectionClass = "standard-section-bg relative overflow-hidden py-24 text-foreground md:py-36";
 
 export default function Home() {
   const [location] = useLocation();
@@ -49,7 +49,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={120}>
-            <h1 className="mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[#F8FCFF] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">
+            <h1 className="mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[var(--brand-offwhite)] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">
               {content.hero.title}
               {content.hero.highlight && (
                 <>
@@ -61,7 +61,7 @@ export default function Home() {
           </Reveal>
 
           <Reveal delay={190}>
-            <p className="mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[#F8FCFF]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">{content.hero.subtitle}</p>
+            <p className="mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[var(--brand-offwhite)]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">{content.hero.subtitle}</p>
           </Reveal>
 
           <Reveal delay={260}>
@@ -85,12 +85,7 @@ export default function Home() {
         <Section className={homeSectionClass}>
           <SectionHeader>
             <Reveal>
-              <SectionTitle
-                label="Resultados que a IA gera"
-                title="O que a IA entrega ao seu negócio"
-                description="Mais eficiência. Menos esforço. Crescimento real."
-                variant="light"
-              />
+              <SectionTitle label="Resultados que a IA gera" title="O que a IA entrega ao seu negócio" description="Mais eficiência. Menos esforço. Crescimento real." variant="light" />
             </Reveal>
           </SectionHeader>
 
@@ -99,7 +94,7 @@ export default function Home() {
               const Icon = keywordIcons[i % keywordIcons.length];
               return (
                 <Reveal key={keyword} delay={i * 45}>
-                  <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3, ease: "easeOut" }} className="group relative flex min-h-[194px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#DCEAF8] bg-white p-6 text-center shadow-[0_8px_30px_rgba(0,21,71,.06)] transition-all duration-300 hover:bg-[#001547] hover:shadow-[0_14px_38px_rgba(0,21,71,.16)]">
+                  <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3, ease: "easeOut" }} className="group relative flex min-h-[194px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#DCEAF8] bg-white/90 p-6 text-center shadow-[0_8px_30px_rgba(0,21,71,.06)] backdrop-blur-xl transition-all duration-300 hover:bg-[#001547] hover:shadow-[0_14px_38px_rgba(0,21,71,.16)]">
                     <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#EAF6FF] text-[#0AB4FF] transition-all duration-300 group-hover:bg-white/10 group-hover:text-[#55D4F2]"><Icon className="h-8 w-8" /></div>
                     <div className="mb-4 h-0.5 w-5 rounded-full bg-[#0AB4FF] transition-all duration-300 group-hover:bg-[#55D4F2]" />
                     <div className="relative z-10 flex min-h-[3.2rem] items-center justify-center"><p className="max-w-[12rem] font-heading text-xl font-black leading-tight tracking-tight text-[#050A30] transition-colors duration-300 group-hover:text-white md:text-2xl">{keyword}</p></div>
@@ -160,7 +155,7 @@ export default function Home() {
         <SectionHeader><Reveal><SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} variant="light" /></Reveal></SectionHeader>
         <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">
           {content.conversionWebsites.items.map((item, i) => { const Icon = conversionIcons[i % conversionIcons.length]; return (
-            <Reveal key={item} delay={i * 55}><motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative overflow-hidden rounded-3xl border border-primary/25 bg-[linear-gradient(145deg,rgba(255,255,255,0.96),rgba(234,246,255,0.86))] p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"><div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-80" /><div className="relative z-10 flex items-center gap-4"><div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[#06102A] text-[var(--brand-cyan)]"><Icon className="h-6 w-6" /></div><p className="font-heading text-base font-black leading-tight tracking-tight text-foreground md:text-lg">{item}</p></div></motion.div></Reveal>
+            <Reveal key={item} delay={i * 55}><motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative overflow-hidden rounded-3xl border border-primary/25 bg-white/90 p-5 shadow-[0_18px_45px_rgba(10,17,40,0.1)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-cyan)]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"><div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-80" /><div className="relative z-10 flex items-center gap-4"><div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[#06102A] text-[var(--brand-cyan)]"><Icon className="h-6 w-6" /></div><p className="font-heading text-base font-black leading-tight tracking-tight text-foreground md:text-lg">{item}</p></div></motion.div></Reveal>
           ); })}
         </div>
       </Section>
