@@ -24,6 +24,9 @@ const faqIcons = [
   Icons.MessageCircle,
 ];
 
+const compactCardTextClass = "font-heading text-[12px] font-black leading-tight tracking-tight md:text-[14px]";
+const compactBodyTextClass = "text-[12px] leading-relaxed md:text-[14px]";
+
 function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
   return (
     <SectionCard
@@ -48,7 +51,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
             )}
 
             <div>
-              <h3 className="font-heading text-xl font-black leading-tight tracking-tight text-foreground md:text-2xl">
+              <h3 className={`${compactCardTextClass} text-foreground`}>
                 {item.question}
               </h3>
             </div>
@@ -66,7 +69,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
 
         <div className={cn("overflow-hidden transition-all duration-700", isOpen ? "mt-7 max-h-[900px] opacity-100" : "max-h-0 opacity-0")}>
           <div className="ml-0 border-t border-primary/15 pt-6 md:ml-[4.25rem]">
-            <p className="rounded-2xl border border-[#00D1FF]/16 bg-[#050816]/[0.04] px-5 py-5 text-base font-medium leading-relaxed text-foreground/70 md:text-lg">
+            <p className={`rounded-2xl border border-[#00D1FF]/16 bg-[#050816]/[0.04] px-5 py-5 font-medium text-foreground/70 ${compactBodyTextClass}`}>
               {item.answer}
             </p>
           </div>
@@ -122,7 +125,7 @@ export default function FAQ() {
               <p className="text-sm font-black uppercase tracking-[0.28em] text-[#0A84FF]">
                 {lang === "pt" ? "Dúvidas frequentes" : "Common questions"}
               </p>
-              <p className="mx-auto mt-3 max-w-3xl text-base leading-relaxed text-foreground/70 md:text-lg">
+              <p className={`mx-auto mt-3 max-w-3xl text-foreground/70 ${compactBodyTextClass}`}>
                 {lang === "pt"
                   ? "Organizámos as respostas por temas práticos para ajudar a perceber onde a IA, a automação e o marketing podem gerar impacto real."
                   : "We organised the answers around practical topics to help you understand where AI, automation and marketing can create real impact."}
