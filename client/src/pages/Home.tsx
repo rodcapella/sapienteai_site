@@ -87,14 +87,15 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section
-        className="relative min-h-[700px] overflow-hidden bg-[url('/media/banners/home_marketing_digital_ia.jpeg')] bg-cover bg-center bg-no-repeat py-24 md:min-h-[760px] md:py-36"
+      <div
+        className="relative min-h-[700px] overflow-hidden bg-cover bg-center bg-no-repeat py-24 md:min-h-[760px] md:py-36"
+        style={{ backgroundImage: "url('/media/banners/home_marketing_digital_ia.jpeg')" }}
         aria-label={content.marketingAI.title}
       >
         <Reveal>
           <div className="relative z-10 mx-auto max-w-7xl px-6" />
         </Reveal>
-      </Section>
+      </div>
 
       <Section className={homeSectionClass}>
         <SectionHeader><Reveal><SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} variant="light" /></Reveal></SectionHeader>
