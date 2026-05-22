@@ -22,7 +22,6 @@ export default function Header({ onContactClick }: HeaderProps) {
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isLegalOpen, setIsLegalOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -40,7 +39,6 @@ export default function Header({ onContactClick }: HeaderProps) {
 
   const handleNavClick = () => {
     setIsMobileMenuOpen(false);
-    setIsLegalOpen(false);
   };
 
   const navLinks = [
@@ -48,14 +46,6 @@ export default function Header({ onContactClick }: HeaderProps) {
     { href: `/${lang}/team`, label: t("nav.team") },
     { href: `/${lang}/faq`, label: t("nav.faq") },
     { href: lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
-  ];
-
-  const legalLinks = [
-    { name: t("legal.trust") || "Trust", href: `/${lang}/trust` },
-    { name: t("legal.privacy") || "Privacy", href: `/${lang}/privacy` },
-    { name: t("legal.terms") || "Terms of Service", href: `/${lang}/terms` },
-    { name: t("legal.rgpd") || "RGPD", href: `/${lang}/rgpd` },
-    { name: t("legal.generative-ai-policy") || "Generative AI Policy", href: `/${lang}/generative-ai-policy` },
   ];
 
   return (
@@ -84,34 +74,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                     <NavLink href={link.href}>{link.label}</NavLink>
                   </div>
                 ))}
-              </div>
-
-              <div className="relative ml-5 shrink-0 xl:ml-7" onMouseEnter={() => setIsLegalOpen(true)} onMouseLeave={() => setIsLegalOpen(false)}>
-                <button
-                  type="button"
-                  className={cn(
-                    "flex min-w-[96px] items-center justify-center gap-2 whitespace-nowrap text-sm font-black uppercase tracking-widest transition-all duration-300",
-                    isLegalOpen ? "text-[var(--brand-cyan)]" : "text-foreground/75 hover:text-foreground dark:text-[var(--brand-offwhite)]/90 dark:hover:text-[var(--brand-cyan)]",
-                  )}
-                >
-                  {t("nav.legal") || "Legal"}
-                  <Icons.ChevronDown className={cn("h-4 w-4 transition-transform duration-300", isLegalOpen && "rotate-180")} />
-                </button>
-
-                <div className={cn("absolute -left-4 top-full w-64 origin-top-left pt-4 transition-all duration-300", isLegalOpen ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0")}>
-                  <div className="legal-dropdown rounded-2xl border border-[var(--brand-cyan)]/18 bg-[rgba(234,246,255,0.96)] p-2 text-foreground shadow-[0_20px_50px_rgba(8,18,40,0.2)] backdrop-blur-2xl">
-                    {legalLinks.map((link) => (
-                      <Link
-                        key={link.name}
-                        href={link.href}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-foreground/75 transition-all hover:bg-[#10266f]/10 hover:text-[var(--brand-primary)] dark:text-[var(--brand-offwhite)]/90 dark:hover:bg-[#10266f]/45 dark:hover:text-[var(--brand-cyan)]"
-                      >
-                        <Icons.ShieldCheck className="h-4 w-4 shrink-0 text-[#012050] dark:text-[var(--brand-cyan)]" />
-                        <span className="text-inherit">{link.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -154,18 +116,6 @@ export default function Header({ onContactClick }: HeaderProps) {
                     {link.label}
                   </NavLink>
                 ))}
-
-                <div className="space-y-4 border-y border-white/10 py-4">
-                  <span className="text-xs font-black uppercase tracking-widest text-white/30">{t("nav.legal") || "Legal"}</span>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    {legalLinks.map((link) => (
-                      <Link key={link.name} href={link.href} onClick={handleNavClick} className="text-lg font-bold text-white/90 transition-colors hover:text-[var(--brand-cyan)]">
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               <div className="mt-auto pt-8">
