@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 
-import ContactModal from "@/components/ContactModal";
+import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
+import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-import { PremiumButton } from "@/components/ui/button/PremiumButton";
-
 import { setSEOHead } from "@/components/SEOHead";
+import { useTranslation } from "@/hooks/useTranslation";
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { getContent } from "@/lib/content";
-import { Reveal } from "@/components/ui/motion/Reveal";
-import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +24,7 @@ const faqIcons = [
   Icons.MessageCircle,
 ];
 
-function FAQAccordion({ item, isOpen, onToggle, icon: Icon, index }: any) {
+function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
   return (
     <SectionCard
       className={cn(
@@ -84,8 +82,6 @@ export default function FAQ() {
   const lang = location.split("/")[1] || "pt";
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const [isContactOpen, setIsContactOpen] = useState(false);
-
   const content = getContent("faq", lang);
 
   useEffect(() => {
@@ -119,10 +115,7 @@ export default function FAQ() {
     <div className="flex flex-col">
       <InternalHero label={t("nav.faq")} title={content.title} subtitle={content.subtitle} />
 
-      <Section className="relative flex-grow overflow-hidden bg-[#EAF6FF] py-24 md:py-36">
-        <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,209,255,0.14),transparent_42%)]" />
-
+      <Section className="standard-section-bg relative flex-grow overflow-hidden py-24 md:py-36">
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <Reveal>
             <div className="mb-12 rounded-[2rem] border border-primary/20 bg-white/72 p-6 text-center shadow-[0_18px_45px_rgba(10,17,40,0.1)] backdrop-blur-xl md:p-8">
@@ -142,38 +135,14 @@ export default function FAQ() {
 
             return (
               <Reveal key={idx} delay={idx * 55}>
-                <FAQAccordion item={faq} icon={Icon} index={idx} isOpen={openIndex === idx} onToggle={() => setOpenIndex(openIndex === idx ? null : idx)} />
+                <FAQAccordion item={faq} icon={Icon} isOpen={openIndex === idx} onToggle={() => setOpenIndex(openIndex === idx ? null : idx)} />
               </Reveal>
             );
           })}
         </div>
       </Section>
 
-      <Section className="final-cta relative overflow-hidden bg-modern-gradient py-24 text-center md:py-36 tech-grid scanlines">
-        <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(85,212,242,0.16),transparent_45%)]" />
-        <div className="relative z-10 mx-auto max-w-5xl px-6">
-          <Reveal>
-            <h2 className="mx-auto max-w-4xl font-heading text-4xl font-black leading-[1.05] tracking-tight text-[var(--brand-offwhite)] sm:text-6xl md:text-7xl">
-              {content.cta.title}
-            </h2>
-          </Reveal>
-          <Reveal delay={110}>
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-[var(--brand-offwhite)]/72 sm:text-xl">
-              {content.cta.description}
-            </p>
-          </Reveal>
-          <Reveal delay={220}>
-            <div className="mt-12 inline-block">
-              <PremiumButton onClick={() => setIsContactOpen(true)} className="!bg-[#55D4F2] !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white" size="lg">
-                {content.cta.button}
-              </PremiumButton>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
-
-      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
+      <FinalCTA title={content.cta.title} description={content.cta.description} button={content.cta.button} />
     </div>
   );
 }
