@@ -25,9 +25,6 @@ import { rgpdContentEN } from "@/content/en/gdpr";
 import { iaGenerativaPolicyPT } from "@/content/pt/iaGenerativaPolicy";
 import { iaGenerativaPolicyEN } from "@/content/en/iaGenerativaPolicy";
 
-import { contactPT } from "@/content/pt/contact";
-import { contactEN } from "@/content/en/contact";
-
 const contentMap = {
   home: {
     pt: homePT,
@@ -68,11 +65,7 @@ const contentMap = {
   generativeAIPolicy: {
     pt: iaGenerativaPolicyPT,
     en: iaGenerativaPolicyEN,
-  },
-  contact: {
-    pt: contactPT,
-    en: contactEN,
-  },
+  }
 } as const;
 
 export function getContent(page: keyof typeof contentMap, lang: string) {

@@ -37,8 +37,7 @@ const copy = {
     links: {
       home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
       about: ["Sobre", "A nossa visão, método de trabalho e forma de aplicar IA."],
-      team: ["Equipa", "Quem transforma estratégia, tecnologia e execução em resultados."],
-      contact: ["Contacto", "Fale connosco para avaliar oportunidades no seu negócio."],
+      team: ["Fundadores", "Quem transforma estratégia, tecnologia e execução em resultados."],
       faq: ["FAQ", "Respostas rápidas às perguntas mais frequentes."],
       quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
       newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
@@ -64,8 +63,7 @@ const copy = {
     links: {
       home: ["Home", "Overview of our solutions, services, and value proposition."],
       about: ["About", "Our vision, working method, and approach to applied AI."],
-      team: ["Team", "The people turning strategy, technology, and execution into results."],
-      contact: ["Contact", "Talk to us about opportunities inside your business."],
+      team: ["Founders", "The people turning strategy, technology, and execution into results."],
       faq: ["FAQ", "Quick answers to the most common questions."],
       quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
@@ -125,8 +123,7 @@ export default function Sitemap() {
       links: [
         { title: l.home[0], description: l.home[1], href: makeLink(lang) },
         { title: l.about[0], description: l.about[1], href: makeLink(lang, "/about") },
-        { title: l.team[0], description: l.team[1], href: makeLink(lang, "/team") },
-        { title: l.contact[0], description: l.contact[1], href: makeLink(lang, "/contact") },
+        { title: l.team[0], description: l.team[1], href: makeLink(lang, "/team") }
       ],
     },
     {

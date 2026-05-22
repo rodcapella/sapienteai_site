@@ -62,26 +62,7 @@ export const homePT = {
       },
     ],
   },
-
-  smartAutomation: {
-    label: "Automação Inteligente",
-    title: "Menos trabalho manual. Mais crescimento automático.",
-    columns: [
-      {
-        title: "Automação",
-        points: ["Fluxos automáticos 24/7", "Redução de tarefas repetitivas", "Escala sem aumentar equipa"],
-      },
-      {
-        title: "Processamento",
-        points: ["Leitura automática de documentos", "Organização inteligente de dados", "Integração entre sistemas"],
-      },
-      {
-        title: "Resultados",
-        points: ["Redução de custos", "Aumento de produtividade", "Decisões mais rápidas"],
-      },
-    ],
-  },
-
+  
   conversionWebsites: {
     label: "Websites que convertem",
     title: "Experiências digitais orientadas a conversão",

@@ -63,25 +63,6 @@ export const homeEN = {
     ],
   },
 
-  smartAutomation: {
-    label: "Smart Automation",
-    title: "Less manual work. More automated growth.",
-    columns: [
-      {
-        title: "Automation",
-        points: ["24/7 automated workflows", "Reduced repetitive tasks", "Scale without hiring"],
-      },
-      {
-        title: "Processing",
-        points: ["Automated document reading", "Smart data organization", "System integrations"],
-      },
-      {
-        title: "Results",
-        points: ["Lower costs", "Higher productivity", "Faster decision-making"],
-      },
-    ],
-  },
-
   conversionWebsites: {
     label: "Conversion-driven websites",
     title: "Digital experiences built to convert",
