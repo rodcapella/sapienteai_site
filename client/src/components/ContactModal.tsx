@@ -348,8 +348,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           </button>
 
           <DialogHeader className="relative z-10 mb-7 space-y-3 text-left">
-            <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-              <span className="inline-flex items-center gap-2"><Icons.MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />{text.title}</span>
+            <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "#FFFFFF" }}>
+              <span className="inline-flex items-center gap-2 !text-white" style={{ color: "#FFFFFF" }}><Icons.MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />{text.title}</span>
             </DialogTitle>
             <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[rgba(234,246,255,0.76)] sm:text-base">{text.description}</DialogDescription>
           </DialogHeader>
