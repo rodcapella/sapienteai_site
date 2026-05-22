@@ -14,7 +14,7 @@ const navLinkVariants = cva(
     variants: {
       variant: {
         default: `
-          text-foreground/70 hover:text-[var(--brand-primary)]
+          text-[var(--brand-primary)] hover:text-[var(--brand-cyan-bright)]
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full

@@ -101,7 +101,7 @@ h1,h2,h3,h4,h5,h6 { font-family:var(--font-heading); font-size:var(--type-headin
 .type-section-title { font-family:var(--font-heading); font-size:var(--type-section-title); font-weight:900; line-height:1; }
 .type-hero { font-family:var(--font-heading); font-size:var(--type-hero); font-weight:900; line-height:.95; }
 a { font-family:var(--font-body); }
-.home-page a:hover, footer a:hover{color:var(--brand-primary)}
+.home-page a{color:var(--brand-primary)}.home-page a:hover, footer a:hover{color:var(--brand-cyan-bright)}
 button,.button,[role="button"],button *,[class*="Button"],[class*="Button"] *{font-family:var(--font-body)!important;font-size:var(--type-button)!important}
 main :where(p,li,span,label,input,textarea,select){font-family:var(--font-body);font-size:var(--type-body)}
 main :where(.font-detail,.type-label,.quiz-duration,.quiz-topline,.quiz-category){font-family:var(--font-detail);font-size:var(--type-label)}
