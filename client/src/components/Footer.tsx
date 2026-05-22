@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.navigation")}</h4>
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">{t("footer.navigation")}</h4>
             <ul className="space-y-2">
               <li><NavLink href={`/${lang}`} variant="footer">{t("nav.home")}</NavLink></li>
               <li><NavLink href={`/${lang}/team`} variant="footer">{t("nav.team")}</NavLink></li>
@@ -70,7 +70,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.legal")}</h4>
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">{t("footer.legal")}</h4>
             <ul className="space-y-2">
               <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms") || "Terms of Service"}</NavLink></li>
               <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
@@ -81,13 +81,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.contact")}</h4>
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">{t("footer.contact")}</h4>
             <ul className="space-y-1.5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
-                  <span className="group flex items-center gap-2.5 text-sm leading-relaxed text-white/70 transition hover:text-white">
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/20 bg-[#08112a]/75 text-[var(--brand-cyan)]">
+                  <span className="group flex items-center gap-2.5 text-sm leading-relaxed text-white/70 transition hover:text-[var(--brand-primary)]">
+                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-primary)]/20 bg-[#08112a]/75 text-[var(--brand-primary)]">
                       <Icon className="h-3.5 w-3.5" />
                     </span>
                     {item.text}
@@ -108,10 +108,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">{t("footer.newsletter")}</h4>
+            <h4 className="mb-2 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">{t("footer.newsletter")}</h4>
             <p className="mb-4 text-sm leading-relaxed text-white/70">{t("footer.newsletterDescription")}</p>
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
-              <PremiumButton className="w-full rounded-2xl !bg-[#55D4F2] !py-1.5 !text-xs !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white" variant="secondary">
+              <PremiumButton className="w-full rounded-2xl !bg-[var(--brand-cyan)] !py-1.5 !text-xs !text-[#001547] hover:!bg-[var(--brand-cyan)] hover:!text-[#001547] [&>span]:!text-[#001547]" variant="secondary">
                 {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
               </PremiumButton>
             </Link>
@@ -120,14 +120,14 @@ export default function Footer() {
 
         <div className="grid items-center gap-3 border-t border-[var(--brand-cyan)]/20 pt-4 md:grid-cols-[300px_1fr_auto]">
           <div className="flex w-[300px] max-w-full flex-col items-center gap-2 justify-self-center md:justify-self-start">
-            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]">
+            <h4 className="mb-3 font-heading text-xs font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
               {lang === "pt" ? "Siga-nos" : "Follow us"}
             </h4>
             <div className="flex w-full items-center justify-center gap-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
-                  <a key={social.name} href={social.url} className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/25 bg-[#08112a]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]" aria-label={social.name} target="_blank" rel="noopener noreferrer nofollow">
+                  <a key={social.name} href={social.url} className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-primary)]/25 bg-[#08112a]/70 text-[var(--brand-primary)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-primary)]/45 hover:bg-[var(--brand-primary)]/14 hover:text-[var(--brand-primary)] hover:shadow-[0_12px_24px_rgba(10,180,255,0.22)]" aria-label={social.name} target="_blank" rel="noopener noreferrer nofollow">
                     <Icon className="h-3.5 w-3.5" />
                   </a>
                 );
@@ -135,14 +135,14 @@ export default function Footer() {
             </div>
           </div>
 
-          <Link href={`/${lang}/sitemap`} className="justify-self-center text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/80 transition hover:text-white">
+          <Link href={`/${lang}/sitemap`} className="justify-self-center text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]/80 transition hover:text-[var(--brand-primary)]">
             {t("footer.sitemap")}
           </Link>
-          <p className="text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-cyan)]/65 md:text-right">{t("footer.copyright")}</p>
+          <p className="text-center text-[0.68rem] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]/65 md:text-right">{t("footer.copyright")}</p>
         </div>
       </div>
 
-      <button type="button" onClick={scrollToTop} aria-label="Back to top" className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-cyan)]/30 bg-[#08112a]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-purple)]/45 hover:bg-[#10266f]/70 hover:text-white hover:shadow-[0_12px_24px_rgba(1,32,80,0.28)]">
+      <button type="button" onClick={scrollToTop} aria-label="Back to top" className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-primary)] text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_12px_24px_rgba(10,180,255,0.28)]">
         <Icons.ArrowUp className="h-3.5 w-3.5" />
       </button>
     </footer>

@@ -46,17 +46,17 @@ export function PremiumButton({
     y.set(0);
   };
 
-  const standardBlue =
-    "bg-[#001547] text-white shadow-[0_12px_30px_rgba(0,21,71,0.28)] hover:bg-[#012050] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.22),0_18px_42px_rgba(0,21,71,0.24)]";
+  const vividBlue =
+    "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,180,255,0.28)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.28),0_18px_42px_rgba(10,180,255,0.24)]";
 
   const variantClasses = {
-    primary: standardBlue,
-    secondary: standardBlue,
-    purple: standardBlue,
+    primary: vividBlue,
+    secondary: vividBlue,
+    purple: vividBlue,
     outline:
-      "border-2 border-[#001547] bg-[rgba(234,246,255,0.2)] text-[#001547] shadow-[0_10px_26px_rgba(0,21,71,0.12)] hover:border-[#012050] hover:bg-[#001547] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.18),0_18px_42px_rgba(0,21,71,0.18)] dark:border-[var(--brand-cyan)] dark:text-[var(--brand-cyan)] dark:hover:bg-[#012050] dark:hover:text-white",
+      "border-2 border-[var(--brand-primary)] bg-[rgba(234,246,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,180,255,0.12)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.18),0_18px_42px_rgba(10,180,255,0.18)] dark:border-[var(--brand-primary)] dark:text-[var(--brand-primary)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white",
     black:
-      "bg-[#001547] text-white shadow-[0_12px_30px_rgba(5,8,22,0.35)] hover:bg-[#012050] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.2),0_18px_42px_rgba(0,21,71,0.22)]",
+      "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,180,255,0.28)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.2),0_18px_42px_rgba(10,180,255,0.22)]",
   };
 
   const sizeClasses = {

@@ -83,7 +83,7 @@ export default function Contact() {
       <InternalHero label={t("nav.contact")} title={content.title} subtitle={content.subtitle}>
         <Link
           href={`/${lang}`}
-          className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-cyan)]/35 bg-[#08112a]/70 px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)] hover:bg-[var(--brand-cyan)]/15 hover:text-white hover:shadow-[0_0_38px_rgba(0,209,255,0.35)]"
+          className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/35 bg-[var(--brand-primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_38px_rgba(10,180,255,0.35)]"
         >
           <ArrowLeft className="h-4 w-4" />
           {t('nav.home')}

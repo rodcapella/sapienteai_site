@@ -343,7 +343,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {PARTICLES.map((particle, index) => <motion.span key={index} className="absolute rounded-full bg-[rgba(0,209,255,0.9)]" style={{ left: particle.left, top: particle.top, width: particle.size, height: particle.size, boxShadow: "0 0 16px rgba(0,209,255,0.85)" }} animate={{ y: [0, -8, 0], opacity: [0.45, 1, 0.45] }} transition={{ duration: 3.4, delay: particle.delay, repeat: Infinity, ease: "easeInOut" }} />)}
           </div>
 
-          <button type="button" onClick={closeModal} aria-label={text.closeLabel} className="absolute right-4 top-4 z-20 rounded-full border border-[rgba(0,209,255,0.4)] bg-[rgba(5,8,27,0.85)] p-2 text-[var(--brand-offwhite)] transition-all duration-300 hover:border-[rgba(0,240,255,0.88)] hover:text-[var(--brand-cyan)] hover:shadow-[0_0_20px_rgba(0,209,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]">
+          <button type="button" onClick={closeModal} aria-label={text.closeLabel} className="absolute right-4 top-4 z-20 rounded-full border border-[rgba(10,180,255,0.4)] bg-[var(--brand-primary)] p-2 text-white transition-all duration-300 hover:border-[rgba(10,180,255,0.88)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_20px_rgba(10,180,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]">
             <Icons.X className="h-4 w-4" />
           </button>
 
@@ -417,7 +417,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
 
             <div className="pt-2">
-              <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[#55D4F2] !px-6 !py-4 !text-sm !text-[#001547] !tracking-[0.16em] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
+              <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
                 {submitState === "loading" ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.processing}</> : submitState === "success" ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.successButton}</> : <><Icons.MessageSquareText className="h-4 w-4" />{text.submit.idle}</>}
               </PremiumButton>
             </div>

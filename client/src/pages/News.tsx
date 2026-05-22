@@ -157,7 +157,7 @@ export default function News() {
                 className="flex-1 px-4 py-2 rounded-xl bg-white/5 border border-white/10"
                 placeholder="Email"
               />
-              <button className="bg-[var(--brand-cyan)] text-[var(--brand-night)] px-4 rounded-xl">
+              <button className="rounded-xl bg-[var(--brand-primary)] px-4 text-white hover:bg-[var(--brand-primary)]">
                 Inscrever
               </button>
             </div>

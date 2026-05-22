@@ -24,9 +24,7 @@ export function InternalHero({
   children,
   compact = false,
 }: InternalHeroProps) {
-  const titleClass = compact
-    ? "text-[clamp(2.35rem,5.2vw,4.9rem)]"
-    : "text-[clamp(2.75rem,6.4vw,6rem)]";
+  const titleClass = "text-[40px]";
 
   return (
     <Section
@@ -63,7 +61,7 @@ export function InternalHero({
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[var(--brand-offwhite)]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">
+            <p className="mt-8 max-w-4xl font-[var(--font-body)] text-[14px] font-medium leading-relaxed text-[var(--brand-offwhite)] drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]">
               {subtitle}
             </p>
           </Reveal>

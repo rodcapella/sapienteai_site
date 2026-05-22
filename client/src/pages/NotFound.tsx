@@ -31,7 +31,7 @@ export default function NotFound() {
 
         <Button
           onClick={() => setLocation(`/${lang}`)}
-          className="group relative rounded-xl bg-[var(--brand-cyan)] px-6 py-3 text-[var(--brand-night)] hover:bg-[var(--brand-cyan-bright)]"
+          className="group relative rounded-xl bg-[var(--brand-primary)] px-6 py-3 text-white hover:bg-[var(--brand-primary)]"
         >
           <span className="flex items-center">
             <Icons.Home className="w-4 h-4 mr-2" />

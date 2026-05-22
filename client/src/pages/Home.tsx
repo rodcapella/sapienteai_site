@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/ui/section/SectionHeader";
 import { SectionTitle } from "@/components/ui/section/SectionTitle";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 
 import { homePT } from "@/content/pt/home";
@@ -33,52 +34,21 @@ export default function Home() {
   const brandbookIcons = [Icons.Bot, Icons.Brain, Icons.TrendingUp, Icons.PieChart, Icons.Cog, Icons.MessageCircle, Icons.ShieldCheck];
 
   return (
-    <div className="flex flex-col bg-background">
-      <Section className="hero relative flex min-h-[90vh] items-center justify-start overflow-hidden pt-28 pb-20 md:pt-40 md:pb-28">
-        <div className="absolute inset-0">
-          <img src="/media/bg/bg_hero.jpeg" alt="Sapiente.AI" className="h-full w-full object-cover" />
+    <div className="home-page flex flex-col bg-background">
+      <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
+        <div className="flex flex-col items-start justify-start gap-5 sm:flex-row sm:gap-8">
+          <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full sm:w-auto">
+            {content.hero.ctaPrimary}
+          </PremiumButton>
+
+          <motion.button type="button" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="group inline-flex items-center gap-4 rounded-full border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-white backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_35px_rgba(10,180,255,0.45)]" onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}>
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/45 bg-white/15 text-white transition-transform duration-500 group-hover:translate-x-1">
+              <Icons.ArrowRight className="h-4 w-4" />
+            </span>
+            {content.hero.ctaSecondary}
+          </motion.button>
         </div>
-
-        <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
-          <Reveal>
-            <div className="glass-panel cyber-border inline-flex items-center gap-3 rounded-full px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-[#001547] dark:text-[var(--brand-cyan)] sm:text-sm">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-[var(--brand-cyan-bright)] shadow-[0_0_20px_rgba(0,240,255,0.95)]" />
-              {content.hero.label}
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <h1 className="mt-10 max-w-5xl font-heading text-[clamp(2.75rem,6.4vw,6rem)] font-extrabold leading-[1.02] text-[var(--brand-offwhite)] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)] [text-shadow:0_0_28px_rgba(0,209,255,0.22),0_2px_12px_rgba(5,8,27,0.78)]">
-              {content.hero.title}
-              {content.hero.highlight && (
-                <>
-                  <br />
-                  <span className="internal-hero-highlight">{content.hero.highlight}</span>
-                </>
-              )}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={190}>
-            <p className="mt-8 max-w-4xl text-lg font-medium leading-relaxed text-[var(--brand-offwhite)]/88 drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)] sm:text-xl md:text-2xl">{content.hero.subtitle}</p>
-          </Reveal>
-
-          <Reveal delay={260}>
-            <div className="mt-12 flex flex-col items-start justify-start gap-5 sm:flex-row sm:gap-8">
-              <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full !bg-[#55D4F2] !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white sm:w-auto">
-                {content.hero.ctaPrimary}
-              </PremiumButton>
-
-              <motion.button type="button" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="group inline-flex items-center gap-4 rounded-full border border-[var(--brand-primary)]/55 bg-[var(--brand-night)]/45 px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/80 backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-cyan)] hover:text-[var(--brand-offwhite)] hover:shadow-[0_0_35px_rgba(0,209,255,0.45)]" onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}>
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--brand-cyan)]/60 bg-[var(--brand-cyan)]/20 text-[var(--brand-cyan-bright)] transition-transform duration-500 group-hover:translate-x-1">
-                  <Icons.ArrowRight className="h-4 w-4" />
-                </span>
-                {content.hero.ctaSecondary}
-              </motion.button>
-            </div>
-          </Reveal>
-        </div>
-      </Section>
+      </InternalHero>
 
       {isPT && (
         <Section className={homeSectionClass}>
@@ -94,8 +64,8 @@ export default function Home() {
               return (
                 <Reveal key={keyword} delay={i * 45}>
                   <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3, ease: "easeOut" }} className="group relative flex min-h-[194px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#DCEAF8] bg-white/90 p-6 text-center shadow-[0_8px_30px_rgba(0,21,71,.06)] backdrop-blur-xl transition-all duration-300 hover:bg-[#001547] hover:shadow-[0_14px_38px_rgba(0,21,71,.16)]">
-                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#EAF6FF] text-[#0AB4FF] transition-all duration-300 group-hover:bg-white/10 group-hover:text-[#55D4F2]"><Icon className="h-8 w-8" /></div>
-                    <div className="mb-4 h-0.5 w-5 rounded-full bg-[#0AB4FF] transition-all duration-300 group-hover:bg-[#55D4F2]" />
+                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#EAF6FF] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-white/10 group-hover:text-[var(--brand-primary)]"><Icon className="h-8 w-8" /></div>
+                    <div className="mb-4 h-0.5 w-5 rounded-full bg-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-primary)]" />
                     <div className="relative z-10 flex min-h-[3.2rem] items-center justify-center"><p className="max-w-[12rem] font-heading text-xl font-black leading-tight tracking-tight text-[#050A30] transition-colors duration-300 group-hover:text-white md:text-2xl">{keyword}</p></div>
                   </motion.div>
                 </Reveal>

@@ -18,7 +18,7 @@ export function FinalCTA({ title, description, button, href }: FinalCTAProps) {
   const buttonElement = (
     <PremiumButton
       onClick={href ? undefined : () => setIsContactOpen(true)}
-      className="!bg-[#55D4F2] !text-[#001547] hover:!bg-[#0AB4FF] hover:!text-white [&>span]:!text-[#001547] hover:[&>span]:!text-white"
+      className="!bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white"
       size="lg"
     >
       {button}
