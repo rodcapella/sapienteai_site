@@ -49,9 +49,10 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--brand-primary)]/30 bg-[var(--brand-night)] font-serif text-[var(--brand-offwhite)] tech-grid scanlines">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,color-mix(in_srgb,var(--brand-primary)_22%,transparent),transparent_38%),radial-gradient(circle_at_80%_80%,color-mix(in_srgb,var(--brand-cyan)_14%,transparent),transparent_36%)]" />
-      <div className="pointer-events-none absolute inset-0 dots-matrix opacity-10" />
+    <footer className="relative overflow-hidden border-t border-[var(--brand-primary)]/30 font-serif text-[var(--brand-offwhite)]">
+      <div className="pointer-events-none absolute inset-0">
+        <img src="/media/bg/bg_footer.png" alt="" className="h-full w-full object-cover" />
+      </div>
 
       <div className="container relative z-10 mx-auto px-6 py-5 md:py-7">
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
@@ -64,22 +65,38 @@ export default function Footer() {
 
           <div>
             <h4 className={footerTitleClass}>{t("footer.navigation")}</h4>
-            <ul className="space-y-2 [&_span]:!font-serif [&_span]:!text-[12px] [&_span]:!text-[var(--brand-offwhite)] hover:[&_span]:!text-[var(--brand-cyan-bright)]">
-              <li><NavLink href={`/${lang}`} variant="footer">{t("nav.home")}</NavLink></li>
-              <li><NavLink href={`/${lang}/team`} variant="footer">{t("nav.team")}</NavLink></li>
-              <li><NavLink href={`/${lang}/faq`} variant="footer">{t("nav.faq")}</NavLink></li>
-              <li><NavLink href={quizHref} variant="footer">{lang === "pt" ? "Quiz IA" : "AI Quiz"}</NavLink></li>
+            <ul className="space-y-2">
+              {[
+                { href: `/${lang}`, label: t("nav.home") },
+                { href: `/${lang}/team`, label: t("nav.team") },
+                { href: `/${lang}/faq`, label: t("nav.faq") },
+                { href: quizHref, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="font-serif text-[12px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h4 className={footerTitleClass}>{t("footer.legal")}</h4>
-            <ul className="space-y-2 [&_span]:!font-serif [&_span]:!text-[12px] [&_span]:!text-[var(--brand-offwhite)] hover:[&_span]:!text-[var(--brand-cyan-bright)]">
-              <li><NavLink href={`/${lang}/terms`} variant="footer">{t("footer.terms") || "Terms of Service"}</NavLink></li>
-              <li><NavLink href={`/${lang}/privacy`} variant="footer">{t("footer.privacy")}</NavLink></li>
-              <li><NavLink href={`/${lang}/trust`} variant="footer">{t("footer.trust") || "Trust"}</NavLink></li>
-              <li><NavLink href={`/${lang}/rgpd`} variant="footer">{t("footer.rgpd")}</NavLink></li>
-              <li><NavLink href={`/${lang}/generative-ai-policy`} variant="footer">{t("footer.generative-ai-policy")}</NavLink></li>
+            <ul className="space-y-2">
+              {[
+                { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
+                { href: `/${lang}/privacy`, label: t("footer.privacy") },
+                { href: `/${lang}/trust`, label: t("footer.trust") || "Trust" },
+                { href: `/${lang}/rgpd`, label: t("footer.rgpd") },
+                { href: `/${lang}/generative-ai-policy`, label: t("footer.generative-ai-policy") },
+              ].map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="font-serif text-[12px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
