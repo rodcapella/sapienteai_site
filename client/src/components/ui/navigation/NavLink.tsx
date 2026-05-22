@@ -31,7 +31,7 @@ const navLinkVariants = cva(
         `,
 
         footer: `
-          text-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)] text-base font-medium normal-case tracking-normal hover:drop-shadow-[0_0_10px_rgba(10,180,255,0.75)]
+          font-serif text-[12px] font-medium normal-case tracking-normal text-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)] hover:drop-shadow-[0_0_10px_rgba(10,180,255,0.75)]
         `,
 
         mobile: `
