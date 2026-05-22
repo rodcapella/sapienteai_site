@@ -12,18 +12,29 @@ interface SEOHeadProps {
   keywords?: string;
 }
 
+function formatPageTitle(title: string) {
+  const cleanTitle = title
+    .replace(/^Sapiente\.AI\s*[-|–—:]\s*/i, '')
+    .replace(/\s*[-|–—:]\s*Sapiente\.AI$/i, '')
+    .trim();
+
+  if (!cleanTitle || cleanTitle.toLowerCase() === 'sapiente.ai') return 'Sapiente.AI';
+
+  return `Sapiente.AI - ${cleanTitle}`;
+}
+
 export function setSEOHead({
   title,
   description,
-  image = 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/FYRwdgClQVohvsom.png',
+  image = '/media/logos/logo_sapiente_transparente.png',
   url = 'https://sapienteai.com',
   type = 'website',
   keywords = 'inteligência artificial, machine learning, IA generativa, automação, transformação digital'
 }: SEOHeadProps) {
-  // Update document title
-  document.title = title;
+  const formattedTitle = formatPageTitle(title);
 
-  // Update or create meta tags
+  document.title = formattedTitle;
+
   const updateMetaTag = (name: string, content: string, property = false) => {
     let tag = document.querySelector(
       property ? `meta[property="${name}"]` : `meta[name="${name}"]`
@@ -41,24 +52,20 @@ export function setSEOHead({
     tag.content = content;
   };
 
-  // Basic meta tags
   updateMetaTag('description', description);
   updateMetaTag('keywords', keywords);
 
-  // Open Graph tags
-  updateMetaTag('og:title', title, true);
+  updateMetaTag('og:title', formattedTitle, true);
   updateMetaTag('og:description', description, true);
   updateMetaTag('og:image', image, true);
   updateMetaTag('og:url', url, true);
   updateMetaTag('og:type', type, true);
 
-  // Twitter tags
-  updateMetaTag('twitter:title', title);
+  updateMetaTag('twitter:title', formattedTitle);
   updateMetaTag('twitter:description', description);
   updateMetaTag('twitter:image', image);
   updateMetaTag('twitter:card', 'summary_large_image');
 
-  // Canonical URL
   let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
   if (!canonical) {
     canonical = document.createElement('link');
