@@ -13,7 +13,7 @@ type FinalCTAProps = {
   href?: string;
 };
 
-export function FinalCTA({ title, description, highlight, button, href }: FinalCTAProps) {
+export function FinalCTA({ title, highlight, description, button, href }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const buttonElement = (
@@ -33,9 +33,9 @@ export function FinalCTA({ title, description, highlight, button, href }: FinalC
           <img src="/media/bg/bg_finalCTA.png" alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-5xl px-6 pl-12 text-left">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 pl-8 text-left">
           <Reveal>
-            <h2 className="mx-auto max-w-4xl font-black leading-[1.05] tracking-tight" style={{ fontFamily: "'Inter', sans-serif", color: "#EAF6FF", fontSize: "40px" }}>
+            <h2 className="mx-auto max-w-4xl font-black leading-[1.05] tracking-tight" style={{ fontFamily: "'Inter', sans-serif", color: "#000000", fontSize: "40px" }}>
               {title}
               {highlight && (
                 <>
@@ -50,17 +50,17 @@ export function FinalCTA({ title, description, highlight, button, href }: FinalC
 
           {description && (
             <Reveal delay={110}>
-              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#000000", fontSize: "24px" }}>
+              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#EAF6FF", fontSize: "24px" }}>
                 {description}
               </p>
             </Reveal>
           )}
 
           <Reveal delay={220}>
-            <div className="mt-12 inline-block">
-              {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
-            </div>
-          </Reveal>
+           <div className="mt-12 flex justify-start">
+             {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
+           </div>
+         </Reveal>
         </div>
       </Section>
 
