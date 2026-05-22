@@ -19,7 +19,6 @@ const Blog = lazy(() => import("@/pages/Blog"));
 const QuizAI = lazy(() => import("@/pages/QuizAI"));
 const Newsletter = lazy(() => import("@/pages/Newsletter"));
 const Sitemap = lazy(() => import("@/pages/Sitemap"));
-const ArticleDetail = lazy(() => import("@/pages/ArticleDetail"));
 
 export default function App() {
   const [location, setLocation] = useLocation();
@@ -53,8 +52,8 @@ export default function App() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen items-center justify-center bg-[#0B0F1A]">
-          <div className="animate-pulse text-sm tracking-wide text-white/40">Loading experience...</div>
+        <div className="flex min-h-screen items-center justify-center bg-[var(--brand-night)]">
+          <div className="animate-pulse text-sm tracking-wide text-[var(--brand-offwhite)]/40">Loading experience...</div>
         </div>
       }
     >
@@ -66,7 +65,6 @@ export default function App() {
       <Route path="/blog">
         <Redirect to="/pt/blog" />
       </Route>
-      <Route path="/blog/:slug">{(params) => <Redirect to={`/pt/blog/${params.slug}`} />}</Route>
 
       <MainLayout>
         <PageTransition>
@@ -90,10 +88,6 @@ export default function App() {
           <Route path="/pt/quiz-ai"><Redirect to="/pt/quiz-ia" /></Route>
           <Route path="/en/quiz-ai"><QuizAI lang="en" /></Route>
           <Route path="/en/quiz-ia"><Redirect to="/en/quiz-ai" /></Route>
-
-          <Route path="/:lang/blog/:slug">
-            {(params) => <ArticleDetail lang={params.lang} slug={params.slug} />}
-          </Route>
         </PageTransition>
       </MainLayout>
     </Suspense>
