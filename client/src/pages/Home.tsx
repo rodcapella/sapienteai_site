@@ -27,7 +27,6 @@ export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const coreServiceIcons = [Icons.Bot, Icons.Cog, Icons.Cpu, Icons.ShieldCheck, Icons.BarChart3, Icons.MessageCircle];
-  const automationIcons = [Icons.Zap, Icons.Calendar, Icons.TrendingUp];
   const conversionIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
   const keywordIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Cog, Icons.TrendingUp, Icons.BarChart3];
   const brandbookIcons = [Icons.Bot, Icons.Brain, Icons.TrendingUp, Icons.PieChart, Icons.Cog, Icons.MessageCircle, Icons.ShieldCheck];
@@ -124,45 +123,6 @@ export default function Home() {
         <Reveal>
           <div className="relative z-10 mx-auto max-w-7xl px-6" />
         </Reveal>
-      </Section>
-
-      <Section className={homeSectionClass}>
-        <SectionHeader>
-          <Reveal>
-            <SectionTitle label={content.smartAutomation.label} title={content.smartAutomation.title} />
-          </Reveal>
-        </SectionHeader>
-
-        <div className="relative z-10 mx-auto mt-12 grid max-w-7xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">
-          {content.smartAutomation.columns.map((column, i) => {
-            const Icon = automationIcons[i % automationIcons.length];
-            return (
-              <Reveal key={column.title} delay={i * 45}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="group relative flex flex-col items-center overflow-hidden rounded-2xl border border-[var(--brand-purple)]/35 bg-[var(--brand-offwhite)]/90 p-6 text-center shadow-[0_8px_30px_color-mix(in_srgb,var(--brand-deep)_6%,transparent)] backdrop-blur-xl transition-all duration-300 hover:bg-[var(--brand-night)] hover:shadow-[0_14px_38px_color-mix(in_srgb,var(--brand-primary)_18%,transparent)]"
-                >
-                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--brand-offwhite)] text-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-offwhite)]/10 group-hover:text-[var(--brand-cyan-bright)]">
-                    <Icon className="h-8 w-8" />
-                  </div>
-                  <div className="mb-4 h-0.5 w-5 rounded-full bg-[var(--brand-primary)] transition-all duration-300 group-hover:bg-[var(--brand-cyan-bright)]" />
-                  <p className="font-heading text-xl font-black leading-tight tracking-tight text-[var(--brand-night)] transition-colors duration-300 group-hover:text-[var(--brand-offwhite)] md:text-2xl">
-                    {column.title}
-                  </p>
-                  <ul className="mt-4 space-y-2 text-left">
-                    {column.points.map((point) => (
-                      <li key={point} className="flex items-start gap-2.5 text-sm text-[var(--brand-night)]/75 transition-colors duration-300 group-hover:text-[var(--brand-offwhite)]/70">
-                        <Icons.CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-primary)] transition-colors duration-300 group-hover:text-[var(--brand-cyan-bright)]" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </Reveal>
-            );
-          })}
-        </div>
       </Section>
 
       <Section className={homeSectionClass}>
