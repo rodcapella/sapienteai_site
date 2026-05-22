@@ -6,7 +6,16 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
 const footerTitleClass = "mb-2 bg-[linear-gradient(90deg,#5de0e6,#004aad)] bg-clip-text font-serif text-[14px] font-black uppercase tracking-[0.24em] text-transparent";
-const footerColumnClass = "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,#050816,#004aad,#050816)]";
+const footerColumnClass = "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,rgba(5,8,22,0),#050816_12%,#004aad_50%,#050816_88%,rgba(5,8,22,0))]";
+const footerTitleStyle = {
+  background: "linear-gradient(90deg, #5de0e6, #004aad)",
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  color: "transparent",
+  fontFamily: "'Playfair Display', serif",
+  fontSize: "14px",
+  lineHeight: "1.2",
+} as const;
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -63,7 +72,7 @@ export default function Footer() {
           </div>
 
           <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.navigation")}</p>
+            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.navigation")}</p>
             <ul className="space-y-2">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
@@ -81,7 +90,7 @@ export default function Footer() {
           </div>
 
           <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.legal")}</p>
+            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.legal")}</p>
             <ul className="space-y-2">
               {[
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
@@ -100,7 +109,7 @@ export default function Footer() {
           </div>
 
           <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.contact")}</p>
+            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.contact")}</p>
             <ul className="space-y-1.5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
@@ -127,7 +136,7 @@ export default function Footer() {
           </div>
 
           <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.newsletter")}</p>
+            <p className={footerTitleClass} style={footerTitleStyle}>{t("footer.newsletter")}</p>
             <p className="mb-4 font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.newsletterDescription")}</p>
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
               <PremiumButton className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
