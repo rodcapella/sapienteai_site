@@ -65,19 +65,7 @@ export default function ArticleDetail({ lang = 'pt', slug = '' }: ArticleDetailP
     .slice(0, 3);
 
   return (
-    <div className="
-      min-h-screen 
-      bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)]
-      text-[var(--brand-offwhite)]
-      relative
-      overflow-hidden
-    ">
-
-      {/* BACKGROUND */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--brand-cyan)]/10 blur-3xl rounded-full"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
-      </div>
+    <div className="standard-section-bg min-h-screen text-[var(--brand-offwhite)] relative overflow-hidden">
       <InternalHero label="Blog" title={article.title} subtitle={article.excerpt} image={article.image} imageAlt={article.title} compact>
         <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--brand-offwhite)]/70">
             <div className="flex items-center gap-2">

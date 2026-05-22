@@ -10,12 +10,7 @@ export default function NotFound() {
   const content = getContent("notFound", lang);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[radial-gradient(circle_at_top,_#0b1220,_#020617)] text-[var(--brand-offwhite)] relative overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--brand-cyan)]/10 blur-3xl rounded-full"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 bg-blue-600/10 blur-3xl rounded-full"></div>
-      </div>
-
+    <div className="standard-section-bg min-h-screen flex items-center justify-center text-[var(--brand-offwhite)] relative overflow-hidden">
       <div className="max-w-lg w-full mx-4 backdrop-blur-xl bg-white/[0.03] border border-white/10 rounded-2xl p-10 text-center">
         <div className="flex justify-center mb-8 relative">
           <div className="absolute w-28 h-28 bg-[var(--brand-cyan)]/20 blur-3xl rounded-full"></div>

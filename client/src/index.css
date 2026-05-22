@@ -1,19 +1,5 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap");
-
-@font-face {
-  font-family: "Clash Display";
-  src: url("/fonts/ClashDisplay-Variable.woff2") format("woff2");
-  font-weight: 200 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
-  font-weight: 300 900;
-  font-display: swap;
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 
 :root {
   color-scheme: light;
@@ -55,15 +41,17 @@
   --shadow-neon-blue: 0 0 0 1px rgba(63,47,159,.20), 0 12px 26px rgba(0,21,71,.18);
   --shadow-neon-purple: 0 0 0 1px rgba(90,67,200,.18), 0 12px 26px rgba(31,36,117,.16);
   --radius: 1.5rem;
-  --font-body: "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-heading: "Clash Display", "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-detail: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
-  --type-hero: clamp(2.5rem, 7vw, 6rem);
-  --type-section-title: clamp(2.25rem, 5vw, 4.5rem);
-  --type-card-title: clamp(1.5rem, 2.2vw, 2rem);
-  --type-body-lg: clamp(1.125rem, 1.7vw, 1.5rem);
-  --type-body: 1rem;
-  --type-label: .75rem;
+  --font-heading: "Inter";
+  --font-body: "Playfair Display";
+  --font-detail: "Playfair Display";
+  --type-heading: 40px;
+  --type-hero: 40px;
+  --type-section-title: 40px;
+  --type-card-title: 40px;
+  --type-body-lg: 14px;
+  --type-body: 14px;
+  --type-label: 12px;
+  --type-button: 12px;
 }
 
 .dark {
@@ -98,20 +86,25 @@
 * { border-color: var(--border); outline-color: var(--ring); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 *, *::before, *::after { transition: color 320ms ease, background-color 320ms ease, border-color 320ms ease, box-shadow 320ms ease, fill 320ms ease, stroke 320ms ease; }
 html { scroll-behavior: smooth; }
-body { margin:0; overflow-x:hidden; background-color:var(--background); color:var(--foreground); font-family:var(--font-body); }
-body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:-2; background-image:radial-gradient(rgba(1,32,80,.06) .5px, transparent .5px); background-size:2px 2px; opacity:.06; }
+body { margin:0; overflow-x:hidden; background-color:var(--background); color:var(--foreground); font-family:var(--font-body); font-size:var(--type-body); }
+body::before { display:none; content:none; }
 
-h1,h2,h3,h4,h5,h6 { font-family:var(--font-heading); letter-spacing:0; text-wrap:balance; color:inherit; }
+h1,h2,h3,h4,h5,h6 { font-family:var(--font-heading); font-size:var(--type-heading); letter-spacing:0; text-wrap:balance; color:inherit; }
 .hero h1,.InternalHero h1{color:var(--brand-offwhite)!important}.hero h1:not(.internal-hero-highlight),.InternalHero h1:not(.internal-hero-highlight){-webkit-text-fill-color:var(--brand-offwhite)}
 :where(h1,h2,h3,h4,h5,h6)[class*="tracking-tight"], :where(h1,h2,h3,h4,h5,h6)[class*="tracking-tighter"] { letter-spacing:0; }
 .font-heading { font-family:var(--font-heading); letter-spacing:0; }
-.font-detail,.type-label,.quiz-duration,.quiz-topline,.quiz-category { font-family:var(--font-detail); }
+.font-sans,.font-serif,.font-mono,.font-detail,.type-label,.quiz-duration,.quiz-topline,.quiz-category { font-family:var(--font-detail); }
 .type-label { font-size:var(--type-label); font-weight:900; letter-spacing:.18em; text-transform:uppercase; }
 .type-body { font-size:var(--type-body); line-height:1.75; }
 .type-body-lg { font-size:var(--type-body-lg); line-height:1.65; }
 .type-card-title { font-family:var(--font-heading); font-size:var(--type-card-title); font-weight:900; line-height:1.15; letter-spacing:0; }
 .type-section-title { font-family:var(--font-heading); font-size:var(--type-section-title); font-weight:900; line-height:1; }
 .type-hero { font-family:var(--font-heading); font-size:var(--type-hero); font-weight:900; line-height:.95; }
+a { font-family:var(--font-body); }
+button,.button,[role="button"],button *,[class*="Button"],[class*="Button"] *{font-family:var(--font-body)!important;font-size:var(--type-button)!important}
+main :where(p,li,span,label,input,textarea,select){font-family:var(--font-body);font-size:var(--type-body)}
+main :where(.font-detail,.type-label,.quiz-duration,.quiz-topline,.quiz-category){font-family:var(--font-detail);font-size:var(--type-label)}
+main :where(h1,h2,h3,h4,h5,h6,.font-heading,.type-card-title,.type-section-title,.type-hero):not(.final-cta *){font-family:var(--font-heading)!important;font-size:var(--type-heading)!important}
 .internal-hero-highlight{display:inline-block;position:relative;background:linear-gradient(90deg,#55d4f2 0%,#0ab4ff 50%,#7a5cfc 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent!important;text-shadow:0 0 12px rgba(85,212,242,.18)}
 .internal-hero-highlight::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:3px;border-radius:999px;background:linear-gradient(90deg,#55d4f2,#0ab4ff,#7a5cfc);opacity:.75}
 

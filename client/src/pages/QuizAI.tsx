@@ -70,9 +70,8 @@ export default function QuizAI() {
     <main className="quiz-ai-page">
       <InternalHero label={content.badge} title={content.title} highlight={`${content.highlight}?`} subtitle={content.subtitle} compact />
 
-      <section className="quiz-experience tech-grid scanlines">
+      <section className="quiz-experience">
         <div className="quiz-bg-radials" />
-        <div className="quiz-bg-dots dots-matrix" />
 
         {screen === "start" && (
           <div className="quiz-screen quiz-start anim-in">

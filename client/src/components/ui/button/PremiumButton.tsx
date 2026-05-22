@@ -60,9 +60,9 @@ export function PremiumButton({
   };
 
   const sizeClasses = {
-    sm: "px-6 py-3 text-xs",
-    md: "px-8 py-4 text-sm",
-    lg: "px-11 py-5 text-base",
+    sm: "px-6 py-3 text-[12px]",
+    md: "px-8 py-4 text-[12px]",
+    lg: "px-11 py-5 text-[12px]",
   };
 
   return (
@@ -74,7 +74,7 @@ export function PremiumButton({
       onMouseLeave={reset}
       style={{ x: springX, y: springY }}
       className={cn(
-        "neon-shimmer group relative overflow-hidden rounded-full border border-[rgba(255,255,255,0.12)] font-heading font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.03] active:scale-95",
+        "neon-shimmer group relative overflow-hidden rounded-full border border-[rgba(255,255,255,0.12)] font-[var(--font-body)] font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.03] active:scale-95",
         variantClasses[variant],
         sizeClasses[size],
         className,
@@ -89,7 +89,7 @@ export function PremiumButton({
 
       <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.18),transparent_55%)] opacity-18" />
 
-      <span className="relative z-10 flex items-center justify-center gap-3 text-white">{children}</span>
+      <span className="relative z-10 flex items-center justify-center gap-3 text-[12px] text-white">{children}</span>
     </motion.button>
   );
 }

@@ -14,12 +14,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="relative min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-foreground">
 
-      {/* 🌌 HIGH-TECH BACKGROUND GLOW SYSTEM */}
-      <div className="fixed inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] h-[50%] w-[50%] animate-pulse-slow rounded-full bg-[#10266f]/10 blur-[130px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] h-[50%] w-[50%] animate-pulse-slow rounded-full bg-[#3f2f9f]/10 blur-[130px]" />
-      </div>
-
       <Header />
 
       {/* 🧠 MAIN CONTENT WITH TRANSITION */}

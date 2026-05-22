@@ -13,7 +13,7 @@
     radial-gradient(circle at bottom right, rgba(0, 102, 204, 0.16), transparent 32%),
     var(--quiz-bg);
   color: var(--quiz-text);
-  font-family: "DM Sans", "Inter";
+  font-family: var(--font-body);
 }
 
 .quiz-ai-page * {
@@ -103,7 +103,7 @@
 .quiz-title {
   max-width: 760px;
   margin: 0 0 18px;
-  font-family: "Syne", "Inter";
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 800;
   line-height: 1.05;
@@ -127,7 +127,7 @@
   padding: 14px 28px;
   background: var(--quiz-accent);
   color: #07172c;
-  font-family: "Syne", "Inter";
+  font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 800;
   text-decoration: none;
@@ -150,7 +150,7 @@
 .quiz-duration {
   margin-top: 18px;
   color: rgba(224, 230, 255, 0.62);
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-detail);
   font-size: 12px;
 }
 
@@ -168,7 +168,7 @@
   justify-content: space-between;
   margin-bottom: 10px;
   color: rgba(224, 230, 255, 0.72);
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-detail);
   font-size: 13px;
 }
 
@@ -208,7 +208,7 @@
 .quiz-category {
   margin: 0 0 14px;
   color: var(--quiz-accent);
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-detail);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -217,7 +217,7 @@
 
 .quiz-card h2 {
   margin: 0 0 28px;
-  font-family: "Syne", "Inter";
+  font-family: var(--font-heading);
   font-size: clamp(1.35rem, 3vw, 2.3rem);
   font-weight: 800;
   line-height: 1.25;
@@ -263,7 +263,7 @@
   border-radius: 10px;
   background: rgba(0, 212, 255, 0.15);
   color: var(--quiz-accent);
-  font-family: "Space Mono", monospace;
+  font-family: var(--font-detail);
   font-size: 13px;
   font-weight: 800;
 }
@@ -347,7 +347,7 @@
 
 .quiz-score-ring strong {
   color: var(--quiz-accent);
-  font-family: "Syne", "Inter";
+  font-family: var(--font-heading);
   font-size: 52px;
   font-weight: 800;
   line-height: 1;
@@ -363,7 +363,7 @@
 
 .quiz-result h2 {
   margin: 0 0 12px;
-  font-family: "Syne", "Inter";
+  font-family: var(--font-heading);
   font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 800;
 }
@@ -402,7 +402,7 @@
 
 .quiz-cta-card h3 {
   margin: 0 0 12px;
-  font-family: "Syne", "Inter";
+  font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 800;
 }

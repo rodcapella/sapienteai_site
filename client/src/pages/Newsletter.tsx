@@ -24,10 +24,7 @@ export default function Newsletter() {
   }, [isPT, lang]);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#05081B] pt-28 text-[var(--brand-offwhite)] tech-grid scanlines md:pt-36">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,209,255,0.22),transparent_34%),radial-gradient(circle_at_80%_80%,rgba(123,129,255,0.18),transparent_36%)]" />
-      <div className="pointer-events-none absolute inset-0 dots-matrix opacity-20" />
-
+    <main className="standard-section-bg relative min-h-screen overflow-hidden pt-28 text-[var(--brand-offwhite)] md:pt-36">
       <section className="relative z-10 mx-auto grid min-h-[calc(100vh-9rem)] max-w-6xl items-center gap-10 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-[var(--brand-cyan)]/35 bg-[#071129]/70 px-5 py-2 text-xs font-black uppercase tracking-[0.28em] text-[var(--brand-cyan)] backdrop-blur-xl">

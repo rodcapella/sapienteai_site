@@ -114,7 +114,7 @@ export default function About() {
         </div>
       </Section>
 
-      <Section className="bg-modern-gradient py-24 md:py-48 relative overflow-hidden">
+      <Section className="py-24 md:py-48 relative overflow-hidden">
         <div className="absolute top-1/2 right-0 w-[600px] h-[600px] bg-neon-purple/5 blur-[120px] rounded-full -z-10"></div>
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
