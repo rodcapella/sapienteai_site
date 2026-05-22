@@ -56,9 +56,9 @@ export default function Footer() {
       <div className="container relative z-10 mx-auto px-6 py-5 md:py-7">
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
-            <Link href={`/${lang}`} className="group mb-3 inline-block">
-              <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105 md:h-16" />
-            </Link>
+            <div className="mb-3 inline-block">
+              <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-14 w-auto object-contain md:h-16" />
+            </div>
             <p className="max-w-sm font-serif text-[12px] leading-relaxed text-[var(--brand-offwhite)]">{t("footer.description")}</p>
           </div>
 

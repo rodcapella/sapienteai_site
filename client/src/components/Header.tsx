@@ -63,9 +63,9 @@ export default function Header({ onContactClick }: HeaderProps) {
 
         <div className="container mx-auto px-4 sm:px-6">
           <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
-            <Link href={`/${lang}`} className="flex w-[180px] shrink-0 items-center gap-2 transition-all duration-500 hover:opacity-90 xl:w-[210px]">
+            <div className="flex w-[180px] shrink-0 items-center gap-2 xl:w-[210px]">
               <img src="/media/logos/logo_sapiente_transparente.png" alt="Sapiente.AI" className="h-[67px] w-auto object-contain md:h-[77px] lg:h-[84px]" />
-            </Link>
+            </div>
 
             <div className="hidden min-w-0 items-center justify-center lg:flex">
               <div className="grid w-full max-w-[500px] grid-cols-4 items-center gap-2 xl:max-w-[560px] xl:gap-3">
