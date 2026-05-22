@@ -20,6 +20,12 @@ type LegalContent = {
   highlight?: string;
   subtitle?: string;
   lastUpdated?: string;
+  cta?: {
+    title: string;
+    highlight: string;
+    description: string;
+    button: string;
+  };
   sections: LegalContentSection[];
 };
 
@@ -56,6 +62,15 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
   const pageTitle = getLegalPageTitle(slug, lang) || content.title;
+  const cta = content.cta || {
+    title: lang === "pt" ? "Precisa de ajuda para aplicar isto" : "Need help applying this",
+    highlight: lang === "pt" ? "ao seu negócio?" : "to your business?",
+    description:
+      lang === "pt"
+        ? "Fale connosco e perceba como podemos estruturar uma solução clara, segura e alinhada aos seus objetivos."
+        : "Talk to us and understand how we can structure a clear, secure solution aligned with your goals.",
+    button: lang === "pt" ? "Contacto" : "Contact",
+  };
 
   useEffect(() => {
     setSEOHead({
@@ -133,13 +148,10 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
       </Section>
 
       <FinalCTA
-        title={lang === "pt" ? "Precisa de ajuda para aplicar isto ao seu negócio?" : "Need help applying this to your business?"}
-        description={
-          lang === "pt"
-            ? "Fale connosco e perceba como podemos estruturar uma solução clara, segura e alinhada aos seus objetivos."
-            : "Talk to us and understand how we can structure a clear, secure solution aligned with your goals."
-        }
-        button={lang === "pt" ? "Contacto" : "Contact"}
+        title={cta.title}
+        highlight={cta.highlight}
+        description={cta.description}
+        button={cta.button}
       />
     </div>
   );

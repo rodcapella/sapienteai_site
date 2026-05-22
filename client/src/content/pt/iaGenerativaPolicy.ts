@@ -7,6 +7,13 @@ export const iaGenerativaPolicyPT = {
   subtitle: "Regras claras para uma utilização responsável, transparente e segura da ",
   highlight: "inteligência artificial generativa, em conformidade com o RGPD e o Regulamento IA da UE.",
 
+  cta: {
+    title: "Precisa de ajuda para aplicar isto",
+    highlight: "ao seu negócio?",
+    description: "Fale connosco e perceba como podemos estruturar uma solução clara, segura e alinhada aos seus objetivos.",
+    button: "Contacto",
+  },
+
   sections: [
     {
       id: "shadow-ai",

@@ -11,7 +11,8 @@ export const quizContentEn = {
   scoreLabel: "Score",
   correctLabel: "Correct!",
   wrongLabel: "Wrong!",
-  ctaTitle: "Ready to transform your business with AI?",
+  ctaTitle: "Ready to transform your business",
+  ctaHighlight: "with AI?",
   ctaText:
     "Sapiente.AI helps companies and professionals implement AI solutions in a strategic, practical, and accessible way.",
   ctaButton: "Talk to us",

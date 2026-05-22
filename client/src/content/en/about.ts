@@ -63,7 +63,8 @@ export const aboutEN = {
 
   teamCta: {
     eyebrow: "The team",
-    title: "Meet the people turning strategy into execution.",
+    title: "Meet the people turning strategy",
+    highlight: "into execution.",
     text:
       "Behind Sapiente.ai is a team focused on building useful, measurable solutions aligned with each business context.",
     link: "Meet the team"

@@ -36,6 +36,12 @@ export const teamPT = {
       "Rodrigo lidera a arquitetura técnica, dados e automação. Tatiane lidera posicionamento, conteúdo e crescimento. Juntos, unem produto, performance e inteligência artificial para criar soluções com impacto real."
   },
 
+  cta: {
+    title: "Estratégia, IA e execução",
+    highlight: "a trabalhar como uma só.",
+    button: "Falar com a equipa"
+  },
+
   members: [
     {
       name: "Rodrigo Póvoa",

@@ -8,7 +8,7 @@ import { Link } from "wouter";
 type FinalCTAProps = {
   title: string;
   description?: string;
-  highlight?: string;
+  highlight: string;
   button: string;
   href?: string;
 };

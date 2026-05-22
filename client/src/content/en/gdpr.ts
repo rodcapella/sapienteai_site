@@ -6,6 +6,13 @@ export const rgpdContentEN = {
   subtitle: "Strict compliance with the EU GDPR",
   highlight: "(General Data Protection Regulation of the European Union).",
 
+  cta: {
+    title: "Need help applying this",
+    highlight: "to your business?",
+    description: "Talk to us and understand how we can structure a clear, secure solution aligned with your goals.",
+    button: "Contact",
+  },
+
   sections: [
     {
       id: "compliance",

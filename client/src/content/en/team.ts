@@ -36,6 +36,12 @@ export const teamEN = {
       "Rodrigo leads technical architecture, data, and automation. Tatiane leads positioning, content, and growth. Together, they combine product, performance, and artificial intelligence to build solutions with real impact."
   },
 
+  cta: {
+    title: "Strategy, AI, and execution",
+    highlight: "working as one.",
+    button: "Talk to the team"
+  },
+
   members: [
     {
       name: "Rodrigo Póvoa",

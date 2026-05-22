@@ -8,6 +8,7 @@ export const faqEN = {
 
   cta: {
     title: "Still have questions?",
+    highlight: "Let's talk.",
     description: "Talk directly with the people building real-world AI systems.",
     button: "Talk to an expert"
   },

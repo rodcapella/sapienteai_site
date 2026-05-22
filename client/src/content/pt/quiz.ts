@@ -11,7 +11,8 @@ export const quizContentPt = {
   scoreLabel: "Pontos",
   correctLabel: "Correto!",
   wrongLabel: "Incorreto!",
-  ctaTitle: "Pronto para transformar o seu negócio com IA?",
+  ctaTitle: "Pronto para transformar o seu negócio",
+  ctaHighlight: "com IA?",
   ctaText:
     "A Sapiente.AI ajuda empresas e profissionais a implementar soluções de IA de forma estratégica, prática e acessível.",
   ctaButton: "Fale connosco",

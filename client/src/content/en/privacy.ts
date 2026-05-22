@@ -6,6 +6,13 @@ export const privacyEN = {
   subtitle: "Transparency, security, and protection of your data",
   highlight: "In compliance with the European Union GDPR.",
   lastUpdated: "Last updated: February 16, 2026",
+
+  cta: {
+    title: "Need help applying this",
+    highlight: "to your business?",
+    description: "Talk to us and understand how we can structure a clear, secure solution aligned with your goals.",
+    button: "Contact",
+  },
   
   sections: [
     {

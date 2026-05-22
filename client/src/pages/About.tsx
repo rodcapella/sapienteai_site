@@ -140,6 +140,7 @@ export default function About() {
 
       <FinalCTA
         title={content.teamCta.title}
+        highlight={content.teamCta.highlight}
         description={content.teamCta.text}
         button={content.teamCta.link}
         href={`/${lang}/team`}

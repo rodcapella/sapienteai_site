@@ -116,7 +116,7 @@ export default function Home() {
         </Section>
       )}
 
-      <FinalCTA title={content.finalCta.title} description={content.finalCta.subtitle} button={content.finalCta.button} />
+      <FinalCTA title={content.finalCta.title} highlight={content.finalCta.highlight} description={content.finalCta.subtitle} button={content.finalCta.button} />
 
       {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </div>

@@ -63,7 +63,8 @@ export const aboutPT = {
 
   teamCta: {
     eyebrow: "A equipa",
-    title: "Conheça quem transforma estratégia em execução.",
+    title: "Conheça quem transforma estratégia",
+    highlight: "em execução.",
     text:
       "Por trás da Sapiente.AI está uma equipa focada em criar soluções úteis, mensuráveis e alinhadas com o contexto de cada negócio.",
     link: "Conhecer a equipa"

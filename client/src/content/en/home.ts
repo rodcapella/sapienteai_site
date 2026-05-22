@@ -133,7 +133,8 @@ export const homeEN = {
   ],
 
   finalCta: {
-    title: "Find where your business can improve performance",
+    title: "Find where your business can improve",
+    highlight: "performance",
     subtitle: "We run a free diagnosis and show where you can automate, reduce costs, and increase revenue.",
     button: "Get my free diagnosis",
   },

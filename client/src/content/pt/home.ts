@@ -134,7 +134,8 @@ export const homePT = {
   ],
 
   finalCta: {
-    title: "Descubra onde está a perder dinheiro no seu negócio",
+    title: "Descubra onde está a perder dinheiro",
+    highlight: "no seu negócio",
     subtitle: "Fazemos um diagnóstico gratuito e mostramos exatamente onde pode automatizar, reduzir custos e aumentar vendas.",
     button: "Quero descobrir agora"
   }

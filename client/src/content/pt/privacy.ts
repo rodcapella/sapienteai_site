@@ -7,6 +7,13 @@ export const privacyPT = {
   highlight: "Em conformidade com o RGPD da União Europeia.",
   lastUpdated: "Última atualização: 16 de fevereiro de 2026",
 
+  cta: {
+    title: "Precisa de ajuda para aplicar isto",
+    highlight: "ao seu negócio?",
+    description: "Fale connosco e perceba como podemos estruturar uma solução clara, segura e alinhada aos seus objetivos.",
+    button: "Contacto",
+  },
+
   sections: [
     {
       id: "overview",
