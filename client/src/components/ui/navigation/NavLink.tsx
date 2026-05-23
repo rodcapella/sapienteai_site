@@ -41,7 +41,7 @@ const navLinkVariants = cva(
 
       active: {
         true: `
-          text-[var(--brand-primary)]
+          text-[var(--brand-deep)] dark:text-[var(--brand-offwhite)]
 
           after:absolute after:left-0 after:-bottom-2
           after:h-[2px] after:w-full
