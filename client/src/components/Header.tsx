@@ -53,7 +53,7 @@ export default function Header({ onContactClick }: HeaderProps) {
       <header
         className={cn(
           "fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500",
-          "border-foreground/10 text-foreground dark:border-[var(--brand-cyan)]/20 dark:text-[var(--brand-offwhite)]",
+          "border-[var(--brand-primary)]/20 text-[var(--brand-primary)] dark:border-[var(--brand-primary)]/30 dark:text-[var(--brand-primary)]",
           scrolled
             ? "bg-[rgba(234,246,255,0.94)] shadow-[0_18px_40px_rgba(8,18,40,0.14)] backdrop-blur-2xl dark:bg-[#050B16]/96 dark:shadow-[0_18px_60px_rgba(0,0,0,0.65)]"
             : "bg-[rgba(234,246,255,0.88)] backdrop-blur-xl dark:bg-[#050B16]/92",
@@ -78,7 +78,7 @@ export default function Header({ onContactClick }: HeaderProps) {
             </div>
 
             <div className="hidden w-[380px] shrink-0 items-center justify-end gap-4 lg:flex xl:w-[420px]">
-              <div className="h-6 w-px shrink-0 bg-foreground/10 dark:bg-white/10" />
+              <div className="h-6 w-px shrink-0 bg-[var(--brand-primary)]/24" />
               <div className="shrink-0 scale-100">
                 <LanguageSelector />
               </div>
@@ -94,7 +94,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--brand-cyan)]/18 bg-[rgba(234,246,255,0.9)] p-2.5 text-foreground transition-all duration-300 hover:border-[var(--brand-cyan)] hover:bg-[rgba(0,209,255,0.12)] hover:text-[var(--brand-primary)] dark:border-[var(--brand-cyan)]/20 dark:bg-[#081120] dark:text-[var(--brand-offwhite)]"
+                className="rounded-2xl border border-[var(--brand-primary)] bg-[rgba(234,246,255,0.9)] p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[rgba(10,180,255,0.12)] hover:text-[var(--brand-cyan-bright)] dark:bg-[#081120]"
                 aria-label="Toggle menu"
                 type="button"
               >

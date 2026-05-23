@@ -38,7 +38,7 @@ export function InternalHero({
       <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
         {label && (
           <Reveal>
-            <div className="inline-flex items-center rounded-full border border-[#0057FF] bg-transparent px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-white sm:text-sm">
+            <div className="inline-flex items-center rounded-full border border-[var(--brand-primary)] bg-transparent px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-white sm:text-sm">
               {label}
             </div>
           </Reveal>

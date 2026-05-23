@@ -12,9 +12,9 @@ export function ThemeToggle() {
       aria-label={theme === "dark" ? "Ativar tema claro" : "Ativar tema escuro"}
       className={cn(
         "group relative inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-full",
-        "border border-[var(--tech-border)] bg-[var(--glass-bg)] text-foreground/80",
+        "border border-[var(--brand-primary)] bg-[var(--glass-bg)] text-[var(--brand-primary)]",
         "backdrop-blur-xl transition-all duration-500",
-        "hover:-translate-y-0.5 hover:border-primary/60 hover:text-foreground hover:shadow-[var(--shadow-neon-blue)]",
+        "hover:-translate-y-0.5 hover:border-[var(--brand-cyan-bright)] hover:text-[var(--brand-cyan-bright)] hover:shadow-[var(--shadow-neon-blue)]",
       )}
     >
       <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.3),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
