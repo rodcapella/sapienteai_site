@@ -24,8 +24,6 @@ export function InternalHero({
   children,
   compact = false,
 }: InternalHeroProps) {
-  const titleClass = "text-[40px]";
-
   return (
     <Section
       className={[
@@ -47,12 +45,12 @@ export function InternalHero({
         )}
 
         <Reveal delay={100}>
-          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)]" style={{ fontFamily: "'Inter', sans-serif", color: "#FFFFFF", fontSize: "42px" }}>
+          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)]" style={{ fontFamily: "'Inter', sans-serif", color: "#FFFFFF", fontSize: "40px" }}>
             {title}
             {highlight && (
               <>
                 <br />
-                <span className="!text-[#0A84FF]" style={{ fontFamily: "'Inter', sans-serif", fontSize: "42px" }}>
+                <span className="internal-hero-highlight" style={{ fontFamily: "'Inter', sans-serif", color: "var(--brand-primary)", WebkitTextFillColor: "var(--brand-primary)", fontSize: "40px" }}>
                   {highlight}
                 </span>
               </>
