@@ -34,7 +34,7 @@ export default function Home() {
   const brandbookIcons = [Icons.Bot, Icons.Brain, Icons.TrendingUp, Icons.PieChart, Icons.Cog, Icons.MessageCircle, Icons.ShieldCheck];
 
   return (
-    <div className="home-page flex flex-col bg-background">
+    <div className="home-page flex flex-col bg-[#EAF6FF]">
       <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
         <div className="flex flex-col items-start justify-start gap-5 sm:flex-row sm:gap-8">
           <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full sm:w-auto">
