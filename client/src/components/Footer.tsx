@@ -140,7 +140,7 @@ export default function Footer() {
             </p>
             <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
               <PremiumButton className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
-                {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
+                {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
               </PremiumButton>
             </Link>
             <div className="mt-12">

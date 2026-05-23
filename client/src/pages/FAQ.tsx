@@ -32,7 +32,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
     <SectionCard
       className={cn(
         "group mb-5 cursor-pointer overflow-hidden rounded-[2rem] border p-0 transition-all duration-500",
-        "bg-[#EAF6FF]/88 shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-2xl",
+        "bg-[#0057FF] shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-2xl",
         "hover:-translate-y-1 hover:border-[#00D1FF]/60 hover:shadow-[0_24px_70px_rgba(0,209,255,0.18)]",
         isOpen ? "border-[#00D1FF]/70" : "border-primary/20",
       )}
@@ -60,7 +60,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
           <div
             className={cn(
               "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 md:h-12 md:w-12",
-              isOpen ? "rotate-180 bg-[#0A84FF] text-[#EAF6FF] shadow-[0_0_26px_rgba(10,132,255,0.35)]" : "bg-[#EAF6FF] text-[#0A84FF]",
+              isOpen ? "rotate-180 bg-white text-[#00D1FF] shadow-[0_0_26px_rgba(255,255,255,0.2)]" : "bg-white text-[#00D1FF]",
             )}
           >
             <Icons.ChevronDown className="h-6 w-6" />
@@ -69,7 +69,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
 
         <div className={cn("overflow-hidden transition-all duration-700", isOpen ? "mt-7 max-h-[900px] opacity-100" : "max-h-0 opacity-0")}>
           <div className="ml-0 border-t border-primary/15 pt-6 md:ml-[4.25rem]">
-            <p className={`rounded-2xl border border-[#00D1FF]/16 bg-[#050816]/[0.04] px-5 py-5 font-medium text-foreground/70 ${compactBodyTextClass}`}>
+            <p className="rounded-2xl border border-[#00D1FF]/16 bg-white px-5 py-5 font-medium text-black text-[12px] leading-relaxed">
               {item.answer}
             </p>
           </div>

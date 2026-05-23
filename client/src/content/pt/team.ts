@@ -1,7 +1,7 @@
 export const teamPT = {
   hero: {
-    title: "Mentes que transformam dados",
-    highlight: "em crescimento.",
+    title: "Mentes que transformam tecnologia",
+    highlight: "em resultados reais.",
     subtitle: "Unimos tecnologia, inteligência e execução para acelerar empresas."
   },
 
@@ -9,7 +9,7 @@ export const teamPT = {
     eyebrow: "A equipa",
     title: "Uma equipa pequena, sénior e focada no que muda o negócio.",
     text:
-      "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos perto de cada cliente para transformar ideias soltas em sistemas úteis, mensuráveis e preparados para crescer.",
+      "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos perto de cada cliente para transformar desafios reais em sistemas úteis, mensuráveis e preparados para escalar.",
     highlights: [
       {
         value: "01",
@@ -19,7 +19,7 @@ export const teamPT = {
       {
         value: "02",
         title: "Execução com tecnologia",
-        text: "Criamos automações, conteúdos, experiências e sistemas digitais com IA aplicada de forma prática."
+        text: "Desenvolvemos automações, sistemas e experiências digitais com IA aplicada diretamente ao contexto do negócio."
       },
       {
         value: "03",
@@ -31,14 +31,14 @@ export const teamPT = {
 
   presentation: {
     eyebrow: "Fundadores",
-    title: "Perfis complementares para resolver o mesmo desafio.",
+    title: "Dois perfis. Uma visão. Resultados mensuráveis.",
     text:
-      "Rodrigo lidera a arquitetura técnica, dados e automação. Tatiane lidera posicionamento, conteúdo e crescimento. Juntos, unem produto, performance e inteligência artificial para criar soluções com impacto real."
+      "Rodrigo lidera a arquitetura técnica, dados e automação. Tatiane lidera posicionamento, conteúdo e crescimento. Juntos, cobrem todo o ciclo: do problema ao sistema, da mensagem ao mercado."
   },
 
   cta: {
     title: "Estratégia, IA e execução",
-    highlight: "a trabalhar como uma só.",
+    highlight: "alinhadas para crescer.",
     button: "Falar com a equipa"
   },
 
@@ -50,16 +50,17 @@ export const teamPT = {
       bio: "Desenvolve sistemas inteligentes focados em clareza, velocidade e decisão.",
 
       story:
-        "Com experiência em dados (análise, engenharia e arquitetura), automação e desenvolvimento web tem como foco criar sistemas que eliminam complexidade e aceleram decisões críticas no negócio.",
+        "Com experiência em engenharia e arquitetura de dados, automação e desenvolvimento web, constrói sistemas que transformam dados dispersos em decisões rápidas e negócios mais eficientes.",
 
       stack: ["AI", "Automação", "Data", "Produto", "Business Intelligence", "Web Developer", "Metodologia Ágil"],
 
       badges: [
-        "AI",
+        "Arquitetura de Dados",
+        "Engenharia de Dados",
+        "Análise de Dados",
         "Automações",
-        "Arquiteto, Engenheiro e Analista de Dados",
+        "Sistemas Escaláveis",
         "Data-Driven",
-        "Sistema escaláveis",
         "SCRUM"
       ],
 
@@ -74,16 +75,16 @@ export const teamPT = {
       bio: "Transforma estratégias em crescimento através de conteúdo e posicionamento.",
 
       story:
-        "Especialista em publicidade, marketing digital e design, foca-se em transformar marcas em máquinas de aquisição através de posicionamento, narrativa e performance digital.",
+        "Especialista em publicidade, marketing digital e design, transforma marcas em motores de crescimento através de posicionamento, narrativa e performance digital.",
 
-      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Publicidade", "Ads"],
+      stack: ["Marketing", "SEO", "GEO", "AEO", "AI Content", "Design", "Publicidade", "Ads"],
 
       badges: [
         "Estratégia de Crescimento",
         "Marketing Digital",
         "SEO / GEO / AEO",
-        "Posicionamento da Marca",
-        "Designer",
+        "Posicionamento de Marca",
+        "Design",
         "Gestão de Redes Sociais"
       ],
 
