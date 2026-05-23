@@ -40,7 +40,7 @@ export function InternalHero({
       <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
         {label && (
           <Reveal>
-            <div className="inline-flex items-center rounded-full border border-[var(--brand-cyan)]/25 bg-[#050B16]/70 px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-[var(--brand-offwhite)]/75 shadow-[0_0_18px_rgba(85,212,242,0.07),inset_0_0_12px_rgba(85,212,242,0.04)] backdrop-blur-sm sm:text-sm">
+            <div className="inline-flex items-center rounded-full border border-[#0057FF] bg-transparent px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-white sm:text-sm">
               {label}
             </div>
           </Reveal>
