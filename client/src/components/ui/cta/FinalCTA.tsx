@@ -50,7 +50,7 @@ export function FinalCTA({ title, highlight, description, button, href }: FinalC
 
           {description && (
             <Reveal delay={110}>
-              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#EAF6FF", fontSize: "24px" }}>
+              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#000000", fontSize: "24px" }}>
                 {description}
               </p>
             </Reveal>

@@ -1,44 +1,44 @@
 export const teamEN = {
   hero: {
-    title: "Minds that turn data",
-    highlight: "into growth.",
-    subtitle: "We combine technology, intelligence, and execution to accelerate business growth."
+    title: "Minds that turn technology",
+    highlight: "into real results.",
+    subtitle: "We combine technology, intelligence and execution to accelerate businesses."
   },
 
   intro: {
     eyebrow: "The team",
-    title: "A small, senior team focused on what moves the business.",
+    title: "A small, senior team focused on what actually moves the needle.",
     text:
-      "Sapiente.ai was created from the combination of engineering, data, marketing, and design. We work close to each client to turn scattered ideas into useful, measurable systems built to scale.",
+      "Sapiente.AI was built at the intersection of engineering, data, marketing and design. We work closely with each client to turn real challenges into useful, measurable systems built to scale.",
     highlights: [
       {
         value: "01",
         title: "Strategy with context",
-        text: "We start from the real problem, business goals, and digital maturity of each company."
+        text: "We start with the real problem, the commercial objectives and the digital maturity of each business."
       },
       {
         value: "02",
         title: "Execution with technology",
-        text: "We build automations, content, experiences, and digital systems with practical applied AI."
+        text: "We develop automations, systems and digital experiences with AI applied directly to your business context."
       },
       {
         value: "03",
         title: "Measurable growth",
-        text: "We connect each initiative to acquisition, efficiency, conversion, and revenue indicators."
+        text: "We connect every initiative to acquisition, efficiency, conversion and revenue metrics."
       }
     ]
   },
 
   presentation: {
     eyebrow: "Founders",
-    title: "Complementary profiles solving the same challenge.",
+    title: "Two profiles. One vision. Measurable results.",
     text:
-      "Rodrigo leads technical architecture, data, and automation. Tatiane leads positioning, content, and growth. Together, they combine product, performance, and artificial intelligence to build solutions with real impact."
+      "Rodrigo leads technical architecture, data and automation. Tatiane leads positioning, content and growth. Together, they cover the full cycle: from problem to system, from message to market."
   },
 
   cta: {
-    title: "Strategy, AI, and execution",
-    highlight: "working as one.",
+    title: "Strategy, AI and execution",
+    highlight: "aligned to grow.",
     button: "Talk to the team"
   },
 
@@ -46,20 +46,21 @@ export const teamEN = {
     {
       name: "Rodrigo Póvoa",
       role: "Founder & CTO",
-      focus: "Technology, data, and automation",
-      bio: "Builds intelligent systems focused on clarity, speed, and decision-making.",
+      focus: "Technology, data and automation",
+      bio: "Builds intelligent systems focused on clarity, speed and decision-making.",
 
       story:
-        "With experience in data (analytics, engineering, and architecture), automation, and web development, his focus is on building systems that eliminate complexity and accelerate critical business decisions.",
+        "With a background in data engineering and architecture, automation and web development, he builds systems that turn scattered data into fast decisions and more efficient businesses.",
 
-      stack: ["AI", "Automation", "Data", "Product", "Business Intelligence", "Web Development", "Agile Methodology"],
+      stack: ["AI", "Automation", "Data", "Product", "Business Intelligence", "Web Development", "Agile"],
 
       badges: [
-        "AI",
+        "Data Architecture",
+        "Data Engineering",
+        "Data Analysis",
         "Automation",
-        "Data Architect, Engineer & Analyst",
-        "Data-Driven",
         "Scalable Systems",
+        "Data-Driven",
         "SCRUM"
       ],
 
@@ -70,20 +71,20 @@ export const teamEN = {
     {
       name: "Tatiane Gomes",
       role: "Founder & CMO",
-      focus: "Marketing, brand, and growth",
+      focus: "Marketing, brand and growth",
       bio: "Turns strategies into growth through content and positioning.",
 
       story:
-        "Specialist in advertising, digital marketing, and design, focused on turning brands into acquisition machines through positioning, storytelling, and digital performance.",
+        "A specialist in advertising, digital marketing and design, she transforms brands into growth engines through positioning, storytelling and digital performance.",
 
-      stack: ["Marketing", "SEO", "GEO", "AEO", "AI", "Design", "Advertising", "Ads"],
+      stack: ["Marketing", "SEO", "GEO", "AEO", "AI Content", "Design", "Advertising", "Ads"],
 
       badges: [
         "Growth Strategy",
         "Digital Marketing",
         "SEO / GEO / AEO",
         "Brand Positioning",
-        "Designer",
+        "Design",
         "Social Media Management"
       ],
 

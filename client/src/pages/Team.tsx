@@ -131,7 +131,7 @@ export default function Team() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={lang === "en" ? "Team" : "Equipa"} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle} imageAlt="Sapiente.AI team" />
+      <InternalHero label={lang === "en" ? "Founders" : "Fundadores"} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle} imageAlt="Sapiente.AI team" />
 
       <Section className="team-section-shell team-intro-section bg-ice py-24 md:py-40">
         <div className="container mx-auto px-6">
