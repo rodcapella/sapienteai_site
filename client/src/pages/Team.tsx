@@ -188,9 +188,9 @@ export default function Team() {
 
       <FinalCTA
         title={content.cta.title}
-        title_highlight={content.cta.highlight},
-        description={content.cta.description},
-        description_highlight={content.cta.description_highlight},
+        title_highlight={content.cta.highlight}
+        description={content.cta.description}
+        description_highlight={content.cta.description_highlight}
         button={content.cta.button}
       />
     </div>
