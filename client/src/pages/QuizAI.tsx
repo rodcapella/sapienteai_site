@@ -173,7 +173,7 @@ export default function QuizAI() {
         )}
       </section>
 
-      <FinalCTA title={content.ctaTitle} highlight={content.ctaHighlight} description={content.ctaText} button={content.ctaButton} />
+      <FinalCTA title={content.ctaTitle} title_highlight={content.ctaHighlight} description={content.ctaText} button={content.ctaButton} />
     </main>
   );
 }

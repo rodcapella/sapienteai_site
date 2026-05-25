@@ -52,13 +52,14 @@ export function FinalCTA({ title, title_highlight, description, description_high
           {description && (
             <Reveal delay={110}>
               <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#000000", fontSize: "24px" }}>
-+               {description}
-+               {description_highlight && (
-+                 <span className="!text-[#0057FF]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "24px" }}>
-+                   {description_highlight}
-+                 </span>
-+               )}
-+             </p>
+                {description}
+                {description_highlight && (
+                  <>
+                    <br />
+                    <span className="text-[var(--brand-primary)]">{description_highlight}</span>
+                  </>
+                )}
+              </p>
             </Reveal>
           )}
 

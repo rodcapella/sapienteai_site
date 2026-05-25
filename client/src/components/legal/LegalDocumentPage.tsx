@@ -149,7 +149,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
       <FinalCTA
         title={cta.title}
-        highlight={cta.highlight}
+        title_highlight={cta.highlight}
         description={cta.description}
         button={cta.button}
       />
