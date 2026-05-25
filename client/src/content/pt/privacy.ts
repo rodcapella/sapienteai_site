@@ -3,123 +3,72 @@ import { Icons } from "@/lib/icons";
 
 export const privacyPT = {
   title: "Política de Privacidade",
-  subtitle: "Transparência, segurança e proteção dos seus dados",
-  highlight: "Em conformidade com o RGPD da União Europeia.",
-  lastUpdated: "Última atualização: 16 de fevereiro de 2026",
-
-  cta: {
-    title: "Precisa de ajuda para aplicar isto",
-    title_highlight: "ao seu negócio?",
-    description: "Fale connosco e perceba como podemos",
-    description_highlight: "estruturar uma solução clara, segura e alinhada aos seus objetivos.",
-    button: "Contacto",
-  },
+  subtitle: "A sua privacidade é importante para nós",
+  highlight: "Simples, clara e em conformidade com o RGPD.",
+  lastUpdated: "Última atualização: Maio de 2026",
 
   sections: [
     {
-      id: "overview",
+      id: "intro",
       icon: Icons.ShieldCheck,
-      title: "1. Visão Geral",
-      content: "A Sapiente.AI atua como Responsável pelo Tratamento e Subcontratante sob o rigoroso enquadramento do Regulamento Geral sobre a Proteção de Dados (RGPD - Regulamento UE 2016/679). A nossa arquitetura de privacidade foi desenhada para proteger os direitos e liberdades fundamentais das pessoas singulares, nomeadamente o seu direito à proteção de dados pessoais."
+      title: "1. Quem somos e o que fazemos",
+      content: "A Sapiente.AI é uma empresa de consultoria em Inteligência Artificial, sediada em Aveiro, Portugal. Esta política explica como tratamos os seus dados pessoais quando visita o nosso site ou nos contacta."
     },
     {
-      id: "collection",
+      id: "data",
       icon: Icons.UserPlus,
-      title: "2. Dados Pessoais Recolhidos",
+      title: "2. Que dados recolhemos",
       content: [
-        "Identificação e contacto: nome completo, e-mail profissional e números de telefone verificados.",
-        "Contexto Profissional: Afiliação organizacional, cargo e departamento.",
-        "Metadados e Identificadores Técnicos: Endereços IP (hashed) e user-agents de navegadores.",
-        "Dados de Interação: Telemetria granular sobre a utilização do serviço e envolvimento com funcionalidades através de registos (logs) seguros."
+        "Nome e e-mail profissional (quando preenche o formulário de contacto ou assina a newsletter).",
+        "Mensagens que nos envia (por e-mail ou chat).",
+        "Dados técnicos anónimos (endereço IP anonimizado, tipo de browser) – apenas para estatísticas internas."
       ]
     },
     {
       id: "purpose",
       icon: Icons.Target,
-      title: "3. Finalidade do Tratamento",
+      title: "3. Para que usamos os seus dados",
       content: [
-        "Prestação de serviços baseados em IA e otimização algorítmica.",
-        "Gestão da relação com o cliente e ciclo de vida do suporte técnico.",
-        "Cumprimento estrito de obrigações legais, regulamentares e fiscais na UE.",
-        "Deteção proativa de ameaças, monitorização de anomalias e prevenção de fraude."
+        "Responder às suas perguntas e enviar orçamentos.",
+        "Enviar a nossa newsletter (apenas se autorizar).",
+        "Melhorar o nosso site e serviços."
       ]
     },
     {
-      id: "legal-basis",
+      id: "legal",
       icon: Icons.Gavel,
-      title: "4. Fundamento Jurídico para o Tratamento",
-      content: "Todas as atividades de tratamento estão ancoradas no Artigo 6.º do RGPD: consentimento explícito para finalidades específicas, execução de um contrato, cumprimento de obrigações jurídicas e interesses legítimos — desde que estes não prevaleçam sobre os direitos fundamentais do titular."
+      title: "4. Base legal para o tratamento",
+      content: "Tratamos os seus dados com base no seu consentimento (ex: newsletter) ou no nosso interesse legítimo em responder a contactos comerciais. Nunca vendemos ou partilhamos os seus dados com terceiros para marketing."
     },
     {
       id: "sharing",
       icon: Icons.Share2,
-      title: "5. Subcontratantes e Partilha de Dados",
-      content: "A Sapiente.AI adota uma política de seleção de fornecedores 'RGPD-first'. Os dados são partilhados apenas com subcontratantes terceiros que forneçam garantias de segurança de nível Tier-1, regidos por Acordos de Tratamento de Dados (DPA) que impõem o mesmo nível de proteção com que nos comprometemos perante os nossos utilizadores."
-    },
-    {
-      id: "transfers",
-      icon: Icons.Globe,
-      title: "6. Transferências Internacionais de Dados",
-      content: "Os dados são processados prioritariamente dentro do Espaço Económico Europeu (EEE). Quaisquer transferências transfronteiriças para países terceiros baseiam-se em Decisões de Adequação ou nas mais recentes Cláusulas Contratuais-Tipo (SCCs) da Comissão Europeia, complementadas por Avaliações de Impacto de Transferência (TIA), quando necessário."
-    },
-    {
-      id: "security",
-      icon: Icons.Lock,
-      title: "7. Segurança Técnica e Organizativa",
-      content: "Implementamos medidas de defesa em profundidade, incluindo criptografia AES-256 para dados em repouso e TLS 1.3 para dados em trânsito. O nosso stack de segurança inclui Controlo de Acesso Baseado em Funções (RBAC), autenticação multifator (MFA) e varredura automatizada de vulnerabilidades em todos os nossos ambientes de produção."
-    },
-    {
-      id: "design",
-      icon: Icons.Component,
-      title: "8. Privacy by Design & Default",
-      content: "A privacidade é um requisito central no nosso ciclo de vida de desenvolvimento de software (SDLC). Aplicamos a minimização de dados, garantindo que a recolha seja adequada, relevante e limitada ao estritamente necessário para o funcionamento dos nossos modelos de IA sem comprometer a privacidade do utilizador."
-    },
-    {
-      id: "retention",
-      icon: Icons.Hourglass,
-      title: "9. Política de Retenção de Dados",
-      content: "Os dados pessoais estão sujeitos a um cronograma de retenção definido. São armazenados apenas durante a vigência da relação comercial ativa ou conforme exigido por prazos legais de prescrição, seguidos de eliminação criptográfica segura ou anonimização irreversível."
+      title: "5. Partilha com terceiros",
+      content: "Usamos apenas ferramentas essenciais para o funcionamento do site e gestão de contactos (ex: servidor de e-mail, plataforma de newsletter). Todos os nossos fornecedores respeitam o RGPD e os dados permanecem na União Europeia."
     },
     {
       id: "rights",
       icon: Icons.UserCog,
-      title: "10. Direitos dos Titulares dos Dados",
-      content: [
-        "Direito de acesso e portabilidade dos dados (formatos estruturados e legíveis por máquina).",
-        "Direito de retificação e apagamento ('Direito ao Esquecimento').",
-        "Direito à limitação do tratamento e oposição a decisões automatizadas.",
-        "Direito de apresentar reclamação a uma Autoridade de Controlo (CNPD ou equivalente na UE)."
-      ]
+      title: "6. Os seus direitos",
+      content: "Pode a qualquer momento pedir para ver, corrigir ou apagar os seus dados. Também pode cancelar a newsletter e opor-se ao uso dos seus dados. Basta enviar um e-mail para contato@sapienteai.com."
     },
     {
-      id: "audit",
-      icon: Icons.FileSearch,
-      title: "11. Registo de Atividades de Tratamento (ROPA)",
-      content: "Em conformidade com o Artigo 30.º do RGPD, mantemos registos internos de todas as atividades de tratamento. Isto garante a total rastreabilidade dos fluxos de dados, a vinculação à finalidade e fornece uma trilha de auditoria clara para solicitações regulatórias."
+      id: "retention",
+      icon: Icons.Hourglass,
+      title: "7. Quanto tempo guardamos os dados",
+      content: "Guardamos os seus dados enquanto mantivermos uma relação comercial ou enquanto for necessário para responder a obrigações legais. Depois disso, são eliminados ou anonimizados."
     },
     {
-      id: "dpia",
-      icon: Icons.Activity,
-      title: "12. Avaliações de Impacto sobre a Proteção de Dados (DPIA)",
-      content: "Para tratamentos de alto risco, particularmente os que envolvem IA e conjuntos de dados sensíveis, realizamos DPIAs formais. Estas avaliações analisam a necessidade, proporcionalidade e estratégias de mitigação de risco para proteger os indivíduos de enviesamentos algorítmicos ou exposição de dados."
+      id: "contact",
+      icon: Icons.Mail,
+      title: "8. Contacto para questões de privacidade",
+      content: "Tem dúvidas ou quer exercer os seus direitos? Escreva para contato@sapienteai.com com o assunto 'Privacidade'. Responderemos o mais rápido possível."
     },
     {
-      id: "accountability",
-      icon: Icons.ClipboardCheck,
-      title: "13. Responsabilidade e Governança (Accountability)",
-      content: "A responsabilidade é o nosso padrão operacional. Implementamos políticas internas, formação de pessoal e auditorias periódicas de privacidade para demonstrar que as nossas atividades de tratamento não são apenas conformes no papel, mas seguras na prática."
-    },
-    {
-      id: "infrastructure",
-      icon: Icons.Server,
-      title: "14. Infraestrutura Sediada na UE",
-      content: "A Sapiente.AI prioriza a 'Soberania de Dados' ao utilizar fornecedores de cloud sediados na Europa ou zonas de dados específicas da UE. Isto minimiza a exposição legal a jurisdições fora da UE e reforça a conformidade com o RGPD."
-    },
-    {
-      id: "cookies",
-      icon: Icons.Cookie, 
-      title: "15. Utilização de Cookies (futura)",
-      content: "Atualmente, a Sapiente.AI não utiliza cookies no seu website. Na próxima versão da nossa plataforma, poderemos introduzir cookies estritamente necessários e de análise, em conformidade com a Diretiva ePrivacy (Lei n.º 41/2004). Quando ativos, os utilizadores serão informados através de um banner de consentimento e poderão gerir as suas preferências na nossa [Política de Cookies](/pt/cookies) (disponível brevemente)."
-    },
+      id: "gdpr-details",
+      icon: Icons.Info,
+      title: "9. Informação adicional para clientes (RGPD)",
+      content: "Se for nosso cliente ou parceiro comercial e precisar de detalhes técnicos como subcontratantes, medidas de segurança ou cláusulas contratuais, solicite o nosso 'Anexo de Tratamento de Dados' através do e-mail contato@sapienteai.com."
+    }
   ]
 };
