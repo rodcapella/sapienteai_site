@@ -7,13 +7,14 @@ import { Link } from "wouter";
 
 type FinalCTAProps = {
   title: string;
+  title_highlight?: string;
   description?: string;
-  highlight: string;
+  description_highlight?: string;
   button: string;
   href?: string;
 };
 
-export function FinalCTA({ title, highlight, description, button, href }: FinalCTAProps) {
+export function FinalCTA({ title, title_highlight, description, description_highlight, button, href }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const buttonElement = (
@@ -37,11 +38,11 @@ export function FinalCTA({ title, highlight, description, button, href }: FinalC
           <Reveal>
             <h2 className="mx-auto max-w-4xl font-black leading-[1.05] tracking-tight" style={{ fontFamily: "'Inter', sans-serif", color: "#000000", fontSize: "40px" }}>
               {title}
-              {highlight && (
+              {title_highlight && (
                 <>
                   <br />
                   <span className="!text-[#0057FF]" style={{ fontFamily: "'Inter', sans-serif", fontSize: "40px" }}>
-                    {highlight}
+                    {title_highlight}
                   </span>
                 </>
               )}
@@ -51,8 +52,13 @@ export function FinalCTA({ title, highlight, description, button, href }: FinalC
           {description && (
             <Reveal delay={110}>
               <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#000000", fontSize: "24px" }}>
-                {description}
-              </p>
++               {description}
++               {description_highlight && (
++                 <span className="!text-[#0057FF]" style={{ fontFamily: "'Playfair Display', serif", fontSize: "24px" }}>
++                   {description_highlight}
++                 </span>
++               )}
++             </p>
             </Reveal>
           )}
 
