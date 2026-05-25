@@ -67,9 +67,9 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
     highlight: lang === "pt" ? "ao seu negócio?" : "to your business?",
     description:
       lang === "pt"
-        ? "Fale connosco e perceba como podemos estruturar uma solução clara, segura e alinhada aos seus objetivos."
-        : "Talk to us and understand how we can structure a clear, secure solution aligned with your goals.",
-    button: lang === "pt" ? "Contacto" : "Contact",
+        ? "Quer aplicar estas práticas na sua empresa?"
+        : “Would you like to apply these practices in your company?”,
+    button: lang === "pt" ? "Fale connosco" : "Talk with us",
   };
 
   useEffect(() => {
