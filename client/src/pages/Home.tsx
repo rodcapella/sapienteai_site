@@ -50,30 +50,15 @@ export default function Home() {
         </div>
       </InternalHero>
 
-      {isPT && (
-        <Section className={homeSectionClass}>
-          <SectionHeader>
-            <Reveal>
-              <SectionTitle label="Resultados que a IA gera" title="O que a IA entrega ao seu negócio" description="Mais eficiência. Menos esforço. Crescimento real." variant="light" />
-            </Reveal>
-          </SectionHeader>
-
-          <div className="relative z-10 mx-auto mt-12 grid max-w-7xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-4">
-            {homePT.keywords.map((keyword, i) => {
-              const Icon = keywordIcons[i % keywordIcons.length];
-              return (
-                <Reveal key={keyword} delay={i * 45}>
-                  <motion.div whileHover={{ y: -4 }} transition={{ duration: 0.3, ease: "easeOut" }} className="group relative flex min-h-[194px] flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#EAF6FF] bg-[#EAF6FF]/90 p-6 text-center shadow-[0_8px_30px_rgba(5,8,22,.06)] backdrop-blur-xl transition-all duration-300 hover:bg-[#050816] hover:shadow-[0_14px_38px_rgba(5,8,22,.16)]">
-                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-[#EAF6FF] text-[#0A84FF] transition-all duration-300 group-hover:bg-[#EAF6FF]/10 group-hover:text-[#0A84FF]"><Icon className="h-8 w-8" /></div>
-                    <div className="mb-4 h-0.5 w-5 rounded-full bg-[#0A84FF] transition-all duration-300 group-hover:bg-[#0A84FF]" />
-                    <div className="relative z-10 flex min-h-[3.2rem] items-center justify-center"><p className={`max-w-[12rem] ${compactCardTextClass} text-[#050816] transition-colors duration-300 group-hover:text-[#EAF6FF]`}>{keyword}</p></div>
-                  </motion.div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </Section>
-      )}
+      <div className="relative w-full overflow-hidden bg-[#EAF6FF]">
+        <Reveal>
+          <img
+            src="/media/banners/home_resultados_gera_ia.png"
+            alt=""
+            className="block h-auto w-full object-contain"
+          />
+        </Reveal>
+      </div>
 
       <div className="relative w-full overflow-hidden bg-[#EAF6FF]" aria-label={content.coreServices.title}>
         <Reveal>
