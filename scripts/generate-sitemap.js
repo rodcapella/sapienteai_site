@@ -16,7 +16,6 @@ const pages = [
   "/rgpd",
   "/generative-ai-policy",
   "/blog",
-  "/newsletter",
   "/sitemap"
 ];
 

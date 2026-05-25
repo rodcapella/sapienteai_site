@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { cva } from "class-variance-authority";
 import { Link, useLocation } from "wouter";
 import { useMagnetic } from "@/hooks/useMagnetic";
+import { useTheme } from "@/hooks/useTheme";
 
 const navLinkVariants = cva(
   `
@@ -74,8 +75,10 @@ export function NavLink({
   onClick
 }: Props) {
   const [location] = useLocation();
+  const { theme } = useTheme();
 
   const isActive = location === href;
+  const activeColor = theme === "dark" ? "var(--brand-offwhite)" : "var(--brand-deep)";
 
   const magnetic = useMagnetic(16);
 
@@ -85,6 +88,7 @@ export function NavLink({
         ref={magnetic.ref}
         onMouseMove={magnetic.onMouseMove}
         onMouseLeave={magnetic.onMouseLeave}
+        style={isActive ? { color: activeColor } : undefined}
         className={cn(
           navLinkVariants({ variant, active: isActive }),
           "inline-block transition-transform duration-300 ease-out",

@@ -1,6 +1,7 @@
-import { type SVGProps } from "react";
+import { useState, type SVGProps } from "react";
 import { Link, useLocation } from "wouter";
 
+import NewsletterModal from "@/components/NewsletterModal";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
@@ -29,6 +30,7 @@ export default function Footer() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
   const quizHref = lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`;
+  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -138,11 +140,9 @@ export default function Footer() {
             <p className="mb-4 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.newsletterDescription")}
             </p>
-            <Link href={`/${lang}/newsletter`} target="_blank" rel="noopener noreferrer" className="block">
-              <PremiumButton className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
-                {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
-              </PremiumButton>
-            </Link>
+            <PremiumButton onClick={() => setIsNewsletterOpen(true)} className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
+              {lang === "pt" ? "Abrir Newsletter" : "Open Newsletter"}
+            </PremiumButton>
             <div className="mt-12">
               <Link href={`/${lang}/sitemap`} className="font-serif text-[16px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
                 {t("footer.sitemap")}
@@ -178,6 +178,8 @@ export default function Footer() {
       <button type="button" onClick={scrollToTop} aria-label="Back to top" className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]">
         <Icons.ArrowUp className="h-3.5 w-3.5" />
       </button>
+
+      <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
     </footer>
   );
 }

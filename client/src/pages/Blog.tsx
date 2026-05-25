@@ -4,9 +4,10 @@ import { Icons } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import NewsletterForm from '@/components/NewsletterForm';
+import NewsletterModal from '@/components/NewsletterModal';
 
 import { InternalHero } from "@/components/ui/hero/InternalHero";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 
@@ -30,6 +31,7 @@ export default function Blog() {
   const categories = useMemo(() => [allCategory, ...Array.from(new Set(articles.map(a => a.category)))], [allCategory]);
   const [selectedCategory, setSelectedCategory] = useState(allCategory);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
   useEffect(() => {
     setSelectedCategory(allCategory);
@@ -173,11 +175,15 @@ export default function Blog() {
                 {t('blog.newsletterDesc')}
               </p>
 
-              <NewsletterForm />
+              <PremiumButton onClick={() => setIsNewsletterOpen(true)} variant="primary">
+                {t('newsletter.subscribe')}
+              </PremiumButton>
             </SectionCard>
           </div>
         </div>
       </Section>
+
+      <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
 
       <Footer />
     </div>

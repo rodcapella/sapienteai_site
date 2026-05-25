@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import type { ElementType } from "react";
 import { Link, useLocation } from "wouter";
 
+import NewsletterModal from "@/components/NewsletterModal";
 import { setSEOHead } from "@/components/SEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -12,7 +13,8 @@ import { Icons } from "@/lib/icons";
 type SitemapLink = {
   title: string;
   description: string;
-  href: string;
+  href?: string;
+  onClick?: () => void;
 };
 
 type SitemapGroup = {
@@ -94,14 +96,24 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
 
       <ul className="space-y-3">
         {group.links.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href} className="site-action-link group">
-              <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-foreground">
-                {link.title}
-                <Icons.ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1" />
-              </span>
-              <span className="text-sm font-medium leading-relaxed text-foreground/55">{link.description}</span>
-            </Link>
+          <li key={link.href || link.title}>
+            {link.href ? (
+              <Link href={link.href} className="site-action-link group">
+                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-foreground">
+                  {link.title}
+                  <Icons.ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1" />
+                </span>
+                <span className="text-sm font-medium leading-relaxed text-foreground/55">{link.description}</span>
+              </Link>
+            ) : (
+              <button type="button" onClick={link.onClick} className="site-action-link group w-full text-left">
+                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-foreground">
+                  {link.title}
+                  <Icons.Mail className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1" />
+                </span>
+                <span className="text-sm font-medium leading-relaxed text-foreground/55">{link.description}</span>
+              </button>
+            )}
           </li>
         ))}
       </ul>
@@ -115,6 +127,7 @@ export default function Sitemap() {
   const content = copy[lang];
   const l = content.links;
   const quizHref = lang === "pt" ? makeLink(lang, "/quiz-ia") : makeLink(lang, "/quiz-ai");
+  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
   const groups: SitemapGroup[] = [
     {
@@ -132,7 +145,7 @@ export default function Sitemap() {
       links: [
         { title: l.faq[0], description: l.faq[1], href: makeLink(lang, "/faq") },
         { title: l.quiz[0], description: l.quiz[1], href: quizHref },
-        { title: l.newsletter[0], description: l.newsletter[1], href: makeLink(lang, "/newsletter") },
+        { title: l.newsletter[0], description: l.newsletter[1], onClick: () => setIsNewsletterOpen(true) },
       ],
     },
     {
@@ -176,6 +189,8 @@ export default function Sitemap() {
           </div>
         </div>
       </Section>
+
+      <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
     </div>
   );
 }

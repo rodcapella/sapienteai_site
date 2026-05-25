@@ -17,7 +17,6 @@ const RGPD = lazy(() => import("@/pages/RGPD"));
 const GenerativeAIPolicy = lazy(() => import("@/pages/GenerativeAIPolicy"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const QuizAI = lazy(() => import("@/pages/QuizAI"));
-const Newsletter = lazy(() => import("@/pages/Newsletter"));
 const Sitemap = lazy(() => import("@/pages/Sitemap"));
 
 export default function App() {
@@ -81,7 +80,6 @@ export default function App() {
 
           <Route path="/:lang/generative-ai-policy">{(params) => <GenerativeAIPolicy lang={params.lang} />}</Route>
           <Route path="/:lang/blog">{(params) => <Blog lang={params.lang} />}</Route>
-          <Route path="/:lang/newsletter">{(params) => <Newsletter lang={params.lang} />}</Route>
           <Route path="/:lang/sitemap">{(params) => <Sitemap lang={params.lang} />}</Route>
 
           <Route path="/pt/quiz-ia"><QuizAI lang="pt" /></Route>
