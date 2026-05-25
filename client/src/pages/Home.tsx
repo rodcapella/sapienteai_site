@@ -75,17 +75,15 @@ export default function Home() {
         </Section>
       )}
 
-      <Section id="core-services" className={homeSectionClass}>
-        <SectionHeader><Reveal><SectionTitle label={content.coreServices.label} title={content.coreServices.title} /></Reveal></SectionHeader>
-        <div className="relative z-10 mx-auto mt-16 grid max-w-7xl gap-6 px-6 sm:grid-cols-2 xl:grid-cols-3 md:gap-8">
-          {content.coreServices.items.map((service, i) => { const Icon = coreServiceIcons[i % coreServiceIcons.length]; return (
-            <SectionCard key={service.title} delay={i * 0.07} className="glass-panel cyber-border rounded-3xl bg-[#050816]/58 p-7 md:p-8">
-              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[#00D1FF]/55 bg-[#00D1FF]/12 text-[#00D1FF] shadow-[0_0_24px_rgba(0,209,255,0.34)]"><Icon className="h-7 w-7" /></div>
-              <h3 className={`mb-3 ${compactCardTextClass} text-[#EAF6FF]`}>{service.title}</h3><p className="text-base leading-relaxed text-[#EAF6FF]/78">{service.description}</p>
-            </SectionCard>
-          ); })}
-        </div>
-      </Section>
+      <div className="relative w-full overflow-hidden bg-[#EAF6FF]" aria-label={content.coreServices.title}>
+        <Reveal>
+          <img
+            src="/media/banners/home_como_ajudamos_ai.png"
+            alt={content.coreServices.title}
+            className="block h-auto w-full object-contain"
+          />
+        </Reveal>
+      </div>
 
       <div className="relative w-full overflow-hidden bg-[#EAF6FF]" aria-label={content.marketingAI.title}>
         <Reveal>
