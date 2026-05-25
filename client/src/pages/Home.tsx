@@ -6,10 +6,6 @@ import { Icons } from "@/lib/icons";
 import ContactModal from "@/components/ContactModal";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
-import { Section } from "@/components/ui/section/Section";
-import { SectionHeader } from "@/components/ui/section/SectionHeader";
-import { SectionTitle } from "@/components/ui/section/SectionTitle";
-import { SectionCard } from "@/components/ui/section/SectionCard";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -17,8 +13,46 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 import { homePT } from "@/content/pt/home";
 import { homeEN } from "@/content/en/home";
 
-const homeSectionClass = "standard-section-bg relative overflow-hidden py-24 text-foreground md:py-36";
-const compactCardTextClass = "font-heading text-[12px] font-black leading-tight tracking-tight md:text-[14px]";
+const HOME_BANNER_BASE_PATH = "/media/banners";
+const HOME_BANNERS = [
+  "home_resultados_gera_ia.png",
+  "home_como_ajudamos_ai.png",
+  "home_marketing_digital_ia.jpeg",
+  "home_automacao_ia.png",
+  "home_personalidade_marca.png",
+];
+
+type HomeBannerSectionProps = {
+  lang: string;
+  file: string;
+  label?: string;
+};
+
+function getHomeBannerSrc(lang: string, file: string) {
+  const folder = lang === "en" ? "EN" : "PT";
+  return `${HOME_BANNER_BASE_PATH}/${folder}/${file}`;
+}
+
+function HomeBannerSection({ lang, file, label }: HomeBannerSectionProps) {
+  const backgroundSrc = getHomeBannerSrc(lang, file);
+
+  return (
+    <section
+      className="relative w-full overflow-hidden bg-[#EAF6FF] bg-contain bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${backgroundSrc})` }}
+      aria-label={label}
+    >
+      <Reveal>
+        <img
+          src={backgroundSrc}
+          alt=""
+          aria-hidden="true"
+          className="block h-auto w-full object-contain opacity-0"
+        />
+      </Reveal>
+    </section>
+  );
+}
 
 export default function Home() {
   const [location] = useLocation();
@@ -27,11 +61,6 @@ export default function Home() {
   const content = isPT ? homePT : homeEN;
 
   const [isContactOpen, setIsContactOpen] = useState(false);
-
-  const coreServiceIcons = [Icons.Bot, Icons.Cog, Icons.Cpu, Icons.ShieldCheck, Icons.BarChart3, Icons.MessageCircle];
-  const conversionIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Scissors, Icons.TrendingUp, Icons.Rocket];
-  const keywordIcons = [Icons.FileText, Icons.Award, Icons.Users, Icons.Bot, Icons.Target, Icons.Cog, Icons.TrendingUp, Icons.BarChart3];
-  const brandbookIcons = [Icons.Bot, Icons.Brain, Icons.TrendingUp, Icons.PieChart, Icons.Cog, Icons.MessageCircle, Icons.ShieldCheck];
 
   return (
     <div className="home-page flex flex-col bg-[#EAF6FF]">
@@ -50,57 +79,22 @@ export default function Home() {
         </div>
       </InternalHero>
 
-      <div className="relative w-full overflow-hidden bg-[#EAF6FF]">
-        <Reveal>
-          <img
-            src="/media/banners/home_resultados_gera_ia.png"
-            alt=""
-            className="block h-auto w-full object-contain"
-          />
-        </Reveal>
-      </div>
-
-      <div className="relative w-full overflow-hidden bg-[#EAF6FF]" aria-label={content.coreServices.title}>
-        <Reveal>
-          <img
-            src="/media/banners/home_como_ajudamos_ai.png"
-            alt={content.coreServices.title}
-            className="block h-auto w-full object-contain"
-          />
-        </Reveal>
-      </div>
-
-      <div className="relative w-full overflow-hidden bg-[#EAF6FF]" aria-label={content.marketingAI.title}>
-        <Reveal>
-          <img
-            src="/media/banners/home_marketing_digital_ia.jpeg"
-            alt={content.marketingAI.title}
-            className="block h-auto w-full object-contain"
-          />
-        </Reveal>
-      </div>
-
-      <div className="relative w-full overflow-hidden bg-[#EAF6FF]">
-        <Reveal>
-          <img
-            src="/media/banners/home_automacao_ia.png"
-            alt=""
-            className="block h-auto w-full object-contain"
-          />
-        </Reveal>
-      </div>
-
-      <div className="relative w-full overflow-hidden bg-[#EAF6FF]" aria-label={content.brandPersonality.title}>
-        <Reveal>
-          <img
-            src="/media/banners/home_personalidade_marca.png"
-            alt={content.brandPersonality.title}
-            className="block h-auto w-full object-contain"
-          />
-        </Reveal>
-      </div>
+      {HOME_BANNERS.map((banner, index) => (
+        <HomeBannerSection
+          key={`${lang}-${banner}`}
+          lang={lang}
+          file={banner}
+          label={[
+            content.coreServices.label,
+            content.coreServices.title,
+            content.marketingAI.title,
+            content.beforeAfter.title,
+            content.brandPersonality.title,
+          ][index]}
+        />
+      ))}
       
-      <FinalCTA title={content.finalCta.title} title_highlight={content.finalCta.highlight} description={content.finalCta.subtitle} button={content.finalCta.button} />
+      <FinalCTA title={content.finalCta.title} title_highlight={content.finalCta.title_highlight} description={content.finalCta.description} description_highlight={content.finalCta.description_highlight} button={content.finalCta.button} />
 
       {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </div>
