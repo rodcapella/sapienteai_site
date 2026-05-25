@@ -58,7 +58,6 @@ export default function Footer() {
       <div className="container relative z-10 mx-auto px-6 py-5 md:py-7">
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
 
-          {/* Logo + descrição */}
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
             <div className="mb-1 inline-block">
               <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-40 w-auto object-contain md:h-48" />
@@ -68,7 +67,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navegação */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.navigation")}</p>
             <ul className="mt-2 space-y-5">
@@ -87,7 +85,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.legal")}</p>
             <ul className="mt-2 space-y-5">
@@ -107,7 +104,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contacto */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.contact")}</p>
             <ul className="mt-2 space-y-5">
@@ -134,7 +130,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.newsletter")}</p>
             <p className="mb-4 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
@@ -143,16 +138,10 @@ export default function Footer() {
             <PremiumButton onClick={() => setIsNewsletterOpen(true)} className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
               {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
             </PremiumButton>
-            <div className="mt-12">
-              <Link href={`/${lang}/sitemap`} className="font-serif text-[16px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
-                {t("footer.sitemap")}
-              </Link>
-            </div>
           </div>
 
         </div>
 
-        {/* Barra inferior */}
         <div className="flex flex-col items-center gap-4 pt-3">
           <p className="font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
             {lang === "pt" ? "Siga-nos" : "Follow us"}
@@ -170,7 +159,7 @@ export default function Footer() {
 
           <div className="h-px w-full bg-[linear-gradient(90deg,#050816,#004aad,#050816)]" />
           <p className="text-center font-serif text-[9px] italic font-black uppercase tracking-[0.24em] text-[#FFFFFF]">
-            {t("footer.copyright")}
+            {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">{t("footer.sitemap")}</Link> |
           </p>
         </div>
       </div>
