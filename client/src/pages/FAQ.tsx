@@ -145,7 +145,13 @@ export default function FAQ() {
         </div>
       </Section>
 
-      <FinalCTA title={content.cta.title} title_highlight={content.cta.highlight} description={content.cta.description} button={content.cta.button} />
+      <FinalCTA
+        title={content.cta.title}
+        title_highlight={content.cta.highlight},
+        description={content.cta.description},
+        description_highlight={content.cta.description_highlight},
+        button={content.cta.button}
+      />
     </div>
   );
 }

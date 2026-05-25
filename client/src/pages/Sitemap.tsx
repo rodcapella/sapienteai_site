@@ -26,7 +26,8 @@ type SitemapGroup = {
 const copy = {
   pt: {
     label: "Mapa do site",
-    title: "Encontre rapidamente cada página.",
+    title: "Encontre rapidamente cada página",
+    highlight: "do nosso site.",
     subtitle: "Uma visão organizada das áreas principais, conteúdos e páginas legais do site.",
     sections: {
       main: "Páginas principais",
@@ -52,7 +53,8 @@ const copy = {
   },
   en: {
     label: "Sitemap",
-    title: "Find every page quickly.",
+    title: "Find every page quickly",
+    highlight: "of our website.",
     subtitle: "A structured view of the main areas, content, and legal pages across the website.",
     sections: {
       main: "Main pages",
@@ -172,7 +174,7 @@ export default function Sitemap() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={content.label} title={content.title} subtitle={content.subtitle} compact />
+      <InternalHero label={content.label} title={content.title}, title_highlight={content.title}, subtitle={content.subtitle} compact />
 
       <Section className="bg-blue-tint py-24 md:py-40">
         <div className="container mx-auto px-6">
