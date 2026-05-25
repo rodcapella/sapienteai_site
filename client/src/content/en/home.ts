@@ -133,9 +133,10 @@ export const homeEN = {
   ],
 
   finalCta: {
-    title: "Find where your business can improve",
-    highlight: "performance",
-    subtitle: "We run a free diagnosis and show where you can automate, reduce costs, and increase revenue.",
-    button: "Get my free diagnosis",
-  },
+    title: "Discover where you are losing money",
+    title_highlight: "in your business",
+    description: "We provide a free diagnostic and show you exactly",
+    description_highlight: "where you can automate, reduce costs, and increase sales.",
+    button: "I want to find out now"
+  }
 };

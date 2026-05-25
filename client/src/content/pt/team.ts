@@ -1,7 +1,7 @@
 export const teamPT = {
   hero: {
     title: "Mentes que transformam tecnologia",
-    highlight: "em resultados reais.",
+    title_highlight: "em resultados reais.",
     subtitle: "Unimos tecnologia, inteligência e execução para acelerar empresas."
   },
 
@@ -38,7 +38,9 @@ export const teamPT = {
 
   cta: {
     title: "Estratégia, IA e execução",
-    highlight: "alinhadas para crescer.",
+    title_highlight: "alinhadas para escalar o seu negócio.",
+    description: "Conheça os fundadores por detrás da Sapiente.AI e descubra como combinamos experiência e tecnologia para gerar impacto real.",
+    description_highlight: "Transformamos ideias em resultados mensuráveis.",
     button: "Falar com a equipa"
   },
 

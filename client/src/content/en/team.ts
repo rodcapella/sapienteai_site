@@ -37,8 +37,10 @@ export const teamEN = {
   },
 
   cta: {
-    title: "Strategy, AI and execution",
-    highlight: "aligned to grow.",
+    title: "Strategy, AI, and execution",
+    title_highlight: "aligned to scale your business.",
+    description: "Meet the founders behind Sapiente.AI and discover how we combine expertise and technology to build real impact.",
+    description_highlight: "We turn ideas into measurable results.",
     button: "Talk to the team"
   },
 

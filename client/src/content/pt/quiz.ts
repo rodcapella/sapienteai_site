@@ -4,6 +4,7 @@ export const quizContentPt = {
   highlight: "Inteligência Artificial",
   subtitle:
     "Teste os seus conhecimentos sobre IA no contexto empresarial e pessoal com 10 perguntas rápidas.",
+
   startButton: "Iniciar o Quiz",
   duration: "10 perguntas · ~3 minutos",
   nextButton: "Próxima Pergunta",
@@ -11,12 +12,15 @@ export const quizContentPt = {
   scoreLabel: "Pontos",
   correctLabel: "Correto!",
   wrongLabel: "Incorreto!",
+
   ctaTitle: "Pronto para transformar o seu negócio",
   ctaHighlight: "com IA?",
   ctaText:
     "A Sapiente.AI ajuda empresas e profissionais a implementar soluções de IA de forma estratégica, prática e acessível.",
   ctaButton: "Fale connosco",
+  
   restartButton: "Repetir o quiz",
+
   results: [
     {
       max: 3,

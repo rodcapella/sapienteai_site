@@ -4,6 +4,7 @@ export const quizContentEn = {
   highlight: "Artificial Intelligence",
   subtitle:
     "Test your knowledge of AI in business and everyday contexts with 10 quick questions.",
+
   startButton: "Start Quiz",
   duration: "10 questions · ~3 minutes",
   nextButton: "Next Question",
@@ -11,12 +12,15 @@ export const quizContentEn = {
   scoreLabel: "Score",
   correctLabel: "Correct!",
   wrongLabel: "Wrong!",
+
   ctaTitle: "Ready to transform your business",
   ctaHighlight: "with AI?",
   ctaText:
     "Sapiente.AI helps companies and professionals implement AI solutions in a strategic, practical, and accessible way.",
   ctaButton: "Talk to us",
+
   restartButton: "Retake the quiz",
+  
   results: [
     {
       max: 3,

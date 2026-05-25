@@ -9,8 +9,9 @@ export const termsContentEN = {
 
   cta: {
     title: "Need help applying this",
-    highlight: "to your business?",
-    description: "Talk to us and understand how we can structure a clear, secure solution aligned with your goals.",
+    title_highlight: "to your business?",
+    description: "Talk to us and understand how we can structure",
+    description_highlight: "a clear, secure solution aligned with your goals.",
     button: "Contact",
   },
 

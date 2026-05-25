@@ -62,11 +62,11 @@ export const aboutEN = {
   },
 
   teamCta: {
-    eyebrow: "The team",
+    eyebrow: "The founders",
     title: "Meet the people turning strategy",
-    highlight: "into execution.",
-    text:
-      "Behind Sapiente.ai is a team focused on building useful, measurable solutions aligned with each business context.",
-    link: "Meet the team"
+    title_highlight: "into execution.",
+    description:"Behind Sapiente.AI is a team focused",
+    description_highlight: "on building useful, measurable solutions aligned with each business context.",
+    link: "Meet the founders"
   }
 };

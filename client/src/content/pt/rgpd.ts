@@ -8,8 +8,9 @@ export const rgpdContentPT = {
 
   cta: {
     title: "Precisa de ajuda para aplicar isto",
-    highlight: "ao seu negócio?",
-    description: "Fale connosco e perceba como podemos estruturar uma solução clara, segura e alinhada aos seus objetivos.",
+    title_highlight: "ao seu negócio?",
+    description: "Fale connosco e perceba como podemos",
+    description_highlight: "estruturar uma solução clara, segura e alinhada aos seus objetivos.",
     button: "Contacto",
   },
 
