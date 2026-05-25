@@ -80,26 +80,26 @@ export default function Home() {
         </Reveal>
       </div>
 
-      <Section className={homeSectionClass}>
-        <SectionHeader><Reveal><SectionTitle label={content.conversionWebsites.label} title={content.conversionWebsites.title} variant="light" /></Reveal></SectionHeader>
-        <div className="relative z-10 mx-auto mt-14 grid max-w-6xl gap-4 px-6 sm:grid-cols-2 lg:grid-cols-3">
-          {content.conversionWebsites.items.map((item, i) => { const Icon = conversionIcons[i % conversionIcons.length]; return (
-            <Reveal key={item} delay={i * 55}><motion.div whileHover={{ y: -6, scale: 1.02 }} transition={{ duration: 0.25, ease: "easeOut" }} className="group relative overflow-hidden rounded-3xl border border-primary/25 bg-[#EAF6FF]/90 p-5 shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-xl transition-all duration-500 hover:border-[#00D1FF]/70 hover:shadow-[0_22px_60px_rgba(0,209,255,0.22)]"><div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-80" /><div className="relative z-10 flex items-center gap-4"><div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#00D1FF]/40 bg-[#050816] text-[#00D1FF]"><Icon className="h-6 w-6" /></div><p className={`${compactCardTextClass} text-foreground`}>{item}</p></div></motion.div></Reveal>
-          ); })}
-        </div>
-      </Section>
+      <div className="relative w-full overflow-hidden bg-[#EAF6FF]">
+        <Reveal>
+          <img
+            src="/media/banners/home_automacao_ia.png"
+            alt=""
+            className="block h-auto w-full object-contain"
+          />
+        </Reveal>
+      </div>
 
-      {isPT && (
-        <Section className={homeSectionClass}>
-          <SectionHeader><Reveal><SectionTitle label={homePT.brandPersonality.label} title={homePT.brandPersonality.title} /></Reveal></SectionHeader>
-          <div className="relative z-10 mx-auto mt-14 grid max-w-7xl gap-6 px-6 md:grid-cols-2 xl:grid-cols-5">
-            {homePT.brandPersonality.traits.map((trait, i) => { const Icon = brandbookIcons[i % brandbookIcons.length]; return (
-              <SectionCard key={trait.title} delay={i * 0.07} variant="subtle" className="rounded-3xl border border-[#00D1FF]/20 bg-[#050816]/58 p-6 text-[#EAF6FF] shadow-[0_20px_50px_rgba(5,8,22,0.18)]"><div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-[#00D1FF]/35 bg-[#00D1FF]/10 text-[#00D1FF]"><Icon className="h-6 w-6" /></div><h3 className={`${compactCardTextClass} text-[#EAF6FF]`}>{trait.title}</h3><p className="mt-3 text-sm leading-relaxed text-[#EAF6FF]/75">{trait.description}</p></SectionCard>
-            ); })}
-          </div>
-        </Section>
-      )}
-
+      <div className="relative w-full overflow-hidden bg-[#EAF6FF]" aria-label={content.brandPersonality.title}>
+        <Reveal>
+          <img
+            src="/media/banners/home_personalidade_marca.png"
+            alt={content.brandPersonality.title}
+            className="block h-auto w-full object-contain"
+          />
+        </Reveal>
+      </div>
+      
       <FinalCTA title={content.finalCta.title} title_highlight={content.finalCta.highlight} description={content.finalCta.subtitle} button={content.finalCta.button} />
 
       {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
