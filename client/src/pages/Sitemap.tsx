@@ -85,6 +85,8 @@ function makeLink(lang: string, path = "") {
 }
 
 function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
+  const linkClass = "site-action-link group border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-[var(--brand-offwhite)] hover:!bg-[var(--brand-cyan)] hover:!text-[var(--brand-night)] hover:shadow-[0_18px_40px_rgba(85,212,242,0.26)]";
+
   return (
     <SectionCard className="h-full border border-[var(--brand-purple)]/45 bg-[var(--brand-deep)] p-6 text-[var(--brand-offwhite)] shadow-[0_18px_42px_rgba(1,32,80,0.24)] md:p-8">
       <div className="mb-6 flex items-start gap-4">
@@ -100,20 +102,20 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
         {group.links.map((link) => (
           <li key={link.href || link.title}>
             {link.href ? (
-              <Link href={link.href} className="site-action-link group border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-[var(--brand-offwhite)] hover:bg-[var(--brand-primary)]">
-                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-[var(--brand-offwhite)]">
+              <Link href={link.href} className={linkClass}>
+                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-inherit">
                   {link.title}
-                  <Icons.ArrowRight className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-offwhite)]" />
+                  <Icons.ArrowRight className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-night)]" />
                 </span>
-                <span className="text-sm font-medium leading-relaxed text-[var(--brand-offwhite)]/70">{link.description}</span>
+                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">{link.description}</span>
               </Link>
             ) : (
-              <button type="button" onClick={link.onClick} className="site-action-link group w-full border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-left text-[var(--brand-offwhite)] hover:bg-[var(--brand-primary)]">
-                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-[var(--brand-offwhite)]">
+              <button type="button" onClick={link.onClick} className={`${linkClass} w-full text-left`}>
+                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-inherit">
                   {link.title}
-                  <Icons.Mail className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-offwhite)]" />
+                  <Icons.Mail className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-night)]" />
                 </span>
-                <span className="text-sm font-medium leading-relaxed text-[var(--brand-offwhite)]/70">{link.description}</span>
+                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">{link.description}</span>
               </button>
             )}
           </li>
