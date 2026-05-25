@@ -28,7 +28,7 @@ export const privacyPT = {
       content: [
         "Identificação e contacto: nome completo, e-mail profissional e números de telefone verificados.",
         "Contexto Profissional: Afiliação organizacional, cargo e departamento.",
-        "Metadados e Identificadores Técnicos: Endereços IP (hashed), impressões digitais de dispositivos (fingerprinting) e user-agents de navegadores.",
+        "Metadados e Identificadores Técnicos: Endereços IP (hashed) e user-agents de navegadores.",
         "Dados de Interação: Telemetria granular sobre a utilização do serviço e envolvimento com funcionalidades através de registos (logs) seguros."
       ]
     },
@@ -113,6 +113,12 @@ export const privacyPT = {
       icon: Icons.Server,
       title: "14. Infraestrutura Sediada na UE",
       content: "A Sapiente.AI prioriza a 'Soberania de Dados' ao utilizar fornecedores de cloud sediados na Europa ou zonas de dados específicas da UE. Isto minimiza a exposição legal a jurisdições fora da UE e reforça a conformidade com o RGPD."
+    },
+    {
+      id: "cookies",
+      icon: Icons.Cookie, 
+      title: "15. Utilização de Cookies (futura)",
+      content: "Atualmente, a Sapiente.AI não utiliza cookies no seu website. Na próxima versão da nossa plataforma, poderemos introduzir cookies estritamente necessários e de análise, em conformidade com a Diretiva ePrivacy (Lei n.º 41/2004). Quando ativos, os utilizadores serão informados através de um banner de consentimento e poderão gerir as suas preferências na nossa [Política de Cookies](/pt/cookies) (disponível brevemente)."
     },
   ]
 };

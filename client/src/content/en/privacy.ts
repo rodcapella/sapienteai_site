@@ -28,7 +28,7 @@ export const privacyEN = {
       content: [
         "Identification & Contact: Full name, professional email, and verified phone numbers.",
         "Professional Context: Organizational affiliation, job title, and department.",
-        "Metadata & Technical Identifiers: Hashed IP addresses, device fingerprints, and browser user-agents.",
+        "Metadata & Technical Identifiers: Hashed IP addresses, and browser user-agents.",
         "Interaction Data: Granular telemetry on service usage and feature engagement via secure logs."
       ]
     },
@@ -113,6 +113,12 @@ export const privacyEN = {
       icon: Icons.Server,
       title: "14. EU-Based Infrastructure",
       content: "Sapiente.AI prioritizes 'Data Sovereignty' by utilizing European-headquartered cloud providers or EU-specific data zones. This minimizes legal exposure to non-EU jurisdictional reach (e.g., US Cloud Act) and reinforces GDPR compliance."
+    },
+    {
+      id: "cookies",
+      icon: Icons.Cookie, 
+      title: "15. Use of Cookies (future)",
+      content: "Sapiente.AI currently does not use cookies on its website. In the next version of our platform, we may introduce strictly necessary and analytics cookies, in compliance with the ePrivacy Directive (Law No. 41/2004). When activated, users will be informed through a consent banner and will be able to manage their preferences in our [Cookie Policy](/en/cookies) (coming soon)."
     },
   ]
 };

@@ -18,14 +18,13 @@ export const trustContentPT = {
       content: [
         "Criptografia de dados em trânsito e em repouso",
         "Arquitetura Zero Trust",
-        "Controlo de acesso baseado em privilégio mínimo",
-        "Monitorização contínua de segurança"
+        "Controlo de acesso baseado em privilégio mínimo"
       ]
     },
     {
       title: "Proteção de Dados",
       content: [
-        "Conformidade com RGPD e RGPD",
+        "Conformidade com RGPD e legislação aplicável",
         "Processamento de dados com minimização por design",
         "Anonimização sempre que aplicável",
         "Políticas rigorosas de retenção de dados"

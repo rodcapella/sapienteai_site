@@ -18,14 +18,13 @@ export const trustContentEN = {
       content: [
         "Encryption in transit and at rest",
         "Zero Trust architecture",
-        "Least-privilege access control",
-        "Continuous security monitoring"
+        "Least-privilege access control"
       ]
     },
     {
       title: "Data Protection",
       content: [
-        "GDPR and RGPD compliance",
+        “Compliance with GDPR and applicable legislation”,
         "Data minimization by design",
         "Anonymization when applicable",
         "Strict data retention policies"
