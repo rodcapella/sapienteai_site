@@ -25,7 +25,7 @@ export const trustContentEN = {
     {
       title: "Data Protection",
       content: [
-        “Compliance with GDPR and applicable legislation”,
+        "Compliance with GDPR and applicable legislation",
         "Data minimization by design",
         "Anonymization when applicable",
         "Strict data retention policies"
