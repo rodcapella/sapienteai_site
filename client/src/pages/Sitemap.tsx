@@ -46,7 +46,7 @@ const copy = {
       newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
       terms: ["Termos de Serviço", "Condições de utilização do site e serviços."],
       privacy: ["Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
-      trust: ["Confiança", "Princípios de segurança, ética e responsabilidade."],
+      trust: ["Confiança & Segurança", "Princípios de segurança, ética e responsabilidade."],
       rgpd: ["RGPD", "Informação sobre proteção de dados e direitos dos titulares."],
       policy: ["Política de IA Generativa", "Como enquadramos o uso responsável de IA generativa."],
     },
@@ -73,7 +73,7 @@ const copy = {
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
       terms: ["Terms of Service", "Terms of use for the website and services."],
       privacy: ["Privacy", "How we collect, process, and protect personal data."],
-      trust: ["Trust", "Security, ethics, and accountability principles."],
+      trust: ["Trust & Security", "Security, ethics, and accountability principles."],
       rgpd: ["GDPR", "Information about data protection and data subject rights."],
       policy: ["Generative AI Policy", "How we frame responsible use of generative AI."],
     },
@@ -86,13 +86,13 @@ function makeLink(lang: string, path = "") {
 
 function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
   return (
-    <SectionCard className="h-full border-foreground/5 bg-[#EAF6FF]/85 p-6 shadow-xl md:p-8">
+    <SectionCard className="h-full border border-[var(--brand-purple)]/45 bg-[var(--brand-deep)] p-6 text-[var(--brand-offwhite)] shadow-[0_18px_42px_rgba(1,32,80,0.24)] md:p-8">
       <div className="mb-6 flex items-start gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl [background:var(--brand-gradient)] text-[#EAF6FF] shadow-[0_12px_24px_rgba(26,31,46,0.16)]">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/35 bg-[var(--brand-night)] text-[var(--brand-cyan)] shadow-[0_12px_24px_rgba(10,180,255,0.18)]">
           <Icon className="h-6 w-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-black tracking-tight text-foreground">{group.title}</h2>
+          <h2 className="text-2xl font-black tracking-tight text-[var(--brand-offwhite)]">{group.title}</h2>
         </div>
       </div>
 
@@ -100,20 +100,20 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
         {group.links.map((link) => (
           <li key={link.href || link.title}>
             {link.href ? (
-              <Link href={link.href} className="site-action-link group">
-                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-foreground">
+              <Link href={link.href} className="site-action-link group border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-[var(--brand-offwhite)] hover:bg-[var(--brand-primary)]">
+                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-[var(--brand-offwhite)]">
                   {link.title}
-                  <Icons.ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1" />
+                  <Icons.ArrowRight className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-offwhite)]" />
                 </span>
-                <span className="text-sm font-medium leading-relaxed text-foreground/55">{link.description}</span>
+                <span className="text-sm font-medium leading-relaxed text-[var(--brand-offwhite)]/70">{link.description}</span>
               </Link>
             ) : (
-              <button type="button" onClick={link.onClick} className="site-action-link group w-full text-left">
-                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-foreground">
+              <button type="button" onClick={link.onClick} className="site-action-link group w-full border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-left text-[var(--brand-offwhite)] hover:bg-[var(--brand-primary)]">
+                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-[var(--brand-offwhite)]">
                   {link.title}
-                  <Icons.Mail className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1" />
+                  <Icons.Mail className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-offwhite)]" />
                 </span>
-                <span className="text-sm font-medium leading-relaxed text-foreground/55">{link.description}</span>
+                <span className="text-sm font-medium leading-relaxed text-[var(--brand-offwhite)]/70">{link.description}</span>
               </button>
             )}
           </li>
@@ -174,7 +174,7 @@ export default function Sitemap() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={content.label} title={content.title}, title_highlight={content.title}, subtitle={content.subtitle} compact />
+      <InternalHero label={content.label} title={content.title} highlight={content.highlight} subtitle={content.subtitle} compact />
 
       <Section className="bg-blue-tint py-24 md:py-40">
         <div className="container mx-auto px-6">
