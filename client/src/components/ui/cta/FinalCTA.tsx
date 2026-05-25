@@ -29,7 +29,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
 
   return (
     <>
-    <Section className="final-cta relative overflow-hidden py-24 text-center md:py-36">
+      <Section className="final-cta relative overflow-hidden py-24 text-center md:py-36">
         <div className="pointer-events-none absolute inset-0">
           <img src="/media/bg/bg_finalCTA.png" alt="" className="h-full w-full object-cover" />
         </div>
@@ -64,10 +64,10 @@ export function FinalCTA({ title, title_highlight, description, description_high
           )}
 
           <Reveal delay={220}>
-           <div className="mt-12 flex justify-start">
-             {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
-           </div>
-         </Reveal>
+            <div className="mt-12 flex justify-start">
+              {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
+            </div>
+          </Reveal>
         </div>
       </Section>
 
