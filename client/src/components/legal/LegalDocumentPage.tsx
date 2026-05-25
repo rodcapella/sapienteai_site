@@ -45,7 +45,6 @@ function getLegalPageTitle(slug: string, lang: string) {
     terms: { pt: "Termos", en: "Terms" },
     privacy: { pt: "Privacidade", en: "Privacy" },
     trust: { pt: "Confiança", en: "Trust" },
-    rgpd: { pt: "RGPD", en: "GDPR" },
     "generative-ai-policy": { pt: "Política de IA Generativa", en: "Generative AI Policy" },
   };
 

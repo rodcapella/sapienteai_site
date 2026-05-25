@@ -13,7 +13,6 @@ const FAQ = lazy(() => import("@/pages/FAQ"));
 const Terms = lazy(() => import("@/pages/Terms"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
 const Trust = lazy(() => import("@/pages/Trust"));
-const RGPD = lazy(() => import("@/pages/RGPD"));
 const GenerativeAIPolicy = lazy(() => import("@/pages/GenerativeAIPolicy"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const QuizAI = lazy(() => import("@/pages/QuizAI"));
@@ -74,9 +73,6 @@ export default function App() {
           <Route path="/:lang/terms">{(params) => <Terms lang={params.lang} />}</Route>
           <Route path="/:lang/privacy">{(params) => <Privacy lang={params.lang} />}</Route>
           <Route path="/:lang/trust">{(params) => <Trust lang={params.lang} />}</Route>
-
-          <Route path="/:lang/rgpd">{(params) => <RGPD lang={params.lang} />}</Route>
-          <Route path="/:lang/RGPD">{(params) => <Redirect to={`/${params.lang}/rgpd`} />}</Route>
 
           <Route path="/:lang/generative-ai-policy">{(params) => <GenerativeAIPolicy lang={params.lang} />}</Route>
           <Route path="/:lang/blog">{(params) => <Blog lang={params.lang} />}</Route>

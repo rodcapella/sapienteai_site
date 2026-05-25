@@ -19,9 +19,6 @@ import { termsContentEN } from "@/content/en/terms";
 import { trustContentPT } from "@/content/pt/trust";
 import { trustContentEN } from "@/content/en/trust";
 
-import { rgpdContentPT } from "@/content/pt/rgpd";
-import { rgpdContentEN } from "@/content/en/gdpr";
-
 import { iaGenerativaPolicyPT } from "@/content/pt/iaGenerativaPolicy";
 import { iaGenerativaPolicyEN } from "@/content/en/iaGenerativaPolicy";
 
@@ -53,14 +50,6 @@ const contentMap = {
   trust: {
     pt: trustContentPT,
     en: trustContentEN,
-  },
-  RGPD: {
-    pt: rgpdContentPT,
-    en: rgpdContentEN,
-  },
-  rgpd: {
-    pt: rgpdContentPT,
-    en: rgpdContentEN,
   },
   generativeAIPolicy: {
     pt: iaGenerativaPolicyPT,

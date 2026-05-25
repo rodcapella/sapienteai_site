@@ -13,7 +13,6 @@ const pages = [
   "/terms",
   "/privacy",
   "/trust",
-  "/rgpd",
   "/generative-ai-policy",
   "/blog",
   "/sitemap"

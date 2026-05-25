@@ -92,7 +92,6 @@ export default function Footer() {
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
                 { href: `/${lang}/privacy`, label: t("footer.privacy") },
                 { href: `/${lang}/trust`, label: t("footer.trust") || "Trust" },
-                { href: `/${lang}/rgpd`, label: t("footer.rgpd") },
                 { href: `/${lang}/generative-ai-policy`, label: t("footer.generative-ai-policy") },
               ].map((item) => (
                 <li key={item.href}>

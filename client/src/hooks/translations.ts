@@ -21,8 +21,7 @@ export const translations = {
     legal: {
       trust: "Confiança",
       privacy: "Privacidade",
-      terms: "Termos",
-      RGPD: "Proteção de Dados"
+      terms: "Termos"
     },
 
     home: {
@@ -70,8 +69,7 @@ export const translations = {
     legal: {
       trust: "Trust",
       privacy: "Privacy",
-      terms: "Terms",
-      RGPD: "Data Protection"
+      terms: "Terms"
     },
 
     home: {

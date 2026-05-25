@@ -47,7 +47,6 @@ const copy = {
       terms: ["Termos de Serviço", "Condições de utilização do site e serviços."],
       privacy: ["Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
       trust: ["Confiança", "Princípios de segurança, ética e responsabilidade."],
-      rgpd: ["RGPD", "Informação sobre proteção de dados e direitos dos titulares."],
       policy: ["Política de IA Generativa", "Como enquadramos o uso responsável de IA generativa."],
     },
   },
@@ -74,7 +73,6 @@ const copy = {
       terms: ["Terms of Service", "Terms of use for the website and services."],
       privacy: ["Privacy", "How we collect, process, and protect personal data."],
       trust: ["Trust", "Security, ethics, and accountability principles."],
-      rgpd: ["GDPR", "Information about data protection and data subject rights."],
       policy: ["Generative AI Policy", "How we frame responsible use of generative AI."],
     },
   },
@@ -157,7 +155,6 @@ export default function Sitemap() {
         { title: l.terms[0], description: l.terms[1], href: makeLink(lang, "/terms") },
         { title: l.privacy[0], description: l.privacy[1], href: makeLink(lang, "/privacy") },
         { title: l.trust[0], description: l.trust[1], href: makeLink(lang, "/trust") },
-        { title: l.rgpd[0], description: l.rgpd[1], href: makeLink(lang, "/rgpd") },
         { title: l.policy[0], description: l.policy[1], href: makeLink(lang, "/generative-ai-policy") },
       ],
     },
@@ -174,7 +171,7 @@ export default function Sitemap() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={content.label} title={content.title}, title_highlight={content.title}, subtitle={content.subtitle} compact />
+      <InternalHero label={content.label} title={content.title} highlight={content.highlight} subtitle={content.subtitle} compact />
 
       <Section className="bg-blue-tint py-24 md:py-40">
         <div className="container mx-auto px-6">
