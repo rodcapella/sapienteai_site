@@ -6,14 +6,6 @@ export const rgpdContentPT = {
   subtitle: "Conformidade rigorosa com o RGPD da UE",
   highlight: "(Regulamento Geral sobre a Proteção de Dados da União Europeia).",
 
-  cta: {
-    title: "Precisa de ajuda para aplicar isto",
-    title_highlight: "ao seu negócio?",
-    description: "Fale connosco e perceba como podemos",
-    description_highlight: "estruturar uma solução clara, segura e alinhada aos seus objetivos.",
-    button: "Contacto",
-  },
-
   sections: [
     {
       id: "compliance",

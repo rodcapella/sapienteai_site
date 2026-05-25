@@ -5,14 +5,6 @@ export const trustContentEN = {
   subtitle:
     "Sapiente.AI is engineered to operate with security, transparency, and consistency in critical environments.",
 
-  cta: {
-    title: "Need help applying this",
-    title_highlight: "to your business?",
-    description: "Talk to us and understand how",
-    description_highlight: "we can structure a clear, secure solution aligned with your goals.",
-    button: "Contact",
-  },
-
   sections: [
     {
       title: "Security",

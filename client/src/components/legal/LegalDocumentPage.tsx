@@ -20,12 +20,6 @@ type LegalContent = {
   highlight?: string;
   subtitle?: string;
   lastUpdated?: string;
-  cta?: {
-    title: string;
-    highlight: string;
-    description: string;
-    button: string;
-  };
   sections: LegalContentSection[];
 };
 
@@ -58,19 +52,31 @@ function getLegalPageTitle(slug: string, lang: string) {
   return titles[slug]?.[lang === "en" ? "en" : "pt"];
 }
 
+function getLegalCta(lang: string) {
+  if (lang === "en") {
+    return {
+      title: "Need help applying this",
+      title_highlight: "to your business?",
+      description: "Talk to us and understand how we can",
+      description_highlight: "structure a clear, secure solution aligned with your goals.",
+      button: "Contact",
+    };
+  }
+
+  return {
+    title: "Precisa de ajuda para aplicar isto",
+    title_highlight: "ao seu negócio?",
+    description: "Fale connosco e perceba como podemos",
+    description_highlight: "estruturar uma solução clara, segura e alinhada aos seus objetivos.",
+    button: "Contacto",
+  };
+}
+
 export default function LegalDocumentPage({ content, slug, fallbackDescription }: LegalDocumentPageProps) {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
   const pageTitle = getLegalPageTitle(slug, lang) || content.title;
-  const cta = content.cta || {
-    title: lang === "pt" ? "Precisa de ajuda para aplicar isto" : "Need help applying this",
-    highlight: lang === "pt" ? "ao seu negócio?" : "to your business?",
-    description:
-      lang === "pt"
-        ? "Quer aplicar estas práticas na sua empresa?"
-        : "Would you like to apply these practices in your company?",
-    button: lang === "pt" ? "Fale connosco" : "Talk with us",
-  };
+  const cta = getLegalCta(lang);
 
   useEffect(() => {
     setSEOHead({
@@ -149,8 +155,9 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
       <FinalCTA
         title={cta.title}
-        title_highlight={cta.highlight}
+        title_highlight={cta.title_highlight}
         description={cta.description}
+        description_highlight={cta.description_highlight}
         button={cta.button}
       />
     </div>
