@@ -68,7 +68,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
     description:
       lang === "pt"
         ? "Quer aplicar estas práticas na sua empresa?"
-        : “Would you like to apply these practices in your company?”,
+        : "Would you like to apply these practices in your company?",
     button: lang === "pt" ? "Fale connosco" : "Talk with us",
   };
 
