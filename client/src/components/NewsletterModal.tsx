@@ -44,13 +44,11 @@ const modalText = {
     title: "Registe-se na nossa newsletter",
     description:
       "Receba conteúdos sobre inteligência artificial, automação, marketing digital e formas práticas de tornar o seu negócio mais eficiente.",
-    formTitle: "Registo na newsletter",
-    formDescription: "Preencha os dados abaixo para receber novidades.",
     labels: {
-      name: "Nome",
-      email: "E-mail",
-      role: "Cargo",
-      company: "Empresa",
+      name: "Nome *",
+      email: "Email *",
+      role: "Cargo (opcional)",
+      company: "Empresa (opcional)",
       accepted:
         "Li e compreendi a Política de Privacidade e autorizo o tratamento dos meus dados para receber comunicações da Sapiente.AI.",
     },
@@ -85,13 +83,11 @@ const modalText = {
     title: "Subscribe to our newsletter",
     description:
       "Get insights on artificial intelligence, automation, digital marketing, and practical ways to make your business more efficient.",
-    formTitle: "Newsletter sign-up",
-    formDescription: "Fill in the details below to receive updates.",
     labels: {
-      name: "Name",
-      email: "Email",
-      role: "Role",
-      company: "Company",
+      name: "Name *",
+      email: "Email *",
+      role: "Role (optional)",
+      company: "Company (optional)",
       accepted:
         "I have read and understood the Privacy Policy and authorize the processing of my data to receive communications from Sapiente.AI.",
     },
@@ -286,51 +282,41 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
           </div>
 
           <form onSubmit={handleSubmit} className="relative z-10 space-y-4" noValidate>
-              <div className="mb-7 text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/40 bg-[var(--brand-cyan)]/12 text-[var(--brand-cyan)]">
-                  <Icons.Send className="h-6 w-6" />
-                </div>
-                <h2 className="font-heading text-2xl font-black text-[var(--brand-offwhite)]">{text.formTitle}</h2>
-                <p className="mt-2 text-sm text-[rgba(234,246,255,0.62)]">{text.formDescription}</p>
-              </div>
+            <label className="block space-y-1.5">
+              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.name}</span>
+              <input name="name" required type="text" value={formData.name} onChange={(event) => updateField("name", event.target.value)} placeholder={text.placeholders.name} className={inputClass} disabled={submitState === "loading"} />
+            </label>
 
-              <div className="space-y-4">
-                <label className="block space-y-1.5">
-                  <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.name}</span>
-                  <input name="name" required type="text" value={formData.name} onChange={(event) => updateField("name", event.target.value)} placeholder={text.placeholders.name} className={inputClass} disabled={submitState === "loading"} />
-                </label>
+            <label className="block space-y-1.5">
+              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.email}</span>
+              <input name="email" required type="email" value={formData.email} onChange={(event) => updateField("email", event.target.value)} placeholder={text.placeholders.email} className={inputClass} disabled={submitState === "loading"} />
+            </label>
 
-                <label className="block space-y-1.5">
-                  <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.email}</span>
-                  <input name="email" required type="email" value={formData.email} onChange={(event) => updateField("email", event.target.value)} placeholder={text.placeholders.email} className={inputClass} disabled={submitState === "loading"} />
-                </label>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <label className="block space-y-1.5">
+                <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.role}</span>
+                <input name="role" type="text" value={formData.role} onChange={(event) => updateField("role", event.target.value)} placeholder={text.placeholders.role} className={inputClass} disabled={submitState === "loading"} />
+              </label>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="block space-y-1.5">
-                    <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.role}</span>
-                    <input name="role" type="text" value={formData.role} onChange={(event) => updateField("role", event.target.value)} placeholder={text.placeholders.role} className={inputClass} disabled={submitState === "loading"} />
-                  </label>
+              <label className="block space-y-1.5">
+                <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.company}</span>
+                <input name="company" type="text" value={formData.company} onChange={(event) => updateField("company", event.target.value)} placeholder={text.placeholders.company} className={inputClass} disabled={submitState === "loading"} />
+              </label>
+            </div>
 
-                  <label className="block space-y-1.5">
-                    <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.company}</span>
-                    <input name="company" type="text" value={formData.company} onChange={(event) => updateField("company", event.target.value)} placeholder={text.placeholders.company} className={inputClass} disabled={submitState === "loading"} />
-                  </label>
-                </div>
+            <label className="flex items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[#050816]/40 p-4 text-sm leading-relaxed text-[rgba(234,246,255,0.72)]">
+              <input type="checkbox" required checked={formData.accepted} onChange={(event) => updateField("accepted", event.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-primary)]/40 bg-[#050816]" disabled={submitState === "loading"} />
+              <span>{text.labels.accepted}</span>
+            </label>
 
-                <label className="flex items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[#050816]/40 p-4 text-sm leading-relaxed text-[rgba(234,246,255,0.72)]">
-                  <input type="checkbox" required checked={formData.accepted} onChange={(event) => updateField("accepted", event.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-primary)]/40 bg-[#050816]" disabled={submitState === "loading"} />
-                  <span>{text.labels.accepted}</span>
-                </label>
+            <TurnstileWidget theme="dark" onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }} />
 
-                <TurnstileWidget theme="dark" onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }} />
+            <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
 
-                <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
-
-                <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
-                  {submitState === "loading" ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.loading}</> : submitState === "success" ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.success}</> : <><Icons.Mail className="h-4 w-4" />{text.submit.idle}</>}
-                </PremiumButton>
-              </div>
-            </form>
+            <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
+              {submitState === "loading" ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.loading}</> : submitState === "success" ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.success}</> : <><Icons.Mail className="h-4 w-4" />{text.submit.idle}</>}
+            </PremiumButton>
+          </form>
         </motion.div>
       </DialogContent>
     </Dialog>
