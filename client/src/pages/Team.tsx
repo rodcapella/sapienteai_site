@@ -167,9 +167,9 @@ export default function Team() {
               {content.intro.highlights.map((item: Highlight, index: number) => (
                 <Reveal key={item.value} delay={index * 100}>
                   <div className="team-highlight-card grid gap-5 p-6 transition duration-500 hover:-translate-y-1 hover:border-[#00D1FF]/40 hover:shadow-[0_24px_64px_rgba(0,209,255,0.16)] md:grid-cols-[80px_1fr] md:p-8">
-                    <div className="text-4xl font-black leading-none text-[#001547]/18">{item.value}</div>
+                    <div className="text-4xl font-black leading-none text-[#7861FF]">{item.value}</div>
                     <div>
-                      <h3 className="mb-3 text-2xl font-black text-[#001547]">{item.title}</h3>
+                      <h3 className="mb-3 text-2xl font-black text-[#0A84FF]">{item.title}</h3>
                       <p className="text-base font-medium leading-relaxed text-[#001547]/75">{item.text}</p>
                     </div>
                   </div>
