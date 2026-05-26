@@ -2,29 +2,28 @@ export const teamPT = {
   hero: {
     title: "Mentes que transformam tecnologia",
     title_highlight: "em resultados reais.",
-    subtitle: "Unimos tecnologia, inteligência e execução para acelerar empresas."
+    subtitle: "Unimos tecnologia, inteligência e execução para acelerar o crescimento de empresas."
   },
 
   intro: {
     eyebrow: "A equipa",
-    title: "Uma equipa sénior e focada no que muda o negócio.",
-    text:
-      "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos perto de cada cliente para transformar desafios reais em sistemas úteis, mensuráveis e preparados para escalar.",
+    title: "Uma equipa sénior focada no que realmente muda o negócio.",
+    text: "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos lado a lado com cada cliente para transformar desafios reais em sistemas úteis, mensuráveis e prontos a escalar.",
     highlights: [
       {
         value: "01",
         title: "Estratégia com contexto",
-        text: "Começamos pelo problema real, pelos objetivos comerciais e pela maturidade digital de cada negócio."
+        text: "Partimos do problema real, dos objetivos de negócio e da maturidade digital de cada empresa."
       },
       {
         value: "02",
         title: "Execução com tecnologia",
-        text: "Desenvolvemos automações, sistemas e experiências digitais com IA aplicada diretamente ao contexto do negócio."
+        text: "Criamos automações, sistemas e experiências digitais com IA aplicada diretamente ao contexto do negócio."
       },
       {
         value: "03",
         title: "Crescimento mensurável",
-        text: "Ligamos cada iniciativa a indicadores de aquisição, eficiência, conversão e receita."
+        text: "Cada iniciativa está ligada a indicadores de aquisição, eficiência, conversão e receita."
       }
     ]
   },
@@ -32,16 +31,15 @@ export const teamPT = {
   presentation: {
     eyebrow: "Fundadores",
     title: "Dois perfis. Uma visão. Resultados mensuráveis.",
-    text:
-      "Rodrigo lidera a arquitetura técnica, dados e automação. Tatiane lidera posicionamento, conteúdo e crescimento. Juntos, cobrem todo o ciclo: do problema ao sistema, da mensagem ao mercado."
+    text: "Rodrigo lidera a arquitetura técnica, dados e automação. Tatiane lidera posicionamento, conteúdo e crescimento. Juntos, cobrem todo o ciclo: do problema ao sistema, da mensagem ao mercado."
   },
 
   cta: {
     title: "Estratégia, IA e execução",
     title_highlight: "alinhadas para escalar o seu negócio.",
-    description: "Conheça os fundadores por detrás da Sapiente.AI e descubra como combinamos experiência e tecnologia para gerar impacto real.",
-    description_highlight: "Transformamos ideias em resultados mensuráveis.",
-    button: "Falar com a equipa"
+    description: "Conheça os fundadores por detrás da Sapiente.AI e",
+    description_highlight: "descubra como combinamos experiência e tecnologia para gerar impacto real.",
+    button: "Falar com a nossa equipa"
   },
 
   members: [
@@ -50,12 +48,8 @@ export const teamPT = {
       role: "Founder & CTO",
       focus: "Tecnologia, dados e automação",
       bio: "Desenvolve sistemas inteligentes focados em clareza, velocidade e decisão.",
-
-      story:
-        "Com experiência em engenharia e arquitetura de dados, automação e desenvolvimento web, constrói sistemas que transformam dados dispersos em decisões rápidas e negócios mais eficientes.",
-
-      stack: ["AI", "Automação", "Data", "Produto", "Business Intelligence", "Web Developer", "Metodologia Ágil"],
-
+      story: "Com experiência em engenharia, arquitetura de dados, automação e desenvolvimento web, constrói sistemas que transformam dados dispersos em decisões rápidas e negócios mais eficientes.",
+      stack: ["IA", "Automação", "Dados", "Produto", "Business Intelligence", "Desenvolvimento Web", "Metodologia Ágil"],
       badges: [
         "Arquitetura de Dados",
         "Engenharia de Dados",
@@ -65,22 +59,16 @@ export const teamPT = {
         "Data-Driven",
         "SCRUM"
       ],
-
       image: "",
       link: "https://www.rpovoadata.tech"
     },
-
     {
       name: "Tatiane Gomes",
       role: "Founder & CMO",
       focus: "Marketing, marca e crescimento",
       bio: "Transforma estratégias em crescimento através de conteúdo e posicionamento.",
-
-      story:
-        "Especialista em publicidade, marketing digital e design, transforma marcas em motores de crescimento através de posicionamento, narrativa e performance digital.",
-
-      stack: ["Marketing", "SEO", "GEO", "AEO", "AI Content", "Design", "Publicidade", "Ads"],
-
+      story: "Especialista em publicidade, marketing digital e design, transforma marcas em motores de crescimento através de posicionamento, narrativa e performance digital.",
+      stack: ["Marketing", "SEO", "GEO", "AEO", "Conteúdo com IA", "Design", "Publicidade", "Anúncios"],
       badges: [
         "Estratégia de Crescimento",
         "Marketing Digital",
@@ -89,7 +77,6 @@ export const teamPT = {
         "Design",
         "Gestão de Redes Sociais"
       ],
-
       image: "",
       link: "https://www.instagram.com/tatianegomespovoa"
     }
