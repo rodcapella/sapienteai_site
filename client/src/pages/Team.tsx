@@ -17,6 +17,7 @@ type Member = {
   bio: string;
   story?: string;
   stack: string[];
+  badges?: string[];
   image: string;
   link: string;
 };
@@ -96,10 +97,21 @@ function TeamCard({ member }: { member: Member }) {
 
         {member.story && <p className="team-member-story relative z-10 mb-8 text-lg font-medium leading-relaxed">{member.story}</p>}
 
+        {member.badges && member.badges.length > 0 && (
+          <div className="team-badges relative z-10 mb-8 flex flex-wrap gap-x-5 gap-y-3">
+            {member.badges.map((badge) => (
+              <span key={badge} className="team-badge">
+                <span className="team-badge-indicator" />
+                {badge}
+              </span>
+            ))}
+          </div>
+        )}
+
         <div className="team-stack-panel relative z-10 mt-auto">
           <p className="mb-5 text-xs font-black uppercase tracking-[0.22em] text-primary/70">Stack & foco</p>
           <div className="flex flex-wrap gap-3">
-            {member.stack.map((tech) => <span key={tech} className="team-stack-chip">{tech}</span>)}
+            {member.stack.map((tech) => <span key={tech} className={`team-stack-chip ${tech.toLowerCase().includes("ai") ? "team-stack-chip-ai" : ""}`}>{tech}</span>)}
           </div>
         </div>
 
@@ -137,11 +149,11 @@ export default function Team() {
         <div className="container mx-auto px-6">
           <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-stretch">
             <Reveal>
-              <div className="team-intro-panel h-full p-7 md:p-10">
+              <div className="team-intro-panel h-full p-7 md:p-9">
                 <div className="relative z-10">
                   <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">{content.intro.eyebrow}</p>
                   <h2 className="mb-8 text-4xl font-black leading-none text-foreground md:text-6xl">{content.intro.title}</h2>
-                  <p className="text-lg font-medium leading-relaxed text-foreground/65 md:text-2xl">{content.intro.text}</p>
+                  <p className="text-xl font-medium leading-relaxed !text-[#00D1FF] md:text-[26px]">{content.intro.text}</p>
                   <div className="mt-10 grid grid-cols-3 gap-3 border-t border-primary/10 pt-8">
                     <div><p className="text-3xl font-black text-primary">AI</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Systems</p></div>
                     <div><p className="text-3xl font-black text-primary">SEO</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Growth</p></div>
@@ -151,14 +163,14 @@ export default function Team() {
               </div>
             </Reveal>
 
-            <div className="grid gap-5">
+            <div className="grid gap-7 lg:content-between">
               {content.intro.highlights.map((item: Highlight, index: number) => (
                 <Reveal key={item.value} delay={index * 100}>
                   <div className="team-highlight-card grid gap-5 p-6 transition duration-500 hover:-translate-y-1 hover:border-[#00D1FF]/40 hover:shadow-[0_24px_64px_rgba(0,209,255,0.16)] md:grid-cols-[80px_1fr] md:p-8">
-                    <div className="text-4xl font-black leading-none text-primary/35">{item.value}</div>
+                    <div className="text-4xl font-black leading-none text-[#001547]/18">{item.value}</div>
                     <div>
-                      <h3 className="mb-3 text-2xl font-black text-foreground">{item.title}</h3>
-                      <p className="text-base font-medium leading-relaxed text-foreground/60">{item.text}</p>
+                      <h3 className="mb-3 text-2xl font-black text-[#001547]">{item.title}</h3>
+                      <p className="text-base font-medium leading-relaxed text-[#001547]/75">{item.text}</p>
                     </div>
                   </div>
                 </Reveal>
