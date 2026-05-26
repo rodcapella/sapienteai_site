@@ -7,7 +7,7 @@ export const teamEN = {
 
   intro: {
     eyebrow: "The team",
-    title: "A small, senior team focused on what actually moves the needle.",
+    title: "A senior team focused on what actually moves the needle.",
     text:
       "Sapiente.AI was built at the intersection of engineering, data, marketing and design. We work closely with each client to turn real challenges into useful, measurable systems built to scale.",
     highlights: [
