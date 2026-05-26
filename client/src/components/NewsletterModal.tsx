@@ -51,12 +51,14 @@ const modalText = {
     title: "Registe-se na nossa newsletter",
     description:
       "Receba conteúdos sobre inteligência artificial, automação, marketing digital e formas práticas de tornar o seu negócio mais eficiente.",
+    requiredFields: "Campos obrigatórios",
+    optional: "(opcional)",
     labels: {
-      name: "Nome *",
-      email: "Email *",
-      role: "Cargo (opcional)",
-      company: "Empresa (opcional)",
-      source: "Como nos encontrou? (opcional)",
+      name: "Nome",
+      email: "Email",
+      role: "Cargo",
+      company: "Empresa",
+      source: "Como nos encontrou?",
       accepted:
         "Li e compreendi a Política de Privacidade e autorizo o tratamento dos meus dados para receber comunicações da Sapiente.AI.",
     },
@@ -67,7 +69,6 @@ const modalText = {
       company: "Nome da empresa",
       source: "Selecione uma opção",
     },
-    benefits: ["IA aplicada ao negócio", "Automação inteligente", "Marketing e crescimento", "Dicas práticas"],
     errors: {
       name: "Nome é obrigatório.",
       email: "Email é obrigatório.",
@@ -92,12 +93,14 @@ const modalText = {
     title: "Subscribe to our newsletter",
     description:
       "Get insights on artificial intelligence, automation, digital marketing, and practical ways to make your business more efficient.",
+    requiredFields: "Required fields",
+    optional: "(optional)",
     labels: {
-      name: "Name *",
-      email: "Email *",
-      role: "Role (optional)",
-      company: "Company (optional)",
-      source: "How did you find us? (optional)",
+      name: "Name",
+      email: "Email",
+      role: "Role",
+      company: "Company",
+      source: "How did you find us?",
       accepted:
         "I have read and understood the Privacy Policy and authorize the processing of my data to receive communications from Sapiente.AI.",
     },
@@ -108,7 +111,6 @@ const modalText = {
       company: "Company name",
       source: "Select an option",
     },
-    benefits: ["Business AI", "Smart automation", "Marketing and growth", "Practical insights"],
     errors: {
       name: "Name is required.",
       email: "Email is required.",
@@ -117,7 +119,7 @@ const modalText = {
       form: "Please review the required fields and complete verification before sending.",
       turnstile: "Complete the security verification before sending.",
       turnstileExpired: "The verification expired. Please confirm it again.",
-      turnstileError: "We couldn’t validate the verification. Please try again.",
+      turnstileError: "We couldn't validate the verification. Please try again.",
       submit: "We could not complete your subscription. Please try again shortly.",
     },
     submit: {
@@ -264,6 +266,10 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
     "w-full rounded-xl border border-[rgba(0,209,255,0.28)] bg-[linear-gradient(145deg,rgba(5,8,27,0.86),rgba(16,24,46,0.62))] px-4 py-3 text-sm text-[var(--brand-offwhite)] placeholder:text-[rgba(0,209,255,0.62)] outline-none transition-all duration-300 hover:border-[rgba(0,209,255,0.58)] hover:shadow-[0_0_18px_rgba(0,209,255,0.2)] focus:shadow-[0_0_0_1px_rgba(0,209,255,0.7),0_0_26px_rgba(0,209,255,0.28)] focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]";
   const selectClass = `${inputClass} contact-modal-select cursor-pointer appearance-none pr-10 text-[var(--brand-offwhite)]`;
 
+  const labelClass = "block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
+  const optionalClass = "ml-1.5 normal-case tracking-normal font-normal text-[rgba(234,246,255,0.45)]";
+  const requiredMark = <span className="ml-1 text-[#FF4D4D]">*</span>;
+
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && closeModal()}>
       <DialogContent showCloseButton={false} className="w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[rgba(0,209,255,0.5)] bg-[linear-gradient(145deg,rgba(5,8,27,0.85),rgba(26,31,46,0.8))] p-0 shadow-[0_0_0_1px_rgba(0,209,255,0.32),0_0_60px_rgba(0,209,255,0.32),0_24px_90px_rgba(5,8,27,0.65)] backdrop-blur-2xl sm:max-w-2xl" aria-describedby="newsletter-modal-description">
@@ -271,7 +277,9 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
           <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden>
             <div className="absolute inset-0" style={{ backgroundImage: "repeating-linear-gradient(0deg, rgba(0,209,255,0.06) 0px, rgba(0,209,255,0.06) 1px, transparent 1px, transparent 28px), repeating-linear-gradient(90deg, rgba(10,132,255,0.05) 0px, rgba(10,132,255,0.05) 1px, transparent 1px, transparent 28px)" }} />
             <div className="absolute -top-28 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.45)_0%,rgba(0,209,255,0)_70%)] blur-3xl" />
-            {PARTICLES.map((particle, index) => <motion.span key={index} className="absolute rounded-full bg-[rgba(0,209,255,0.9)]" style={{ left: particle.left, top: particle.top, width: particle.size, height: particle.size, boxShadow: "0 0 16px rgba(0,209,255,0.85)" }} animate={{ y: [0, -8, 0], opacity: [0.45, 1, 0.45] }} transition={{ duration: 3.4, delay: particle.delay, repeat: Infinity, ease: "easeInOut" }} />)}
+            {PARTICLES.map((particle, index) => (
+              <motion.span key={index} className="absolute rounded-full bg-[rgba(0,209,255,0.9)]" style={{ left: particle.left, top: particle.top, width: particle.size, height: particle.size, boxShadow: "0 0 16px rgba(0,209,255,0.85)" }} animate={{ y: [0, -8, 0], opacity: [0.45, 1, 0.45] }} transition={{ duration: 3.4, delay: particle.delay, repeat: Infinity, ease: "easeInOut" }} />
+            ))}
           </div>
 
           <button type="button" onClick={closeModal} aria-label={text.closeLabel} className="absolute right-4 top-4 z-20 rounded-full border border-[rgba(10,180,255,0.4)] bg-[var(--brand-primary)] p-2 text-white transition-all duration-300 hover:border-[rgba(10,180,255,0.88)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_20px_rgba(10,180,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]">
@@ -280,66 +288,99 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
 
           <DialogHeader className="relative z-10 mb-7 space-y-3 pr-10 text-left">
             <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "#FFFFFF" }}>
-              <span className="inline-flex items-center gap-2 !text-white" style={{ color: "#FFFFFF" }}><Icons.Mail className="h-7 w-7 text-[var(--brand-cyan)]" />{text.title}</span>
+              <span className="inline-flex items-center gap-2 !text-white" style={{ color: "#FFFFFF" }}>
+                <Icons.Mail className="h-7 w-7 text-[var(--brand-cyan)]" />
+                {text.title}
+              </span>
             </DialogTitle>
-            <DialogDescription id="newsletter-modal-description" className="max-w-xl text-sm text-[rgba(234,246,255,0.76)] sm:text-base">{text.description}</DialogDescription>
+            <DialogDescription id="newsletter-modal-description" className="max-w-xl text-sm text-[rgba(234,246,255,0.76)] sm:text-base">
+              {text.description}
+            </DialogDescription>
           </DialogHeader>
 
-          <div className="relative z-10 mb-6 grid gap-3 text-sm text-[rgba(234,246,255,0.76)] sm:grid-cols-2">
-            {text.benefits.map((item) => (
-              <div key={item} className="flex items-center gap-3 rounded-xl border border-[rgba(0,209,255,0.28)] bg-[rgba(5,8,27,0.55)] px-4 py-3 backdrop-blur-xl">
-                <Icons.CheckCircle className="h-4 w-4 shrink-0 text-[var(--brand-cyan)]" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-
           <form onSubmit={handleSubmit} className="relative z-10 space-y-4" noValidate>
-            <label className="block space-y-1.5">
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.name}</span>
-              <input name="name" required type="text" value={formData.name} onChange={(event) => updateField("name", event.target.value)} placeholder={text.placeholders.name} className={inputClass} disabled={submitState === "loading"} />
-            </label>
-
-            <label className="block space-y-1.5">
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.email}</span>
-              <input name="email" required type="email" value={formData.email} onChange={(event) => updateField("email", event.target.value)} placeholder={text.placeholders.email} className={inputClass} disabled={submitState === "loading"} />
-            </label>
-
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="space-y-4">
               <label className="block space-y-1.5">
-                <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.role}</span>
-                <input name="role" type="text" value={formData.role} onChange={(event) => updateField("role", event.target.value)} placeholder={text.placeholders.role} className={inputClass} disabled={submitState === "loading"} />
+                <span className={labelClass}>
+                  {text.labels.name}
+                  {requiredMark}
+                </span>
+                <input name="name" required type="text" value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={inputClass} disabled={submitState === "loading"} />
               </label>
 
               <label className="block space-y-1.5">
-                <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.company}</span>
-                <input name="company" type="text" value={formData.company} onChange={(event) => updateField("company", event.target.value)} placeholder={text.placeholders.company} className={inputClass} disabled={submitState === "loading"} />
+                <span className={labelClass}>
+                  {text.labels.email}
+                  {requiredMark}
+                </span>
+                <input name="email" required type="email" value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder={text.placeholders.email} className={inputClass} disabled={submitState === "loading"} />
               </label>
-            </div>
 
-            <label className="block space-y-1.5">
-              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.source}</span>
-              <div className="relative">
-                <select name="source" value={formData.source} onChange={(event) => updateField("source", event.target.value)} className={selectClass} disabled={submitState === "loading"}>
-                  <option value="">{text.placeholders.source}</option>
-                  {sourceOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
-                </select>
-                <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="block space-y-1.5">
+                  <span className={labelClass}>
+                    {text.labels.role}
+                    <span className={optionalClass}>{text.optional}</span>
+                  </span>
+                  <input name="role" type="text" value={formData.role} onChange={(e) => updateField("role", e.target.value)} placeholder={text.placeholders.role} className={inputClass} disabled={submitState === "loading"} />
+                </label>
+
+                <label className="block space-y-1.5">
+                  <span className={labelClass}>
+                    {text.labels.company}
+                    <span className={optionalClass}>{text.optional}</span>
+                  </span>
+                  <input name="company" type="text" value={formData.company} onChange={(e) => updateField("company", e.target.value)} placeholder={text.placeholders.company} className={inputClass} disabled={submitState === "loading"} />
+                </label>
               </div>
-            </label>
 
-            <label className="flex items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[#050816]/40 p-4 text-sm leading-relaxed text-[rgba(234,246,255,0.72)]">
-              <input type="checkbox" required checked={formData.accepted} onChange={(event) => updateField("accepted", event.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-primary)]/40 bg-[#050816]" disabled={submitState === "loading"} />
-              <span>{text.labels.accepted}</span>
-            </label>
+              <label className="block space-y-1.5">
+                <span className={labelClass}>
+                  {text.labels.source}
+                  <span className={optionalClass}>{text.optional}</span>
+                </span>
+                <div className="relative">
+                  <select name="source" value={formData.source} onChange={(e) => updateField("source", e.target.value)} className={selectClass} disabled={submitState === "loading"}>
+                    <option value="">{text.placeholders.source}</option>
+                    {sourceOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                  <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+                </div>
+              </label>
 
-            <TurnstileWidget theme="dark" onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }} />
+              <label className="flex items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[#050816]/40 p-4 text-sm leading-relaxed text-[rgba(234,246,255,0.72)]">
+                <input type="checkbox" required checked={formData.accepted} onChange={(e) => updateField("accepted", e.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-primary)]/40 bg-[#050816]" disabled={submitState === "loading"} />
+                <span>{text.labels.accepted}</span>
+              </label>
 
-            <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
+              <TurnstileWidget
+                theme="dark"
+                onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }}
+                onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }}
+                onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }}
+              />
 
-            <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
-              {submitState === "loading" ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.loading}</> : submitState === "success" ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.success}</> : <><Icons.Mail className="h-4 w-4" />{text.submit.idle}</>}
-            </PremiumButton>
+              <AnimatePresence mode="wait">
+                {statusNode && (
+                  <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                    {statusNode}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <p className="text-[11px] text-[rgba(234,246,255,0.4)]">
+                <span className="text-[#FF4D4D]">*</span> {text.requiredFields}
+              </p>
+
+              <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
+                {submitState === "loading"
+                  ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.loading}</>
+                  : submitState === "success"
+                  ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.success}</>
+                  : <><Icons.Mail className="h-4 w-4" />{text.submit.idle}</>}
+              </PremiumButton>
+
+            </div>
           </form>
         </motion.div>
       </DialogContent>
