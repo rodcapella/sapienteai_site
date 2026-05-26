@@ -12,10 +12,12 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
+  variant?: "default" | "home";
 };
 
-export function FinalCTA({ title, title_highlight, description, description_highlight, button, href }: FinalCTAProps) {
+export function FinalCTA({ title, title_highlight, description, description_highlight, button, href, variant = "default" }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const isHomeVariant = variant === "home";
 
   const buttonElement = (
     <PremiumButton
@@ -34,14 +36,17 @@ export function FinalCTA({ title, title_highlight, description, description_high
           <img src="/media/bg/bg_finalCTA.png" alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-5xl px-6 pl-8 text-left">
+        <div className={`relative z-10 mx-auto max-w-5xl px-6 ${isHomeVariant ? "text-center" : "pl-8 text-left"}`}>
           <Reveal>
-            <h2 className="mx-auto max-w-4xl font-black leading-[1.05] tracking-tight" style={{ fontFamily: "'Inter', sans-serif", color: "#000000", fontSize: "40px" }}>
+            <h2
+              className={`mx-auto max-w-4xl font-black leading-[1.08] tracking-normal ${isHomeVariant ? "text-[40px] md:text-[56px]" : ""}`}
+              style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", color: isHomeVariant ? "#001547" : "#000000", fontSize: isHomeVariant ? undefined : "40px" }}
+            >
               {title}
               {title_highlight && (
                 <>
                   <br />
-                  <span className="!text-[#0057FF]" style={{ fontFamily: "'Inter', sans-serif", fontSize: "40px" }}>
+                  <span className="!text-[#0A84FF]" style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", fontSize: isHomeVariant ? undefined : "40px" }}>
                     {title_highlight}
                   </span>
                 </>
@@ -51,20 +56,22 @@ export function FinalCTA({ title, title_highlight, description, description_high
 
           {description && (
             <Reveal delay={110}>
-              <p className="mx-auto mt-8 max-w-3xl leading-relaxed" style={{ fontFamily: "'Playfair Display', serif", color: "#000000", fontSize: "24px" }}>
+              <p
+                className={`mx-auto max-w-5xl leading-relaxed ${isHomeVariant ? "mt-7 text-[15px] font-medium md:text-[18px]" : "mt-8 max-w-3xl"}`}
+                style={{ fontFamily: isHomeVariant ? "'Inter', sans-serif" : "'Playfair Display', serif", color: isHomeVariant ? "#001547" : "#000000", fontSize: isHomeVariant ? undefined : "24px" }}
+              >
                 {description}
                 {description_highlight && (
-                  <>
-                    <br />
-                    <span className="text-[var(--brand-primary)]">{description_highlight}</span>
-                  </>
+                  <span className={`${isHomeVariant ? "font-black text-[#0A84FF]" : "block text-[var(--brand-primary)]"}`}>
+                    {isHomeVariant ? ` ${description_highlight}` : description_highlight}
+                  </span>
                 )}
               </p>
             </Reveal>
           )}
 
           <Reveal delay={220}>
-            <div className="mt-12 flex justify-start">
+            <div className={`mt-12 flex ${isHomeVariant ? "justify-center" : "justify-start"}`}>
               {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </div>
           </Reveal>

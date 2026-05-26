@@ -26,6 +26,7 @@ type NewsletterFormData = {
   email: string;
   role: string;
   company: string;
+  source: string;
   accepted: boolean;
 };
 
@@ -34,7 +35,13 @@ const INITIAL_FORM: NewsletterFormData = {
   email: "",
   role: "",
   company: "",
+  source: "",
   accepted: false,
+};
+
+const sourceOptions = {
+  pt: ["LinkedIn", "Google", "X", "Pinterest", "TikTok", "Instagram", "Indicação", "Eventos", "Newsletter", "Outros"],
+  en: ["LinkedIn", "Google", "X", "Pinterest", "TikTok", "Instagram", "Referral", "Events", "Newsletter", "Other"],
 };
 
 const modalText = {
@@ -49,6 +56,7 @@ const modalText = {
       email: "Email *",
       role: "Cargo (opcional)",
       company: "Empresa (opcional)",
+      source: "Como nos encontrou? (opcional)",
       accepted:
         "Li e compreendi a Política de Privacidade e autorizo o tratamento dos meus dados para receber comunicações da Sapiente.AI.",
     },
@@ -57,6 +65,7 @@ const modalText = {
       email: "exemplo@empresa.com",
       role: "Ex: Diretora de Marketing",
       company: "Nome da empresa",
+      source: "Selecione uma opção",
     },
     benefits: ["IA aplicada ao negócio", "Automação inteligente", "Marketing e crescimento", "Dicas práticas"],
     errors: {
@@ -88,6 +97,7 @@ const modalText = {
       email: "Email *",
       role: "Role (optional)",
       company: "Company (optional)",
+      source: "How did you find us? (optional)",
       accepted:
         "I have read and understood the Privacy Policy and authorize the processing of my data to receive communications from Sapiente.AI.",
     },
@@ -96,6 +106,7 @@ const modalText = {
       email: "example@company.com",
       role: "Ex: Marketing Director",
       company: "Company name",
+      source: "Select an option",
     },
     benefits: ["Business AI", "Smart automation", "Marketing and growth", "Practical insights"],
     errors: {
@@ -195,6 +206,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       payload.append("email", formData.email.trim());
       payload.append("role", formData.role.trim() || "Not provided");
       payload.append("company", formData.company.trim() || "Not provided");
+      payload.append("source", formData.source.trim() || "Not provided");
       payload.append("privacy_consent", formData.accepted ? "Accepted" : "Not accepted");
       payload.append("turnstile_token", turnstileToken);
       payload.append("_subject", text.subject);
@@ -250,6 +262,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
 
   const inputClass =
     "w-full rounded-xl border border-[rgba(0,209,255,0.28)] bg-[linear-gradient(145deg,rgba(5,8,27,0.86),rgba(16,24,46,0.62))] px-4 py-3 text-sm text-[var(--brand-offwhite)] placeholder:text-[rgba(0,209,255,0.62)] outline-none transition-all duration-300 hover:border-[rgba(0,209,255,0.58)] hover:shadow-[0_0_18px_rgba(0,209,255,0.2)] focus:shadow-[0_0_0_1px_rgba(0,209,255,0.7),0_0_26px_rgba(0,209,255,0.28)] focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]";
+  const selectClass = `${inputClass} contact-modal-select cursor-pointer appearance-none pr-10 text-[var(--brand-offwhite)]`;
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && closeModal()}>
@@ -303,6 +316,17 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
                 <input name="company" type="text" value={formData.company} onChange={(event) => updateField("company", event.target.value)} placeholder={text.placeholders.company} className={inputClass} disabled={submitState === "loading"} />
               </label>
             </div>
+
+            <label className="block space-y-1.5">
+              <span className="block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.source}</span>
+              <div className="relative">
+                <select name="source" value={formData.source} onChange={(event) => updateField("source", event.target.value)} className={selectClass} disabled={submitState === "loading"}>
+                  <option value="">{text.placeholders.source}</option>
+                  {sourceOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
+                </select>
+                <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+              </div>
+            </label>
 
             <label className="flex items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[#050816]/40 p-4 text-sm leading-relaxed text-[rgba(234,246,255,0.72)]">
               <input type="checkbox" required checked={formData.accepted} onChange={(event) => updateField("accepted", event.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-primary)]/40 bg-[#050816]" disabled={submitState === "loading"} />
