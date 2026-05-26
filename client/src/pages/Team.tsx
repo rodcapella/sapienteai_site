@@ -28,6 +28,11 @@ type Highlight = {
   text: string;
 };
 
+type Capability = {
+  value: string;
+  label: string;
+};
+
 function getInitials(name: string) {
   return name
     .split(" ")
@@ -154,10 +159,13 @@ export default function Team() {
                   <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">{content.intro.eyebrow}</p>
                   <h2 className="mb-8 text-4xl font-black leading-none text-foreground md:text-6xl">{content.intro.title}</h2>
                   <p className="text-xl font-medium leading-relaxed !text-[#00D1FF] md:text-[26px]">{content.intro.text}</p>
-                  <div className="mt-10 grid grid-cols-3 gap-3 border-t border-primary/10 pt-8">
-                    <div><p className="text-3xl font-black text-primary">AI</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Systems</p></div>
-                    <div><p className="text-3xl font-black text-primary">SEO</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Growth</p></div>
-                    <div><p className="text-3xl font-black text-primary">BI</p><p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">Data</p></div>
+                  <div className="mt-10 grid grid-cols-2 gap-4 border-t border-primary/10 pt-8 sm:grid-cols-3">
+                    {content.intro.capabilities.map((item: Capability) => (
+                      <div key={`${item.value}-${item.label}`}>
+                        <p className="text-3xl font-black text-primary">{item.value}</p>
+                        <p className="mt-1 text-xs font-black uppercase tracking-[0.14em] text-foreground/45">{item.label}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -184,9 +192,9 @@ export default function Team() {
         <div className="container mx-auto px-6">
           <Reveal>
             <div className="relative z-10 mx-auto mb-16 max-w-4xl text-center">
-              <p className="mx-auto mb-7 inline-flex rounded-full border border-primary/20 bg-[#EAF6FF]/60 px-5 py-2 text-sm font-black uppercase tracking-[0.24em] text-primary shadow-[0_18px_40px_rgba(26,31,46,0.08)] backdrop-blur-xl">{content.presentation.eyebrow}</p>
+              <p className="mx-auto mb-7 inline-flex rounded-full border border-[#7861FF]/35 bg-white/80 px-5 py-2 text-sm font-black uppercase tracking-[0.24em] text-[#001547] shadow-[0_18px_40px_rgba(26,31,46,0.08)] backdrop-blur-xl dark:border-[#00D1FF]/35 dark:bg-[#001547]/75 dark:text-[#EAF6FF]">{content.presentation.eyebrow}</p>
               <h2 className="team-founders-title mb-8 text-4xl font-black leading-none md:text-7xl">{content.presentation.title}</h2>
-              <p className="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-foreground/70 md:text-2xl">{content.presentation.text}</p>
+              <p className="mx-auto max-w-3xl text-lg font-medium leading-relaxed text-[#0A84FF] md:text-2xl">{content.presentation.text}</p>
             </div>
           </Reveal>
 

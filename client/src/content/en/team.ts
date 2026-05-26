@@ -9,6 +9,14 @@ export const teamEN = {
     eyebrow: "The team",
     title: "A senior team focused on what truly moves the needle.",
     text: "Sapiente.AI is born from the fusion of engineering, data, marketing, and design. We work side by side with every client to turn real-world challenges into useful, measurable, and scalable systems.",
+    capabilities: [
+      { value: "AI", label: "Systems" },
+      { value: "SEO", label: "Growth" },
+      { value: "BI", label: "Data" },
+      { value: "Social", label: "Media management" },
+      { value: "AI", label: "Contents" },
+      { value: "Digital", label: "Marketing" }
+    ],
     highlights: [
       {
         value: "01",

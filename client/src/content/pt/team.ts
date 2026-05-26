@@ -9,6 +9,14 @@ export const teamPT = {
     eyebrow: "A equipa",
     title: "Uma equipa sénior focada no que realmente muda o negócio.",
     text: "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos lado a lado com cada cliente para transformar desafios reais em sistemas úteis, mensuráveis e prontos a escalar.",
+    capabilities: [
+      { value: "IA", label: "Sistemas" },
+      { value: "SEO", label: "Crescimento" },
+      { value: "BI", label: "Dados" },
+      { value: "Social", label: "Gestão de redes sociais" },
+      { value: "AI", label: "Contents" },
+      { value: "Marketing", label: "Digital" }
+    ],
     highlights: [
       {
         value: "01",
