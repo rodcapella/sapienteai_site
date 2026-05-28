@@ -59,7 +59,7 @@ export default function Footer() {
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
 
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
-            <div className="mb-2 inline-block">
+            <div className="mb-10 inline-block">
               <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-40 w-auto object-contain md:h-48" />
             </div>
             <p className="max-w-sm font-serif text-[16px] leading-relaxed text-[var(--brand-offwhite)]">
@@ -72,6 +72,7 @@ export default function Footer() {
             <ul className="mt-7 space-y-5">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
+                { href: `/${lang}/about`, label: t("nav.about") },
                 { href: `/${lang}/team`, label: t("nav.team") },
                 { href: `/${lang}/faq`, label: t("nav.faq") },
                 { href: quizHref, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
