@@ -25,7 +25,7 @@ const faqIcons = [
   Icons.MessageCircle,
 ];
 
-const compactCardTextClass = "font-heading text-[12px] font-black leading-tight tracking-tight md:text-[14px]";
+const compactCardTextClass = "font-heading text-[10px] font-black leading-tight tracking-tight md:text-[12px]";
 const compactBodyTextClass = "text-[12px] leading-relaxed md:text-[14px]";
 
 function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
@@ -33,14 +33,14 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
     <SectionCard
       className={cn(
         "group mb-5 cursor-pointer overflow-hidden rounded-[2rem] border p-0 transition-all duration-500",
-        "bg-[#0057FF] shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-2xl",
-        "hover:-translate-y-1 hover:border-[#00D1FF]/60 hover:shadow-[0_24px_70px_rgba(0,209,255,0.18)]",
-        isOpen ? "border-[#00D1FF]/70" : "border-primary/20",
+        "border-[#7861FF]/55 bg-[#001547] shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-2xl",
+        "hover:-translate-y-1 hover:border-[#7861FF] hover:shadow-[0_24px_70px_rgba(120,97,255,0.18)]",
+        isOpen ? "border-[#7861FF]" : "border-[#7861FF]/55",
       )}
       onClick={onToggle}
     >
       <div className="relative p-6 md:p-8">
-        <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-70" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-[#7861FF] opacity-90" />
         <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#00D1FF]/10 blur-3xl transition-all duration-500 group-hover:bg-[#00D1FF]/22" />
 
         <div className="relative z-10 flex items-start justify-between gap-5">
@@ -52,7 +52,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
             )}
 
             <div>
-              <h3 className={`${compactCardTextClass} text-foreground`}>
+              <h3 className={`${compactCardTextClass} text-white`}>
                 {item.question}
               </h3>
             </div>
@@ -69,8 +69,8 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
         </div>
 
         <div className={cn("overflow-hidden transition-all duration-700", isOpen ? "mt-7 max-h-[900px] opacity-100" : "max-h-0 opacity-0")}>
-          <div className="ml-0 border-t border-primary/15 pt-6 md:ml-[4.25rem]">
-            <p className="rounded-2xl border border-[#00D1FF]/16 bg-white px-5 py-5 font-medium text-black text-[12px] leading-relaxed">
+          <div className="ml-0 border-t border-[#7861FF]/35 pt-6 md:ml-[4.25rem]">
+            <p className="rounded-2xl border border-[#7861FF]/35 bg-[#001547] px-5 py-5 font-medium text-[#00D1FF] text-[14px] leading-relaxed md:text-[16px]">
               {item.answer}
             </p>
           </div>

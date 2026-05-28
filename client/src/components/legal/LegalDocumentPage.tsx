@@ -17,6 +17,7 @@ type LegalContentSection = {
 };
 
 type LegalContent = {
+  label?: string;
   title: string;
   highlight?: string;
   subtitle?: string;
@@ -77,6 +78,9 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const lang = location.split("/")[1] || "pt";
   const pageTitle = getLegalPageTitle(slug, lang) || content.title;
   const cta = getLegalCta(lang);
+  const heroLabel = content.label || pageTitle;
+  const heroTitle = content.label ? content.title : content.subtitle || content.title;
+  const heroSubtitle = content.label ? content.subtitle || content.lastUpdated : content.lastUpdated;
 
   useEffect(() => {
     setSEOHead({
@@ -89,7 +93,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={pageTitle} title={content.title} highlight={content.highlight} subtitle={content.subtitle || content.lastUpdated} compact />
+      <InternalHero label={heroLabel} title={heroTitle} highlight={content.highlight} subtitle={heroSubtitle} compact />
 
       <Section className="relative overflow-hidden bg-[#EAF6FF] py-24 text-[#0A1024] md:py-36">
         <div className="pointer-events-none absolute inset-0 tech-grid opacity-20" />
@@ -97,11 +101,11 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
         <div className="relative z-10 container mx-auto px-6">
           <Reveal>
-            <SectionCard className="mx-auto mb-12 max-w-5xl rounded-[2rem] border border-[var(--brand-primary)]/20 bg-[rgba(234,246,255,0.82)] p-7 text-center shadow-[0_22px_60px_rgba(8,18,40,0.12)] backdrop-blur-2xl md:p-9">
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-[var(--brand-primary)]">
+            <SectionCard className="mx-auto mb-12 max-w-5xl rounded-[2rem] border border-[#7861FF]/55 bg-[#001547] p-7 text-center shadow-[0_18px_38px_rgba(1,32,80,0.18),0_0_20px_rgba(10,180,255,0.08)] backdrop-blur-2xl md:p-9">
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-[#00D1FF]">
                 {lang === "pt" ? "Documento legal" : "Legal document"}
               </p>
-              <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-[#0A1024]/72 md:text-lg">
+              <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-[#EAF6FF]/82 md:text-lg">
                 {content.subtitle || fallbackDescription}
               </p>
             </SectionCard>
@@ -113,9 +117,9 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
               return (
                 <Reveal key={`${section.title}-${idx}`} delay={idx * 45}>
-                  <SectionCard className="group h-full rounded-[2rem] border border-[var(--brand-primary)]/18 bg-[rgba(234,246,255,0.88)] p-0 shadow-[0_18px_45px_rgba(8,18,40,0.1)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-cyan)]/60 hover:shadow-[0_24px_70px_rgba(0,209,255,0.18)]">
+                  <SectionCard className="group h-full rounded-[2rem] border border-[#7861FF]/55 bg-[#001547] p-0 shadow-[0_18px_38px_rgba(1,32,80,0.18),0_0_20px_rgba(10,180,255,0.08)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1 hover:border-[#7861FF] hover:shadow-[0_24px_70px_rgba(120,97,255,0.18)]">
                     <div className="relative h-full overflow-hidden rounded-[2rem] p-7 md:p-8">
-                      <div className="absolute inset-x-0 top-0 h-1 [background:var(--brand-gradient-border)] opacity-75" />
+                      <div className="absolute inset-x-0 top-0 h-1 bg-[#7861FF] opacity-90" />
                       <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[var(--brand-cyan)]/10 blur-3xl transition-all duration-500 group-hover:bg-[var(--brand-cyan)]/22" />
 
                       <div className="relative z-10 flex items-start gap-5">
@@ -124,18 +128,18 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
                         </div>
 
                         <div>
-                          <h2 className="font-heading text-2xl font-black leading-tight tracking-tight text-[#0A1024] md:text-3xl">
+                          <h2 className="font-heading text-2xl font-black leading-tight tracking-tight text-[#EAF6FF] md:text-3xl">
                             {section.title}
                           </h2>
                         </div>
                       </div>
 
-                      <div className="relative z-10 mt-7 border-t border-[var(--brand-primary)]/14 pt-6 text-base font-medium leading-relaxed text-[var(--brand-primary)] md:text-lg">
+                      <div className="relative z-10 mt-7 border-t border-[#7861FF]/35 pt-6 text-base font-medium leading-relaxed text-[#00D1FF] md:text-lg">
                         {Array.isArray(section.content) ? (
                           <ul className="space-y-4">
                             {section.content.map((item, i) => (
                               <li key={i} className="flex gap-3">
-                                <Icons.CheckCircle className="mt-1 h-5 w-5 shrink-0 text-[var(--brand-primary)]" />
+                                <Icons.CheckCircle className="mt-1 h-5 w-5 shrink-0 text-[#00D1FF]" />
                                 <span>{item}</span>
                               </li>
                             ))}

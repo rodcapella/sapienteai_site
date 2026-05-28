@@ -19,7 +19,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
   const [isContactOpen, setIsContactOpen] = useState(false);
   const isHomeVariant = variant === "home";
   const titleFontSize = isHomeVariant ? "clamp(40px, 5vw, 56px)" : "40px";
-  const descriptionFontSize = isHomeVariant ? "clamp(15px, 1.4vw, 18px)" : "24px";
+  const descriptionFontSize = "clamp(15px, 1.4vw, 18px)";
 
   const buttonElement = (
     <PremiumButton
@@ -59,14 +59,14 @@ export function FinalCTA({ title, title_highlight, description, description_high
           {description && (
             <Reveal delay={110}>
               <p
-                className={`mx-auto max-w-5xl leading-relaxed ${isHomeVariant ? "mt-7 font-medium" : "mt-8 max-w-3xl"}`}
-                style={{ fontFamily: isHomeVariant ? "'Inter', sans-serif" : "'Playfair Display', serif", color: isHomeVariant ? "#001547" : "#000000", fontSize: descriptionFontSize }}
+                className="mx-auto mt-7 max-w-5xl font-medium leading-relaxed"
+                style={{ fontFamily: "'Inter', sans-serif", color: "#001547", fontSize: descriptionFontSize }}
               >
                 {description}
                 {description_highlight && (
                   <>
                     <br />
-                    <span className={`${isHomeVariant ? "font-black text-[#0A84FF]" : "text-[var(--brand-primary)]"}`} style={{ fontFamily: isHomeVariant ? "'Inter', sans-serif" : "'Playfair Display', serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
+                    <span className="font-black text-[#0A84FF]" style={{ fontFamily: "'Inter', sans-serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
                       {description_highlight}
                     </span>
                   </>
