@@ -31,7 +31,13 @@ type HomeBannerSectionProps = {
 
 function getHomeBannerSrc(lang: string, file: string) {
   const folder = lang === "en" ? "EN" : "PT";
-  return `${HOME_BANNER_BASE_PATH}/${folder}/${file}`;
+  const englishFileMap: Record<string, string> = {
+    "home_resultados_gera_ia.png": "home_resultados_gera_ia_en.png",
+    "home_automacao_ia.png": "home_automacao_ia_en.png",
+    "home_personalidade_marca.png": "home_personalidade_marca_en.png",
+  };
+  const localizedFile = lang === "en" ? englishFileMap[file] || file : file;
+  return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
 function HomeBannerSection({ lang, file, label }: HomeBannerSectionProps) {
