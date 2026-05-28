@@ -1,9 +1,8 @@
 export const quizContentEn = {
   badge: "AI Quiz",
   title: "How much do you know about",
-  title_highlight: "Artificial Intelligence",
-  subtitle: "Take 10 quick questions and test your AI knowledge for business and daily life."
-}
+  highlight: "Artificial Intelligence",
+  subtitle: "Take 10 quick questions and test your AI knowledge for business and daily life.",
 
   startButton: "Start Quiz",
   duration: "10 questions · ~3 minutes",

@@ -1,8 +1,8 @@
 export const quizContentPt = {
   badge: "Quiz sobre IA",
   title: "Quanto sabe sobre",
-    title_highlight: "Inteligência Artificial?",
-    subtitle: "Responda a 10 perguntas rápidas e descubra o seu nível de conhecimento sobre IA no contexto empresarial e pessoal."
+  highlight: "Inteligência Artificial",
+  subtitle: "Responda a 10 perguntas rápidas e descubra o seu nível de conhecimento sobre IA no contexto empresarial e pessoal.",
 
   startButton: "Iniciar o Quiz",
   duration: "10 perguntas · ~3 minutos",
