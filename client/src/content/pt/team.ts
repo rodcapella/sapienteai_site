@@ -10,11 +10,11 @@ export const teamPT = {
     title: "Uma equipa sénior focada no que realmente muda o negócio.",
     text: "A Sapiente.AI nasce da combinação entre engenharia, dados, marketing e design. Trabalhamos lado a lado com cada cliente para transformar desafios reais em sistemas úteis, mensuráveis e prontos a escalar.",
     capabilities: [
-      { value: "IA", label: "Sistemas" },
+      { value: "IA", label: "Automação" },
       { value: "SEO", label: "Crescimento" },
       { value: "BI", label: "Dados" },
-      { value: "Social", label: "Gestão de redes sociais" },
-      { value: "AI", label: "Contents" },
+      { value: "Social", label: "Gestão de Redes Sociais" },
+      { value: "IA", label: "Imagens e Vídeos" },
       { value: "Marketing", label: "Digital" }
     ],
     highlights: [

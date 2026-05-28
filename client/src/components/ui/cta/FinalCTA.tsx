@@ -38,7 +38,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           <img src="/media/bg/bg_finalCTA.png" alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className={`relative z-10 mx-auto max-w-5xl px-6 ${isHomeVariant ? "text-center" : "pl-8 text-left"}`}>
+        <div className={`relative z-10 max-w-5xl px-6 ${isHomeVariant ? "ml-0 pl-[30px] text-center" : "pl-8 text-left"}`}>
           <Reveal>
             <h2
               className="mx-auto max-w-4xl font-black leading-[1.08] tracking-normal"
@@ -64,9 +64,11 @@ export function FinalCTA({ title, title_highlight, description, description_high
               >
                 {description}
                 {description_highlight && (
-                  <span className={`${isHomeVariant ? "font-black text-[#0A84FF]" : "block text-[var(--brand-primary)]"}`} style={{ fontFamily: isHomeVariant ? "'Inter', sans-serif" : "'Playfair Display', serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
-                    {isHomeVariant ? ` ${description_highlight}` : description_highlight}
+                  <br />
+                  <span className={`${isHomeVariant ? "font-black text-[#0A84FF]" : "text-[var(--brand-primary)]"}`} style={{ fontFamily: isHomeVariant ? "'Inter', sans-serif" : "'Playfair Display', serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
+                    {description_highlight}
                   </span>
+                </>
                 )}
               </p>
             </Reveal>

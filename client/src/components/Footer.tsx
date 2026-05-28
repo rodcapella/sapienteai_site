@@ -59,7 +59,7 @@ export default function Footer() {
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
 
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
-            <div className="mb-1 inline-block">
+            <div className="mb-6 inline-block">
               <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-40 w-auto object-contain md:h-48" />
             </div>
             <p className="max-w-sm font-serif text-[16px] leading-relaxed text-[var(--brand-offwhite)]">
@@ -69,7 +69,7 @@ export default function Footer() {
 
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.navigation")}</p>
-            <ul className="mt-2 space-y-5">
+            <ul className="mt-7 space-y-5">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
                 { href: `/${lang}/team`, label: t("nav.team") },
@@ -87,7 +87,7 @@ export default function Footer() {
 
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.legal")}</p>
-            <ul className="mt-2 space-y-5">
+            <ul className="mt-7 space-y-5">
               {[
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
                 { href: `/${lang}/privacy`, label: t("footer.privacy") },
@@ -105,7 +105,7 @@ export default function Footer() {
 
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.contact")}</p>
-            <ul className="mt-2 space-y-5">
+            <ul className="mt-7 space-y-5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
@@ -131,7 +131,7 @@ export default function Footer() {
 
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.newsletter")}</p>
-            <p className="mb-4 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
+            <p className="mb-4 mt-7 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.newsletterDescription")}
             </p>
             <PremiumButton onClick={() => setIsNewsletterOpen(true)} className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
