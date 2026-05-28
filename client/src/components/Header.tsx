@@ -46,6 +46,7 @@ export default function Header({ onContactClick }: HeaderProps) {
 
   const navLinks = [
     { href: `/${lang}`, label: t("nav.home") },
+    { href: `/${lang}/about`, label: t("nav.about") },
     { href: `/${lang}/team`, label: t("nav.team") },
     { href: `/${lang}/faq`, label: t("nav.faq") },
     { href: lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
@@ -71,7 +72,7 @@ export default function Header({ onContactClick }: HeaderProps) {
             </div>
 
             <div className="hidden min-w-0 items-center justify-center lg:flex">
-              <div className="grid w-full max-w-[500px] grid-cols-4 items-center gap-2 xl:max-w-[560px] xl:gap-3">
+              <div className="grid w-full max-w-[620px] grid-cols-5 items-center gap-2 xl:max-w-[680px] xl:gap-3">
                 {navLinks.map((link) => (
                   <div key={link.href} className="flex min-w-0 justify-center text-center">
                     <NavLink href={link.href}>{link.label}</NavLink>
