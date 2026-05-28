@@ -40,12 +40,13 @@ const copy = {
     links: {
       home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
       about: ["Sobre", "A nossa visão, método de trabalho e forma de aplicar IA."],
+      services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
       team: ["Fundadores", "Quem transforma estratégia, tecnologia e execução em resultados."],
       faq: ["FAQ", "Respostas rápidas às perguntas mais frequentes."],
       quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
       newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
       terms: ["Termos de Serviço", "Condições de utilização do site e serviços."],
-      privacy: ["Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
+      privacy: ["Política de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
       trust: ["Confiança & Segurança", "Princípios de segurança, ética e responsabilidade."],
       policy: ["Política de IA Generativa", "Como enquadramos o uso responsável de IA generativa."],
     },
@@ -66,12 +67,13 @@ const copy = {
     links: {
       home: ["Home", "Overview of our solutions, services, and value proposition."],
       about: ["About", "Our vision, working method, and approach to applied AI."],
+      services: ["Services", "Digital solutions, automation, marketing and applied AI for growth."],
       team: ["Founders", "The people turning strategy, technology, and execution into results."],
       faq: ["FAQ", "Quick answers to the most common questions."],
       quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
       terms: ["Terms of Service", "Terms of use for the website and services."],
-      privacy: ["Privacy", "How we collect, process, and protect personal data."],
+      privacy: ["Privacy Policy", "How we collect, process, and protect personal data."],
       trust: ["Trust & Security", "Security, ethics, and accountability principles."],
       policy: ["Generative AI Policy", "How we frame responsible use of generative AI."],
     },
@@ -138,7 +140,8 @@ export default function Sitemap() {
       links: [
         { title: l.home[0], description: l.home[1], href: makeLink(lang) },
         { title: l.about[0], description: l.about[1], href: makeLink(lang, "/about") },
-        { title: l.team[0], description: l.team[1], href: makeLink(lang, "/team") }
+        { title: l.services[0], description: l.services[1], href: makeLink(lang, "/services") },
+        { title: l.team[0], description: l.team[1], href: makeLink(lang, "/team") },
       ],
     },
     {
