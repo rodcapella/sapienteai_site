@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
@@ -145,6 +146,7 @@ export default function FAQ() {
         </div>
       </Section>
 
+      <QuizCTA />
       <FinalCTA
         title={content.cta.title}
         title_highlight={content.cta.title_highlight}

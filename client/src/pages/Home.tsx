@@ -6,6 +6,7 @@ import { Icons } from "@/lib/icons";
 import ContactModal from "@/components/ContactModal";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -94,6 +95,7 @@ export default function Home() {
         />
       ))}
       
+      <QuizCTA />
       <FinalCTA title={content.finalCta.title} title_highlight={content.finalCta.title_highlight} description={content.finalCta.description} description_highlight={content.finalCta.description_highlight} button={content.finalCta.button} variant="home" />
 
       {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}

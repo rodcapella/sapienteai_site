@@ -38,7 +38,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           <img src="/media/bg/bg_finalCTA.png" alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className={`relative z-10 max-w-5xl px-6 ${isHomeVariant ? "ml-0 pl-[30px] text-center" : "pl-8 text-left"}`}>
+        <div className="relative z-10 w-full max-w-4xl px-6 text-center sm:px-10 md:ml-12 lg:ml-20">
           <Reveal>
             <h2
               className="mx-auto max-w-4xl font-black leading-[1.08] tracking-normal"
@@ -64,18 +64,19 @@ export function FinalCTA({ title, title_highlight, description, description_high
               >
                 {description}
                 {description_highlight && (
-                  <br />
-                  <span className={`${isHomeVariant ? "font-black text-[#0A84FF]" : "text-[var(--brand-primary)]"}`} style={{ fontFamily: isHomeVariant ? "'Inter', sans-serif" : "'Playfair Display', serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
-                    {description_highlight}
-                  </span>
-                </>
+                  <>
+                    <br />
+                    <span className={`${isHomeVariant ? "font-black text-[#0A84FF]" : "text-[var(--brand-primary)]"}`} style={{ fontFamily: isHomeVariant ? "'Inter', sans-serif" : "'Playfair Display', serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
+                      {description_highlight}
+                    </span>
+                  </>
                 )}
               </p>
             </Reveal>
           )}
 
           <Reveal delay={220}>
-            <div className={`mt-12 flex ${isHomeVariant ? "justify-center" : "justify-start"}`}>
+            <div className="mt-12 flex justify-center">
               {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </div>
           </Reveal>

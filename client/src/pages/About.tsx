@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { Icons } from "@/lib/icons";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -138,10 +139,12 @@ export default function About() {
         </div>
       </Section>
 
+      <QuizCTA />
       <FinalCTA
         title={content.teamCta.title}
-        title_highlight={content.teamCta.highlight}
-        description={content.teamCta.text}
+        title_highlight={content.teamCta.title_highlight}
+        description={content.teamCta.description}
+        description_highlight={content.teamCta.description_highlight}
         button={content.teamCta.link}
         href={`/${lang}/team`}
       />

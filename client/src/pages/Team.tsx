@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
@@ -206,9 +207,10 @@ export default function Team() {
         </div>
       </Section>
 
+      <QuizCTA />
       <FinalCTA
         title={content.cta.title}
-        title_highlight={content.cta.highlight}
+        title_highlight={content.cta.title_highlight}
         description={content.cta.description}
         description_highlight={content.cta.description_highlight}
         button={content.cta.button}

@@ -52,7 +52,7 @@ const modalText = {
     description:
       "Receba conteúdos sobre inteligência artificial, automação, marketing digital e formas práticas de tornar o seu negócio mais eficiente.",
     requiredFields: "Campos obrigatórios",
-    optional: "(opcional)",
+    optional: "(OPCIONAL)",
     labels: {
       name: "Nome",
       email: "Email",
@@ -94,7 +94,7 @@ const modalText = {
     description:
       "Get insights on artificial intelligence, automation, digital marketing, and practical ways to make your business more efficient.",
     requiredFields: "Required fields",
-    optional: "(optional)",
+    optional: "(OPTIONAL)",
     labels: {
       name: "Name",
       email: "Email",
@@ -267,8 +267,8 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   const selectClass = `${inputClass} contact-modal-select cursor-pointer appearance-none pr-10 text-[var(--brand-offwhite)]`;
 
   const labelClass = "block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
-  const optionalClass = "ml-1.5 normal-case tracking-normal font-normal text-[rgba(234,246,255,0.45)]";
-  const requiredMark = <span className="ml-1 text-[#FF4D4D]">*</span>;
+  const optionalClass = "ml-1.5 uppercase tracking-normal font-normal text-[rgba(234,246,255,0.45)]";
+  const requiredMark = <span className="ml-1 text-white">*</span>;
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && closeModal()}>

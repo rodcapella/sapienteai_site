@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { setSEOHead } from "@/components/SEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -152,6 +153,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
         </div>
       </Section>
 
+      <QuizCTA />
       <FinalCTA
         title={cta.title}
         title_highlight={cta.title_highlight}
