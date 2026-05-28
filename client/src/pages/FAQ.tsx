@@ -32,21 +32,22 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
   return (
     <SectionCard
       className={cn(
-        "group mb-5 cursor-pointer overflow-hidden rounded-[2rem] border p-0 transition-all duration-500",
-        "border-[#7861FF]/55 bg-[#001547] shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-2xl",
-        "hover:-translate-y-1 hover:border-[#7861FF] hover:shadow-[0_24px_70px_rgba(120,97,255,0.18)]",
-        isOpen ? "border-[#7861FF]" : "border-[#7861FF]/55",
+        "group mb-5 cursor-pointer overflow-hidden rounded-[1.75rem] border p-0 transition-colors duration-300",
+        "border-[#7861FF]/42 bg-[linear-gradient(145deg,#001547,#050816)] shadow-[0_16px_36px_rgba(1,32,80,0.16)]",
+        "hover:border-[#00D1FF]/58 hover:shadow-[0_18px_40px_rgba(10,132,255,0.12)]",
+        isOpen ? "border-[#00D1FF]/68" : "border-[#7861FF]/42",
       )}
       onClick={onToggle}
     >
       <div className="relative p-6 md:p-8">
-        <div className="absolute inset-x-0 top-0 h-1 bg-[#7861FF] opacity-90" />
-        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#00D1FF]/10 blur-3xl transition-all duration-500 group-hover:bg-[#00D1FF]/22" />
+        <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(234,246,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(234,246,255,0.35)_1px,transparent_1px)] [background-size:28px_28px]" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#7861FF,#00D1FF,#0A84FF)] opacity-90" />
+        <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[#00D1FF]/10 blur-3xl transition-colors duration-300 group-hover:bg-[#00D1FF]/14" />
 
         <div className="relative z-10 flex items-start justify-between gap-5">
           <div className="flex items-start gap-4 md:gap-5">
             {Icon && (
-              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-[#00D1FF]/35 bg-[#050816] text-[#00D1FF] shadow-[0_0_22px_rgba(0,209,255,0.2)] md:h-14 md:w-14">
+              <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl border border-[#7861FF]/45 bg-[#050816] text-[#00D1FF] shadow-[0_0_20px_rgba(0,209,255,0.16)] md:h-14 md:w-14">
                 <Icon className="h-6 w-6" />
               </div>
             )}
@@ -61,7 +62,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
           <div
             className={cn(
               "flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 md:h-12 md:w-12",
-              isOpen ? "rotate-180 bg-white text-[#00D1FF] shadow-[0_0_26px_rgba(255,255,255,0.2)]" : "bg-white text-[#00D1FF]",
+              isOpen ? "rotate-180 border border-[#00D1FF]/50 bg-[#EAF6FF] text-[#001547]" : "border border-[#7861FF]/35 bg-[#050816] text-[#00D1FF]",
             )}
           >
             <Icons.ChevronDown className="h-6 w-6" />
@@ -70,7 +71,7 @@ function FAQAccordion({ item, isOpen, onToggle, icon: Icon }: any) {
 
         <div className={cn("overflow-hidden transition-all duration-700", isOpen ? "mt-7 max-h-[900px] opacity-100" : "max-h-0 opacity-0")}>
           <div className="ml-0 border-t border-[#7861FF]/35 pt-6 md:ml-[4.25rem]">
-            <p className="rounded-2xl border border-[#7861FF]/35 bg-[#001547] px-5 py-5 font-medium text-[#00D1FF] text-[14px] leading-relaxed md:text-[16px]">
+            <p className="rounded-2xl border border-[#00D1FF]/28 bg-[#050816]/82 px-5 py-5 text-[14px] font-medium leading-relaxed text-[#55D4F2] md:text-[16px]">
               {item.answer}
             </p>
           </div>
@@ -122,11 +123,13 @@ export default function FAQ() {
       <Section className="standard-section-bg relative flex-grow overflow-hidden py-24 md:py-36">
         <div className="relative z-10 mx-auto max-w-5xl px-6">
           <Reveal>
-            <div className="mb-12 rounded-[2rem] border border-primary/20 bg-[#EAF6FF]/72 p-6 text-center shadow-[0_18px_45px_rgba(26,31,46,0.1)] backdrop-blur-xl md:p-8">
-              <p className="text-sm font-black uppercase tracking-[0.28em] text-[#0A84FF]">
+            <div className="relative mb-12 overflow-hidden rounded-[2rem] border border-[#7861FF]/42 bg-[#001547] p-6 text-center shadow-[0_18px_42px_rgba(1,32,80,0.18)] md:p-8">
+              <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(234,246,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(234,246,255,0.35)_1px,transparent_1px)] [background-size:28px_28px]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#7861FF,#00D1FF,#0A84FF)]" />
+              <p className="relative z-10 text-sm font-black uppercase tracking-[0.28em] text-[#00D1FF]">
                 {lang === "pt" ? "Dúvidas frequentes" : "Common questions"}
               </p>
-              <p className={`mx-auto mt-3 max-w-3xl text-foreground/70 ${compactBodyTextClass}`}>
+              <p className={`relative z-10 mx-auto mt-3 max-w-3xl text-[#EAF6FF]/78 ${compactBodyTextClass}`}>
                 {lang === "pt"
                   ? "Organizámos as respostas por temas práticos para ajudar a perceber onde a IA, a automação e o marketing podem gerar impacto real."
                   : "We organised the answers around practical topics to help you understand where AI, automation and marketing can create real impact."}
