@@ -1,15 +1,15 @@
 export const faqPT = {
-  label: "FAQ",
+  eyebrow: "FAQ",
   title: "Perguntas Frequentes",
-  subtitle:
-    "Respostas claras sobre como usamos IA para ajudar empresas a crescer, automatizar processos e aumentar resultados.",
+  title_highlight: "sem rodeios.",
+  subtitle: "Respostas claras e diretas sobre como usamos IA para ajudar empresas a crescer, automatizar processos e aumentar resultados reais.",
 
   cta: {
-    title: "Ainda tem dúvidas?",
+    title: "Ainda com dúvidas?",
     title_highlight: "Fale connosco.",
     description: "Fale diretamente com especialistas",
     description_highlight: "que aplicam IA em negócios reais todos os dias.",
-    button: "Falar com um especialista",
+    button: "Falar com um especialista"
   },
 
   items: [
