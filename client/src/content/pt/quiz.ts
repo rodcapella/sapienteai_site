@@ -1,9 +1,8 @@
 export const quizContentPt = {
   badge: "Quiz sobre IA",
   title: "Quanto sabe sobre",
-  highlight: "Inteligência Artificial",
-  subtitle:
-    "Teste os seus conhecimentos sobre IA no contexto empresarial e pessoal com 10 perguntas rápidas.",
+    title_highlight: "Inteligência Artificial?",
+    subtitle: "Responda a 10 perguntas rápidas e descubra o seu nível de conhecimento sobre IA no contexto empresarial e pessoal."
 
   startButton: "Iniciar o Quiz",
   duration: "10 perguntas · ~3 minutos",
@@ -18,7 +17,7 @@ export const quizContentPt = {
   ctaText:
     "A Sapiente.AI ajuda empresas e profissionais a implementar soluções de IA de forma estratégica, prática e acessível.",
   ctaButton: "Fale connosco",
-  
+
   restartButton: "Repetir o quiz",
 
   results: [

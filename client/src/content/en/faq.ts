@@ -1,15 +1,15 @@
 export const faqEN = {
-  label: "FAQ",
+  eyebrow: "FAQ",
   title: "Frequently Asked Questions",
-  subtitle:
-    "Clear answers about how we use AI to help businesses grow, automate processes and improve results.",
+  title_highlight: "straight to the point.",
+  subtitle: "Clear, direct answers on how we use AI to help businesses grow, automate processes, and drive real results.",
 
   cta: {
     title: "Still have questions?",
     title_highlight: "Talk to us.",
-    description: "Speak directly with specialists who apply",
-    description_highlight: "AI to real businesses every day.",
-    button: "Talk to a specialist",
+    description: "Speak directly with experts",
+    description_highlight: "who apply AI to real business every day.",
+    button: "Talk to an expert"
   },
 
   items: [

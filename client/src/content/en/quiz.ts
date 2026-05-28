@@ -1,9 +1,9 @@
 export const quizContentEn = {
   badge: "AI Quiz",
   title: "How much do you know about",
-  highlight: "Artificial Intelligence",
-  subtitle:
-    "Test your knowledge of AI in business and everyday contexts with 10 quick questions.",
+  title_highlight: "Artificial Intelligence",
+  subtitle: "Take 10 quick questions and test your AI knowledge for business and daily life."
+}
 
   startButton: "Start Quiz",
   duration: "10 questions · ~3 minutes",
@@ -20,7 +20,7 @@ export const quizContentEn = {
   ctaButton: "Talk to us",
 
   restartButton: "Retake the quiz",
-  
+
   results: [
     {
       max: 3,
