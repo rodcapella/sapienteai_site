@@ -12,7 +12,7 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
-  variant?: "default" | "home";
+  variant?: "default" | "home" | "about";
 };
 
 export function FinalCTA({ title, title_highlight, description, description_highlight, button, href, variant = "default" }: FinalCTAProps) {
@@ -20,7 +20,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
   const isHomeVariant = variant === "home";
   const titleFontSize = isHomeVariant ? "clamp(40px, 5vw, 56px)" : "40px";
   const descriptionFontSize = "clamp(15px, 1.4vw, 18px)";
-  const backgroundSrc = isHomeVariant ? "/media/bg/bg_finalCTA_home.png" : "/media/bg/bg_finalCTA.png";
+  const backgroundSrc = variant === "home" ? "/media/bg/bg_finalCTA_home.png" : variant === "about" ? "/media/bg/final_CTA_sobre.png" : "/media/bg/bg_finalCTA.png";
 
   const buttonElement = (
     <PremiumButton
