@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation } from "wouter";
 
-import { FAQContactCTA, FAQQuestionLayout, type FAQCategory, type FAQItem } from "@/components/faq/FAQBlocks";
+import { FAQContactCTA, type FAQCategory, type FAQItem } from "@/components/faq/FAQBlocks";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from "@/components/SEOHead";
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
-
-const compactBodyTextClass = "text-[12px] leading-relaxed md:text-[14px]";
+import "@/content/styles/faq.css";
 
 function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
   const labels =
@@ -37,19 +35,58 @@ function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
   ].filter((category) => category.items.length > 0);
 }
 
-function getFAQSidebarTitle(lang: string) {
-  return lang === "en" ? "Categories" : "Categorias";
+function getFAQCopy(lang: string) {
+  return lang === "en"
+    ? {
+        label: "Frequently asked questions",
+        title: "Have questions?",
+        highlight: "We have answers.",
+        subtitle: "We gathered the most common questions about how we work, what we deliver and how Sapiente.AI creates business impact with AI, automation and digital strategy.",
+        sidebar: "Categories",
+      }
+    : {
+        label: "Perguntas frequentes",
+        title: "Tem dúvidas?",
+        highlight: "Temos respostas.",
+        subtitle: "Reunimos as perguntas mais comuns sobre como trabalhamos, o que entregamos e como a Sapiente.AI ajuda negócios a crescer com IA, automação e estratégia digital.",
+        sidebar: "Categorias",
+      };
+}
+
+function FAQIllustration() {
+  return (
+    <svg viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="faq-illustration" aria-hidden="true">
+      <rect x="20" y="20" width="280" height="80" rx="16" fill="#F0F8FF" stroke="rgba(10,132,255,0.22)" strokeWidth="1.5" />
+      <path d="M60 100 L48 118 L80 100Z" fill="#F0F8FF" stroke="rgba(10,132,255,0.22)" strokeWidth="1.5" />
+      <rect x="36" y="38" width="180" height="10" rx="5" fill="rgba(0,21,71,0.12)" />
+      <rect x="36" y="55" width="240" height="8" rx="4" fill="rgba(0,21,71,0.08)" />
+      <rect x="36" y="69" width="160" height="8" rx="4" fill="rgba(0,21,71,0.06)" />
+      <rect x="140" y="128" width="280" height="80" rx="16" fill="var(--brand-primary)" />
+      <path d="M370 128 L382 110 L354 128Z" fill="var(--brand-primary)" />
+      <rect x="156" y="146" width="200" height="10" rx="5" fill="rgba(255,255,255,0.32)" />
+      <rect x="156" y="163" width="240" height="8" rx="4" fill="rgba(255,255,255,0.22)" />
+      <rect x="156" y="177" width="180" height="8" rx="4" fill="rgba(255,255,255,0.16)" />
+      {[60, 130, 200, 270, 340].map((cx, index) => (
+        <g key={cx}>
+          <circle cx={cx} cy="230" r="22" fill={index === 2 ? "var(--brand-primary)" : "#F0F8FF"} stroke="rgba(10,132,255,0.16)" strokeWidth="1" />
+          <circle cx={cx} cy="230" r="6" fill={index === 2 ? "#EAF6FF" : "var(--brand-primary)"} opacity="0.88" />
+        </g>
+      ))}
+    </svg>
+  );
 }
 
 export default function FAQ() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
   const normalizedLang = lang === "en" ? "en" : "pt";
-
-  const [activeCategory, setActiveCategory] = useState("general");
-  const [openQuestion, setOpenQuestion] = useState<string | null>("general-0");
   const content = getContent("faq", lang);
-  const categories = createFAQCategories(content.items, normalizedLang);
+  const pageCopy = getFAQCopy(normalizedLang);
+  const categories = useMemo(() => createFAQCategories(content.items, normalizedLang), [content.items, normalizedLang]);
+
+  const [activeCategory, setActiveCategory] = useState(categories[0]?.id || "general");
+  const [openQuestion, setOpenQuestion] = useState<string | null>(`${categories[0]?.id || "general"}-0`);
+  const active = categories.find((category) => category.id === activeCategory) || categories[0];
 
   useEffect(() => {
     setSEOHead({
@@ -65,12 +102,10 @@ export default function FAQ() {
     if (existing) existing.remove();
 
     const schema = generateFAQSchema(content.items);
-
     const script = document.createElement("script");
     script.id = "faq-schema";
     script.type = "application/ld+json";
     script.innerHTML = JSON.stringify(schema);
-
     document.head.appendChild(script);
 
     return () => {
@@ -79,39 +114,81 @@ export default function FAQ() {
   }, [content]);
 
   return (
-    <div className="flex flex-col">
-      <Section className="standard-section-bg relative flex-grow overflow-hidden py-24 md:py-36">
-        <div className="relative z-10 mx-auto max-w-6xl px-6">
+    <div className="faq-page flex flex-col">
+      <section className="faq-hero-card">
+        <div className="faq-hero-bg" />
+        <div className="faq-hero-grid" />
+        <div className="faq-hero-inner">
           <Reveal>
-            <div className="relative mb-14 overflow-hidden rounded-2xl border border-[#0A84FF]/14 bg-white/72 p-6 text-center shadow-[0_18px_44px_rgba(0,21,71,0.06)] backdrop-blur-sm dark:border-[#7861FF]/36 dark:bg-[#001547]/78 md:p-8">
-              <div className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(0,21,71,0.45)_1px,transparent_1px),linear-gradient(90deg,rgba(0,21,71,0.45)_1px,transparent_1px)] [background-size:28px_28px] dark:opacity-[0.08] dark:[background-image:linear-gradient(rgba(234,246,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(234,246,255,0.35)_1px,transparent_1px)]" />
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#7861FF,#00D1FF,#0A84FF)]" />
-              <p className="relative z-10 text-sm font-black uppercase tracking-[0.28em] text-[#0A84FF] dark:text-[#00D1FF]">
-                {lang === "pt" ? "Dúvidas frequentes" : "Common questions"}
-              </p>
-              <p className={`relative z-10 mx-auto mt-3 max-w-3xl text-[#001547]/62 dark:text-[#EAF6FF]/78 ${compactBodyTextClass}`}>
-                {lang === "pt"
-                  ? "Organizámos as respostas por temas práticos para ajudar a perceber onde a IA, a automação e o marketing podem gerar impacto real."
-                  : "We organised the answers around practical topics to help you understand where AI, automation and marketing can create real impact."}
-              </p>
+            <div>
+              <span className="faq-section-label">{pageCopy.label}</span>
+              <h1 className="faq-hero-title">
+                {pageCopy.title}
+                <br />
+                <span className="accent">{pageCopy.highlight}</span>
+              </h1>
+              <p className="faq-hero-sub">{pageCopy.subtitle}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <FAQIllustration />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="faq-main">
+        <div className="faq-inner">
+          <Reveal>
+            <aside className="faq-sidebar">
+              <div className="faq-sidebar-title">{pageCopy.sidebar}</div>
+              <div className="faq-cats">
+                {categories.map((category) => {
+                  const Icon = category.icon;
+                  const isActive = category.id === active.id;
+                  return (
+                    <button
+                      key={category.id}
+                      type="button"
+                      className={`faq-cat ${isActive ? "active" : ""}`}
+                      onClick={() => {
+                        setActiveCategory(category.id);
+                        setOpenQuestion(null);
+                      }}
+                    >
+                      <Icon className="h-4 w-4" />
+                      <span>{category.label}</span>
+                      <span className="faq-cat-count">{category.items.length}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </aside>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="faq-content">
+              <div className="faq-group-title">{active.label}</div>
+              <div className="faq-list">
+                {active.items.map((item, index) => {
+                  const questionId = `${active.id}-${index}`;
+                  const isOpen = openQuestion === questionId;
+                  return (
+                    <div key={item.question} className={`faq-item ${isOpen ? "open" : ""}`}>
+                      <button type="button" className="faq-q" onClick={() => setOpenQuestion(isOpen ? null : questionId)}>
+                        <span className="faq-q-text">{item.question}</span>
+                        <span className="faq-q-icon">+</span>
+                      </button>
+                      <div className="faq-a">
+                        <div className="faq-a-inner">{item.answer}</div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </Reveal>
         </div>
-
-        <Reveal delay={80}>
-          <FAQQuestionLayout
-            categories={categories}
-            activeCategory={activeCategory}
-            onCategoryChange={(categoryId) => {
-              setActiveCategory(categoryId);
-              setOpenQuestion(null);
-            }}
-            openQuestion={openQuestion}
-            onQuestionToggle={(questionId) => setOpenQuestion(openQuestion === questionId ? null : questionId)}
-            sidebarTitle={getFAQSidebarTitle(normalizedLang)}
-          />
-        </Reveal>
-      </Section>
+      </section>
 
       <QuizCTA />
       <FAQContactCTA lang={normalizedLang} />
