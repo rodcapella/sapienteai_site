@@ -8,7 +8,7 @@ import { useTheme } from "@/hooks/useTheme";
 
 const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
-const Team = lazy(() => import("@/pages/Team"));
+const Services = lazy(() => import("@/pages/Team"));
 const FAQ = lazy(() => import("@/pages/FAQ"));
 const Terms = lazy(() => import("@/pages/Terms"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
@@ -68,7 +68,8 @@ export default function App() {
         <PageTransition>
           <Route path="/:lang">{(params) => <Home lang={params.lang} />}</Route>
           <Route path="/:lang/about">{(params) => <About lang={params.lang} />}</Route>
-          <Route path="/:lang/team">{(params) => <Team lang={params.lang} />}</Route>
+          <Route path="/:lang/services">{(params) => <Services lang={params.lang} />}</Route>
+          <Route path="/:lang/team">{(params) => <Redirect to={`/${params.lang}/services`} />}</Route>
           <Route path="/:lang/faq">{(params) => <FAQ lang={params.lang} />}</Route>
           <Route path="/:lang/terms">{(params) => <Terms lang={params.lang} />}</Route>
           <Route path="/:lang/privacy">{(params) => <Privacy lang={params.lang} />}</Route>
