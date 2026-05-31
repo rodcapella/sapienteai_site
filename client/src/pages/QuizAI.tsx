@@ -22,12 +22,13 @@ export default function QuizAI() {
 
   const [screen, setScreen] = useState<QuizScreen>("start");
   const [current, setCurrent] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState<number | null>(null);
+  const [answers, setAnswers] = useState<Array<number | null>>([]);
 
   const content = quizContent[lang];
   const questions = content.questions;
   const question = questions[current];
+  const selected = answers[current] ?? null;
+  const score = answers.reduce((total, answer, index) => (answer === questions[index]?.correct ? total + 1 : total), 0);
   const startIntro =
     lang === "en"
       ? {
@@ -118,30 +119,35 @@ export default function QuizAI() {
 
   const startQuiz = () => {
     setCurrent(0);
-    setScore(0);
-    setSelected(null);
+    setAnswers(Array(questions.length).fill(null));
     setScreen("quiz");
   };
 
   const selectAnswer = (index: number) => {
-    if (selected !== null) return;
-    setSelected(index);
-    if (index === question.correct) setScore((prev) => prev + 1);
+    setAnswers((currentAnswers) => {
+      const nextAnswers = currentAnswers.length === questions.length ? [...currentAnswers] : Array(questions.length).fill(null);
+      nextAnswers[current] = index;
+      return nextAnswers;
+    });
   };
 
   const nextQuestion = () => {
+    if (selected === null) return;
+
     if (current + 1 >= questions.length) {
       setScreen("result");
       return;
     }
     setCurrent((prev) => prev + 1);
-    setSelected(null);
+  };
+
+  const previousQuestion = () => {
+    setCurrent((prev) => Math.max(prev - 1, 0));
   };
 
   const restartQuiz = () => {
     setCurrent(0);
-    setScore(0);
-    setSelected(null);
+    setAnswers([]);
     setScreen("start");
   };
 
@@ -191,49 +197,42 @@ export default function QuizAI() {
         {screen === "quiz" && (
           <div className="quiz-screen quiz-area">
             <div className="quiz-container">
-              <div className="quiz-topline">
-                <span>{String(current + 1).padStart(2, "0")}/{questions.length}</span>
-                <span>{content.scoreLabel}: {score}</span>
+              <div className="quiz-question-progress" aria-label={`${current + 1}/${questions.length}`}>
+                <div className="quiz-question-progress-track">
+                  <div style={{ width: `${progress}%` }} />
+                </div>
+                <span>{current + 1}/{questions.length}</span>
               </div>
 
-              <div className="quiz-progress">
-                <div style={{ width: `${progress}%` }} />
-              </div>
-
-              <article className="quiz-card anim-in">
-                <p className="quiz-category">{question.cat}</p>
+              <article className="quiz-question-panel anim-in">
+                <p className="quiz-question-kicker">
+                  {lang === "en" ? `Question ${current + 1} of ${questions.length}` : `Pergunta ${current + 1} de ${questions.length}`}
+                </p>
                 <h2>{question.q}</h2>
 
                 <div className="quiz-options">
                   {question.opts.map((option, index) => {
-                    const isCorrect = index === question.correct;
-                    const isWrong = selected === index && !isCorrect;
+                    const isSelected = selected === index;
 
                     return (
-                      <button type="button" key={option} disabled={selected !== null} onClick={() => selectAnswer(index)} className={["quiz-option", selected !== null && isCorrect ? "option-correct" : "", isWrong ? "option-wrong" : ""].filter(Boolean).join(" ")}>
-                        <span>{String.fromCharCode(65 + index)}</span>
+                      <button type="button" key={option} onClick={() => selectAnswer(index)} className={["quiz-option", isSelected ? "is-selected" : ""].filter(Boolean).join(" ")} aria-pressed={isSelected}>
+                        <span aria-hidden="true" />
                         {option}
                       </button>
                     );
                   })}
                 </div>
-
-                {selected !== null && (
-                  <div className={["quiz-feedback", selected === question.correct ? "is-correct" : "is-wrong"].join(" ")}>
-                    <strong>{selected === question.correct ? `✅ ${content.correctLabel}` : `❌ ${content.wrongLabel}`}</strong>
-                    <p>{question.explain}</p>
-                  </div>
-                )}
               </article>
-
-              {selected !== null && (
-                <div className="quiz-next-wrap">
-                  <button type="button" onClick={nextQuestion} className="quiz-main-btn">
-                    {current + 1 >= questions.length ? content.resultButton : content.nextButton}
-                    <Icons.ArrowRight size={18} />
-                  </button>
-                </div>
-              )}
+              <div className="quiz-question-actions">
+                <button type="button" onClick={previousQuestion} disabled={current === 0} className="quiz-prev-btn">
+                  <Icons.ArrowLeft size={18} />
+                  {lang === "en" ? "Previous" : "Anterior"}
+                </button>
+                <button type="button" onClick={nextQuestion} disabled={selected === null} className="quiz-next-btn">
+                  {current + 1 >= questions.length ? content.resultButton : lang === "en" ? "Next" : "Próxima"}
+                  <Icons.ArrowRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
         )}
