@@ -6,7 +6,6 @@ import { LanguageSelector } from "@/components/LanguageSelector";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
-import { useTheme } from "@/hooks/useTheme";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 import { cn } from "@/lib/utils";
@@ -17,11 +16,9 @@ interface HeaderProps {
 
 export default function Header({ onContactClick }: HeaderProps) {
   const { t } = useTranslation();
-  const { theme } = useTheme();
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
   const contactLabel = lang === "en" ? "Contact" : "Contacto";
-  const logoSrc = theme === "dark" ? "/media/logos/Logo_Sapiente_fundo_escuro.png" : "/media/logos/Logo_Sapiente_fundo_claro.png";
 
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -68,7 +65,8 @@ export default function Header({ onContactClick }: HeaderProps) {
         <div className="container mx-auto px-4 sm:px-6">
           <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
             <div className="flex w-[180px] shrink-0 items-center gap-2 xl:w-[210px]">
-              <img src={logoSrc} alt="Sapiente.AI" className="h-[107px] w-auto object-contain md:h-[123px] lg:h-[134px]" />
+              <img src="/media/logos/Logo_Sapiente_fundo_claro.png" alt="Sapiente.AI" className="h-[107px] w-auto object-contain md:h-[123px] lg:h-[134px] dark:hidden" />
+              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="hidden h-[107px] w-auto object-contain md:h-[123px] lg:h-[134px] dark:block" />
             </div>
 
             <div className="hidden min-w-0 items-center justify-center lg:flex">

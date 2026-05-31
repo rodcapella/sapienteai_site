@@ -4,11 +4,9 @@ import { useLocation } from "wouter";
 import { FAQContactCTA, FAQQuestionLayout, type FAQCategory, type FAQItem } from "@/components/faq/FAQBlocks";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
-import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from "@/components/SEOHead";
-import { useTranslation } from "@/hooks/useTranslation";
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
@@ -45,7 +43,6 @@ function getFAQSidebarTitle(lang: string) {
 
 export default function FAQ() {
   const [location] = useLocation();
-  const { t } = useTranslation();
   const lang = location.split("/")[1] || "pt";
   const normalizedLang = lang === "en" ? "en" : "pt";
 
@@ -83,8 +80,6 @@ export default function FAQ() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={t("nav.faq")} title={content.title} subtitle={content.subtitle} />
-
       <Section className="standard-section-bg relative flex-grow overflow-hidden py-24 md:py-36">
         <div className="relative z-10 mx-auto max-w-6xl px-6">
           <Reveal>

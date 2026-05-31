@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
-import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { quizContentEn } from "@/content/en/quiz";
 import { quizContentPt } from "@/content/pt/quiz";
 import { Icons } from "@/lib/icons";
@@ -29,6 +28,22 @@ export default function QuizAI() {
   const content = quizContent[lang];
   const questions = content.questions;
   const question = questions[current];
+  const startIntro =
+    lang === "en"
+      ? {
+          badge: "Free quiz · 3 minutes",
+          title: "What is the AI potential",
+          highlight: "in your business?",
+          subtitle: "Answer 10 questions about your business and discover where artificial intelligence can have the biggest impact, with a personalized report at the end.",
+          stats: ["3 minutes", "10 questions", "Instant result"],
+        }
+      : {
+          badge: "Quiz gratuito · 3 minutos",
+          title: "Qual o potencial de IA",
+          highlight: "no seu negócio?",
+          subtitle: "Responda a 10 perguntas sobre o seu negócio e descubra em que áreas a inteligência artificial pode ter mais impacto — com um relatório personalizado no final.",
+          stats: ["3 minutos", "10 perguntas", "Resultado imediato"],
+        };
 
   const result = useMemo(() => {
     return content.results.find((item) => score <= item.max) ?? content.results[content.results.length - 1];
@@ -68,8 +83,6 @@ export default function QuizAI() {
 
   return (
     <main className="quiz-ai-page">
-      <InternalHero label={content.badge} title={content.title} highlight={`${content.highlight}?`} subtitle={content.subtitle} compact />
-
       <section className="quiz-experience">
         <div className="quiz-bg-radials" />
 
@@ -77,22 +90,36 @@ export default function QuizAI() {
           <div className="quiz-screen quiz-start anim-in">
             <div className="quiz-start-inner">
               <div className="quiz-badge anim-in anim-d1">
-                <Icons.Zap size={14} />
-                <span>{content.badge}</span>
+                <span className="quiz-badge-dot" aria-hidden="true" />
+                <span>{startIntro.badge}</span>
               </div>
 
               <h2 className="quiz-title anim-in anim-d2">
-                {content.title} <span className="neon-blue neon-text-glow">{content.highlight}</span>?
+                <span>{startIntro.title}</span>
+                <span className="quiz-title-highlight">{startIntro.highlight}</span>
               </h2>
 
-              <p className="quiz-subtitle anim-in anim-d3">{content.subtitle}</p>
+              <p className="quiz-subtitle anim-in anim-d3">{startIntro.subtitle}</p>
+
+              <div className="quiz-start-stats anim-in anim-d3" aria-label={content.duration}>
+                <span>
+                  <Icons.Clock size={18} />
+                  {startIntro.stats[0]}
+                </span>
+                <span>
+                  <Icons.Target size={18} />
+                  {startIntro.stats[1]}
+                </span>
+                <span>
+                  <Icons.BarChart3 size={18} />
+                  {startIntro.stats[2]}
+                </span>
+              </div>
 
               <button type="button" onClick={startQuiz} className="quiz-main-btn">
                 {content.startButton}
                 <Icons.ArrowRight size={18} />
               </button>
-
-              <p className="quiz-duration">{content.duration}</p>
             </div>
           </div>
         )}
