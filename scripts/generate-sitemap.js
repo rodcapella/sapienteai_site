@@ -8,7 +8,7 @@ const languages = ["pt", "en"];
 const pages = [
   "",
   "/about",
-  "/team",
+  "/services",
   "/faq",
   "/terms",
   "/privacy",

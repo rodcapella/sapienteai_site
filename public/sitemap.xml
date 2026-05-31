@@ -10,7 +10,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/team</loc>
+    <loc>https://sapienteai.com/pt/services</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -30,10 +30,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/rgpd</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://sapienteai.com/pt/generative-ai-policy</loc>
     <priority>0.8</priority>
   </url>
@@ -42,7 +38,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/newsletter</loc>
+    <loc>https://sapienteai.com/pt/sitemap</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -58,7 +54,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/team</loc>
+    <loc>https://sapienteai.com/en/services</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -78,10 +74,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/rgpd</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://sapienteai.com/en/generative-ai-policy</loc>
     <priority>0.8</priority>
   </url>
@@ -90,7 +82,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/newsletter</loc>
+    <loc>https://sapienteai.com/en/sitemap</loc>
     <priority>0.8</priority>
   </url>
   <url>

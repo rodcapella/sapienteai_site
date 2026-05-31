@@ -73,7 +73,7 @@ export default function Footer() {
               {[
                 { href: `/${lang}`, label: t("nav.home") },
                 { href: `/${lang}/about`, label: t("nav.about") },
-                { href: `/${lang}/team`, label: t("nav.team") },
+                { href: `/${lang}/services`, label: t("nav.services") },
                 { href: `/${lang}/faq`, label: t("nav.faq") },
                 { href: quizHref, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
               ].map((item) => (

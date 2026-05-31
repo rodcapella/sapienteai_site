@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import type { ElementType } from "react";
 import { Link, useLocation } from "wouter";
 
@@ -26,29 +26,28 @@ type SitemapGroup = {
 const copy = {
   pt: {
     label: "Mapa do site",
-    title: "Encontre rapidamente cada página",
+    title: "Encontre rapidamente cada pÃ¡gina",
     highlight: "do nosso site.",
-    subtitle: "Uma visão organizada das áreas principais, conteúdos e páginas legais do site.",
+    subtitle: "Uma visÃ£o organizada das Ã¡reas principais, conteÃºdos e pÃ¡ginas legais do site.",
     sections: {
-      main: "Páginas principais",
-      mainTitle: "Conheça a Sapiente.AI",
-      resources: "Conteúdos e recursos",
-      resourcesTitle: "Explore conteúdos úteis",
-      legal: "Confiança e legal",
-      legalTitle: "Informação institucional",
+      main: "PÃ¡ginas principais",
+      mainTitle: "ConheÃ§a a Sapiente.AI",
+      resources: "ConteÃºdos e recursos",
+      resourcesTitle: "Explore conteÃºdos Ãºteis",
+      legal: "ConfianÃ§a e legal",
+      legalTitle: "InformaÃ§Ã£o institucional",
     },
     links: {
-      home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
-      about: ["Sobre", "A nossa visão, método de trabalho e forma de aplicar IA."],
-      services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
-      team: ["Fundadores", "Quem transforma estratégia, tecnologia e execução em resultados."],
-      faq: ["FAQ", "Respostas rápidas às perguntas mais frequentes."],
-      quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
-      newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
-      terms: ["Termos de Serviço", "Condições de utilização do site e serviços."],
-      privacy: ["Política de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
-      trust: ["Confiança & Segurança", "Princípios de segurança, ética e responsabilidade."],
-      policy: ["Política de IA Generativa", "Como enquadramos o uso responsável de IA generativa."],
+      home: ["InÃ­cio", "VisÃ£o geral das soluÃ§Ãµes, serviÃ§os e proposta de valor."],
+      about: ["Sobre", "A nossa visÃ£o, mÃ©todo de trabalho e forma de aplicar IA."],
+      services: ["ServiÃ§os", "SoluÃ§Ãµes digitais, automaÃ§Ã£o, marketing e IA aplicada ao crescimento."],
+      faq: ["FAQ", "Respostas rÃ¡pidas Ã s perguntas mais frequentes."],
+      quiz: ["Quiz IA", "DiagnÃ³stico inicial para identificar oportunidades de automaÃ§Ã£o."],
+      newsletter: ["Newsletter", "ConteÃºdo prÃ¡tico sobre IA, automaÃ§Ã£o e crescimento."],
+      terms: ["Termos de ServiÃ§o", "CondiÃ§Ãµes de utilizaÃ§Ã£o do site e serviÃ§os."],
+      privacy: ["PolÃ­tica de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
+      trust: ["ConfianÃ§a & SeguranÃ§a", "PrincÃ­pios de seguranÃ§a, Ã©tica e responsabilidade."],
+      policy: ["PolÃ­tica de IA Generativa", "Como enquadramos o uso responsÃ¡vel de IA generativa."],
     },
   },
   en: {
@@ -68,7 +67,6 @@ const copy = {
       home: ["Home", "Overview of our solutions, services, and value proposition."],
       about: ["About", "Our vision, working method, and approach to applied AI."],
       services: ["Services", "Digital solutions, automation, marketing and applied AI for growth."],
-      team: ["Founders", "The people turning strategy, technology, and execution into results."],
       faq: ["FAQ", "Quick answers to the most common questions."],
       quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
@@ -141,7 +139,6 @@ export default function Sitemap() {
         { title: l.home[0], description: l.home[1], href: makeLink(lang) },
         { title: l.about[0], description: l.about[1], href: makeLink(lang, "/about") },
         { title: l.services[0], description: l.services[1], href: makeLink(lang, "/services") },
-        { title: l.team[0], description: l.team[1], href: makeLink(lang, "/team") },
       ],
     },
     {

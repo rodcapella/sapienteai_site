@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -45,12 +45,76 @@ export default function QuizAI() {
           stats: ["3 minutos", "10 perguntas", "Resultado imediato"],
         };
 
-  const result = useMemo(() => {
-    return content.results.find((item) => score <= item.max) ?? content.results[content.results.length - 1];
-  }, [content.results, score]);
-
   const progress = ((current + 1) / questions.length) * 100;
-  const circleOffset = 440 - (440 * score) / questions.length;
+  const resultPercent = Math.round((score / questions.length) * 100);
+  const resultRingOffset = 314 - (314 * resultPercent) / 100;
+  const servicesHref = `/${lang}/services`;
+  const resultSummary =
+    lang === "en"
+      ? resultPercent >= 80
+        ? {
+            title: "Strong potential for AI acceleration",
+            desc: "Your business already has solid foundations and can gain speed with intelligent automation and applied AI.",
+          }
+        : resultPercent >= 50
+          ? {
+              title: "Moderate potential for improvement",
+              desc: "You already have some pieces in place, but there are clear opportunities to optimize with technology and intelligent automation.",
+            }
+          : {
+              title: "High potential to unlock value",
+              desc: "There are several opportunities to structure digital processes and use AI to create measurable business impact.",
+            }
+      : resultPercent >= 80
+        ? {
+            title: "Forte potencial de aceleração com IA",
+            desc: "O seu negócio já tem bases sólidas e pode ganhar velocidade com automação inteligente e IA aplicada.",
+          }
+        : resultPercent >= 50
+          ? {
+              title: "Potencial moderado de melhoria",
+              desc: "Já tem algumas peças no lugar, mas existem oportunidades claras de optimização com tecnologia e automação inteligente.",
+            }
+          : {
+              title: "Alto potencial para desbloquear valor",
+              desc: "Existem várias oportunidades para estruturar processos digitais e usar IA para gerar impacto mensurável no negócio.",
+            };
+  const resultCards =
+    lang === "en"
+      ? [
+          {
+            icon: Icons.TrendingUp,
+            title: "Growth strategy",
+            desc: "There is room to attract more clients with a digital strategy oriented to results and well-managed campaigns.",
+          },
+          {
+            icon: Icons.Send,
+            title: "Digital marketing",
+            desc: "Your digital presence can be strengthened with consistent content and growth strategies with AI.",
+          },
+          {
+            icon: Icons.PanelLeft,
+            title: "Web development",
+            desc: "Your website should be an active lead-generation tool, not just a static online presence.",
+          },
+        ]
+      : [
+          {
+            icon: Icons.TrendingUp,
+            title: "Estratégia de crescimento",
+            desc: "Há oportunidade de atrair mais clientes com uma estratégia digital orientada a resultados e campanhas bem geridas.",
+          },
+          {
+            icon: Icons.Send,
+            title: "Marketing digital",
+            desc: "A sua presença digital pode ser reforçada com conteúdo consistente e estratégias de crescimento com IA.",
+          },
+          {
+            icon: Icons.PanelLeft,
+            title: "Desenvolvimento web",
+            desc: "O seu website precisa de ser uma ferramenta ativa de captação, não apenas uma presença online estática.",
+          },
+        ];
 
   const startQuiz = () => {
     setCurrent(0);
@@ -178,23 +242,49 @@ export default function QuizAI() {
           <div className="quiz-screen quiz-result anim-in">
             <div className="quiz-result-inner">
               <div className="quiz-score-ring">
-                <svg viewBox="0 0 160 160" aria-hidden="true">
-                  <circle cx="80" cy="80" r="70" fill="none" stroke="rgba(0,209,255,0.1)" strokeWidth="8" />
-                  <circle cx="80" cy="80" r="70" fill="none" strokeWidth="8" strokeLinecap="round" strokeDasharray="440" strokeDashoffset={circleOffset} transform="rotate(-90 80 80)" className="score-ring" />
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(10,132,255,0.1)" strokeWidth="8" />
+                  <circle cx="60" cy="60" r="50" fill="none" strokeWidth="8" strokeLinecap="round" strokeDasharray="314" strokeDashoffset={resultRingOffset} transform="rotate(-90 60 60)" className="score-ring" />
                 </svg>
                 <div>
-                  <strong>{score}</strong>
-                  <span>/{questions.length}</span>
+                  <strong>{resultPercent}%</strong>
+                  <span>{lang === "en" ? "potential" : "potencial"}</span>
                 </div>
               </div>
 
-              <h2>{result.title}</h2>
-              <p>{result.desc}</p>
+              <h2>{resultSummary.title}</h2>
+              <p>{resultSummary.desc}</p>
 
-              <button type="button" onClick={restartQuiz} className="quiz-restart">
-                <Icons.RotateCcw size={16} />
-                {content.restartButton}
-              </button>
+              <div className="quiz-result-cards">
+                {resultCards.map((card) => {
+                  const Icon = card.icon;
+
+                  return (
+                    <article className="quiz-result-card" key={card.title}>
+                      <Icon size={26} />
+                      <h3>{card.title}</h3>
+                      <p>{card.desc}</p>
+                      <span>{lang === "en" ? "High priority" : "Prioridade alta"}</span>
+                    </article>
+                  );
+                })}
+              </div>
+
+              <div className="quiz-result-cta">
+                <h3>{lang === "en" ? "Want to know exactly how to improve these areas?" : "Quer saber exactamente como melhorar estas áreas?"}</h3>
+                <p>
+                  {lang === "en"
+                    ? "We prepare a free diagnosis and present a concrete plan adapted to your business, with no commitment."
+                    : "Fazemos um diagnóstico gratuito e apresentamos um plano concreto adaptado ao seu negócio, sem compromisso."}
+                </p>
+                <a className="quiz-services-link" href={servicesHref}>
+                  {lang === "en" ? "View services" : "Ver serviços"}
+                </a>
+                <button type="button" onClick={restartQuiz} className="quiz-restart">
+                  <Icons.RotateCcw size={16} />
+                  {content.restartButton}
+                </button>
+              </div>
             </div>
           </div>
         )}

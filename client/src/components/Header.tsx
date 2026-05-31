@@ -44,7 +44,7 @@ export default function Header({ onContactClick }: HeaderProps) {
   const navLinks = [
     { href: `/${lang}`, label: t("nav.home") },
     { href: `/${lang}/about`, label: t("nav.about") },
-    { href: `/${lang}/team`, label: t("nav.team") },
+    { href: `/${lang}/services`, label: t("nav.services") },
     { href: `/${lang}/faq`, label: t("nav.faq") },
     { href: lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
   ];
