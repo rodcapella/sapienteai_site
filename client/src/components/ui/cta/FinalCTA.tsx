@@ -20,6 +20,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
   const isHomeVariant = variant === "home";
   const titleFontSize = isHomeVariant ? "clamp(40px, 5vw, 56px)" : "40px";
   const descriptionFontSize = "clamp(15px, 1.4vw, 18px)";
+  const backgroundSrc = isHomeVariant ? "/media/bg/bg_finalCTA_home.png" : "/media/bg/bg_finalCTA.png";
 
   const buttonElement = (
     <PremiumButton
@@ -35,7 +36,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
     <>
       <Section className="final-cta relative overflow-hidden py-24 text-center md:py-36">
         <div className="pointer-events-none absolute inset-0">
-          <img src="/media/bg/bg_finalCTA.png" alt="" className="h-full w-full object-cover" />
+          <img src={backgroundSrc} alt="" className="h-full w-full object-cover" />
         </div>
 
         <div className="relative z-10 w-full max-w-4xl px-6 text-center sm:px-10 md:ml-12 lg:ml-20">
