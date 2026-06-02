@@ -16,6 +16,7 @@ import { homeEN } from "@/content/en/home";
 
 const HOME_BANNER_BASE_PATH = "/media/banners";
 const HOME_BANNERS = [
+  "home_o_que_nos_diferencia.png",
   "home_resultados_gera_ia.png",
   "home_como_ajudamos_ai.png",
   "home_marketing_digital_ia.jpeg",
@@ -32,6 +33,7 @@ type HomeBannerSectionProps = {
 function getHomeBannerSrc(lang: string, file: string) {
   const folder = lang === "en" ? "EN" : "PT";
   const englishFileMap: Record<string, string> = {
+    "home_o_que_nos_diferencia.png": "home_o_que_nos_diferencia_en.png",
     "home_resultados_gera_ia.png": "home_resultados_gera_ia_en.png",
     "home_automacao_ia.png": "home_automacao_ia_en.png",
     "home_personalidade_marca.png": "home_personalidade_marca_en.png",
@@ -93,6 +95,7 @@ export default function Home() {
           lang={lang}
           file={banner}
           label={[
+            isPT ? "O que nos diferencia" : "What makes us different",
             content.coreServices.label,
             content.coreServices.title,
             content.marketingAI.title,

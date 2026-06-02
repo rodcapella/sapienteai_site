@@ -302,10 +302,15 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     ].join(" ");
   };
 
-  const selectClass = (field: keyof FormData) => `${fieldClass(field)} contact-modal-select cursor-pointer appearance-none pr-10 text-[var(--brand-offwhite)]`;
-  const sourceSelectClass = `${fieldClass("source")} contact-modal-select cursor-pointer appearance-none pr-10 ${
-    formData.source ? "text-[var(--brand-offwhite)]" : "text-[rgba(0,209,255,0.62)]"
-  }`;
+const baseSelectClass = (field: keyof FormData) => `${fieldClass(field)} contact-modal-select cursor-pointer appearance-none pr-10`;
+
+const sourceSelectClass = `${baseSelectClass("source")} ${
+  formData.source ? "text-[var(--brand-offwhite)]" : "text-[rgba(0,209,255,0.62)]"
+}`;
+
+const topicSelectClass = `${baseSelectClass("topic")} ${
+  formData.topic ? "text-[var(--brand-offwhite)]" : "text-[rgba(0,209,255,0.62)]"
+}`;
 
   const statusNode = useMemo(() => {
     if (submitState === "idle") return null;
@@ -399,8 +404,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               <div className="space-y-1.5">
                 <label htmlFor="contact-topic" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.topic}</label>
                 <div className="relative">
-                  <select id="contact-topic" name="topic" value={formData.topic} onChange={(e) => handleChange("topic", e.target.value)} onBlur={() => handleBlur("topic")} className={selectClass("topic")} aria-required="true" aria-invalid={Boolean(touched.topic && errors.topic)} aria-describedby={errors.topic ? "contact-topic-error" : undefined} disabled={submitState === "loading"}>
-                    <option value="">{text.placeholders.topic}</option>
+                  <select 
+                    id="contact-topic" 
+                    name="topic" 
+                    value={formData.topic} 
+                    onChange={(e) => handleChange("topic", e.target.value)} 
+                    onBlur={() => handleBlur("topic")} 
+                    className={topicSelectClass} 
+                    aria-required="true" 
+                    aria-invalid={Boolean(touched.topic && errors.topic)} 
+                    aria-describedby={errors.topic ? "contact-topic-error" : undefined} 
+                    disabled={submitState === "loading"}
+                  >
+                    <option value="" disabled hidden>{text.placeholders.topic}</option>
                     {topicOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
                   </select>
                   <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
