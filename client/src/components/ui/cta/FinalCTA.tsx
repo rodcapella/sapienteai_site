@@ -39,17 +39,17 @@ export function FinalCTA({ title, title_highlight, description, description_high
           <img src={backgroundSrc} alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className="relative z-10 w-full max-w-4xl px-6 text-center sm:px-10 md:ml-12 lg:ml-20">
+        <div className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center sm:px-10">
           <Reveal>
             <h2
               className="mx-auto max-w-4xl font-black leading-[1.08] tracking-normal"
-              style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", color: isHomeVariant ? "#001547" : "#000000", fontSize: titleFontSize }}
+              style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#000000", fontSize: titleFontSize }}
             >
               {title}
               {title_highlight && (
                 <>
                   <br />
-                  <span className="!text-[#0A84FF]" style={{ display: "inline", fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", fontSize: titleFontSize, fontWeight: 900, lineHeight: 1.08 }}>
+                  <span className={isHomeVariant ? "!text-white" : "!text-[#0A84FF]"} style={{ display: "inline", fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", fontSize: titleFontSize, fontWeight: 900, lineHeight: 1.08 }}>
                     {title_highlight}
                   </span>
                 </>
@@ -61,13 +61,13 @@ export function FinalCTA({ title, title_highlight, description, description_high
             <Reveal delay={110}>
               <p
                 className="mx-auto mt-7 max-w-5xl font-medium leading-relaxed"
-                style={{ fontFamily: "'Inter', sans-serif", color: "#001547", fontSize: descriptionFontSize }}
+                style={{ fontFamily: "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#001547", fontSize: descriptionFontSize }}
               >
                 {description}
                 {description_highlight && (
                   <>
                     <br />
-                    <span className="font-black text-[#0A84FF]" style={{ fontFamily: "'Inter', sans-serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
+                    <span className={isHomeVariant ? "font-black text-white" : "font-black text-[#0A84FF]"} style={{ fontFamily: "'Inter', sans-serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
                       {description_highlight}
                     </span>
                   </>
