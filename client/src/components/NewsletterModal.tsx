@@ -270,7 +270,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   }`;
 
   const labelClass = "block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
-  const optionalClass = "ml-1.5 uppercase tracking-normal font-normal text-[rgba(234,246,255,0.45)]";
+  const optionalClass = "ml-1.5 text-[rgba(234,246,255,0.45)]";
   const requiredMark = <span className="ml-1 text-white">*</span>;
 
   return (

@@ -1,5 +1,5 @@
 .faq-page {
-  background: var(--section-ice);
+  background: var(--brand-offwhite);
   color: var(--brand-night);
 }
 
@@ -7,7 +7,7 @@
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent);
-  background: var(--section-ice);
+  background: var(--brand-offwhite);
   padding: 120px 52px 72px;
 }
 
@@ -80,7 +80,7 @@
 
 .faq-main {
   padding: 80px 52px 100px;
-  background: var(--section-ice);
+  background: var(--brand-offwhite);
 }
 
 .faq-inner {
@@ -99,8 +99,8 @@
 
 .faq-sidebar-title {
   margin-bottom: 16px;
-  font-size: 14px;
-  color: color-mix(in srgb, var(--brand-night) 32%, transparent);
+  font-size: 16px;
+  color: var(--brand-night);
 }
 
 .faq-cats {
@@ -119,9 +119,9 @@
   background: transparent;
   padding: 10px 14px;
   font-family: var(--font-body);
-  font-size: 16px !important;
+  font-size: 18px !important;
   font-weight: 700;
-  color: color-mix(in srgb, var(--brand-night) 54%, transparent);
+  color: var(--brand-night);
   cursor: pointer;
   transition: all .2s ease;
   text-align: left;
@@ -129,13 +129,13 @@
 
 .faq-cat:hover {
   color: var(--brand-night);
-  background: color-mix(in srgb, var(--brand-purple) 7%, var(--section-ice));
+  background: color-mix(in srgb, #00D1FF 16%, var(--brand-offwhite));
 }
 
 .faq-cat.active {
-  color: var(--brand-primary);
-  background: color-mix(in srgb, var(--brand-purple) 8%, var(--section-ice));
-  border-color: color-mix(in srgb, var(--brand-primary) 26%, transparent);
+  color: var(--brand-night);
+  background: color-mix(in srgb, #00D1FF 22%, var(--brand-offwhite));
+  border-color: color-mix(in srgb, #00D1FF 58%, transparent);
 }
 
 .faq-cat-count {
@@ -155,13 +155,14 @@
 
 .faq-group-title {
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: 16px;
+  color: var(--brand-night);
 }
 
 .faq-list {
   border-radius: 18px;
-  background: color-mix(in srgb, var(--brand-purple) 5%, var(--card));
-  border: 1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent);
+  background: color-mix(in srgb, #00D1FF 22%, var(--brand-offwhite));
+  border: 1px solid color-mix(in srgb, #00D1FF 46%, transparent);
   overflow: hidden;
 }
 
@@ -247,6 +248,35 @@
   width: 100%;
   max-width: 440px;
   justify-self: end;
+}
+
+.dark .faq-page,
+.dark .faq-hero-card,
+.dark .faq-main {
+  background: var(--brand-night);
+}
+
+.dark .faq-sidebar-title,
+.dark .faq-cat,
+.dark .faq-group-title {
+  color: var(--brand-offwhite);
+}
+
+.dark .faq-cat:hover,
+.dark .faq-cat.active {
+  color: var(--brand-night);
+  background: color-mix(in srgb, #00D1FF 72%, var(--brand-offwhite));
+  border-color: color-mix(in srgb, #00D1FF 72%, transparent);
+}
+
+.dark .faq-cat-count {
+  background: color-mix(in srgb, var(--brand-offwhite) 14%, transparent);
+  color: color-mix(in srgb, var(--brand-offwhite) 72%, transparent);
+}
+
+.dark .faq-cat.active .faq-cat-count {
+  background: color-mix(in srgb, var(--brand-night) 12%, transparent);
+  color: var(--brand-night);
 }
 
 @media (max-width: 900px) {
