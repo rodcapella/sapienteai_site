@@ -33,8 +33,8 @@ function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
     { id: "general", label: labels.general, icon: Icons.HelpCircle, items: items.slice(0, 4) },
     { id: "content", label: labels.content, icon: Icons.MessageCircle, items: items.slice(4, 13) },
     { id: "automation", label: labels.automation, icon: Icons.Cpu, items: items.slice(13, 17) },
-    { id: "business", label: labels.business, icon: Icons.BarChart3, items: items.slice(17, 21) },
     { id: "data", label: labels.data, icon: Icons.Database, items: items.slice(21) },
+    { id: "business", label: labels.business, icon: Icons.BarChart3, items: items.slice(17, 21) },
   ].filter((category) => category.items.length > 0);
 }
 
