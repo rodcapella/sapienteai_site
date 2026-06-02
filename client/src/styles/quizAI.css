@@ -31,11 +31,11 @@
 .quiz-start {
   min-height: calc(100vh - 112px);
   padding: 72px 24px 64px;
-  background-color: #f8fbff;
+  background-color: var(--section-ice);
   background-image:
-    linear-gradient(rgba(10, 132, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10, 132, 255, 0.055) 1px, transparent 1px),
-    radial-gradient(circle at 92% 12%, rgba(10, 132, 255, 0.08), transparent 34%);
+    linear-gradient(rgba(122, 92, 252, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 92, 252, 0.065) 1px, transparent 1px),
+    radial-gradient(circle at 92% 12%, rgba(122, 92, 252, 0.10), transparent 34%);
   background-size: 73px 73px, 73px 73px, auto;
 }
 .quiz-start-inner, .quiz-result-inner { width: 100%; max-width: 760px; display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -57,11 +57,11 @@
   align-items: flex-start;
   min-height: calc(100vh - 112px);
   padding: 24px 24px 40px;
-  background-color: #f8fbff;
+  background-color: var(--section-ice);
   background-image:
-    linear-gradient(rgba(10, 132, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10, 132, 255, 0.055) 1px, transparent 1px),
-    radial-gradient(circle at 88% 10%, rgba(10, 132, 255, 0.08), transparent 34%);
+    linear-gradient(rgba(122, 92, 252, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 92, 252, 0.065) 1px, transparent 1px),
+    radial-gradient(circle at 88% 10%, rgba(122, 92, 252, 0.10), transparent 34%);
   background-size: 73px 73px, 73px 73px, auto;
 }
 .quiz-container { width: 100%; max-width: 936px; overflow: visible; }
@@ -99,10 +99,10 @@
 .quiz-result {
   min-height: auto;
   padding: 72px 24px 44px;
-  background-color: #f8fbff;
+  background-color: var(--section-ice);
   background-image:
-    linear-gradient(rgba(10, 132, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10, 132, 255, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(122, 92, 252, 0.065) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 92, 252, 0.065) 1px, transparent 1px);
   background-size: 73px 73px;
 }
 .quiz-result-inner { max-width: 800px; }

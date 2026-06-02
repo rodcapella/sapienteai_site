@@ -76,8 +76,8 @@ export function FAQCategoryNav({ categories, activeCategory, onChange, sidebarTi
               className={cn(
                 "group flex min-w-max items-center gap-3 rounded-xl border px-4 py-3 text-left font-serif text-[14px] font-semibold transition-colors duration-200 lg:min-w-0",
                 isActive
-                  ? "border-[#0A84FF]/35 bg-[#EAF6FF] text-[#001547] shadow-[0_10px_28px_rgba(10,132,255,0.08)] dark:border-[#00D1FF]/42 dark:bg-[#001547] dark:text-[#EAF6FF]"
-                  : "border-transparent bg-transparent text-[#001547]/54 hover:bg-[#EAF6FF]/70 hover:text-[#001547] dark:text-[#EAF6FF]/54 dark:hover:bg-[#001547]/72 dark:hover:text-[#EAF6FF]",
+                  ? "border-[#7861FF]/35 bg-[var(--card)] text-[#001547] shadow-[0_10px_28px_rgba(122,92,252,0.08)] dark:border-[#00D1FF]/42 dark:bg-[#001547] dark:text-[#EAF6FF]"
+                  : "border-transparent bg-transparent text-[#001547]/54 hover:bg-[var(--brand-purple)]/10 hover:text-[#001547] dark:text-[#EAF6FF]/54 dark:hover:bg-[#001547]/72 dark:hover:text-[#EAF6FF]",
               )}
             >
               <Icon className={cn("h-4 w-4 shrink-0", isActive ? "text-[#0A84FF] dark:text-[#00D1FF]" : "text-[#001547]/34 dark:text-[#EAF6FF]/34")} />
@@ -85,7 +85,7 @@ export function FAQCategoryNav({ categories, activeCategory, onChange, sidebarTi
               <span
                 className={cn(
                   "ml-auto rounded-full px-2 py-0.5 text-[10px] font-black",
-                  isActive ? "bg-[#0A84FF]/10 text-[#0A84FF] dark:bg-[#00D1FF]/12 dark:text-[#00D1FF]" : "bg-[#EAF6FF] text-[#001547]/32 dark:bg-[#001547] dark:text-[#EAF6FF]/32",
+                  isActive ? "bg-[#7861FF]/12 text-[#7861FF] dark:bg-[#00D1FF]/12 dark:text-[#00D1FF]" : "bg-[var(--card)] text-[#001547]/32 dark:bg-[#001547] dark:text-[#EAF6FF]/32",
                 )}
               >
                 {category.items.length}
@@ -145,7 +145,7 @@ export function FAQQuestionLayout({ categories, activeCategory, onCategoryChange
         <p className="mb-5 font-detail text-[12px] font-black uppercase tracking-[0.2em] text-[#0A84FF] dark:text-[#00D1FF]">
           {active.label}
         </p>
-        <div className="rounded-2xl border border-[#0A84FF]/10 bg-white/72 px-6 shadow-[0_18px_44px_rgba(0,21,71,0.06)] backdrop-blur-sm dark:border-[#7861FF]/36 dark:bg-[#001547]/78 dark:shadow-[0_18px_44px_rgba(5,8,22,0.2)] md:px-8">
+        <div className="rounded-2xl border border-[#7861FF]/16 bg-[var(--card)] px-6 shadow-[0_18px_44px_rgba(0,21,71,0.06)] backdrop-blur-sm dark:border-[#7861FF]/36 dark:bg-[#001547]/78 dark:shadow-[0_18px_44px_rgba(5,8,22,0.2)] md:px-8">
           {active.items.map((item, index) => {
             const questionId = `${active.id}-${index}`;
             return (
@@ -169,7 +169,7 @@ export function FAQContactCTA({ lang }: FAQContactCTAProps) {
 
   return (
     <section className="standard-section-bg relative overflow-hidden px-6 pb-20 pt-2 md:pb-28">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-2xl border border-[#0A84FF]/22 bg-[linear-gradient(135deg,rgba(10,132,255,0.12),rgba(234,246,255,0.88))] p-7 shadow-[0_18px_44px_rgba(0,21,71,0.08)] dark:border-[#00D1FF]/28 dark:bg-[linear-gradient(135deg,rgba(0,209,255,0.12),rgba(0,21,71,0.92))] md:flex-row md:items-center md:justify-between md:p-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-2xl border border-[#7861FF]/28 bg-[linear-gradient(135deg,rgba(122,92,252,0.14),rgba(241,237,255,0.88))] p-7 shadow-[0_18px_44px_rgba(0,21,71,0.08)] dark:border-[#00D1FF]/28 dark:bg-[linear-gradient(135deg,rgba(0,209,255,0.12),rgba(0,21,71,0.92))] md:flex-row md:items-center md:justify-between md:p-10">
         <div>
           <h2 className="font-heading text-[26px] font-black leading-tight text-[#001547] dark:text-[#EAF6FF]">
             {content.title}

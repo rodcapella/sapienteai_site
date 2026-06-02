@@ -47,7 +47,7 @@ export default function Services(_props: { lang?: string }) {
           <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2 xl:grid-cols-3">
             {content.services.map((item, index) => (
               <Reveal key={item.value} delay={index * 80}>
-                <SectionCard className="h-full border-foreground/5 bg-[#EAF6FF] p-7 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-primary/20">
+                <SectionCard className="h-full border-[var(--brand-purple)]/20 bg-[var(--card)] p-7 shadow-xl transition-all duration-500 hover:-translate-y-1 hover:border-[var(--brand-purple)]/35">
                   <p className="mb-7 text-sm font-black text-primary/50">{item.value}</p>
                   <h3 className="mb-4 text-2xl font-black leading-tight text-foreground">{item.title}</h3>
                   <p className="text-base font-medium leading-relaxed text-foreground/60">{item.text}</p>
@@ -73,7 +73,7 @@ export default function Services(_props: { lang?: string }) {
             <div className="grid gap-4">
               {content.process.items.map((item, index) => (
                 <Reveal key={item} delay={index * 90}>
-                  <div className="flex items-start gap-4 rounded-2xl border border-primary/12 bg-[#EAF6FF] p-5 shadow-[0_16px_34px_rgba(1,32,80,0.06)]">
+                  <div className="flex items-start gap-4 rounded-2xl border border-[var(--brand-purple)]/18 bg-[var(--card)] p-5 shadow-[0_16px_34px_rgba(1,32,80,0.06)]">
                     <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-black text-[#EAF6FF]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
@@ -91,7 +91,7 @@ export default function Services(_props: { lang?: string }) {
           <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
             {[content.problem, content.vision].map((block, index) => (
               <Reveal key={block.title} delay={index * 120}>
-                <SectionCard className="h-full border-primary/10 bg-[#EAF6FF] p-8 shadow-2xl md:p-10">
+                <SectionCard className="h-full border-[var(--brand-purple)]/20 bg-[var(--card)] p-8 shadow-2xl md:p-10">
                   <Icons.Zap className="mb-8 h-9 w-9 text-primary" />
                   <h3 className="mb-6 text-3xl font-black leading-tight text-foreground md:text-5xl">{block.title}</h3>
                   <p className="text-lg font-medium leading-relaxed text-foreground/65">{block.text}</p>

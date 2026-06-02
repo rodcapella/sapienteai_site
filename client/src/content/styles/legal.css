@@ -1,5 +1,5 @@
 .legal-page {
-  background: var(--brand-offwhite);
+  background: var(--section-ice);
   color: var(--brand-night);
 }
 
@@ -7,7 +7,7 @@
   position: relative;
   overflow: hidden;
   padding: 80px 52px 100px;
-  background: var(--brand-offwhite);
+  background: var(--section-ice);
 }
 
 .legal-main-bg {
@@ -16,7 +16,7 @@
   pointer-events: none;
   background:
     radial-gradient(ellipse 45% 52% at 88% 12%, color-mix(in srgb, var(--brand-purple) 9%, transparent) 0%, transparent 65%),
-    radial-gradient(ellipse 34% 44% at 5% 82%, color-mix(in srgb, var(--brand-cyan) 7%, transparent) 0%, transparent 62%);
+    radial-gradient(ellipse 34% 44% at 5% 82%, color-mix(in srgb, var(--brand-primary) 5%, transparent) 0%, transparent 62%);
 }
 
 .legal-main-bg::after {
@@ -24,8 +24,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(color-mix(in srgb, var(--brand-primary) 7%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--brand-primary) 7%, transparent) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--brand-purple) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--brand-purple) 8%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
   opacity: .45;
 }
@@ -88,12 +88,12 @@
 
 .legal-cat:hover {
   color: var(--brand-night);
-  background: color-mix(in srgb, var(--brand-purple) 7%, var(--brand-offwhite));
+  background: color-mix(in srgb, var(--brand-purple) 7%, var(--section-ice));
 }
 
 .legal-cat.active {
   color: var(--brand-purple);
-  background: color-mix(in srgb, var(--brand-purple) 8%, var(--brand-offwhite));
+  background: color-mix(in srgb, var(--brand-purple) 8%, var(--section-ice));
   border-color: color-mix(in srgb, var(--brand-purple) 28%, transparent);
 }
 
@@ -118,7 +118,7 @@
   margin-bottom: 28px;
   border: 1px solid color-mix(in srgb, var(--brand-purple) 20%, transparent);
   border-radius: 18px;
-  background: color-mix(in srgb, var(--brand-purple) 4%, white);
+  background: color-mix(in srgb, var(--brand-purple) 5%, var(--card));
   padding: 28px;
   box-shadow: 0 18px 38px rgba(1, 32, 80, .06);
 }
@@ -169,7 +169,7 @@
 .legal-list {
   border: 1px solid color-mix(in srgb, var(--brand-purple) 14%, transparent);
   border-radius: 18px;
-  background: color-mix(in srgb, var(--brand-purple) 4%, white);
+  background: color-mix(in srgb, var(--brand-purple) 5%, var(--card));
   overflow: hidden;
 }
 
@@ -239,7 +239,7 @@
 
 .legal-item.open .legal-q-icon {
   border-color: var(--brand-purple);
-  background: color-mix(in srgb, var(--brand-purple) 12%, var(--brand-offwhite));
+  background: color-mix(in srgb, var(--brand-purple) 12%, var(--section-ice));
   box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-purple) 20%, transparent);
   transform: rotate(45deg);
 }

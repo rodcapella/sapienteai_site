@@ -16,13 +16,13 @@ const sectionCardVariants = cva(
     variants: {
       variant: {
         default: `
-          bg-[linear-gradient(145deg,rgba(234,246,255,0.82),rgba(208,235,255,0.56))]
-          border-[rgba(10,132,255,0.26)]
+          bg-[linear-gradient(145deg,rgba(250,248,255,0.88),rgba(231,222,253,0.68))]
+          border-[rgba(122,92,252,0.28)]
           shadow-[0_20px_52px_rgba(8,18,40,0.13)]
           hover:-translate-y-2
-          hover:border-[var(--brand-primary)]/55
-          hover:bg-[linear-gradient(145deg,rgba(234,246,255,0.9),rgba(10,132,255,0.10))]
-          hover:shadow-[0_0_0_1px_rgba(10,132,255,0.28),0_22px_56px_rgba(0,209,255,0.16)]
+          hover:border-[var(--brand-purple)]/55
+          hover:bg-[linear-gradient(145deg,rgba(250,248,255,0.94),rgba(122,92,252,0.12))]
+          hover:shadow-[0_0_0_1px_rgba(122,92,252,0.24),0_22px_56px_rgba(122,92,252,0.16)]
         `,
 
         highlight: `
@@ -35,10 +35,10 @@ const sectionCardVariants = cva(
         `,
 
         subtle: `
-          bg-[linear-gradient(145deg,rgba(234,246,255,0.58),rgba(10,132,255,0.08))]
-          border-[rgba(0,209,255,0.24)]
-          hover:border-[var(--brand-primary)]/55
-          hover:shadow-[0_18px_46px_rgba(10,132,255,0.18)]
+          bg-[linear-gradient(145deg,rgba(250,248,255,0.62),rgba(122,92,252,0.10))]
+          border-[rgba(122,92,252,0.24)]
+          hover:border-[var(--brand-purple)]/55
+          hover:shadow-[0_18px_46px_rgba(122,92,252,0.18)]
         `,
 
         solid: `

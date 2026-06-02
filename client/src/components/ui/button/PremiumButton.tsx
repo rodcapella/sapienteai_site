@@ -53,7 +53,7 @@ export function PremiumButton({
     primary: vividBlue,
     secondary: vividBlue,
     outline:
-      "border-2 border-[var(--brand-primary)] bg-[rgba(234,246,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,180,255,0.12)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.18),0_18px_42px_rgba(10,180,255,0.18)] dark:border-[var(--brand-primary)] dark:text-[var(--brand-primary)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white",
+      "border-2 border-[var(--brand-primary)] bg-[rgba(241,237,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,180,255,0.12)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.18),0_18px_42px_rgba(10,180,255,0.18)] dark:border-[var(--brand-primary)] dark:text-[var(--brand-primary)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white",
     black:
       "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,180,255,0.28)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.2),0_18px_42px_rgba(10,180,255,0.22)]",
   };

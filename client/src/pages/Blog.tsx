@@ -93,7 +93,7 @@ export default function Blog() {
                   px-6 py-2.5 rounded-full text-sm font-black transition-all
                   ${selectedCategory === category
                     ? 'bg-primary text-primary-foreground shadow-lg'
-                    : 'bg-[#EAF6FF] text-foreground/60 border border-foreground/5 hover:bg-foreground/5'}
+                    : 'bg-[var(--card)] text-foreground/60 border border-[var(--brand-purple)]/18 hover:bg-[var(--brand-purple)]/8'}
                 `}
               >
                 {category === allCategory ? t('blog.all') : category}
@@ -110,7 +110,7 @@ export default function Blog() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
               {filteredArticles.map(article => (
                 <Link key={article.id} href={`/${lang}/blog/${article.slug}`} className="group h-full">
-                  <SectionCard className="bg-[#EAF6FF] border-foreground/5 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-8">
+                  <SectionCard className="bg-[var(--card)] border-[var(--brand-purple)]/18 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-8">
 
                     {/* IMAGE */}
                     <div className="h-56 -mx-8 -mt-8 mb-8 overflow-hidden rounded-t-2xl">
@@ -166,7 +166,7 @@ export default function Blog() {
       <Section className="bg-ice py-24 md:py-40">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
-            <SectionCard className="bg-[#EAF6FF] p-10 md:p-16 shadow-xl border-primary/10 text-center">
+            <SectionCard className="bg-[var(--card)] p-10 md:p-16 shadow-xl border-[var(--brand-purple)]/20 text-center">
               <h2 className="mb-6 font-heading text-3xl font-black text-foreground md:text-5xl">
                 {t('blog.newsletter')}
               </h2>

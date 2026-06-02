@@ -46,7 +46,7 @@ function HomeBannerSection({ lang, file, label }: HomeBannerSectionProps) {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-[#EAF6FF] bg-contain bg-center bg-no-repeat"
+      className="relative w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${backgroundSrc})` }}
       aria-label={label}
     >
@@ -71,7 +71,7 @@ export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="home-page flex flex-col bg-[#EAF6FF]">
+    <div className="home-page flex flex-col bg-[var(--section-ice)]">
       <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
         <div className="flex flex-col items-start justify-start gap-5 sm:flex-row sm:gap-8">
           <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full sm:w-auto">

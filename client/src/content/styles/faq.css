@@ -1,5 +1,5 @@
 .faq-page {
-  background: var(--brand-offwhite);
+  background: var(--section-ice);
   color: var(--brand-night);
 }
 
@@ -7,7 +7,7 @@
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent);
-  background: var(--brand-offwhite);
+  background: var(--section-ice);
   padding: 120px 52px 72px;
 }
 
@@ -15,16 +15,16 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 50% 70% at 80% 40%, color-mix(in srgb, var(--brand-primary) 8%, transparent) 0%, transparent 65%),
-    radial-gradient(ellipse 30% 40% at 5% 80%, color-mix(in srgb, var(--brand-cyan) 6%, transparent) 0%, transparent 60%);
+    radial-gradient(ellipse 50% 70% at 80% 40%, color-mix(in srgb, var(--brand-purple) 10%, transparent) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 5% 80%, color-mix(in srgb, var(--brand-primary) 5%, transparent) 0%, transparent 60%);
 }
 
 .faq-hero-grid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(color-mix(in srgb, var(--brand-primary) 8%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--brand-primary) 8%, transparent) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--brand-purple) 9%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--brand-purple) 9%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
   opacity: .5;
 }
@@ -80,7 +80,7 @@
 
 .faq-main {
   padding: 80px 52px 100px;
-  background: var(--brand-offwhite);
+  background: var(--section-ice);
 }
 
 .faq-inner {
@@ -128,12 +128,12 @@
 
 .faq-cat:hover {
   color: var(--brand-night);
-  background: color-mix(in srgb, var(--brand-primary) 7%, var(--brand-offwhite));
+  background: color-mix(in srgb, var(--brand-purple) 7%, var(--section-ice));
 }
 
 .faq-cat.active {
   color: var(--brand-primary);
-  background: color-mix(in srgb, var(--brand-primary) 8%, var(--brand-offwhite));
+  background: color-mix(in srgb, var(--brand-purple) 8%, var(--section-ice));
   border-color: color-mix(in srgb, var(--brand-primary) 26%, transparent);
 }
 
@@ -158,7 +158,7 @@
 
 .faq-list {
   border-radius: 18px;
-  background: color-mix(in srgb, var(--brand-primary) 4%, white);
+  background: color-mix(in srgb, var(--brand-purple) 5%, var(--card));
   border: 1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent);
   overflow: hidden;
 }
@@ -216,7 +216,7 @@
 
 .faq-item.open .faq-q-icon {
   border-color: var(--brand-purple);
-  background: color-mix(in srgb, var(--brand-purple) 12%, var(--brand-offwhite));
+  background: color-mix(in srgb, var(--brand-purple) 12%, var(--section-ice));
   color: var(--brand-purple);
   box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-purple) 18%, transparent);
   transform: rotate(45deg);

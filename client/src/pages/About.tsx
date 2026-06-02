@@ -167,7 +167,7 @@ export default function About() {
         <div className="container mx-auto px-6">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <Reveal>
-              <div className="sticky top-28 hidden rounded-[2rem] border border-foreground/5 bg-[#EAF6FF] p-8 shadow-2xl lg:block">
+              <div className="sticky top-28 hidden rounded-[2rem] border border-[var(--brand-purple)]/18 bg-[var(--card)] p-8 shadow-2xl lg:block">
                 <p className="mb-6 text-sm font-black uppercase tracking-[0.24em] text-primary">SAPIENTE.AI</p>
                 <div className="grid gap-4">
                   {content.proof.items.map((item: { value: string; title: string }) => (
@@ -191,7 +191,7 @@ export default function About() {
         </div>
       </Section>
 
-      <Section className="bg-[#EAF6FF] py-24 md:py-40">
+      <Section className="bg-[var(--section-ice)] py-24 md:py-40">
         <div className="container mx-auto px-6">
           <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
             <Reveal>
@@ -226,7 +226,7 @@ export default function About() {
             <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
               {content.shift.items.map((item: string, i: number) => (
                 <Reveal key={i} delay={i * 100}>
-                  <SectionCard className="min-h-[220px] bg-[#EAF6FF] border-foreground/5 p-7 shadow-xl hover:shadow-[0_20px_60px_rgba(5,8,22,0.1)] transition-all duration-700">
+                  <SectionCard className="min-h-[220px] bg-[var(--card)] border-[var(--brand-purple)]/18 p-7 shadow-xl hover:shadow-[0_20px_60px_rgba(5,8,22,0.1)] transition-all duration-700">
                     <p className="mb-8 text-sm font-black text-primary/50">{String(i + 1).padStart(2, "0")}</p>
                     <p className="text-xl font-black text-foreground tracking-tight leading-tight">
                       {item.split(' â†’ ').map((part, idx) => (
@@ -253,7 +253,7 @@ export default function About() {
             </Reveal>
 
             <Reveal delay={200}>
-              <SectionCard className="bg-[#EAF6FF] p-12 md:p-16 shadow-2xl border-primary/10 relative group">
+              <SectionCard className="bg-[var(--card)] p-12 md:p-16 shadow-2xl border-[var(--brand-purple)]/20 relative group">
                 <div className="absolute -top-10 -left-10 w-24 h-24 bg-primary rounded-3xl flex items-center justify-center shadow-2xl rotate-[-12deg] group-hover:rotate-0 transition-all duration-500">
                   <Icons.Zap className="text-[#EAF6FF] w-10 h-10" />
                 </div>
