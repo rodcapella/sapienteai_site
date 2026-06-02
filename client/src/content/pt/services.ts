@@ -1,9 +1,9 @@
 export const servicesPT = {
   hero: {
-    label: "Serviços",
-    title: "Soluções digitais com",
-    highlight: "IA aplicada.",
-    subtitle: "Unimos estratégia, tecnologia, automação e marketing para criar sistemas que ajudam o seu negócio a crescer com mais clareza e eficiência.",
+    label: "O que fazemos",
+    title: "Soluções integradas para cada etapa do",
+    highlight: "crescimento.",
+    subtitle: "Unimos estratégia, tecnologia e inteligência artificial para criar sistemas, automatizar processos e gerar resultados reais para o seu negócio.",
   },
   intro: {
     eyebrow: "O que fazemos",

@@ -1,9 +1,9 @@
 export const servicesEN = {
   hero: {
-    label: "Services",
-    title: "Digital solutions with",
-    highlight: "applied AI.",
-    subtitle: "We combine strategy, technology, automation, and marketing to create systems that help your business grow with more clarity and efficiency.",
+    label: "What We Do",
+    title: "Integrated solutions for every stage of",
+    highlight: "growth.",
+    subtitle: "We combine strategy, technology, and artificial intelligence to build systems, automate processes, and deliver real results for your business."
   },
   intro: {
     eyebrow: "What we do",

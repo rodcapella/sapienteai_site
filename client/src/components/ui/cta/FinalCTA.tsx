@@ -14,11 +14,13 @@ type FinalCTAProps = {
   button: string;
   href?: string;
   variant?: "default" | "home" | "about";
+  align?: "left" | "center";
 };
 
-export function FinalCTA({ title, title_highlight, description, description_highlight, button, href, variant = "default" }: FinalCTAProps) {
+export function FinalCTA({ title, title_highlight, description, description_highlight, button, href, variant = "default", align }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const isHomeVariant = variant === "home";
+  const isCentered = align ? align === "center" : isHomeVariant;
   const titleFontSize = isHomeVariant ? "clamp(40px, 5vw, 56px)" : "40px";
   const descriptionFontSize = "clamp(15px, 1.4vw, 18px)";
   const backgroundSrc = variant === "home" ? "/media/bg/bg_finalCTA_home.png" : variant === "about" ? "/media/bg/final_CTA_sobre.png" : "/media/bg/bg_finalCTA.png";
@@ -35,15 +37,15 @@ export function FinalCTA({ title, title_highlight, description, description_high
 
   return (
     <>
-      <Section className={cn("final-cta relative overflow-hidden py-24 md:py-36", isHomeVariant ? "text-center" : "text-left")}>
+      <Section className={cn("final-cta relative overflow-hidden py-24 md:py-36", isCentered ? "text-center" : "text-left")}>
         <div className="pointer-events-none absolute inset-0">
           <img src={backgroundSrc} alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className={cn("relative z-10 mx-auto w-full max-w-4xl px-6 sm:px-10", isHomeVariant ? "text-center" : "text-left")}>
+        <div className={cn("relative z-10 mx-auto w-full px-6 sm:px-10", isCentered ? "max-w-4xl text-center" : "max-w-6xl text-left")}>
           <Reveal>
             <h2
-              className={cn("max-w-4xl font-black leading-[1.08] tracking-normal", isHomeVariant && "mx-auto")}
+              className={cn("max-w-4xl font-black leading-[1.08] tracking-normal", isCentered && "mx-auto")}
               style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#000000", fontSize: titleFontSize }}
             >
               {title}
@@ -61,7 +63,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           {description && (
             <Reveal delay={110}>
               <p
-                className={cn("mt-7 max-w-5xl font-medium leading-relaxed", isHomeVariant && "mx-auto")}
+                className={cn("mt-7 max-w-5xl font-medium leading-relaxed", isCentered && "mx-auto")}
                 style={{ fontFamily: "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#001547", fontSize: descriptionFontSize }}
               >
                 {description}
@@ -78,7 +80,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           )}
 
           <Reveal delay={220}>
-            <div className={cn("mt-12 flex", isHomeVariant ? "justify-center" : "justify-start")}>
+            <div className={cn("mt-12 flex", isCentered ? "justify-center" : "justify-start")}>
               {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </div>
           </Reveal>

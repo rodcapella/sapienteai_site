@@ -25,49 +25,49 @@ type SitemapGroup = {
 
 const copy = {
   pt: {
-    label: "Mapa do site",
-    title: "Encontre rapidamente cada pÃ¡gina",
-    highlight: "do nosso site.",
-    subtitle: "Uma visÃ£o organizada das Ã¡reas principais, conteÃºdos e pÃ¡ginas legais do site.",
+    label: "Mapa do Site",
+    title: "Todas as páginas",
+    highlight: "num só lugar.",
+    subtitle: "Navegue facilmente por todas as secções do site da Sapiente.AI.",
     sections: {
-      main: "PÃ¡ginas principais",
-      mainTitle: "ConheÃ§a a Sapiente.AI",
-      resources: "ConteÃºdos e recursos",
-      resourcesTitle: "Explore conteÃºdos Ãºteis",
-      legal: "ConfianÃ§a e legal",
-      legalTitle: "InformaÃ§Ã£o institucional",
+      main: "Páginas principais",
+      mainTitle: "Navegação principal",
+      resources: "Recursos e ferramentas",
+      resourcesTitle: "Conteúdos úteis",
+      legal: "Informação legal",
+      legalTitle: "Transparência e confiança",
     },
     links: {
-      home: ["InÃ­cio", "VisÃ£o geral das soluÃ§Ãµes, serviÃ§os e proposta de valor."],
-      about: ["Sobre", "A nossa visÃ£o, mÃ©todo de trabalho e forma de aplicar IA."],
-      services: ["ServiÃ§os", "SoluÃ§Ãµes digitais, automaÃ§Ã£o, marketing e IA aplicada ao crescimento."],
-      faq: ["FAQ", "Respostas rÃ¡pidas Ã s perguntas mais frequentes."],
-      quiz: ["Quiz IA", "DiagnÃ³stico inicial para identificar oportunidades de automaÃ§Ã£o."],
-      newsletter: ["Newsletter", "ConteÃºdo prÃ¡tico sobre IA, automaÃ§Ã£o e crescimento."],
-      terms: ["Termos de ServiÃ§o", "CondiÃ§Ãµes de utilizaÃ§Ã£o do site e serviÃ§os."],
-      privacy: ["PolÃ­tica de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
-      trust: ["ConfianÃ§a & SeguranÃ§a", "PrincÃ­pios de seguranÃ§a, Ã©tica e responsabilidade."],
-      policy: ["PolÃ­tica de IA Generativa", "Como enquadramos o uso responsÃ¡vel de IA generativa."],
+      home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
+      about: ["Sobre nós", "A nossa visão, método de trabalho e forma de aplicar IA."],
+      services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
+      faq: ["FAQ", "Respostas às perguntas mais frequentes sobre os nossos serviços."],
+      quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
+      newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
+      terms: ["Termos de Serviço", "Condições de utilização do site e dos nossos serviços."],
+      privacy: ["Política de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
+      trust: ["Confiança & Segurança", "Princípios de segurança, ética e responsabilidade."],
+      policy: ["Política de IA Generativa", "Como enquadramos o uso responsável de IA generativa."],
     },
   },
   en: {
     label: "Sitemap",
-    title: "Find every page quickly",
-    highlight: "of our website.",
-    subtitle: "A structured view of the main areas, content, and legal pages across the website.",
+    title: "All pages",
+    highlight: "in one place.",
+    subtitle: "Easily navigate all sections of the Sapiente.AI website.",
     sections: {
       main: "Main pages",
-      mainTitle: "Get to know Sapiente.AI",
-      resources: "Content and resources",
-      resourcesTitle: "Explore useful content",
-      legal: "Trust and legal",
-      legalTitle: "Institutional information",
+      mainTitle: "Main navigation",
+      resources: "Resources and tools",
+      resourcesTitle: "Useful content",
+      legal: "Legal information",
+      legalTitle: "Transparency and trust",
     },
     links: {
       home: ["Home", "Overview of our solutions, services, and value proposition."],
-      about: ["About", "Our vision, working method, and approach to applied AI."],
+      about: ["About us", "Our vision, working method, and approach to applied AI."],
       services: ["Services", "Digital solutions, automation, marketing and applied AI for growth."],
-      faq: ["FAQ", "Quick answers to the most common questions."],
+      faq: ["FAQ", "Quick answers to the most common questions about our services."],
       quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
       terms: ["Terms of Service", "Terms of use for the website and services."],
@@ -83,7 +83,8 @@ function makeLink(lang: string, path = "") {
 }
 
 function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
-  const linkClass = "site-action-link group border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-[var(--brand-offwhite)] hover:!bg-[var(--brand-cyan)] hover:!text-[var(--brand-night)] hover:shadow-[0_18px_40px_rgba(85,212,242,0.26)]";
+  const linkClass =
+    "site-action-link group border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-[var(--brand-offwhite)] hover:!bg-[var(--brand-cyan)] hover:!text-[var(--brand-night)] hover:shadow-[0_18px_40px_rgba(85,212,242,0.26)]";
 
   return (
     <SectionCard className="h-full border border-[var(--brand-purple)]/45 bg-[var(--brand-deep)] p-6 text-[var(--brand-offwhite)] shadow-[0_18px_42px_rgba(1,32,80,0.24)] md:p-8">
@@ -92,7 +93,12 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
           <Icon className="h-6 w-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-black tracking-tight text-[var(--brand-offwhite)]">{group.title}</h2>
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--brand-cyan)] opacity-70">
+            {group.label}
+          </p>
+          <h2 className="text-2xl font-black tracking-tight text-[var(--brand-offwhite)]">
+            {group.title}
+          </h2>
         </div>
       </div>
 
@@ -105,7 +111,9 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
                   {link.title}
                   <Icons.ArrowRight className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-night)]" />
                 </span>
-                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">{link.description}</span>
+                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">
+                  {link.description}
+                </span>
               </Link>
             ) : (
               <button type="button" onClick={link.onClick} className={`${linkClass} w-full text-left`}>
@@ -113,7 +121,9 @@ function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: Element
                   {link.title}
                   <Icons.Mail className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-night)]" />
                 </span>
-                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">{link.description}</span>
+                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">
+                  {link.description}
+                </span>
               </button>
             )}
           </li>
@@ -164,7 +174,7 @@ export default function Sitemap() {
 
   useEffect(() => {
     setSEOHead({
-      title: `${content.label} - Sapiente.AI`,
+      title: `${content.label} — Sapiente.AI`,
       description: content.subtitle,
       url: `https://sapienteai.com/${lang}/sitemap`,
       type: "website",
@@ -173,14 +183,19 @@ export default function Sitemap() {
 
   return (
     <div className="flex flex-col">
-      <InternalHero label={content.label} title={content.title} highlight={content.highlight} subtitle={content.subtitle} compact />
+      <InternalHero
+        label={content.label}
+        title={content.title}
+        highlight={content.highlight}
+        subtitle={content.subtitle}
+        compact
+      />
 
       <Section className="bg-blue-tint py-24 md:py-40">
         <div className="container mx-auto px-6">
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
             {groups.map((group, index) => {
               const Icon = [Icons.Home, Icons.Sparkles, Icons.ShieldCheck][index];
-
               return (
                 <Reveal key={group.label} delay={index * 100}>
                   <SitemapCard group={group} icon={Icon} />

@@ -44,9 +44,9 @@ const fallbackIcons = [
 
 function getLegalPageTitle(slug: string, lang: string) {
   const titles: Record<string, Record<string, string>> = {
-    terms: { pt: "Termos", en: "Terms" },
-    privacy: { pt: "Privacidade", en: "Privacy" },
-    trust: { pt: "Confiança", en: "Trust" },
+    terms: { pt: "Termos de Serviço", en: "Terms of Service" },
+    privacy: { pt: "Política de Privacidade", en: "Privacy Policy" },
+    trust: { pt: "Confiança e Segurança", en: "Trust & Security" },
     "generative-ai-policy": { pt: "Política de IA Generativa", en: "Generative AI Policy" },
   };
 

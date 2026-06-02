@@ -109,6 +109,7 @@ export default function Services(_props: { lang?: string }) {
         title_highlight={content.finalCta.highlight}
         description={content.finalCta.description}
         button={content.finalCta.button}
+        align="left"
       />
     </div>
   );

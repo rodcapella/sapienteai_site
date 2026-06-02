@@ -1,8 +1,9 @@
 export const aboutEN = {
   hero: {
-    title: "Most companies have a decision problem,",
-    highlight: "not a data problem.",
-    subtitle: "We turn data into decisions that increase revenue, reduce costs, and drive business growth."
+    label: "About Us",
+    title: "Technology that serves people.",
+    highlight: "Real results.",
+    subtitle: "Sapiente.AI was born from the belief that artificial intelligence is not a privilege reserved for large corporations. It is a powerful tool that, when applied correctly, can transform any business, regardless of its size."
   },
 
   manifesto: [

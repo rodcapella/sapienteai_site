@@ -328,6 +328,7 @@ export default function About() {
         description={founders.cta.description}
         description_highlight={founders.cta.description_highlight}
         button={founders.cta.button}
+        align="left"
       />
     </div>
   );
