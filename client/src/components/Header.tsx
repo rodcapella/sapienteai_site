@@ -64,9 +64,9 @@ export default function Header({ onContactClick }: HeaderProps) {
 
         <div className="container mx-auto px-4 sm:px-6">
           <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
-            <div className="flex w-[180px] shrink-0 items-center gap-2 xl:w-[210px]">
-              <img src="/media/logos/Logo_Sapiente_fundo_claro.png" alt="Sapiente.AI" className="h-[107px] w-auto object-contain md:h-[123px] lg:h-[134px] dark:hidden" />
-              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="hidden h-[107px] w-auto object-contain md:h-[123px] lg:h-[134px] dark:block" />
+            <div className="flex h-full w-[180px] shrink-0 items-center gap-2 overflow-hidden xl:w-[210px]">
+              <img src="/media/logos/Logo_Sapiente_fundo_claro.png" alt="Sapiente.AI" className="h-[86px] w-auto object-contain transition-all duration-500 md:h-[96px] lg:h-[104px] dark:hidden" />
+              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="hidden h-[86px] w-auto object-contain transition-all duration-500 md:h-[96px] lg:h-[104px] dark:block" />
             </div>
 
             <div className="hidden min-w-0 items-center justify-center lg:flex">
@@ -96,7 +96,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--brand-primary)] bg-[rgba(234,246,255,0.9)] p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[rgba(10,180,255,0.12)] hover:text-[var(--brand-cyan-bright)] dark:bg-[#081120]"
+                className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[rgba(10,180,255,0.12)] hover:text-[var(--brand-cyan-bright)] dark:bg-[#081120]"
                 aria-label="Toggle menu"
                 type="button"
               >

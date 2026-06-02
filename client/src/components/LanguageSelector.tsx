@@ -10,7 +10,6 @@ export function LanguageSelector() {
 
   const ref = useRef<HTMLButtonElement>(null);
 
-  // 🎯 magnetic effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -27,7 +26,6 @@ export function LanguageSelector() {
     x.set(dx * 0.15);
     y.set(dy * 0.15);
 
-    // 🌌 glow position
     if (ref.current) {
       ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
       ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
@@ -72,26 +70,10 @@ export function LanguageSelector() {
         x: springX,
         y: springY,
       }}
-      className="
-        relative flex items-center gap-3
-        px-5 py-2.5 rounded-full
-        border border-[var(--brand-primary)]
-        bg-[var(--glass-bg)]
-        backdrop-blur-xl
-        transition-all duration-300
-        hover:border-[var(--brand-cyan-bright)]
-        hover:shadow-[var(--shadow-neon-blue)]
-        group
-        overflow-hidden
-      "
+      className="relative flex items-center gap-3 overflow-hidden rounded-full border border-[var(--brand-primary)] bg-transparent px-5 py-2.5 backdrop-blur-xl transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:shadow-[var(--shadow-neon-blue)] dark:bg-[var(--glass-bg)] group"
     >
-      {/* 🌌 GLOW DINÂMICO */}
       <span
-        className="
-          pointer-events-none absolute inset-0
-          opacity-0 group-hover:opacity-100
-          transition duration-300
-        "
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
         style={{
           background: `
             radial-gradient(
@@ -103,30 +85,15 @@ export function LanguageSelector() {
         }}
       />
 
-      {/* 🌍 FLAG */}
-      <div className="w-6 h-4 overflow-hidden rounded-sm relative z-10 flex-shrink-0 shadow-sm">
-        <img 
-          src={flagSrc} 
-          alt={lang === "pt" ? "Português" : "English"} 
-          className="w-full h-full object-cover"
-        />
+      <div className="relative z-10 h-4 w-6 flex-shrink-0 overflow-hidden rounded-sm shadow-sm">
+        <img src={flagSrc} alt={lang === "pt" ? "Português" : "English"} className="h-full w-full object-cover" />
       </div>
 
-      {/* TEXT */}
       <span className="relative z-10 text-xs font-black uppercase tracking-[0.2em] text-[var(--brand-primary)] transition-colors duration-300 group-hover:text-[var(--brand-cyan-bright)]">
         {lang}
       </span>
 
-      {/* ✨ ACTIVE GLOW */}
-      <motion.div
-        layoutId="lang-indicator"
-        className="
-          absolute inset-0 rounded-full
-          bg-primary/10
-          blur-md
-          -z-10
-        "
-      />
+      <motion.div layoutId="lang-indicator" className="absolute inset-0 -z-10 rounded-full bg-primary/10 blur-md dark:bg-primary/10" />
     </motion.button>
   );
 }
