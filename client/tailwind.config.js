@@ -42,32 +42,39 @@ export default {
         heading: ["Sora", "Inter", "sans-serif"],
       },
 
-      // 💎 sombras suaves
       boxShadow: {
         soft: "0 10px 30px rgba(0,0,0,0.08)",
         medium: "0 20px 60px rgba(0,0,0,0.12)",
       },
 
-      // 💎 radius consistente
       borderRadius: {
         xl: "12px",
         "2xl": "16px",
       },
 
-      // 💎 easing premium
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.4, 0, 0.2, 1)",
       },
-      
+
       willChange: {
         transform: "transform",
       },
-      // 💎 spacing mais respirado
+
       spacing: {
         18: "4.5rem",
         22: "5.5rem",
       },
 
+      // ── Animações ──────────────────────────────────────────
+      keyframes: {
+        fadeIn: {
+          from: { opacity: "0", transform: "translateY(8px)" },
+          to:   { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards",
+      },
     },
   },
 
