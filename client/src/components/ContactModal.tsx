@@ -302,15 +302,20 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     ].join(" ");
   };
 
-const baseSelectClass = (field: keyof FormData) => `${fieldClass(field)} contact-modal-select cursor-pointer appearance-none pr-10`;
+  const baseSelectClass = (field: keyof FormData, hasValue: boolean) =>
+    `${fieldClass(field)} contact-modal-select ${hasValue ? "is-filled" : "is-placeholder"} cursor-pointer appearance-none pr-10`;
 
-const sourceSelectClass = `${baseSelectClass("source")} ${
-  formData.source ? "text-[var(--brand-offwhite)]" : "text-[rgba(0,209,255,0.62)]"
-}`;
-
-const topicSelectClass = `${baseSelectClass("topic")} ${
-  formData.topic ? "text-[var(--brand-offwhite)]" : "text-[rgba(0,209,255,0.62)]"
-}`;
+  const sourceSelectClass = baseSelectClass("source", Boolean(formData.source));
+  const topicSelectClass = baseSelectClass("topic", Boolean(formData.topic));
+  const labelClass = "font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
+  const requiredMark = <span className="ml-1 text-[var(--brand-purple)]">*</span>;
+  const requiredFieldsLabel = lang === "en" ? "Required fields" : "Campos obrigatórios";
+  const requiredLabel = (label: string) => (
+    <>
+      {label.replace(" *", "")}
+      {requiredMark}
+    </>
+  );
 
   const statusNode = useMemo(() => {
     if (submitState === "idle") return null;
@@ -365,13 +370,13 @@ const topicSelectClass = `${baseSelectClass("topic")} ${
           <form onSubmit={handleSubmit} className="relative z-10 space-y-4" noValidate>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5 sm:col-span-1">
-                <label htmlFor="contact-name" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.name}</label>
+                <label htmlFor="contact-name" className={labelClass}>{requiredLabel(text.labels.name)}</label>
                 <input id="contact-name" name="name" type="text" autoComplete="name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} onBlur={() => handleBlur("name")} placeholder={text.placeholders.name} className={fieldClass("name")} aria-required="true" aria-invalid={Boolean(touched.name && errors.name)} aria-describedby={errors.name ? "contact-name-error" : undefined} disabled={submitState === "loading"} />
                 {touched.name && errors.name && <p id="contact-name-error" className="text-xs text-red-300">{errors.name}</p>}
               </div>
 
               <div className="space-y-1.5 sm:col-span-1">
-                <label htmlFor="contact-email" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.email}</label>
+                <label htmlFor="contact-email" className={labelClass}>{requiredLabel(text.labels.email)}</label>
                 <input id="contact-email" name="email" type="email" autoComplete="email" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} onBlur={() => handleBlur("email")} placeholder={text.placeholders.email} className={fieldClass("email")} aria-required="true" aria-invalid={Boolean(touched.email && errors.email)} aria-describedby={errors.email ? "contact-email-error" : undefined} disabled={submitState === "loading"} />
                 {touched.email && errors.email && <p id="contact-email-error" className="text-xs text-red-300">{errors.email}</p>}
               </div>
@@ -379,41 +384,18 @@ const topicSelectClass = `${baseSelectClass("topic")} ${
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <label htmlFor="contact-phone" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.phone}</label>
-                <input id="contact-phone" name="phone" type="tel" autoComplete="tel" value={formData.phone} onChange={(e) => handleChange("phone", e.target.value)} onBlur={() => handleBlur("phone")} placeholder={text.placeholders.phone} className={fieldClass("phone")} aria-invalid={Boolean(touched.phone && errors.phone)} disabled={submitState === "loading"} />
-              </div>
-
-              <div className="space-y-1.5">
-                <label htmlFor="contact-company" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.company}</label>
-                <input id="contact-company" name="company" type="text" autoComplete="organization" value={formData.company} onChange={(e) => handleChange("company", e.target.value)} onBlur={() => handleBlur("company")} placeholder={text.placeholders.company} className={fieldClass("company")} aria-invalid={Boolean(touched.company && errors.company)} disabled={submitState === "loading"} />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="space-y-1.5">
-                <label htmlFor="contact-source" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.source}</label>
+                <label htmlFor="contact-topic" className={labelClass}>{requiredLabel(text.labels.topic)}</label>
                 <div className="relative">
-                  <select id="contact-source" name="source" value={formData.source} onChange={(e) => handleChange("source", e.target.value)} onBlur={() => handleBlur("source")} className={sourceSelectClass} disabled={submitState === "loading"}>
-                    <option value="" disabled>{text.placeholders.source}</option>
-                    {sourceOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
-                  </select>
-                  <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
-                </div>
-              </div>
-
-              <div className="space-y-1.5">
-                <label htmlFor="contact-topic" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.topic}</label>
-                <div className="relative">
-                  <select 
-                    id="contact-topic" 
-                    name="topic" 
-                    value={formData.topic} 
-                    onChange={(e) => handleChange("topic", e.target.value)} 
-                    onBlur={() => handleBlur("topic")} 
-                    className={topicSelectClass} 
-                    aria-required="true" 
-                    aria-invalid={Boolean(touched.topic && errors.topic)} 
-                    aria-describedby={errors.topic ? "contact-topic-error" : undefined} 
+                  <select
+                    id="contact-topic"
+                    name="topic"
+                    value={formData.topic}
+                    onChange={(e) => handleChange("topic", e.target.value)}
+                    onBlur={() => handleBlur("topic")}
+                    className={topicSelectClass}
+                    aria-required="true"
+                    aria-invalid={Boolean(touched.topic && errors.topic)}
+                    aria-describedby={errors.topic ? "contact-topic-error" : undefined}
                     disabled={submitState === "loading"}
                   >
                     <option value="" disabled hidden>{text.placeholders.topic}</option>
@@ -423,17 +405,44 @@ const topicSelectClass = `${baseSelectClass("topic")} ${
                 </div>
                 {touched.topic && errors.topic && <p id="contact-topic-error" className="text-xs text-red-300">{errors.topic}</p>}
               </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="contact-phone" className={labelClass}>{text.labels.phone}</label>
+                <input id="contact-phone" name="phone" type="tel" autoComplete="tel" value={formData.phone} onChange={(e) => handleChange("phone", e.target.value)} onBlur={() => handleBlur("phone")} placeholder={text.placeholders.phone} className={fieldClass("phone")} aria-invalid={Boolean(touched.phone && errors.phone)} disabled={submitState === "loading"} />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div className="space-y-1.5">
+                <label htmlFor="contact-company" className={labelClass}>{text.labels.company}</label>
+                <input id="contact-company" name="company" type="text" autoComplete="organization" value={formData.company} onChange={(e) => handleChange("company", e.target.value)} onBlur={() => handleBlur("company")} placeholder={text.placeholders.company} className={fieldClass("company")} aria-invalid={Boolean(touched.company && errors.company)} disabled={submitState === "loading"} />
+              </div>
+
+              <div className="space-y-1.5">
+                <label htmlFor="contact-source" className={labelClass}>{text.labels.source}</label>
+                <div className="relative">
+                  <select id="contact-source" name="source" value={formData.source} onChange={(e) => handleChange("source", e.target.value)} onBlur={() => handleBlur("source")} className={sourceSelectClass} disabled={submitState === "loading"}>
+                    <option value="" disabled>{text.placeholders.source}</option>
+                    {sourceOptions[lang].map((option) => <option key={option} value={option}>{option}</option>)}
+                  </select>
+                  <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+                </div>
+              </div>
             </div>
 
             <div className="space-y-1.5">
-              <label htmlFor="contact-message" className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]">{text.labels.message}</label>
+              <label htmlFor="contact-message" className={labelClass}>{requiredLabel(text.labels.message)}</label>
               <textarea id="contact-message" name="message" rows={5} value={formData.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} placeholder={text.placeholders.message} className={`${fieldClass("message")} resize-none`} aria-required="true" aria-invalid={Boolean(touched.message && errors.message)} aria-describedby={errors.message ? "contact-message-error" : undefined} disabled={submitState === "loading"} />
               {touched.message && errors.message && <p id="contact-message-error" className="text-xs text-red-300">{errors.message}</p>}
             </div>
 
-            <TurnstileWidget theme="dark" onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }} />
+            <TurnstileWidget theme="dark" showLoadError={hasSubmitted} onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }} />
 
             <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
+
+            <p className="text-[11px] text-[rgba(234,246,255,0.4)]">
+              <span className="text-[var(--brand-purple)]">*</span> {requiredFieldsLabel}
+            </p>
 
             <div className="pt-2">
               <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>

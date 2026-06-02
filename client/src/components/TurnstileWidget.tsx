@@ -9,6 +9,7 @@ interface TurnstileWidgetProps {
   onVerify: (token: string) => void;
   onError?: () => void;
   onExpire?: () => void;
+  showLoadError?: boolean;
   theme?: "light" | "dark";
 }
 
@@ -80,7 +81,7 @@ function loadTurnstileScript(): Promise<void> {
   });
 }
 
-export default function TurnstileWidget({ onVerify, onError, onExpire, theme = "light" }: TurnstileWidgetProps) {
+export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadError = true, theme = "light" }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const callbacksRef = useRef({ onVerify, onError, onExpire });
@@ -137,7 +138,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, theme = "
   return (
     <div className="my-4 flex justify-center">
       <div ref={containerRef} />
-      {failedToLoad && (
+      {failedToLoad && showLoadError && (
         <p className="rounded-xl border border-red-300/40 bg-red-500/10 px-4 py-3 text-center text-xs text-red-100">
           Não foi possível carregar a verificação de segurança. Verifique bloqueadores de scripts ou tente novamente.
         </p>

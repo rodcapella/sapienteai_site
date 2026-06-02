@@ -265,13 +265,11 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   const inputClass =
     "w-full rounded-xl border border-[rgba(0,209,255,0.28)] bg-[linear-gradient(145deg,rgba(5,8,27,0.86),rgba(16,24,46,0.62))] px-4 py-3 text-sm text-[var(--brand-offwhite)] placeholder:text-[rgba(0,209,255,0.62)] outline-none transition-all duration-300 hover:border-[rgba(0,209,255,0.58)] hover:shadow-[0_0_18px_rgba(0,209,255,0.2)] focus:shadow-[0_0_0_1px_rgba(0,209,255,0.7),0_0_26px_rgba(0,209,255,0.28)] focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]";
 
-  const sourceSelectClass = `${inputClass} contact-modal-select cursor-pointer appearance-none pr-10 ${
-    formData.source ? "text-[var(--brand-offwhite)]" : "text-[rgba(0,209,255,0.62)]"
-  }`;
+  const sourceSelectClass = `${inputClass} contact-modal-select ${formData.source ? "is-filled" : "is-placeholder"} cursor-pointer appearance-none pr-10`;
 
   const labelClass = "block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
   const optionalClass = "ml-1.5 text-[rgba(234,246,255,0.45)]";
-  const requiredMark = <span className="ml-1 text-white">*</span>;
+  const requiredMark = <span className="ml-1 text-[var(--brand-purple)]">*</span>;
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && closeModal()}>
@@ -358,6 +356,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
 
               <TurnstileWidget
                 theme="dark"
+                showLoadError={hasSubmitted}
                 onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }}
                 onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }}
                 onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }}
@@ -372,7 +371,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
               </AnimatePresence>
 
               <p className="text-[11px] text-[rgba(234,246,255,0.4)]">
-                <span className="text-[#FF4D4D]">*</span> {text.requiredFields}
+                <span className="text-[var(--brand-purple)]">*</span> {text.requiredFields}
               </p>
 
               <PremiumButton type="submit" variant="primary" size="md" className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}>
