@@ -54,7 +54,7 @@ export default function Header({ onContactClick }: HeaderProps) {
       <header
         className={cn(
           "fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500",
-          "border-[var(--brand-purple)]/24 bg-[color-mix(in_srgb,var(--section-ice)_90%,var(--brand-purple)_10%)] text-[var(--brand-night)] backdrop-blur-xl dark:border-[var(--brand-primary)]/30 dark:bg-[#001547]/92 dark:text-[var(--brand-primary)]",
+          "border-[var(--brand-purple)]/28 bg-[color-mix(in_srgb,var(--section-ice)_92%,var(--brand-purple)_8%)] text-[var(--brand-night)] backdrop-blur-xl dark:border-[var(--brand-primary)]/30 dark:bg-[#001547]/92 dark:text-[var(--brand-primary)]",
           scrolled
             ? "bg-[color-mix(in_srgb,var(--section-ice)_96%,var(--brand-purple)_4%)] shadow-[0_18px_40px_rgba(8,18,40,0.10)] backdrop-blur-2xl dark:bg-[#001547]/96 dark:shadow-[0_18px_60px_rgba(0,21,71,0.42)]"
             : "dark:bg-[#001547]/92",

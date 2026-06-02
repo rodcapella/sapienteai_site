@@ -99,6 +99,7 @@
 
 .faq-sidebar-title {
   margin-bottom: 16px;
+  font-size: 14px;
   color: color-mix(in srgb, var(--brand-night) 32%, transparent);
 }
 
@@ -118,7 +119,7 @@
   background: transparent;
   padding: 10px 14px;
   font-family: var(--font-body);
-  font-size: 14px !important;
+  font-size: 16px !important;
   font-weight: 700;
   color: color-mix(in srgb, var(--brand-night) 54%, transparent);
   cursor: pointer;
@@ -154,6 +155,7 @@
 
 .faq-group-title {
   margin-bottom: 20px;
+  font-size: 14px;
 }
 
 .faq-list {
@@ -204,21 +206,21 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  border: 1px solid color-mix(in srgb, var(--brand-purple) 34%, transparent);
+  border: 1px solid color-mix(in srgb, #00D1FF 64%, transparent);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--brand-purple) 5%, transparent);
-  color: color-mix(in srgb, var(--brand-purple) 74%, var(--brand-night));
+  background: #00D1FF;
+  color: var(--brand-night);
   font-size: 18px !important;
   font-weight: 300;
-  box-shadow: 0 8px 18px color-mix(in srgb, var(--brand-purple) 10%, transparent);
+  box-shadow: 0 8px 18px color-mix(in srgb, #00D1FF 18%, transparent);
   transition: all .3s ease;
 }
 
 .faq-item.open .faq-q-icon {
-  border-color: var(--brand-purple);
-  background: color-mix(in srgb, var(--brand-purple) 12%, var(--section-ice));
-  color: var(--brand-purple);
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-purple) 18%, transparent);
+  border-color: #00D1FF;
+  background: #00D1FF;
+  color: var(--brand-night);
+  box-shadow: 0 10px 24px color-mix(in srgb, #00D1FF 24%, transparent);
   transform: rotate(45deg);
 }
 
@@ -238,7 +240,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 1.85;
-  color: color-mix(in srgb, var(--brand-night) 62%, transparent);
+  color: var(--brand-ink);
 }
 
 .faq-illustration {

@@ -4,6 +4,7 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { useState } from "react";
 import { Link } from "wouter";
+import { cn } from "@/lib/utils";
 
 type FinalCTAProps = {
   title: string;
@@ -34,15 +35,15 @@ export function FinalCTA({ title, title_highlight, description, description_high
 
   return (
     <>
-      <Section className="final-cta relative overflow-hidden py-24 text-center md:py-36">
+      <Section className={cn("final-cta relative overflow-hidden py-24 md:py-36", isHomeVariant ? "text-center" : "text-left")}>
         <div className="pointer-events-none absolute inset-0">
           <img src={backgroundSrc} alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-4xl px-6 text-center sm:px-10">
+        <div className={cn("relative z-10 mx-auto w-full max-w-4xl px-6 sm:px-10", isHomeVariant ? "text-center" : "text-left")}>
           <Reveal>
             <h2
-              className="mx-auto max-w-4xl font-black leading-[1.08] tracking-normal"
+              className={cn("max-w-4xl font-black leading-[1.08] tracking-normal", isHomeVariant && "mx-auto")}
               style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#000000", fontSize: titleFontSize }}
             >
               {title}
@@ -60,7 +61,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           {description && (
             <Reveal delay={110}>
               <p
-                className="mx-auto mt-7 max-w-5xl font-medium leading-relaxed"
+                className={cn("mt-7 max-w-5xl font-medium leading-relaxed", isHomeVariant && "mx-auto")}
                 style={{ fontFamily: "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#001547", fontSize: descriptionFontSize }}
               >
                 {description}
@@ -77,7 +78,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           )}
 
           <Reveal delay={220}>
-            <div className="mt-12 flex justify-center">
+            <div className={cn("mt-12 flex", isHomeVariant ? "justify-center" : "justify-start")}>
               {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </div>
           </Reveal>
