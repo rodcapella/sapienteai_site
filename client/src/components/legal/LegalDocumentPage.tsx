@@ -83,7 +83,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const heroLabel = content.label || pageTitle;
   const heroTitle = usesStatementHero ? content.subtitle || content.title : content.title;
   const heroSubtitle = usesStatementHero ? content.lastUpdated || content.title : content.subtitle || content.lastUpdated;
-  const legalCopy = lang === "en" ? { sidebar: "Topics", group: "Document details", document: "Legal document" } : { sidebar: "Tópicos", group: "Detalhes do documento", document: "Documento legal" };
+  const legalCopy = lang === "en" ? { sidebar: "Topics", group: "Document details" } : { sidebar: "Tópicos", group: "Detalhes do documento" };
   const sections = useMemo(
     () =>
       content.sections.map((section, index) => ({
@@ -139,13 +139,6 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
           <Reveal delay={80}>
             <div className="legal-content">
-              <div className="legal-document-card">
-                <span className="legal-section-label">{legalCopy.document}</span>
-                <h2>{content.title}</h2>
-                <p>{content.subtitle || fallbackDescription}</p>
-                {content.lastUpdated && <small>{content.lastUpdated}</small>}
-              </div>
-
               <div className="legal-group-title">{legalCopy.group}</div>
               <div className="legal-list">
                 {sections.map((section) => {

@@ -55,21 +55,23 @@ export default function Footer() {
         <img src="/media/bg/bg_footer.png" alt="" className="h-full w-full object-cover" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 py-5 md:py-7">
-        <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
+      <div className="container relative z-10 mx-auto px-6 py-3 md:py-4">
+        <div className="mb-3 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
 
+          {/* Logo + Description */}
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
             <div className="mb-1 inline-block">
-              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-28 w-auto object-contain md:h-32" />
+              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-20 w-auto object-contain md:h-24" />
             </div>
             <p className="max-w-sm font-serif text-[16px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.description")}
             </p>
           </div>
 
+          {/* Navegação */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.navigation")}</p>
-            <ul className="mt-7 space-y-5">
+            <ul className="mt-3 space-y-2.5">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
                 { href: `/${lang}/about`, label: t("nav.about") },
@@ -86,9 +88,10 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Legal */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.legal")}</p>
-            <ul className="mt-7 space-y-5">
+            <ul className="mt-3 space-y-2.5">
               {[
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
                 { href: `/${lang}/privacy`, label: t("footer.privacy") },
@@ -104,9 +107,10 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Contacto */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.contact")}</p>
-            <ul className="mt-7 space-y-5">
+            <ul className="mt-3 space-y-2.5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
@@ -130,33 +134,49 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Newsletter + Siga-nos */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.newsletter")}</p>
-            <p className="mb-4 mt-7 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
+            <p className="mb-3 mt-3 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.newsletterDescription")}
             </p>
-            <PremiumButton onClick={() => setIsNewsletterOpen(true)} className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]" variant="secondary">
+            <PremiumButton
+              onClick={() => setIsNewsletterOpen(true)}
+              className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
+              variant="secondary"
+            >
               {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
             </PremiumButton>
+
+            {/* Siga-nos — moved here from bottom section */}
+            <div className="mt-4">
+              <p className="mb-2 font-serif text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
+                {lang === "pt" ? "Siga-nos" : "Follow us"}
+              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
+                      aria-label={social.name}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
 
         </div>
 
-        <div className="flex flex-col items-center gap-4 pt-3">
-          <p className="font-serif text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
-            {lang === "pt" ? "Siga-nos" : "Follow us"}
-          </p>
-          <div className="flex items-center justify-center gap-2">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a key={social.name} href={social.url} className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]" aria-label={social.name} target="_blank" rel="noopener noreferrer nofollow">
-                  <Icon className="h-3.5 w-3.5" />
-                </a>
-              );
-            })}
-          </div>
-
+        {/* Bottom bar — copyright only */}
+        <div className="flex flex-col items-center gap-2 pt-2">
           <div className="h-px w-full bg-[linear-gradient(90deg,#050816,#004aad,#050816)]" />
           <p className="text-center font-serif text-[9px] italic font-black uppercase tracking-[0.24em] text-[#FFFFFF]">
             {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">{t("footer.sitemap")}</Link> |
@@ -164,7 +184,12 @@ export default function Footer() {
         </div>
       </div>
 
-      <button type="button" onClick={scrollToTop} aria-label="Back to top" className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]">
+      <button
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
+      >
         <Icons.ArrowUp className="h-3.5 w-3.5" />
       </button>
 

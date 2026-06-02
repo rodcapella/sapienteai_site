@@ -268,7 +268,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   const sourceSelectClass = `${inputClass} contact-modal-select ${formData.source ? "is-filled" : "is-placeholder"} cursor-pointer appearance-none pr-10`;
 
   const labelClass = "block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
-  const optionalClass = "ml-1.5 text-[rgba(234,246,255,0.45)]";
+  const optionalClass = "ml-1.5 text-[rgba(234,246,255,0.85)]";
   const requiredMark = <span className="ml-1 text-[var(--brand-purple)]">*</span>;
 
   return (
