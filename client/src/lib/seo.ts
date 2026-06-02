@@ -128,7 +128,7 @@ export const organizationSchema = {
   'contactPoint': {
     '@type': 'ContactPoint',
     'contactType': 'Customer Service',
-    'email': 'sapiente.ai.oficial@gmail.com',
+    'email': 'contato@sapienteai.com',
   },
   'areaServed': ['BR', 'PT'],
   'knowsAbout': [
@@ -200,7 +200,7 @@ export const localBusinessSchema = {
   'contactPoint': {
     '@type': 'ContactPoint',
     'contactType': 'Customer Service',
-    'email': 'sapiente.ai.oficial@gmail.com',
+    'email': 'contato@sapienteai.com',
     'availableLanguage': ['pt-BR', 'pt-PT', 'en'],
   },
   'areaServed': [

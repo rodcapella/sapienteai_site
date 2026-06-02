@@ -49,7 +49,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
               {title_highlight && (
                 <>
                   <br />
-                  <span className={isHomeVariant ? "!text-white" : "!text-[#0A84FF]"} style={{ display: "inline", fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", fontSize: titleFontSize, fontWeight: 900, lineHeight: 1.08 }}>
+                  <span className={isHomeVariant ? "!text-[#00D1FF]" : "!text-[#0A84FF]"} style={{ display: "inline", fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", fontSize: titleFontSize, fontWeight: 900, lineHeight: 1.08 }}>
                     {title_highlight}
                   </span>
                 </>
@@ -67,7 +67,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
                 {description_highlight && (
                   <>
                     <br />
-                    <span className={isHomeVariant ? "font-black text-white" : "font-black text-[#0A84FF]"} style={{ fontFamily: "'Inter', sans-serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
+                    <span className={isHomeVariant ? "font-black text-[#00D1FF]" : "font-black text-[#0A84FF]"} style={{ fontFamily: "'Inter', sans-serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
                       {description_highlight}
                     </span>
                   </>

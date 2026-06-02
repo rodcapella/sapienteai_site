@@ -54,10 +54,10 @@ export default function Header({ onContactClick }: HeaderProps) {
       <header
         className={cn(
           "fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500",
-          "border-[var(--brand-purple)]/24 bg-transparent text-[var(--brand-primary)] backdrop-blur-xl dark:border-[var(--brand-primary)]/30 dark:text-[var(--brand-primary)]",
+          "border-[var(--brand-purple)]/24 bg-[color-mix(in_srgb,var(--section-ice)_90%,var(--brand-purple)_10%)] text-[var(--brand-night)] backdrop-blur-xl dark:border-[var(--brand-primary)]/30 dark:bg-[#001547]/92 dark:text-[var(--brand-primary)]",
           scrolled
-            ? "shadow-[0_18px_40px_rgba(8,18,40,0.10)] backdrop-blur-2xl dark:bg-[#050B16]/96 dark:shadow-[0_18px_60px_rgba(0,0,0,0.65)]"
-            : "dark:bg-[#050B16]/92",
+            ? "bg-[color-mix(in_srgb,var(--section-ice)_96%,var(--brand-purple)_4%)] shadow-[0_18px_40px_rgba(8,18,40,0.10)] backdrop-blur-2xl dark:bg-[#001547]/96 dark:shadow-[0_18px_60px_rgba(0,21,71,0.42)]"
+            : "dark:bg-[#001547]/92",
         )}
       >
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
@@ -106,9 +106,9 @@ export default function Header({ onContactClick }: HeaderProps) {
           </nav>
 
           {isMobileMenuOpen && (
-            <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[color-mix(in_srgb,var(--section-ice)_94%,transparent)] p-6 pt-28 text-[var(--brand-night)] backdrop-blur-2xl dark:bg-[#050d24]/98 dark:text-white lg:hidden">
+            <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[color-mix(in_srgb,var(--section-ice)_94%,transparent)] p-6 pt-28 text-[var(--brand-night)] backdrop-blur-2xl dark:bg-[#050d24]/98 dark:text-[var(--brand-offwhite)] lg:hidden">
               <div className="mb-8 flex items-center justify-between border-b border-[var(--brand-purple)]/20 pb-6 dark:border-white/10">
-                <span className="text-xs font-black uppercase tracking-widest text-[var(--brand-night)]/45 dark:text-white/40">{t("nav.language") || "Language"}</span>
+                <span className="text-xs font-black uppercase tracking-widest text-[var(--brand-night)]/45 dark:text-[var(--brand-offwhite)]/40">{t("nav.language") || "Language"}</span>
                 <LanguageSelector />
               </div>
 

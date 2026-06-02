@@ -31,6 +31,8 @@ export default function Services(_props: { lang?: string }) {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
+        image="/media/bg/servicos/bg_Servicos.png"
+        imageAlt="Sapiente.AI"
         compact
       />
 

@@ -159,7 +159,7 @@ export default function About() {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
-        image="/media/bg/bg_Sobre_nos.png"
+        image="/media/bg/sobre/bg_Sobre_nos.png"
         imageAlt="Sapiente.AI"
       />
 

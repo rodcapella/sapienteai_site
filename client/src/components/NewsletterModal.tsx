@@ -40,8 +40,8 @@ const INITIAL_FORM: NewsletterFormData = {
 };
 
 const sourceOptions = {
-  pt: ["LinkedIn", "Google", "X", "Pinterest", "TikTok", "Instagram", "Indicação", "Eventos", "Newsletter", "Outros"],
-  en: ["LinkedIn", "Google", "X", "Pinterest", "TikTok", "Instagram", "Referral", "Events", "Newsletter", "Other"],
+  pt: ["Eventos", "Google", "Indicação", "Instagram", "LinkedIn", "Newsletter", "Pesquisa Orgânica", "Pinterest", "TikTok", "X", "Outros"],
+  en: ["Events", "Google", "Instagram", "LinkedIn", "Newsletter", "Organic Search", "Pinterest", "Referral", "TikTok", "X", "Other"],
 };
 
 const modalText = {
@@ -215,7 +215,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       payload.append("_captcha", "false");
       payload.append("_template", "table");
 
-      const response = await fetch("https://formsubmit.co/sapiente.ai.oficial@gmail.com", {
+      const response = await fetch("https://formsubmit.co/contato@sapienteai.com", {
         method: "POST",
         body: payload,
       });

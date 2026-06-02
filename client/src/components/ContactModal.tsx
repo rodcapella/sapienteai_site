@@ -45,13 +45,13 @@ const INITIAL_FORM: FormData = {
 const requiredFields: (keyof FormData)[] = ["name", "email", "topic", "message"];
 
 const sourceOptions = {
-  pt: ["LinkedIn", "Google", "X", "Pinterest", "TikTok", "Instagram", "Indicação", "Eventos", "Newsletter", "Outros"],
-  en: ["LinkedIn", "Google", "X", "Pinterest", "TikTok", "Instagram", "Referral", "Events", "Newsletter", "Other"],
+  pt: ["Eventos", "Google", "Indicação", "Instagram", "LinkedIn", "Newsletter", "Pesquisa Orgânica", "Pinterest", "TikTok", "X", "Outros"],
+  en: ["Events", "Google", "Instagram", "LinkedIn", "Newsletter", "Organic Search", "Pinterest", "Referral", "TikTok", "X", "Other"],
 };
 
 const topicOptions = {
-  pt: ["Contacto", "Dúvidas", "Parcerias", "Projeto digital", "Automação", "Marketing e redes sociais", "Outros"],
-  en: ["Contact", "Questions", "Partnerships", "Digital project", "Automation", "Marketing and social media", "Other"],
+  pt: ["Automação", "Contacto", "Criação de conteúdo", "Dados & BI", "Diagnóstico de negócio", "Dúvidas", "Marketing e redes sociais", "Parcerias", "Projeto digital", "Outros"],
+  en: ["Automation", "Business diagnosis", "Contact", "Content creation", "Data & BI", "Digital project", "Marketing and social media", "Partnerships", "Questions", "Other"],
 };
 
 const modalText = {
@@ -261,7 +261,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       payload.append("_subject", `${text.subject} - ${formData.topic.trim()} - ${formData.name.trim()}`);
       payload.append("_captcha", "false");
 
-      const response = await fetch("https://formsubmit.co/sapiente.ai.oficial@gmail.com", {
+      const response = await fetch("https://formsubmit.co/contato@sapienteai.com", {
         method: "POST",
         body: payload,
       });
