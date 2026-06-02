@@ -39,7 +39,7 @@ const copy = {
     },
     links: {
       home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
-      about: ["Sobre nós", "A nossa visão, método de trabalho e forma de aplicar IA."],
+      about: ["Sobre Nós", "A nossa visão, método de trabalho e forma de aplicar IA."],
       services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
       faq: ["FAQ", "Respostas às perguntas mais frequentes sobre os nossos serviços."],
       quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],

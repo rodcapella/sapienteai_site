@@ -14,6 +14,13 @@ interface TurnstileWidgetProps {
 
 const TURNSTILE_SCRIPT_ID = "cloudflare-turnstile-script";
 const TURNSTILE_SITE_KEY = "0x4AAAAAAAKhKxc7Hs7SdKmG";
+const TURNSTILE_LOAD_RETRIES = 2;
+const TURNSTILE_RETRY_DELAY_MS = 900;
+const TURNSTILE_SCRIPT_TIMEOUT_MS = 5000;
+
+function wait(ms: number) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
 
 function loadTurnstileScript(): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -25,18 +32,49 @@ function loadTurnstileScript(): Promise<void> {
     const existingScript = document.getElementById(TURNSTILE_SCRIPT_ID) as HTMLScriptElement | null;
 
     if (existingScript) {
-      existingScript.addEventListener("load", () => resolve(), { once: true });
-      existingScript.addEventListener("error", () => reject(new Error("turnstile_script_failed")), { once: true });
-      return;
+      if (existingScript.dataset.failed === "true") {
+        existingScript.remove();
+      } else if (existingScript.dataset.loaded === "true") {
+        reject(new Error("turnstile_unavailable"));
+        return;
+      } else {
+        const timeoutId = window.setTimeout(() => reject(new Error("turnstile_script_timeout")), TURNSTILE_SCRIPT_TIMEOUT_MS);
+
+        existingScript.addEventListener("load", () => {
+          window.clearTimeout(timeoutId);
+          resolve();
+        }, { once: true });
+        existingScript.addEventListener("error", () => {
+          window.clearTimeout(timeoutId);
+          existingScript.dataset.failed = "true";
+          reject(new Error("turnstile_script_failed"));
+        }, { once: true });
+        return;
+      }
     }
 
     const script = document.createElement("script");
+    const timeoutId = window.setTimeout(() => {
+      script.dataset.failed = "true";
+      script.remove();
+      reject(new Error("turnstile_script_timeout"));
+    }, TURNSTILE_SCRIPT_TIMEOUT_MS);
+
     script.id = TURNSTILE_SCRIPT_ID;
     script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
     script.async = true;
     script.defer = true;
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error("turnstile_script_failed"));
+    script.onload = () => {
+      window.clearTimeout(timeoutId);
+      script.dataset.loaded = "true";
+      resolve();
+    };
+    script.onerror = () => {
+      window.clearTimeout(timeoutId);
+      script.dataset.failed = "true";
+      script.remove();
+      reject(new Error("turnstile_script_failed"));
+    };
 
     document.head.appendChild(script);
   });
@@ -54,23 +92,31 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, theme = "
     let cancelled = false;
 
     const renderWidget = async () => {
-      try {
-        setFailedToLoad(false);
-        await loadTurnstileScript();
+      setFailedToLoad(false);
 
-        if (cancelled || !window.turnstile || !containerRef.current || widgetIdRef.current) return;
+      for (let attempt = 0; attempt <= TURNSTILE_LOAD_RETRIES; attempt += 1) {
+        try {
+          await loadTurnstileScript();
 
-        const widgetId = window.turnstile.render(containerRef.current, {
-          sitekey: TURNSTILE_SITE_KEY,
-          theme,
-          callback: (token: string) => callbacksRef.current.onVerify(token),
-          "error-callback": () => callbacksRef.current.onError?.(),
-          "expired-callback": () => callbacksRef.current.onExpire?.(),
-        });
+          if (cancelled || !window.turnstile || !containerRef.current || widgetIdRef.current) return;
 
-        widgetIdRef.current = widgetId;
-      } catch {
-        if (!cancelled) {
+          const widgetId = window.turnstile.render(containerRef.current, {
+            sitekey: TURNSTILE_SITE_KEY,
+            theme,
+            callback: (token: string) => callbacksRef.current.onVerify(token),
+            "error-callback": () => callbacksRef.current.onError?.(),
+            "expired-callback": () => callbacksRef.current.onExpire?.(),
+          });
+
+          widgetIdRef.current = widgetId;
+          return;
+        } catch {
+          if (cancelled) return;
+          if (attempt < TURNSTILE_LOAD_RETRIES) {
+            await wait(TURNSTILE_RETRY_DELAY_MS);
+            continue;
+          }
+
           setFailedToLoad(true);
         }
       }

@@ -140,22 +140,23 @@ export default function About() {
   const lang = location.split("/")[1] || "pt";
 
   const content = getContent("about", lang);
+  const aboutLabel = lang === "pt" ? "Sobre Nós" : t("nav.about");
   const founders = content.founders;
   const members: Founder[] = founders.members;
 
   useEffect(() => {
     setSEOHead({
-      title: `${t('nav.about')} - SAPIENTE.AI`,
+      title: `${aboutLabel} - SAPIENTE.AI`,
       description: content.hero.title,
       url: `https://sapienteai.com/${lang}/about`,
       type: 'website'
     });
-  }, [lang, content, t]);
+  }, [lang, content, aboutLabel]);
 
   return (
     <div className="flex flex-col">
       <InternalHero
-        label={t("nav.about")}
+        label={aboutLabel}
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}

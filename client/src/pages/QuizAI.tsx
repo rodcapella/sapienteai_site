@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { quizContentEn } from "@/content/en/quiz";
 import { quizContentPt } from "@/content/pt/quiz";
 import { Icons } from "@/lib/icons";
@@ -153,6 +154,16 @@ export default function QuizAI() {
 
   return (
     <main className="quiz-ai-page">
+      <InternalHero
+        label={startIntro.badge}
+        title={startIntro.title}
+        highlight={startIntro.highlight}
+        subtitle={startIntro.subtitle}
+        image="/media/bg/servicos/bg_Servicos.png"
+        imageAlt="Sapiente.AI"
+        compact
+      />
+
       <section className="quiz-experience">
         <div className="quiz-bg-radials" />
 

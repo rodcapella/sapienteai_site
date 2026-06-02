@@ -46,7 +46,7 @@ export default function Footer() {
   const contactItems = [
     { icon: Icons.Mail, text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
     { icon: Icons.Phone, text: "+351 910 567 575", href: "https://wa.me/351910567575?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Sapiente.AI" },
-    { icon: Icons.MapPin, text: "Aveiro, Portugal" },
+    { icon: Icons.MapPin, text: "São João da  Madeira, Aveiro, Portugal" },
   ];
 
   return (
@@ -59,8 +59,8 @@ export default function Footer() {
         <div className="mb-5 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
 
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
-            <div className="mb-3 inline-block">
-              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-40 w-auto object-contain md:h-48" />
+            <div className="mb-1 inline-block">
+              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-28 w-auto object-contain md:h-32" />
             </div>
             <p className="max-w-sm font-serif text-[16px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.description")}

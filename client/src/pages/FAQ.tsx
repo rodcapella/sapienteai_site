@@ -4,6 +4,7 @@ import { useLocation } from "wouter";
 import { FAQContactCTA, type FAQCategory, type FAQItem } from "@/components/faq/FAQBlocks";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
+import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { setSEOHead } from "@/components/SEOHead";
 import { generateFAQSchema } from "@/lib/faqSchema";
@@ -56,29 +57,6 @@ function getFAQCopy(lang: string) {
       };
 }
 
-function FAQIllustration() {
-  return (
-    <svg viewBox="0 0 440 280" fill="none" xmlns="http://www.w3.org/2000/svg" className="faq-illustration" aria-hidden="true">
-      <rect x="20" y="20" width="280" height="80" rx="16" fill="var(--card)" stroke="rgba(122,92,252,0.22)" strokeWidth="1.5" />
-      <path d="M60 100 L48 118 L80 100Z" fill="var(--card)" stroke="rgba(122,92,252,0.22)" strokeWidth="1.5" />
-      <rect x="36" y="38" width="180" height="10" rx="5" fill="rgba(0,21,71,0.12)" />
-      <rect x="36" y="55" width="240" height="8" rx="4" fill="rgba(0,21,71,0.08)" />
-      <rect x="36" y="69" width="160" height="8" rx="4" fill="rgba(0,21,71,0.06)" />
-      <rect x="140" y="128" width="280" height="80" rx="16" fill="var(--brand-primary)" />
-      <path d="M370 128 L382 110 L354 128Z" fill="var(--brand-primary)" />
-      <rect x="156" y="146" width="200" height="10" rx="5" fill="rgba(255,255,255,0.32)" />
-      <rect x="156" y="163" width="240" height="8" rx="4" fill="rgba(255,255,255,0.22)" />
-      <rect x="156" y="177" width="180" height="8" rx="4" fill="rgba(255,255,255,0.16)" />
-      {[60, 130, 200, 270, 340].map((cx, index) => (
-        <g key={cx}>
-          <circle cx={cx} cy="230" r="22" fill={index === 2 ? "var(--brand-primary)" : "var(--card)"} stroke="rgba(122,92,252,0.16)" strokeWidth="1" />
-          <circle cx={cx} cy="230" r="6" fill={index === 2 ? "#EAF6FF" : "var(--brand-primary)"} opacity="0.88" />
-        </g>
-      ))}
-    </svg>
-  );
-}
-
 export default function FAQ() {
   const [location] = useLocation();
   const lang = location.split("/")[1] || "pt";
@@ -118,26 +96,15 @@ export default function FAQ() {
 
   return (
     <div className="faq-page flex flex-col">
-      <section className="faq-hero-card">
-        <div className="faq-hero-bg" />
-        <div className="faq-hero-grid" />
-        <div className="faq-hero-inner">
-          <Reveal>
-            <div>
-              <span className="faq-section-label">{pageCopy.label}</span>
-              <h1 className="faq-hero-title">
-                {pageCopy.title}
-                <br />
-                <span className="accent">{pageCopy.highlight}</span>
-              </h1>
-              <p className="faq-hero-sub">{pageCopy.subtitle}</p>
-            </div>
-          </Reveal>
-          <Reveal delay={120}>
-            <FAQIllustration />
-          </Reveal>
-        </div>
-      </section>
+      <InternalHero
+        label={pageCopy.label}
+        title={pageCopy.title}
+        highlight={pageCopy.highlight}
+        subtitle={pageCopy.subtitle}
+        image="/media/bg/servicos/bg_Servicos.png"
+        imageAlt="Sapiente.AI"
+        compact
+      />
 
       <section className="faq-main">
         <div className="faq-inner">
