@@ -26,11 +26,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
   const backgroundSrc = variant === "home" ? "/media/bg/bg_finalCTA_home.png" : variant === "about" ? "/media/bg/final_CTA_sobre.png" : "/media/bg/bg_finalCTA.png";
 
   const buttonElement = (
-    <PremiumButton
-      onClick={href ? undefined : () => setIsContactOpen(true)}
-      className="!bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white"
-      size="lg"
-    >
+    <PremiumButton onClick={href ? undefined : () => setIsContactOpen(true)} className="!bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white" size="lg">
       {button}
     </PremiumButton>
   );
@@ -42,50 +38,25 @@ export function FinalCTA({ title, title_highlight, description, description_high
           <img src={backgroundSrc} alt="" className="h-full w-full object-cover" />
         </div>
 
-        <div className={cn(
-          "relative z-10 mx-auto w-full",
-          isCentered
-            ? "max-w-4xl px-6 sm:px-10 text-center"
-            : "max-w-5xl px-4 sm:px-7 text-left"
-        )}>
+        <div className={cn("relative z-10 mx-auto w-full", isCentered ? "max-w-4xl px-6 sm:px-10 text-center" : "max-w-5xl px-1 sm:px-2 text-left")}>
           <Reveal>
-            <h2
-              className={cn("max-w-4xl font-black leading-[1.08] tracking-normal", isCentered && "mx-auto")}
-              style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#000000", fontSize: titleFontSize }}
-            >
+            <h2 className={cn("max-w-4xl font-black leading-[1.08] tracking-normal", isCentered && "mx-auto")} style={{ fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#000000", fontSize: titleFontSize }}>
               {title}
-              {title_highlight && (
-                <>
-                  <br />
-                  <span className={isHomeVariant ? "!text-[#00D1FF]" : "!text-[#0A84FF]"} style={{ display: "inline", fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", fontSize: titleFontSize, fontWeight: 900, lineHeight: 1.08 }}>
-                    {title_highlight}
-                  </span>
-                </>
-              )}
+              {title_highlight && <><br /><span className={isHomeVariant ? "!text-[#00D1FF]" : "!text-[#0A84FF]"} style={{ display: "inline", fontFamily: isHomeVariant ? "'Playfair Display', serif" : "'Inter', sans-serif", fontSize: titleFontSize, fontWeight: 900 }}>{title_highlight}</span></>}
             </h2>
           </Reveal>
 
           {description && (
             <Reveal delay={110}>
-              <p
-                className={cn("mt-7 max-w-4xl font-medium leading-relaxed", isCentered && "mx-auto")}
-                style={{ fontFamily: "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#001547", fontSize: descriptionFontSize }}
-              >
+              <p className={cn("mt-7 max-w-4xl font-medium leading-relaxed", isCentered && "mx-auto")} style={{ fontFamily: "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#001547", fontSize: descriptionFontSize }}>
                 {description}
-                {description_highlight && (
-                  <>
-                    <br />
-                    <span className={isHomeVariant ? "font-black text-[#00D1FF]" : "font-black text-[#0A84FF]"} style={{ fontFamily: "'Inter', sans-serif", fontSize: descriptionFontSize, lineHeight: "inherit" }}>
-                      {description_highlight}
-                    </span>
-                  </>
-                )}
+                {description_highlight && <><br /><span className={isHomeVariant ? "font-black text-[#00D1FF]" : "font-black text-[#0A84FF]"}>{description_highlight}</span></>}
               </p>
             </Reveal>
           )}
 
           <Reveal delay={220}>
-            <div className={cn("mt-12 flex max-w-4xl", isCentered ? "justify-center mx-auto" : "justify-start")}>
+            <div className={cn("mt-12 flex", isCentered ? "justify-center mx-auto" : "justify-start ml-[140px]")}>
               {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </div>
           </Reveal>
