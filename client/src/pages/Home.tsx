@@ -38,6 +38,7 @@ function getHomeBannerSrc(lang: string, file: string) {
     "home_automacao_ia.png": "home_automacao_ia_en.png",
     "home_personalidade_marca.png": "home_personalidade_marca_en.png",
     "home_como_ajudamos_ai.png": "home_como_ajudamos_ai_en.png",
+    "home_marketing_digital_ia.png": "home_marketing_digital_ia_en.png",
   };
   const localizedFile = lang === "en" ? englishFileMap[file] || file : file;
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
