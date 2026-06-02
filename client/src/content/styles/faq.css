@@ -118,7 +118,7 @@
   background: transparent;
   padding: 10px 14px;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 14px !important;
   font-weight: 700;
   color: color-mix(in srgb, var(--brand-night) 54%, transparent);
   cursor: pointer;
@@ -191,7 +191,7 @@
 
 .faq-q-text {
   font-family: var(--font-heading);
-  font-size: 16px;
+  font-size: 16px !important;
   font-weight: 900;
   line-height: 1.4;
   color: var(--brand-night);
@@ -204,17 +204,21 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  border: 1px solid color-mix(in srgb, var(--brand-primary) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-purple) 34%, transparent);
   border-radius: 999px;
-  color: color-mix(in srgb, var(--brand-night) 45%, transparent);
-  font-size: 18px;
+  background: color-mix(in srgb, var(--brand-purple) 5%, transparent);
+  color: color-mix(in srgb, var(--brand-purple) 74%, var(--brand-night));
+  font-size: 18px !important;
   font-weight: 300;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--brand-purple) 10%, transparent);
   transition: all .3s ease;
 }
 
 .faq-item.open .faq-q-icon {
-  border-color: var(--brand-primary);
-  color: var(--brand-primary);
+  border-color: var(--brand-purple);
+  background: color-mix(in srgb, var(--brand-purple) 12%, var(--brand-offwhite));
+  color: var(--brand-purple);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-purple) 18%, transparent);
   transform: rotate(45deg);
 }
 

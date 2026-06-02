@@ -1,19 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useMemo, useState, type ComponentType } from "react";
 import { useLocation } from "wouter";
 
+import { setSEOHead } from "@/components/SEOHead";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
-import { setSEOHead } from "@/components/SEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { Section } from "@/components/ui/section/Section";
-import { SectionCard } from "@/components/ui/section/SectionCard";
 import { Icons } from "@/lib/icons";
+import "@/content/styles/legal.css";
 
 type LegalContentSection = {
+  id?: string;
   title: string;
   content: string | string[];
-  icon?: React.ComponentType<{ className?: string }>;
+  icon?: ComponentType<{ className?: string }>;
 };
 
 type LegalContent = {
@@ -83,6 +83,19 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const heroLabel = content.label || pageTitle;
   const heroTitle = usesStatementHero ? content.subtitle || content.title : content.title;
   const heroSubtitle = usesStatementHero ? content.lastUpdated || content.title : content.subtitle || content.lastUpdated;
+  const legalCopy = lang === "en" ? { sidebar: "Topics", group: "Document details", document: "Legal document" } : { sidebar: "Tópicos", group: "Detalhes do documento", document: "Documento legal" };
+  const sections = useMemo(
+    () =>
+      content.sections.map((section, index) => ({
+        ...section,
+        id: section.id || `section-${index}`,
+        Icon: section.icon || fallbackIcons[index % fallbackIcons.length],
+      })),
+    [content.sections],
+  );
+
+  const [openSection, setOpenSection] = useState(sections[0]?.id || "section-0");
+  const activeSection = sections.find((section) => section.id === openSection) || sections[0];
 
   useEffect(() => {
     setSEOHead({
@@ -93,77 +106,85 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
     });
   }, [lang, content, slug, fallbackDescription]);
 
+  useEffect(() => {
+    setOpenSection(sections[0]?.id || "section-0");
+  }, [sections]);
+
   return (
-    <div className="flex flex-col">
+    <div className="legal-page flex flex-col">
       <InternalHero label={heroLabel} title={heroTitle} highlight={content.highlight} subtitle={heroSubtitle} compact />
 
-      <Section className="relative overflow-hidden bg-[#EAF6FF] py-24 text-[#0A1024] md:py-36">
-        <div className="pointer-events-none absolute inset-0 opacity-[0.04] [background-image:linear-gradient(rgba(5,8,22,0.65)_1px,transparent_1px),linear-gradient(90deg,rgba(5,8,22,0.65)_1px,transparent_1px)] [background-size:34px_34px]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,209,255,0.16),transparent_42%)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,#7861FF,#00D1FF,transparent)]" />
-
-        <div className="relative z-10 container mx-auto px-6">
+      <section className="legal-main">
+        <div className="legal-main-bg" />
+        <div className="legal-inner">
           <Reveal>
-            <SectionCard className="relative mx-auto mb-12 max-w-5xl overflow-hidden rounded-[2rem] border border-[#7861FF]/55 bg-[#001547] p-7 text-center shadow-[0_18px_38px_rgba(1,32,80,0.18),0_0_20px_rgba(10,180,255,0.08)] md:p-9">
-              <div className="pointer-events-none absolute inset-0 opacity-[0.1] [background-image:linear-gradient(rgba(234,246,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(234,246,255,0.35)_1px,transparent_1px)] [background-size:28px_28px]" />
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#7861FF,#00D1FF,#0A84FF)]" />
-              <div className="relative z-10">
-                <p className="text-xs font-black uppercase tracking-[0.3em] text-[#00D1FF]">
-                  {lang === "pt" ? "Documento legal" : "Legal document"}
-                </p>
-                <p className="mx-auto mt-4 max-w-3xl text-base leading-relaxed text-[#EAF6FF]/84 md:text-lg">
-                  {content.subtitle || fallbackDescription}
-                </p>
+            <aside className="legal-sidebar">
+              <div className="legal-sidebar-title">{legalCopy.sidebar}</div>
+              <div className="legal-cats">
+                {sections.map((section, index) => {
+                  const isActive = section.id === activeSection?.id;
+                  const Icon = section.Icon;
+
+                  return (
+                    <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => setOpenSection(section.id)}>
+                      <Icon className="h-4 w-4" />
+                      <span>{section.title}</span>
+                      <span className="legal-cat-count">{index + 1}</span>
+                    </button>
+                  );
+                })}
               </div>
-            </SectionCard>
+            </aside>
           </Reveal>
 
-          <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
-            {content.sections.map((section, idx) => {
-              const Icon = section.icon || fallbackIcons[idx % fallbackIcons.length];
+          <Reveal delay={80}>
+            <div className="legal-content">
+              <div className="legal-document-card">
+                <span className="legal-section-label">{legalCopy.document}</span>
+                <h2>{content.title}</h2>
+                <p>{content.subtitle || fallbackDescription}</p>
+                {content.lastUpdated && <small>{content.lastUpdated}</small>}
+              </div>
 
-              return (
-                <Reveal key={`${section.title}-${idx}`} delay={idx * 45}>
-                  <SectionCard className="group h-full rounded-[2rem] border border-[#7861FF]/45 bg-[#001547] p-0 shadow-[0_18px_38px_rgba(1,32,80,0.16),0_0_18px_rgba(10,180,255,0.06)] transition-colors duration-300 hover:border-[#00D1FF]/65 hover:shadow-[0_20px_46px_rgba(10,132,255,0.12)]">
-                    <div className="relative h-full overflow-hidden rounded-[2rem] p-7 md:p-8">
-                      <div className="pointer-events-none absolute inset-0 opacity-[0.08] [background-image:linear-gradient(rgba(234,246,255,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(234,246,255,0.35)_1px,transparent_1px)] [background-size:30px_30px]" />
-                      <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,#7861FF,#00D1FF,#0A84FF)] opacity-90" />
-                      <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-[#00D1FF]/10 blur-3xl transition-colors duration-300 group-hover:bg-[#00D1FF]/16" />
+              <div className="legal-group-title">{legalCopy.group}</div>
+              <div className="legal-list">
+                {sections.map((section) => {
+                  const isOpen = openSection === section.id;
+                  const Icon = section.Icon;
 
-                      <div className="relative z-10 flex items-start gap-5">
-                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-[#7861FF]/45 bg-[#050816] text-[#00D1FF] shadow-[0_0_22px_rgba(0,209,255,0.18)]">
-                          <Icon className="h-7 w-7" />
+                  return (
+                    <div key={section.id} className={`legal-item ${isOpen ? "open" : ""}`}>
+                      <button type="button" className="legal-q" onClick={() => setOpenSection(isOpen ? "" : section.id)}>
+                        <span className="legal-q-main">
+                          <Icon className="legal-q-symbol" />
+                          <span className="legal-q-text">{section.title}</span>
+                        </span>
+                        <span className="legal-q-icon">+</span>
+                      </button>
+                      <div className="legal-a">
+                        <div className="legal-a-inner">
+                          {Array.isArray(section.content) ? (
+                            <ul>
+                              {section.content.map((item, index) => (
+                                <li key={index}>
+                                  <Icons.CheckCircle className="legal-check" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <p>{section.content}</p>
+                          )}
                         </div>
-
-                        <div>
-                          <h2 className="font-heading text-2xl font-black leading-tight tracking-tight text-[#EAF6FF] md:text-3xl">
-                            {section.title}
-                          </h2>
-                        </div>
-                      </div>
-
-                      <div className="relative z-10 mt-7 border-t border-[#7861FF]/35 pt-6 text-base font-medium leading-relaxed text-[#EAF6FF]/84 md:text-lg">
-                        {Array.isArray(section.content) ? (
-                          <ul className="space-y-4">
-                            {section.content.map((item, i) => (
-                              <li key={i} className="flex gap-3">
-                                <Icons.CheckCircle className="mt-1 h-5 w-5 shrink-0 text-[#00D1FF]" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          <p>{section.content}</p>
-                        )}
                       </div>
                     </div>
-                  </SectionCard>
-                </Reveal>
-              );
-            })}
-          </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
         </div>
-      </Section>
+      </section>
 
       <QuizCTA />
       <FinalCTA
