@@ -46,7 +46,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           "relative z-10 mx-auto w-full",
           isCentered
             ? "max-w-4xl px-6 sm:px-10 text-center"
-            : "max-w-6xl px-4 sm:px-7 text-left"
+            : "max-w-5xl px-4 sm:px-7 text-left"
         )}>
           <Reveal>
             <h2
@@ -68,7 +68,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           {description && (
             <Reveal delay={110}>
               <p
-                className={cn("mt-7 max-w-5xl font-medium leading-relaxed", isCentered && "mx-auto")}
+                className={cn("mt-7 max-w-4xl font-medium leading-relaxed", isCentered && "mx-auto")}
                 style={{ fontFamily: "'Inter', sans-serif", color: isHomeVariant ? "#FFFFFF" : "#001547", fontSize: descriptionFontSize }}
               >
                 {description}
@@ -85,10 +85,7 @@ export function FinalCTA({ title, title_highlight, description, description_high
           )}
 
           <Reveal delay={220}>
-            <div className={cn(
-              "mt-12 flex max-w-4xl",
-              isCentered ? "justify-center mx-auto" : "justify-start"
-            )}>
+            <div className={cn("mt-12 flex max-w-4xl", isCentered ? "justify-center mx-auto" : "justify-start")}>
               {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </div>
           </Reveal>
