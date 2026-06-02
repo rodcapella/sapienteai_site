@@ -191,7 +191,6 @@ export default function FAQ() {
       </section>
 
       <QuizCTA />
-      <FAQContactCTA lang={normalizedLang} />
       <FinalCTA
         title={content.cta.title}
         title_highlight={content.cta.title_highlight}
