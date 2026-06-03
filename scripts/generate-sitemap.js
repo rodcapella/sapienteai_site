@@ -15,6 +15,7 @@ const pages = [
   "/trust",
   "/generative-ai-policy",
   "/blog",
+  "/seo-geo-aeo-validator",
   "/sitemap"
 ];
 

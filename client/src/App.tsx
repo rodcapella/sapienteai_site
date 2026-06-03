@@ -17,6 +17,7 @@ const GenerativeAIPolicy = lazy(() => import("@/pages/GenerativeAIPolicy"));
 const Blog = lazy(() => import("@/pages/Blog"));
 const QuizAI = lazy(() => import("@/pages/QuizAI"));
 const Sitemap = lazy(() => import("@/pages/Sitemap"));
+const VisibilityValidator = lazy(() => import("@/pages/VisibilityValidator"));
 
 export default function App() {
   const [location, setLocation] = useLocation();
@@ -77,6 +78,7 @@ export default function App() {
           <Route path="/:lang/generative-ai-policy">{(params) => <GenerativeAIPolicy lang={params.lang} />}</Route>
           <Route path="/:lang/blog">{(params) => <Blog lang={params.lang} />}</Route>
           <Route path="/:lang/sitemap">{(params) => <Sitemap lang={params.lang} />}</Route>
+          <Route path="/:lang/seo-geo-aeo-validator"><VisibilityValidator /></Route>
 
           <Route path="/pt/quiz-ia"><QuizAI lang="pt" /></Route>
           <Route path="/pt/quiz-ai"><Redirect to="/pt/quiz-ia" /></Route>

@@ -43,6 +43,7 @@ const copy = {
       services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
       faq: ["FAQ", "Respostas às perguntas mais frequentes sobre os nossos serviços."],
       quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
+      validator: ["Validador SEO/GEO/AEO", "Diagnóstico preliminar da presença da marca em pesquisa, mapas e respostas de IA."],
       newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
       terms: ["Termos de Serviço", "Condições de utilização do site e dos nossos serviços."],
       privacy: ["Política de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
@@ -69,6 +70,7 @@ const copy = {
       services: ["Services", "Digital solutions, automation, marketing and applied AI for growth."],
       faq: ["FAQ", "Quick answers to the most common questions about our services."],
       quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
+      validator: ["SEO/GEO/AEO Validator", "Preliminary diagnosis of brand presence across search, maps, and AI answers."],
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
       terms: ["Terms of Service", "Terms of use for the website and services."],
       privacy: ["Privacy Policy", "How we collect, process, and protect personal data."],
@@ -157,6 +159,7 @@ export default function Sitemap() {
       links: [
         { title: l.faq[0], description: l.faq[1], href: makeLink(lang, "/faq") },
         { title: l.quiz[0], description: l.quiz[1], href: quizHref },
+        { title: l.validator[0], description: l.validator[1], href: makeLink(lang, "/seo-geo-aeo-validator") },
         { title: l.newsletter[0], description: l.newsletter[1], onClick: () => setIsNewsletterOpen(true) },
       ],
     },
