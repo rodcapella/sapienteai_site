@@ -79,7 +79,13 @@ export function FinalCTA({
               : "max-w-5xl px-0 text-left"
           )}
         >
-          <div className={cn(!isCentered && "max-w-4xl")}>
+          <div
+            className={cn(
+              !isCentered
+                ? "max-w-[840px]"
+                : "max-w-4xl mx-auto"
+            )}
+          >
             <Reveal>
               <h2
                 className={cn(
