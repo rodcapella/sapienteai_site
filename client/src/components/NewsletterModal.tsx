@@ -263,11 +263,11 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   }, [feedbackMessage, submitState]);
 
   const inputClass =
-    "w-full rounded-xl border border-[rgba(0,209,255,0.28)] bg-[linear-gradient(145deg,rgba(5,8,27,0.86),rgba(16,24,46,0.62))] px-4 py-3 text-sm text-[var(--brand-offwhite)] placeholder:text-[rgba(0,209,255,0.62)] outline-none transition-all duration-300 hover:border-[rgba(0,209,255,0.58)] hover:shadow-[0_0_18px_rgba(0,209,255,0.2)] focus:shadow-[0_0_0_1px_rgba(0,209,255,0.7),0_0_26px_rgba(0,209,255,0.28)] focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]";
+    "w-full rounded-xl border border-[rgba(0,209,255,0.28)] bg-[linear-gradient(145deg,rgba(5,8,27,0.86),rgba(16,24,46,0.62))] px-4 py-3 font-[var(--font-body)] text-sm text-[var(--brand-offwhite)] placeholder:text-[rgba(0,209,255,0.62)] outline-none transition-all duration-300 hover:border-[rgba(0,209,255,0.58)] hover:shadow-[0_0_18px_rgba(0,209,255,0.2)] focus:shadow-[0_0_0_1px_rgba(0,209,255,0.7),0_0_26px_rgba(0,209,255,0.28)] focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]";
 
   const sourceSelectClass = `${inputClass} contact-modal-select ${formData.source ? "is-filled" : "is-placeholder"} cursor-pointer appearance-none pr-10`;
 
-  const labelClass = "block font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
+  const labelClass = "block font-[var(--font-detail)] text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
   const optionalClass = "ml-1.5 text-[rgba(234,246,255,0.85)]";
   const requiredMark = <span className="ml-1 text-[var(--brand-purple)]">*</span>;
 

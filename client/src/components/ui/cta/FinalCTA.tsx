@@ -87,9 +87,7 @@ export function FinalCTA({
                   isCentered && "mx-auto"
                 )}
                 style={{
-                  fontFamily: isHomeVariant
-                    ? "'Playfair Display', serif"
-                    : "'Inter', sans-serif",
+                  fontFamily: "var(--font-heading)",
                   color: isHomeVariant ? "#FFFFFF" : "#000000",
                   fontSize: titleFontSize,
                 }}
@@ -121,7 +119,7 @@ export function FinalCTA({
                     isCentered && "mx-auto"
                   )}
                   style={{
-                    fontFamily: "'Inter', sans-serif",
+                    fontFamily: "var(--font-body)",
                     color: isHomeVariant ? "#FFFFFF" : "#001547",
                     fontSize: descriptionFontSize,
                   }}

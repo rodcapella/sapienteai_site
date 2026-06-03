@@ -38,19 +38,19 @@ export function InternalHero({
       <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
         {label && (
           <Reveal>
-            <div className="inline-flex items-center rounded-full border-2 bg-transparent px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-white sm:text-sm" style={{ borderColor: "var(--brand-primary)" }}>
+            <div className="inline-flex items-center rounded-full border-2 bg-transparent px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-white sm:text-sm" style={{ borderColor: "var(--brand-primary)", fontFamily: "var(--font-detail)" }}>
               {label}
             </div>
           </Reveal>
         )}
 
         <Reveal delay={100}>
-          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)]" style={{ fontFamily: "'Inter', sans-serif", color: "#FFFFFF", fontSize: "40px" }}>
+          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)]" style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", fontSize: "40px" }}>
             {title}
             {highlight && (
               <>
                 <br />
-                <span className="internal-hero-highlight" style={{ fontFamily: "'Inter', sans-serif", color: "var(--brand-primary)", WebkitTextFillColor: "var(--brand-primary)", fontSize: "40px" }}>
+                <span className="internal-hero-highlight" style={{ fontFamily: "var(--font-heading)", color: "var(--brand-primary)", WebkitTextFillColor: "var(--brand-primary)", fontSize: "40px" }}>
                   {highlight}
                 </span>
               </>
@@ -60,7 +60,7 @@ export function InternalHero({
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mt-8 max-w-4xl leading-relaxed drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]" style={{ fontFamily: "'Playfair Display', serif", color: "#FFFFFF", fontSize: "18px" }}>
+            <p className="mt-8 max-w-4xl leading-relaxed drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]" style={{ fontFamily: "var(--font-body)", color: "#FFFFFF", fontSize: "18px" }}>
               {subtitle}
             </p>
           </Reveal>

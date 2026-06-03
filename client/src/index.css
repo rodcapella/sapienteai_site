@@ -43,9 +43,9 @@
   --shadow-neon-blue: 0 0 0 1px rgba(10,180,255,.24), 0 12px 26px rgba(85,212,242,.16);
   --shadow-neon-vivid-blue: 0 0 0 1px rgba(10,180,255,.22), 0 12px 26px rgba(85,212,242,.14);
   --radius: 1.5rem;
-  --font-heading: "Inter";
-  --font-body: "Playfair Display";
-  --font-detail: "Playfair Display";
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --font-detail: "Inter", sans-serif;
   --type-heading: 40px;
   --type-hero: 40px;
   --type-section-title: 40px;

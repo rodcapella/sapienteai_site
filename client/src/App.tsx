@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Redirect, Route, useLocation } from "wouter";
 
+import CookieBanner from "@/components/CookieBanner";
 import MainLayout from "@/components/layout/MainLayout";
 import { PageTransition } from "@/components/PageTransition";
 import { ThemeTransition } from "@/components/ThemeTransition";
@@ -12,6 +13,7 @@ const Services = lazy(() => import("@/pages/Services"));
 const FAQ = lazy(() => import("@/pages/FAQ"));
 const Terms = lazy(() => import("@/pages/Terms"));
 const Privacy = lazy(() => import("@/pages/Privacy"));
+const CookiesPage = lazy(() => import("@/pages/CookiesPage"));
 const Trust = lazy(() => import("@/pages/Trust"));
 const GenerativeAIPolicy = lazy(() => import("@/pages/GenerativeAIPolicy"));
 const Blog = lazy(() => import("@/pages/Blog"));
@@ -73,6 +75,8 @@ export default function App() {
           <Route path="/:lang/faq">{(params) => <FAQ lang={params.lang} />}</Route>
           <Route path="/:lang/terms">{(params) => <Terms lang={params.lang} />}</Route>
           <Route path="/:lang/privacy">{(params) => <Privacy lang={params.lang} />}</Route>
+          <Route path="/pt/cookies"><CookiesPage /></Route>
+          <Route path="/en/cookies"><CookiesPage /></Route>
           <Route path="/:lang/trust">{(params) => <Trust lang={params.lang} />}</Route>
 
           <Route path="/:lang/generative-ai-policy">{(params) => <GenerativeAIPolicy lang={params.lang} />}</Route>
@@ -86,6 +90,7 @@ export default function App() {
           <Route path="/en/quiz-ia"><Redirect to="/en/quiz-ai" /></Route>
         </PageTransition>
       </MainLayout>
+      <CookieBanner />
     </Suspense>
   );
 }

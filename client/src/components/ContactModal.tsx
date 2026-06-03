@@ -291,7 +291,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     const isValid = Boolean(touched[field] && !errors[field] && formData[field].trim());
 
     return [
-      "w-full rounded-xl border bg-[linear-gradient(145deg,rgba(5,8,27,0.86),rgba(16,24,46,0.62))] px-4 py-3 text-sm text-[var(--brand-offwhite)] placeholder:text-[rgba(0,209,255,0.62)] outline-none transition-all duration-300",
+      "w-full rounded-xl border bg-[linear-gradient(145deg,rgba(5,8,27,0.86),rgba(16,24,46,0.62))] px-4 py-3 font-[var(--font-body)] text-sm text-[var(--brand-offwhite)] placeholder:text-[rgba(0,209,255,0.62)] outline-none transition-all duration-300",
       "focus:shadow-[0_0_0_1px_rgba(0,209,255,0.7),0_0_26px_rgba(0,209,255,0.28)] focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]",
       "hover:border-[rgba(0,209,255,0.58)] hover:shadow-[0_0_18px_rgba(0,209,255,0.2)]",
       hasError
@@ -307,7 +307,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const sourceSelectClass = baseSelectClass("source", Boolean(formData.source));
   const topicSelectClass = baseSelectClass("topic", Boolean(formData.topic));
-  const labelClass = "font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
+  const labelClass = "font-[var(--font-detail)] text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
   const requiredMark = <span className="ml-1 text-[var(--brand-purple)]">*</span>;
   const requiredFieldsLabel = lang === "en" ? "Required fields" : "Campos obrigatórios";
   const requiredLabel = (label: string) => (
