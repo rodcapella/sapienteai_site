@@ -13,6 +13,13 @@ interface CookiePreferences {
 
 const STORAGE_KEY = "cookieConsent";
 const PREFS_KEY = "cookiePreferences";
+const VERSION_KEY = "cookieBannerVersion";
+const CURRENT_VERSION = "v1";
+const DEFAULT_PREFERENCES: CookiePreferences = {
+  essential: true,
+  analytics: false,
+  marketing: false,
+};
 
 const copy = {
   pt: {
@@ -84,10 +91,37 @@ function getStoredConsent(): ConsentValue | null {
   }
 }
 
+function getStoredPreferences(): CookiePreferences | null {
+  try {
+    const value = localStorage.getItem(PREFS_KEY);
+    if (!value) return null;
+
+    const parsed = JSON.parse(value) as Partial<CookiePreferences>;
+    if (typeof parsed !== "object" || parsed === null) return null;
+
+    return {
+      essential: true,
+      analytics: Boolean(parsed.analytics),
+      marketing: Boolean(parsed.marketing),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function getStoredBannerVersion() {
+  try {
+    return localStorage.getItem(VERSION_KEY);
+  } catch {
+    return null;
+  }
+}
+
 function saveConsent(value: ConsentValue, preferences: CookiePreferences) {
   try {
     localStorage.setItem(STORAGE_KEY, value);
     localStorage.setItem(PREFS_KEY, JSON.stringify(preferences));
+    localStorage.setItem(VERSION_KEY, CURRENT_VERSION);
   } catch {
     // localStorage may be unavailable in strict privacy contexts.
   }
@@ -137,15 +171,18 @@ export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [preferences, setPreferences] = useState<CookiePreferences>({
-    essential: true,
-    analytics: false,
-    marketing: false,
-  });
+  const [preferences, setPreferences] = useState<CookiePreferences>(DEFAULT_PREFERENCES);
 
   useEffect(() => {
     const consent = getStoredConsent();
-    if (!consent) {
+    const storedPreferences = getStoredPreferences();
+    const storedVersion = getStoredBannerVersion();
+
+    if (storedPreferences) {
+      setPreferences(storedPreferences);
+    }
+
+    if (!consent || storedVersion !== CURRENT_VERSION) {
       setShowBanner(true);
       const timer = window.setTimeout(() => setIsVisible(true), 250);
       return () => window.clearTimeout(timer);
@@ -160,12 +197,16 @@ export default function CookieBanner() {
   };
 
   const handleAcceptAll = () => {
-    saveConsent("accepted", { essential: true, analytics: true, marketing: true });
+    const acceptedPreferences = { essential: true, analytics: true, marketing: true };
+    setPreferences(acceptedPreferences);
+    saveConsent("accepted", acceptedPreferences);
     dismiss();
   };
 
   const handleRejectOptional = () => {
-    saveConsent("rejected", { essential: true, analytics: false, marketing: false });
+    const rejectedPreferences = { essential: true, analytics: false, marketing: false };
+    setPreferences(rejectedPreferences);
+    saveConsent("rejected", rejectedPreferences);
     dismiss();
   };
 

@@ -315,6 +315,7 @@ function ResetConsentButton({ label }: { label: string }) {
     try {
       localStorage.removeItem("cookieConsent");
       localStorage.removeItem("cookiePreferences");
+      localStorage.removeItem("cookieBannerVersion");
       window.location.reload();
     } catch {
       // silently fail
