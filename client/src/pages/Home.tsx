@@ -19,7 +19,7 @@ const HOME_BANNERS = [
   "home_o_que_nos_diferencia.png",
   "home_resultados_gera_ia.png",
   "home_como_ajudamos_ai.png",
-  "home_marketing_digital_ia.jpeg",
+  "home_marketing_digital_ia.png",
   "home_automacao_ia.png",
   "home_personalidade_marca.png",
 ];

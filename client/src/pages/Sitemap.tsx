@@ -7,7 +7,6 @@ import { setSEOHead } from "@/components/SEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
-import { SectionCard } from "@/components/ui/section/SectionCard";
 import { Icons } from "@/lib/icons";
 
 type SitemapLink = {
@@ -43,7 +42,6 @@ const copy = {
       services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
       faq: ["FAQ", "Respostas às perguntas mais frequentes sobre os nossos serviços."],
       quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
-      validator: ["Validador SEO/GEO/AEO", "Diagnóstico preliminar da presença da marca em pesquisa, mapas e respostas de IA."],
       newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
       terms: ["Termos de Serviço", "Condições de utilização do site e dos nossos serviços."],
       privacy: ["Política de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
@@ -70,7 +68,6 @@ const copy = {
       services: ["Services", "Digital solutions, automation, marketing and applied AI for growth."],
       faq: ["FAQ", "Quick answers to the most common questions about our services."],
       quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
-      validator: ["SEO/GEO/AEO Validator", "Preliminary diagnosis of brand presence across search, maps, and AI answers."],
       newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
       terms: ["Terms of Service", "Terms of use for the website and services."],
       privacy: ["Privacy Policy", "How we collect, process, and protect personal data."],
@@ -84,54 +81,61 @@ function makeLink(lang: string, path = "") {
   return `/${lang}${path}`;
 }
 
-function SitemapCard({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
+function SitemapGroupBlock({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
   const linkClass =
-    "site-action-link group border-[var(--brand-purple)]/35 bg-[var(--brand-night)]/70 text-[var(--brand-offwhite)] hover:!bg-[var(--brand-cyan)] hover:!text-[var(--brand-night)] hover:shadow-[0_18px_40px_rgba(85,212,242,0.26)]";
+    "group grid gap-2 border-t border-[color-mix(in_srgb,var(--brand-primary)_14%,transparent)] px-5 py-5 text-left transition first:border-t-0 hover:bg-[color-mix(in_srgb,var(--brand-purple)_6%,transparent)]";
+
+  const renderLinkContent = (link: SitemapLink, IconComponent: ElementType) => (
+    <>
+      <span className="flex items-center justify-between gap-4 font-[var(--font-heading)] text-[18px] font-black leading-snug text-[var(--brand-night)]">
+        {link.title}
+        <IconComponent className="h-4 w-4 shrink-0 text-[var(--brand-primary)] transition group-hover:translate-x-1" />
+      </span>
+      <span className="font-[var(--font-body)] text-sm font-medium leading-relaxed text-[var(--brand-ink)]">
+        {link.description}
+      </span>
+    </>
+  );
 
   return (
-    <SectionCard className="h-full border border-[var(--brand-purple)]/45 bg-[var(--brand-deep)] p-6 text-[var(--brand-offwhite)] shadow-[0_18px_42px_rgba(1,32,80,0.24)] md:p-8">
-      <div className="mb-6 flex items-start gap-4">
-        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[var(--brand-cyan)]/35 bg-[var(--brand-night)] text-[var(--brand-cyan)] shadow-[0_12px_24px_rgba(10,180,255,0.18)]">
+    <article id={group.label.toLowerCase().replace(/\s+/g, "-")} className="overflow-hidden rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] shadow-[0_18px_38px_rgba(1,32,80,0.06)]">
+      <div className="flex items-start gap-4 border-b border-[color-mix(in_srgb,var(--brand-primary)_16%,transparent)] px-5 py-5 md:px-7">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[#00D1FF] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,#00D1FF_18%,transparent)]">
           <Icon className="h-6 w-6" />
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--brand-cyan)] opacity-70">
+          <p className="font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)]">
             {group.label}
           </p>
-          <h2 className="text-2xl font-black tracking-tight text-[var(--brand-offwhite)]">
+          <h2 className="font-[var(--font-heading)] text-[28px] font-black leading-tight text-[var(--brand-night)]">
             {group.title}
           </h2>
         </div>
       </div>
 
-      <ul className="space-y-3">
+      <ul>
         {group.links.map((link) => (
           <li key={link.href || link.title}>
             {link.href ? (
               <Link href={link.href} className={linkClass}>
-                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-inherit">
-                  {link.title}
-                  <Icons.ArrowRight className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-night)]" />
-                </span>
-                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">
-                  {link.description}
-                </span>
+                {renderLinkContent(link, Icons.ArrowRight)}
               </Link>
             ) : (
-              <button type="button" onClick={link.onClick} className={`${linkClass} w-full text-left`}>
-                <span className="flex items-center justify-between gap-4 text-lg font-black tracking-tight text-inherit">
-                  {link.title}
-                  <Icons.Mail className="h-4 w-4 shrink-0 text-[var(--brand-cyan)] transition group-hover:translate-x-1 group-hover:text-[var(--brand-night)]" />
-                </span>
-                <span className="text-sm font-medium leading-relaxed text-inherit opacity-75">
-                  {link.description}
-                </span>
-              </button>
+              <a
+                href="#newsletter"
+                onClick={(event) => {
+                  event.preventDefault();
+                  link.onClick?.();
+                }}
+                className={linkClass}
+              >
+                {renderLinkContent(link, Icons.Mail)}
+              </a>
             )}
           </li>
         ))}
       </ul>
-    </SectionCard>
+    </article>
   );
 }
 
@@ -159,7 +163,6 @@ export default function Sitemap() {
       links: [
         { title: l.faq[0], description: l.faq[1], href: makeLink(lang, "/faq") },
         { title: l.quiz[0], description: l.quiz[1], href: quizHref },
-        { title: l.validator[0], description: l.validator[1], href: makeLink(lang, "/seo-geo-aeo-validator") },
         { title: l.newsletter[0], description: l.newsletter[1], onClick: () => setIsNewsletterOpen(true) },
       ],
     },
@@ -194,17 +197,36 @@ export default function Sitemap() {
         compact
       />
 
-      <Section className="bg-blue-tint py-24 md:py-40">
+      <Section className="bg-[var(--section-ice)] py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-3">
-            {groups.map((group, index) => {
-              const Icon = [Icons.Home, Icons.Sparkles, Icons.ShieldCheck][index];
-              return (
-                <Reveal key={group.label} delay={index * 100}>
-                  <SitemapCard group={group} icon={Icon} />
-                </Reveal>
-              );
-            })}
+          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
+            <aside className="lg:sticky lg:top-28 lg:self-start">
+              <p className="mb-4 font-[var(--font-detail)] text-[16px] font-black uppercase tracking-[0.18em] text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
+                {content.label}
+              </p>
+              <nav className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0">
+                {groups.map((group) => (
+                  <a
+                    key={group.label}
+                    href={`#${group.label.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="min-w-max rounded-[10px] border border-transparent bg-transparent px-3.5 py-2.5 font-[var(--font-body)] text-[18px] font-bold leading-tight text-[var(--brand-night)] transition hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)] dark:hover:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:hover:text-[var(--brand-night)]"
+                  >
+                    {group.label}
+                  </a>
+                ))}
+              </nav>
+            </aside>
+
+            <div className="grid gap-8">
+              {groups.map((group, index) => {
+                const Icon = [Icons.Home, Icons.Sparkles, Icons.ShieldCheck][index];
+                return (
+                  <Reveal key={group.label} delay={index * 100}>
+                    <SitemapGroupBlock group={group} icon={Icon} />
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
         </div>
       </Section>

@@ -45,17 +45,17 @@ export default function QuizAI() {
   const startIntro =
     lang === "en"
       ? {
-          badge: "Quiz AI",
+          badge: "AI Quiz",
           title: "What is the AI potential",
           highlight: "in your business?",
-          subtitle: "Answer 10 questions about your business and discover where artificial intelligence can have the biggest impact, with a personalized report at the end.",
+          subtitle: "Answer 10 questions about your business and discover where artificial intelligence can have the biggest impact.",
           stats: ["3 minutes", "10 questions", "Instant result"],
         }
       : {
           badge: "Quiz IA",
           title: "Qual o potencial de IA",
           highlight: "no seu negócio?",
-          subtitle: "Responda a 10 perguntas sobre o seu negócio e descubra em que áreas a inteligência artificial pode ter mais impacto — com um relatório personalizado no final.",
+          subtitle: "Responda a 10 perguntas sobre o seu negócio e descubra em que áreas a inteligência artificial pode ter mais impacto.",
           stats: ["3 minutos", "10 perguntas", "Resultado imediato"],
         };
 

@@ -20,7 +20,10 @@ export const privacyEN = {
       title: "2. What data we collect",
       content: [
         "Name and work email (when you fill out the contact form or sign up for the newsletter).",
-        "Messages you send us (by email or chat).",
+        "Mobile phone number, company and job title when these details are provided through forms or business communications.",
+        "Technical preferences stored in the browser, such as the selected browsing theme, the language associated with the URL and cookie banner choices.",
+        "For cookie consent, we only store the user's decision (accepted, rejected or custom), category preferences (essential, analytics and marketing) and the cookie banner version shown.",
+        "Messages you send us by email, website forms or other contact channels.",
         "Anonymous technical data (anonymized IP address, browser type) – used only for internal statistics."
       ]
     },

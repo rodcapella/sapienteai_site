@@ -186,8 +186,27 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     return "";
   };
 
+  const getRequiredFieldLabel = (field: keyof FormData) => {
+    const labels: Partial<Record<keyof FormData, string>> = {
+      name: text.labels.name,
+      email: text.labels.email,
+      topic: text.labels.topic,
+      message: text.labels.message,
+    };
+
+    return (labels[field] || String(field)).replace(" *", "");
+  };
+
+  const buildMissingFieldsMessage = (fields: (keyof FormData)[]) => {
+    const fieldList = fields.map(getRequiredFieldLabel).join(", ");
+    return lang === "en"
+      ? `Please fill in the required fields before sending: ${fieldList}.`
+      : `Preencha os campos obrigatórios antes de enviar: ${fieldList}.`;
+  };
+
   const validateForm = (): boolean => {
     const nextErrors: FormErrors = {};
+    const missingFields = requiredFields.filter((field) => !formData[field].trim());
 
     (Object.keys(formData) as (keyof FormData)[]).forEach((field) => {
       const message = validateField(field, formData[field]);
@@ -196,6 +215,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
     setErrors(nextErrors);
     setTouched({ name: true, email: true, phone: true, company: true, source: true, topic: true, message: true });
+
+    if (missingFields.length > 0) {
+      setFeedbackMessage(buildMissingFieldsMessage(missingFields));
+    } else if (nextErrors.email) {
+      setFeedbackMessage(nextErrors.email);
+    }
 
     return Object.keys(nextErrors).length === 0;
   };
@@ -235,7 +260,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
     if (!validateForm()) {
       setSubmitState("error");
-      setFeedbackMessage(text.errors.form);
       return;
     }
 

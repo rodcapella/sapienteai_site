@@ -20,7 +20,10 @@ export const privacyPT = {
       title: "2. Que dados recolhemos",
       content: [
         "Nome e e-mail profissional (quando preenche o formulário de contacto ou assina a newsletter).",
-        "Mensagens que nos envia (por e-mail ou chat).",
+        "Telemóvel, empresa e cargo na empresa, quando estes dados são fornecidos nos formulários ou em comunicações comerciais.",
+        "Mensagens que nos envia por e-mail, formulários do site ou outros canais de contacto.",
+        "Preferências técnicas guardadas no navegador, como o tema escolhido para navegação, o idioma associado à URL e as escolhas do banner de cookies.",
+        "No consentimento de cookies guardamos apenas a decisão do utilizador (accepted, rejected ou custom), as preferências por categoria (essential, analytics e marketing) e a versão do banner de cookies apresentada.",
         "Dados técnicos anónimos (endereço IP anonimizado, tipo de browser) – apenas para estatísticas internas."
       ]
     },

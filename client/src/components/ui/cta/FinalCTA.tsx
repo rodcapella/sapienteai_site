@@ -13,8 +13,10 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
-  variant?: "default" | "home";
+  variant?: "default" | "home" | "about"; // Adicionado "about" nas opções de variante
   align?: "left" | "center";
+  breakTitleHighlight?: boolean;
+  backgroundSrc?: string;
 };
 
 export function FinalCTA({
@@ -26,10 +28,13 @@ export function FinalCTA({
   href,
   variant = "default",
   align,
+  breakTitleHighlight = false,
+  backgroundSrc,
 }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const isHomeVariant = variant === "home";
+  const isAboutVariant = variant === "about";
   const isCentered = align ? align === "center" : isHomeVariant;
 
   const titleFontSize = isHomeVariant
@@ -38,10 +43,19 @@ export function FinalCTA({
 
   const descriptionFontSize = "clamp(15px, 1.4vw, 18px)";
 
-  const backgroundSrc =
-    variant === "home"
-      ? "/media/bg/bg_finalCTA_home.png"
-      : "/media/bg/bg_finalCTA.png";
+  // Mapeamento dos fallbacks de imagem baseados na variante ativa
+  const getFallbackBackground = () => {
+    switch (variant) {
+      case "home":
+        return "/media/bg/bg_finalCTA_home.png";
+      case "about":
+        return "/media/bg/final_CTA_sobre.png"; // Nova imagem adicionada para a página About
+      default:
+        return "/media/bg/bg_finalCTA.png";
+    }
+  };
+
+  const computedBackgroundSrc = backgroundSrc || getFallbackBackground();
 
   const buttonElement = (
     <PremiumButton
@@ -63,7 +77,7 @@ export function FinalCTA({
       >
         <div className="pointer-events-none absolute inset-0">
           <img
-            src={backgroundSrc}
+            src={computedBackgroundSrc}
             alt=""
             className="h-full w-full object-cover"
           />
@@ -100,7 +114,7 @@ export function FinalCTA({
 
                 {title_highlight && (
                   <>
-                    <br />
+                    {breakTitleHighlight ? <br /> : " "}
                     <span
                       className={
                         isHomeVariant
@@ -162,9 +176,7 @@ export function FinalCTA({
               <div
                 className={cn(
                   "mt-12 flex",
-                  isCentered
-                    ? "justify-center"
-                    : "justify-center"
+                  isCentered ? "justify-center" : "justify-start"
                 )}
               >
                 {href ? (

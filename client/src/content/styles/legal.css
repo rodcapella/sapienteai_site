@@ -54,7 +54,7 @@
   font-weight: 900;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--brand-primary);
+  color: #60A5FA;
 }
 
 .legal-sidebar-title {
@@ -169,7 +169,7 @@
 .legal-list {
   border-radius: 18px;
   background: color-mix(in srgb, #00D1FF 22%, var(--brand-offwhite));
-  border: 6px solid color-mix(in srgb, var(--brand-purple) 72%, transparent);
+  border: 2px solid color-mix(in srgb, var(--brand-purple) 72%, transparent);
   overflow: hidden;
 }
 

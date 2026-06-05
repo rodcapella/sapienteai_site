@@ -39,6 +39,8 @@ const INITIAL_FORM: NewsletterFormData = {
   accepted: false,
 };
 
+const requiredFields: (keyof NewsletterFormData)[] = ["name", "email", "accepted"];
+
 const sourceOptions = {
   pt: ["Eventos", "Google", "Indicação", "Instagram", "LinkedIn", "Newsletter", "Pesquisa Orgânica", "Pinterest", "TikTok", "X", "Outros"],
   en: ["Events", "Google", "Instagram", "LinkedIn", "Newsletter", "Organic Search", "Pinterest", "Referral", "TikTok", "X", "Other"],
@@ -173,11 +175,34 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
     setTimeout(() => resetModalState(), 200);
   };
 
+  const getRequiredFieldLabel = (field: keyof NewsletterFormData) => {
+    const labels: Partial<Record<keyof NewsletterFormData, string>> = {
+      name: text.labels.name,
+      email: text.labels.email,
+      accepted: lang === "en" ? "Privacy authorization" : "Autorização de privacidade",
+    };
+
+    return labels[field] || String(field);
+  };
+
+  const buildMissingFieldsMessage = (fields: (keyof NewsletterFormData)[]) => {
+    const fieldList = fields.map(getRequiredFieldLabel).join(", ");
+    return lang === "en"
+      ? `Please fill in the required fields before subscribing: ${fieldList}.`
+      : `Preencha os campos obrigatórios antes de se registar: ${fieldList}.`;
+  };
+
   const validateForm = () => {
-    if (!formData.name.trim()) return text.errors.name;
-    if (!formData.email.trim()) return text.errors.email;
+    const missingFields = requiredFields.filter((field) => {
+      const value = formData[field];
+      return typeof value === "boolean" ? !value : !value.trim();
+    });
+
+    if (missingFields.length > 0) {
+      return buildMissingFieldsMessage(missingFields);
+    }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) return text.errors.invalidEmail;
-    if (!formData.accepted) return text.errors.accepted;
     return "";
   };
 
