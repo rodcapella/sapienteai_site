@@ -13,7 +13,7 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
-  variant?: "default" | "home" | "about";
+  variant?: "default" | "home";
   align?: "left" | "center";
 };
 
@@ -41,8 +41,6 @@ export function FinalCTA({
   const backgroundSrc =
     variant === "home"
       ? "/media/bg/bg_finalCTA_home.png"
-      : variant === "about"
-      ? "/media/bg/final_CTA_sobre.png"
       : "/media/bg/bg_finalCTA.png";
 
   const buttonElement = (
@@ -82,7 +80,7 @@ export function FinalCTA({
           <div
             className={cn(
               !isCentered
-                ? "max-w-[840px]"
+                ? "max-w-[700px]"
                 : "max-w-4xl mx-auto"
             )}
           >
@@ -109,6 +107,11 @@ export function FinalCTA({
                           ? "text-[#00D1FF]"
                           : "text-[#0A84FF]"
                       }
+                      style={{
+                        font: "inherit",
+                        lineHeight: "inherit",
+                        letterSpacing: "inherit",
+                      }}
                     >
                       {title_highlight}
                     </span>
@@ -141,6 +144,11 @@ export function FinalCTA({
                             ? "text-[#00D1FF]"
                             : "text-[#0A84FF]"
                         }
+                        style={{
+                          font: "inherit",
+                          lineHeight: "inherit",
+                          letterSpacing: "inherit",
+                        }}
                       >
                         {description_highlight}
                       </span>
