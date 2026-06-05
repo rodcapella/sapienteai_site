@@ -74,7 +74,7 @@ export function FinalCTA({
             "relative z-10 mx-auto w-full",
             isCentered
               ? "max-w-4xl px-6 sm:px-10 text-center"
-              : "max-w-5xl px-0 text-left"
+              : "max-w-7xl px-6 sm:px-8 text-left"
           )}
         >
           <div
@@ -164,7 +164,7 @@ export function FinalCTA({
                   "mt-12 flex",
                   isCentered
                     ? "justify-center"
-                    : "justify-start"
+                    : "justify-center"
                 )}
               >
                 {href ? (

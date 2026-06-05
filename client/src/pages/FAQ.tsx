@@ -66,7 +66,7 @@ export default function FAQ() {
   const categories = useMemo(() => createFAQCategories(content.items, normalizedLang), [content.items, normalizedLang]);
 
   const [activeCategory, setActiveCategory] = useState(categories[0]?.id || "general");
-  const [openQuestion, setOpenQuestion] = useState<string | null>(`${categories[0]?.id || "general"}-0`);
+  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
   const active = categories.find((category) => category.id === activeCategory) || categories[0];
 
   useEffect(() => {
@@ -127,7 +127,6 @@ export default function FAQ() {
                     >
                       <Icon className="h-4 w-4" />
                       <span>{category.label}</span>
-                      <span className="faq-cat-count">{category.items.length}</span>
                     </button>
                   );
                 })}

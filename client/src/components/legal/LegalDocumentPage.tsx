@@ -94,7 +94,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
     [content.sections],
   );
 
-  const [openSection, setOpenSection] = useState(sections[0]?.id || "section-0");
+  const [openSection, setOpenSection] = useState("");
   const activeSection = sections.find((section) => section.id === openSection) || sections[0];
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   }, [lang, content, slug, fallbackDescription]);
 
   useEffect(() => {
-    setOpenSection(sections[0]?.id || "section-0");
+    setOpenSection("");
   }, [sections]);
 
   return (
@@ -121,7 +121,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
             <aside className="legal-sidebar">
               <div className="legal-sidebar-title">{legalCopy.sidebar}</div>
               <div className="legal-cats">
-                {sections.map((section, index) => {
+                {sections.map((section) => {
                   const isActive = section.id === activeSection?.id;
                   const Icon = section.Icon;
 
@@ -129,7 +129,6 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
                     <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => setOpenSection(section.id)}>
                       <Icon className="h-4 w-4" />
                       <span>{section.title}</span>
-                      <span className="legal-cat-count">{index + 1}</span>
                     </button>
                   );
                 })}

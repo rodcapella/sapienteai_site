@@ -137,7 +137,7 @@ export default function Footer() {
           {/* Newsletter + Siga-nos */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.newsletter")}</p>
-            <p className="mb-3 mt-3 max-w-[280px] ml-auto font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
+            <p className="mb-3 mt-3 max-w-[320px] ml-auto font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
                 {t("footer.newsletterDescription")}
             </p>
             <PremiumButton
