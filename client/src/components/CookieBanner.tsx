@@ -220,6 +220,10 @@ export default function CookieBanner() {
     { key: "analytics" as const, locked: false, ...text.preferences.analytics },
     { key: "marketing" as const, locked: false, ...text.preferences.marketing },
   ];
+  const secondaryButtonClass =
+    "min-h-8 rounded-full border border-[#00D1FF] bg-transparent px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)] dark:hover:bg-[rgba(0,209,255,0.16)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
+  const primaryButtonClass =
+    "min-h-8 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-white transition hover:shadow-[0_0_24px_rgba(10,180,255,0.34)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
 
   if (!showBanner) return null;
 
@@ -268,21 +272,21 @@ export default function CookieBanner() {
               <button
                 type="button"
                 onClick={() => setShowPreferences(true)}
-                className="min-h-11 rounded-full border border-[#00D1FF] bg-transparent px-5 font-[var(--font-body)] text-xs font-black uppercase tracking-[0.14em] text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)] dark:hover:bg-[rgba(0,209,255,0.16)]"
+                className={secondaryButtonClass}
               >
                 {text.customize}
               </button>
               <button
                 type="button"
                 onClick={handleRejectOptional}
-                className="min-h-11 rounded-full border border-[#00D1FF] bg-transparent px-5 font-[var(--font-body)] text-xs font-black uppercase tracking-[0.14em] text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)] dark:hover:bg-[rgba(0,209,255,0.16)]"
+                className={secondaryButtonClass}
               >
                 {text.rejectOptional}
               </button>
               <button
                 type="button"
                 onClick={handleAcceptAll}
-                className="min-h-11 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-5 font-[var(--font-body)] text-xs font-black uppercase tracking-[0.14em] text-white transition hover:shadow-[0_0_24px_rgba(10,180,255,0.34)]"
+                className={primaryButtonClass}
               >
                 {text.acceptAll}
               </button>
@@ -310,7 +314,7 @@ export default function CookieBanner() {
                 type="button"
                 onClick={() => setShowPreferences(false)}
                 aria-label={text.close}
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#00D1FF] bg-transparent text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)]"
+                className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#00D1FF] bg-transparent text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)] sm:h-10 sm:w-10 lg:h-12 lg:w-12"
               >
                 <Icons.X className="h-4 w-4" />
               </button>
@@ -350,14 +354,14 @@ export default function CookieBanner() {
               <button
                 type="button"
                 onClick={handleRejectOptional}
-                className="min-h-11 rounded-full border border-[#00D1FF] bg-transparent px-5 font-[var(--font-body)] text-xs font-black uppercase tracking-[0.14em] text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)] dark:hover:bg-[rgba(0,209,255,0.16)]"
+                className={secondaryButtonClass}
               >
                 {text.rejectOptional}
               </button>
               <button
                 type="button"
                 onClick={handleSaveCustom}
-                className="min-h-11 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-5 font-[var(--font-body)] text-xs font-black uppercase tracking-[0.14em] text-white transition hover:shadow-[0_0_24px_rgba(10,180,255,0.34)]"
+                className={primaryButtonClass}
               >
                 {text.savePreferences}
               </button>

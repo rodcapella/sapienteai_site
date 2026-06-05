@@ -220,7 +220,7 @@ function ServicesSidebar({
   onSelect: (id: string) => void;
 }) {
   return (
-    <nav className="sticky top-24 flex flex-col gap-1 self-start">
+    <nav className="flex flex-col gap-1 self-start">
       {SERVICE_SECTIONS.map((s) => {
         const Icon = Icons[s.icon] as React.ElementType;
         const isActive = active === s.id;
@@ -230,24 +230,21 @@ function ServicesSidebar({
             type="button"
             onClick={() => onSelect(s.id)}
             className={[
-              "group flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-black transition-all duration-200",
+              "group flex w-full items-center gap-3 rounded-[10px] border px-3.5 py-2.5 text-left font-[var(--font-body)] text-[18px] font-bold leading-tight transition-all duration-200",
               isActive
-                ? "bg-[var(--brand-cyan)]/12 text-[var(--brand-cyan)] shadow-[inset_0_0_0_1px_rgba(85,212,242,0.25)]"
-                : "text-[var(--brand-offwhite)]/50 hover:bg-[var(--brand-night)]/60 hover:text-[var(--brand-offwhite)]",
+                ? "border-[color-mix(in_srgb,#00D1FF_58%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] text-[var(--brand-night)] dark:border-[color-mix(in_srgb,#00D1FF_72%,transparent)] dark:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))]"
+                : "border-transparent bg-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)] dark:hover:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:hover:text-[var(--brand-night)]",
             ].join(" ")}
           >
             {Icon && (
               <Icon
                 className={[
                   "h-4 w-4 shrink-0 transition-colors",
-                  isActive ? "text-[var(--brand-cyan)]" : "text-[var(--brand-offwhite)]/30 group-hover:text-[var(--brand-offwhite)]/60",
+                  isActive ? "text-[var(--brand-primary)] dark:text-[var(--brand-night)]" : "text-[var(--brand-night)]/35 group-hover:text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]/50 dark:group-hover:text-[var(--brand-night)]",
                 ].join(" ")}
               />
             )}
             <span className="tracking-tight">{s.navLabel}</span>
-            {isActive && (
-              <span className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-cyan)]" />
-            )}
           </button>
         );
       })}
@@ -334,13 +331,13 @@ export default function Services(_props: { lang?: string }) {
       <Section className="bg-blue-tint py-24 md:py-32">
         <div className="container mx-auto px-6">
           <div className="mx-auto max-w-7xl">
-            <div className="grid gap-12 lg:grid-cols-[220px_1fr] lg:gap-16 xl:grid-cols-[260px_1fr]">
+            <div className="grid gap-12 lg:grid-cols-[260px_1fr] lg:gap-16 xl:grid-cols-[280px_1fr]">
 
               {/* Sidebar fixa */}
               <aside className="hidden lg:block">
-                <div className="sticky top-24">
+                <div className="sticky top-28">
                   {/* Label do grupo */}
-                  <p className="mb-3 px-4 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)]/25">
+                  <p className="mb-4 px-3.5 font-[var(--font-detail)] text-[16px] font-black uppercase tracking-[0.2em] text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
                     {lang === "en" ? "Services" : "Serviços"}
                   </p>
                   <ServicesSidebar active={activeSection} onSelect={setActiveSection} />
@@ -358,10 +355,10 @@ export default function Services(_props: { lang?: string }) {
                       type="button"
                       onClick={() => setActiveSection(s.id)}
                       className={[
-                        "flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-black transition-all",
+                        "flex min-h-10 shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all",
                         isActive
-                          ? "bg-[var(--brand-cyan)]/15 text-[var(--brand-cyan)] shadow-[inset_0_0_0_1px_rgba(85,212,242,0.3)]"
-                          : "border border-[var(--brand-purple)]/20 text-[var(--brand-offwhite)]/50",
+                          ? "border-[color-mix(in_srgb,#00D1FF_58%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] text-[var(--brand-night)]"
+                          : "border-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)]",
                       ].join(" ")}
                     >
                       {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
