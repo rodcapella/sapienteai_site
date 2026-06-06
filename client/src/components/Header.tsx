@@ -41,6 +41,9 @@ export default function Header({ onContactClick }: HeaderProps) {
     setIsMobileMenuOpen(false);
   };
 
+  const logoClassName =
+    "h-[64px] w-auto object-contain transition-all duration-500 md:h-[72px] lg:h-[80px]";
+
   const navLinks = [
     { href: `/${lang}`, label: t("nav.home") },
     { href: `/${lang}/about`, label: t("nav.about") },
@@ -63,10 +66,19 @@ export default function Header({ onContactClick }: HeaderProps) {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
 
         <div className="container mx-auto px-4 sm:px-6">
-          <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-20 md:h-24" : "h-24 md:h-28")}>
+          <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-16 md:h-18" : "h-18 md:h-20")}>
             <div className="flex h-full w-[180px] shrink-0 items-center gap-2 overflow-hidden xl:w-[210px]">
-              <img src="/media/logos/Logo_Sapiente_fundo_claro.png" alt="Sapiente.AI" className="h-[86px] w-auto object-contain transition-all duration-500 md:h-[96px] lg:h-[104px] dark:hidden" />
-              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="hidden h-[86px] w-auto object-contain transition-all duration-500 md:h-[96px] lg:h-[104px] dark:block" />
+              <img
+                src="/media/logos/Logo_Sapiente_fundo_claro.png"
+                alt="Sapiente.AI"
+                className={cn(logoClassName, "dark:hidden")}
+              />
+
+              <img
+                src="/media/logos/Logo_Sapiente_fundo_escuro.png"
+                alt="Sapiente.AI"
+                className={cn(logoClassName, "hidden dark:block")}
+              />
             </div>
 
             <div className="hidden min-w-0 items-center justify-center lg:flex">
@@ -87,7 +99,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <div className="shrink-0 scale-100">
                 <ThemeToggle />
               </div>
-              <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-3 text-sm" variant="secondary">
+              <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-2 text-sm" variant="secondary">
                 {contactLabel}
               </PremiumButton>
             </div>

@@ -6,7 +6,7 @@ import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
-const footerTitleClass = "mb-5 font-serif text-[14px] font-bold uppercase tracking-[0.24em] bg-[linear-gradient(90deg,#00F0FF,#0047AB)] bg-clip-text text-transparent";
+const footerTitleClass = "mb-3 font-serif text-[14px] font-bold uppercase tracking-[0.24em] bg-[linear-gradient(90deg,#00F0FF,#0047AB)] bg-clip-text text-transparent";
 const footerColumnClass = "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,rgba(5,8,22,0),#050816_12%,#004aad_50%,#050816_88%,rgba(5,8,22,0))]";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
@@ -61,9 +61,9 @@ export default function Footer() {
           {/* Logo + Description */}
           <div className="col-span-1 sm:col-span-2 xl:col-span-1">
             <div className="mb-1 inline-block">
-              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-20 w-auto object-contain md:h-24" />
+              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-16 w-auto object-contain md:h-20" />
             </div>
-            <p className="max-w-sm font-serif text-[16px] leading-relaxed text-[var(--brand-offwhite)]">
+            <p className="max-w-sm font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.description")}
             </p>
           </div>
@@ -71,7 +71,7 @@ export default function Footer() {
           {/* Navegação */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.navigation")}</p>
-            <ul className="mt-3 space-y-2.5">
+            <ul className="mt-3 space-y-1.5">
               {[
                 { href: `/${lang}`, label: t("nav.home") },
                 { href: `/${lang}/about`, label: t("nav.about") },
@@ -91,7 +91,7 @@ export default function Footer() {
           {/* Legal */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.legal")}</p>
-            <ul className="mt-3 space-y-2.5">
+            <ul className="mt-3 space-y-1.5">
               {[
                 { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
                 { href: `/${lang}/privacy`, label: t("footer.privacy") },
@@ -110,13 +110,13 @@ export default function Footer() {
           {/* Contacto */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.contact")}</p>
-            <ul className="mt-3 space-y-2.5">
+            <ul className="mt-3 space-y-1.5">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
                   <span className="group flex items-center gap-2.5 font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan-bright)]">
-                    <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-primary)]/30 bg-[var(--brand-deep)]/75 text-[var(--brand-cyan)]">
-                      <Icon className="h-3.5 w-3.5" />
+                    <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-primary)]/30 bg-[var(--brand-deep)]/75 text-[var(--brand-cyan)]">
+                      <Icon className="h-3 w-3" />
                     </span>
                     {item.text}
                   </span>
@@ -137,19 +137,19 @@ export default function Footer() {
           {/* Newsletter + Siga-nos */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.newsletter")}</p>
-            <p className="mb-3 mt-3 max-w-[320px] ml-auto font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
+            <p className="mb-2 mt-2 max-w-[360px] ml-auto font-serif text-[14px] leading-relaxed text-[var(--brand-offwhite)]">
                 {t("footer.newsletterDescription")}
             </p>
             <PremiumButton
               onClick={() => setIsNewsletterOpen(true)}
-              className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
+              className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
               variant="secondary"
             >
               {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
             </PremiumButton>
 
             {/* Siga-nos — moved here from bottom section */}
-            <div className="mt-4">
+            <div className="mt-3">
               <p className="mb-2 font-serif text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-offwhite)]">
                 {lang === "pt" ? "Siga-nos" : "Follow us"}
               </p>
@@ -160,12 +160,12 @@ export default function Footer() {
                     <a
                       key={social.name}
                       href={social.url}
-                      className="group inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
+                      className="group inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
                       aria-label={social.name}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
                     >
-                      <Icon className="h-3.5 w-3.5" />
+                      <Icon className="h-3 w-3" />
                     </a>
                   );
                 })}
@@ -176,7 +176,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar — copyright only */}
-        <div className="flex flex-col items-center gap-2 pt-2">
+        <div className="flex flex-col items-center gap-1 pt-1">
           <div className="h-px w-full bg-[linear-gradient(90deg,#050816,#004aad,#050816)]" />
           <p className="text-center font-serif text-[9px] italic font-black uppercase tracking-[0.24em] text-[#FFFFFF]">
             {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">{t("footer.sitemap")}</Link> |
@@ -190,7 +190,7 @@ export default function Footer() {
         aria-label="Back to top"
         className="absolute bottom-4 right-4 z-20 inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
       >
-        <Icons.ArrowUp className="h-3.5 w-3.5" />
+        <Icons.ArrowUp className="h-3 w-3" />
       </button>
 
       <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />

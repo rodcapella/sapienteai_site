@@ -184,13 +184,6 @@ export default function QuizAI() {
         {screen === "start" && (
           <div className="quiz-screen quiz-start anim-in">
             <div className="quiz-glass-card">
-              <div className="quiz-badge-wrapper">
-                <div className="quiz-badge-modern">
-                  <span className="quiz-badge-dot-active" aria-hidden="true" />
-                  <span>{startIntro.badge}</span>
-                </div>
-              </div>
-
               <h1 className="quiz-hero-main-title">
                 {startIntro.title} <span className="quiz-title-highlight-glow">{startIntro.highlight}</span>
               </h1>
@@ -328,7 +321,7 @@ export default function QuizAI() {
         )}
       </section>
 
-      <FinalCTA title={content.ctaTitle} title_highlight={content.ctaHighlight} description={content.ctaText} description_highlight={content.ctaText}  button={content.ctaButton} />
+      <FinalCTA title={content.ctaTitle} title_highlight={content.ctaHighlight} description={content.ctaText} description_highlight={content.ctaTextHighlight}  button={content.ctaButton} />
     </main>
   );
 }

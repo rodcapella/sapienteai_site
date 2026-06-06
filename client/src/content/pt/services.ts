@@ -46,14 +46,6 @@ export const servicesPT = {
       "Otimização → melhoria contínua com base em dados"
     ],
   },
-  problem: {
-    title: "Não vendemos tecnologia solta.",
-    text: "Criamos soluções que se ligam ao objetivo do negócio: captar, organizar, automatizar, comunicar melhor e crescer com consistência.",
-  },
-  vision: {
-    title: "IA como alavanca de crescimento.",
-    text: "A tecnologia só faz sentido quando reduz esforço, melhora decisões e aumenta a capacidade de execução da equipa.",
-  },
   finalCta: {
     title: "Vamos desenhar a solução certa",
     highlight: "para o seu negócio?",

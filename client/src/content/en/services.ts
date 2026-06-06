@@ -46,14 +46,6 @@ export const servicesEN = {
       "Optimization → continuous improvement based on data"
     ],
   },
-  problem: {
-    title: "We do not sell loose technology.",
-    text: "We create solutions connected to business goals: capture, organize, automate, communicate better, and grow consistently.",
-  },
-  vision: {
-    title: "AI as a growth lever.",
-    text: "Technology only makes sense when it reduces effort, improves decisions, and expands the team's execution capacity.",
-  },
   finalCta: {
     title: "Shall we design the right solution",
     highlight: "for your business?",
