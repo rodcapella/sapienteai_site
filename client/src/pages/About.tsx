@@ -330,7 +330,6 @@ export default function About() {
         description_highlight={founders.cta.description_highlight}
         button={founders.cta.button}
         variant="about"
-        align="left"
         backgroundSrc="/media/bg/final_CTA_sobre.png"
       />
     </div>

@@ -119,7 +119,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
         <div className="legal-inner">
           <Reveal>
             <aside className="legal-sidebar">
-              <div className="legal-sidebar-title">{legalCopy.sidebar}</div>
+              <div className="legal-group-title">{legalCopy.sidebar}</div>
               <div className="legal-cats">
                 {sections.map((section) => {
                   const isActive = section.id === activeSection?.id;

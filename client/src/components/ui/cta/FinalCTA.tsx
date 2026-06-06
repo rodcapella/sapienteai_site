@@ -35,9 +35,10 @@ export function FinalCTA({
 
   const isHomeVariant = variant === "home";
   const isAboutVariant = variant === "about";
-  const isCentered = align ? align === "center" : isHomeVariant;
+  const usesHeroTextPattern = isHomeVariant || isAboutVariant;
+  const isCentered = align ? align === "center" : usesHeroTextPattern;
 
-  const titleFontSize = isHomeVariant
+  const titleFontSize = usesHeroTextPattern
     ? "clamp(40px, 5vw, 56px)"
     : "40px";
 
@@ -103,7 +104,7 @@ export function FinalCTA({
                 className="font-black leading-[1.08] tracking-normal"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  color: isHomeVariant ? "#FFFFFF" : "#000000",
+                  color: usesHeroTextPattern ? "#FFFFFF" : "#000000",
                   fontSize: titleFontSize,
                 }}
               >
@@ -114,7 +115,7 @@ export function FinalCTA({
                     {breakTitleHighlight ? <br /> : " "}
                     <span
                       className={
-                        isHomeVariant
+                        usesHeroTextPattern
                           ? "text-[#00D1FF]"
                           : "text-[#0A84FF]"
                       }
@@ -137,7 +138,7 @@ export function FinalCTA({
                   className="mt-7 font-medium leading-relaxed"
                   style={{
                     fontFamily: "var(--font-body)",
-                    color: isHomeVariant ? "#FFFFFF" : "#001547",
+                    color: usesHeroTextPattern ? "#FFFFFF" : "#001547",
                     fontSize: descriptionFontSize,
                   }}
                 >
@@ -148,7 +149,7 @@ export function FinalCTA({
                       <br />
                       <span
                         className={
-                          isHomeVariant
+                          usesHeroTextPattern
                             ? "text-[#00D1FF]"
                             : "text-[#0A84FF]"
                         }

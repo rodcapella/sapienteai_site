@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -296,6 +296,7 @@ export default function Services(_props: { lang?: string }) {
   const lang = location.split("/")[1] || "pt";
   const content = getContent("services", lang);
   const [activeSection, setActiveSection] = useState(SERVICE_SECTIONS[0].id);
+  const manualScrollLockRef = useRef<number | null>(null);
 
   useEffect(() => {
     setSEOHead({
@@ -319,6 +320,8 @@ export default function Services(_props: { lang?: string }) {
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
+        if (manualScrollLockRef.current && Date.now() < manualScrollLockRef.current) return;
+
         if (visible?.target.id) {
           setActiveSection(visible.target.id.replace("service-", ""));
         }
@@ -332,6 +335,7 @@ export default function Services(_props: { lang?: string }) {
   }, []);
 
   const handleSelectSection = (id: string) => {
+    manualScrollLockRef.current = Date.now() + 1100;
     setActiveSection(id);
     document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -350,14 +354,14 @@ export default function Services(_props: { lang?: string }) {
       />
 
       {/* ── Docs Layout ── */}
-      <Section className="bg-[var(--section-ice)] py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="mx-auto max-w-6xl">
-            <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
+      <Section className="bg-[var(--section-ice)] px-0 py-20 md:py-28">
+        <div className="w-full px-6">
+          <div className="w-full">
+            <div className="grid w-full gap-8 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10">
 
               {/* Sidebar fixa */}
-              <aside className="legal-sidebar hidden lg:block">
-                <div className="legal-sidebar-title">{lang === "en" ? "Services" : "Serviços"}</div>
+              <aside className="sticky top-28 hidden h-fit self-start justify-self-start lg:block">
+                <div className="legal-group-title">{lang === "en" ? "Services" : "Serviços"}</div>
                 <ServicesSidebar active={activeSection} lang={lang} onSelect={handleSelectSection} />
               </aside>
 
@@ -386,7 +390,7 @@ export default function Services(_props: { lang?: string }) {
               </div>
 
               {/* Conteúdo variável */}
-              <main className="flex-1 flex flex-col gap-12">
+              <main className="flex min-w-0 flex-1 flex-col gap-12">
                 {/* Divisor vertical visível apenas em desktop */}
                 <div className="contents">
                   {SERVICE_SECTIONS.map((section) => (
@@ -394,7 +398,7 @@ export default function Services(_props: { lang?: string }) {
                       key={section.id}
                       id={`service-${section.id}`}
                       aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
-                      className="w-full h-[350px] scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat shadow-[0_18px_38px_rgba(1,32,80,0.08)]"
+                      className="h-[min(680px,calc(100vh-9rem))] min-h-[430px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat shadow-[0_18px_38px_rgba(1,32,80,0.08)]"
                       style={{ backgroundImage: `url('${section.backgroundImage}')` }}
                     />
                   ))}

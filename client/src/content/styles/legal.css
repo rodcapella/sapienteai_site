@@ -1,5 +1,5 @@
 .legal-page {
-  background: var(--section-ice);
+  background: var(--brand-offwhite);
   color: var(--brand-night);
 }
 
@@ -7,20 +7,20 @@
   position: relative;
   overflow: hidden;
   padding: 80px 52px 100px;
-  background: var(--section-ice);
+  background: var(--brand-offwhite);
 }
 
 .legal-main-bg {
+  display: none;
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse 45% 52% at 88% 12%, color-mix(in srgb, var(--brand-purple) 9%, transparent) 0%, transparent 65%),
-    radial-gradient(ellipse 34% 44% at 5% 82%, color-mix(in srgb, var(--brand-primary) 5%, transparent) 0%, transparent 62%);
+  background: none;
 }
 
 .legal-main-bg::after {
-  content: "";
+  content: none;
+  display: none;
   position: absolute;
   inset: 0;
   background-image:
@@ -58,8 +58,8 @@
 }
 
 .legal-sidebar-title {
-  margin-bottom: 16px;
-  color: color-mix(in srgb, var(--brand-night) 34%, transparent);
+  margin-bottom: 20px;
+  color: #60A5FA;
 }
 
 .legal-cats {
@@ -80,7 +80,7 @@
   font-family: var(--font-body);
   font-size: 14px !important;
   font-weight: 700;
-  color: color-mix(in srgb, var(--brand-night) 54%, transparent);
+  color: var(--brand-night);
   cursor: pointer;
   text-align: left;
   transition: all .2s ease;
@@ -341,11 +341,14 @@
   color: #60A5FA;
 }
 
-.dark .legal-sidebar-title,
 .dark .legal-cat,
-.dark .legal-group-title,
 .dark .legal-document-card h2 {
   color: var(--brand-offwhite);
+}
+
+.dark .legal-sidebar-title,
+.dark .legal-group-title {
+  color: #60A5FA;
 }
 
 .dark .legal-document-card p {

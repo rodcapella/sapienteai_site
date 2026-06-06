@@ -51,7 +51,7 @@ function HomeBannerSection({ lang, file, label, id}: HomeBannerSectionProps) {
   return (
     <section
       id={id}
-      className="relative w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat"
+      className="relative block w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat m-0 p-0 border-0"
       style={{ backgroundImage: `url(${backgroundSrc})` }}
       aria-label={label}
     >

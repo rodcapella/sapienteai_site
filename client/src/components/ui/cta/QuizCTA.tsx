@@ -4,17 +4,28 @@ import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Icons } from "@/lib/icons";
 
+const highlightStyle = {
+  font: "inherit",
+  fontWeight: "inherit",
+  lineHeight: "inherit",
+  letterSpacing: "inherit",
+};
+
 const quizCtaContent = {
   pt: {
     label: "Quiz IA",
-    title: "Descubra o potencial da IA para o seu negócio",
-    description: "Responda a um quiz rápido e perceba onde a inteligência artificial pode gerar mais eficiência, crescimento e clareza.",
+    title: "Descubra o potencial da IA",
+    title_highlight: "para o seu negócio",
+    description: "Responda a um quiz rápido e perceba onde a inteligência artificial pode gerar",
+    description_highlight: "mais eficiência, crescimento e clareza.",
     button: "Fazer o Quiz IA",
   },
   en: {
     label: "AI Quiz",
-    title: "Discover the AI potential inside your business",
-    description: "Take a quick quiz and understand where artificial intelligence can create more efficiency, growth, and clarity.",
+    title: "Discover the AI potential",
+    title_highlight: "inside your business",
+    description: "Take a quick quiz and understand where artificial intelligence can create",
+    description_highlight: "more efficiency, growth, and clarity.",
     button: "Take the AI Quiz",
   },
 };
@@ -31,9 +42,31 @@ export function QuizCTA() {
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
         <Reveal>
           <div className="max-w-3xl">
-            <p className="mb-4 font-detail text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">{content.label}</p>
-            <h2 className="font-heading text-[40px] font-black leading-tight text-[var(--brand-night)]">{content.title}</h2>
-            <p className="mt-5 max-w-2xl text-[14px] font-medium leading-relaxed text-[var(--brand-ink)]">{content.description}</p>
+            <p className="mb-4 font-detail text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
+              {content.label}
+            </p>
+            <h2 className="font-heading text-[40px] font-black leading-tight text-[var(--brand-night)]">
+              {content.title}
+              {content.title_highlight && (
+                <>
+                  {" "}
+                  <span className="text-[#00D1FF]" style={highlightStyle}>
+                    {content.title_highlight}
+                  </span>
+                </>
+              )}
+            </h2>
+            <p className="mt-5 max-w-2xl text-[14px] font-medium leading-relaxed text-[var(--brand-ink)]">
+              {content.description}
+              {content.description_highlight && (
+                <>
+                  {" "}
+                  <span className="text-[#00D1FF]" style={highlightStyle}>
+                    {content.description_highlight}
+                  </span>
+                </>
+              )}
+            </p>
           </div>
         </Reveal>
 

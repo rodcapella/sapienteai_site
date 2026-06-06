@@ -13,7 +13,7 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: #eaf6ff;
+  background: var(--brand-offwhite);
   color: var(--text);
   font-family: var(--font-body);
   overflow: visible;
@@ -31,13 +31,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--section-ice);
-  background-image:
-    radial-gradient(ellipse 45% 52% at 88% 12%, color-mix(in srgb, var(--brand-purple) 9%, transparent) 0%, transparent 65%),
-    radial-gradient(ellipse 34% 44% at 5% 82%, color-mix(in srgb, var(--brand-primary) 5%, transparent) 0%, transparent 62%),
-    linear-gradient(color-mix(in srgb, var(--brand-purple) 8%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--brand-purple) 8%, transparent) 1px, transparent 1px);
-  background-size: 73px 73px, 73px 73px, auto;
+  background-color: var(--brand-offwhite);
+  background-image: none;
 }
 
 .quiz-bg-radials { position: absolute; inset: 0; pointer-events: none; z-index: 0; background: none; }
@@ -191,7 +186,7 @@
 
 /* Painel da questão */
 .quiz-question-panel { width: 100%; }
-.quiz-question-kicker { margin: 0 0 14px; color: #0877ff; font-family: var(--font-detail); font-size: 14px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.quiz-question-kicker { margin: 0 0 20px; color: #60A5FA; font-family: var(--font-detail); font-size: 12px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
 .quiz-question-text { margin: 0 0 40px; color: #000246; font-family: var(--font-heading) !important; font-size: clamp(1.8rem, 4vw, 2.6rem) !important; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; text-align: left; }
 
 /* Opções de Resposta */
