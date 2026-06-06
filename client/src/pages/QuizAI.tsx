@@ -40,7 +40,9 @@ export default function QuizAI() {
   const questions = content.questions;
   const question = questions[current];
   const selected = answers[current] ?? null;
-  const score = answers.reduce((total, answer, index) => (answer === questions[index]?.correct ? total + 1 : total), 0);
+  const score = answers.reduce<number>((total, answer, index) => {
+    return answer === questions[index]?.correct ? total + 1 : total;
+  }, 0);
   
   const startIntro =
     lang === "en"

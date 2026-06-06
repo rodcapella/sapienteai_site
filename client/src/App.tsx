@@ -7,18 +7,21 @@ import { PageTransition } from "@/components/PageTransition";
 import { ThemeTransition } from "@/components/ThemeTransition";
 import { useTheme } from "@/hooks/useTheme";
 
-const Home = lazy(() => import("@/pages/Home"));
-const About = lazy(() => import("@/pages/About"));
-const Services = lazy(() => import("@/pages/Services"));
-const FAQ = lazy(() => import("@/pages/FAQ"));
-const Terms = lazy(() => import("@/pages/Terms"));
-const Privacy = lazy(() => import("@/pages/Privacy"));
+// Tipagem padrão para os componentes que recebem o idioma via rota
+type PageWithLangProps = { lang: string };
+
+const Home = lazy(() => import("@/pages/Home").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const About = lazy(() => import("@/pages/About").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const Services = lazy(() => import("@/pages/Services").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const FAQ = lazy(() => import("@/pages/FAQ").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const Terms = lazy(() => import("@/pages/Terms").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const Privacy = lazy(() => import("@/pages/Privacy").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
 const CookiesPage = lazy(() => import("@/pages/CookiesPage"));
-const Trust = lazy(() => import("@/pages/Trust"));
-const GenerativeAIPolicy = lazy(() => import("@/pages/GenerativeAIPolicy"));
-const Blog = lazy(() => import("@/pages/Blog"));
-const QuizAI = lazy(() => import("@/pages/QuizAI"));
-const Sitemap = lazy(() => import("@/pages/Sitemap"));
+const Trust = lazy(() => import("@/pages/Trust").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const GenerativeAIPolicy = lazy(() => import("@/pages/GenerativeAIPolicy").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const Blog = lazy(() => import("@/pages/Blog").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const QuizAI = lazy(() => import("@/pages/QuizAI").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
+const Sitemap = lazy(() => import("@/pages/Sitemap").then(m => ({ default: m.default as React.ComponentType<PageWithLangProps> })));
 const VisibilityValidator = lazy(() => import("@/pages/VisibilityValidator"));
 
 export default function App() {

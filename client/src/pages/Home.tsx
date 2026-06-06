@@ -110,7 +110,13 @@ export default function Home() {
       ))}
       
       <QuizCTA />
-      <FinalCTA title={content.finalCta.title} title_highlight={content.finalCta.title_highlight} description={content.finalCta.description} description_highlight={content.finalCta.description_highlight} button={content.finalCta.button} variant="home" />
+      <FinalCTA 
+        title={content.finalCta.title} 
+        title_highlight={content.finalCta.title_highlight} 
+        description={content.finalCta.description} 
+        description_highlight={content.finalCta.description_highlight} 
+        button={content.finalCta.button} 
+        variant="home" />
 
       {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
     </div>

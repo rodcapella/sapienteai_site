@@ -10,33 +10,6 @@ export const servicesPT = {
     title: "Serviços pensados para gerar impacto real.",
     text: "Ajudamos empresas e profissionais a transformar presença digital, processos e comunicação em ativos de crescimento.",
   },
-  services: [
-    {
-      value: "01",
-      title: "Websites e landing pages",
-      text: "Criamos páginas orientadas à conversão, com estrutura clara, performance, SEO técnico e integração com captação de leads.",
-    },
-    {
-      value: "02",
-      title: "Automação com IA",
-      text: "Desenhamos fluxos inteligentes para atendimento, qualificação de contactos, tarefas repetitivas e apoio à operação.",
-    },
-    {
-      value: "03",
-      title: "Marketing digital com IA",
-      text: "Estruturamos conteúdos, campanhas e presença social com foco em autoridade, alcance, consistência e geração de oportunidades.",
-    },
-    {
-      value: "04",
-      title: "SEO, GEO e AEO",
-      text: "Otimizamos a presença digital para motores de busca, pesquisas locais e respostas geradas por inteligência artificial.",
-    },
-    {
-      value: "05",
-      title: "Identidade e comunicação",
-      text: "Organizamos posicionamento, linguagem visual, mensagem principal e direção criativa para marcas que precisam parecer mais profissionais.",
-    },
-  ],
   visualServices: {
     ia: {
       eyebrow: "01 — Inteligência Artificial",
@@ -75,20 +48,88 @@ export const servicesPT = {
       cta: "Falar sobre este serviço",
       topic: "Serviços: Automação",
     },
+    crescimento: {
+      eyebrow: "03 — Crescimento",
+      title: "Estratégias de crescimento\ne performance",
+      description:
+        "Estratégias de marketing orientadas a dados para atrair mais clientes, converter melhor e reduzir o custo de aquisição, com campanhas geridas e otimizadas continuamente.",
+      audienceLabel: "Para quem é",
+      audience:
+        "PMEs e profissionais que querem gerar leads qualificados de forma consistente, sem desperdiçar orçamento em anúncios que não convertem.",
+      bullets: [
+        "Gestão de tráfego pago (Google & Meta Ads)",
+        "Geração e qualificação de leads",
+        "Funis de captação e conversão",
+        "SEO, GEO & AEO",
+        "Otimização de conversão (CRO)",
+        "Estratégia de posicionamento digital",
+      ],
+      cta: "Falar sobre este serviço",
+      topic: "Serviços: Crescimento",
+    },
+    "dados-bi": {
+      eyebrow: "04 — Dados & BI",
+      title: "Dados & Business\nIntelligence",
+      description:
+         "Transformamos dados dispersos em dashboards intuitivos e relatórios acionáveis que permitem tomar decisões mais rápidas, inteligentes e sustentadas por evidência.",
+      audienceLabel: "Para quem é",
+      audience:
+        "Empresas que recolhem dados diariamente mas precisam de maior visibilidade sobre desempenho, oportunidades e indicadores estratégicos.",
+      bullets: [
+        "Dashboards personalizados",
+        "Relatórios de KPIs e performance",
+        "Business Intelligence",
+        "Análise de rentabilidade",
+        "Consolidação de múltiplas fontes de dados",
+        "Data storytelling para gestores",
+      ],
+      cta: "Falar sobre este serviço",
+      topic: "Serviços: Dados & BI",
+    },
+    desenvolvimento: {
+      eyebrow: "05 — Desenvolvimento Web",
+      title: "Desenvolvimento web\norientado à conversão",
+      description:
+        "Desenvolvemos websites, landing pages e plataformas digitais que combinam design, velocidade e estratégia para transformar visitas em oportunidades de negócio.",
+      audienceLabel: "Para quem é",
+      audience:
+        "Empresas que procuram uma presença digital profissional, otimizada para gerar confiança, captar leads e apoiar o crescimento do negócio.",
+      bullets: [
+        "Websites institucionais e corporativos",
+        "Landing pages de alta conversão",
+        "Websites responsivos",
+        "Plataformas e aplicações web",
+        "Manutenção e suporte técnico",
+      ],
+      cta: "Falar sobre este serviço",
+      topic: "Serviços: Desenvolvimento Web",
+    },
+    marketing: {
+      eyebrow: "06 — Marketing Digital",
+      title: "Marketing digital com\nIA integrada",
+      description:
+        "Combinamos estratégia, criatividade e inteligência artificial para construir uma presença digital que atrai, envolve e converte clientes.",
+      audienceLabel: "Para quem é",
+      audience:
+        "Empresas que procuram crescer online com uma comunicação profissional, consistente e orientada para resultados mensuráveis.",
+      bullets: [
+        "Gestão de redes sociais",
+        "Produção de conteúdo com IA",
+        "Email marketing e newsletters",
+        "Identidade visual e branding",
+        "Conteúdo visual de alta performance",
+        "Estratégia de conteúdo editorial",
+      ],
+      cta: "Falar sobre este serviço",
+      topic: "Serviços: Marketing Digital",
+    },
   },
-  process: {
-    title: "Como trabalhamos",
-    items: [
-      "Diagnóstico → clareza sobre necessidades e oportunidades",
-      "Estratégia → plano prático com prioridades e entregáveis",
-      "Execução → implementação com tecnologia, IA e design",
-      "Otimização → melhoria contínua com base em dados"
-    ],
-  },
+
   finalCta: {
     title: "Vamos desenhar a solução certa",
     highlight: "para o seu negócio?",
-    description: "Conte-nos o que precisa e ajudamos a transformar a ideia num plano claro de execução.",
+    description: "Conte-nos o que precisa e ajudamos a transformar a ideia",
+    description_highlight: "num plano claro de execução.",
     button: "Falar connosco",
   },
 };

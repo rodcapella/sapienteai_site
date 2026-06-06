@@ -20,6 +20,22 @@ type ServiceSection = {
   backgroundImage: string;
 };
 
+const heroRef = useRef<HTMLDivElement>(null);
+const [mobileNavSticky, setMobileNavSticky] = useState(false);
+
+useEffect(() => {
+  const hero = document.querySelector(".internal-hero");
+  if (!hero) return;
+
+  const observer = new IntersectionObserver(
+    ([entry]) => setMobileNavSticky(!entry.isIntersecting),
+    { threshold: 0 }
+  );
+
+  observer.observe(hero);
+  return () => observer.disconnect();
+}, []);
+
 // ─── Config das secções de navegação ─────────────────────────────────────────
 
 const SERVICE_SECTIONS: ServiceSection[] = [
@@ -262,7 +278,7 @@ function ServiceDetail({
         <p className="mb-4 font-[var(--font-detail)] text-xs font-black uppercase tracking-[0.22em] text-[var(--brand-primary)]">
           {data.eyebrow}
         </p>
-        <h2 className="mb-6 font-[var(--font-heading)] text-3xl font-black leading-tight text-[var(--brand-night)] md:text-5xl">
+        <h2 className="mb-4 font-[var(--font-heading)] text-3xl font-black leading-tight text-[var(--brand-night)] md:text-5xl">
           {data.title}
         </h2>
         <p className="mb-10 max-w-3xl font-[var(--font-body)] text-base font-medium leading-relaxed text-[var(--brand-ink)] md:text-lg">
@@ -356,22 +372,37 @@ export default function Services(_props: { lang?: string }) {
       />
 
       {/* ── Docs Layout ── */}
-      <section className="bg-white px-0 py-20 md:py-28">
+      <section className="bg-white px-0 py-20 md:py-28 flex-1">
         <div className="w-full px-6">
           <div className="w-full">
-            <div className="grid w-full gap-8 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10">
+            <div className="grid w-full items-start gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-6">
 
               {/* Sidebar fixa */}
-              <aside className="hidden h-fit self-start justify-self-start lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pb-6">
-                <div className="legal-sidebar-title">{lang === "en" ? "Services" : "Serviços"}</div>
-                <ServicesSidebar active={activeSection} lang={lang} onSelect={handleSelectSection} />
+              <aside className="hidden h-fit self-start justify-self-start lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pb-6 lg:pt-1">
+                <div className="legal-sidebar-title">
+                  {lang === "en" ? "Services" : "Serviços"}
+                </div>
+
+                <ServicesSidebar
+                  active={activeSection}
+                  lang={lang}
+                  onSelect={handleSelectSection}
+                />
               </aside>
 
-              {/* Nav mobile (horizontal scroll) */}
-              <div className="flex gap-2 overflow-x-auto pb-2 lg:hidden">
+              {/* Mobile Nav */}
+              <div
+                className={[
+                  "flex gap-2 overflow-x-auto pb-2 lg:hidden transition-all duration-300",
+                  mobileNavSticky
+                    ? "fixed left-0 right-0 top-0 z-40 bg-white/95 px-4 pt-2 shadow-md backdrop-blur-md"
+                    : "relative px-0",
+                ].join(" ")}
+              >
                 {SERVICE_SECTIONS.map((s) => {
                   const Icon = Icons[s.icon] as React.ElementType;
                   const isActive = activeSection === s.id;
+
                   return (
                     <button
                       key={s.id}
@@ -381,88 +412,39 @@ export default function Services(_props: { lang?: string }) {
                         "flex min-h-10 shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all",
                         isActive
                           ? "border-[color-mix(in_srgb,#00D1FF_58%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] text-[var(--brand-night)]"
-                          : "border-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)]",
+                          : "border-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))]",
                       ].join(" ")}
                     >
-                      {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
+                      <Icon className="h-3.5 w-3.5 shrink-0" />
                       {s.navLabel[lang === "en" ? "en" : "pt"]}
                     </button>
                   );
                 })}
               </div>
 
-              {/* Conteúdo variável */}
-              <main className="flex min-w-0 flex-1 flex-col gap-0">
-                {/* Divisor vertical visível apenas em desktop */}
+              {/* Conteúdo */}
+              <main className="flex min-w-0 flex-1 flex-col gap-6">
                 <div className="contents">
                   {SERVICE_SECTIONS.map((section) => {
-                    if (section.id === "ia" || section.id === "automacao") {
-                      const data = content.visualServices[section.id];
+                    const data =
+                      content.visualServices?.[
+                        section.id as keyof typeof content.visualServices
+                      ];
 
-                      return (
-                        <article
-                          key={section.id}
-                          id={`service-${section.id}`}
-                          aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
-                          className="relative min-h-[520px] w-full scroll-mt-32 overflow-hidden rounded-2xl bg-cover bg-center bg-no-repeat px-8 py-10 md:px-12 lg:px-16"
-                          style={{ backgroundImage: `url('${section.backgroundImage}')` }}
-                        >
-                          <div className="grid min-h-[440px] grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(280px,0.9fr)_minmax(340px,1fr)_minmax(260px,0.75fr)]">
-                            <div className="max-w-[430px]">
-                              <p className="mb-6 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-night)]">
-                                {data.eyebrow}
-                              </p>
-                              <h2 className="mb-8 whitespace-pre-line font-[var(--font-body)] text-[44px] font-black leading-[1.06] tracking-normal text-[var(--brand-primary)] md:text-[54px]">
-                                {data.title}
-                              </h2>
-                              <p className="max-w-[390px] font-[var(--font-heading)] text-[17px] font-medium leading-[1.05] text-[var(--brand-night)]">
-                                {data.description}
-                              </p>
-
-                              <div className="mt-12 max-w-[390px]">
-                                <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)]">
-                                  {data.audienceLabel}
-                                </p>
-                                <p className="font-[var(--font-heading)] text-[16px] font-medium leading-[1.05] text-[var(--brand-night)]">
-                                  {data.audience}
-                                </p>
-                              </div>
-
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  setSelectedContactTopic(data.topic);
-                                  setIsContactOpen(true);
-                                }}
-                                className="mt-8 inline-flex min-h-10 items-center justify-center rounded-full bg-[var(--brand-primary)] px-7 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-normal text-white shadow-[0_10px_22px_rgba(10,132,255,0.24)] transition hover:bg-[#0068e8]"
-                              >
-                                {data.cta}
-                              </button>
-                            </div>
-
-                            <div className="hidden lg:block" aria-hidden="true" />
-
-                            <ul className="space-y-6 self-center font-[var(--font-heading)] text-[17px] font-medium leading-tight text-[var(--brand-night)]">
-                              {data.bullets.map((bullet) => (
-                                <li key={bullet} className="flex items-start gap-4">
-                                  <span className="mt-[0.42em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
-                                  <span>{bullet}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </article>
-                      );
-                    }
+                    if (!data) return null;
 
                     return (
-                      <div
+                      <article
                         key={section.id}
                         id={`service-${section.id}`}
                         aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
-                        className="h-[min(680px,calc(100vh-9rem))] min-h-[430px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat"
-                        style={{ backgroundImage: `url('${section.backgroundImage}')` }}
-                      />
+                        className="relative min-h-[420px] w-full scroll-mt-32 overflow-hidden rounded-2xl bg-cover bg-center bg-no-repeat px-8 py-6 md:px-10 lg:px-12"
+                        style={{
+                          backgroundImage: `url('${section.backgroundImage}')`,
+                        }}
+                      >
+                        {/* conteúdo do artigo */}
+                      </article>
                     );
                   })}
                 </div>
@@ -478,6 +460,7 @@ export default function Services(_props: { lang?: string }) {
         title={content.finalCta.title}
         title_highlight={content.finalCta.highlight}
         description={content.finalCta.description}
+        description_highlight={content.finalCta.description_highlight} 
         button={content.finalCta.button}
         align="left"
       />
