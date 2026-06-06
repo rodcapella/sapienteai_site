@@ -14,8 +14,8 @@ export const quizContentEn = {
 
   ctaTitle: "Ready to transform your business",
   ctaHighlight: "with AI?",
-  ctaText:
-    "Sapiente.AI helps companies and professionals implement AI solutions in a strategic, practical, and accessible way.",
+  ctaText: "Sapiente.AI helps companies and professionals",
+  ctaTextHighlight: "implement AI solutions in a strategic, practical, and accessible way.",
   ctaButton: "Talk to us",
 
   restartButton: "Retake the quiz",

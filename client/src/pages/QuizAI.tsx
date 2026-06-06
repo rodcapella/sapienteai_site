@@ -24,7 +24,7 @@ export default function QuizAI() {
 
   useEffect(() => {
     setSEOHead({
-      title: lang === "en" ? "Quiz AI" : "Quiz IA",
+      title: lang === "en" ? "AI Quiz" : "Quiz IA",
       description:
         lang === "en"
           ? "Artificial Intelligence business assessment."
@@ -328,7 +328,7 @@ export default function QuizAI() {
         )}
       </section>
 
-      <FinalCTA title={content.ctaTitle} title_highlight={content.ctaHighlight} description={content.ctaText} button={content.ctaButton} />
+      <FinalCTA title={content.ctaTitle} title_highlight={content.ctaHighlight} description={content.ctaText} description_highlight={content.ctaText}  button={content.ctaButton} />
     </main>
   );
 }

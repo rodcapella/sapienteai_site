@@ -2,10 +2,10 @@
 import { Icons } from "@/lib/icons";
 
 export const iaGenerativaPolicyPT = {
-  label: "IA Generativa",
-  title: "Política de Utilização de IA Generativa",
-  subtitle: "Regras claras para uma utilização responsável, transparente e segura da ",
-  highlight: "inteligência artificial generativa, em conformidade com o RGPD e o Regulamento IA da UE.",
+  label: "Política de IA Generativa",
+  title: "Em conformidade com o RGPD e o Regulamento IA da UE",
+  subtitle: "Regras claras para uma utilização responsável, transparente e segura da",
+  highlight: "inteligência artificial generativa.",
 
   sections: [
     {
@@ -13,7 +13,7 @@ export const iaGenerativaPolicyPT = {
       icon: Icons.Ban,
       title: "1. Proibição de Shadow AI (Ferramentas Não Autorizadas)",
       content:
-        "É expressamente proibido aos colaboradores, parceiros e prestadores de serviço da Sapiente.AI utilizar contas pessoais ou versões gratuitas de ferramentas de IA generativa (como ChatGPT, Gemini, DeepSeek, Copilot pessoal ou similares) para processar, armazenar ou analisar qualquer dado confidencial, pessoal ou propriedade intelectual da empresa ou dos seus clientes. Apenas as ferramentas de IA previamente homologadas pelo departamento de Segurança e Proteção de Dados, que garantam contratualmente a não retenção de dados para treino de modelos, estão autorizadas. O incumprimento constitui violação disciplinar grave e pode implicar responsabilização individual."
+        "A Sapiente.AI cumpre rigorosamente as melhores práticas de proteção de dados no uso de Inteligência Artificial. Garantimos que nenhum dado confidencial, pessoal ou propriedade intelectual da empresa e dos seus clientes é processado em contas pessoais ou versões gratuitas de ferramentas de IA (como ChatGPT, Gemini ou similares). Toda a nossa equipa atua exclusivamente através de ferramentas e subscrições empresariais autorizadas, as quais salvaguardam que os dados operacionais não são utilizados para treino de modelos públicos, assegurando total sigilo e conformidade."
     },
     {
       id: "anonymization",
@@ -21,9 +21,9 @@ export const iaGenerativaPolicyPT = {
       title: "2. Regras Obrigatórias de Anonimização para Prompts",
       content: [
         "Antes de introduzir qualquer informação em sistemas de IA generativa (incluindo soluções de IA local), o utilizador deve aplicar um processo de anonimização que inclua:",
-        "• Substituição de identificadores diretos (nomes, emails, NIF, moradas, números de telefone) por placeholders genéricos, ex: «[CLIENTE A]», «[FORNECEDOR X]»;",
-        "• Generalização de datas (ex: «2025» em vez de «15/03/2025») e valores (ex: «acima de 1000€»);",
-        "• Remoção de metadados que possam permitir reidentificação indireta.",
+        "Substituição de identificadores diretos (nomes, emails, NIF, moradas, números de telefone) por placeholders genéricos, ex: «[CLIENTE A]», «[FORNECEDOR X]»;",
+        "Generalização de datas (ex: «2025» em vez de «15/03/2025») e valores (ex: «acima de 1000€»);",
+        "Remoção de metadados que possam permitir reidentificação indireta.",
         "É proibida a introdução de categorias especiais de dados (artigo 9.º do RGPD) em qualquer modelo de IA sem autorização expressa do Encarregado de Proteção de Dados e medidas técnicas de isolamento."
       ]
     },
@@ -47,10 +47,10 @@ export const iaGenerativaPolicyPT = {
       title: "5. Resposta a Incidentes de Segurança Específicos de IA",
       content: [
         "Para além dos incidentes clássicos de segurança, a Sapiente.AI monitoriza ativamente:",
-        "• Ataques de injeção de prompt – tentativas de manipular o comportamento do modelo através de entradas maliciosas;",
-        "• Ataques de extração – tentativas de obter dados de treino ou informações confidenciais a partir das respostas do modelo;",
-        "• Vazamento inadvertido de dados – quando o modelo reproduz informação sensível de interações anteriores.",
-        "Qualquer colaborador que detete um comportamento anómalo, respostas com dados aparentemente confidenciais ou indícios de extração deve reportar imediatamente à equipa de Segurança/DLP. A empresa reserva-se o direito de suspender o uso do sistema de IA durante a investigação."
+        "Ataques de injeção de prompt – tentativas de manipular o comportamento do modelo através de entradas maliciosas;",
+        "Ataques de extração – tentativas de obter dados de treino ou informações confidenciais a partir das respostas do modelo;",
+        "Vazamento inadvertido de dados – quando o modelo reproduz informação sensível de interações anteriores.",
+        "Qualquer colaborador que note respostas anómalas ou suspeite de alguma vulnerabilidade nos nossos sistemas deve reportar a situação imediatamente à gestão interna. Como medida de proteção, a empresa poderá suspender temporariamente o acesso às ferramentas de IA enquanto avalia a situação."
       ]
     },
     {
@@ -65,7 +65,7 @@ export const iaGenerativaPolicyPT = {
       icon: Icons.ShieldAlert,
       title: "7. Avaliação de Impacto para IA de Risco Elevado (AIFR)",
       content:
-        "Antes da implementação de qualquer sistema de IA classificado como de «risco elevado» ao abrigo do Regulamento IA da UE (ex: recrutamento, avaliação de crédito, gestão de trabalhadores), a Sapiente.AI realiza uma Avaliação de Impacto sobre os Direitos Fundamentais (AIFR). Esta análise identifica, documenta e mitiga os riscos para os direitos dos cidadãos, incluindo a não discriminação, a transparência e a supervisão humana. As conclusões são revistas pelo Comité de Governança de IA e disponibilizadas às autoridades competentes quando exigido."
+        "Antes de utilizarmos ou implementarmos qualquer sistema de IA classificado como de risco elevado pela União Europeia (como ferramentas para recrutamento ou gestão de colaboradores), a Sapiente.AI realiza uma avaliação de impacto interna. Esta análise serve para garantir que a tecnologia respeita os direitos das pessoas, assegurando a transparência, a não discriminação e a supervisão humana em todo o processo. Os resultados são documentados internamente e ficam disponíveis para as autoridades sempre que exigido por lei."
     }
   ]
 };

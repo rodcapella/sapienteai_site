@@ -42,7 +42,7 @@ function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
 function getFAQCopy(lang: string) {
   return lang === "en"
     ? {
-        label: "Frequently asked questions",
+        label: "Frequently Asked Questions",
         title: "Have questions?",
         highlight: "We have answers.",
         subtitle: "We gathered the most common questions about how we work, what we deliver and how Sapiente.AI creates business impact with AI, automation and digital strategy.",

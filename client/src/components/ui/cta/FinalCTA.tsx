@@ -13,7 +13,7 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
-  variant?: "default" | "home" | "about"; // Adicionado "about" nas opções de variante
+  variant?: "default" | "home" | "about";
   align?: "left" | "center";
   breakTitleHighlight?: boolean;
   backgroundSrc?: string;
@@ -43,13 +43,12 @@ export function FinalCTA({
 
   const descriptionFontSize = "clamp(15px, 1.4vw, 18px)";
 
-  // Mapeamento dos fallbacks de imagem baseados na variante ativa
   const getFallbackBackground = () => {
     switch (variant) {
       case "home":
         return "/media/bg/bg_finalCTA_home.png";
       case "about":
-        return "/media/bg/final_CTA_sobre.png"; // Nova imagem adicionada para a página About
+        return "/media/bg/final_CTA_sobre.png";
       default:
         return "/media/bg/bg_finalCTA.png";
     }
@@ -93,17 +92,15 @@ export function FinalCTA({
         >
           <div
             className={cn(
+              "w-full flex flex-col",
               !isCentered
-                ? "max-w-[700px]"
-                : "max-w-4xl mx-auto"
+                ? "max-w-[700px] items-start text-left"
+                : "max-w-4xl mx-auto items-center text-center"
             )}
           >
-            <Reveal>
+            <Reveal className={isCentered ? "mx-auto" : "w-full"}>
               <h2
-                className={cn(
-                  "font-black leading-[1.08] tracking-normal",
-                  isCentered && "mx-auto"
-                )}
+                className="font-black leading-[1.08] tracking-normal"
                 style={{
                   fontFamily: "var(--font-heading)",
                   color: isHomeVariant ? "#FFFFFF" : "#000000",
@@ -135,12 +132,9 @@ export function FinalCTA({
             </Reveal>
 
             {description && (
-              <Reveal delay={110}>
+              <Reveal delay={110} className={isCentered ? "mx-auto" : "w-full"}>
                 <p
-                  className={cn(
-                    "mt-7 font-medium leading-relaxed",
-                    isCentered && "mx-auto"
-                  )}
+                  className="mt-7 font-medium leading-relaxed"
                   style={{
                     fontFamily: "var(--font-body)",
                     color: isHomeVariant ? "#FFFFFF" : "#001547",
@@ -172,10 +166,10 @@ export function FinalCTA({
               </Reveal>
             )}
 
-            <Reveal delay={220}>
+            <Reveal delay={220} className={isCentered ? "mx-auto" : ""}>
               <div
                 className={cn(
-                  "mt-12 flex",
+                  "mt-12 flex w-full",
                   isCentered ? "justify-center" : "justify-start"
                 )}
               >

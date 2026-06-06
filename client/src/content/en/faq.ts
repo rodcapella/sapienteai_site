@@ -1,7 +1,7 @@
 export const faqEN = {
   eyebrow: "FAQ",
-  title: "Frequently Asked",
-  title_highlight: "Questions.",
+  title: "Frequently Asked Questions",
+  title_highlight: "",
   subtitle: "Clear, straightforward answers about how we use AI to help businesses grow, automate processes, and drive real results.",
 
   cta: {

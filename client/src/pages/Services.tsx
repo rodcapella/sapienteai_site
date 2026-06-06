@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -9,24 +9,26 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 import { setSEOHead } from "@/components/SEOHead";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
+import "@/content/styles/legal.css";
 
 // ─── Tipos ───────────────────────────────────────────────────────────────────
 
 type ServiceSection = {
   id: string;
-  navLabel: string;
+  navLabel: { pt: string; en: string };
   icon: keyof typeof Icons;
+  backgroundImage: string;
 };
 
 // ─── Config das secções de navegação ─────────────────────────────────────────
 
 const SERVICE_SECTIONS: ServiceSection[] = [
-  { id: "ia",              navLabel: "IA",               icon: "Sparkles"   },
-  { id: "automacao",       navLabel: "Automação",         icon: "Zap"        },
-  { id: "crescimento",     navLabel: "Crescimento",       icon: "TrendingUp" },
-  { id: "dados-bi",        navLabel: "Dados & BI",        icon: "BarChart"   },
-  { id: "desenvolvimento", navLabel: "Desenvolvimento",   icon: "Code"       },
-  { id: "marketing",       navLabel: "Marketing Digital", icon: "Megaphone"  },
+  { id: "ia", navLabel: { pt: "IA", en: "AI" }, icon: "Sparkles", backgroundImage: "/media/bg/servicos/bg_Serviços_ia.png" },
+  { id: "automacao", navLabel: { pt: "Automação", en: "Automation" }, icon: "Zap", backgroundImage: "/media/bg/servicos/bg_Serviços_automacao.png" },
+  { id: "crescimento", navLabel: { pt: "Crescimento", en: "Growth" }, icon: "TrendingUp", backgroundImage: "/media/bg/servicos/bg_Serviços_crescimento.png" },
+  { id: "dados-bi", navLabel: { pt: "Dados & BI", en: "Data & BI" }, icon: "BarChart", backgroundImage: "/media/bg/servicos/bg_Serviços_dados.png" },
+  { id: "desenvolvimento", navLabel: { pt: "Website", en: "Website" }, icon: "Code", backgroundImage: "/media/bg/servicos/bg_Serviços_website.png" },
+  { id: "marketing", navLabel: { pt: "Marketing Digital", en: "Digital Marketing" }, icon: "Megaphone", backgroundImage: "/media/bg/servicos/bg_Serviços_mkt_digital.png" },
 ];
 
 // ─── Conteúdo de cada secção ──────────────────────────────────────────────────
@@ -214,13 +216,15 @@ const SECTION_CONTENT: Record<string, { pt: ServiceContent; en: ServiceContent }
 
 function ServicesSidebar({
   active,
+  lang,
   onSelect,
 }: {
   active: string;
+  lang: string;
   onSelect: (id: string) => void;
 }) {
   return (
-    <nav className="flex flex-col gap-1 self-start">
+    <nav className="legal-cats">
       {SERVICE_SECTIONS.map((s) => {
         const Icon = Icons[s.icon] as React.ElementType;
         const isActive = active === s.id;
@@ -229,22 +233,10 @@ function ServicesSidebar({
             key={s.id}
             type="button"
             onClick={() => onSelect(s.id)}
-            className={[
-              "group flex w-full items-center gap-3 rounded-[10px] border px-3.5 py-2.5 text-left font-[var(--font-body)] text-[18px] font-bold leading-tight transition-all duration-200",
-              isActive
-                ? "border-[color-mix(in_srgb,#00D1FF_58%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] text-[var(--brand-night)] dark:border-[color-mix(in_srgb,#00D1FF_72%,transparent)] dark:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))]"
-                : "border-transparent bg-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)] dark:hover:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:hover:text-[var(--brand-night)]",
-            ].join(" ")}
+            className={`legal-cat ${isActive ? "active" : ""}`}
           >
-            {Icon && (
-              <Icon
-                className={[
-                  "h-4 w-4 shrink-0 transition-colors",
-                  isActive ? "text-[var(--brand-primary)] dark:text-[var(--brand-night)]" : "text-[var(--brand-night)]/35 group-hover:text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]/50 dark:group-hover:text-[var(--brand-night)]",
-                ].join(" ")}
-              />
-            )}
-            <span className="tracking-tight">{s.navLabel}</span>
+            {Icon && <Icon className="h-4 w-4" />}
+            <span>{s.navLabel[lang === "en" ? "en" : "pt"]}</span>
           </button>
         );
       })}
@@ -265,15 +257,15 @@ function ServiceDetail({
   if (!data) return null;
 
   return (
-    <div className="animate-fadeIn">
+    <article id={`service-${id}`} className="scroll-mt-32 rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] p-7 shadow-[0_18px_38px_rgba(1,32,80,0.06)] md:p-9">
       <Reveal>
-        <p className="mb-4 text-xs font-black uppercase tracking-[0.22em] text-[var(--brand-cyan)]">
+        <p className="mb-4 font-[var(--font-detail)] text-xs font-black uppercase tracking-[0.22em] text-[var(--brand-primary)]">
           {data.eyebrow}
         </p>
-        <h2 className="mb-6 text-3xl font-black leading-tight text-[var(--brand-offwhite)] md:text-5xl">
+        <h2 className="mb-6 font-[var(--font-heading)] text-3xl font-black leading-tight text-[var(--brand-night)] md:text-5xl">
           {data.title}
         </h2>
-        <p className="mb-10 max-w-2xl text-base font-medium leading-relaxed text-[var(--brand-offwhite)]/60 md:text-lg">
+        <p className="mb-10 max-w-3xl font-[var(--font-body)] text-base font-medium leading-relaxed text-[var(--brand-ink)] md:text-lg">
           {data.description}
         </p>
       </Reveal>
@@ -283,9 +275,9 @@ function ServiceDetail({
           {data.bullets.map((bullet, i) => (
             <li
               key={i}
-              className="flex items-start gap-3 rounded-xl border border-[var(--brand-purple)]/20 bg-[var(--brand-night)]/50 px-5 py-4 text-sm font-semibold text-[var(--brand-offwhite)]/75 shadow-[0_8px_24px_rgba(1,32,80,0.12)]"
+              className="flex items-start gap-3 rounded-xl border border-[color-mix(in_srgb,var(--brand-primary)_22%,transparent)] bg-[rgba(234,246,255,0.58)] px-5 py-4 font-[var(--font-body)] text-sm font-semibold text-[var(--brand-night)] shadow-[0_8px_24px_rgba(1,32,80,0.08)]"
             >
-              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--brand-cyan)]/15 text-[var(--brand-cyan)]">
+              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00D1FF] text-[var(--brand-night)]">
                 <Icons.Check className="h-3 w-3" />
               </span>
               {bullet}
@@ -293,7 +285,7 @@ function ServiceDetail({
           ))}
         </ul>
       </Reveal>
-    </div>
+    </article>
   );
 }
 
@@ -314,6 +306,36 @@ export default function Services(_props: { lang?: string }) {
     });
   }, [content, lang]);
 
+  useEffect(() => {
+    const sectionElements = SERVICE_SECTIONS.map((section) => document.getElementById(`service-${section.id}`)).filter(
+      (element): element is HTMLElement => Boolean(element),
+    );
+
+    if (!sectionElements.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id) {
+          setActiveSection(visible.target.id.replace("service-", ""));
+        }
+      },
+      { rootMargin: "-28% 0px -55% 0px", threshold: [0.15, 0.35, 0.6] },
+    );
+
+    sectionElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleSelectSection = (id: string) => {
+    setActiveSection(id);
+    document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <div className="flex flex-col">
       {/* ── Hero ── */}
@@ -328,20 +350,15 @@ export default function Services(_props: { lang?: string }) {
       />
 
       {/* ── Docs Layout ── */}
-      <Section className="bg-blue-tint py-24 md:py-32">
+      <Section className="bg-[var(--section-ice)] py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid gap-12 lg:grid-cols-[260px_1fr] lg:gap-16 xl:grid-cols-[280px_1fr]">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-10 lg:grid-cols-[260px_1fr] lg:gap-16">
 
               {/* Sidebar fixa */}
-              <aside className="hidden lg:block">
-                <div className="sticky top-28">
-                  {/* Label do grupo */}
-                  <p className="mb-4 px-3.5 font-[var(--font-detail)] text-[16px] font-black uppercase tracking-[0.2em] text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
-                    {lang === "en" ? "Services" : "Serviços"}
-                  </p>
-                  <ServicesSidebar active={activeSection} onSelect={setActiveSection} />
-                </div>
+              <aside className="legal-sidebar hidden lg:block">
+                <div className="legal-sidebar-title">{lang === "en" ? "Services" : "Serviços"}</div>
+                <ServicesSidebar active={activeSection} lang={lang} onSelect={handleSelectSection} />
               </aside>
 
               {/* Nav mobile (horizontal scroll) */}
@@ -353,7 +370,7 @@ export default function Services(_props: { lang?: string }) {
                     <button
                       key={s.id}
                       type="button"
-                      onClick={() => setActiveSection(s.id)}
+                      onClick={() => handleSelectSection(s.id)}
                       className={[
                         "flex min-h-10 shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all",
                         isActive
@@ -362,17 +379,25 @@ export default function Services(_props: { lang?: string }) {
                       ].join(" ")}
                     >
                       {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
-                      {s.navLabel}
+                      {s.navLabel[lang === "en" ? "en" : "pt"]}
                     </button>
                   );
                 })}
               </div>
 
               {/* Conteúdo variável */}
-              <main className="min-h-[520px]">
+              <main className="flex-1 flex flex-col gap-12">
                 {/* Divisor vertical visível apenas em desktop */}
-                <div className="relative lg:pl-10 lg:before:absolute lg:before:left-0 lg:before:top-0 lg:before:h-full lg:before:w-px lg:before:bg-gradient-to-b lg:before:from-[var(--brand-cyan)]/20 lg:before:via-[var(--brand-purple)]/15 lg:before:to-transparent">
-                  <ServiceDetail key={activeSection} id={activeSection} lang={lang} />
+                <div className="contents">
+                  {SERVICE_SECTIONS.map((section) => (
+                    <div
+                      key={section.id}
+                      id={`service-${section.id}`}
+                      aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
+                      className="w-full h-[350px] scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat shadow-[0_18px_38px_rgba(1,32,80,0.08)]"
+                      style={{ backgroundImage: `url('${section.backgroundImage}')` }}
+                    />
+                  ))}
                 </div>
               </main>
 

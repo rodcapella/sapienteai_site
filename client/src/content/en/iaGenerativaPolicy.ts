@@ -2,10 +2,10 @@
 import { Icons } from "@/lib/icons";
 
 export const iaGenerativaPolicyEN = {
-  label: "Generative AI",
-  title: "Generative AI Usage Policy",
-  subtitle: "Clear rules for the responsible, transparent, and secure use of",
-  highlight: "generative artificial intelligence, in compliance with the GDPR and the EU AI Act.",
+  label: "Generative AI Policy",
+  title: "Compliant with GDPR and the EU AI Act",
+  subtitle: "Clear guidelines for the responsible, transparent, and secure use of",
+  highlight: "generative artificial intelligence.",
 
   sections: [
     {
@@ -13,7 +13,7 @@ export const iaGenerativaPolicyEN = {
       icon: Icons.Ban,
       title: "1. Prohibition of Shadow AI (Unauthorized Tools)",
       content:
-        "Employees, partners, and service providers of Sapiente.AI are expressly forbidden from using personal accounts or free versions of generative AI tools (such as ChatGPT, Gemini, DeepSeek, personal Copilot, or similar) to process, store, or analyze any confidential data, personal data, or intellectual property of the company or its clients. Only AI tools previously approved by the Security and Data Protection department, which contractually guarantee non-retention of data for model training, are authorized. Non-compliance constitutes a serious disciplinary violation and may result in individual liability."
+        "At Sapiente.AI, protecting our clients' data is our top priority. We guarantee that all generative AI tools used in our daily operations are fully approved and operated exclusively through secure corporate accounts. We do not use free versions or personal accounts to process project information. This ensures that no confidential data, code, or intellectual property is retained by third-party platforms for model training, keeping your business completely safe and private."
     },
     {
       id: "anonymization",
@@ -21,9 +21,9 @@ export const iaGenerativaPolicyEN = {
       title: "2. Mandatory Anonymization Rules for Prompts",
       content: [
         "Before entering any information into generative AI systems (including local AI solutions), the user must apply an anonymization process that includes:",
-        "• Replacement of direct identifiers (names, emails, tax numbers, addresses, phone numbers) with generic placeholders, e.g., «[CLIENT A]», «[SUPPLIER X]»;",
-        "• Generalization of dates (e.g., «2025» instead of «15/03/2025») and values (e.g., «above €1000»);",
-        "• Removal of metadata that could allow indirect re-identification.",
+        "Replacement of direct identifiers (names, emails, tax numbers, addresses, phone numbers) with generic placeholders, e.g., «[CLIENT A]», «[SUPPLIER X]»;",
+        "Generalization of dates (e.g., «2025» instead of «15/03/2025») and values (e.g., «above €1000»);",
+        "Removal of metadata that could allow indirect re-identification.",
         "It is forbidden to introduce special categories of data (Article 9 of the GDPR) into any AI model without the express authorization of the Data Protection Officer and appropriate technical isolation measures."
       ]
     },
@@ -47,10 +47,10 @@ export const iaGenerativaPolicyEN = {
       title: "5. Response to AI-Specific Security Incidents",
       content: [
         "In addition to classic security incidents, Sapiente.AI actively monitors:",
-        "• Prompt injection attacks – attempts to manipulate model behavior through malicious inputs;",
-        "• Extraction attacks – attempts to obtain training data or confidential information from model responses;",
-        "• Inadvertent data leakage – when the model reproduces sensitive information from previous interactions.",
-        "Any employee who detects anomalous behavior, responses with apparently confidential data, or signs of extraction must immediately report it to the Security/DLP team. The company reserves the right to suspend the use of the AI system during the investigation."
+        "Prompt injection attacks – attempts to manipulate model behavior through malicious inputs;",
+        "Extraction attacks – attempts to obtain training data or confidential information from model responses;",
+        "Inadvertent data leakage – when the model reproduces sensitive information from previous interactions.",
+        "Any team member who notices anomalous responses or suspects any vulnerability in our systems must report the situation immediately to internal management. As a protective measure, the company may temporarily suspend access to AI tools while the situation is evaluated."
       ]
     },
     {
@@ -65,7 +65,7 @@ export const iaGenerativaPolicyEN = {
       icon: Icons.ShieldAlert,
       title: "7. Fundamental Rights Impact Assessment for High-Risk AI (FRIA)",
       content:
-        "Before implementing any AI system classified as «high-risk» under the EU AI Act (e.g., recruitment, credit assessment, worker management), Sapiente.AI conducts a Fundamental Rights Impact Assessment (FRIA). This assessment identifies, documents, and mitigates risks to individuals' rights, including non-discrimination, transparency, and human oversight. The findings are reviewed by the AI Governance Committee and made available to competent authorities when required."
+        "Before utilizing or implementing any AI system classified as high-risk by the European Union (such as recruitment or workforce management tools), Sapiente.AI conducts an internal impact assessment. This analysis ensures that the technology respects people's rights, safeguarding transparency, non-discrimination, and human oversight throughout the entire process. The results are documented internally and remain available to the competent authorities whenever required by law."
     }
   ]
 };
