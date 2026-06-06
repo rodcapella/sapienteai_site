@@ -26,9 +26,9 @@ const SERVICE_SECTIONS: ServiceSection[] = [
   { id: "ia", navLabel: { pt: "IA", en: "AI" }, icon: "Sparkles", backgroundImage: "/media/bg/servicos/bg_Serviços_ia.png" },
   { id: "automacao", navLabel: { pt: "Automação", en: "Automation" }, icon: "Zap", backgroundImage: "/media/bg/servicos/bg_Serviços_automacao.png" },
   { id: "crescimento", navLabel: { pt: "Crescimento", en: "Growth" }, icon: "TrendingUp", backgroundImage: "/media/bg/servicos/bg_Serviços_crescimento.png" },
-  { id: "dados-bi", navLabel: { pt: "Dados & BI", en: "Data & BI" }, icon: "BarChart", backgroundImage: "/media/bg/servicos/bg_Serviços_dados.png" },
-  { id: "desenvolvimento", navLabel: { pt: "Website", en: "Website" }, icon: "Code", backgroundImage: "/media/bg/servicos/bg_Serviços_website.png" },
-  { id: "marketing", navLabel: { pt: "Marketing Digital", en: "Digital Marketing" }, icon: "Megaphone", backgroundImage: "/media/bg/servicos/bg_Serviços_mkt_digital.png" },
+  { id: "dados-bi", navLabel: { pt: "Dados & BI", en: "Data & BI" }, icon: "BarChart3", backgroundImage: "/media/bg/servicos/bg_Serviços_dados.png" },
+  { id: "desenvolvimento", navLabel: { pt: "Website", en: "Website" }, icon: "Globe", backgroundImage: "/media/bg/servicos/bg_Serviços_website.png" },
+  { id: "marketing", navLabel: { pt: "Marketing Digital", en: "Digital Marketing" }, icon: "MessageCircle", backgroundImage: "/media/bg/servicos/bg_Serviços_mkt_digital.png" },
 ];
 
 // ─── Conteúdo de cada secção ──────────────────────────────────────────────────
