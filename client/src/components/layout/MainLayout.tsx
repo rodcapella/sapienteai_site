@@ -17,7 +17,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       <Header />
 
       {/* 🧠 MAIN CONTENT WITH TRANSITION */}
-      <main className="flex-1 w-full pt-20 md:pt-28">
+      <main className="flex-1 w-full pt-16 md:pt-[68px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={location}
