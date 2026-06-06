@@ -361,7 +361,7 @@ export default function Services(_props: { lang?: string }) {
 
               {/* Sidebar fixa */}
               <aside className="sticky top-28 hidden h-fit self-start justify-self-start lg:block">
-                <div className="legal-group-title">{lang === "en" ? "Services" : "Serviços"}</div>
+                <div className="legal-sidebar-title">{lang === "en" ? "Services" : "Serviços"}</div>
                 <ServicesSidebar active={activeSection} lang={lang} onSelect={handleSelectSection} />
               </aside>
 
@@ -406,25 +406,6 @@ export default function Services(_props: { lang?: string }) {
               </main>
 
             </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* ── Problem / Vision ── */}
-      <Section className="relative overflow-hidden py-24 md:py-40">
-        <div className="container mx-auto px-6">
-          <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2">
-            {[content.problem, content.vision].map((block, index) => (
-              <Reveal key={block.title} delay={index * 120}>
-                <SectionCard className="h-full border-[var(--brand-purple)]/20 bg-[var(--card)] p-8 shadow-2xl md:p-10">
-                  <Icons.Zap className="mb-8 h-9 w-9 text-primary" />
-                  <h3 className="mb-6 text-3xl font-black leading-tight text-foreground md:text-5xl">
-                    {block.title}
-                  </h3>
-                  <p className="text-lg font-medium leading-relaxed text-foreground/65">{block.text}</p>
-                </SectionCard>
-              </Reveal>
-            ))}
           </div>
         </div>
       </Section>
