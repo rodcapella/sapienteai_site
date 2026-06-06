@@ -18,24 +18,27 @@ function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
       ? {
           general: "General",
           content: "Marketing & content",
-          automation: "Websites, AI & automation",
+          websites: "Websites & SEO",
+          automation: "AI & Automation",
           data: "BI & Data",
           business: "Investment & support",
         }
       : {
           general: "Geral",
           content: "Marketing e conteúdos",
-          automation: "Websites, IA e automação",
+          websites: "Websites & SEO",
+          automation: "IA e Automação",
           data: "BI & Dados",
           business: "Investimento e suporte",
         };
 
   return [
-    { id: "general", label: labels.general, icon: Icons.HelpCircle, items: items.slice(0, 4) },
-    { id: "content", label: labels.content, icon: Icons.MessageCircle, items: items.slice(4, 13) },
-    { id: "automation", label: labels.automation, icon: Icons.Cpu, items: items.slice(13, 17) },
-    { id: "data", label: labels.data, icon: Icons.Database, items: items.slice(21) },
-    { id: "business", label: labels.business, icon: Icons.BarChart3, items: items.slice(17, 21) },
+    { id: "general",    label: labels.general,    icon: Icons.HelpCircle,    items: items.slice(0, 8) },
+    { id: "content",    label: labels.content,    icon: Icons.MessageCircle, items: items.slice(8, 17) },
+    { id: "websites",   label: labels.websites,   icon: Icons.Globe,         items: items.slice(17, 24) },
+    { id: "automation", label: labels.automation, icon: Icons.Cpu,           items: items.slice(24, 31) },
+    { id: "data",       label: labels.data,       icon: Icons.Database,      items: items.slice(35) },
+    { id: "business",   label: labels.business,   icon: Icons.BarChart3,     items: items.slice(31, 35) },
   ].filter((category) => category.items.length > 0);
 }
 

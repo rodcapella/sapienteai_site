@@ -78,7 +78,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const lang = location.split("/")[1] || "pt";
   const pageTitle = getLegalPageTitle(slug, lang) || content.title;
   const cta = getLegalCta(lang);
-  const statementHeroSlugs = ["terms", "privacy", "generative-ai-policy"];
+  const statementHeroSlugs = ["terms", "privacy", "generative-ai-policy", "trust"];
   const usesStatementHero = statementHeroSlugs.includes(slug);
   const heroLabel = content.label || pageTitle;
   const heroTitle = usesStatementHero ? content.subtitle || content.title : content.title;

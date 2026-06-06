@@ -37,31 +37,31 @@ export function QuizCTA() {
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 
   return (
-    <section className="relative overflow-hidden bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] px-6 py-16 text-[var(--brand-night)] md:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,209,255,0.22),transparent_34%)]" />
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-8 text-center lg:flex-row lg:justify-between lg:text-left">
+    <section className="relative overflow-hidden bg-[var(--section-ice)] px-6 py-10 text-[var(--foreground)] md:py-14">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,209,255,0.12),transparent_34%)]" />
+      <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
         <Reveal>
-          <div className="max-w-3xl">
-            <p className="mb-4 font-detail text-[12px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
+          <div className="flex flex-col items-center">
+            <p className="mb-3 font-detail text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
               {content.label}
             </p>
-            <h2 className="font-heading text-[40px] font-black leading-tight text-[var(--brand-night)]">
+            <h2 className="font-heading text-[32px] font-black leading-tight text-[var(--foreground)]">
               {content.title}
               {content.title_highlight && (
                 <>
                   {" "}
-                  <span className="text-[var(--brand-night)]" style={highlightStyle}>
+                  <span className="text-[var(--brand-primary)]" style={highlightStyle}>
                     {content.title_highlight}
                   </span>
                 </>
               )}
             </h2>
-            <p className="mt-5 max-w-2xl text-[14px] font-medium leading-relaxed text-[var(--brand-ink)]">
+            <p className="mt-3 text-[13px] font-medium leading-relaxed text-[var(--muted-foreground)]">
               {content.description}
               {content.description_highlight && (
                 <>
                   {" "}
-                  <span className="text-[var(--brand-night)]" style={highlightStyle}>
+                  <span className="text-[var(--brand-primary)]" style={highlightStyle}>
                     {content.description_highlight}
                   </span>
                 </>

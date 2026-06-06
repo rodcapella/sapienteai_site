@@ -39,10 +39,10 @@ export function FinalCTA({
   const isCentered = align ? align === "center" : usesHeroTextPattern;
 
   const titleFontSize = usesHeroTextPattern
-    ? "clamp(40px, 5vw, 56px)"
-    : "40px";
+    ? "clamp(32px, 4vw, 44px)"
+    : "32px";
 
-  const descriptionFontSize = "clamp(15px, 1.4vw, 18px)";
+  const descriptionFontSize = "clamp(13px, 1.2vw, 16px)";
 
   const getFallbackBackground = () => {
     switch (variant) {
@@ -71,7 +71,7 @@ export function FinalCTA({
     <>
       <Section
         className={cn(
-          "final-cta relative overflow-hidden py-24 md:py-36",
+          "final-cta relative overflow-hidden py-8 md:py-12",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -87,7 +87,7 @@ export function FinalCTA({
           className={cn(
             "relative z-10 mx-auto w-full",
             isCentered
-              ? "max-w-4xl px-6 sm:px-10 text-center"
+              ? "max-w-3xl px-6 sm:px-10 text-center"
               : "max-w-7xl px-6 sm:px-8 text-left"
           )}
         >
@@ -95,8 +95,8 @@ export function FinalCTA({
             className={cn(
               "w-full flex flex-col",
               !isCentered
-                ? "max-w-[700px] items-start text-left"
-                : "max-w-4xl mx-auto items-center text-center"
+                ? "max-w-[580px] items-start text-left"
+                : "max-w-3xl mx-auto items-center text-center"
             )}
           >
             <Reveal className={isCentered ? "mx-auto" : "w-full"}>
@@ -135,7 +135,7 @@ export function FinalCTA({
             {description && (
               <Reveal delay={110} className={isCentered ? "mx-auto" : "w-full"}>
                 <p
-                  className="mt-7 font-medium leading-relaxed"
+                  className="mt-3 font-medium leading-relaxed"
                   style={{
                     fontFamily: "var(--font-body)",
                     color: usesHeroTextPattern ? "#FFFFFF" : "#001547",
@@ -170,7 +170,7 @@ export function FinalCTA({
             <Reveal delay={220} className={isCentered ? "mx-auto" : ""}>
               <div
                 className={cn(
-                  "mt-12 flex w-full",
+                  "mt-6 flex w-full",
                   isCentered ? "justify-center" : "justify-start"
                 )}
               >

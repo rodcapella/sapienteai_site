@@ -13,6 +13,7 @@ export const faqPT = {
   },
 
   items: [
+    // ─── GERAL (0–7) ───────────────────────────────────────────────
     {
       question: "O que faz exatamente a Sapiente.AI?",
       answer:
@@ -33,6 +34,28 @@ export const faqPT = {
       answer:
         "Não. A IA funciona como um acelerador de produtividade. Automatiza tarefas repetitivas e permite que a equipa se concentre em atividades de maior valor.",
     },
+    {
+      question: "Precisamos de ter conhecimentos técnicos para trabalhar convosco?",
+      answer:
+        "Não. Tratamos de toda a parte técnica. O que precisamos de si é clareza sobre os objetivos do negócio. Explicamos tudo de forma simples e acompanhamos cada fase do processo.",
+    },
+    {
+      question: "Como é feito o acompanhamento do projeto?",
+      answer:
+        "Trabalhamos com ciclos claros de entrega, comunicação regular e pontos de revisão. Não desaparecemos após a proposta. Estamos presentes em cada etapa para garantir que o projeto avança na direção certa.",
+    },
+    {
+      question: "Trabalham com empresas fora de Portugal?",
+      answer:
+        "Sim. Trabalhamos remotamente com empresas em Portugal, Brasil e outros países de língua portuguesa e inglesa. A distância não é obstáculo quando os processos estão bem estruturados.",
+    },
+    {
+      question: "Como começa uma colaboração com a Sapiente.AI?",
+      answer:
+        "Começa com uma conversa. Analisamos o seu caso, percebemos os objetivos e desafios, e apresentamos uma proposta concreta. Sem compromisso, sem guiões de venda.",
+    },
+
+    // ─── MARKETING & CONTEÚDO (8–16) ──────────────────────────────
     {
       question: "Também fazem marketing e gestão de redes sociais?",
       answer:
@@ -78,15 +101,17 @@ export const faqPT = {
       answer:
         "Sim. Produzimos conteúdos visuais, vídeos e peças criativas pensadas para captar a atenção, comunicar melhor e converter o público em clientes.",
     },
+
+    // ─── WEBSITES & SEO (17–23) ────────────────────────────────────
     {
       question: "Desenvolvem websites ou landing pages?",
       answer:
         "Sim. Desenvolvemos websites e landing pages focados na conversão, integrados com funis, automações e acompanhamento de dados.",
     },
     {
-      question: "É possível automatizar o atendimento e as vendas?",
+      question: "O website fica otimizado para dispositivos móveis?",
       answer:
-        "Sim. Implementamos chatbots e fluxos inteligentes para atendimento, qualificação de leads e apoio ao processo comercial, disponíveis 24/7.",
+        "Sim. Todos os websites que desenvolvemos são totalmente responsivos e otimizados para mobile. A maioria do tráfego hoje vem de telemóvel. Ignorar isso é deixar oportunidades na mesa.",
     },
     {
       question: "Trabalham com SEO, GEO e AEO?",
@@ -94,10 +119,59 @@ export const faqPT = {
         "Sim. Otimizamos a presença digital para motores de busca tradicionais, pesquisa geolocalizada e motores de resposta com IA, aumentando a visibilidade e a captura de procura qualificada.",
     },
     {
+      question: "O website pode crescer e evoluir com o meu negócio?",
+      answer:
+        "Sim. Desenvolvemos websites com arquitetura escalável, o que significa que novas páginas, funcionalidades, integrações e automações podem ser adicionadas à medida que o negócio cresce, sem necessidade de reconstruir tudo de raiz.",
+    },
+    {
+      question: "Fazem manutenção e atualizações ao website após o lançamento?",
+      answer:
+        "Sim. Oferecemos suporte contínuo para manutenção, correções, atualizações de conteúdo e melhorias técnicas. Um website nunca está verdadeiramente terminado — deve evoluir com os objetivos do negócio.",
+    },
+    {
+      question: "O website inclui rastreamento e análise de desempenho?",
+      answer:
+        "Sim. Configuramos ferramentas de análise para monitorizar tráfego, comportamento dos visitantes, taxas de conversão e origem dos leads. Esses dados são essenciais para tomar decisões informadas e otimizar continuamente.",
+    },
+
+    // ─── IA & AUTOMAÇÃO (24–30) ────────────────────────────────────
+    {
+      question: "É possível automatizar o atendimento e as vendas?",
+      answer:
+        "Sim. Implementamos chatbots e fluxos inteligentes para atendimento, qualificação de leads e apoio ao processo comercial, disponíveis 24/7.",
+    },
+    {
       question: "Conseguem integrar com as ferramentas que já usamos?",
       answer:
         "Sim. Integramos CRMs, plataformas de marketing, APIs e sistemas existentes para tornar a operação mais simples, eficiente e conectada.",
     },
+    {
+      question: "Que tipo de automações são possíveis implementar?",
+      answer:
+        "Desde respostas automáticas a leads, sequências de email, notificações internas, sincronização entre ferramentas, geração de relatórios e muito mais. Se existe uma tarefa repetitiva no seu negócio, provavelmente dá para automatizar.",
+    },
+    {
+      question: "Podem criar agentes de IA personalizados para o meu negócio?",
+      answer:
+        "Sim. Desenvolvemos agentes de IA treinados com o contexto do seu negócio, que são capazes de responder a clientes, qualificar leads, apoiar a equipa interna ou executar tarefas de forma autónoma, integrados nos seus sistemas existentes.",
+    },
+    {
+      question: "A IA pode ser usada para melhorar a experiência do cliente?",
+      answer:
+        "Sim. Desde respostas instantâneas e personalizadas, recomendações inteligentes, acompanhamento pós-venda automatizado até análise de sentimento em interações — a IA permite criar experiências mais rápidas, relevantes e consistentes em cada ponto de contacto.",
+    },
+    {
+      question: "É possível automatizar processos internos da empresa?",
+      answer:
+        "Sim. Automatizamos fluxos de aprovação, gestão de tarefas, envio de documentos, faturação recorrente, onboarding de clientes e muito mais. O objetivo é libertar a equipa de trabalho manual repetitivo para que se foque no que realmente importa.",
+    },
+    {
+      question: "Como garantem que as automações funcionam de forma fiável?",
+      answer:
+        "Cada automação é testada antes de entrar em produção e monitorizada após o lançamento. Configuramos alertas para detetar falhas, registos de atividade para auditoria e ciclos de revisão para garantir que tudo continua a funcionar à medida que o negócio evolui.",
+    },
+
+    // ─── INVESTIMENTO & SUPORTE (31–34) ───────────────────────────
     {
       question: "Qual é o investimento necessário?",
       answer:
@@ -118,6 +192,8 @@ export const faqPT = {
       answer:
         "Se o negócio ainda não está preparado para crescer ou implementar mudanças, o impacto pode ser limitado. Entregamos mais valor quando existe uma vontade real de evoluir.",
     },
+
+    // ─── BI & DADOS (35–41) ───────────────────────────────────────
     {
       question: "Como a análise de dados pode ajudar o meu negócio?",
       answer:
