@@ -81,6 +81,10 @@ function makeLink(lang: string, path = "") {
   return `/${lang}${path}`;
 }
 
+function makeAnchorId(label: string) {
+  return label.toLowerCase().replace(/\s+/g, "-");
+}
+
 function SitemapGroupBlock({ group, icon: Icon }: { group: SitemapGroup; icon: ElementType }) {
   const linkClass =
     "group grid gap-2 border-t border-[color-mix(in_srgb,var(--brand-primary)_14%,transparent)] px-5 py-5 text-left transition first:border-t-0 hover:bg-[color-mix(in_srgb,var(--brand-purple)_6%,transparent)]";
@@ -91,20 +95,20 @@ function SitemapGroupBlock({ group, icon: Icon }: { group: SitemapGroup; icon: E
         {link.title}
         <IconComponent className="h-4 w-4 shrink-0 text-[var(--brand-primary)] transition group-hover:translate-x-1" />
       </span>
-      <span className="font-[var(--font-body)] text-sm font-medium leading-relaxed text-[var(--brand-ink)]">
+      <span className="font-[var(--font-body)] text-sm font-medium leading-relaxed text-[var(--brand-night)]">
         {link.description}
       </span>
     </>
   );
 
   return (
-    <article id={group.label.toLowerCase().replace(/\s+/g, "-")} className="overflow-hidden rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] shadow-[0_18px_38px_rgba(1,32,80,0.06)]">
+    <article id={makeAnchorId(group.label)} className="overflow-hidden rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] shadow-[0_18px_38px_rgba(1,32,80,0.06)]">
       <div className="flex items-start gap-4 border-b border-[color-mix(in_srgb,var(--brand-primary)_16%,transparent)] px-5 py-5 md:px-7">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[#00D1FF] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,#00D1FF_18%,transparent)]">
           <Icon className="h-6 w-6" />
         </div>
         <div>
-          <p className="font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+          <p className="font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-night)]">
             {group.label}
           </p>
           <h2 className="font-[var(--font-heading)] text-[28px] font-black leading-tight text-[var(--brand-night)]">
@@ -146,6 +150,7 @@ export default function Sitemap() {
   const l = content.links;
   const quizHref = lang === "pt" ? makeLink(lang, "/quiz-ia") : makeLink(lang, "/quiz-ai");
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
+  const [activeGroup, setActiveGroup] = useState<string | null>(null);
 
   const groups: SitemapGroup[] = [
     {
@@ -204,16 +209,26 @@ export default function Sitemap() {
               <p className="mb-4 font-[var(--font-detail)] text-[16px] font-black uppercase tracking-[0.18em] text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
                 {content.label}
               </p>
-              <nav className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0">
-                {groups.map((group) => (
-                  <a
-                    key={group.label}
-                    href={`#${group.label.toLowerCase().replace(/\s+/g, "-")}`}
-                    className="min-w-max rounded-[10px] border border-transparent bg-transparent px-3.5 py-2.5 font-[var(--font-body)] text-[18px] font-bold leading-tight text-[var(--brand-night)] transition hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)] dark:hover:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:hover:text-[var(--brand-night)]"
-                  >
-                    {group.label}
-                  </a>
-                ))}
+              <nav className="flex gap-1 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0">
+                {groups.map((group, index) => {
+                  const isActive = activeGroup ? activeGroup === group.label : index === 0;
+
+                  return (
+                    <a
+                      key={group.label}
+                      href={`#${makeAnchorId(group.label)}`}
+                      onClick={() => setActiveGroup(group.label)}
+                      className={[
+                        "min-w-max rounded-[10px] border px-3.5 py-2.5 text-left font-[var(--font-body)] text-[18px] font-bold leading-tight transition-all duration-200",
+                        isActive
+                          ? "border-[color-mix(in_srgb,#00D1FF_58%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] text-[var(--brand-night)] dark:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:text-[var(--brand-night)]"
+                          : "border-transparent bg-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)] dark:hover:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:hover:text-[var(--brand-night)]",
+                      ].join(" ")}
+                    >
+                      {group.label}
+                    </a>
+                  );
+                })}
               </nav>
             </aside>
 

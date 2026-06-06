@@ -50,7 +50,7 @@ export function QuizCTA() {
               {content.title_highlight && (
                 <>
                   {" "}
-                  <span className="text-[#00D1FF]" style={highlightStyle}>
+                  <span className="text-[var(--brand-night)]" style={highlightStyle}>
                     {content.title_highlight}
                   </span>
                 </>
@@ -61,7 +61,7 @@ export function QuizCTA() {
               {content.description_highlight && (
                 <>
                   {" "}
-                  <span className="text-[#00D1FF]" style={highlightStyle}>
+                  <span className="text-[var(--brand-night)]" style={highlightStyle}>
                     {content.description_highlight}
                   </span>
                 </>

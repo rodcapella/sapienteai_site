@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 
+import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { setSEOHead } from "@/components/SEOHead";
 import { getContent } from "@/lib/content";
@@ -296,6 +296,8 @@ export default function Services(_props: { lang?: string }) {
   const lang = location.split("/")[1] || "pt";
   const content = getContent("services", lang);
   const [activeSection, setActiveSection] = useState(SERVICE_SECTIONS[0].id);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
   const manualScrollLockRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -354,13 +356,13 @@ export default function Services(_props: { lang?: string }) {
       />
 
       {/* ── Docs Layout ── */}
-      <Section className="bg-[var(--section-ice)] px-0 py-20 md:py-28">
+      <section className="bg-white px-0 py-20 md:py-28">
         <div className="w-full px-6">
           <div className="w-full">
             <div className="grid w-full gap-8 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-10">
 
               {/* Sidebar fixa */}
-              <aside className="sticky top-28 hidden h-fit self-start justify-self-start lg:block">
+              <aside className="hidden h-fit self-start justify-self-start lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pb-6">
                 <div className="legal-sidebar-title">{lang === "en" ? "Services" : "Serviços"}</div>
                 <ServicesSidebar active={activeSection} lang={lang} onSelect={handleSelectSection} />
               </aside>
@@ -390,25 +392,86 @@ export default function Services(_props: { lang?: string }) {
               </div>
 
               {/* Conteúdo variável */}
-              <main className="flex min-w-0 flex-1 flex-col gap-12">
+              <main className="flex min-w-0 flex-1 flex-col gap-0">
                 {/* Divisor vertical visível apenas em desktop */}
                 <div className="contents">
-                  {SERVICE_SECTIONS.map((section) => (
-                    <div
-                      key={section.id}
-                      id={`service-${section.id}`}
-                      aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
-                      className="h-[min(680px,calc(100vh-9rem))] min-h-[430px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat shadow-[0_18px_38px_rgba(1,32,80,0.08)]"
-                      style={{ backgroundImage: `url('${section.backgroundImage}')` }}
-                    />
-                  ))}
+                  {SERVICE_SECTIONS.map((section) => {
+                    if (section.id === "ia" || section.id === "automacao") {
+                      const data = content.visualServices[section.id];
+
+                      return (
+                        <article
+                          key={section.id}
+                          id={`service-${section.id}`}
+                          aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
+                          className="relative min-h-[520px] w-full scroll-mt-32 overflow-hidden rounded-2xl bg-cover bg-center bg-no-repeat px-8 py-10 md:px-12 lg:px-16"
+                          style={{ backgroundImage: `url('${section.backgroundImage}')` }}
+                        >
+                          <div className="grid min-h-[440px] grid-cols-1 items-center gap-10 lg:grid-cols-[minmax(280px,0.9fr)_minmax(340px,1fr)_minmax(260px,0.75fr)]">
+                            <div className="max-w-[430px]">
+                              <p className="mb-6 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-night)]">
+                                {data.eyebrow}
+                              </p>
+                              <h2 className="mb-8 whitespace-pre-line font-[var(--font-body)] text-[44px] font-black leading-[1.06] tracking-normal text-[var(--brand-primary)] md:text-[54px]">
+                                {data.title}
+                              </h2>
+                              <p className="max-w-[390px] font-[var(--font-heading)] text-[17px] font-medium leading-[1.05] text-[var(--brand-night)]">
+                                {data.description}
+                              </p>
+
+                              <div className="mt-12 max-w-[390px]">
+                                <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+                                  {data.audienceLabel}
+                                </p>
+                                <p className="font-[var(--font-heading)] text-[16px] font-medium leading-[1.05] text-[var(--brand-night)]">
+                                  {data.audience}
+                                </p>
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setSelectedContactTopic(data.topic);
+                                  setIsContactOpen(true);
+                                }}
+                                className="mt-8 inline-flex min-h-10 items-center justify-center rounded-full bg-[var(--brand-primary)] px-7 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-normal text-white shadow-[0_10px_22px_rgba(10,132,255,0.24)] transition hover:bg-[#0068e8]"
+                              >
+                                {data.cta}
+                              </button>
+                            </div>
+
+                            <div className="hidden lg:block" aria-hidden="true" />
+
+                            <ul className="space-y-6 self-center font-[var(--font-heading)] text-[17px] font-medium leading-tight text-[var(--brand-night)]">
+                              {data.bullets.map((bullet) => (
+                                <li key={bullet} className="flex items-start gap-4">
+                                  <span className="mt-[0.42em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </article>
+                      );
+                    }
+
+                    return (
+                      <div
+                        key={section.id}
+                        id={`service-${section.id}`}
+                        aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
+                        className="h-[min(680px,calc(100vh-9rem))] min-h-[430px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat"
+                        style={{ backgroundImage: `url('${section.backgroundImage}')` }}
+                      />
+                    );
+                  })}
                 </div>
               </main>
 
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* ── Final CTA ── */}
       <FinalCTA
@@ -417,6 +480,12 @@ export default function Services(_props: { lang?: string }) {
         description={content.finalCta.description}
         button={content.finalCta.button}
         align="left"
+      />
+
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+        initialTopic={selectedContactTopic}
       />
     </div>
   );

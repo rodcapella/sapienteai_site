@@ -37,6 +37,45 @@ export const servicesEN = {
       text: "We organize positioning, visual language, core messaging, and creative direction for brands that need to look more professional.",
     },
   ],
+  visualServices: {
+    ia: {
+      eyebrow: "01 — Artificial Intelligence",
+      title: "Applied\nArtificial Intelligence",
+      description:
+        "We apply AI models directly to your business processes: to automate decisions, predict outcomes, and gain efficiency without needing an internal technical team.",
+      audienceLabel: "Who it is for",
+      audience:
+        "Companies that want to automate service, predict sales trends, or make decisions based on real-time data.",
+      bullets: [
+        "Intelligent chatbots",
+        "Predictive analysis",
+        "Decision automation",
+        "Custom machine learning",
+        "Intelligent customer segmentation",
+      ],
+      cta: "Talk about this service",
+      topic: "Services: AI",
+    },
+    automacao: {
+      eyebrow: "02 — Automation",
+      title: "Intelligent process\nautomation",
+      description:
+        "We remove repetitive manual tasks with automated workflows that run every day, freeing your team to focus on the work that truly matters.",
+      audienceLabel: "Who it is for",
+      audience:
+        "Businesses with manual processes that consume time: sales follow-ups, reporting, customer onboarding, invoicing, and email replies.",
+      bullets: [
+        "Internal process automation",
+        "System integrations",
+        "Automated email and follow-up",
+        "24/7 automated support",
+        "Document processing",
+        "Intelligent notifications and alerts",
+      ],
+      cta: "Talk about this service",
+      topic: "Services: Automation",
+    },
+  },
   process: {
     title: "How we work",
     items: [

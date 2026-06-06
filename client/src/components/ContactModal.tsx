@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useLocation } from "wouter";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -15,6 +15,7 @@ import { Icons } from "@/lib/icons";
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialTopic?: string;
 }
 
 type SubmitState = "idle" | "loading" | "success" | "error";
@@ -50,8 +51,8 @@ const sourceOptions = {
 };
 
 const topicOptions = {
-  pt: ["Automação", "Contacto", "Criação de conteúdo", "Dados & BI", "Diagnóstico de negócio", "Dúvidas", "Marketing e redes sociais", "Parcerias", "Projeto digital", "Outros"],
-  en: ["Automation", "Business diagnosis", "Contact", "Content creation", "Data & BI", "Digital project", "Marketing and social media", "Partnerships", "Questions", "Other"],
+  pt: ["Automação", "Contacto", "Criação de conteúdo", "Dados & BI", "Diagnóstico de negócio", "Dúvidas", "Marketing e redes sociais", "Parcerias", "Projeto digital", "Serviços: IA", "Serviços: Automação", "Outros"],
+  en: ["Automation", "Business diagnosis", "Contact", "Content creation", "Data & BI", "Digital project", "Marketing and social media", "Partnerships", "Questions", "Services: AI", "Services: Automation", "Other"],
 };
 
 const modalText = {
@@ -157,18 +158,31 @@ const PARTICLES = [
   { left: "90%", top: "64%", size: 3, delay: 1.6 },
 ];
 
-export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+export default function ContactModal({ isOpen, onClose, initialTopic = "" }: ContactModalProps) {
   const [location] = useLocation();
   const lang: ModalLang = location.startsWith("/en") ? "en" : "pt";
   const text = modalText[lang];
+  const initialForm = useMemo<FormData>(() => ({ ...INITIAL_FORM, topic: initialTopic }), [initialTopic]);
 
-  const [formData, setFormData] = useState<FormData>(INITIAL_FORM);
+  const [formData, setFormData] = useState<FormData>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
   const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string>("");
   const [turnstileToken, setTurnstileToken] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    setFormData(initialForm);
+    setErrors({});
+    setTouched({});
+    setSubmitState("idle");
+    setFeedbackMessage("");
+    setTurnstileToken("");
+    setHasSubmitted(false);
+  }, [isOpen, initialForm]);
 
   const validateField = (field: keyof FormData, value: string): string => {
     if (requiredFields.includes(field) && !value.trim()) {
@@ -244,7 +258,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const resetModalState = () => {
-    setFormData(INITIAL_FORM);
+    setFormData(initialForm);
     setErrors({});
     setTouched({});
     setSubmitState("idle");
@@ -294,7 +308,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
       setSubmitState("success");
       setFeedbackMessage(text.submit.success);
-      setFormData(INITIAL_FORM);
+      setFormData(initialForm);
       setErrors({});
       setTouched({});
       setTurnstileToken("");

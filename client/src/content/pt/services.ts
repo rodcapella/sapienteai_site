@@ -37,6 +37,45 @@ export const servicesPT = {
       text: "Organizamos posicionamento, linguagem visual, mensagem principal e direção criativa para marcas que precisam parecer mais profissionais.",
     },
   ],
+  visualServices: {
+    ia: {
+      eyebrow: "01 — Inteligência Artificial",
+      title: "Inteligência\nArtificial aplicada",
+      description:
+        "Aplicamos modelos de IA diretamente aos processos do seu negócio: para automatizar decisões, prever resultados e ganhar eficiência sem precisar de uma equipa técnica interna.",
+      audienceLabel: "Para quem é",
+      audience:
+        "Empresas que querem automatizar atendimento, prever tendências de vendas ou tomar decisões baseadas em dados em tempo real.",
+      bullets: [
+        "Chatbots inteligentes",
+        "Análise preditiva",
+        "Automação de decisões",
+        "Machine learning personalizado",
+        "Segmentação inteligente de clientes",
+      ],
+      cta: "Falar sobre este serviço",
+      topic: "Serviços: IA",
+    },
+    automacao: {
+      eyebrow: "02 — Automação",
+      title: "Automação inteligente\nde processos",
+      description:
+        "Eliminamos tarefas repetitivas e manuais com fluxos automáticos que trabalham por si, todos os dias, libertando a sua equipa para o que realmente importa.",
+      audienceLabel: "Para quem é",
+      audience:
+        "Negócios com processos manuais que consomem tempo: follow-ups de vendas, relatórios, onboarding de clientes, faturação, respostas a emails.",
+      bullets: [
+        "Automação de processos internos",
+        "Integrações entre sistemas",
+        "Email e follow-up automático",
+        "Atendimento automático 24/7",
+        "Processamento de documentos",
+        "Notificações e alertas inteligentes",
+      ],
+      cta: "Falar sobre este serviço",
+      topic: "Serviços: Automação",
+    },
+  },
   process: {
     title: "Como trabalhamos",
     items: [

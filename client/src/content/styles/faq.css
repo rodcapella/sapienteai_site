@@ -81,14 +81,14 @@
 .faq-main { padding: 80px 52px 100px; background: var(--brand-offwhite); }
 .faq-inner { display:grid; max-width:1200px; margin:0 auto; grid-template-columns:240px 1fr; gap:80px; align-items:start; }
 .faq-sidebar { position:sticky; top:104px; }
-.faq-sidebar-title { margin-bottom:16px; font-size:16px; color:var(--brand-night); }
+.faq-sidebar-title { margin-bottom:20px; color:#60A5FA; }
 .faq-cats { display:flex; flex-direction:column; gap:4px; }
-.faq-cat { display:flex; align-items:center; gap:10px; width:100%; border:1px solid transparent; border-radius:10px; background:transparent; padding:10px 14px; font-family:var(--font-body); font-size:18px !important; font-weight:700; color:var(--brand-night); cursor:pointer; transition:all .2s ease; text-align:left; }
+.faq-cat { display:flex; align-items:center; gap:10px; width:100%; border:1px solid transparent; border-radius:10px; background:transparent; padding:10px 14px; font-family:var(--font-body); font-size:14px !important; font-weight:700; color:var(--brand-night); cursor:pointer; transition:all .2s ease; text-align:left; }
 .faq-cat:hover { color:var(--brand-night); background:color-mix(in srgb, #00D1FF 16%, var(--brand-offwhite)); }
 .faq-cat.active { color:var(--brand-night); background:color-mix(in srgb, #00D1FF 22%, var(--brand-offwhite)); border-color:color-mix(in srgb, #00D1FF 58%, transparent); }
 .faq-cat-count { margin-left:auto; border-radius:999px; background:color-mix(in srgb, var(--brand-night) 5%, transparent); padding:2px 7px; font-size:10px; font-weight:900; color:color-mix(in srgb, var(--brand-night) 32%, transparent); }
 .faq-cat.active .faq-cat-count { color:var(--brand-primary); background:color-mix(in srgb, var(--brand-primary) 10%, transparent); }
-.faq-group-title { margin-bottom:20px; font-size:16px; color:var(--brand-night); }
+.faq-group-title { margin-bottom:20px; color:#60A5FA; }
 .faq-list { border-radius:18px; background:color-mix(in srgb, #00D1FF 22%, var(--brand-offwhite)); border:6px solid color-mix(in srgb, var(--brand-purple) 72%, transparent); overflow:hidden; }
 .faq-item { border-top:1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent); }
 .faq-item:first-child { border-top:0; }
@@ -110,9 +110,10 @@
 .dark .faq-hero-sub { color:#94A3B8; }
 .dark .faq-section-label { color:#60A5FA; }
 
+.dark .faq-cat { color:var(--brand-offwhite); }
+
 .dark .faq-sidebar-title,
-.dark .faq-cat,
-.dark .faq-group-title { color:var(--brand-offwhite); }
+.dark .faq-group-title { color:#60A5FA; }
 
 .dark .faq-cat:hover,
 .dark .faq-cat.active { color:var(--brand-night); background:color-mix(in srgb, #00D1FF 72%, var(--brand-offwhite)); border-color:color-mix(in srgb, #00D1FF 72%, transparent); }

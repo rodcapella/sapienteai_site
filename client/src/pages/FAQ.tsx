@@ -110,7 +110,7 @@ export default function FAQ() {
         <div className="faq-inner">
           <Reveal>
             <aside className="faq-sidebar">
-              <div className="faq-sidebar-title">{pageCopy.sidebar}</div>
+              <div className="faq-group-title">{pageCopy.sidebar}</div>
               <div className="faq-cats">
                 {categories.map((category) => {
                   const Icon = category.icon;
