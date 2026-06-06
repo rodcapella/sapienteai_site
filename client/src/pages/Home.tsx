@@ -28,6 +28,7 @@ type HomeBannerSectionProps = {
   lang: string;
   file: string;
   label?: string;
+  id?: string;
 };
 
 function getHomeBannerSrc(lang: string, file: string) {
@@ -40,15 +41,16 @@ function getHomeBannerSrc(lang: string, file: string) {
     "home_como_ajudamos_ai.png": "home_como_ajudamos_ai_en.png",
     "home_marketing_digital_ia.png": "home_marketing_digital_ia_en.png",
   };
-  const localizedFile = lang === "en" ? englishFileMap[file] || file : file;
+  const localizedFile = lang === "en" ? englishFileMap[file] || file : file; 
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
-function HomeBannerSection({ lang, file, label }: HomeBannerSectionProps) {
+function HomeBannerSection({ lang, file, label, id}: HomeBannerSectionProps) {
   const backgroundSrc = getHomeBannerSrc(lang, file);
 
   return (
     <section
+      id={id}
       className="relative w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${backgroundSrc})` }}
       aria-label={label}
@@ -93,6 +95,7 @@ export default function Home() {
       {HOME_BANNERS.map((banner, index) => (
         <HomeBannerSection
           key={`${lang}-${banner}`}
+          id={index === 0 ? "core-services" : undefined}
           lang={lang}
           file={banner}
           label={[

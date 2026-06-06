@@ -14,7 +14,7 @@ interface TurnstileWidgetProps {
 }
 
 const TURNSTILE_SCRIPT_ID = "cloudflare-turnstile-script";
-const TURNSTILE_SITE_KEY = "0x4AAAAAAAKhKxc7Hs7SdKmG";
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "0x4AAAAAAAKhKxc7Hs7SdKmG";
 const TURNSTILE_LOAD_RETRIES = 2;
 const TURNSTILE_RETRY_DELAY_MS = 900;
 const TURNSTILE_SCRIPT_TIMEOUT_MS = 5000;
@@ -36,8 +36,7 @@ function loadTurnstileScript(): Promise<void> {
       if (existingScript.dataset.failed === "true") {
         existingScript.remove();
       } else if (existingScript.dataset.loaded === "true") {
-        reject(new Error("turnstile_unavailable"));
-        return;
+        existingScript.remove();
       } else {
         const timeoutId = window.setTimeout(() => reject(new Error("turnstile_script_timeout")), TURNSTILE_SCRIPT_TIMEOUT_MS);
 
@@ -86,6 +85,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
   const widgetIdRef = useRef<string | null>(null);
   const callbacksRef = useRef({ onVerify, onError, onExpire });
   const [failedToLoad, setFailedToLoad] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   callbacksRef.current = { onVerify, onError, onExpire };
 
@@ -94,6 +94,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
 
     const renderWidget = async () => {
       setFailedToLoad(false);
+      setIsLoading(true);
 
       for (let attempt = 0; attempt <= TURNSTILE_LOAD_RETRIES; attempt += 1) {
         try {
@@ -104,12 +105,19 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
           const widgetId = window.turnstile.render(containerRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
             theme,
+            appearance: "always",
+            execution: "render",
             callback: (token: string) => callbacksRef.current.onVerify(token),
-            "error-callback": () => callbacksRef.current.onError?.(),
+            "error-callback": () => {
+              setFailedToLoad(true);
+              setIsLoading(false);
+              callbacksRef.current.onError?.();
+            },
             "expired-callback": () => callbacksRef.current.onExpire?.(),
           });
 
           widgetIdRef.current = widgetId;
+          setIsLoading(false);
           return;
         } catch {
           if (cancelled) return;
@@ -119,6 +127,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
           }
 
           setFailedToLoad(true);
+          setIsLoading(false);
         }
       }
     };
@@ -136,8 +145,13 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
   }, [theme]);
 
   return (
-    <div className="my-4 flex justify-center">
-      <div ref={containerRef} />
+    <div className="my-4 flex min-h-[74px] flex-col items-center justify-center gap-2 rounded-xl border border-[rgba(0,209,255,0.26)] bg-[rgba(5,8,27,0.36)] px-3 py-3">
+      <div ref={containerRef} className={failedToLoad ? "hidden" : ""} />
+      {isLoading && !failedToLoad && (
+        <p className="text-center text-xs font-medium text-[rgba(234,246,255,0.68)]">
+          A carregar verificaÃ§Ã£o de seguranÃ§a...
+        </p>
+      )}
       {failedToLoad && showLoadError && (
         <p className="rounded-xl border border-red-300/40 bg-red-500/10 px-4 py-3 text-center text-xs text-red-100">
           Não foi possível carregar a verificação de segurança. Verifique bloqueadores de scripts ou tente novamente.

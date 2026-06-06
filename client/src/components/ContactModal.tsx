@@ -460,7 +460,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               {touched.message && errors.message && <p id="contact-message-error" className="text-xs text-red-300">{errors.message}</p>}
             </div>
 
-            <TurnstileWidget theme="dark" showLoadError={hasSubmitted} onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }} />
+            <TurnstileWidget theme="dark" showLoadError onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); }} />
 
             <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
 

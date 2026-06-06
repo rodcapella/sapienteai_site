@@ -381,10 +381,10 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
 
               <TurnstileWidget
                 theme="dark"
-                showLoadError={hasSubmitted}
+                showLoadError
                 onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }}
                 onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }}
-                onError={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }}
+                onError={() => { setTurnstileToken(""); setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); }}
               />
 
               <AnimatePresence mode="wait">
