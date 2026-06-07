@@ -170,6 +170,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string>("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileAvailable, setTurnstileAvailable] = useState(true);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   useEffect(() => {
@@ -181,6 +182,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
     setSubmitState("idle");
     setFeedbackMessage("");
     setTurnstileToken("");
+    setTurnstileAvailable(true);
     setHasSubmitted(false);
   }, [isOpen, initialForm]);
 
@@ -264,6 +266,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
     setSubmitState("idle");
     setFeedbackMessage("");
     setTurnstileToken("");
+    setTurnstileAvailable(true);
     setHasSubmitted(false);
   };
 
@@ -277,7 +280,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       return;
     }
 
-    if (!turnstileToken) {
+    if (!turnstileToken && turnstileAvailable) {
       setSubmitState("error");
       setFeedbackMessage(text.errors.turnstile);
       return;
@@ -295,12 +298,16 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       payload.append("source", formData.source.trim() || text.fallback);
       payload.append("topic", formData.topic.trim());
       payload.append("message", formData.message.trim());
-      payload.append("turnstile_token", turnstileToken);
+      payload.append("turnstile_token", turnstileToken || "verification_unavailable");
+      payload.append("turnstile_status", turnstileToken ? "verified" : "unavailable");
       payload.append("_subject", `${text.subject} - ${formData.topic.trim()} - ${formData.name.trim()}`);
       payload.append("_captcha", "false");
 
       const response = await fetch("https://formsubmit.co/contato@sapienteai.com", {
         method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
         body: payload,
       });
 
@@ -312,6 +319,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       setErrors({});
       setTouched({});
       setTurnstileToken("");
+      setTurnstileAvailable(true);
       setHasSubmitted(false);
     } catch {
       setSubmitState("error");
@@ -474,7 +482,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
               {touched.message && errors.message && <p id="contact-message-error" className="text-xs text-red-300">{errors.message}</p>}
             </div>
 
-            <TurnstileWidget theme="dark" showLoadError onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileToken(""); setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); }} />
+            <TurnstileWidget theme="dark" showLoadError onVerify={(token) => { setTurnstileAvailable(true); setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }} onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }} onError={() => { setTurnstileAvailable(false); setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }} />
 
             <AnimatePresence mode="wait">{statusNode && <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>{statusNode}</motion.div>}</AnimatePresence>
 

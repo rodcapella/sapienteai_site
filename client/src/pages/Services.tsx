@@ -20,22 +20,6 @@ type ServiceSection = {
   backgroundImage: string;
 };
 
-const heroRef = useRef<HTMLDivElement>(null);
-const [mobileNavSticky, setMobileNavSticky] = useState(false);
-
-useEffect(() => {
-  const hero = document.querySelector(".internal-hero");
-  if (!hero) return;
-
-  const observer = new IntersectionObserver(
-    ([entry]) => setMobileNavSticky(!entry.isIntersecting),
-    { threshold: 0 }
-  );
-
-  observer.observe(hero);
-  return () => observer.disconnect();
-}, []);
-
 // ─── Config das secções de navegação ─────────────────────────────────────────
 
 const SERVICE_SECTIONS: ServiceSection[] = [
@@ -314,6 +298,7 @@ export default function Services(_props: { lang?: string }) {
   const [activeSection, setActiveSection] = useState(SERVICE_SECTIONS[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
+  const [mobileNavSticky, setMobileNavSticky] = useState(false);
   const manualScrollLockRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -324,6 +309,19 @@ export default function Services(_props: { lang?: string }) {
       type: "website",
     });
   }, [content, lang]);
+
+  useEffect(() => {
+    const hero = document.querySelector(".InternalHero");
+    if (!hero) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setMobileNavSticky(!entry.isIntersecting),
+      { threshold: 0 },
+    );
+
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const sectionElements = SERVICE_SECTIONS.map((section) => document.getElementById(`service-${section.id}`)).filter(

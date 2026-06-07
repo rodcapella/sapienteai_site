@@ -128,6 +128,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
 
           setFailedToLoad(true);
           setIsLoading(false);
+          callbacksRef.current.onError?.();
         }
       }
     };

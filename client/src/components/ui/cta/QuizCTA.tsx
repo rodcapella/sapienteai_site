@@ -45,7 +45,7 @@ export function QuizCTA() {
             <p className="mb-3 font-detail text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
               {content.label}
             </p>
-            <h2 className="font-heading text-[32px] font-black leading-tight text-[var(--foreground)]">
+            <h2 className="font-heading text-[32px] font-black leading-tight text-[var(--foreground)] dark:text-[#0A84FF]">
               {content.title}
               {content.title_highlight && (
                 <>
@@ -56,7 +56,7 @@ export function QuizCTA() {
                 </>
               )}
             </h2>
-            <p className="mt-3 text-[13px] font-medium leading-relaxed text-[var(--muted-foreground)]">
+            <p className="mt-3 text-[13px] font-medium leading-relaxed text-[var(--muted-foreground)] dark:text-[#4A7CCF]">
               {content.description}
               {content.description_highlight && (
                 <>

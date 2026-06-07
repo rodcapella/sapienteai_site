@@ -137,8 +137,8 @@ export default function Footer() {
           {/* Newsletter + Siga-nos */}
           <div className={footerColumnClass}>
             <p className={footerTitleClass}>{t("footer.newsletter")}</p>
-            <p className="mb-1 font-serif text-[11px] font-black uppercase tracking-[0.16em] text-[var(--brand-offwhite)]">
-                {t("footer.newsletterDescription")}
+            <p className="mb-1 max-w-sm font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
+              {t("footer.newsletterDescription")}
             </p>
             <PremiumButton
               onClick={() => setIsNewsletterOpen(true)}

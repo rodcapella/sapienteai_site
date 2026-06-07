@@ -152,6 +152,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const [turnstileAvailable, setTurnstileAvailable] = useState(true);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const updateField = <K extends keyof NewsletterFormData>(field: K, value: NewsletterFormData[K]) => {
@@ -167,6 +168,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
     setSubmitState("idle");
     setFeedbackMessage("");
     setTurnstileToken("");
+    setTurnstileAvailable(true);
     setHasSubmitted(false);
   };
 
@@ -218,7 +220,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       return;
     }
 
-    if (!turnstileToken) {
+    if (!turnstileToken && turnstileAvailable) {
       setSubmitState("error");
       setFeedbackMessage(text.errors.turnstile);
       return;
@@ -235,13 +237,17 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       payload.append("company", formData.company.trim() || "Not provided");
       payload.append("source", formData.source.trim() || "Not provided");
       payload.append("privacy_consent", formData.accepted ? "Accepted" : "Not accepted");
-      payload.append("turnstile_token", turnstileToken);
+      payload.append("turnstile_token", turnstileToken || "verification_unavailable");
+      payload.append("turnstile_status", turnstileToken ? "verified" : "unavailable");
       payload.append("_subject", text.subject);
       payload.append("_captcha", "false");
       payload.append("_template", "table");
 
       const response = await fetch("https://formsubmit.co/contato@sapienteai.com", {
         method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
         body: payload,
       });
 
@@ -251,6 +257,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       setFeedbackMessage(text.submit.success);
       setFormData(INITIAL_FORM);
       setTurnstileToken("");
+      setTurnstileAvailable(true);
       setHasSubmitted(false);
     } catch {
       setSubmitState("error");
@@ -382,9 +389,9 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
               <TurnstileWidget
                 theme="dark"
                 showLoadError
-                onVerify={(token) => { setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }}
+                onVerify={(token) => { setTurnstileAvailable(true); setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }}
                 onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }}
-                onError={() => { setTurnstileToken(""); setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); }}
+                onError={() => { setTurnstileAvailable(false); setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }}
               />
 
               <AnimatePresence mode="wait">
