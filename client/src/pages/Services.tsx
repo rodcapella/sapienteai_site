@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { SectionCard } from "@/components/ui/section/SectionCard";
@@ -451,6 +452,8 @@ export default function Services(_props: { lang?: string }) {
           </div>
         </div>
       </section>
+
+      <QuizCTA />
 
       {/* ── Final CTA ── */}
       <FinalCTA
