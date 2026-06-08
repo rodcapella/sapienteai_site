@@ -13,37 +13,28 @@ const THEME_STORAGE_KEY = "theme";
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
 function resolveInitialTheme(): Theme {
-  if (typeof window === "undefined") {
-    return "light";
-  }
-
-  try {
-    const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-    if (storedTheme === "light" || storedTheme === "dark") {
-      return storedTheme;
-    }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  } catch {
-    return "light";
-  }
+  return "light";
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(resolveInitialTheme);
+  const [theme, setThemeState] = useState<Theme>(resolveInitialTheme);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const transitionTimerRef = useRef<number | null>(null);
 
+  const setTheme = () => {
+    setThemeState("light");
+  };
+
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.classList.remove("dark");
+    document.documentElement.setAttribute("data-theme", "light");
 
     try {
-      localStorage.setItem(THEME_STORAGE_KEY, theme);
+      localStorage.setItem(THEME_STORAGE_KEY, "light");
     } catch {
       // localStorage may be unavailable (private mode / policies)
     }
-  }, [theme]);
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -56,15 +47,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const toggleTheme = () => {
     if (transitionTimerRef.current) {
       window.clearTimeout(transitionTimerRef.current);
+      transitionTimerRef.current = null;
     }
 
-    setIsTransitioning(true);
-    setTheme((currentTheme) => (currentTheme === "light" ? "dark" : "light"));
-
-    transitionTimerRef.current = window.setTimeout(() => {
-      setIsTransitioning(false);
-      transitionTimerRef.current = null;
-    }, 420);
+    setThemeState("light");
+    setIsTransitioning(false);
   };
 
   const value = useMemo(

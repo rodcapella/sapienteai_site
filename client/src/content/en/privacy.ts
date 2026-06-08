@@ -5,7 +5,7 @@ export const privacyEN = {
   title: "Privacy Policy",
   subtitle: "Your privacy matters to us",
   highlight: "Simple, clear, and GDPR compliant.",
-  lastUpdated: "Last updated: May, 2026",
+  lastUpdated: "Last updated: June, 2026",
 
   sections: [
     {

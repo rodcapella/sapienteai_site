@@ -5,7 +5,7 @@ export const cookiesPT = {
   title: "Política de Cookies",
   subtitle: "Como utilizamos cookies neste website",
   highlight: "Transparente, minimalista e em conformidade com o RGPD.",
-  lastUpdated: "Última atualização: maio de 2026",
+  lastUpdated: "Última atualização: Junho de 2026",
 
   // Texto do banner de consentimento
   banner: {

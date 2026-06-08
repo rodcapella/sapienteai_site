@@ -15,6 +15,7 @@ const STORAGE_KEY = "cookieConsent";
 const PREFS_KEY = "cookiePreferences";
 const VERSION_KEY = "cookieBannerVersion";
 const CURRENT_VERSION = "v1";
+const OPEN_PREFERENCES_EVENT = "sapiente:open-cookie-preferences";
 const DEFAULT_PREFERENCES: CookiePreferences = {
   essential: true,
   analytics: false,
@@ -172,6 +173,31 @@ export default function CookieBanner() {
   const [showPreferences, setShowPreferences] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [preferences, setPreferences] = useState<CookiePreferences>(DEFAULT_PREFERENCES);
+
+  useEffect(() => {
+    let timer: number | undefined;
+
+    const openPreferences = () => {
+      const storedPreferences = getStoredPreferences();
+
+      if (storedPreferences) {
+        setPreferences(storedPreferences);
+      }
+
+      setShowBanner(true);
+      setShowPreferences(true);
+      setIsVisible(false);
+
+      if (timer) window.clearTimeout(timer);
+      timer = window.setTimeout(() => setIsVisible(true), 25);
+    };
+
+    window.addEventListener(OPEN_PREFERENCES_EVENT, openPreferences);
+    return () => {
+      window.removeEventListener(OPEN_PREFERENCES_EVENT, openPreferences);
+      if (timer) window.clearTimeout(timer);
+    };
+  }, []);
 
   useEffect(() => {
     const consent = getStoredConsent();

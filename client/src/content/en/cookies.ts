@@ -5,7 +5,7 @@ export const cookiesEN = {
   title: "Cookie Policy",
   subtitle: "How we use cookies on this website",
   highlight: "Transparent, minimal, and GDPR compliant.",
-  lastUpdated: "Last updated: May, 2026",
+  lastUpdated: "Last updated: June, 2026",
 
   // Banner consent text
   banner: {

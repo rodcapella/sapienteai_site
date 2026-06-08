@@ -5,7 +5,7 @@ export const termsContentPT = {
   title: "Termos de Serviço",
   subtitle: "Condições padrão para a utilização dos",
   highlight: "serviços e plataformas.",
-  lastUpdated: "Última atualização: 16 de Fevereiro de 2026",
+  lastUpdated: "Última atualização: Junho de 2026",
 
   sections: [
     {

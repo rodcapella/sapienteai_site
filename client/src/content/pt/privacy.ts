@@ -5,7 +5,7 @@ export const privacyPT = {
   title: "Política de Privacidade",
   subtitle: "A sua privacidade é importante para nós",
   highlight: "Simples, clara e em conformidade com o RGPD.",
-  lastUpdated: "Última atualização: Maio de 2026",
+  lastUpdated: "Última atualização: Junho de 2026",
 
   sections: [
     {

@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { Redirect, Route, useLocation } from "wouter";
 
 import CookieBanner from "@/components/CookieBanner";
+import CookieFloatingButton from "@/components/CookieFloatingButton";
 import MainLayout from "@/components/layout/MainLayout";
 import { PageTransition } from "@/components/PageTransition";
 import { ThemeTransition } from "@/components/ThemeTransition";
@@ -93,6 +94,7 @@ export default function App() {
           <Route path="/en/quiz-ia"><Redirect to="/en/quiz-ai" /></Route>
         </PageTransition>
       </MainLayout>
+      <CookieFloatingButton />
       <CookieBanner />
     </Suspense>
   );

@@ -3,7 +3,6 @@ import { Link, useLocation } from "wouter";
 
 import ContactModal from "@/components/ContactModal";
 import { LanguageSelector } from "@/components/LanguageSelector";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -96,16 +95,14 @@ export default function Header({ onContactClick }: HeaderProps) {
               <div className="shrink-0 scale-100">
                 <LanguageSelector />
               </div>
-              <div className="shrink-0 scale-100">
-                <ThemeToggle />
-              </div>
+              {/* ThemeToggle temporariamente desativado: primeira versão será lançada apenas com tema claro. */}
               <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-2 text-sm" variant="secondary">
                 {contactLabel}
               </PremiumButton>
             </div>
 
             <div className="col-start-3 flex items-center justify-end gap-3 lg:hidden">
-              <ThemeToggle />
+              {/* ThemeToggle temporariamente desativado: primeira versão será lançada apenas com tema claro. */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[rgba(10,180,255,0.12)] hover:text-[var(--brand-cyan-bright)] dark:bg-[#081120]"
