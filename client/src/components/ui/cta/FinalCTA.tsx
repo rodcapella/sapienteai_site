@@ -80,13 +80,42 @@ export function FinalCTA({
             aria-hidden="true"
             className="block h-auto w-full object-contain"
           />
-          <div className="absolute inset-x-0 bottom-6 flex justify-center sm:bottom-8 md:bottom-10">
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
             <Reveal>
-              {href ? (
-                <Link href={href}>{buttonElement}</Link>
-              ) : (
-                buttonElement
-              )}
+              <h2
+                className="font-black leading-[1.08] tracking-normal"
+                style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", fontSize: titleFontSize }}
+              >
+                {title}
+                {title_highlight && (
+                  <>
+                    {breakTitleHighlight ? <br /> : " "}
+                    <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+                      {title_highlight}
+                    </span>
+                  </>
+                )}
+              </h2>
+            </Reveal>
+
+            {description && (
+              <Reveal delay={110}>
+                <p className="font-medium leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "#FFFFFF", fontSize: descriptionFontSize }}>
+                  {description}
+                  {description_highlight && (
+                    <>
+                      <br />
+                      <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+                        {description_highlight}
+                      </span>
+                    </>
+                  )}
+                </p>
+              </Reveal>
+            )}
+
+            <Reveal delay={220}>
+              {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
             </Reveal>
           </div>
         </section>
