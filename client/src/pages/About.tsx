@@ -1,6 +1,5 @@
 ﻿import { useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useLocation } from "wouter";
 import { Icons } from "@/lib/icons";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -135,9 +134,7 @@ function FounderCard({ founder }: { founder: Founder }) {
 }
 
 export default function About() {
-  const [location] = useLocation();
-  const { t } = useTranslation();
-  const lang = location.split("/")[1] || "pt";
+  const { t, lang } = useTranslation();
 
   const content = getContent("about", lang);
   const aboutLabel = lang === "pt" ? "Sobre Nós" : t("nav.about");

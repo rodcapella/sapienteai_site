@@ -1,12 +1,13 @@
 ﻿import { useEffect, useState } from "react";
 import type { ElementType } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
 import NewsletterModal from "@/components/NewsletterModal";
 import { setSEOHead } from "@/components/SEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
+import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
 type SitemapLink = {
@@ -144,8 +145,7 @@ function SitemapGroupBlock({ group, icon: Icon }: { group: SitemapGroup; icon: E
 }
 
 export default function Sitemap() {
-  const [location] = useLocation();
-  const lang = location.split("/")[1] === "en" ? "en" : "pt";
+  const { lang } = useTranslation();
   const content = copy[lang];
   const l = content.links;
   const quizHref = lang === "pt" ? makeLink(lang, "/quiz-ia") : makeLink(lang, "/quiz-ai");

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 
+import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 import ContactModal from "@/components/ContactModal";
 
@@ -68,8 +68,7 @@ function HomeBannerSection({ lang, file, label, id}: HomeBannerSectionProps) {
 }
 
 export default function Home() {
-  const [location] = useLocation();
-  const lang = location.split("/")[1] || "pt";
+  const { lang } = useTranslation();
   const isPT = lang === "pt";
   const content = isPT ? homePT : homeEN;
 

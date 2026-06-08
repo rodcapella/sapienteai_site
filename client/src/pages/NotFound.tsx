@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
+import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 
 export default function NotFound() {
-  const [location, setLocation] = useLocation();
-  const lang = location.split("/")[1] || "pt";
+  const [, setLocation] = useLocation();
+  const { lang } = useTranslation();
 
   const content = getContent("notFound", lang);
 

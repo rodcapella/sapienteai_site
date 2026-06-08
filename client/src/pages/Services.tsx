@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-import { useLocation } from "wouter";
+import { useEffect, useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -7,6 +6,7 @@ import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 import { setSEOHead } from "@/components/SEOHead";
+import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 import "@/content/styles/legal.css";
@@ -292,14 +292,12 @@ function ServiceDetail({
 // ─── Página principal ─────────────────────────────────────────────────────────
 
 export default function Services(_props: { lang?: string }) {
-  const [location] = useLocation();
-  const lang = location.split("/")[1] || "pt";
+  const { lang } = useTranslation();
   const content = getContent("services", lang);
   const [activeSection, setActiveSection] = useState(SERVICE_SECTIONS[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
   const [mobileNavSticky, setMobileNavSticky] = useState(false);
-  const manualScrollLockRef = useRef<number | null>(null);
 
   useEffect(() => {
     setSEOHead({
@@ -323,35 +321,7 @@ export default function Services(_props: { lang?: string }) {
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const sectionElements = SERVICE_SECTIONS.map((section) => document.getElementById(`service-${section.id}`)).filter(
-      (element): element is HTMLElement => Boolean(element),
-    );
-
-    if (!sectionElements.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (manualScrollLockRef.current && Date.now() < manualScrollLockRef.current) return;
-
-        if (visible?.target.id) {
-          setActiveSection(visible.target.id.replace("service-", ""));
-        }
-      },
-      { rootMargin: "-28% 0px -55% 0px", threshold: [0.15, 0.35, 0.6] },
-    );
-
-    sectionElements.forEach((element) => observer.observe(element));
-
-    return () => observer.disconnect();
-  }, []);
-
   const handleSelectSection = (id: string) => {
-    manualScrollLockRef.current = Date.now() + 1100;
     setActiveSection(id);
     document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -371,12 +341,12 @@ export default function Services(_props: { lang?: string }) {
 
       {/* ── Docs Layout ── */}
       <section className="bg-white px-0 py-20 md:py-28 flex-1">
-        <div className="w-full px-6">
+        <div className="w-full px-4 sm:px-6">
           <div className="w-full">
-            <div className="grid w-full items-start gap-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-6">
+            <div className="grid w-full items-start gap-5 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-5 xl:grid-cols-[190px_minmax(0,1fr)]">
 
               {/* Sidebar fixa */}
-              <aside className="hidden h-fit self-start justify-self-start lg:sticky lg:top-24 lg:block lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pb-6 lg:pt-1">
+              <aside className="hidden self-start lg:sticky lg:top-20 lg:block lg:max-h-[calc(100vh-5rem)] lg:w-full lg:overflow-y-auto lg:pb-6 lg:pt-1">
                 <div className="legal-sidebar-title">
                   {lang === "en" ? "Services" : "Serviços"}
                 </div>
@@ -441,7 +411,54 @@ export default function Services(_props: { lang?: string }) {
                           backgroundImage: `url('${section.backgroundImage}')`,
                         }}
                       >
-                        {/* conteúdo do artigo */}
+                        <div className="relative z-10 grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
+                          <Reveal>
+                            <div className="max-w-[440px] py-5 text-left">
+                              <p className="mb-4 font-[var(--font-detail)] text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-night)]">
+                                {data.eyebrow}
+                              </p>
+
+                              <h2 className="whitespace-pre-line font-[var(--font-heading)] text-[clamp(2.1rem,4.7vw,4rem)] font-black leading-[0.98] tracking-normal text-[var(--brand-primary)]">
+                                {data.title}
+                              </h2>
+
+                              <p className="mt-7 max-w-[390px] font-[var(--font-body)] text-[15px] font-medium leading-[1.16] text-[var(--brand-night)]">
+                                {data.description}
+                              </p>
+
+                              <div className="mt-11 max-w-[390px]">
+                                <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
+                                  {data.audienceLabel}
+                                </p>
+                                <p className="font-[var(--font-body)] text-[14px] font-semibold leading-[1.12] text-[var(--brand-night)]">
+                                  {data.audience}
+                                </p>
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setSelectedContactTopic(data.topic);
+                                  setIsContactOpen(true);
+                                }}
+                                className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--brand-primary)] px-7 font-[var(--font-body)] text-[12px] font-black uppercase tracking-normal text-white shadow-[0_10px_24px_rgba(10,132,255,0.18)] transition hover:-translate-y-0.5 hover:bg-[#0877ff] hover:shadow-[0_14px_30px_rgba(10,132,255,0.26)]"
+                              >
+                                {data.cta}
+                              </button>
+                            </div>
+                          </Reveal>
+
+                          <Reveal delay={120}>
+                            <ul className="ml-auto grid max-w-[390px] gap-5 py-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)]">
+                              {data.bullets.map((bullet) => (
+                                <li key={bullet} className="flex items-start gap-4">
+                                  <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </Reveal>
+                        </div>
                       </article>
                     );
                   })}
