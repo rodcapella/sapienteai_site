@@ -148,16 +148,16 @@ function ToggleSwitch({
       onClick={() => !disabled && onChange(!checked)}
       className={[
         "relative inline-flex h-6 w-11 shrink-0 rounded-full border transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00D1FF]/60",
-        disabled ? "cursor-not-allowed border-[#00D1FF]/50 bg-[#001547]" : "cursor-pointer",
+        disabled ? "cursor-not-allowed border-[#00D1FF]/50 bg-white dark:bg-[#001547]" : "cursor-pointer",
         checked
-          ? "border-[#00D1FF] bg-[#00D1FF]/35"
-          : "border-[#00D1FF]/50 bg-[#001547]",
+          ? "border-[#00D1FF] bg-white dark:bg-[#00D1FF]/35"
+          : "border-[#00D1FF]/50 bg-white dark:bg-[#001547]",
       ].join(" ")}
     >
       <span
         className={[
           "pointer-events-none absolute top-0.5 h-5 w-5 rounded-full transition duration-300",
-          checked ? "left-[calc(100%-1.375rem)] bg-[#00D1FF]" : "left-0.5 bg-[var(--brand-offwhite)]/70",
+          checked ? "left-[calc(100%-1.375rem)] bg-[#00D1FF]" : "left-0.5 bg-[var(--brand-night)]/35 dark:bg-[var(--brand-offwhite)]/70",
         ].join(" ")}
       />
     </button>
