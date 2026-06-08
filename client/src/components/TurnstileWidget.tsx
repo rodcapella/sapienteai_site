@@ -150,7 +150,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
       <div ref={containerRef} className={failedToLoad ? "hidden" : ""} />
       {isLoading && !failedToLoad && (
         <p className="text-center text-xs font-medium text-[rgba(234,246,255,0.68)]">
-          A carregar verificaÃ§Ã£o de seguranÃ§a...
+          A carregar verificação de segurança...
         </p>
       )}
       {failedToLoad && showLoadError && (
