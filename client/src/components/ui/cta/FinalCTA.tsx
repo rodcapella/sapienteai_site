@@ -74,7 +74,10 @@ export function FinalCTA({
     <>
       <Section
         className={cn(
-          "final-cta relative overflow-hidden py-8 md:py-12 min-h-[360px] md:min-h-[420px]",
+          "final-cta relative overflow-hidden",
+          isHomeVariant
+            ? "min-h-[clamp(520px,36.5vw,700px)] py-0"
+            : "min-h-[360px] py-8 md:min-h-[420px] md:py-12",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -82,13 +85,17 @@ export function FinalCTA({
           <img
             src={computedBackgroundSrc}
             alt=""
-            className="h-full w-full object-cover object-center"
+            className={cn(
+              "h-full w-full",
+              isHomeVariant ? "object-contain object-top" : "object-cover object-center"
+            )}
           />
         </div>
 
         <div
           className={cn(
             "relative z-10 mx-auto w-full",
+            isHomeVariant && "pt-24 md:pt-28 lg:pt-32",
             isCentered
               ? "max-w-3xl px-6 sm:px-10 text-center"
               : "max-w-7xl px-6 sm:px-8 text-left"

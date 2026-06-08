@@ -102,7 +102,7 @@ export const servicesEN = {
         "Maintenance & technical support",
       ],
       cta: "Discuss this service",
-      topic: "Services: Web Development",
+      topic: "Services: Website",
     },
     marketing: {
       eyebrow: "06 — Digital Marketing",
