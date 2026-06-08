@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { useLocation } from "wouter";
 
 import { FAQContactCTA, type FAQCategory, type FAQItem } from "@/components/faq/FAQBlocks";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -8,6 +7,7 @@ import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { setSEOHead } from "@/components/SEOHead";
 import { generateFAQSchema } from "@/lib/faqSchema";
+import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 import "@/content/styles/faq.css";
@@ -61,8 +61,7 @@ function getFAQCopy(lang: string) {
 }
 
 export default function FAQ() {
-  const [location] = useLocation();
-  const lang = location.split("/")[1] || "pt";
+  const { lang } = useTranslation();
   const normalizedLang = lang === "en" ? "en" : "pt";
   const content = getContent("faq", lang);
   const pageCopy = getFAQCopy(normalizedLang);

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ComponentType } from "react";
-import { useLocation } from "wouter";
 
+import { useTranslation } from "@/hooks/useTranslation";
 import { setSEOHead } from "@/components/SEOHead";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
@@ -74,8 +74,7 @@ function getLegalCta(lang: string) {
 }
 
 export default function LegalDocumentPage({ content, slug, fallbackDescription }: LegalDocumentPageProps) {
-  const [location] = useLocation();
-  const lang = location.split("/")[1] || "pt";
+  const { lang } = useTranslation();
   const pageTitle = getLegalPageTitle(slug, lang) || content.title;
   const cta = getLegalCta(lang);
   const statementHeroSlugs = ["terms", "privacy", "generative-ai-policy", "trust"];

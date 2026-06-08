@@ -51,8 +51,36 @@ const sourceOptions = {
 };
 
 const topicOptions = {
-  pt: ["Automação", "Contacto", "Criação de conteúdo", "Dados & BI", "Diagnóstico de negócio", "Dúvidas", "Marketing e redes sociais", "Parcerias", "Projeto digital", "Serviços: IA", "Serviços: Automação", "Outros"],
-  en: ["Automation", "Business diagnosis", "Contact", "Content creation", "Data & BI", "Digital project", "Marketing and social media", "Partnerships", "Questions", "Services: AI", "Services: Automation", "Other"],
+  pt: [
+    "Contacto",
+    "Criação de conteúdo",
+    "Diagnóstico de negócio",
+    "Dúvidas",
+    "Parcerias",
+    "Projeto digital",
+    "Serviços: IA",
+    "Serviços: Automação",
+    "Serviços: Crescimento",
+    "Serviços: Dados & BI",
+    "Serviços: Marketing Digital",
+    "Serviços: Website",
+    "Outros"
+  ],
+  en: [
+    "Business diagnosis",
+    "Contact",
+    "Content creation",
+    "Digital project",
+    "Partnerships",
+    "Questions",
+    "Services: AI",
+    "Services: Automation",
+    "Services: Growth",
+    "Services: Data & BI",
+    "Services: Digital Marketing",
+    "Services: Website",
+    "Other"
+  ],
 };
 
 const modalText = {

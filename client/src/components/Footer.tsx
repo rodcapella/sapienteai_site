@@ -1,5 +1,5 @@
 import { useState, type SVGProps } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
 import NewsletterModal from "@/components/NewsletterModal";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
@@ -26,9 +26,7 @@ function PinterestIcon(props: SVGProps<SVGSVGElement>) {
 }
 
 export default function Footer() {
-  const { t } = useTranslation();
-  const [location] = useLocation();
-  const lang = location.split("/")[1] || "pt";
+  const { t, lang } = useTranslation();
   const quizHref = lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`;
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
@@ -177,7 +175,7 @@ export default function Footer() {
 
         {/* Bottom bar — copyright only */}
         <div className="flex items-center justify-center pt-1">
-          <p className="text-center font-serif text-[5px] italic font-normal uppercase tracking-[0.24em] text-[#FFFFFF]">
+          <p className="text-center font-serif text-[8px] italic font-normal uppercase tracking-[0.24em] text-[#FFFFFF]">
             {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="font-normal italic text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">{t("footer.sitemap")}</Link> |
           </p>
         </div>

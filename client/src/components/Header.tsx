@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
 import ContactModal from "@/components/ContactModal";
 import { LanguageSelector } from "@/components/LanguageSelector";
@@ -14,9 +14,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onContactClick }: HeaderProps) {
-  const { t } = useTranslation();
-  const [location] = useLocation();
-  const lang = location.split("/")[1] || "pt";
+  const { t, lang } = useTranslation();
   const contactLabel = lang === "en" ? "Contact" : "Contacto";
 
   const [isContactOpen, setIsContactOpen] = useState(false);

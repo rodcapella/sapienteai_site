@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { setSEOHead } from "@/components/SEOHead";
+import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
 // ─── Tipos ───────────────────────────────────────────────────────────────────
@@ -471,8 +471,7 @@ function CookieDetail({ id, lang }: { id: string; lang: string }) {
 // ─── Página principal ─────────────────────────────────────────────────────────
 
 export default function CookiesPage(_props: { lang?: string }) {
-  const [location] = useLocation();
-  const lang = location.split("/")[1] === "en" ? "en" : "pt";
+  const { lang } = useTranslation();
   const hero = HERO_CONTENT[lang as "pt" | "en"];
   const cta  = CTA_CONTENT[lang as "pt" | "en"];
 
