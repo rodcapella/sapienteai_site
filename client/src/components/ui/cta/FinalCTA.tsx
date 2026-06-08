@@ -43,6 +43,9 @@ export function FinalCTA({
     : "32px";
 
   const descriptionFontSize = "clamp(13px, 1.2vw, 16px)";
+  const titleColor = isAboutVariant ? "var(--brand-night)" : usesHeroTextPattern ? "#FFFFFF" : "#000000";
+  const highlightColor = isAboutVariant ? "text-[var(--brand-night)]" : usesHeroTextPattern ? "text-[#00D1FF]" : "text-[#0A84FF]";
+  const descriptionColor = isAboutVariant ? "var(--brand-night)" : usesHeroTextPattern ? "#FFFFFF" : "#001547";
 
   const getFallbackBackground = () => {
     switch (variant) {
@@ -71,7 +74,7 @@ export function FinalCTA({
     <>
       <Section
         className={cn(
-          "final-cta relative overflow-hidden py-8 md:py-12",
+          "final-cta relative overflow-hidden py-8 md:py-12 min-h-[360px] md:min-h-[420px]",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -79,7 +82,7 @@ export function FinalCTA({
           <img
             src={computedBackgroundSrc}
             alt=""
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
           />
         </div>
 
@@ -104,7 +107,7 @@ export function FinalCTA({
                 className="font-black leading-[1.08] tracking-normal"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  color: usesHeroTextPattern ? "#FFFFFF" : "#000000",
+                  color: titleColor,
                   fontSize: titleFontSize,
                 }}
               >
@@ -114,11 +117,7 @@ export function FinalCTA({
                   <>
                     {breakTitleHighlight ? <br /> : " "}
                     <span
-                      className={
-                        usesHeroTextPattern
-                          ? "text-[#00D1FF]"
-                          : "text-[#0A84FF]"
-                      }
+                      className={highlightColor}
                       style={{
                         font: "inherit",
                         lineHeight: "inherit",
@@ -138,7 +137,7 @@ export function FinalCTA({
                   className="mt-3 font-medium leading-relaxed"
                   style={{
                     fontFamily: "var(--font-body)",
-                    color: usesHeroTextPattern ? "#FFFFFF" : "#001547",
+                    color: descriptionColor,
                     fontSize: descriptionFontSize,
                   }}
                 >
@@ -148,11 +147,7 @@ export function FinalCTA({
                     <>
                       <br />
                       <span
-                        className={
-                          usesHeroTextPattern
-                            ? "text-[#00D1FF]"
-                            : "text-[#0A84FF]"
-                        }
+                        className={highlightColor}
                         style={{
                           font: "inherit",
                           lineHeight: "inherit",

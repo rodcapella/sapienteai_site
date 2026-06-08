@@ -149,7 +149,7 @@ export default function Footer() {
             </PremiumButton>
 
             {/* Siga-nos — moved here from bottom section */}
-            <div className="mt-2">
+            <div className="mt-5">
               <p className="mb-2 font-serif text-[11px] font-black uppercase tracking-[0.16em] text-[var(--brand-offwhite)]">
                 {lang === "pt" ? "Siga-nos" : "Follow us"}
               </p>
@@ -177,8 +177,8 @@ export default function Footer() {
 
         {/* Bottom bar — copyright only */}
         <div className="flex items-center justify-center pt-1">
-          <p className="text-center font-serif text-[9px] italic font-black uppercase tracking-[0.24em] text-[#FFFFFF]">
-            {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">{t("footer.sitemap")}</Link> |
+          <p className="text-center font-serif text-[5px] italic font-normal uppercase tracking-[0.24em] text-[#FFFFFF]">
+            {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="font-normal italic text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">{t("footer.sitemap")}</Link> |
           </p>
         </div>
       </div>

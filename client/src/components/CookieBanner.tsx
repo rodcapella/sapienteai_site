@@ -35,6 +35,7 @@ const copy = {
     alwaysOn: "Sempre ativo",
     links: {
       privacy: "Privacidade",
+      cookies: "Cookies",
       terms: "Termos",
     },
     preferences: {
@@ -64,6 +65,7 @@ const copy = {
     alwaysOn: "Always on",
     links: {
       privacy: "Privacy",
+      cookies: "Cookies",
       terms: "Terms",
     },
     preferences: {
@@ -146,16 +148,16 @@ function ToggleSwitch({
       onClick={() => !disabled && onChange(!checked)}
       className={[
         "relative inline-flex h-6 w-11 shrink-0 rounded-full border transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00D1FF]/60",
-        disabled ? "cursor-not-allowed border-[#00D1FF]/40 bg-[#00D1FF]/30" : "cursor-pointer",
+        disabled ? "cursor-not-allowed border-[#00D1FF]/50 bg-[#001547]" : "cursor-pointer",
         checked
-          ? "border-[#00D1FF] bg-[#00D1FF]/60 dark:bg-[#00D1FF]/35"
-          : "border-[#00D1FF]/50 bg-transparent",
+          ? "border-[#00D1FF] bg-[#00D1FF]/35"
+          : "border-[#00D1FF]/50 bg-[#001547]",
       ].join(" ")}
     >
       <span
         className={[
           "pointer-events-none absolute top-0.5 h-5 w-5 rounded-full transition duration-300",
-          checked ? "left-[calc(100%-1.375rem)] bg-[var(--brand-night)] dark:bg-[#00D1FF]" : "left-0.5 bg-[#94A3B8]",
+          checked ? "left-[calc(100%-1.375rem)] bg-[#00D1FF]" : "left-0.5 bg-[var(--brand-offwhite)]/70",
         ].join(" ")}
       />
     </button>
@@ -167,6 +169,7 @@ export default function CookieBanner() {
   const lang = location.startsWith("/en") ? "en" : "pt";
   const text = copy[lang];
   const privacyHref = `/${lang}/privacy`;
+  const cookiesHref = `/${lang}/cookies`;
   const termsHref = `/${lang}/terms`;
 
   const [showBanner, setShowBanner] = useState(false);
@@ -247,7 +250,7 @@ export default function CookieBanner() {
     { key: "marketing" as const, locked: false, ...text.preferences.marketing },
   ];
   const secondaryButtonClass =
-    "min-h-8 rounded-full border border-[#00D1FF] bg-transparent px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)] dark:hover:bg-[rgba(0,209,255,0.16)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
+    "min-h-8 rounded-full border border-[#00D1FF] bg-transparent px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-[var(--brand-offwhite)] transition hover:bg-[rgba(0,209,255,0.16)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
   const primaryButtonClass =
     "min-h-8 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-white transition hover:shadow-[0_0_24px_rgba(10,180,255,0.34)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
 
@@ -267,7 +270,7 @@ export default function CookieBanner() {
         aria-label={lang === "en" ? "Cookie consent" : "Consentimento de cookies"}
         aria-modal={showPreferences}
         className={[
-          "fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-5xl rounded-2xl border border-[#00D1FF] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] p-4 text-[var(--brand-night)] shadow-[0_24px_70px_rgba(0,21,71,0.16)] backdrop-blur-2xl transition duration-300 dark:bg-[var(--brand-night)] dark:text-[var(--brand-offwhite)] dark:shadow-[0_24px_70px_rgba(0,0,0,0.34)] md:bottom-6 md:p-5",
+          "fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-5xl rounded-2xl border border-[#00D1FF] bg-[var(--brand-night)] p-4 text-[var(--brand-offwhite)] shadow-[0_24px_70px_rgba(0,21,71,0.30)] backdrop-blur-2xl transition duration-300 md:bottom-6 md:p-5",
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         ].join(" ")}
       >
@@ -278,16 +281,20 @@ export default function CookieBanner() {
                 <Icons.ShieldCheck className="h-5 w-5" />
               </span>
               <div>
-                <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
+                <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-offwhite)]">
                   {text.title}
                 </h2>
-                <p className="mt-1 font-[var(--font-body)] text-sm font-medium leading-relaxed text-slate-700 dark:text-[#94A3B8]">
+                <p className="mt-1 font-[var(--font-body)] text-sm font-medium leading-relaxed text-[#94A3B8]">
                   {text.message}{" "}
-                  <Link href={privacyHref} className="font-black text-[var(--brand-primary)] underline-offset-2 hover:underline">
+                  <Link href={privacyHref} className="font-black text-[#00D1FF] underline-offset-2 hover:underline">
                     {text.links.privacy}
                   </Link>
                   {" · "}
-                  <Link href={termsHref} className="font-black text-[var(--brand-primary)] underline-offset-2 hover:underline">
+                  <Link href={cookiesHref} className="font-black text-[#00D1FF] underline-offset-2 hover:underline">
+                    {text.links.cookies}
+                  </Link>
+                  {" · "}
+                  <Link href={termsHref} className="font-black text-[#00D1FF] underline-offset-2 hover:underline">
                     {text.links.terms}
                   </Link>
                 </p>
@@ -328,10 +335,10 @@ export default function CookieBanner() {
                   <Icons.Settings className="h-5 w-5" />
                 </span>
                 <div>
-                  <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
+                  <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-offwhite)]">
                     {text.preferencesTitle}
                   </h2>
-                  <p className="mt-1 font-[var(--font-body)] text-sm font-medium text-slate-700 dark:text-[#94A3B8]">
+                  <p className="mt-1 font-[var(--font-body)] text-sm font-medium text-[#94A3B8]">
                     {text.message}
                   </p>
                 </div>
@@ -340,7 +347,7 @@ export default function CookieBanner() {
                 type="button"
                 onClick={() => setShowPreferences(false)}
                 aria-label={text.close}
-                className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#00D1FF] bg-transparent text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.12)] dark:text-[var(--brand-offwhite)] sm:h-10 sm:w-10 lg:h-12 lg:w-12"
+                className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-[#00D1FF] bg-[var(--brand-primary)] text-white transition hover:bg-[#00D1FF] hover:text-[var(--brand-night)] sm:h-10 sm:w-10 lg:h-12 lg:w-12"
               >
                 <Icons.X className="h-4 w-4" />
               </button>
@@ -350,20 +357,20 @@ export default function CookieBanner() {
               {preferenceRows.map((row) => (
                 <div
                   key={row.key}
-                  className="flex items-start justify-between gap-4 rounded-2xl border border-[#00D1FF]/60 bg-[rgba(255,255,255,0.42)] px-4 py-3 dark:bg-[rgba(255,255,255,0.04)]"
+                  className="flex items-start justify-between gap-4 rounded-2xl border border-[#00D1FF]/60 bg-[#001547] px-4 py-3"
                 >
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="font-[var(--font-detail)] text-sm font-black uppercase tracking-[0.12em] text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
+                      <span className="font-[var(--font-detail)] text-sm font-black uppercase tracking-[0.12em] text-[var(--brand-offwhite)]">
                         {row.label}
                       </span>
                       {row.locked && (
-                        <span className="rounded-full border border-[#00D1FF] bg-[#00D1FF]/25 px-2 py-0.5 font-[var(--font-detail)] text-[10px] font-black uppercase tracking-[0.12em] text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
+                        <span className="rounded-full border border-[#00D1FF] bg-[#00D1FF]/25 px-2 py-0.5 font-[var(--font-detail)] text-[10px] font-black uppercase tracking-[0.12em] text-[var(--brand-offwhite)]">
                           {text.alwaysOn}
                         </span>
                       )}
                     </div>
-                    <p className="mt-1 font-[var(--font-body)] text-sm leading-relaxed text-slate-700 dark:text-[#94A3B8]">
+                    <p className="mt-1 font-[var(--font-body)] text-sm leading-relaxed text-[#94A3B8]">
                       {row.description}
                     </p>
                   </div>

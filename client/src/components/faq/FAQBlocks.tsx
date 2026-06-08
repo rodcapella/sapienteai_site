@@ -145,7 +145,7 @@ export function FAQQuestionLayout({ categories, activeCategory, onCategoryChange
         <p className="mb-5 font-detail text-[12px] font-black uppercase tracking-[0.2em] text-[#0A84FF] dark:text-[#00D1FF]">
           {active.label}
         </p>
-        <div className="rounded-2xl border border-[#7861FF]/16 bg-[var(--card)] px-6 shadow-[0_18px_44px_rgba(0,21,71,0.06)] backdrop-blur-sm dark:border-[#7861FF]/36 dark:bg-[#001547]/78 dark:shadow-[0_18px_44px_rgba(5,8,22,0.2)] md:px-8">
+        <div className="rounded-2xl border border-[#7861FF]/10 bg-[var(--card)] px-6 shadow-[0_18px_44px_rgba(0,21,71,0.06)] backdrop-blur-sm dark:border-[#7861FF]/22 dark:bg-[#001547]/78 dark:shadow-[0_18px_44px_rgba(5,8,22,0.2)] md:px-8">
           {active.items.map((item, index) => {
             const questionId = `${active.id}-${index}`;
             return (
@@ -169,7 +169,7 @@ export function FAQContactCTA({ lang }: FAQContactCTAProps) {
 
   return (
     <section className="standard-section-bg relative overflow-hidden px-6 pb-20 pt-2 md:pb-28">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-2xl border border-[#7861FF]/28 bg-[linear-gradient(135deg,rgba(122,92,252,0.14),rgba(241,237,255,0.88))] p-7 shadow-[0_18px_44px_rgba(0,21,71,0.08)] dark:border-[#00D1FF]/28 dark:bg-[linear-gradient(135deg,rgba(0,209,255,0.12),rgba(0,21,71,0.92))] md:flex-row md:items-center md:justify-between md:p-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 rounded-2xl border border-[#7861FF]/16 bg-[linear-gradient(135deg,rgba(122,92,252,0.14),rgba(241,237,255,0.88))] p-7 shadow-[0_18px_44px_rgba(0,21,71,0.08)] dark:border-[#00D1FF]/20 dark:bg-[linear-gradient(135deg,rgba(0,209,255,0.12),rgba(0,21,71,0.92))] md:flex-row md:items-center md:justify-between md:p-10">
         <div>
           <h2 className="font-heading text-[26px] font-black leading-tight text-[#001547] dark:text-[#EAF6FF]">
             {content.title}
