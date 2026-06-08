@@ -259,10 +259,10 @@ function ServiceDetail({
   return (
     <article id={`service-${id}`} className="scroll-mt-32 rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] p-7 shadow-[0_18px_38px_rgba(1,32,80,0.06)] md:p-9">
       <Reveal>
-        <p className="mb-4 font-[var(--font-detail)] text-xs font-black uppercase tracking-[0.22em] text-[var(--brand-primary)]">
+        <p className="mb-4 font-[var(--font-heading)] text-xs font-black uppercase tracking-[0.22em] text-[var(--brand-primary)]">
           {data.eyebrow}
         </p>
-        <h2 className="mb-4 font-[var(--font-heading)] text-3xl font-black leading-tight text-[var(--brand-night)] md:text-5xl">
+        <h2 className="mb-4 font-[var(--font-body)] text-3xl font-black leading-tight text-[var(--brand-night)] md:text-5xl">
           {data.title}
         </h2>
         <p className="mb-10 max-w-3xl font-[var(--font-body)] text-base font-medium leading-relaxed text-[var(--brand-ink)] md:text-lg">
@@ -414,11 +414,11 @@ export default function Services(_props: { lang?: string }) {
                         <div className="relative z-10 grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
                             <div className="max-w-[440px] py-5 text-left">
-                              <p className="mb-4 font-[var(--font-detail)] text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-night)]">
+                              <p className="mb-4 font-[var(--font-heading)] text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-night)]">
                                 {data.eyebrow}
                               </p>
 
-                              <h2 className="whitespace-pre-line font-[var(--font-heading)] text-[clamp(2.1rem,4.7vw,4rem)] font-black leading-[0.98] tracking-normal text-[var(--brand-primary)]">
+                              <h2 className="whitespace-pre-line font-[var(--font-body)] text-[clamp(2.1rem,4.7vw,4rem)] font-black leading-[0.98] tracking-normal text-[var(--brand-primary)]">
                                 {data.title}
                               </h2>
 
