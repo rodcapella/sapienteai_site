@@ -224,7 +224,7 @@ function ServicesSidebar({
   onSelect: (id: string) => void;
 }) {
   return (
-    <nav className="legal-cats">
+    <nav className="flex flex-col gap-1">
       {SERVICE_SECTIONS.map((s) => {
         const Icon = Icons[s.icon] as React.ElementType;
         const isActive = active === s.id;
@@ -233,9 +233,14 @@ function ServicesSidebar({
             key={s.id}
             type="button"
             onClick={() => onSelect(s.id)}
-            className={`legal-cat ${isActive ? "active" : ""}`}
+            className={[
+              "flex w-full items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left text-sm font-bold transition-all duration-200",
+              isActive
+                ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)]"
+                : "border-transparent bg-transparent text-[var(--brand-night)] hover:bg-[#eaf6ff]/70",
+            ].join(" ")}
           >
-            {Icon && <Icon className="h-4 w-4" />}
+            {Icon && <Icon className="h-4 w-4 shrink-0" />}
             <span>{s.navLabel[lang === "en" ? "en" : "pt"]}</span>
           </button>
         );
@@ -297,7 +302,6 @@ export default function Services(_props: { lang?: string }) {
   const [activeSection, setActiveSection] = useState(SERVICE_SECTIONS[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
-  const [mobileNavSticky, setMobileNavSticky] = useState(false);
 
   useEffect(() => {
     setSEOHead({
@@ -307,19 +311,6 @@ export default function Services(_props: { lang?: string }) {
       type: "website",
     });
   }, [content, lang]);
-
-  useEffect(() => {
-    const hero = document.querySelector(".InternalHero");
-    if (!hero) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setMobileNavSticky(!entry.isIntersecting),
-      { threshold: 0 },
-    );
-
-    observer.observe(hero);
-    return () => observer.disconnect();
-  }, []);
 
   const handleSelectSection = (id: string) => {
     setActiveSection(id);
@@ -339,56 +330,47 @@ export default function Services(_props: { lang?: string }) {
         compact
       />
 
+      {/* ── Mobile Nav — sticky abaixo do hero, sempre visível ── */}
+      <div className="sticky top-16 z-30 flex gap-2 overflow-x-auto bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md lg:hidden">
+        {SERVICE_SECTIONS.map((s) => {
+          const Icon = Icons[s.icon] as React.ElementType;
+          const isActive = activeSection === s.id;
+          return (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => handleSelectSection(s.id)}
+              className={[
+                "flex min-h-9 shrink-0 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-black transition-all",
+                isActive
+                  ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)]"
+                  : "border-transparent text-[var(--brand-night)] hover:bg-[#eaf6ff]/70",
+              ].join(" ")}
+            >
+              <Icon className="h-3.5 w-3.5 shrink-0" />
+              {s.navLabel[lang === "en" ? "en" : "pt"]}
+            </button>
+          );
+        })}
+      </div>
+
       {/* ── Docs Layout ── */}
       <section className="bg-white px-0 py-20 md:py-28 flex-1">
         <div className="w-full px-4 sm:px-6">
           <div className="w-full">
             <div className="grid w-full items-start gap-5 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-5 xl:grid-cols-[190px_minmax(0,1fr)]">
 
-              {/* Sidebar fixa */}
+              {/* Sidebar fixa desktop */}
               <aside className="hidden self-start lg:sticky lg:top-20 lg:block lg:max-h-[calc(100vh-5rem)] lg:w-full lg:overflow-y-auto lg:pb-6 lg:pt-1">
-                <div className="legal-sidebar-title">
+                <div className="legal-sidebar-title mb-3">
                   {lang === "en" ? "Services" : "Serviços"}
                 </div>
-
                 <ServicesSidebar
                   active={activeSection}
                   lang={lang}
                   onSelect={handleSelectSection}
                 />
               </aside>
-
-              {/* Mobile Nav */}
-              <div
-                className={[
-                  "flex gap-2 overflow-x-auto pb-2 lg:hidden transition-all duration-300",
-                  mobileNavSticky
-                    ? "fixed left-0 right-0 top-0 z-40 bg-white/95 px-4 pt-2 shadow-md backdrop-blur-md"
-                    : "relative px-0",
-                ].join(" ")}
-              >
-                {SERVICE_SECTIONS.map((s) => {
-                  const Icon = Icons[s.icon] as React.ElementType;
-                  const isActive = activeSection === s.id;
-
-                  return (
-                    <button
-                      key={s.id}
-                      type="button"
-                      onClick={() => handleSelectSection(s.id)}
-                      className={[
-                        "flex min-h-10 shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-black transition-all",
-                        isActive
-                          ? "border-[color-mix(in_srgb,#00D1FF_58%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] text-[var(--brand-night)]"
-                          : "border-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))]",
-                      ].join(" ")}
-                    >
-                      <Icon className="h-3.5 w-3.5 shrink-0" />
-                      {s.navLabel[lang === "en" ? "en" : "pt"]}
-                    </button>
-                  );
-                })}
-              </div>
 
               {/* Conteúdo */}
               <main className="flex min-w-0 flex-1 flex-col gap-6">
