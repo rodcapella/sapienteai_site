@@ -13,7 +13,7 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 
 import { useTranslation } from '@/hooks/useTranslation';
 import { getAllBlogArticles } from '@/lib/blogData';
-import { setSEOHead } from '@/components/SEOHead';
+import { useSEOHead } from '@/hooks/useSEOHead';
 
 const Search = Icons.Search;
 const Tag = Icons.Tag;
@@ -37,14 +37,12 @@ export default function Blog() {
     setSelectedCategory(allCategory);
   }, [allCategory]);
 
-  useEffect(() => {
-    setSEOHead({
-      title: 'Blog - Sapiente.AI',
-      description: lang === "en" ? 'Commercial insights on AI and business technology.' : 'Insights sobre IA e tecnologia aplicada ao negócio.',
-      keywords: lang === "en" ? 'AI, machine learning, automation' : 'IA, machine learning, automação',
-      url: `https://sapienteai.com/${lang}/blog`,
-      type: 'website'
-    });
+  useSEOHead({
+    title: 'Blog - Sapiente.AI',
+    description: lang === "en" ? 'Commercial insights on AI and business technology.' : 'Insights sobre IA e tecnologia aplicada ao negócio.',
+    keywords: lang === "en" ? 'AI, machine learning, automation' : 'IA, machine learning, automação',
+    url: `https://sapienteai.com/${lang}/blog`,
+    type: 'website'
   }, [lang]);
 
   const filteredArticles = useMemo(() => {
@@ -117,6 +115,7 @@ export default function Blog() {
                       <img
                         src={article.image}
                         alt={article.title}
+                        loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                     </div>

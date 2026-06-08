@@ -6,7 +6,7 @@ import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-import { setSEOHead } from "@/components/SEOHead";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
@@ -304,13 +304,11 @@ export default function Services(_props: { lang?: string }) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
 
-  useEffect(() => {
-    setSEOHead({
-      title: `${content.hero.label} — Sapiente.AI`,
-      description: content.hero.subtitle,
-      url: `https://sapienteai.com/${lang}/services`,
-      type: "website",
-    });
+  useSEOHead({
+    title: `${content.hero.label} — Sapiente.AI`,
+    description: content.hero.subtitle,
+    url: `https://sapienteai.com/${lang}/services`,
+    type: "website",
   }, [content, lang]);
 
   const handleSelectSection = (id: string) => {

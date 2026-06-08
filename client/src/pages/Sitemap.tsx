@@ -3,7 +3,7 @@ import type { ElementType } from "react";
 import { Link } from "wouter";
 
 import NewsletterModal from "@/components/NewsletterModal";
-import { setSEOHead } from "@/components/SEOHead";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
@@ -183,13 +183,11 @@ export default function Sitemap() {
     },
   ];
 
-  useEffect(() => {
-    setSEOHead({
-      title: `${content.label} — Sapiente.AI`,
-      description: content.subtitle,
-      url: `https://sapienteai.com/${lang}/sitemap`,
-      type: "website",
-    });
+  useSEOHead({
+    title: `${content.label} — Sapiente.AI`,
+    description: content.subtitle,
+    url: `https://sapienteai.com/${lang}/sitemap`,
+    type: "website",
   }, [content, lang]);
 
   return (

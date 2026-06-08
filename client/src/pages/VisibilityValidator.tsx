@@ -4,7 +4,7 @@ import { useLocation } from "wouter";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { setSEOHead } from "@/components/SEOHead";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { Icons } from "@/lib/icons";
 
 import "@/styles/visibilityValidator.css";
@@ -185,13 +185,11 @@ export default function VisibilityValidator() {
   const [isLoading, setIsLoading] = useState(false);
   const [feedback, setFeedback] = useState("");
 
-  useEffect(() => {
-    setSEOHead({
-      title: text.seoTitle,
-      description: text.hero.subtitle,
-      url: `https://sapienteai.com/${lang}/seo-geo-aeo-validator`,
-      type: "website",
-    });
+  useSEOHead({
+    title: text.seoTitle,
+    description: text.hero.subtitle,
+    url: `https://sapienteai.com/${lang}/seo-geo-aeo-validator`,
+    type: "website",
   }, [lang, text]);
 
   const enabledTypes = (Object.keys(selectedTypes) as ValidationType[]).filter((type) => selectedTypes[type]);

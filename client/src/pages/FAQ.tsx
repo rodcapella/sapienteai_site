@@ -5,7 +5,7 @@ import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { setSEOHead } from "@/components/SEOHead";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
@@ -71,13 +71,11 @@ export default function FAQ() {
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
   const active = categories.find((category) => category.id === activeCategory) || categories[0];
 
-  useEffect(() => {
-    setSEOHead({
-      title: `${content.title} - Sapiente.AI`,
-      description: content.subtitle,
-      url: `${window.location.origin}/${lang}/faq`,
-      type: "website",
-    });
+  useSEOHead({
+    title: `${content.title} - Sapiente.AI`,
+    description: content.subtitle,
+    url: `${window.location.origin}/${lang}/faq`,
+    type: "website",
   }, [lang, content]);
 
   useEffect(() => {

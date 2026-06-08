@@ -8,7 +8,7 @@ import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
 
-import { setSEOHead } from '@/components/SEOHead';
+import { useSEOHead } from '@/hooks/useSEOHead';
 
 const Search = Icons.Search; 
 const Calendar = Icons.Calendar; 
@@ -17,14 +17,12 @@ const User = Icons.User;
 export default function News() {
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    setSEOHead({
-      title: 'Notícias de IA - Sapiente.AI',
-      description: 'Últimas novidades em inteligência artificial.',
-      keywords: 'IA, notícias, machine learning',
-      url: 'https://sapienteai.com/noticias',
-      type: 'website'
-    });
+  useSEOHead({
+    title: 'Notícias de IA - Sapiente.AI',
+    description: 'Últimas novidades em inteligência artificial.',
+    keywords: 'IA, notícias, machine learning',
+    url: 'https://sapienteai.com/noticias',
+    type: 'website'
   }, []);
 
   const articles = [
@@ -84,6 +82,7 @@ export default function News() {
                   <img
                     src={article.image}
                     alt={article.title}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition"
                   />
                 </div>

@@ -1,0 +1,23 @@
+/* ─── Modal Select Options ───────────────────────────────────────────────────
+   Native <select> option items cannot be styled with Tailwind inline.
+   These rules ensure the dropdown list matches the dark modal theme.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.modal-select option {
+  background-color: #050a1a;
+  color: rgba(234, 246, 255, 0.9);
+}
+
+.modal-select option:checked {
+  background-color: rgba(10, 132, 255, 0.35);
+  color: #ffffff;
+}
+
+/* Placeholder option (empty value) */
+.modal-select.is-placeholder {
+  color: rgba(0, 209, 255, 0.62);
+}
+
+.modal-select.is-filled {
+  color: rgba(234, 246, 255, 0.9);
+}

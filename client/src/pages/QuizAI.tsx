@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 
-import { setSEOHead } from "@/components/SEOHead";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { quizContentEn } from "@/content/en/quiz";
@@ -22,14 +22,12 @@ export default function QuizAI() {
   const [location] = useLocation();
   const lang: QuizLang = location.startsWith("/en") ? "en" : "pt";
 
-  useEffect(() => {
-    setSEOHead({
-      title: lang === "en" ? "AI Quiz" : "Quiz IA",
-      description:
-        lang === "en"
-          ? "Artificial Intelligence business assessment."
-          : "Avaliação do potencial de Inteligência Artificial para empresas.",
-    });
+  useSEOHead({
+    title: lang === "en" ? "AI Quiz" : "Quiz IA",
+    description:
+      lang === "en"
+        ? "Artificial Intelligence business assessment."
+        : "Avaliação do potencial de Inteligência Artificial para empresas.",
   }, [lang]);
 
   const [screen, setScreen] = useState<QuizScreen>("start");

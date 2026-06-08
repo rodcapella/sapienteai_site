@@ -101,7 +101,7 @@ export function FAQCategoryNav({ categories, activeCategory, onChange, sidebarTi
 export function FAQAccordionLine({ item, isOpen, onToggle }: FAQAccordionLineProps) {
   return (
     <div className="border-t border-[#0A84FF]/14 last:border-b dark:border-[#00D1FF]/16">
-      <button type="button" onClick={onToggle} className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-opacity duration-200 hover:opacity-85">
+      <button type="button" onClick={onToggle} aria-expanded={isOpen} aria-label={`${isOpen ? "Fechar" : "Abrir"}: ${item.question}`} className="group flex w-full items-center justify-between gap-6 py-6 text-left transition-opacity duration-200 hover:opacity-85">
         <span className="font-heading text-[15px] font-black leading-snug text-[#001547] md:text-[16px] dark:text-[#EAF6FF]">
           {item.question}
         </span>

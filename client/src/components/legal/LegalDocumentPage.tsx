@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, type ComponentType } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
-import { setSEOHead } from "@/components/SEOHead";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -96,13 +96,11 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const [openSection, setOpenSection] = useState("");
   const activeSection = sections.find((section) => section.id === openSection) || sections[0];
 
-  useEffect(() => {
-    setSEOHead({
-      title: `${content.title} - Sapiente.AI`,
-      description: content.subtitle || fallbackDescription,
-      url: `https://sapienteai.com/${lang}/${slug}`,
-      type: "website",
-    });
+  useSEOHead({
+    title: `${content.title} - Sapiente.AI`,
+    description: content.subtitle || fallbackDescription,
+    url: `https://sapienteai.com/${lang}/${slug}`,
+    type: "website",
   }, [lang, content, slug, fallbackDescription]);
 
   useEffect(() => {

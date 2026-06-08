@@ -4,7 +4,7 @@ import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
-import { setSEOHead } from "@/components/SEOHead";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
@@ -477,13 +477,11 @@ export default function CookiesPage(_props: { lang?: string }) {
 
   const [activeSection, setActiveSection] = useState(COOKIE_SECTIONS[0].id);
 
-  useEffect(() => {
-    setSEOHead({
-      title: `${hero.label} — Sapiente.AI`,
-      description: hero.subtitle,
-      url: `https://sapienteai.com/${lang}/cookies`,
-      type: "website",
-    });
+  useSEOHead({
+    title: `${hero.label} — Sapiente.AI`,
+    description: hero.subtitle,
+    url: `https://sapienteai.com/${lang}/cookies`,
+    type: "website",
   }, [hero, lang]);
 
   return (
