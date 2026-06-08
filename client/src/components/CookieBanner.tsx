@@ -250,7 +250,7 @@ export default function CookieBanner() {
     { key: "marketing" as const, locked: false, ...text.preferences.marketing },
   ];
   const secondaryButtonClass =
-    "min-h-8 rounded-full border border-[#00D1FF] bg-transparent px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-[var(--brand-offwhite)] transition hover:bg-[rgba(0,209,255,0.16)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
+    "min-h-8 rounded-full border border-[#00D1FF] bg-transparent px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.16)] dark:text-[var(--brand-offwhite)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
   const primaryButtonClass =
     "min-h-8 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-white transition hover:shadow-[0_0_24px_rgba(10,180,255,0.34)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
 
@@ -270,7 +270,7 @@ export default function CookieBanner() {
         aria-label={lang === "en" ? "Cookie consent" : "Consentimento de cookies"}
         aria-modal={showPreferences}
         className={[
-          "fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-5xl rounded-2xl border border-[#00D1FF] bg-[var(--brand-night)] p-4 text-[var(--brand-offwhite)] shadow-[0_24px_70px_rgba(0,21,71,0.30)] backdrop-blur-2xl transition duration-300 md:bottom-6 md:p-5",
+          "fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-5xl rounded-2xl border border-[#00D1FF] bg-[var(--brand-offwhite)] p-4 text-[var(--brand-night)] shadow-[0_24px_70px_rgba(0,21,71,0.16)] backdrop-blur-2xl transition duration-300 dark:bg-[var(--brand-night)] dark:text-[var(--brand-offwhite)] dark:shadow-[0_24px_70px_rgba(0,21,71,0.30)] md:bottom-6 md:p-5",
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         ].join(" ")}
       >
@@ -281,10 +281,10 @@ export default function CookieBanner() {
                 <Icons.ShieldCheck className="h-5 w-5" />
               </span>
               <div>
-                <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-offwhite)]">
+                <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
                   {text.title}
                 </h2>
-                <p className="mt-1 font-[var(--font-body)] text-sm font-medium leading-relaxed text-[#94A3B8]">
+                <p className="mt-1 font-[var(--font-body)] text-sm font-medium leading-relaxed text-[var(--brand-night)]/70 dark:text-[#94A3B8]">
                   {text.message}{" "}
                   <Link href={privacyHref} className="font-black text-[#00D1FF] underline-offset-2 hover:underline">
                     {text.links.privacy}
@@ -335,10 +335,10 @@ export default function CookieBanner() {
                   <Icons.Settings className="h-5 w-5" />
                 </span>
                 <div>
-                  <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-offwhite)]">
+                  <h2 className="font-[var(--font-heading)] text-xl font-black leading-tight text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
                     {text.preferencesTitle}
                   </h2>
-                  <p className="mt-1 font-[var(--font-body)] text-sm font-medium text-[#94A3B8]">
+                  <p className="mt-1 font-[var(--font-body)] text-sm font-medium text-[var(--brand-night)]/70 dark:text-[#94A3B8]">
                     {text.message}
                   </p>
                 </div>
@@ -357,7 +357,7 @@ export default function CookieBanner() {
               {preferenceRows.map((row) => (
                 <div
                   key={row.key}
-                  className="flex items-start justify-between gap-4 rounded-2xl border border-[#00D1FF]/60 bg-[#001547] px-4 py-3"
+                  className="flex items-start justify-between gap-4 rounded-2xl border border-[#00D1FF]/60 bg-[#001547] px-4 py-3 dark:bg-[var(--brand-deep)]"
                 >
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
