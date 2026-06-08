@@ -28,7 +28,7 @@ export function InternalHero({
     <Section
       className={[
         "InternalHero hero relative flex items-center justify-start overflow-hidden",
-        compact ? "min-h-[68vh] pt-28 pb-20 md:pt-40 md:pb-24" : "min-h-[90vh] pt-28 pb-20 md:pt-40 md:pb-28",
+        compact ? "min-h-[68vh] pt-28 pb-20 md:pt-40 md:pb-24" : "min-h-[75vh] pt-28 pb-20 md:min-h-[90vh] md:pt-40 md:pb-28",
       ].join(" ")}
     >
       <div className="absolute inset-0">
@@ -45,12 +45,12 @@ export function InternalHero({
         )}
 
         <Reveal delay={100}>
-          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)]" style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", fontSize: "40px" }}>
+          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_rgba(0,0,0,0.58)]" style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", fontSize: "clamp(26px, 5.5vw, 40px)" }}>
             {title}
             {highlight && (
               <>
                 <br />
-                <span className="internal-hero-highlight" style={{ fontFamily: "var(--font-heading)", color: "var(--brand-primary)", WebkitTextFillColor: "var(--brand-primary)", fontSize: "40px" }}>
+                <span className="internal-hero-highlight" style={{ fontFamily: "var(--font-heading)", color: "var(--brand-primary)", WebkitTextFillColor: "var(--brand-primary)", fontSize: "clamp(26px, 5.5vw, 40px)" }}>
                   {highlight}
                 </span>
               </>
