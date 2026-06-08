@@ -15,9 +15,42 @@ type FinalCTAProps = {
   href?: string;
   variant?: "default" | "home" | "about";
   align?: "left" | "center";
-  breakTitleHighlight?: boolean;
   backgroundSrc?: string;
 };
+
+function renderTitle(title: string, highlight?: string, highlightClass?: string) {
+  return (
+    <>
+      {title}
+      {highlight && (
+        <>
+          <br />
+          <span className={highlightClass} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+            {highlight}
+          </span>
+        </>
+      )}
+    </>
+  );
+}
+
+function renderDescription(description?: string, highlight?: string, highlightClass?: string) {
+  if (!description) return null;
+
+  return (
+    <>
+      {description}
+      {highlight && (
+        <>
+          <br />
+          <span className={highlightClass} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+            {highlight}
+          </span>
+        </>
+      )}
+    </>
+  );
+}
 
 export function FinalCTA({
   title,
@@ -28,24 +61,36 @@ export function FinalCTA({
   href,
   variant = "default",
   align,
-  breakTitleHighlight = false,
   backgroundSrc,
 }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const isHomeVariant = variant === "home";
   const isAboutVariant = variant === "about";
-  const usesHeroTextPattern = isHomeVariant || isAboutVariant;
-  const isCentered = align ? align === "center" : usesHeroTextPattern;
 
-  const titleFontSize = usesHeroTextPattern
+  const isCentered = align ? align === "center" : isHomeVariant || isAboutVariant;
+
+  const titleFontSize = isHomeVariant || isAboutVariant
     ? "clamp(32px, 4vw, 44px)"
     : "32px";
 
   const descriptionFontSize = "clamp(13px, 1.2vw, 16px)";
-  const titleColor = isAboutVariant ? "var(--brand-night)" : usesHeroTextPattern ? "#FFFFFF" : "#000000";
-  const highlightColor = isAboutVariant ? "text-[var(--brand-night)]" : "text-[var(--brand-primary)]";
-  const descriptionColor = isAboutVariant ? "var(--brand-night)" : usesHeroTextPattern ? "#FFFFFF" : "#001547";
+
+  const titleColor = isAboutVariant
+    ? "var(--brand-night)"
+    : isHomeVariant
+      ? "#FFFFFF"
+      : "#000000";
+
+  const descriptionColor = isAboutVariant
+    ? "var(--brand-night)"
+    : isHomeVariant
+      ? "#FFFFFF"
+      : "#001547";
+
+  const highlightColor = isAboutVariant
+    ? "text-[var(--brand-night)]"
+    : "text-[var(--brand-primary)]";
 
   const getFallbackBackground = () => {
     switch (variant) {
@@ -80,36 +125,32 @@ export function FinalCTA({
             aria-hidden="true"
             className="block h-auto w-full object-contain"
           />
+
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
             <Reveal>
               <h2
-                className="font-black leading-[1.08] tracking-normal"
-                style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", fontSize: titleFontSize }}
+                className="font-black leading-[1.08]"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  color: "#FFFFFF",
+                  fontSize: titleFontSize,
+                }}
               >
-                {title}
-                {title_highlight && (
-                  <>
-                    {breakTitleHighlight ? <br /> : " "}
-                    <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
-                      {title_highlight}
-                    </span>
-                  </>
-                )}
+                {renderTitle(title, title_highlight, highlightColor)}
               </h2>
             </Reveal>
 
             {description && (
               <Reveal delay={110}>
-                <p className="font-medium leading-relaxed" style={{ fontFamily: "var(--font-body)", color: "#FFFFFF", fontSize: descriptionFontSize }}>
-                  {description}
-                  {description_highlight && (
-                    <>
-                      <br />
-                      <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
-                        {description_highlight}
-                      </span>
-                    </>
-                  )}
+                <p
+                  className="font-medium leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    color: "#FFFFFF",
+                    fontSize: descriptionFontSize,
+                  }}
+                >
+                  {renderDescription(description, description_highlight, highlightColor)}
                 </p>
               </Reveal>
             )}
@@ -137,7 +178,11 @@ export function FinalCTA({
         )}
       >
         <div className="pointer-events-none absolute inset-0">
-          <img src={computedBackgroundSrc} alt="" className="h-full w-full object-cover object-center" />
+          <img
+            src={computedBackgroundSrc}
+            alt=""
+            className="h-full w-full object-cover object-center"
+          />
         </div>
 
         <div
@@ -158,33 +203,28 @@ export function FinalCTA({
           >
             <Reveal className={isCentered ? "mx-auto" : "w-full"}>
               <h2
-                className="font-black leading-[1.08] tracking-normal"
-                style={{ fontFamily: "var(--font-heading)", color: titleColor, fontSize: titleFontSize }}
+                className="font-black leading-[1.08]"
+                style={{
+                  fontFamily: "var(--font-heading)",
+                  color: titleColor,
+                  fontSize: titleFontSize,
+                }}
               >
-                {title}
-                {title_highlight && (
-                  <>
-                    {breakTitleHighlight ? <br /> : " "}
-                    <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
-                      {title_highlight}
-                    </span>
-                  </>
-                )}
+                {renderTitle(title, title_highlight, highlightColor)}
               </h2>
             </Reveal>
 
             {description && (
               <Reveal delay={110} className={isCentered ? "mx-auto" : "w-full"}>
-                <p className="mt-3 font-medium leading-relaxed" style={{ fontFamily: "var(--font-body)", color: descriptionColor, fontSize: descriptionFontSize }}>
-                  {description}
-                  {description_highlight && (
-                    <>
-                      <br />
-                      <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
-                        {description_highlight}
-                      </span>
-                    </>
-                  )}
+                <p
+                  className="mt-3 font-medium leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    color: descriptionColor,
+                    fontSize: descriptionFontSize,
+                  }}
+                >
+                  {renderDescription(description, description_highlight, highlightColor)}
                 </p>
               </Reveal>
             )}
@@ -199,10 +239,7 @@ export function FinalCTA({
       </Section>
 
       {!href && isContactOpen && (
-        <ContactModal
-          isOpen={isContactOpen}
-          onClose={() => setIsContactOpen(false)}
-        />
+        <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
       )}
     </>
   );

@@ -94,7 +94,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 <LanguageSelector />
               </div>
               {/* ThemeToggle temporariamente desativado: primeira versão será lançada apenas com tema claro. */}
-              <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-2 text-sm" variant="secondary">
+              <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-2 text-sm" variant="primary">
                 {contactLabel}
               </PremiumButton>
             </div>
