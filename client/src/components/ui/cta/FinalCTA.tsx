@@ -44,7 +44,7 @@ export function FinalCTA({
 
   const descriptionFontSize = "clamp(13px, 1.2vw, 16px)";
   const titleColor = isAboutVariant ? "var(--brand-night)" : usesHeroTextPattern ? "#FFFFFF" : "#000000";
-  const highlightColor = isAboutVariant ? "text-[var(--brand-night)]" : usesHeroTextPattern ? "text-[#00D1FF]" : "text-[#0A84FF]";
+  const highlightColor = isAboutVariant ? "text-[var(--brand-night)]" : "text-[var(--brand-primary)]";
   const descriptionColor = isAboutVariant ? "var(--brand-night)" : usesHeroTextPattern ? "#FFFFFF" : "#001547";
 
   const getFallbackBackground = () => {

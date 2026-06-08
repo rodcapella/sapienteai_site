@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -6,7 +6,7 @@
   color-scheme: light;
   --brand-night: #001547;
   --brand-deep: #012050;
-  --brand-primary: #0ab4ff;
+  --brand-primary: #0a84ff;
   --brand-cyan: #55d4f2;
   --brand-cyan-bright: #55d4f2;
   --brand-vivid-blue: var(--brand-primary);
@@ -108,7 +108,7 @@ button,.button,[role="button"],button *,[class*="Button"],[class*="Button"] *{fo
 main :where(p,li,span,label,input,textarea,select){font-family:var(--font-body);font-size:var(--type-body)}
 main :where(.font-detail,.type-label,.quiz-duration,.quiz-topline,.quiz-category){font-family:var(--font-detail);font-size:var(--type-label)}
 main :where(h1,h2,h3,h4,h5,h6,.font-heading,.type-card-title,.type-section-title,.type-hero):not(.final-cta *){font-family:var(--font-heading)!important;font-size:var(--type-heading)!important}
-.internal-hero-highlight{display:inline-block;position:relative;background:none;color:var(--brand-primary)!important;-webkit-text-fill-color:var(--brand-primary)!important;text-shadow:0 0 14px rgba(10,180,255,.28)}
+.internal-hero-highlight{display:inline-block;position:relative;background:none;color:var(--brand-primary)!important;-webkit-text-fill-color:var(--brand-primary)!important;text-shadow:0 0 14px rgba(10,132,255,.28)}
 .internal-hero-highlight::after{content:none!important;display:none!important}
 
 .standard-section-bg{position:relative;isolation:isolate;background-color:var(--section-ice)!important;background-image:none!important}.dark .standard-section-bg{background-color:#001547!important;background-image:none!important}.standard-section-bg::before,.standard-section-bg::after,.standard-section-bg .tech-grid,.standard-section-bg .dots-matrix,.standard-section-bg>div.pointer-events-none.absolute.inset-0{display:none!important;content:none!important;background:none!important}.quiz-experience{background-color:var(--section-ice)!important;background-image:none!important}.quiz-experience::before,.quiz-experience::after,.quiz-experience .quiz-bg-dots,.quiz-experience .dots-matrix{display:none!important;content:none!important;background:none!important}
