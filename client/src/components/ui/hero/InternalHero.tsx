@@ -19,7 +19,7 @@ export function InternalHero({
   highlight,
   subtitle,
   label,
-  image = "/media/bg/bg_hero.jpeg",
+  image = "/media/bg/bg_hero.png",
   imageAlt = "Sapiente.AI",
   children,
   compact = false,
