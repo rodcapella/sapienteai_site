@@ -70,32 +70,50 @@ export function FinalCTA({
     </PremiumButton>
   );
 
+  if (isHomeVariant) {
+    return (
+      <>
+        <section className="final-cta relative w-full overflow-hidden bg-[var(--section-ice)]">
+          <img
+            src={computedBackgroundSrc}
+            alt=""
+            aria-hidden="true"
+            className="block h-auto w-full object-contain"
+          />
+          <div className="absolute inset-x-0 bottom-6 flex justify-center sm:bottom-8 md:bottom-10">
+            <Reveal>
+              {href ? (
+                <Link href={href}>{buttonElement}</Link>
+              ) : (
+                buttonElement
+              )}
+            </Reveal>
+          </div>
+        </section>
+
+        {!href && isContactOpen && (
+          <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+        )}
+      </>
+    );
+  }
+
   return (
     <>
       <Section
         className={cn(
           "final-cta relative overflow-hidden",
-          isHomeVariant
-            ? "min-h-[clamp(320px,36.5vw,700px)] py-0"
-            : "min-h-[360px] py-8 md:min-h-[420px] md:py-12",
+          "min-h-[360px] py-8 md:min-h-[420px] md:py-12",
           isCentered ? "text-center" : "text-left"
         )}
       >
         <div className="pointer-events-none absolute inset-0">
-          <img
-            src={computedBackgroundSrc}
-            alt=""
-            className={cn(
-              "h-full w-full",
-              isHomeVariant ? "object-cover object-center" : "object-cover object-center"
-            )}
-          />
+          <img src={computedBackgroundSrc} alt="" className="h-full w-full object-cover object-center" />
         </div>
 
         <div
           className={cn(
             "relative z-10 mx-auto w-full",
-            isHomeVariant && "pt-10 md:pt-16 lg:pt-20",
             isCentered
               ? "max-w-3xl px-6 sm:px-10 text-center"
               : "max-w-7xl px-6 sm:px-8 text-left"
@@ -112,25 +130,13 @@ export function FinalCTA({
             <Reveal className={isCentered ? "mx-auto" : "w-full"}>
               <h2
                 className="font-black leading-[1.08] tracking-normal"
-                style={{
-                  fontFamily: "var(--font-heading)",
-                  color: titleColor,
-                  fontSize: titleFontSize,
-                }}
+                style={{ fontFamily: "var(--font-heading)", color: titleColor, fontSize: titleFontSize }}
               >
                 {title}
-
                 {title_highlight && (
                   <>
                     {breakTitleHighlight ? <br /> : " "}
-                    <span
-                      className={highlightColor}
-                      style={{
-                        font: "inherit",
-                        lineHeight: "inherit",
-                        letterSpacing: "inherit",
-                      }}
-                    >
+                    <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
                       {title_highlight}
                     </span>
                   </>
@@ -140,27 +146,12 @@ export function FinalCTA({
 
             {description && (
               <Reveal delay={110} className={isCentered ? "mx-auto" : "w-full"}>
-                <p
-                  className="mt-3 font-medium leading-relaxed"
-                  style={{
-                    fontFamily: "var(--font-body)",
-                    color: descriptionColor,
-                    fontSize: descriptionFontSize,
-                  }}
-                >
+                <p className="mt-3 font-medium leading-relaxed" style={{ fontFamily: "var(--font-body)", color: descriptionColor, fontSize: descriptionFontSize }}>
                   {description}
-
                   {description_highlight && (
                     <>
                       <br />
-                      <span
-                        className={highlightColor}
-                        style={{
-                          font: "inherit",
-                          lineHeight: "inherit",
-                          letterSpacing: "inherit",
-                        }}
-                      >
+                      <span className={highlightColor} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
                         {description_highlight}
                       </span>
                     </>
@@ -170,17 +161,8 @@ export function FinalCTA({
             )}
 
             <Reveal delay={220} className={isCentered ? "mx-auto" : ""}>
-              <div
-                className={cn(
-                  "mt-6 flex w-full",
-                  isCentered ? "justify-center" : "justify-start"
-                )}
-              >
-                {href ? (
-                  <Link href={href}>{buttonElement}</Link>
-                ) : (
-                  buttonElement
-                )}
+              <div className={cn("mt-6 flex w-full", isCentered ? "justify-center" : "justify-start")}>
+                {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
               </div>
             </Reveal>
           </div>
