@@ -76,7 +76,7 @@ export function FinalCTA({
         className={cn(
           "final-cta relative overflow-hidden",
           isHomeVariant
-            ? "min-h-[clamp(520px,36.5vw,700px)] py-0"
+            ? "min-h-[clamp(320px,36.5vw,700px)] py-0"
             : "min-h-[360px] py-8 md:min-h-[420px] md:py-12",
           isCentered ? "text-center" : "text-left"
         )}
@@ -87,7 +87,7 @@ export function FinalCTA({
             alt=""
             className={cn(
               "h-full w-full",
-              isHomeVariant ? "object-contain object-top" : "object-cover object-center"
+              isHomeVariant ? "object-cover object-center" : "object-cover object-center"
             )}
           />
         </div>
@@ -95,7 +95,7 @@ export function FinalCTA({
         <div
           className={cn(
             "relative z-10 mx-auto w-full",
-            isHomeVariant && "pt-24 md:pt-28 lg:pt-32",
+            isHomeVariant && "pt-10 md:pt-16 lg:pt-20",
             isCentered
               ? "max-w-3xl px-6 sm:px-10 text-center"
               : "max-w-7xl px-6 sm:px-8 text-left"
