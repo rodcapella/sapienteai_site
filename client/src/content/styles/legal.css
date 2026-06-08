@@ -49,9 +49,12 @@
   cursor: pointer;
 }
 
-.legal-cat:hover,
+.legal-cat:hover {
+  background: #e8f4fd;
+}
+
 .legal-cat.active {
-  background: #eaf6ff;
+  background: #e8f4fd;
   border-color: #184173;
 }
 
@@ -97,8 +100,11 @@
 }
 
 .legal-q {
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  gap: 20px;
   padding: 22px 24px;
   background: transparent;
   border: 0;
@@ -107,11 +113,14 @@
 
 .legal-q-text {
   font: 900 16px var(--font-heading);
+  text-align: left;
+  flex: 1;
 }
 
 .legal-q-icon {
   width: 28px;
   height: 28px;
+  flex-shrink: 0;
   display: grid;
   place-items: center;
   border-radius: 50%;

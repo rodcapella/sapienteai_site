@@ -51,7 +51,8 @@ export function PremiumButton({
 
   const variantClasses = {
     primary: vividBlue,
-    secondary: vividBlue,
+    secondary:
+      "bg-white/10 text-[var(--brand-primary)] border border-[var(--brand-primary)] backdrop-blur-md hover:bg-[var(--brand-primary)] hover:text-white",
     outline:
       "border-2 border-[var(--brand-primary)] bg-[rgba(241,237,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,180,255,0.12)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.18),0_18px_42px_rgba(10,180,255,0.18)] dark:border-[var(--brand-primary)] dark:text-[var(--brand-primary)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white",
     black:

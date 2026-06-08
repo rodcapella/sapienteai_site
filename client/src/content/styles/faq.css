@@ -83,7 +83,6 @@
 .faq-cat {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 10px 14px;
   border-radius: 10px;
   border: 1px solid transparent;
@@ -96,12 +95,12 @@
 }
 
 .faq-cat:hover {
-  background: rgba(0, 209, 255, 0.12);
+  background: #e8f4fd;
 }
 
 .faq-cat.active {
-  background: rgba(0, 209, 255, 0.2);
-  border-color: rgba(0, 209, 255, 0.5);
+  background: #e8f4fd;
+  border-color: #184173;
 }
 
 .faq-cat-count {
@@ -115,8 +114,8 @@
 /* LISTA FAQ */
 .faq-list {
   border-radius: 18px;
-  border: 4px solid rgba(122, 92, 252, 0.5);
-  background: rgba(0, 209, 255, 0.12);
+  border: 2px solid #184173;
+  background: #e8f4fd;
   overflow: hidden;
 }
 
