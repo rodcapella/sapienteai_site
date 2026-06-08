@@ -19,7 +19,7 @@
   --accent-blue-foreground: #ffffff;
   --background: var(--brand-offwhite);
   --foreground: #000000;
-  --section-ice: var(--brand-offwhite);
+  --section-ice = #eaf6ff;
   --section-blue-tint: #e7defd;
   --brand-gradient: linear-gradient(135deg, #001547 0%, #012050 45%, #0ab4ff 78%, #55d4f2 100%);
   --brand-gradient-hover: linear-gradient(135deg, #012050 0%, #0ab4ff 58%, #55d4f2 100%);
