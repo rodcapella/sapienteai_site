@@ -28,7 +28,7 @@ export function InternalHero({
     <Section
       className={[
         "InternalHero hero relative flex items-center justify-start overflow-hidden",
-        compact ? "min-h-[68vh] pt-28 pb-20 md:pt-40 md:pb-24" : "min-h-[75vh] pt-28 pb-20 md:min-h-[90vh] md:pt-40 md:pb-28",
+        compact ? "min-h-[68vh] pt-28 pb-20 md:pt-40 md:pb-24" : "min-h-[580px] pt-28 pb-20 md:min-h-[720px] md:pt-40 md:pb-28",
       ].join(" ")}
     >
       <div className="absolute inset-0">
