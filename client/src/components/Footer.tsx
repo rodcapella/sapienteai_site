@@ -78,7 +78,7 @@ export default function Footer() {
                 { href: quizHref, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
+                  <Link href={item.href} className="font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan)]">
                     {item.label}
                   </Link>
                 </li>
@@ -97,7 +97,7 @@ export default function Footer() {
                 { href: `/${lang}/generative-ai-policy`, label: t("footer.generative-ai-policy") },
               ].map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">
+                  <Link href={item.href} className="font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan)]">
                     {item.label}
                   </Link>
                 </li>
@@ -112,7 +112,7 @@ export default function Footer() {
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
-                  <span className="group flex items-center gap-2.5 font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan-bright)]">
+                  <span className="group flex items-center gap-2.5 font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan)]">
                     <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-primary)]/30 bg-[var(--brand-deep)]/75 text-[var(--brand-cyan)]">
                       <Icon className="h-3 w-3" />
                     </span>
@@ -140,7 +140,7 @@ export default function Footer() {
             </p>
             <PremiumButton
               onClick={() => setIsNewsletterOpen(true)}
-              className="w-full rounded-2xl !bg-[var(--brand-cyan-bright)] !py-1 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
+              className="w-full rounded-2xl !bg-[var(--brand-cyan)] !py-1 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
               variant="secondary"
             >
               {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
@@ -158,7 +158,7 @@ export default function Footer() {
                     <a
                       key={social.name}
                       href={social.url}
-                      className="group inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
+                      className="group inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-cyan)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
                       aria-label={social.name}
                       target="_blank"
                       rel="noopener noreferrer nofollow"
@@ -176,7 +176,7 @@ export default function Footer() {
         {/* Bottom bar — copyright only */}
         <div className="flex items-center justify-center pt-1">
           <p className="text-center font-serif text-[8px] italic font-normal uppercase tracking-[0.24em] text-[#FFFFFF]">
-            {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="font-normal italic text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan-bright)]">{t("footer.sitemap")}</Link> |
+            {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="font-normal italic text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan)]">{t("footer.sitemap")}</Link> |
           </p>
         </div>
       </div>
@@ -185,7 +185,7 @@ export default function Footer() {
         type="button"
         onClick={scrollToTop}
         aria-label="Back to top"
-        className="absolute bottom-4 right-4 z-20 inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan-bright)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
+        className="absolute bottom-4 right-4 z-20 inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
       >
         <Icons.ArrowUp className="h-2.5 w-2.5" />
       </button>
