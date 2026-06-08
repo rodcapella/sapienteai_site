@@ -29,6 +29,7 @@ type HomeBannerSectionProps = {
   file: string;
   label?: string;
   id?: string;
+  maxHeight?: number;
 };
 
 function getHomeBannerSrc(lang: string, file: string) {
@@ -41,18 +42,18 @@ function getHomeBannerSrc(lang: string, file: string) {
     "home_como_ajudamos_ai.png": "home_como_ajudamos_ai_en.png",
     "home_marketing_digital_ia.png": "home_marketing_digital_ia_en.png",
   };
-  const localizedFile = lang === "en" ? englishFileMap[file] || file : file; 
+  const localizedFile = lang === "en" ? englishFileMap[file] || file : file;
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
-function HomeBannerSection({ lang, file, label, id}: HomeBannerSectionProps) {
+function HomeBannerSection({ lang, file, label, id, maxHeight }: HomeBannerSectionProps) {
   const backgroundSrc = getHomeBannerSrc(lang, file);
 
   return (
     <section
       id={id}
       className="relative block w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat m-0 p-0 border-0"
-      style={{ backgroundImage: `url(${backgroundSrc})` }}
+      style={{ backgroundImage: `url(${backgroundSrc})`, maxHeight: maxHeight ? `${maxHeight}px` : undefined }}
       aria-label={label}
     >
       <Reveal>
@@ -61,6 +62,7 @@ function HomeBannerSection({ lang, file, label, id}: HomeBannerSectionProps) {
           alt=""
           aria-hidden="true"
           className="block h-auto w-full object-contain opacity-0"
+          style={{ maxHeight: maxHeight ? `${maxHeight}px` : undefined }}
         />
       </Reveal>
     </section>
@@ -97,6 +99,7 @@ export default function Home() {
           id={index === 0 ? "core-services" : undefined}
           lang={lang}
           file={banner}
+          maxHeight={index === 4 || index === 5 ? 580 : undefined}
           label={[
             isPT ? "O que nos diferencia" : "What makes us different",
             content.coreServices.label,
