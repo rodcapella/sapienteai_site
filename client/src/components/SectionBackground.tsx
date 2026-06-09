@@ -7,7 +7,7 @@ type SectionBackgroundProps = {
 
   /**
    * Controla intensidade do overlay
-   * - soft: leve (CTAs)
+   * - soft: leve (CTAs / painéis com imagem própria)
    * - medium: padrão (maioria das secções)
    * - strong: fundos muito visuais (hero / imagens fortes)
    */
@@ -17,19 +17,19 @@ type SectionBackgroundProps = {
    * Blur do background
    */
   blur?: "none" | "sm" | "md" | "lg";
-};
+} & Omit<React.ComponentProps<"div">, "children" | "className">;
 
 const overlayMap = {
-  soft: "bg-black/10",
+  soft:   "bg-black/10",
   medium: "bg-black/25",
   strong: "bg-black/40",
 };
 
 const blurMap = {
   none: "",
-  sm: "backdrop-blur-[2px]",
-  md: "backdrop-blur-[4px]",
-  lg: "backdrop-blur-[8px]",
+  sm:   "backdrop-blur-[2px]",
+  md:   "backdrop-blur-[4px]",
+  lg:   "backdrop-blur-[8px]",
 };
 
 export function SectionBackground({
@@ -38,9 +38,10 @@ export function SectionBackground({
   className,
   overlay = "medium",
   blur = "sm",
+  ...rest
 }: SectionBackgroundProps) {
   return (
-    <div className={cn("relative overflow-hidden", className)}>
+    <div className={cn("relative overflow-hidden", className)} {...rest}>
       {/* BACKGROUND IMAGE */}
       {image && (
         <div
@@ -51,13 +52,7 @@ export function SectionBackground({
 
       {/* OVERLAY + BLUR */}
       {image && (
-        <div
-          className={cn(
-            "absolute inset-0",
-            overlayMap[overlay],
-            blurMap[blur]
-          )}
-        />
+        <div className={cn("absolute inset-0", overlayMap[overlay], blurMap[blur])} />
       )}
 
       {/* CONTENT */}

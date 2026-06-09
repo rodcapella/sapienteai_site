@@ -7,7 +7,7 @@ import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Icons } from "@/lib/icons";
-import "@/content/styles/legal.css";
+import "@/styles/legal.css";
 
 type LegalContentSection = {
   id?: string;

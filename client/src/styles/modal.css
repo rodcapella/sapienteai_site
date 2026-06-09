@@ -21,3 +21,34 @@
 .modal-select.is-filled {
   color: rgba(234, 246, 255, 0.9);
 }
+
+.modal-scrollarea {
+  scrollbar-color: rgba(85, 212, 242, 0.72) rgba(5, 8, 27, 0.36);
+  scrollbar-width: thin;
+}
+
+.modal-scrollarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-scrollarea::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, rgba(5, 8, 27, 0.28), rgba(1, 32, 80, 0.32));
+  border-radius: 999px;
+  margin: 14px 0;
+}
+
+.modal-scrollarea::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(180deg, rgba(85, 212, 242, 0.9), rgba(10, 132, 255, 0.72)),
+    rgba(10, 132, 255, 0.7);
+  border: 2px solid rgba(5, 8, 27, 0.72);
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgba(0, 209, 255, 0.42);
+}
+
+.modal-scrollarea::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(180deg, rgba(234, 246, 255, 0.95), rgba(85, 212, 242, 0.88)),
+    rgba(85, 212, 242, 0.9);
+  box-shadow: 0 0 18px rgba(85, 212, 242, 0.58);
+}

@@ -1,25 +1,19 @@
 /**
- * BaseModal
+ * Modal
  * Shared shell for ContactModal and NewsletterModal.
- * Provides: Dialog wrapper, background decorations, particles, close button.
- * Also exports shared class helpers and the ModalStatusNode component.
+ * Provides the Dialog wrapper, background decorations, particles, and close button.
  */
 
 import { type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Icons } from "@/lib/icons";
 
-import "./modal.css";
-
-// ─── Particles (identical in both modals) ─────────────────────────────────────
+import "@/styles/modal.css";
 
 const PARTICLES = [
-  { left: "8%",  top: "18%", size: 4, delay: 0.2 },
+  { left: "8%", top: "18%", size: 4, delay: 0.2 },
   { left: "20%", top: "72%", size: 3, delay: 1.3 },
   { left: "37%", top: "22%", size: 2, delay: 0.7 },
   { left: "56%", top: "81%", size: 4, delay: 1.9 },
@@ -27,8 +21,6 @@ const PARTICLES = [
   { left: "79%", top: "12%", size: 2, delay: 1.1 },
   { left: "90%", top: "64%", size: 3, delay: 1.6 },
 ];
-
-// ─── Shared class strings ─────────────────────────────────────────────────────
 
 export const MODAL_LABEL_CLASS =
   "font-[var(--font-detail)] text-xs font-semibold uppercase tracking-[0.14em] text-[rgba(234,246,255,0.85)]";
@@ -52,8 +44,6 @@ export function modalFieldClass(hasError: boolean, isValid: boolean): string {
 export function modalSelectClass(fieldClass: string, hasValue: boolean): string {
   return `${fieldClass} modal-select ${hasValue ? "is-filled" : "is-placeholder"} cursor-pointer appearance-none pr-10`;
 }
-
-// ─── ModalStatusNode ──────────────────────────────────────────────────────────
 
 export type ModalSubmitState = "idle" | "loading" | "success" | "error";
 
@@ -109,18 +99,15 @@ export function ModalStatusNode({ submitState, feedbackMessage }: ModalStatusNod
   );
 }
 
-// ─── BaseModal shell ──────────────────────────────────────────────────────────
-
-interface BaseModalProps {
+interface ModalProps {
   isOpen: boolean;
-  /** Already-wrapped close handler (should also reset internal state) */
   onClose: () => void;
   closeLabel: string;
   ariaDescribedBy: string;
   children: ReactNode;
 }
 
-export function BaseModal({ isOpen, onClose, closeLabel, ariaDescribedBy, children }: BaseModalProps) {
+export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children }: ModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
@@ -132,9 +119,8 @@ export function BaseModal({ isOpen, onClose, closeLabel, ariaDescribedBy, childr
           initial={{ opacity: 0, scale: 0.97, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.28, ease: "easeOut" }}
-          className="relative max-h-[92vh] overflow-y-auto p-5 sm:p-8"
+          className="modal-scrollarea relative max-h-[92vh] overflow-y-auto p-5 sm:p-8"
         >
-          {/* Background decorations */}
           <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden>
             <div
               className="absolute inset-0"
@@ -144,18 +130,23 @@ export function BaseModal({ isOpen, onClose, closeLabel, ariaDescribedBy, childr
               }}
             />
             <div className="absolute -top-28 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(0,209,255,0.45)_0%,rgba(0,209,255,0)_70%)] blur-3xl" />
-            {PARTICLES.map((p, i) => (
+            {PARTICLES.map((particle, index) => (
               <motion.span
-                key={i}
+                key={index}
                 className="absolute rounded-full bg-[rgba(0,209,255,0.9)]"
-                style={{ left: p.left, top: p.top, width: p.size, height: p.size, boxShadow: "0 0 16px rgba(0,209,255,0.85)" }}
+                style={{
+                  left: particle.left,
+                  top: particle.top,
+                  width: particle.size,
+                  height: particle.size,
+                  boxShadow: "0 0 16px rgba(0,209,255,0.85)",
+                }}
                 animate={{ y: [0, -8, 0], opacity: [0.45, 1, 0.45] }}
-                transition={{ duration: 3.4, delay: p.delay, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 3.4, delay: particle.delay, repeat: Infinity, ease: "easeInOut" }}
               />
             ))}
           </div>
 
-          {/* Close button */}
           <button
             type="button"
             onClick={onClose}
@@ -165,15 +156,12 @@ export function BaseModal({ isOpen, onClose, closeLabel, ariaDescribedBy, childr
             <Icons.X className="h-4 w-4" />
           </button>
 
-          {/* Slot for each modal's content */}
           {children}
         </motion.div>
       </DialogContent>
     </Dialog>
   );
 }
-
-// ─── AnimatedStatus wrapper (for AnimatePresence in both modals) ──────────────
 
 interface AnimatedStatusProps {
   submitState: ModalSubmitState;
@@ -182,6 +170,7 @@ interface AnimatedStatusProps {
 
 export function AnimatedStatus({ submitState, feedbackMessage }: AnimatedStatusProps) {
   const node = <ModalStatusNode submitState={submitState} feedbackMessage={feedbackMessage} />;
+
   return (
     <AnimatePresence mode="wait">
       {node && (

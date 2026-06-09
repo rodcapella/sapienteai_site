@@ -1,232 +1,40 @@
 import { useEffect, useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
+import { SectionBackground } from "@/components/SectionBackground";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { SectionCard } from "@/components/ui/section/SectionCard";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
-import "@/content/styles/legal.css";
+import "@/styles/legal.css";
 
 // ─── Tipos ───────────────────────────────────────────────────────────────────
 
 type ServiceSection = {
   id: string;
-  navLabel: { pt: string; en: string };
+  navLabel: string;
   icon: keyof typeof Icons;
   backgroundImage: string;
 };
 
-// ─── Config das secções de navegação ─────────────────────────────────────────
-
-const SERVICE_SECTIONS: ServiceSection[] = [
-  { id: "ia", navLabel: { pt: "IA", en: "AI" }, icon: "Sparkles", backgroundImage: "/media/bg/servicos/bg_Serviços_ia.png" },
-  { id: "automacao", navLabel: { pt: "Automação", en: "Automation" }, icon: "Zap", backgroundImage: "/media/bg/servicos/bg_Serviços_automacao.png" },
-  { id: "crescimento", navLabel: { pt: "Crescimento", en: "Growth" }, icon: "TrendingUp", backgroundImage: "/media/bg/servicos/bg_Serviços_crescimento.png" },
-  { id: "dados-bi", navLabel: { pt: "Dados & BI", en: "Data & BI" }, icon: "BarChart3", backgroundImage: "/media/bg/servicos/bg_Serviços_dados.png" },
-  { id: "desenvolvimento", navLabel: { pt: "Website", en: "Website" }, icon: "Globe", backgroundImage: "/media/bg/servicos/bg_Serviços_website.png" },
-  { id: "marketing", navLabel: { pt: "Marketing Digital", en: "Digital Marketing" }, icon: "MessageCircle", backgroundImage: "/media/bg/servicos/bg_Serviços_mkt_digital.png" },
-];
-
-// ─── Conteúdo de cada secção ──────────────────────────────────────────────────
-
-type ServiceContent = {
-  eyebrow: string;
-  title: string;
-  description: string;
-  bullets: string[];
-  cta?: string;
-};
-
-const SECTION_CONTENT: Record<string, { pt: ServiceContent; en: ServiceContent }> = {
-  ia: {
-    pt: {
-      eyebrow: "Inteligência Artificial",
-      title: "IA aplicada ao seu negócio",
-      description:
-        "Implementamos modelos de linguagem, automação cognitiva e soluções de IA generativa adaptadas à realidade da sua empresa — sem complexidade técnica desnecessária.",
-      bullets: [
-        "Chatbots e assistentes virtuais com IA generativa",
-        "Automação de processos com LLMs (GPT-4, Claude, Gemini)",
-        "Análise e síntese de documentos com IA",
-        "Integração de IA em fluxos de trabalho existentes",
-        "Soluções RAG (Retrieval-Augmented Generation)",
-      ],
-    },
-    en: {
-      eyebrow: "Artificial Intelligence",
-      title: "AI applied to your business",
-      description:
-        "We implement language models, cognitive automation, and generative AI solutions tailored to your company's reality — without unnecessary technical complexity.",
-      bullets: [
-        "Chatbots and virtual assistants with generative AI",
-        "Process automation with LLMs (GPT-4, Claude, Gemini)",
-        "Document analysis and synthesis with AI",
-        "AI integration into existing workflows",
-        "RAG (Retrieval-Augmented Generation) solutions",
-      ],
-    },
-  },
-  automacao: {
-    pt: {
-      eyebrow: "Automação",
-      title: "Automatize o que consome o seu tempo",
-      description:
-        "Identificamos os processos repetitivos do seu negócio e construímos automações robustas que poupam horas de trabalho manual todos os dias.",
-      bullets: [
-        "Automação de fluxos com Make, n8n e Zapier",
-        "Integração entre plataformas via API",
-        "Automação de email marketing e CRM",
-        "Notificações e alertas automáticos",
-        "Relatórios e dashboards gerados automaticamente",
-      ],
-    },
-    en: {
-      eyebrow: "Automation",
-      title: "Automate what consumes your time",
-      description:
-        "We identify repetitive processes in your business and build robust automations that save hours of manual work every day.",
-      bullets: [
-        "Workflow automation with Make, n8n, and Zapier",
-        "Platform integration via API",
-        "Email marketing and CRM automation",
-        "Automatic notifications and alerts",
-        "Automatically generated reports and dashboards",
-      ],
-    },
-  },
-  crescimento: {
-    pt: {
-      eyebrow: "Crescimento",
-      title: "Estratégias que geram resultados reais",
-      description:
-        "Definimos e executamos estratégias de crescimento digital centradas em dados, com foco em aquisição, retenção e monetização.",
-      bullets: [
-        "Estratégia de crescimento digital personalizada",
-        "Funis de conversão e otimização de landing pages",
-        "SEO técnico e de conteúdo",
-        "Campanhas pagas (Google Ads, Meta Ads)",
-        "Análise de métricas e KPIs de crescimento",
-      ],
-    },
-    en: {
-      eyebrow: "Growth",
-      title: "Strategies that generate real results",
-      description:
-        "We define and execute data-driven digital growth strategies focused on acquisition, retention, and monetization.",
-      bullets: [
-        "Personalized digital growth strategy",
-        "Conversion funnels and landing page optimization",
-        "Technical and content SEO",
-        "Paid campaigns (Google Ads, Meta Ads)",
-        "Growth metrics and KPI analysis",
-      ],
-    },
-  },
-  "dados-bi": {
-    pt: {
-      eyebrow: "Dados & BI",
-      title: "Decisões baseadas em dados reais",
-      description:
-        "Transformamos dados brutos em inteligência acionável com dashboards, pipelines e relatórios que apoiam decisões estratégicas.",
-      bullets: [
-        "Dashboards interativos com Power BI e Looker Studio",
-        "Pipelines de dados com Python, PySpark e Databricks",
-        "Data Warehousing e modelação dimensional",
-        "Integração de fontes de dados heterogéneas",
-        "Relatórios automáticos e alertas de negócio",
-      ],
-    },
-    en: {
-      eyebrow: "Data & BI",
-      title: "Decisions based on real data",
-      description:
-        "We transform raw data into actionable intelligence with dashboards, pipelines, and reports that support strategic decisions.",
-      bullets: [
-        "Interactive dashboards with Power BI and Looker Studio",
-        "Data pipelines with Python, PySpark, and Databricks",
-        "Data Warehousing and dimensional modeling",
-        "Integration of heterogeneous data sources",
-        "Automated reports and business alerts",
-      ],
-    },
-  },
-  desenvolvimento: {
-    pt: {
-      eyebrow: "Desenvolvimento",
-      title: "Produtos digitais construídos para escalar",
-      description:
-        "Desenvolvemos websites, plataformas e aplicações web com tecnologias modernas, foco em performance e experiência de utilizador.",
-      bullets: [
-        "Websites e landing pages em React, Next.js ou Webflow",
-        "Plataformas web à medida com backend robusto",
-        "APIs RESTful e integrações de terceiros",
-        "Otimização de performance e Core Web Vitals",
-        "Manutenção, suporte e evolução contínua",
-      ],
-    },
-    en: {
-      eyebrow: "Development",
-      title: "Digital products built to scale",
-      description:
-        "We develop websites, platforms, and web applications with modern technologies, focused on performance and user experience.",
-      bullets: [
-        "Websites and landing pages in React, Next.js or Webflow",
-        "Custom web platforms with robust backend",
-        "RESTful APIs and third-party integrations",
-        "Performance optimization and Core Web Vitals",
-        "Maintenance, support, and continuous evolution",
-      ],
-    },
-  },
-  marketing: {
-    pt: {
-      eyebrow: "Marketing Digital",
-      title: "Presença digital que gera negócio",
-      description:
-        "Gerimos a sua presença digital de forma integrada — desde o conteúdo às campanhas — com IA a amplificar cada ação.",
-      bullets: [
-        "Gestão de redes sociais (Instagram, LinkedIn, TikTok)",
-        "Produção de conteúdo com IA (texto, imagem, vídeo)",
-        "Email marketing e automação de nurturing",
-        "Campanhas de performance e remarketing",
-        "Relatórios mensais de crescimento e ROI",
-      ],
-    },
-    en: {
-      eyebrow: "Digital Marketing",
-      title: "Digital presence that generates business",
-      description:
-        "We manage your digital presence in an integrated way — from content to campaigns — with AI amplifying every action.",
-      bullets: [
-        "Social media management (Instagram, LinkedIn, TikTok)",
-        "AI-powered content production (text, image, video)",
-        "Email marketing and nurturing automation",
-        "Performance and remarketing campaigns",
-        "Monthly growth and ROI reports",
-      ],
-    },
-  },
-};
-
-// ─── Sidebar Nav ──────────────────────────────────────────────────────────────
+// ─── Sidebar Nav ─────────────────────────────────────────────────────────────
 
 function ServicesSidebar({
+  sections,
   active,
-  lang,
   onSelect,
 }: {
+  sections: ServiceSection[];
   active: string;
-  lang: string;
   onSelect: (id: string) => void;
 }) {
   return (
     <nav className="flex flex-col gap-1">
-      {SERVICE_SECTIONS.map((s) => {
+      {sections.map((s) => {
         const Icon = Icons[s.icon] as React.ElementType;
         const isActive = active === s.id;
         return (
@@ -242,56 +50,11 @@ function ServicesSidebar({
             ].join(" ")}
           >
             {Icon && <Icon className="h-4 w-4 shrink-0" />}
-            <span>{s.navLabel[lang === "en" ? "en" : "pt"]}</span>
+            <span>{s.navLabel}</span>
           </button>
         );
       })}
     </nav>
-  );
-}
-
-// ─── Conteúdo de cada secção ──────────────────────────────────────────────────
-
-function ServiceDetail({
-  id,
-  lang,
-}: {
-  id: string;
-  lang: string;
-}) {
-  const data = SECTION_CONTENT[id]?.[lang as "pt" | "en"] ?? SECTION_CONTENT[id]?.pt;
-  if (!data) return null;
-
-  return (
-    <article id={`service-${id}`} className="scroll-mt-32 rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] p-7 shadow-[0_18px_38px_rgba(1,32,80,0.06)] md:p-9">
-      <Reveal>
-        <p className="mb-4 font-[var(--font-body)] text-xs font-black uppercase tracking-[0.22em] text-[var(--brand-primary)]">
-          {data.eyebrow}
-        </p>
-        <h2 className="mb-4 font-[var(--font-body)] text-3xl font-black leading-tight text-[var(--brand-night)] md:text-5xl">
-          {data.title}
-        </h2>
-        <p className="mb-10 max-w-3xl font-[var(--font-body)] text-base font-medium leading-relaxed text-[var(--brand-ink)] md:text-lg">
-          {data.description}
-        </p>
-      </Reveal>
-
-      <Reveal delay={100}>
-        <ul className="grid gap-3 sm:grid-cols-2">
-          {data.bullets.map((bullet, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-3 rounded-xl border border-[color-mix(in_srgb,var(--brand-primary)_22%,transparent)] bg-[rgba(234,246,255,0.58)] px-5 py-4 font-[var(--font-body)] text-sm font-semibold text-[var(--brand-night)] shadow-[0_8px_24px_rgba(1,32,80,0.08)]"
-            >
-              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#00D1FF] text-[var(--brand-night)]">
-                <Icons.Check className="h-3 w-3" />
-              </span>
-              {bullet}
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-    </article>
   );
 }
 
@@ -300,7 +63,8 @@ function ServiceDetail({
 export default function Services(_props: { lang?: string }) {
   const { lang } = useTranslation();
   const content = getContent("services", lang);
-  const [activeSection, setActiveSection] = useState(SERVICE_SECTIONS[0].id);
+  const sections = content.sections as ServiceSection[];
+  const [activeSection, setActiveSection] = useState(sections[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
 
@@ -331,7 +95,7 @@ export default function Services(_props: { lang?: string }) {
 
       {/* ── Mobile Nav — sticky abaixo do hero, sempre visível ── */}
       <div className="sticky top-16 z-30 flex gap-2 overflow-x-auto bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md lg:hidden">
-        {SERVICE_SECTIONS.map((s) => {
+        {sections.map((s) => {
           const Icon = Icons[s.icon] as React.ElementType;
           const isActive = activeSection === s.id;
           return (
@@ -347,7 +111,7 @@ export default function Services(_props: { lang?: string }) {
               ].join(" ")}
             >
               <Icon className="h-3.5 w-3.5 shrink-0" />
-              {s.navLabel[lang === "en" ? "en" : "pt"]}
+              {s.navLabel}
             </button>
           );
         })}
@@ -365,8 +129,8 @@ export default function Services(_props: { lang?: string }) {
                   {lang === "en" ? "Services" : "Serviços"}
                 </div>
                 <ServicesSidebar
+                  sections={sections}
                   active={activeSection}
-                  lang={lang}
                   onSelect={handleSelectSection}
                 />
               </aside>
@@ -374,7 +138,7 @@ export default function Services(_props: { lang?: string }) {
               {/* Conteúdo */}
               <main className="flex min-w-0 flex-1 flex-col gap-6">
                 <div className="contents">
-                  {SERVICE_SECTIONS.map((section) => {
+                  {sections.map((section) => {
                     const data =
                       content.visualServices?.[
                         section.id as keyof typeof content.visualServices
@@ -383,16 +147,15 @@ export default function Services(_props: { lang?: string }) {
                     if (!data) return null;
 
                     return (
-                      <article
-                        key={section.id}
+                      <SectionBackground
                         id={`service-${section.id}`}
-                        aria-label={section.navLabel[lang === "en" ? "en" : "pt"]}
-                        className="relative min-h-[420px] w-full scroll-mt-32 overflow-hidden rounded-2xl bg-cover bg-center bg-no-repeat px-8 py-6 md:px-10 lg:px-12"
-                        style={{
-                          backgroundImage: `url('${section.backgroundImage}')`,
-                        }}
+                        aria-label={section.navLabel}
+                        image={section.backgroundImage}
+                        overlay="soft"
+                        blur="none"
+                        className="min-h-[420px] w-full scroll-mt-32 rounded-2xl px-8 py-6 md:px-10 lg:px-12"
                       >
-                        <div className="relative z-10 grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
+                        <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
                             <div className="max-w-[440px] py-5 text-left">
                               <p className="mb-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-night)]">
@@ -440,7 +203,7 @@ export default function Services(_props: { lang?: string }) {
                             </ul>
                           </Reveal>
                         </div>
-                      </article>
+                      </SectionBackground>
                     );
                   })}
                 </div>

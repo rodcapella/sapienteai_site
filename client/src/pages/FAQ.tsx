@@ -10,7 +10,7 @@ import { generateFAQSchema } from "@/lib/faqSchema";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
-import "@/content/styles/faq.css";
+import "@/styles/faq.css";
 
 function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
   const labels =

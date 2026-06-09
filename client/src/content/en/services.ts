@@ -1,4 +1,13 @@
 export const servicesEN = {
+  sections: [
+    { id: "ia",              navLabel: "AI",               icon: "Sparkles",      backgroundImage: "/media/bg/servicos/bg_Serviços_ia.png" },
+    { id: "automacao",       navLabel: "Automation",       icon: "Zap",           backgroundImage: "/media/bg/servicos/bg_Serviços_automacao.png" },
+    { id: "crescimento",     navLabel: "Growth",           icon: "TrendingUp",    backgroundImage: "/media/bg/servicos/bg_Serviços_crescimento.png" },
+    { id: "dados-bi",        navLabel: "Data & BI",        icon: "BarChart3",     backgroundImage: "/media/bg/servicos/bg_Serviços_dados.png" },
+    { id: "desenvolvimento", navLabel: "Website",          icon: "Globe",         backgroundImage: "/media/bg/servicos/bg_Serviços_website.png" },
+    { id: "marketing",       navLabel: "Digital Marketing",icon: "MessageCircle", backgroundImage: "/media/bg/servicos/bg_Serviços_mkt_digital.png" },
+  ],
+
   hero: {
     label: "What We Do",
     title: "Integrated solutions for every stage of your",

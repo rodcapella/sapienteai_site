@@ -38,6 +38,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://sapienteai.com/pt/seo-geo-aeo-validator</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://sapienteai.com/pt/sitemap</loc>
     <priority>0.8</priority>
   </url>
@@ -79,6 +83,10 @@
   </url>
   <url>
     <loc>https://sapienteai.com/en/blog</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://sapienteai.com/en/seo-geo-aeo-validator</loc>
     <priority>0.8</priority>
   </url>
   <url>

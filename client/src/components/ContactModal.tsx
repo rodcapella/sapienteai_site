@@ -7,12 +7,12 @@ import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Icons } from "@/lib/icons";
 import {
   AnimatedStatus,
-  BaseModal,
+  Modal,
   MODAL_LABEL_CLASS,
   modalFieldClass,
   modalSelectClass,
   type ModalSubmitState,
-} from "@/components/ui/modal/BaseModal";
+} from "@/components/ui/modal/Modal";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -345,7 +345,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
   const requiredFieldsLabel = lang === "en" ? "Required fields" : "Campos obrigatórios";
 
   return (
-    <BaseModal isOpen={isOpen} onClose={closeModal} closeLabel={text.closeLabel} ariaDescribedBy="contact-modal-description">
+    <Modal isOpen={isOpen} onClose={closeModal} closeLabel={text.closeLabel} ariaDescribedBy="contact-modal-description">
       <DialogHeader className="relative z-10 mb-7 space-y-3 text-left">
         <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "#FFFFFF" }}>
           <span className="inline-flex items-center gap-2 !text-white" style={{ color: "#FFFFFF" }}>
@@ -465,6 +465,6 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
         <p className="text-center text-xs text-[rgba(234,246,255,0.65)]">{text.averageResponse}</p>
       </form>
-    </BaseModal>
+    </Modal>
   );
 }
