@@ -91,6 +91,14 @@ export default function Home() {
 
   const [isContactOpen, setIsContactOpen] = useState(false);
 
+  const bannerLabels: (string | undefined)[] = [
+    isPT ? "O que nos diferencia" : "What makes us different",
+    content.coreServices?.label,
+    content.marketingAI?.title,
+    content.beforeAfter?.title,
+    content.brandPersonality?.title,
+  ];
+
   return (
     <div className="home-page flex flex-col bg-[var(--section-ice)]">
       <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
@@ -121,13 +129,7 @@ export default function Home() {
           lang={lang}
           file={banner}
           desktopHeight={index === 0 || index === 4 ? 480 : undefined}
-          label={([
-            isPT ? "O que nos diferencia" : "What makes us different",
-            content.coreServices.label,
-            content.marketingAI.title,
-            content.beforeAfter.title,
-            content.brandPersonality.title,
-          ] as const)[index]}
+          label={bannerLabels[index]}
         />
       ))}
       
