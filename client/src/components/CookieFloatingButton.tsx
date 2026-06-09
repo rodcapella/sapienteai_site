@@ -1,12 +1,10 @@
-import { useLocation } from "wouter";
-
+import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
 const EVENT_NAME = "sapiente:open-cookie-preferences";
 
 export default function CookieFloatingButton() {
-  const [location] = useLocation();
-  const lang = location.startsWith("/en") ? "en" : "pt";
+  const { lang } = useTranslation();
   const label = lang === "en" ? "Open cookie preferences" : "Abrir preferências de cookies";
 
   const openCookiePreferences = () => {

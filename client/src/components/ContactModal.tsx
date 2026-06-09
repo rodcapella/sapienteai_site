@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { useLocation } from "wouter";
+
+import { useTranslation } from "@/hooks/useTranslation";
 
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import TurnstileWidget from "@/components/TurnstileWidget";
@@ -177,8 +178,8 @@ const modalText = {
 } as const;
 
 export default function ContactModal({ isOpen, onClose, initialTopic = "" }: ContactModalProps) {
-  const [location] = useLocation();
-  const lang: ModalLang = location.startsWith("/en") ? "en" : "pt";
+  const { lang: rawLang } = useTranslation();
+  const lang: ModalLang = rawLang === "en" ? "en" : "pt";
   const text = modalText[lang];
 
   const initialForm = useMemo<FormData>(() => ({ ...INITIAL_FORM, topic: initialTopic }), [initialTopic]);

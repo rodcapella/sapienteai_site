@@ -3,13 +3,34 @@
    These rules ensure the dropdown list matches the dark modal theme.
    ─────────────────────────────────────────────────────────────────────────── */
 
+.modal-select {
+  min-height: 46px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+}
+
 .modal-select option {
+  min-height: 42px;
+  padding: 12px 16px;
   background-color: #050a1a;
   color: rgba(234, 246, 255, 0.9);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
 }
 
 .modal-select option:checked {
   background-color: rgba(10, 132, 255, 0.35);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.modal-select option:hover,
+.modal-select option:focus {
+  background-color: rgba(0, 209, 255, 0.16);
   color: #ffffff;
 }
 

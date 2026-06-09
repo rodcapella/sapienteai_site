@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
+import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { Icons } from "@/lib/icons";
 
@@ -173,8 +173,8 @@ function getStatus(score: number): ValidationStatus {
 }
 
 export default function VisibilityValidator() {
-  const [location] = useLocation();
-  const lang: ValidatorLang = location.startsWith("/en") ? "en" : "pt";
+  const { lang: rawLang } = useTranslation();
+  const lang: ValidatorLang = rawLang === "en" ? "en" : "pt";
   const text = copy[lang];
 
   const [brandName, setBrandName] = useState("");

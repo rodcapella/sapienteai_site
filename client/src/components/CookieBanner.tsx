@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
+
+import { useTranslation } from "@/hooks/useTranslation";
 
 import { Icons } from "@/lib/icons";
 
@@ -182,8 +184,7 @@ function ToggleSwitch({
 }
 
 export default function CookieBanner() {
-  const [location] = useLocation();
-  const lang = location.startsWith("/en") ? "en" : "pt";
+  const { lang } = useTranslation();
   const text = copy[lang];
 
   const privacyHref = `/${lang}/privacy`;

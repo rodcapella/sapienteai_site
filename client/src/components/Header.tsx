@@ -7,6 +7,7 @@ import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
+import { getNavLinks } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -41,13 +42,7 @@ export default function Header({ onContactClick }: HeaderProps) {
   const logoClassName =
     "h-[52px] w-auto object-contain transition-all duration-500 md:h-[58px] lg:h-[62px]";
 
-  const navLinks = [
-    { href: `/${lang}`, label: t("nav.home") },
-    { href: `/${lang}/about`, label: t("nav.about") },
-    { href: `/${lang}/services`, label: t("nav.services") },
-    { href: `/${lang}/faq`, label: t("nav.faq") },
-    { href: lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
-  ];
+  const navLinks = getNavLinks(lang, t);
 
   return (
     <>

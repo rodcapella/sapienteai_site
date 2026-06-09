@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
-import { SectionBackground } from "@/components/SectionBackground";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -33,7 +32,7 @@ function ServicesSidebar({
   onSelect: (id: string) => void;
 }) {
   return (
-    <nav className="flex flex-col gap-1">
+    <nav className="flex flex-col gap-1.5">
       {sections.map((s) => {
         const Icon = Icons[s.icon] as React.ElementType;
         const isActive = active === s.id;
@@ -45,8 +44,8 @@ function ServicesSidebar({
             className={[
               "flex w-full items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left text-sm font-bold transition-all duration-200",
               isActive
-                ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)]"
-                : "border-transparent bg-transparent text-[var(--brand-night)] hover:bg-[#eaf6ff]/70",
+                ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)] shadow-[0_8px_18px_rgba(24,65,115,0.12)]"
+                : "border-[#184173]/35 bg-white text-[var(--brand-night)] hover:border-[#184173] hover:bg-[#eaf6ff]/70",
             ].join(" ")}
           >
             {Icon && <Icon className="h-4 w-4 shrink-0" />}
@@ -80,6 +79,28 @@ export default function Services(_props: { lang?: string }) {
     document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target.id.startsWith("service-")) {
+          setActiveSection(visible.target.id.replace("service-", ""));
+        }
+      },
+      { rootMargin: "-35% 0px -45% 0px", threshold: [0.2, 0.45, 0.7] },
+    );
+
+    sections.forEach((section) => {
+      const element = document.getElementById(`service-${section.id}`);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [sections]);
+
   return (
     <div className="flex flex-col">
       {/* ── Hero ── */}
@@ -106,8 +127,8 @@ export default function Services(_props: { lang?: string }) {
               className={[
                 "flex min-h-9 shrink-0 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-black transition-all",
                 isActive
-                  ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)]"
-                  : "border-transparent text-[var(--brand-night)] hover:bg-[#eaf6ff]/70",
+                  ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)] shadow-[0_8px_18px_rgba(24,65,115,0.12)]"
+                  : "border-[#184173]/35 bg-white text-[var(--brand-night)] hover:border-[#184173] hover:bg-[#eaf6ff]/70",
               ].join(" ")}
             >
               <Icon className="h-3.5 w-3.5 shrink-0" />
@@ -118,7 +139,7 @@ export default function Services(_props: { lang?: string }) {
       </div>
 
       {/* ── Docs Layout ── */}
-      <section className="bg-white px-0 py-20 md:py-28 flex-1">
+      <section className="flex-1 bg-white px-0 pb-6 pt-20 md:pb-8 md:pt-28">
         <div className="w-full px-4 sm:px-6">
           <div className="w-full">
             <div className="grid w-full items-start gap-5 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-5 xl:grid-cols-[190px_minmax(0,1fr)]">
@@ -147,13 +168,12 @@ export default function Services(_props: { lang?: string }) {
                     if (!data) return null;
 
                     return (
-                      <SectionBackground
+                      <div
+                        key={section.id}
                         id={`service-${section.id}`}
                         aria-label={section.navLabel}
-                        image={section.backgroundImage}
-                        overlay="soft"
-                        blur="none"
-                        className="min-h-[420px] w-full scroll-mt-32 rounded-2xl px-8 py-6 md:px-10 lg:px-12"
+                        className="min-h-[420px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat px-8 py-6 md:px-10 lg:px-12"
+                        style={{ backgroundImage: `url(${section.backgroundImage})` }}
                       >
                         <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
@@ -203,7 +223,7 @@ export default function Services(_props: { lang?: string }) {
                             </ul>
                           </Reveal>
                         </div>
-                      </SectionBackground>
+                      </div>
                     );
                   })}
                 </div>

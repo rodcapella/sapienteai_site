@@ -1,7 +1,8 @@
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
+import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
 
 const highlightStyle = {
@@ -65,8 +66,7 @@ function renderDescription(description: string, highlight?: string) {
 }
 
 export function QuizCTA() {
-  const [location] = useLocation();
-  const lang = location.startsWith("/en") ? "en" : "pt";
+  const { lang } = useTranslation();
   const content = quizCtaContent[lang];
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 

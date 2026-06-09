@@ -5,7 +5,7 @@ import { useMagnetic } from "@/hooks/useMagnetic";
 
 const navLinkVariants = cva(
   `
-  relative
+  relative inline-flex items-center justify-center rounded-full border
   text-sm font-black uppercase tracking-[0.15em]
   transition-all duration-300
   group
@@ -14,41 +14,28 @@ const navLinkVariants = cva(
     variants: {
       variant: {
         default: `
-          text-[var(--brand-night)] hover:text-[#00D1FF]
-          dark:text-[var(--brand-primary)] dark:hover:text-[var(--brand-cyan-bright)]
-
-          after:absolute after:left-0 after:-bottom-2
-          after:h-[2px] after:w-full
-          after:bg-[var(--brand-gradient-border)]
-          after:rounded-full
-          after:origin-left after:scale-x-0
-          after:transition-transform after:duration-500
-
-          group-hover:after:scale-x-100
+          border-[var(--brand-primary)]/28 px-3.5 py-2
+          text-[var(--brand-night)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10 hover:text-[var(--brand-primary)]
+          dark:border-[var(--brand-primary)]/38 dark:text-[var(--brand-primary)] dark:hover:border-[var(--brand-cyan)] dark:hover:bg-[var(--brand-primary)]/12 dark:hover:text-[var(--brand-offwhite)]
         `,
 
         subtle: `
-          text-white/50 hover:text-white/80
+          border-transparent text-white/50 hover:text-white/80
         `,
 
         footer: `
-          font-serif text-[12px] font-medium normal-case tracking-normal text-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)] hover:drop-shadow-[0_0_10px_rgba(10,180,255,0.75)]
+          border-transparent font-serif text-[12px] font-medium normal-case tracking-normal text-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)] hover:drop-shadow-[0_0_10px_rgba(10,180,255,0.75)]
         `,
 
         mobile: `
-          text-[var(--brand-primary)] hover:text-[var(--brand-cyan-bright)] text-base font-black
+          border-[var(--brand-primary)]/30 px-4 py-3 text-[var(--brand-primary)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10 hover:text-[var(--brand-night)] text-base font-black
         `
       },
 
       active: {
         true: `
-          text-[#00D1FF] dark:text-[var(--brand-offwhite)]
-
-          after:absolute after:left-0 after:-bottom-2
-          after:h-[2px] after:w-full
-          after:bg-[var(--brand-gradient-border)]
-          after:rounded-full
-          after:scale-x-100
+          border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white shadow-[0_10px_26px_rgba(10,132,255,0.22)]
+          dark:border-[var(--brand-cyan)] dark:bg-[var(--brand-primary)] dark:text-white
         `
       }
     },
@@ -76,7 +63,8 @@ export function NavLink({
 }: Props) {
   const [location] = useLocation();
 
-  const isActive = location === href;
+  const isLocalizedRoot = /^\/[a-z]{2}$/.test(href);
+  const isActive = isLocalizedRoot ? location === href : location === href || location.startsWith(`${href}/`);
 
   const magnetic = useMagnetic(16);
 
@@ -88,7 +76,7 @@ export function NavLink({
         onMouseLeave={magnetic.onMouseLeave}
         className={cn(
           navLinkVariants({ variant, active: isActive }),
-          "inline-block transition-transform duration-300 ease-out",
+          "transition-transform duration-300 ease-out",
           className
         )}
       >

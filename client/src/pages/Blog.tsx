@@ -24,9 +24,7 @@ const User = Icons.User;
 const articles = getAllBlogArticles();
 
 export default function Blog() {
-  const { t } = useTranslation();
-  const [location] = useLocation();
-  const lang = location.startsWith("/en") ? "en" : "pt";
+  const { t, lang } = useTranslation();
   const allCategory = lang === "en" ? "All" : "Todos";
   const categories = useMemo(() => [allCategory, ...Array.from(new Set(articles.map(a => a.category)))], [allCategory]);
   const [selectedCategory, setSelectedCategory] = useState(allCategory);

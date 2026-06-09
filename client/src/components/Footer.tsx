@@ -5,6 +5,7 @@ import NewsletterModal from "@/components/NewsletterModal";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
+import { getNavLinks, getLegalLinks } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
 
 const footerTitleClass =
@@ -69,7 +70,6 @@ function MobileAccordion({
 
 export default function Footer() {
   const { t, lang } = useTranslation();
-  const quizHref = lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`;
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
@@ -87,20 +87,8 @@ export default function Footer() {
     { name: "Pinterest", icon: PinterestIcon,    url: "https://www.pinterest.com/sapienteai" },
   ];
 
-  const navLinks = [
-    { href: `/${lang}`,       label: t("nav.home") },
-    { href: `/${lang}/about`, label: t("nav.about") },
-    { href: `/${lang}/services`, label: t("nav.services") },
-    { href: `/${lang}/faq`,   label: t("nav.faq") },
-    { href: quizHref,         label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
-  ];
-
-  const legalLinks = [
-    { href: `/${lang}/terms`,               label: t("footer.terms") || "Terms of Service" },
-    { href: `/${lang}/privacy`,             label: t("footer.privacy") },
-    { href: `/${lang}/trust`,               label: t("footer.trust") || "Trust" },
-    { href: `/${lang}/generative-ai-policy`,label: t("footer.generative-ai-policy") },
-  ];
+  const navLinks = getNavLinks(lang, t);
+  const legalLinks = getLegalLinks(lang, t);
 
   const contactItems = [
     { icon: Icons.Mail,   text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },

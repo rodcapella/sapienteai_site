@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "wouter";
 
 import { useSEOHead } from "@/hooks/useSEOHead";
+import { useTranslation } from "@/hooks/useTranslation";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { quizContentEn } from "@/content/en/quiz";
@@ -19,8 +19,8 @@ const quizContent = {
 };
 
 export default function QuizAI() {
-  const [location] = useLocation();
-  const lang: QuizLang = location.startsWith("/en") ? "en" : "pt";
+  const { lang: rawLang } = useTranslation();
+  const lang: QuizLang = rawLang === "en" ? "en" : "pt";
 
   useSEOHead({
     title: lang === "en" ? "AI Quiz" : "Quiz IA",
