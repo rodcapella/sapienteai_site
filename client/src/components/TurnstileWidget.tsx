@@ -14,7 +14,7 @@ interface TurnstileWidgetProps {
 }
 
 const TURNSTILE_SCRIPT_ID = "cloudflare-turnstile-script";
-const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "0x4AAAAAAAKhKxc7Hs7SdKmG";
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 const TURNSTILE_LOAD_RETRIES = 2;
 const TURNSTILE_RETRY_DELAY_MS = 900;
 const TURNSTILE_SCRIPT_TIMEOUT_MS = 5000;
@@ -97,6 +97,14 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
       setFailedToLoad(false);
       setIsLoading(true);
       setErrorMessage("");
+
+      if (!TURNSTILE_SITE_KEY) {
+        setFailedToLoad(true);
+        setIsLoading(false);
+        setErrorMessage("A verificação de segurança não está configurada para este ambiente.");
+        callbacksRef.current.onError?.();
+        return;
+      }
 
       for (let attempt = 0; attempt <= TURNSTILE_LOAD_RETRIES; attempt += 1) {
         try {
