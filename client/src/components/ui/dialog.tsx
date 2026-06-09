@@ -95,6 +95,8 @@ function DialogContent({
   showCloseButton?: boolean;
 }) {
   const { isComposing } = useDialogComposition();
+  const generatedDescriptionId = React.useId();
+  const ariaDescribedBy = props["aria-describedby"] ?? generatedDescriptionId;
 
   const handleEscapeKeyDown = React.useCallback(
     (event: KeyboardEvent) => {
@@ -119,8 +121,14 @@ function DialogContent({
           className,
         )}
         onEscapeKeyDown={handleEscapeKeyDown}
+        aria-describedby={ariaDescribedBy}
         {...props}
       >
+        {!props["aria-describedby"] && (
+          <DialogPrimitive.Description id={generatedDescriptionId} className="sr-only">
+            Dialog content
+          </DialogPrimitive.Description>
+        )}
         {children}
         {showCloseButton && (
           <DialogPrimitive.Close

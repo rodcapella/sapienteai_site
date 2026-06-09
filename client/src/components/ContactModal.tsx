@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
+import { getContent } from "@/lib/content";
 
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import TurnstileWidget from "@/components/TurnstileWidget";
@@ -46,141 +47,14 @@ const INITIAL_FORM: FormData = {
 
 const requiredFields: (keyof FormData)[] = ["name", "email", "topic", "message"];
 
-const sourceOptions = {
-  pt: ["Eventos", "Google", "Indicação", "Instagram", "LinkedIn", "Newsletter", "Pesquisa Orgânica", "Pinterest", "TikTok", "X", "Outros"],
-  en: ["Events", "Google", "Instagram", "LinkedIn", "Newsletter", "Organic Search", "Pinterest", "Referral", "TikTok", "X", "Other"],
-};
-
-const topicOptions = {
-  pt: [
-    "Contacto",
-    "Criação de conteúdo",
-    "Diagnóstico de negócio",
-    "Dúvidas",
-    "Parcerias",
-    "Projeto digital",
-    "Serviços: IA",
-    "Serviços: Automação",
-    "Serviços: Crescimento",
-    "Serviços: Dados & BI",
-    "Serviços: Marketing Digital",
-    "Serviços: Website",
-    "Outros",
-  ],
-  en: [
-    "Business diagnosis",
-    "Contact",
-    "Content creation",
-    "Digital project",
-    "Partnerships",
-    "Questions",
-    "Services: AI",
-    "Services: Automation",
-    "Services: Growth",
-    "Services: Data & BI",
-    "Services: Digital Marketing",
-    "Services: Website",
-    "Other",
-  ],
-};
-
-const modalText = {
-  pt: {
-    closeLabel: "Fechar modal de contacto",
-    title: "Vamos transformar o seu negócio juntos",
-    description: "Partilhe os seus objetivos e a nossa equipa vai desenhar uma estratégia com IA para acelerar os seus resultados.",
-    labels: {
-      name: "Nome *",
-      email: "Email *",
-      phone: "Telefone (opcional)",
-      company: "Empresa (opcional)",
-      source: "Como nos encontrou? (opcional)",
-      topic: "Tema *",
-      message: "Mensagem *",
-    },
-    placeholders: {
-      name: "Ex: Ana Silva",
-      email: "exemplo@empresa.com",
-      phone: "+351 9XX XXX XXX",
-      company: "Nome da empresa",
-      source: "Selecione uma opção",
-      topic: "Selecione o tema",
-      message: "Conte-nos o que pretende transformar com IA...",
-    },
-    errors: {
-      name: "Nome é obrigatório.",
-      email: "Email é obrigatório.",
-      topic: "Tema é obrigatório.",
-      message: "Mensagem é obrigatória.",
-      invalidEmail: "Insira um email válido.",
-      form: "Reveja os campos obrigatórios e conclua a verificação antes de enviar.",
-      turnstile: "Conclua a verificação de segurança antes de enviar.",
-      turnstileExpired: "A verificação expirou. Por favor, confirme novamente.",
-      turnstileError: "Não foi possível validar a verificação. Tente novamente.",
-      submit: "Não foi possível enviar agora. Tente novamente em instantes.",
-    },
-    submit: {
-      loading: "A enviar mensagem...",
-      processing: "A processar...",
-      success: "Mensagem enviada! Entraremos em contacto em breve.",
-      successButton: "Transformação iniciada",
-      idle: "Enviar mensagem",
-    },
-    fallback: "Não informado",
-    subject: "Novo contacto",
-    averageResponse: "Resposta média em menos de 48 horas úteis.",
-  },
-  en: {
-    closeLabel: "Close contact modal",
-    title: "Let's transform your business together",
-    description: "Share your goals and our team will design an AI-powered strategy to accelerate your results.",
-    labels: {
-      name: "Name *",
-      email: "Email *",
-      phone: "Phone (optional)",
-      company: "Company (optional)",
-      source: "How did you find us? (optional)",
-      topic: "Subject *",
-      message: "Message *",
-    },
-    placeholders: {
-      name: "Ex: Anna Smith",
-      email: "example@company.com",
-      phone: "+351 9XX XXX XXX",
-      company: "Company name",
-      source: "Select an option",
-      topic: "Select a subject",
-      message: "Tell us what you want to transform with AI...",
-    },
-    errors: {
-      name: "Name is required.",
-      email: "Email is required.",
-      topic: "Subject is required.",
-      message: "Message is required.",
-      invalidEmail: "Enter a valid email address.",
-      form: "Please review the required fields and complete verification before sending.",
-      turnstile: "Complete the security verification before sending.",
-      turnstileExpired: "The verification expired. Please confirm it again.",
-      turnstileError: "We couldn't validate the verification. Please try again.",
-      submit: "We couldn't send your message right now. Please try again shortly.",
-    },
-    submit: {
-      loading: "Sending message...",
-      processing: "Processing...",
-      success: "Message sent! We'll get back to you soon.",
-      successButton: "Transformation started",
-      idle: "Send message",
-    },
-    fallback: "Not provided",
-    subject: "New contact",
-    averageResponse: "Average response in less than 48 business hours.",
-  },
-} as const;
 
 export default function ContactModal({ isOpen, onClose, initialTopic = "" }: ContactModalProps) {
   const { lang: rawLang } = useTranslation();
   const lang: ModalLang = rawLang === "en" ? "en" : "pt";
-  const text = modalText[lang];
+  const modals = getContent("modals", lang);
+  const text = modals.contact;
+  const sourceOptions = modals.sourceOptions;
+  const topicOptions = text.topicOptions;
 
   const initialForm = useMemo<FormData>(() => ({ ...INITIAL_FORM, topic: initialTopic }), [initialTopic]);
 
@@ -230,9 +104,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
   const buildMissingFieldsMessage = (fields: (keyof FormData)[]) => {
     const fieldList = fields.map(getRequiredFieldLabel).join(", ");
-    return lang === "en"
-      ? `Please fill in the required fields before sending: ${fieldList}.`
-      : `Preencha os campos obrigatórios antes de enviar: ${fieldList}.`;
+    return `${text.errors.missingPrefix} ${fieldList}.`;
   };
 
   const validateForm = (): boolean => {
@@ -343,7 +215,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
   const requiredMark = <span className="ml-1 text-[var(--brand-purple)]">*</span>;
   const requiredLabel = (label: string) => <>{label.replace(" *", "")}{requiredMark}</>;
-  const requiredFieldsLabel = lang === "en" ? "Required fields" : "Campos obrigatórios";
+  const requiredFieldsLabel = text.requiredFields;
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} closeLabel={text.closeLabel} ariaDescribedBy="contact-modal-description">

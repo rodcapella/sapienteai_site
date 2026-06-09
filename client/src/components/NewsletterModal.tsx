@@ -1,6 +1,7 @@
 import { FormEvent, useMemo, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
+import { getContent } from "@/lib/content";
 
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import TurnstileWidget from "@/components/TurnstileWidget";
@@ -42,98 +43,13 @@ const INITIAL_FORM: NewsletterFormData = {
 
 const requiredFields: (keyof NewsletterFormData)[] = ["name", "email", "accepted"];
 
-const sourceOptions = {
-  pt: ["Eventos", "Google", "Indicação", "Instagram", "LinkedIn", "Newsletter", "Pesquisa Orgânica", "Pinterest", "TikTok", "X", "Outros"],
-  en: ["Events", "Google", "Instagram", "LinkedIn", "Newsletter", "Organic Search", "Pinterest", "Referral", "TikTok", "X", "Other"],
-};
-
-const modalText = {
-  pt: {
-    closeLabel: "Fechar modal da newsletter",
-    badge: "Newsletter Sapiente.AI",
-    title: "Registe-se na nossa newsletter",
-    description: "Receba conteúdos sobre inteligência artificial, automação, marketing digital e formas práticas de tornar o seu negócio mais eficiente.",
-    requiredFields: "Campos obrigatórios",
-    optional: "(OPCIONAL)",
-    labels: {
-      name: "Nome",
-      email: "Email",
-      role: "Cargo",
-      company: "Empresa",
-      source: "Como nos encontrou?",
-      accepted: "Li e compreendi a Política de Privacidade e autorizo o tratamento dos meus dados para receber comunicações da Sapiente.AI.",
-    },
-    placeholders: {
-      name: "Ex: Ana Silva",
-      email: "exemplo@empresa.com",
-      role: "Ex: Diretora de Marketing",
-      company: "Nome da empresa",
-      source: "Selecione uma opção",
-    },
-    errors: {
-      name: "Nome é obrigatório.",
-      email: "Email é obrigatório.",
-      invalidEmail: "Insira um email válido.",
-      accepted: "Confirme a autorização para receber comunicações.",
-      form: "Reveja os campos obrigatórios e conclua a verificação antes de enviar.",
-      turnstile: "Conclua a verificação de segurança antes de enviar.",
-      turnstileExpired: "A verificação expirou. Por favor, confirme novamente.",
-      turnstileError: "Não foi possível validar a verificação. Tente novamente.",
-      submit: "Não foi possível concluir o registo. Tente novamente em instantes.",
-    },
-    submit: {
-      idle: "Registar",
-      loading: "A registar...",
-      success: "Registo confirmado! Obrigado por se juntar a nós.",
-    },
-    subject: "Novo registo na newsletter - Sapiente.AI",
-  },
-  en: {
-    closeLabel: "Close newsletter modal",
-    badge: "Sapiente.AI Newsletter",
-    title: "Subscribe to our newsletter",
-    description: "Get insights on artificial intelligence, automation, digital marketing, and practical ways to make your business more efficient.",
-    requiredFields: "Required fields",
-    optional: "(OPTIONAL)",
-    labels: {
-      name: "Name",
-      email: "Email",
-      role: "Role",
-      company: "Company",
-      source: "How did you find us?",
-      accepted: "I have read and understood the Privacy Policy and authorize the processing of my data to receive communications from Sapiente.AI.",
-    },
-    placeholders: {
-      name: "Ex: Anna Smith",
-      email: "example@company.com",
-      role: "Ex: Marketing Director",
-      company: "Company name",
-      source: "Select an option",
-    },
-    errors: {
-      name: "Name is required.",
-      email: "Email is required.",
-      invalidEmail: "Enter a valid email address.",
-      accepted: "Confirm authorization to receive communications.",
-      form: "Please review the required fields and complete verification before sending.",
-      turnstile: "Complete the security verification before sending.",
-      turnstileExpired: "The verification expired. Please confirm it again.",
-      turnstileError: "We couldn't validate the verification. Please try again.",
-      submit: "We could not complete your subscription. Please try again shortly.",
-    },
-    submit: {
-      idle: "Subscribe",
-      loading: "Subscribing...",
-      success: "Subscription confirmed! Thank you for joining us.",
-    },
-    subject: "New newsletter subscription - Sapiente.AI",
-  },
-} as const;
 
 export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProps) {
   const { lang: rawLang } = useTranslation();
   const lang: NewsletterLang = rawLang === "en" ? "en" : "pt";
-  const text = modalText[lang];
+  const modals = getContent("modals", lang);
+  const text = modals.newsletter;
+  const sourceOptions = modals.sourceOptions;
 
   const [formData, setFormData] = useState<NewsletterFormData>(INITIAL_FORM);
   const [submitState, setSubmitState] = useState<ModalSubmitState>("idle");
@@ -172,9 +88,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
 
   const buildMissingFieldsMessage = (fields: (keyof NewsletterFormData)[]) => {
     const fieldList = fields.map(getRequiredFieldLabel).join(", ");
-    return lang === "en"
-      ? `Please fill in the required fields before subscribing: ${fieldList}.`
-      : `Preencha os campos obrigatórios antes de se registar: ${fieldList}.`;
+    return `${text.errors.missingPrefix} ${fieldList}.`;
   };
 
   const validateForm = () => {

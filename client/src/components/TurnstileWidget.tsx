@@ -86,6 +86,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
   const callbacksRef = useRef({ onVerify, onError, onExpire });
   const [failedToLoad, setFailedToLoad] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
 
   callbacksRef.current = { onVerify, onError, onExpire };
 
@@ -95,6 +96,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
     const renderWidget = async () => {
       setFailedToLoad(false);
       setIsLoading(true);
+      setErrorMessage("");
 
       for (let attempt = 0; attempt <= TURNSTILE_LOAD_RETRIES; attempt += 1) {
         try {
@@ -111,6 +113,9 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
             "error-callback": () => {
               setFailedToLoad(true);
               setIsLoading(false);
+              setErrorMessage(
+                "Não foi possível carregar a verificação de segurança. Se estiver em ambiente de teste, confirme se o domínio está autorizado no Cloudflare Turnstile.",
+              );
               callbacksRef.current.onError?.();
             },
             "expired-callback": () => callbacksRef.current.onExpire?.(),
@@ -128,6 +133,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
 
           setFailedToLoad(true);
           setIsLoading(false);
+          setErrorMessage("Não foi possível carregar a verificação de segurança. Verifique bloqueadores de scripts ou tente novamente.");
           callbacksRef.current.onError?.();
         }
       }
@@ -155,7 +161,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
       )}
       {failedToLoad && showLoadError && (
         <p className="rounded-xl border border-red-300/40 bg-red-500/10 px-4 py-3 text-center text-xs text-red-100">
-          Não foi possível carregar a verificação de segurança. Verifique bloqueadores de scripts ou tente novamente.
+          {errorMessage || "Não foi possível carregar a verificação de segurança. Verifique bloqueadores de scripts ou tente novamente."}
         </p>
       )}
     </div>

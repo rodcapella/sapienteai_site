@@ -22,6 +22,9 @@ import { trustContentEN } from "@/content/en/trust";
 import { iaGenerativaPolicyPT } from "@/content/pt/iaGenerativaPolicy";
 import { iaGenerativaPolicyEN } from "@/content/en/iaGenerativaPolicy";
 
+import { modalsPT } from "@/content/pt/modals";
+import { modalsEN } from "@/content/en/modals";
+
 import { notFoundPT } from "@/content/pt/notFound";
 import { notFoundEN } from "@/content/en/notFound";
 
@@ -57,6 +60,10 @@ const contentMap = {
   generativeAIPolicy: {
     pt: iaGenerativaPolicyPT,
     en: iaGenerativaPolicyEN,
+  },
+  modals: {
+    pt: modalsPT,
+    en: modalsEN,
   },
   notFound: {
     pt: notFoundPT,
