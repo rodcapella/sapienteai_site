@@ -151,43 +151,6 @@ function AboutOriginSection({ lang }: { lang: Lang }) {
   );
 }
 
-// ─── Banner sections ──────────────────────────────────────────────────────────
-
-const aboutBanners = {
-  pt: {
-    founders: "/media/bg/sobre/pt/bg_Sobre_Founders.webp",
-    howWeWork: "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
-  },
-  en: {
-    founders: "/media/bg/sobre/en/bg_Sobre_Founders_en.webp",
-    howWeWork: "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
-  },
-} as const;
-
-function AboutBannerSection({
-  src,
-  label,
-}: {
-  src: string;
-  label: string;
-}) {
-  return (
-    <section
-      className="relative m-0 block w-full overflow-hidden border-0 bg-[var(--section-ice)] p-0"
-      aria-label={label}
-    >
-      <Reveal>
-        <img
-          src={src}
-          alt={label}
-          className="block h-auto w-full object-contain"
-          loading="lazy"
-        />
-      </Reveal>
-    </section>
-  );
-}
-
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function About() {
@@ -197,7 +160,6 @@ export default function About() {
   const isPT = lang !== "en";
   const pageLang: Lang = isPT ? "pt" : "en";
   const aboutLabel = isPT ? "Sobre Nós" : t("nav.about");
-  const banners = aboutBanners[pageLang];
 
   useSEOHead(
     {
@@ -222,24 +184,15 @@ export default function About() {
 
       <AboutOriginSection lang={pageLang} />
 
-      <AboutBannerSection
-        src={banners.founders}
-        label={isPT ? "Fundadores" : "Founders"}
-      />
-
-      <AboutBannerSection
-        src={banners.howWeWork}
-        label={isPT ? "Como trabalhamos" : "How we work"}
-      />
-
       <QuizCTA />
 
       <FinalCTA
         title={content.cta.title}
         title_highlight={content.cta.title_highlight}
         description={content.cta.description}
-        description_highlight={content.cta.description_highlight}
         button={content.cta.button}
+        variant="about"
+        backgroundSrc="/media/bg/final_CTA_servicos.webp"
       />
     </div>
   );

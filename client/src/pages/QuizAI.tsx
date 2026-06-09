@@ -222,6 +222,7 @@ export default function QuizAI() {
         </section>
       )}
 
+      {screen !== "start" && (
       <section className="quiz-experience-container">
         <div className="quiz-bg-radials" />
 
@@ -330,6 +331,7 @@ export default function QuizAI() {
           </div>
         )}
       </section>
+      )}
 
       <FinalCTA title={content.ctaTitle} title_highlight={content.ctaHighlight} description={content.ctaText} description_highlight={content.ctaTextHighlight}  button={content.ctaButton} />
     </main>
