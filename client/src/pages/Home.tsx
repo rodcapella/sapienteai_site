@@ -29,7 +29,6 @@ type HomeBannerSectionProps = {
   file: string;
   label?: string;
   id?: string;
-  desktopHeight?: 480;
 };
 
 function getHomeBannerSrc(lang: string, file: string) {
@@ -45,17 +44,13 @@ function getHomeBannerSrc(lang: string, file: string) {
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
-function HomeBannerSection({ lang, file, label, id, desktopHeight }: HomeBannerSectionProps) {
+function HomeBannerSection({ lang, file, label, id }: Omit<HomeBannerSectionProps, "desktopHeight">) {
   const bannerSrc = getHomeBannerSrc(lang, file);
-  const hasFixedDesktopHeight = desktopHeight === 480;
 
   return (
     <section
       id={id}
-      className={[
-        "relative block w-full overflow-hidden bg-[var(--section-ice)] m-0 p-0 border-0",
-        hasFixedDesktopHeight ? "md:h-[480px]" : "",
-      ].filter(Boolean).join(" ")}
+      className="relative block w-full overflow-hidden bg-[var(--section-ice)] m-0 p-0 border-0"
       aria-label={label}
     >
       <Reveal>
@@ -63,10 +58,7 @@ function HomeBannerSection({ lang, file, label, id, desktopHeight }: HomeBannerS
           src={bannerSrc}
           alt=""
           aria-hidden="true"
-          className={[
-            "block w-full",
-            hasFixedDesktopHeight ? "h-auto object-contain md:h-full md:object-cover" : "h-auto object-contain",
-          ].join(" ")}
+          className="block h-auto w-full object-contain"
           loading="lazy"
         />
       </Reveal>
@@ -128,7 +120,6 @@ export default function Home() {
           id={index === 0 ? "core-services" : undefined}
           lang={lang}
           file={banner}
-          desktopHeight={index === 0 || index === 4 ? 480 : undefined}
           label={bannerLabels[index]}
         />
       ))}

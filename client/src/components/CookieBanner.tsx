@@ -266,6 +266,9 @@ export default function CookieBanner() {
   const secondaryButtonClass =
     "min-h-7 rounded-full border border-[var(--brand-cyan-bright)] bg-transparent px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-[var(--brand-night)] transition hover:bg-[var(--brand-cyan-bright)]/[0.16] dark:text-[var(--brand-offwhite)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
 
+  const rejectButtonClass =
+    "min-h-7 rounded-full border border-[var(--brand-night)]/20 bg-white px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-[var(--brand-night)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-offwhite)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
+
   const primaryButtonClass =
     "min-h-7 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-white transition hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid) 34%,transparent)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
 
@@ -281,40 +284,82 @@ export default function CookieBanner() {
         ].join(" ")}
       >
         {!showPreferences && (
-          <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
-            <button
-              type="button"
-              onClick={() => setShowPreferences(true)}
-              className={secondaryButtonClass}
-            >
-              {text.customize}
-            </button>
+          <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
+            <div className="min-w-0 text-[var(--brand-night)]">
+              <h2 className="font-[var(--font-heading)] text-sm font-black leading-tight sm:text-base">
+                {text.title}
+              </h2>
+              <p className="mt-1 font-[var(--font-body)] text-xs font-medium leading-snug text-[var(--brand-night)]/70 sm:text-sm">
+                {text.message}
+              </p>
+              <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--brand-primary)] sm:text-[11px]">
+                <Link href={privacyHref}>{text.links.privacy}</Link>
+                <Link href={cookiesHref}>{text.links.cookies}</Link>
+                <Link href={termsHref}>{text.links.terms}</Link>
+              </div>
+            </div>
 
-            {/* ALTERAÇÃO AQUI */}
-            <button
-              type="button"
-              onClick={handleRejectOptional}
-              className={primaryButtonClass}
-            >
-              {text.rejectOptional}
-            </button>
+            <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:justify-end sm:gap-3">
+              <button
+                type="button"
+                onClick={() => setShowPreferences(true)}
+                className={secondaryButtonClass}
+              >
+                {text.customize}
+              </button>
 
-            <button
-              type="button"
-              onClick={handleAcceptAll}
-              className={primaryButtonClass}
-            >
-              {text.acceptAll}
-            </button>
+              <button
+                type="button"
+                onClick={handleRejectOptional}
+                className={rejectButtonClass}
+              >
+                {text.rejectOptional}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleAcceptAll}
+                className={primaryButtonClass}
+              >
+                {text.acceptAll}
+              </button>
+            </div>
           </div>
         )}
 
         {showPreferences && (
+          <div className="grid gap-3 text-[var(--brand-night)]">
+            <div>
+              <h2 className="font-[var(--font-heading)] text-sm font-black sm:text-base">
+                {text.preferencesTitle}
+              </h2>
+              <div className="mt-3 grid gap-2">
+                {preferenceRows.map((row) => (
+                  <div key={row.key} className="flex items-center justify-between gap-3 rounded-xl bg-white/75 px-3 py-2">
+                    <div>
+                      <p className="text-xs font-black">{row.label}</p>
+                      <p className="text-[11px] font-medium leading-snug text-[var(--brand-night)]/65">{row.description}</p>
+                    </div>
+                    {row.locked ? (
+                      <span className="shrink-0 text-[10px] font-black uppercase tracking-[0.08em] text-[var(--brand-primary)]">
+                        {text.alwaysOn}
+                      </span>
+                    ) : (
+                      <ToggleSwitch
+                        checked={preferences[row.key]}
+                        onChange={(checked) => setPreferences((prev) => ({ ...prev, [row.key]: checked }))}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
           <div className="flex justify-end gap-3">
             <button
               type="button"
               onClick={handleRejectOptional}
-              className={secondaryButtonClass}
+              className={rejectButtonClass}
             >
               {text.rejectOptional}
             </button>
@@ -326,6 +371,7 @@ export default function CookieBanner() {
             >
               {text.savePreferences}
             </button>
+          </div>
           </div>
         )}
       </aside>

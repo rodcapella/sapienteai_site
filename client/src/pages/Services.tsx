@@ -27,12 +27,10 @@ function ServicesStickyNav({
   sections,
   active,
   onSelect,
-  title,
 }: {
   sections: ServiceSection[];
   active: string;
   onSelect: (id: string) => void;
-  title: string;
 }) {
   const nav = useFixedAfterScroll<HTMLDivElement>();
 
@@ -42,13 +40,12 @@ function ServicesStickyNav({
       <div
         ref={nav.ref}
         className={[
-          "z-30 bg-white/95 px-4 py-4 shadow-sm backdrop-blur-md",
+          "z-30 bg-white/95 px-4 py-3 shadow-sm backdrop-blur-md md:py-4",
           nav.isFixed ? "fixed inset-x-0 top-16" : "relative",
         ].join(" ")}
       >
       <div className="mx-auto w-full max-w-6xl">
-        <div className="legal-group-title mb-3">{title}</div>
-        <nav className="flex flex-row flex-wrap gap-1.5">
+        <nav className="flex flex-row flex-wrap justify-center gap-1.5">
           {sections.map((s) => {
             const Icon = Icons[s.icon] as React.ElementType;
             const isActive = active === s.id;
@@ -135,7 +132,7 @@ export default function Services(_props: { lang?: string }) {
 
       {/* ── Docs Layout ── */}
       <section className="flex-1 bg-white px-0 pb-6 pt-8 md:pb-8 md:pt-10">
-        <ServicesStickyNav sections={sections} active={activeSection} onSelect={handleSelectSection} title={lang === "en" ? "Services" : "Serviços"} />
+        <ServicesStickyNav sections={sections} active={activeSection} onSelect={handleSelectSection} />
 
         <div className="w-full px-4 sm:px-6">
           <div className="w-full">
@@ -225,9 +222,9 @@ export default function Services(_props: { lang?: string }) {
         title={content.finalCta.title}
         title_highlight={content.finalCta.highlight}
         description={content.finalCta.description}
-        description_highlight={content.finalCta.description_highlight} 
+        description_highlight={content.finalCta.description_highlight}
         button={content.finalCta.button}
-        align="left"
+        variant="services"
       />
 
       <ContactModal

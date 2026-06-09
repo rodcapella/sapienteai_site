@@ -178,42 +178,52 @@ export default function QuizAI() {
         compact
       />
 
-      <section className="quiz-experience-container">
-        <div className="quiz-bg-radials" />
+      {/* ── Intro section ── */}
+      {screen === "start" && (
+        <section className="flex flex-col items-center justify-center bg-white px-6 py-16 text-center md:py-20">
+          <h2
+            className="max-w-2xl font-black leading-[1.06]"
+            style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2.2rem, 5vw, 3.6rem)", color: "var(--brand-night)" }}
+          >
+            {startIntro.title}{" "}
+            <span style={{ color: "var(--brand-primary)" }}>{startIntro.highlight}</span>
+          </h2>
 
-        {screen === "start" && (
-          <div className="quiz-screen quiz-start anim-in">
-            <div className="quiz-glass-card">
-              <h1 className="quiz-hero-main-title">
-                {startIntro.title} <span className="quiz-title-highlight-glow">{startIntro.highlight}</span>
-              </h1>
+          <p
+            className="mt-5 max-w-xl leading-relaxed"
+            style={{ fontFamily: "var(--font-body)", fontSize: "clamp(15px, 1.6vw, 17px)", color: "color-mix(in srgb, var(--brand-night) 65%, transparent)" }}
+          >
+            {startIntro.subtitle}
+          </p>
 
-              <p className="quiz-hero-lead-paragraph">{startIntro.subtitle}</p>
-
-              <div className="quiz-stats-grid" aria-label={content.duration}>
-                <div className="quiz-stat-item">
-                  <Clock className="text-primary" size={20} />
-                  <span>{startIntro.stats[0]}</span>
-                </div>
-                <div className="quiz-stat-item">
-                  <Target className="text-primary" size={20} />
-                  <span>{startIntro.stats[1]}</span>
-                </div>
-                <div className="quiz-stat-item">
-                  <BarChart3 className="text-primary" size={20} />
-                  <span>{startIntro.stats[2]}</span>
-                </div>
-              </div>
-
-              <div className="quiz-action-wrapper">
-                <button type="button" onClick={startQuiz} className="quiz-cta-premium-btn">
-                  <span>{content.startButton}</span>
-                  <ArrowRight size={20} />
-                </button>
-              </div>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
+            <div className="flex items-center gap-2 text-[14px] font-semibold text-[var(--brand-night)]">
+              <Clock size={18} className="text-[var(--brand-primary)]" />
+              <span>{startIntro.stats[0]}</span>
+            </div>
+            <div className="flex items-center gap-2 text-[14px] font-semibold text-[var(--brand-night)]">
+              <Target size={18} className="text-[var(--brand-primary)]" />
+              <span>{startIntro.stats[1]}</span>
+            </div>
+            <div className="flex items-center gap-2 text-[14px] font-semibold text-[var(--brand-night)]">
+              <BarChart3 size={18} className="text-[var(--brand-primary)]" />
+              <span>{startIntro.stats[2]}</span>
             </div>
           </div>
-        )}
+
+          <button
+            type="button"
+            onClick={startQuiz}
+            className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--brand-primary)] px-8 py-4 font-[var(--font-body)] text-[13px] font-black uppercase tracking-[0.16em] text-white shadow-[0_10px_28px_color-mix(in_srgb,var(--brand-primary)_30%,transparent)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_color-mix(in_srgb,var(--brand-primary)_42%,transparent)]"
+          >
+            <span>{content.startButton}</span>
+            <ArrowRight size={18} />
+          </button>
+        </section>
+      )}
+
+      <section className="quiz-experience-container">
+        <div className="quiz-bg-radials" />
 
         {screen === "quiz" && (
           <div className="quiz-screen quiz-area anim-in">

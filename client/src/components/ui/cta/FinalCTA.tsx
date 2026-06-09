@@ -13,7 +13,7 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
-  variant?: "default" | "home" | "about";
+  variant?: "default" | "home" | "about" | "services";
   align?: "left" | "center";
   backgroundSrc?: string;
 };
@@ -67,28 +67,29 @@ export function FinalCTA({
 
   const isHomeVariant = variant === "home";
   const isAboutVariant = variant === "about";
+  const isServicesVariant = variant === "services";
 
-  const isCentered = align ? align === "center" : isHomeVariant || isAboutVariant;
+  const isCentered = align ? align === "center" : isHomeVariant || isAboutVariant || isServicesVariant;
 
-  const titleFontSize = isHomeVariant || isAboutVariant
+  const titleFontSize = isHomeVariant || isAboutVariant || isServicesVariant
     ? "clamp(28px, 5vw, 44px)"
     : "clamp(22px, 4vw, 32px)";
 
   const descriptionFontSize = "clamp(15px, 1.6vw, 16px)";
 
-  const titleColor = isAboutVariant
+  const titleColor = isAboutVariant || isServicesVariant
     ? "var(--brand-night)"
     : isHomeVariant
       ? "white"
       : "black";
 
-  const descriptionColor = isAboutVariant
+  const descriptionColor = isAboutVariant || isServicesVariant
     ? "var(--brand-night)"
     : isHomeVariant
       ? "white"
       : "var(--brand-night)";
 
-  const highlightColor = isAboutVariant
+  const highlightColor = isAboutVariant || isServicesVariant
     ? "text-[var(--brand-night)]"
     : "text-[var(--brand-primary)]";
 
@@ -97,6 +98,9 @@ export function FinalCTA({
       case "home":
         return "/media/bg/bg_finalCTA_home.webp";
       case "about":
+        return "/media/bg/final_CTA_sobre.webp";
+      case "services":
+        // TODO: substituir por imagem própria de serviços quando disponível
         return "/media/bg/final_CTA_sobre.webp";
       default:
         return "/media/bg/bg_finalCTA.webp";
@@ -118,7 +122,7 @@ export function FinalCTA({
   if (isHomeVariant) {
     return (
       <>
-        <section className="final-cta relative w-full overflow-hidden bg-[var(--section-ice)] min-h-[340px] md:min-h-0 md:h-[450px]">
+        <section className="final-cta relative w-full overflow-hidden bg-[var(--section-ice)]">
           <img
             src={computedBackgroundSrc}
             alt=""
@@ -126,7 +130,7 @@ export function FinalCTA({
             className="absolute inset-0 h-full w-full object-cover object-center"
           />
 
-          <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 py-14 text-center md:absolute md:inset-0 md:py-0">
+          <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 py-8 text-center md:absolute md:inset-0 md:py-0">
             <Reveal>
               <h2
                 className="font-black leading-[1.08]"
@@ -173,7 +177,7 @@ export function FinalCTA({
       <Section
         className={cn(
           "final-cta relative overflow-hidden",
-          "min-h-0 py-10 md:h-[450px] md:min-h-0 md:py-16",
+          "py-10 md:py-16",
           isCentered ? "text-center" : "text-left"
         )}
       >
