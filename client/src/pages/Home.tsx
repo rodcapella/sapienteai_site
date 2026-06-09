@@ -30,6 +30,7 @@ type HomeBannerSectionProps = {
   label?: string;
   id?: string;
   maxHeight?: number;
+  desktopHeight?: 480;
 };
 
 function getHomeBannerSrc(lang: string, file: string) {
@@ -46,13 +47,16 @@ function getHomeBannerSrc(lang: string, file: string) {
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
-function HomeBannerSection({ lang, file, label, id, maxHeight }: HomeBannerSectionProps) {
+function HomeBannerSection({ lang, file, label, id, maxHeight, desktopHeight }: HomeBannerSectionProps) {
   const backgroundSrc = getHomeBannerSrc(lang, file);
 
   return (
     <section
       id={id}
-      className="relative block w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat m-0 p-0 border-0"
+      className={[
+        "relative block w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat m-0 p-0 border-0",
+        desktopHeight === 480 ? "md:h-[480px]" : "",
+      ].filter(Boolean).join(" ")}
       style={{ backgroundImage: `url(${backgroundSrc})`, maxHeight: maxHeight ? `${maxHeight}px` : undefined }}
       aria-label={label}
     >
@@ -80,7 +84,7 @@ export default function Home() {
     <div className="home-page flex flex-col bg-[var(--section-ice)]">
       <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
         <div className="flex flex-col items-start justify-start gap-5 sm:flex-row sm:gap-8">
-          <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full sm:w-auto">
+          <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full !rounded-2xl sm:w-auto sm:!rounded-full">
             {content.hero.ctaPrimary}
           </PremiumButton>
 
@@ -99,6 +103,7 @@ export default function Home() {
           id={index === 0 ? "core-services" : undefined}
           lang={lang}
           file={banner}
+          desktopHeight={index === 0 || index === 4 || index === 5 ? 480 : undefined}
           maxHeight={index === 4 || index === 5 ? 580 : undefined}
           label={[
             isPT ? "O que nos diferencia" : "What makes us different",

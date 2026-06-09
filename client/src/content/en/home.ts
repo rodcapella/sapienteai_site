@@ -133,8 +133,8 @@ export const homeEN = {
   ],
 
   finalCta: {
-    title: "Discover where you are losing money",
-    title_highlight: "in your business",
+    title: "Discover where you are losing",
+    title_highlight: "money in your business",
     description: "We provide a free diagnostic and show you exactly",
     description_highlight: "where you can automate, reduce costs, and increase sales.",
     button: "I want to find out now"

@@ -128,7 +128,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               </div>
 
               <div className="mt-auto pt-8">
-                <PremiumButton onClick={handleContactClick} className="w-full py-6 text-base" variant="primary">
+                <PremiumButton onClick={handleContactClick} className="w-full" variant="primary">
                   {contactLabel}
                 </PremiumButton>
               </div>

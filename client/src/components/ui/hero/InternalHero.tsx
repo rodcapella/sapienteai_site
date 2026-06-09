@@ -28,17 +28,20 @@ export function InternalHero({
     <Section
       className={[
         "InternalHero hero relative flex items-center justify-start overflow-hidden",
-        compact ? "min-h-[68vh] pt-28 pb-20 md:pt-40 md:pb-24" : "min-h-[580px] pt-28 pb-20 md:min-h-[720px] md:pt-40 md:pb-28",
+        compact ? "min-h-[580px] pt-28 pb-20 md:pt-40 md:pb-24" : "min-h-[580px] pt-28 pb-20 md:min-h-[720px] md:pt-40 md:pb-28",
       ].join(" ")}
     >
-      <div className="absolute inset-0">
-        <img src={image} alt={imageAlt} className="h-full w-full object-cover" />
-      </div>
+      <div
+        className="absolute inset-0 bg-[var(--brand-night)] bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url(${image})`, backgroundPosition: "center top" }}
+        role="img"
+        aria-label={imageAlt}
+      />
 
       <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
         {label && (
           <Reveal>
-            <div className="inline-flex items-center rounded-full border-2 bg-transparent px-6 py-2.5 text-xs font-black uppercase tracking-[0.32em] text-white sm:text-sm" style={{ borderColor: "var(--brand-primary)", fontFamily: "var(--font-detail)" }}>
+            <div className="inline-flex items-center rounded-xl border-2 bg-transparent px-5 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-white sm:rounded-full sm:px-6 sm:py-2.5 sm:text-xs sm:tracking-[0.32em]" style={{ borderColor: "var(--brand-primary)", fontFamily: "var(--font-detail)" }}>
               {label}
             </div>
           </Reveal>

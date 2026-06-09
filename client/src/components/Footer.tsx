@@ -5,9 +5,13 @@ import NewsletterModal from "@/components/NewsletterModal";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Icons } from "@/lib/icons";
+import { cn } from "@/lib/utils";
 
-const footerTitleClass = "mb-2 font-serif text-[14px] font-bold uppercase tracking-[0.16em] bg-[linear-gradient(90deg,#00F0FF,#0047AB)] bg-clip-text text-transparent";
-const footerColumnClass = "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,rgba(5,8,22,0),#050816_12%,#004aad_50%,#050816_88%,rgba(5,8,22,0))]";
+const footerTitleClass =
+  "font-serif text-[12px] font-bold uppercase tracking-[0.16em] bg-[linear-gradient(90deg,#00F0FF,#0047AB)] bg-clip-text text-transparent";
+
+const footerColumnClass =
+  "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,rgba(5,8,22,0),#050816_12%,#004aad_50%,#050816_88%,rgba(5,8,22,0))]";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -25,27 +29,119 @@ function PinterestIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+// ─── Mobile Accordion ─────────────────────────────────────────────────────────
+
+function MobileAccordion({
+  id,
+  title,
+  open,
+  onToggle,
+  children,
+}: {
+  id: string;
+  title: string;
+  open: boolean;
+  onToggle: (id: string) => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="border-b border-[var(--brand-primary)]/15">
+      <button
+        type="button"
+        onClick={() => onToggle(id)}
+        className="flex w-full items-center justify-between py-3"
+        aria-expanded={open}
+      >
+        <span className={footerTitleClass}>{title}</span>
+        <Icons.ChevronDown
+          className={cn(
+            "h-3.5 w-3.5 text-[var(--brand-cyan)] transition-transform duration-300",
+            open && "rotate-180",
+          )}
+        />
+      </button>
+      {open && <div className="pb-4">{children}</div>}
+    </div>
+  );
+}
+
+// ─── Footer ───────────────────────────────────────────────────────────────────
+
 export default function Footer() {
   const { t, lang } = useTranslation();
   const quizHref = lang === "pt" ? `/${lang}/quiz-ia` : `/${lang}/quiz-ai`;
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+
+  const toggleAccordion = (id: string) =>
+    setOpenAccordion((prev) => (prev === id ? null : id));
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const socialLinks = [
-    { name: "LinkedIn", icon: Icons.Linkedin, url: "https://www.linkedin.com/company/sapiente-ai/" },
-    { name: "Instagram", icon: Icons.Instagram, url: "https://www.instagram.com/sapienteai/" },
-    { name: "Facebook", icon: Icons.Facebook, url: "https://facebook.com/sapienteai" },
-    { name: "TikTok", icon: Icons.Music2, url: "https://www.tiktok.com/@sapienteai" },
-    { name: "X", icon: XIcon, url: "https://x.com/SapienteAI" },
-    { name: "Pinterest", icon: PinterestIcon, url: "https://www.pinterest.com/sapienteai" },
+    { name: "LinkedIn",  icon: Icons.Linkedin,   url: "https://www.linkedin.com/company/sapiente-ai/" },
+    { name: "Instagram", icon: Icons.Instagram,  url: "https://www.instagram.com/sapienteai/" },
+    { name: "Facebook",  icon: Icons.Facebook,   url: "https://facebook.com/sapienteai" },
+    { name: "TikTok",    icon: Icons.Music2,     url: "https://www.tiktok.com/@sapienteai" },
+    { name: "X",         icon: XIcon,            url: "https://x.com/SapienteAI" },
+    { name: "Pinterest", icon: PinterestIcon,    url: "https://www.pinterest.com/sapienteai" },
+  ];
+
+  const navLinks = [
+    { href: `/${lang}`,       label: t("nav.home") },
+    { href: `/${lang}/about`, label: t("nav.about") },
+    { href: `/${lang}/services`, label: t("nav.services") },
+    { href: `/${lang}/faq`,   label: t("nav.faq") },
+    { href: quizHref,         label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
+  ];
+
+  const legalLinks = [
+    { href: `/${lang}/terms`,               label: t("footer.terms") || "Terms of Service" },
+    { href: `/${lang}/privacy`,             label: t("footer.privacy") },
+    { href: `/${lang}/trust`,               label: t("footer.trust") || "Trust" },
+    { href: `/${lang}/generative-ai-policy`,label: t("footer.generative-ai-policy") },
   ];
 
   const contactItems = [
-    { icon: Icons.Mail, text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
-    { icon: Icons.Phone, text: "+351 910 567 575", href: "https://wa.me/351910567575?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Sapiente.AI" },
+    { icon: Icons.Mail,   text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
+    { icon: Icons.Phone,  text: "+351 910 567 575", href: "https://wa.me/351910567575?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Sapiente.AI" },
     { icon: Icons.MapPin, text: "Aveiro, Portugal" },
   ];
+
+  const linkListClass = "space-y-2";
+  const linkClass =
+    "font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan)]";
+
+  const socialIcon = (social: (typeof socialLinks)[number]) => {
+    const Icon = social.icon;
+    return (
+      <a
+        key={social.name}
+        href={social.url}
+        className="group inline-flex h-[38px] w-[38px] items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-cyan)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
+        aria-label={social.name}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+      >
+        <Icon className="h-4 w-4" />
+      </a>
+    );
+  };
+
+  const newsletterBlock = (
+    <div>
+      <p className="mb-2 font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
+        {t("footer.newsletterDescription")}
+      </p>
+      <PremiumButton
+        onClick={() => setIsNewsletterOpen(true)}
+        className="w-full !rounded-2xl !bg-[var(--brand-cyan)] !py-2 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
+        variant="secondary"
+      >
+        {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
+      </PremiumButton>
+    </div>
+  );
 
   return (
     <footer className="relative overflow-hidden border-t border-[var(--brand-primary)]/30 font-serif text-[var(--brand-offwhite)]">
@@ -53,66 +149,79 @@ export default function Footer() {
         <img src="/media/bg/bg_footer.png" alt="" className="h-full w-full object-cover" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 py-2 md:py-3">
-        <div className="mb-2 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-5 py-6 md:px-6 md:py-8">
 
-          {/* Logo + Description */}
-          <div className="col-span-1 xl:col-span-1">
-            <div className="mb-1 inline-block">
-              <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-12 w-auto object-contain md:h-14" />
-            </div>
-            <p className="max-w-sm font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
+        {/* ── MOBILE LAYOUT (< sm) ─────────────────────────────────────── */}
+        <div className="flex flex-col gap-0 sm:hidden">
+
+          {/* Logo + descrição */}
+          <div className="mb-4">
+            <img
+              src="/media/logos/Logo_Sapiente_fundo_escuro.png"
+              alt="Sapiente.AI"
+              className="mb-2 h-10 w-auto object-contain"
+            />
+            <p className="font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.description")}
             </p>
           </div>
 
-          {/* Navegação */}
-          <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.navigation")}</p>
-            <ul className="mt-2 space-y-1">
-              {[
-                { href: `/${lang}`, label: t("nav.home") },
-                { href: `/${lang}/about`, label: t("nav.about") },
-                { href: `/${lang}/services`, label: t("nav.services") },
-                { href: `/${lang}/faq`, label: t("nav.faq") },
-                { href: quizHref, label: lang === "pt" ? "Quiz IA" : "AI Quiz" },
-              ].map((item) => (
+          {/* Divider */}
+          <div className="mb-4 h-px bg-[var(--brand-primary)]/20" />
+
+          {/* Newsletter — acção principal */}
+          <div className="mb-4">
+            <p className={cn(footerTitleClass, "mb-3")}>{t("footer.newsletter")}</p>
+            {newsletterBlock}
+          </div>
+
+          {/* Divider */}
+          <div className="mb-1 h-px bg-[var(--brand-primary)]/20" />
+
+          {/* Navegação — acordeão */}
+          <MobileAccordion
+            id="nav"
+            title={t("footer.navigation")}
+            open={openAccordion === "nav"}
+            onToggle={toggleAccordion}
+          >
+            <ul className={linkListClass}>
+              {navLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan)]">
-                    {item.label}
-                  </Link>
+                  <Link href={item.href} className={linkClass}>{item.label}</Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </MobileAccordion>
 
-          {/* Legal */}
-          <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.legal")}</p>
-            <ul className="mt-2 space-y-1">
-              {[
-                { href: `/${lang}/terms`, label: t("footer.terms") || "Terms of Service" },
-                { href: `/${lang}/privacy`, label: t("footer.privacy") },
-                { href: `/${lang}/trust`, label: t("footer.trust") || "Trust" },
-                { href: `/${lang}/generative-ai-policy`, label: t("footer.generative-ai-policy") },
-              ].map((item) => (
+          {/* Legal — acordeão */}
+          <MobileAccordion
+            id="legal"
+            title={t("footer.legal")}
+            open={openAccordion === "legal"}
+            onToggle={toggleAccordion}
+          >
+            <ul className={linkListClass}>
+              {legalLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan)]">
-                    {item.label}
-                  </Link>
+                  <Link href={item.href} className={linkClass}>{item.label}</Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </MobileAccordion>
 
-          {/* Contacto */}
-          <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.contact")}</p>
-            <ul className="mt-2 space-y-1">
+          {/* Contacto — acordeão */}
+          <MobileAccordion
+            id="contact"
+            title={t("footer.contact")}
+            open={openAccordion === "contact"}
+            onToggle={toggleAccordion}
+          >
+            <ul className="space-y-2">
               {contactItems.map((item) => {
                 const Icon = item.icon;
                 const content = (
-                  <span className="group flex items-center gap-2.5 font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan)]">
+                  <span className="flex items-center gap-2.5 font-serif text-[13px] text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan)]">
                     <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-primary)]/30 bg-[var(--brand-deep)]/75 text-[var(--brand-cyan)]">
                       <Icon className="h-3 w-3" />
                     </span>
@@ -130,57 +239,131 @@ export default function Footer() {
                 );
               })}
             </ul>
-          </div>
+          </MobileAccordion>
 
-          {/* Newsletter + Siga-nos */}
-          <div className={footerColumnClass}>
-            <p className={footerTitleClass}>{t("footer.newsletter")}</p>
-            <p className="mb-1 max-w-sm font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
-              {t("footer.newsletterDescription")}
+          {/* Divider */}
+          <div className="my-4 h-px bg-[var(--brand-primary)]/20" />
+
+          {/* Siga-nos */}
+          <div className="mb-4">
+            <p className="mb-3 font-serif text-[11px] font-black uppercase tracking-[0.16em] text-[var(--brand-offwhite)]">
+              {lang === "pt" ? "Siga-nos" : "Follow us"}
             </p>
-            <PremiumButton
-              onClick={() => setIsNewsletterOpen(true)}
-              className="w-full rounded-2xl !bg-[var(--brand-cyan)] !py-1 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
-              variant="secondary"
-            >
-              {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
-            </PremiumButton>
-
-            {/* Siga-nos — moved here from bottom section */}
-            <div className="mt-5">
-              <p className="mb-2 font-serif text-[11px] font-black uppercase tracking-[0.16em] text-[var(--brand-offwhite)]">
-                {lang === "pt" ? "Siga-nos" : "Follow us"}
-              </p>
-              <div className="flex flex-wrap items-center gap-2">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
-                    <a
-                      key={social.name}
-                      href={social.url}
-                      className="group inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-cyan)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
-                      aria-label={social.name}
-                      target="_blank"
-                      rel="noopener noreferrer nofollow"
-                    >
-                      <Icon className="h-2.5 w-2.5" />
-                    </a>
-                  );
-                })}
-              </div>
+            <div className="flex items-center justify-center gap-2.5">
+              {socialLinks.map(socialIcon)}
             </div>
           </div>
 
-        </div>
+          {/* Divider */}
+          <div className="mb-3 h-px bg-[var(--brand-primary)]/20" />
 
-        {/* Bottom bar — copyright only */}
-        <div className="flex items-center justify-center pt-1">
-          <p className="text-center font-serif text-[8px] italic font-normal uppercase tracking-[0.24em] text-[#FFFFFF]">
-            {t("footer.copyright")} | <Link href={`/${lang}/sitemap`} className="font-normal italic text-[#FFFFFF] transition-colors duration-200 hover:text-[var(--brand-cyan)]">{t("footer.sitemap")}</Link> |
+          {/* Copyright */}
+          <p className="text-center font-serif text-[10px] italic font-normal uppercase tracking-[0.18em] text-[#FFFFFF]/70">
+            {t("footer.copyright")} •{" "}
+            <Link href={`/${lang}/sitemap`} className="text-[#FFFFFF]/70 transition-colors hover:text-[var(--brand-cyan)]">
+              {t("footer.sitemap")}
+            </Link>
           </p>
         </div>
+
+        {/* ── DESKTOP LAYOUT (sm+) ─────────────────────────────────────── */}
+        <div className="hidden sm:block">
+          <div className="mb-3 grid grid-cols-2 gap-5 xl:grid-cols-5">
+
+            {/* Logo + Description */}
+            <div className="col-span-1 xl:col-span-1">
+              <div className="mb-2 inline-block">
+                <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-12 w-auto object-contain md:h-14" />
+              </div>
+              <p className="max-w-sm font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
+                {t("footer.description")}
+              </p>
+            </div>
+
+            {/* Navegação */}
+            <div className={footerColumnClass}>
+              <p className={footerTitleClass}>{t("footer.navigation")}</p>
+              <ul className="mt-2 space-y-1.5">
+                {navLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className={linkClass}>{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div className={footerColumnClass}>
+              <p className={footerTitleClass}>{t("footer.legal")}</p>
+              <ul className="mt-2 space-y-1.5">
+                {legalLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className={linkClass}>{item.label}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contacto */}
+            <div className={footerColumnClass}>
+              <p className={footerTitleClass}>{t("footer.contact")}</p>
+              <ul className="mt-2 space-y-1.5">
+                {contactItems.map((item) => {
+                  const Icon = item.icon;
+                  const content = (
+                    <span className="group flex items-center gap-2.5 font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)] transition hover:text-[var(--brand-cyan)]">
+                      <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-[var(--brand-primary)]/30 bg-[var(--brand-deep)]/75 text-[var(--brand-cyan)]">
+                        <Icon className="h-3 w-3" />
+                      </span>
+                      {item.text}
+                    </span>
+                  );
+                  return (
+                    <li key={item.text}>
+                      {item.href ? (
+                        <a href={item.href} target={item.href.startsWith("https://wa.me") ? "_blank" : undefined} rel={item.href.startsWith("https://wa.me") ? "noopener noreferrer" : undefined}>
+                          {content}
+                        </a>
+                      ) : content}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Newsletter + Siga-nos */}
+            <div className={footerColumnClass}>
+              <p className={footerTitleClass}>{t("footer.newsletter")}</p>
+              <div className="mt-2">
+                {newsletterBlock}
+              </div>
+              <div className="mt-5">
+                <p className="mb-2 font-serif text-[11px] font-black uppercase tracking-[0.16em] text-[var(--brand-offwhite)]">
+                  {lang === "pt" ? "Siga-nos" : "Follow us"}
+                </p>
+                <div className="flex flex-wrap items-center gap-2">
+                  {socialLinks.map(socialIcon)}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom bar */}
+          <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3">
+            <p className="text-center font-serif text-[9px] italic font-normal uppercase tracking-[0.24em] text-[#FFFFFF]/70">
+              {t("footer.copyright")} |{" "}
+              <Link href={`/${lang}/sitemap`} className="font-normal italic text-[#FFFFFF]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">
+                {t("footer.sitemap")}
+              </Link>{" "}
+              |
+            </p>
+          </div>
+        </div>
+
       </div>
 
+      {/* Botão de volta ao topo */}
       <button
         type="button"
         onClick={scrollToTop}

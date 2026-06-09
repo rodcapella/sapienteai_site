@@ -72,7 +72,7 @@ export function FinalCTA({
 
   const titleFontSize = isHomeVariant || isAboutVariant
     ? "clamp(32px, 4vw, 44px)"
-    : "32px";
+    : "clamp(24px, 5vw, 32px)";
 
   const descriptionFontSize = "clamp(13px, 1.2vw, 16px)";
 
@@ -173,7 +173,7 @@ export function FinalCTA({
       <Section
         className={cn(
           "final-cta relative overflow-hidden",
-          "min-h-[360px] py-8 md:min-h-[420px] md:py-12",
+          "min-h-[380px] py-14 md:min-h-[420px] md:py-16",
           isCentered ? "text-center" : "text-left"
         )}
       >

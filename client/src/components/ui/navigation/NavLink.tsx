@@ -36,7 +36,7 @@ const navLinkVariants = cva(
         `,
 
         mobile: `
-          text-[var(--brand-primary)] hover:text-[var(--brand-cyan-bright)] text-2xl font-black
+          text-[var(--brand-primary)] hover:text-[var(--brand-cyan-bright)] text-base font-black
         `
       },
 

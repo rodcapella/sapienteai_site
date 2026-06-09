@@ -71,7 +71,7 @@ export function QuizCTA() {
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 
   return (
-    <section className="relative overflow-hidden bg-[var(--section-ice)] px-6 py-10 text-[var(--foreground)] md:py-14">
+    <section className="relative flex items-center overflow-hidden bg-[var(--section-ice)] px-6 py-12 text-[var(--foreground)] md:py-16">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,209,255,0.12),transparent_34%)]" />
 
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
@@ -81,7 +81,7 @@ export function QuizCTA() {
               {content.label}
             </p>
 
-            <h2 className="font-heading text-[32px] font-black leading-tight text-[var(--foreground)] dark:text-[#0A84FF]">
+            <h2 className="font-heading text-[22px] font-black leading-tight text-[var(--foreground)] dark:text-[#0A84FF] md:text-[32px]">
               {renderTitle(content.title, content.title_highlight)}
             </h2>
 
