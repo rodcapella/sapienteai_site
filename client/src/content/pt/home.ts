@@ -3,7 +3,7 @@ export const homePT = {
     label: "INTELIGÊNCIA • AUTOMAÇÃO • CRESCIMENTO REAL",
     title: "Inteligência que impulsiona.",
     highlight: "Resultados que transformam.",
-    subtitle: "Aplicamos Inteligência Artificial, análise de dados e automação para acelerar decisões, reduzir custos e gerar crescimento real.",
+    subtitle: "Aplicamos Inteligência Artificial, análise de dados e automação\npara acelerar decisões, reduzir custos e gerar crescimento real.",
     ctaPrimary: "Quero automatizar o meu negócio",
     ctaSecondary: "Ver como funciona",
   },

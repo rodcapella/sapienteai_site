@@ -19,7 +19,6 @@ const HOME_BANNER_BASE_PATH = "/media/banners";
 const HOME_BANNERS = [
   "home_o_que_nos_diferencia.webp",
   "home_resultados_gera_ia.webp",
-  "home_como_ajudamos_ai.webp",
   "home_marketing_digital_ia.webp",
   "home_automacao_ia.webp",
   "home_personalidade_marca.webp",
@@ -40,7 +39,6 @@ function getHomeBannerSrc(lang: string, file: string) {
     "home_resultados_gera_ia.webp": "home_resultados_gera_ia_en.webp",
     "home_automacao_ia.webp": "home_automacao_ia_en.webp",
     "home_personalidade_marca.webp": "home_personalidade_marca_en.webp",
-    "home_como_ajudamos_ai.webp": "home_como_ajudamos_ai_en.webp",
     "home_marketing_digital_ia.webp": "home_marketing_digital_ia_en.webp",
   };
   const localizedFile = lang === "en" ? englishFileMap[file] || file : file;
@@ -122,15 +120,14 @@ export default function Home() {
           id={index === 0 ? "core-services" : undefined}
           lang={lang}
           file={banner}
-          desktopHeight={index === 0 || index === 4 || index === 5 ? 480 : undefined}
-          label={[
-            content.bannerLabels.whatMakesDifferent,
-            content.bannerLabels.coreServices,
-            content.bannerLabels.marketing,
-            content.bannerLabels.automation,
-            content.bannerLabels.beforeAfter,
-            content.bannerLabels.brandPersonality,
-          ][index]}
+          desktopHeight={index === 0 || index === 4 ? 480 : undefined}
+          label={([
+            isPT ? "O que nos diferencia" : "What makes us different",
+            content.coreServices.label,
+            content.marketingAI.title,
+            content.beforeAfter.title,
+            content.brandPersonality.title,
+          ] as const)[index]}
         />
       ))}
       
