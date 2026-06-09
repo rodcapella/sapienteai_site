@@ -121,8 +121,8 @@ function AboutOriginSection({ lang }: { lang: "pt" | "en" }) {
             const Icon = Icons[card.icon];
             return (
               <Reveal key={card.title} delay={i * 100}>
-                <div className="flex items-start gap-4 rounded-2xl border border-[#184173] bg-white p-5 shadow-sm">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#184173]/30 bg-[#e8f4fd]">
+                <div className="flex items-start gap-4 rounded-2xl border border-[var(--brand-mid)] bg-white p-5 shadow-sm">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--brand-mid)]/30 bg-[var(--surface)]">
                     <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
                   </div>
                   <div>
@@ -227,7 +227,7 @@ export default function About() {
                     {content.founders.intro.title}
                   </h2>
 
-                  <p className="text-xl font-medium leading-relaxed !text-[#00D1FF] md:text-[26px]">
+                  <p className="text-xl font-medium leading-relaxed !text-[var(--brand-cyan-bright)] md:text-[26px]">
                     {content.founders.intro.text}
                   </p>
 

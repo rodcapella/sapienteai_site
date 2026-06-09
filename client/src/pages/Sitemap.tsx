@@ -103,9 +103,9 @@ function SitemapGroupBlock({ group, icon: Icon }: { group: SitemapGroup; icon: E
   );
 
   return (
-    <article id={makeAnchorId(group.label)} className="overflow-hidden rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] shadow-[0_18px_38px_rgba(1,32,80,0.06)]">
+    <article id={makeAnchorId(group.label)} className="overflow-hidden rounded-[18px] border-[6px] border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[color-mix(in_srgb,var(--brand-cyan-bright)_22%,var(--brand-offwhite))] shadow-[0_18px_38px_color-mix(in_srgb,var(--brand-deep) 6%,transparent)]">
       <div className="flex items-start gap-4 border-b border-[color-mix(in_srgb,var(--brand-primary)_16%,transparent)] px-5 py-5 md:px-7">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[#00D1FF] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,#00D1FF_18%,transparent)]">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[color-mix(in_srgb,var(--brand-purple)_72%,transparent)] bg-[var(--brand-cyan-bright)] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-cyan-bright)_18%,transparent)]">
           <Icon className="h-6 w-6" />
         </div>
         <div>
@@ -219,8 +219,8 @@ export default function Sitemap() {
                       className={[
                         "min-w-max rounded-[10px] border px-3.5 py-2.5 text-left font-[var(--font-body)] text-[18px] font-bold leading-tight transition-all duration-200",
                         isActive
-                          ? "border-[color-mix(in_srgb,#00D1FF_58%,transparent)] bg-[color-mix(in_srgb,#00D1FF_22%,var(--brand-offwhite))] text-[var(--brand-night)] dark:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:text-[var(--brand-night)]"
-                          : "border-transparent bg-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,#00D1FF_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)] dark:hover:bg-[color-mix(in_srgb,#00D1FF_72%,var(--brand-offwhite))] dark:hover:text-[var(--brand-night)]",
+                          ? "border-[color-mix(in_srgb,var(--brand-cyan-bright)_58%,transparent)] bg-[color-mix(in_srgb,var(--brand-cyan-bright)_22%,var(--brand-offwhite))] text-[var(--brand-night)] dark:bg-[color-mix(in_srgb,var(--brand-cyan-bright)_72%,var(--brand-offwhite))] dark:text-[var(--brand-night)]"
+                          : "border-transparent bg-transparent text-[var(--brand-night)] hover:bg-[color-mix(in_srgb,var(--brand-cyan-bright)_16%,var(--brand-offwhite))] dark:text-[var(--brand-offwhite)] dark:hover:bg-[color-mix(in_srgb,var(--brand-cyan-bright)_72%,var(--brand-offwhite))] dark:hover:text-[var(--brand-night)]",
                       ].join(" ")}
                     >
                       {group.label}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -44,8 +44,8 @@ function ServicesSidebar({
             className={[
               "flex w-full items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left text-sm font-bold transition-all duration-200",
               isActive
-                ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)] shadow-[0_8px_18px_rgba(24,65,115,0.12)]"
-                : "border-[#184173]/35 bg-white text-[var(--brand-night)] hover:border-[#184173] hover:bg-[#eaf6ff]/70",
+                ? "border-[var(--brand-mid)] bg-[var(--brand-offwhite)] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid) 12%,transparent)]"
+                : "border-[var(--brand-mid)]/35 bg-white text-[var(--brand-night)] hover:border-[var(--brand-mid)] hover:bg-[var(--brand-offwhite)]/70",
             ].join(" ")}
           >
             {Icon && <Icon className="h-4 w-4 shrink-0" />}
@@ -127,8 +127,8 @@ export default function Services(_props: { lang?: string }) {
               className={[
                 "flex min-h-9 shrink-0 items-center justify-center gap-2 rounded-full border px-4 py-1.5 text-sm font-black transition-all",
                 isActive
-                  ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)] shadow-[0_8px_18px_rgba(24,65,115,0.12)]"
-                  : "border-[#184173]/35 bg-white text-[var(--brand-night)] hover:border-[#184173] hover:bg-[#eaf6ff]/70",
+                  ? "border-[var(--brand-mid)] bg-[var(--brand-offwhite)] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid) 12%,transparent)]"
+                  : "border-[var(--brand-mid)]/35 bg-white text-[var(--brand-night)] hover:border-[var(--brand-mid)] hover:bg-[var(--brand-offwhite)]/70",
               ].join(" ")}
             >
               <Icon className="h-3.5 w-3.5 shrink-0" />
@@ -177,7 +177,7 @@ export default function Services(_props: { lang?: string }) {
                       >
                         <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
-                            <div className="max-w-[440px] rounded-2xl bg-white/90 p-5 text-left shadow-[0_14px_34px_rgba(1,32,80,0.12)] md:py-5 lg:bg-transparent lg:p-0 lg:shadow-none">
+                            <div className="max-w-[440px] rounded-2xl bg-white/90 p-5 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:py-5 lg:bg-transparent lg:p-0 lg:shadow-none">
                               <p className="mb-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-night)]">
                                 {data.eyebrow}
                               </p>
@@ -205,7 +205,7 @@ export default function Services(_props: { lang?: string }) {
                                   setSelectedContactTopic(data.topic);
                                   setIsContactOpen(true);
                                 }}
-                                className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--brand-primary)] px-7 font-[var(--font-body)] text-[12px] font-black uppercase tracking-normal text-white shadow-[0_10px_24px_rgba(10,132,255,0.18)] transition hover:-translate-y-0.5 hover:bg-[#0877ff] hover:shadow-[0_14px_30px_rgba(10,132,255,0.26)]"
+                                className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--brand-primary)] px-7 font-[var(--font-body)] text-[12px] font-black uppercase tracking-normal text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary) 18%,transparent)] transition hover:-translate-y-0.5 hover:bg-[var(--brand-primary-hover)] hover:shadow-[0_14px_30px_color-mix(in_srgb,var(--brand-primary) 26%,transparent)]"
                               >
                                 {data.cta}
                               </button>
@@ -213,7 +213,7 @@ export default function Services(_props: { lang?: string }) {
                           </Reveal>
 
                           <Reveal delay={120}>
-                            <ul className="ml-auto grid max-w-[390px] gap-4 rounded-2xl bg-white/90 p-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_rgba(1,32,80,0.12)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
+                            <ul className="ml-auto grid max-w-[390px] gap-4 rounded-2xl bg-white/90 p-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
                               {data.bullets.map((bullet) => (
                                 <li key={bullet} className="flex items-start gap-4">
                                   <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />

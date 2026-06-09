@@ -1,4 +1,4 @@
-import { useState, type SVGProps } from "react";
+﻿import { useState, type SVGProps } from "react";
 import { Link } from "wouter";
 
 import NewsletterModal from "@/components/NewsletterModal";
@@ -13,7 +13,7 @@ const footerTitleClass =
   "font-serif text-[12px] font-bold uppercase tracking-[0.16em] bg-[linear-gradient(90deg,#00F0FF,#0047AB)] bg-clip-text text-transparent";
 
 const footerColumnClass =
-  "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,rgba(5,8,22,0),#050816_12%,#004aad_50%,#050816_88%,rgba(5,8,22,0))]";
+  "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,transparent,var(--brand-darkest)_12%,#004aad_50%,var(--brand-darkest)_88%,transparent)]";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (

@@ -1,4 +1,4 @@
-import { FormEvent, useMemo, useState } from "react";
+﻿import { FormEvent, useMemo, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
@@ -157,10 +157,10 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   };
 
   const requiredMark = <span className="ml-1 text-[var(--brand-purple)]">*</span>;
-  const optionalClass = "ml-1.5 text-[rgba(234,246,255,0.85)]";
+  const optionalClass = "ml-1.5 text-[var(--brand-offwhite)]/[0.85]";
 
   const sourceSelectClass = useMemo(
-    () => modalSelectClass(`${MODAL_INPUT_BASE} border-[rgba(0,209,255,0.28)]`, Boolean(formData.source)),
+    () => modalSelectClass(`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`, Boolean(formData.source)),
     [formData.source],
   );
 
@@ -173,7 +173,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
             {text.title}
           </span>
         </DialogTitle>
-        <DialogDescription id="newsletter-modal-description" className="max-w-xl text-sm text-[rgba(234,246,255,0.76)] sm:text-base">
+        <DialogDescription id="newsletter-modal-description" className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base">
           {text.description}
         </DialogDescription>
       </DialogHeader>
@@ -181,23 +181,23 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       <form onSubmit={handleSubmit} className="relative z-10 space-y-4" noValidate>
         <label className="block space-y-1.5">
           <span className={MODAL_LABEL_CLASS}>{text.labels.name}{requiredMark}</span>
-          <input name="name" required type="text" value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={`${MODAL_INPUT_BASE} border-[rgba(0,209,255,0.28)]`} disabled={submitState === "loading"} />
+          <input name="name" required type="text" value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
         </label>
 
         <label className="block space-y-1.5">
           <span className={MODAL_LABEL_CLASS}>{text.labels.email}{requiredMark}</span>
-          <input name="email" required type="email" value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder={text.placeholders.email} className={`${MODAL_INPUT_BASE} border-[rgba(0,209,255,0.28)]`} disabled={submitState === "loading"} />
+          <input name="email" required type="email" value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder={text.placeholders.email} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
         </label>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.role}<span className={optionalClass}>{text.optional}</span></span>
-            <input name="role" type="text" value={formData.role} onChange={(e) => updateField("role", e.target.value)} placeholder={text.placeholders.role} className={`${MODAL_INPUT_BASE} border-[rgba(0,209,255,0.28)]`} disabled={submitState === "loading"} />
+            <input name="role" type="text" value={formData.role} onChange={(e) => updateField("role", e.target.value)} placeholder={text.placeholders.role} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
 
           <label className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.company}<span className={optionalClass}>{text.optional}</span></span>
-            <input name="company" type="text" value={formData.company} onChange={(e) => updateField("company", e.target.value)} placeholder={text.placeholders.company} className={`${MODAL_INPUT_BASE} border-[rgba(0,209,255,0.28)]`} disabled={submitState === "loading"} />
+            <input name="company" type="text" value={formData.company} onChange={(e) => updateField("company", e.target.value)} placeholder={text.placeholders.company} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
         </div>
 
@@ -212,8 +212,8 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
           </div>
         </label>
 
-        <label className="flex items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[#050816]/40 p-4 text-sm leading-relaxed text-[rgba(234,246,255,0.72)]">
-          <input type="checkbox" required checked={formData.accepted} onChange={(e) => updateField("accepted", e.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-primary)]/40 bg-[#050816]" disabled={submitState === "loading"} />
+        <label className="flex items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[var(--brand-darkest)]/40 p-4 text-sm leading-relaxed text-[var(--brand-offwhite)]/[0.72]">
+          <input type="checkbox" required checked={formData.accepted} onChange={(e) => updateField("accepted", e.target.checked)} className="mt-1 h-4 w-4 rounded border-[var(--brand-primary)]/40 bg-[var(--brand-darkest)]" disabled={submitState === "loading"} />
           <span>{text.labels.accepted}</span>
         </label>
 
@@ -227,7 +227,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
 
         <AnimatedStatus submitState={submitState} feedbackMessage={feedbackMessage} />
 
-        <p className="text-[11px] text-[rgba(234,246,255,0.4)]">
+        <p className="text-[11px] text-[var(--brand-offwhite)]/[0.4]">
           <span className="text-[var(--brand-purple)]">*</span> {text.requiredFields}
         </p>
 

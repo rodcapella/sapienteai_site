@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
 import ContactModal from "@/components/ContactModal";
@@ -50,10 +50,10 @@ export default function Header({ onContactClick }: HeaderProps) {
       <header
         className={cn(
           "fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500",
-          "border-[var(--brand-purple)]/20 bg-[var(--brand-offwhite)]/94 text-[var(--brand-night)] backdrop-blur-xl dark:border-[var(--brand-primary)]/30 dark:bg-[#001547]/92 dark:text-[var(--brand-primary)]",
+          "border-[var(--brand-purple)]/20 bg-[var(--brand-offwhite)]/94 text-[var(--brand-night)] backdrop-blur-xl dark:border-[var(--brand-primary)]/30 dark:bg-[var(--brand-night)]/92 dark:text-[var(--brand-primary)]",
           scrolled
-            ? "bg-[var(--brand-offwhite)]/98 shadow-[0_18px_40px_rgba(8,18,40,0.10)] backdrop-blur-2xl dark:bg-[#001547]/96 dark:shadow-[0_18px_60px_rgba(0,21,71,0.42)]"
-            : "dark:bg-[#001547]/92",
+            ? "bg-[var(--brand-offwhite)]/98 shadow-[0_18px_40px_color-mix(in_srgb,var(--brand-darkest) 10%,transparent)] backdrop-blur-2xl dark:bg-[var(--brand-night)]/96 dark:shadow-[0_18px_60px_color-mix(in_srgb,var(--brand-night) 42%,transparent)]"
+            : "dark:bg-[var(--brand-night)]/92",
         )}
       >
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
@@ -99,7 +99,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               {/* ThemeToggle temporariamente desativado: primeira versão será lançada apenas com tema claro. */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[rgba(10,180,255,0.12)] hover:text-[var(--brand-cyan-bright)] dark:bg-[#081120]"
+                className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-cyan-mid)]/[0.12] hover:text-[var(--brand-cyan-bright)] dark:bg-[#081120]"
                 aria-label="Toggle menu"
                 type="button"
               >

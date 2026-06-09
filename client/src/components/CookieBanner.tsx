@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
 import { useTranslation } from "@/hooks/useTranslation";
@@ -163,18 +163,18 @@ function ToggleSwitch({
       className={[
         "relative inline-flex h-6 w-11 shrink-0 rounded-full border transition duration-300",
         disabled
-          ? "cursor-not-allowed border-[#00D1FF]/50 bg-white dark:bg-[#001547]"
+          ? "cursor-not-allowed border-[var(--brand-cyan-bright)]/50 bg-white dark:bg-[var(--brand-night)]"
           : "cursor-pointer",
         checked
-          ? "border-[#00D1FF] bg-white dark:bg-[#00D1FF]/35"
-          : "border-[#00D1FF]/50 bg-white dark:bg-[#001547]",
+          ? "border-[var(--brand-cyan-bright)] bg-white dark:bg-[var(--brand-cyan-bright)]/35"
+          : "border-[var(--brand-cyan-bright)]/50 bg-white dark:bg-[var(--brand-night)]",
       ].join(" ")}
     >
       <span
         className={[
           "pointer-events-none absolute top-0.5 h-5 w-5 rounded-full transition duration-300",
           checked
-            ? "left-[calc(100%-1.375rem)] bg-[#00D1FF]"
+            ? "left-[calc(100%-1.375rem)] bg-[var(--brand-cyan-bright)]"
             : "left-0.5 bg-[var(--brand-night)]/35 dark:bg-[var(--brand-offwhite)]/70",
         ].join(" ")}
       />
@@ -250,10 +250,10 @@ export default function CookieBanner() {
   ];
 
   const secondaryButtonClass =
-    "min-h-8 rounded-full border border-[#00D1FF] bg-transparent px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-[var(--brand-night)] transition hover:bg-[rgba(0,209,255,0.16)] dark:text-[var(--brand-offwhite)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
+    "min-h-7 rounded-full border border-[var(--brand-cyan-bright)] bg-transparent px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-[var(--brand-night)] transition hover:bg-[var(--brand-cyan-bright)]/[0.16] dark:text-[var(--brand-offwhite)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
 
   const primaryButtonClass =
-    "min-h-8 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-3 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.12em] text-white transition hover:shadow-[0_0_24px_rgba(10,180,255,0.34)] sm:min-h-10 sm:px-4 sm:text-xs lg:min-h-12 lg:px-5";
+    "min-h-7 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-white transition hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid) 34%,transparent)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
 
   if (!showBanner) return null;
 
@@ -262,12 +262,12 @@ export default function CookieBanner() {
       <aside
         role="dialog"
         className={[
-          "fixed inset-x-4 bottom-4 z-[80] mx-auto max-w-5xl rounded-2xl border border-[#00D1FF] bg-[var(--brand-offwhite)] p-4",
+          "fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-5xl rounded-xl border border-[var(--brand-cyan-bright)] bg-[var(--brand-offwhite)] p-2.5 sm:inset-x-4 sm:bottom-4 sm:rounded-2xl sm:p-4",
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         ].join(" ")}
       >
         {!showPreferences && (
-          <div className="flex flex-wrap gap-3">
+          <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
             <button
               type="button"
               onClick={() => setShowPreferences(true)}

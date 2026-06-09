@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+﻿import { cn } from "@/lib/utils";
 import { cva } from "class-variance-authority";
 import { Link, useLocation } from "wouter";
 import { useMagnetic } from "@/hooks/useMagnetic";
@@ -24,7 +24,7 @@ const navLinkVariants = cva(
         `,
 
         footer: `
-          border-transparent font-serif text-[12px] font-medium normal-case tracking-normal text-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)] hover:drop-shadow-[0_0_10px_rgba(10,180,255,0.75)]
+          border-transparent font-serif text-[12px] font-medium normal-case tracking-normal text-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)] hover:drop-shadow-[0_0_10px_color-mix(in_srgb,var(--brand-cyan-mid) 75%,transparent)]
         `,
 
         mobile: `
@@ -34,7 +34,7 @@ const navLinkVariants = cva(
 
       active: {
         true: `
-          border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white shadow-[0_10px_26px_rgba(10,132,255,0.22)]
+          border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white shadow-[0_10px_26px_color-mix(in_srgb,var(--brand-primary) 22%,transparent)]
           dark:border-[var(--brand-cyan)] dark:bg-[var(--brand-primary)] dark:text-white
         `
       }

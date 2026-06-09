@@ -42,8 +42,14 @@
   --muted: rgba(0,0,0,.08);
   --muted-foreground: rgba(0,0,0,.68);
 
+  /* Semantic status */
+  --color-error: #f87171;
+  --color-success: #34d399;
+
   /* Shadows */
   --shadow-soft: 0 18px 38px rgba(1,32,80,.10);
+  --shadow-neon-blue: 0 0 20px color-mix(in srgb, var(--brand-cyan-mid) 45%, transparent);
+  --shadow-neon-cyan: 0 0 24px color-mix(in srgb, var(--brand-cyan-bright) 34%, transparent);
 
   /* Typography */
   --font-heading: "Playfair Display", serif;

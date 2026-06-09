@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Calendar, Search, User } from "@/lib/icons";
 
 import Header from '@/components/Header';
@@ -44,13 +44,13 @@ export default function News() {
   );
 
   return (
-    <div className="standard-section-bg min-h-screen text-[#EAF6FF] relative overflow-hidden">
+    <div className="standard-section-bg min-h-screen text-[var(--brand-offwhite)] relative overflow-hidden">
 
       <Header />
 
       <InternalHero label="News" title="AI Updates & Releases" subtitle="Acompanhe as tendências e lançamentos mais relevantes em IA." compact>
           <div className="relative mx-auto max-w-xl">
-            <Search className="absolute left-4 top-3.5 h-4 w-4 text-[#EAF6FF]/45" />
+            <Search className="absolute left-4 top-3.5 h-4 w-4 text-[var(--brand-offwhite)]/45" />
             <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -58,11 +58,11 @@ export default function News() {
               className="
                 w-full pl-10 pr-4 py-3
                 rounded-xl
-                bg-[#EAF6FF]/5
-                border border-[#EAF6FF]/10
-                text-[#EAF6FF]
-                placeholder:text-[#EAF6FF]/45
-                focus:border-[#00D1FF]
+                bg-[var(--brand-offwhite)]/5
+                border border-[var(--brand-offwhite)]/10
+                text-[var(--brand-offwhite)]
+                placeholder:text-[var(--brand-offwhite)]/45
+                focus:border-[var(--brand-cyan-bright)]
                 outline-none
               "
             />
@@ -88,7 +88,7 @@ export default function News() {
                 </div>
 
                 {/* META */}
-                <div className="flex items-center gap-4 text-xs text-[#EAF6FF]/45 mb-3">
+                <div className="flex items-center gap-4 text-xs text-[var(--brand-offwhite)]/45 mb-3">
                   <span className="flex items-center gap-1">
                     <Calendar className="h-3 w-3" />
                     {new Date(article.date).toLocaleDateString('pt-PT')}
@@ -101,12 +101,12 @@ export default function News() {
                 </div>
 
                 {/* TITLE */}
-                <h3 className="mb-2 font-heading text-lg font-black transition group-hover:text-[#00D1FF]">
+                <h3 className="mb-2 font-heading text-lg font-black transition group-hover:text-[var(--brand-cyan-bright)]">
                   {article.title}
                 </h3>
 
                 {/* EXCERPT */}
-                <p className="text-sm text-[#EAF6FF]/60 mb-4">
+                <p className="text-sm text-[var(--brand-offwhite)]/60 mb-4">
                   {article.excerpt}
                 </p>
 
@@ -115,7 +115,7 @@ export default function News() {
                   {article.tags.map(tag => (
                     <span
                       key={tag}
-                      className="text-xs bg-[#EAF6FF]/5 px-2 py-1 rounded text-[#00D1FF]"
+                      className="text-xs bg-[var(--brand-offwhite)]/5 px-2 py-1 rounded text-[var(--brand-cyan-bright)]"
                     >
                       {tag}
                     </span>
@@ -123,7 +123,7 @@ export default function News() {
                 </div>
 
                 {/* CTA */}
-                <span className="text-[#00D1FF] text-sm font-black">
+                <span className="text-[var(--brand-cyan-bright)] text-sm font-black">
                   Ler mais →
                 </span>
 
@@ -132,7 +132,7 @@ export default function News() {
 
           </div>
         ) : (
-          <div className="text-center text-[#EAF6FF]/60">
+          <div className="text-center text-[var(--brand-offwhite)]/60">
             Nenhum artigo encontrado.
           </div>
         )}
@@ -147,16 +147,16 @@ export default function News() {
               Receba atualizações
             </h2>
 
-            <p className="text-[#EAF6FF]/60 mb-6">
+            <p className="text-[var(--brand-offwhite)]/60 mb-6">
               Conteúdo direto sobre IA, sem ruído.
             </p>
 
             <div className="flex gap-3">
               <input
-                className="flex-1 px-4 py-2 rounded-xl bg-[#EAF6FF]/5 border border-[#EAF6FF]/10"
+                className="flex-1 px-4 py-2 rounded-xl bg-[var(--brand-offwhite)]/5 border border-[var(--brand-offwhite)]/10"
                 placeholder="Email"
               />
-              <button className="rounded-xl bg-[#0A84FF] px-4 text-[#EAF6FF] hover:bg-[#0A84FF]">
+              <button className="rounded-xl bg-[var(--brand-primary)] px-4 text-[var(--brand-offwhite)] hover:bg-[var(--brand-primary)]">
                 Inscrever
               </button>
             </div>

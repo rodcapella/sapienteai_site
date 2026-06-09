@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useMemo, useState } from "react";
+﻿import { FormEvent, useEffect, useMemo, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
@@ -226,7 +226,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
             {text.title}
           </span>
         </DialogTitle>
-        <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[rgba(234,246,255,0.76)] sm:text-base">
+        <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base">
           {text.description}
         </DialogDescription>
       </DialogHeader>
@@ -317,7 +317,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
         <AnimatedStatus submitState={submitState} feedbackMessage={feedbackMessage} />
 
-        <p className="text-[11px] text-[rgba(234,246,255,0.4)]">
+        <p className="text-[11px] text-[var(--brand-offwhite)]/[0.4]">
           <span className="text-[var(--brand-purple)]">*</span> {requiredFieldsLabel}
         </p>
 
@@ -336,7 +336,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           </PremiumButton>
         </div>
 
-        <p className="text-center text-xs text-[rgba(234,246,255,0.65)]">{text.averageResponse}</p>
+        <p className="text-center text-xs text-[var(--brand-offwhite)]/[0.65]">{text.averageResponse}</p>
       </form>
     </Modal>
   );

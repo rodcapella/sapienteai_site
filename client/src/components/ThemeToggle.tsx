@@ -1,4 +1,4 @@
-import { useTheme } from "@/hooks/useTheme";
+﻿import { useTheme } from "@/hooks/useTheme";
 import { Moon, Sun } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
@@ -17,7 +17,7 @@ export function ThemeToggle() {
         "hover:-translate-y-0.5 hover:border-[var(--brand-cyan-bright)] hover:text-[var(--brand-cyan-bright)] hover:shadow-[var(--shadow-neon-blue)]",
       )}
     >
-      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.3),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,color-mix(in srgb,var(--brand-cyan-bright) 30%,transparent),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
       <Sun
         className={cn(

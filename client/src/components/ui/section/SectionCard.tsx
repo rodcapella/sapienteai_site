@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+﻿import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { useMouseGlow } from "@/hooks/useMouseGlow";
 import { motion } from "framer-motion";
@@ -16,33 +16,33 @@ const sectionCardVariants = cva(
     variants: {
       variant: {
         default: `
-          bg-[linear-gradient(145deg,rgba(250,248,255,0.88),rgba(231,222,253,0.68))]
-          border-[rgba(122,92,252,0.28)]
-          shadow-[0_20px_52px_rgba(8,18,40,0.13)]
+          bg-[linear-gradient(145deg,color-mix(in srgb,white 88%,transparent),color-mix(in srgb,var(--section-blue-tint) 68%,transparent))]
+          border-[var(--brand-purple)]/[0.28]
+          shadow-[0_20px_52px_color-mix(in_srgb,var(--brand-darkest) 13%,transparent)]
           hover:-translate-y-2
           hover:border-[var(--brand-purple)]/55
-          hover:bg-[linear-gradient(145deg,rgba(250,248,255,0.94),rgba(122,92,252,0.12))]
-          hover:shadow-[0_0_0_1px_rgba(122,92,252,0.24),0_22px_56px_rgba(122,92,252,0.16)]
+          hover:bg-[linear-gradient(145deg,color-mix(in srgb,white 94%,transparent),color-mix(in srgb,var(--brand-purple) 12%,transparent))]
+          hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-purple) 24%,transparent),0_22px_56px_color-mix(in_srgb,var(--brand-purple) 16%,transparent)]
         `,
 
         highlight: `
-          bg-[linear-gradient(138deg,rgba(0,21,71,0.96),rgba(7,26,88,0.9),rgba(10,132,255,0.34))]
+          bg-[linear-gradient(138deg,color-mix(in srgb,var(--brand-night) 96%,transparent),color-mix(in srgb,var(--brand-night) 90%,transparent),color-mix(in srgb,var(--brand-primary) 34%,transparent))]
           border-[var(--brand-cyan)]/34
-          shadow-[0_22px_58px_rgba(5,8,22,0.32)]
+          shadow-[0_22px_58px_color-mix(in_srgb,var(--brand-darkest) 32%,transparent)]
           hover:-translate-y-2
           hover:border-[var(--brand-cyan)]/72
-          hover:shadow-[0_0_0_1px_rgba(10,132,255,0.34),0_22px_56px_rgba(0,209,255,0.24)]
+          hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-primary) 34%,transparent),0_22px_56px_color-mix(in_srgb,var(--brand-cyan-bright) 24%,transparent)]
         `,
 
         subtle: `
-          bg-[linear-gradient(145deg,rgba(250,248,255,0.62),rgba(122,92,252,0.10))]
-          border-[rgba(122,92,252,0.24)]
+          bg-[linear-gradient(145deg,color-mix(in srgb,white 62%,transparent),color-mix(in srgb,var(--brand-purple) 10%,transparent))]
+          border-[var(--brand-purple)]/[0.24]
           hover:border-[var(--brand-purple)]/55
-          hover:shadow-[0_18px_46px_rgba(122,92,252,0.18)]
+          hover:shadow-[0_18px_46px_color-mix(in_srgb,var(--brand-purple) 18%,transparent)]
         `,
 
         solid: `
-          bg-[#050816]
+          bg-[var(--brand-darkest)]
           border-white/15
           text-white
           hover:border-[var(--brand-cyan)]/55
@@ -79,7 +79,7 @@ export function SectionCard({ className, variant, children, delay = 0, ...props 
       {...props}
     >
       <div
-        className="pointer-events-none absolute h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(10,132,255,0.24),rgba(0,209,255,0.08)_48%,transparent_70%)] blur-[95px] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+        className="pointer-events-none absolute h-72 w-72 rounded-full bg-[radial-gradient(circle,color-mix(in srgb,var(--brand-primary) 24%,transparent),color-mix(in srgb,var(--brand-cyan-bright) 8%,transparent)_48%,transparent_70%)] blur-[95px] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
         style={{ left: position.x - 140, top: position.y - 140 }}
       />
 

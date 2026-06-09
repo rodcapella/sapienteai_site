@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring } from "framer-motion";
+﻿import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { preloadPage } from "@/hooks/usePreload";
 import { useLocation } from "wouter";
@@ -78,7 +78,7 @@ export function LanguageSelector() {
           background: `
             radial-gradient(
               120px circle at var(--x) var(--y),
-              rgba(34,211,238,0.2),
+              color-mix(in srgb,var(--brand-cyan) 20%,transparent),
               transparent 40%
             )
           `,

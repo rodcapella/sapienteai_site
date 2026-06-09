@@ -1,4 +1,4 @@
-import ContactModal from "@/components/ContactModal";
+﻿import ContactModal from "@/components/ContactModal";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
@@ -86,7 +86,7 @@ export function FinalCTA({
     ? "var(--brand-night)"
     : isHomeVariant
       ? "#FFFFFF"
-      : "#001547";
+      : "var(--brand-night)";
 
   const highlightColor = isAboutVariant
     ? "text-[var(--brand-night)]"

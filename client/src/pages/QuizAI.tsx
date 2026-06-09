@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -270,7 +270,7 @@ export default function QuizAI() {
             <div className="quiz-result-inner">
               <div className="quiz-score-ring-container">
                 <svg viewBox="0 0 120 120" className="quiz-svg-ring" aria-hidden="true">
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(10,132,255,0.08)" strokeWidth="6" />
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="color-mix(in srgb,var(--brand-primary) 8%,transparent)" strokeWidth="6" />
                   <circle cx="60" cy="60" r="50" fill="none" strokeWidth="8" strokeLinecap="round" strokeDasharray="314" strokeDashoffset={resultRingOffset} transform="rotate(-90 60 60)" className="score-ring-gradient" />
                 </svg>
                 <div className="quiz-score-overlay-text">

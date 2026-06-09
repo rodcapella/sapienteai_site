@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Cloudflare Turnstile Widget Component
  * Provides CAPTCHA protection for forms.
  */
@@ -168,10 +168,10 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
   }, [theme]);
 
   return (
-    <div className="my-4 flex min-h-[74px] flex-col items-center justify-center gap-2 rounded-xl border border-[rgba(0,209,255,0.26)] bg-[rgba(5,8,27,0.36)] px-3 py-3">
+    <div className="my-4 flex min-h-[74px] flex-col items-center justify-center gap-2 rounded-xl border border-[var(--brand-cyan-bright)]/[0.26] bg-[var(--brand-darkest)]/[0.36] px-3 py-3">
       <div ref={containerRef} className={failedToLoad ? "hidden" : ""} />
       {isLoading && !failedToLoad && (
-        <p className="text-center text-xs font-medium text-[rgba(234,246,255,0.68)]">
+        <p className="text-center text-xs font-medium text-[var(--brand-offwhite)]/[0.68]">
           A carregar verificação de segurança...
         </p>
       )}

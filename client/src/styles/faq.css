@@ -234,9 +234,15 @@
   .faq-cats {
     flex-direction: row;
     overflow-x: auto;
+    max-width: calc(100vw - 48px);
+    padding-bottom: 10px;
+    scrollbar-width: thin;
   }
 
   .faq-cat {
+    flex: 0 0 auto;
     white-space: nowrap;
+    padding: 9px 12px;
+    font-size: 13px;
   }
 }

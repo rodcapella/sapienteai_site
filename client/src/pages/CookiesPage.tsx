@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -138,7 +138,7 @@ function CookieDetail({
             {data.browsers.map((browser) => (
               <div
                 key={browser.name}
-                className="flex items-start gap-3 rounded-xl border border-[var(--brand-purple)]/20 bg-[var(--brand-night)]/50 px-5 py-4 shadow-[0_8px_24px_rgba(1,32,80,0.12)]"
+                className="flex items-start gap-3 rounded-xl border border-[var(--brand-purple)]/20 bg-[var(--brand-night)]/50 px-5 py-4 shadow-[0_8px_24px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)]"
               >
                 <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--brand-cyan)]/15 text-[var(--brand-cyan)]">
                   <Globe className="h-3 w-3" />
@@ -160,7 +160,7 @@ function CookieDetail({
             {data.bullets.map((bullet, i) => (
               <li
                 key={i}
-                className="flex items-start gap-3 rounded-xl border border-[var(--brand-purple)]/20 bg-[var(--brand-night)]/50 px-5 py-4 text-sm font-semibold text-[var(--brand-offwhite)]/75 shadow-[0_8px_24px_rgba(1,32,80,0.12)]"
+                className="flex items-start gap-3 rounded-xl border border-[var(--brand-purple)]/20 bg-[var(--brand-night)]/50 px-5 py-4 text-sm font-semibold text-[var(--brand-offwhite)]/75 shadow-[0_8px_24px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)]"
               >
                 <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[var(--brand-cyan)]/15 text-[var(--brand-cyan)]">
                   <Check className="h-3 w-3" />
@@ -175,7 +175,7 @@ function CookieDetail({
       {/* Contact block */}
       {data.contact && (
         <Reveal delay={80}>
-          <div className="mt-8 flex items-center gap-4 rounded-2xl border border-[var(--brand-purple)]/20 bg-[var(--brand-night)]/50 px-6 py-5 shadow-[0_8px_24px_rgba(1,32,80,0.12)]">
+          <div className="mt-8 flex items-center gap-4 rounded-2xl border border-[var(--brand-purple)]/20 bg-[var(--brand-night)]/50 px-6 py-5 shadow-[0_8px_24px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)]">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-primary)]/20 text-[var(--brand-cyan)]">
               <Mail className="h-5 w-5" />
             </span>
@@ -260,7 +260,7 @@ export default function CookiesPage(_props: { lang?: string }) {
                           className={[
                             "group flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm font-black transition-all duration-200",
                             isActive
-                              ? "bg-[var(--brand-cyan)]/12 text-[var(--brand-cyan)] shadow-[inset_0_0_0_1px_rgba(85,212,242,0.25)]"
+                              ? "bg-[var(--brand-cyan)]/12 text-[var(--brand-cyan)] shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--brand-cyan) 25%,transparent)]"
                               : "text-[var(--brand-offwhite)]/50 hover:bg-[var(--brand-night)]/60 hover:text-[var(--brand-offwhite)]",
                           ].join(" ")}
                         >
@@ -298,7 +298,7 @@ export default function CookiesPage(_props: { lang?: string }) {
                       className={[
                         "flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-black transition-all",
                         isActive
-                          ? "bg-[var(--brand-cyan)]/15 text-[var(--brand-cyan)] shadow-[inset_0_0_0_1px_rgba(85,212,242,0.3)]"
+                          ? "bg-[var(--brand-cyan)]/15 text-[var(--brand-cyan)] shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--brand-cyan) 30%,transparent)]"
                           : "border border-[var(--brand-purple)]/20 text-[var(--brand-offwhite)]/50",
                       ].join(" ")}
                     >

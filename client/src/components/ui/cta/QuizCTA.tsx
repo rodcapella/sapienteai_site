@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+﻿import { Link } from "wouter";
 
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -72,7 +72,7 @@ export function QuizCTA() {
 
   return (
     <section className="relative flex items-center overflow-hidden bg-[var(--section-ice)] px-6 py-12 text-[var(--foreground)] md:h-[400px] md:py-16">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,209,255,0.12),transparent_34%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in srgb,var(--brand-cyan-bright) 12%,transparent),transparent_34%)]" />
 
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
         <Reveal>
@@ -81,7 +81,7 @@ export function QuizCTA() {
               {content.label}
             </p>
 
-            <h2 className="font-heading text-[22px] font-black leading-tight text-[var(--foreground)] dark:text-[#0A84FF] md:text-[32px]">
+            <h2 className="font-heading text-[22px] font-black leading-tight text-[var(--foreground)] dark:text-[var(--brand-primary)] md:text-[32px]">
               {renderTitle(content.title, content.title_highlight)}
             </h2>
 

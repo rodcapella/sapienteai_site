@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { useTranslation } from "@/hooks/useTranslation";
@@ -88,8 +88,8 @@ export default function Home() {
             {content.hero.ctaPrimary}
           </PremiumButton>
 
-          <motion.button type="button" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="group inline-flex items-center gap-4 rounded-full border border-[#0A84FF]/55 bg-[#0A84FF] px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[#EAF6FF] backdrop-blur-xl transition-all duration-500 hover:border-[#0A84FF] hover:bg-[#0A84FF] hover:text-[#EAF6FF] hover:shadow-[0_0_35px_rgba(10,132,255,0.45)]" onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}>
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#EAF6FF]/45 bg-[#EAF6FF]/15 text-[#EAF6FF] transition-transform duration-500 group-hover:translate-x-1">
+          <motion.button type="button" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="group inline-flex items-center gap-4 rounded-full border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-[var(--brand-offwhite)] hover:shadow-[0_0_35px_color-mix(in_srgb,var(--brand-primary) 45%,transparent)]" onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}>
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--brand-offwhite)]/45 bg-[var(--brand-offwhite)]/15 text-[var(--brand-offwhite)] transition-transform duration-500 group-hover:translate-x-1">
               <ArrowRight className="h-4 w-4" />
             </span>
             {content.hero.ctaSecondary}

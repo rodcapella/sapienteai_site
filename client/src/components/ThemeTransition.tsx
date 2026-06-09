@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 
 export function ThemeTransition({ trigger }: { trigger: boolean }) {
   const [visible, setVisible] = useState(false);
@@ -23,7 +23,7 @@ export function ThemeTransition({ trigger }: { trigger: boolean }) {
       `}
       style={{
         background:
-          "radial-gradient(circle at 50% 50%, rgba(0,212,255,0.20), rgba(10,17,40,0.18) 45%, transparent 75%)",
+          "radial-gradient(circle at 50% 50%, color-mix(in srgb,var(--brand-cyan-bright) 20%,transparent), color-mix(in srgb,var(--brand-darkest) 18%,transparent) 45%, transparent 75%)",
       }}
     />
   );

@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring } from "framer-motion";
+﻿import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -47,16 +47,16 @@ export function PremiumButton({
   };
 
   const vividBlue =
-    "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,180,255,0.28)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.28),0_18px_42px_rgba(10,180,255,0.24)]";
+    "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_color-mix(in_srgb,var(--brand-cyan-mid) 28%,transparent)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid) 28%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid) 24%,transparent)]";
 
   const variantClasses = {
     primary: vividBlue,
     secondary:
       "bg-white/10 text-[var(--brand-primary)] border border-[var(--brand-primary)] backdrop-blur-md hover:bg-[var(--brand-primary)] hover:text-white",
     outline:
-      "border-2 border-[var(--brand-primary)] bg-[rgba(241,237,255,0.2)] text-[var(--brand-primary)] shadow-[0_10px_26px_rgba(10,180,255,0.12)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.18),0_18px_42px_rgba(10,180,255,0.18)] dark:border-[var(--brand-primary)] dark:text-[var(--brand-primary)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white",
+      "border-2 border-[var(--brand-primary)] bg-[var(--brand-offwhite)]/[0.2] text-[var(--brand-primary)] shadow-[0_10px_26px_color-mix(in_srgb,var(--brand-cyan-mid) 12%,transparent)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid) 18%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid) 18%,transparent)] dark:border-[var(--brand-primary)] dark:text-[var(--brand-primary)] dark:hover:bg-[var(--brand-primary)] dark:hover:text-white",
     black:
-      "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_rgba(10,180,255,0.28)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_rgba(10,180,255,0.2),0_18px_42px_rgba(10,180,255,0.22)]",
+      "bg-[var(--brand-primary)] text-white shadow-[0_12px_30px_color-mix(in_srgb,var(--brand-cyan-mid) 28%,transparent)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid) 20%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid) 22%,transparent)]",
   };
 
   const sizeClasses = {
@@ -74,7 +74,7 @@ export function PremiumButton({
       onMouseLeave={reset}
       style={{ x: springX, y: springY }}
       className={cn(
-        "neon-shimmer group relative overflow-hidden rounded-full border border-[rgba(255,255,255,0.12)] font-[var(--font-body)] font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.03] active:scale-95",
+        "neon-shimmer group relative overflow-hidden rounded-full border border-[white]/[0.12] font-[var(--font-body)] font-extrabold uppercase tracking-[0.18em] transition-all duration-500 hover:scale-[1.03] active:scale-95",
         variantClasses[variant],
         sizeClasses[size],
         className,
@@ -83,11 +83,11 @@ export function PremiumButton({
       <span
         className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         style={{
-          background: "radial-gradient(180px circle at var(--x) var(--y), rgba(255,255,255,0.18), transparent 70%)",
+          background: "radial-gradient(180px circle at var(--x) var(--y), color-mix(in srgb,white 18%,transparent), transparent 70%)",
         }}
       />
 
-      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.18),transparent_55%)] opacity-18" />
+      <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in srgb,white 18%,transparent),transparent_55%)] opacity-18" />
 
       <span className="relative z-10 flex items-center justify-center gap-3 text-[12px] text-white">{children}</span>
     </motion.button>

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+﻿import { useState, useMemo, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArrowRight, Calendar, Search, Tag, User } from "@/lib/icons";
 
@@ -60,16 +60,16 @@ export default function Blog() {
 
       <InternalHero label={t('nav.blog')} title={t('blog.title')} subtitle={t('blog.subtitle')} compact>
         <div className="relative mx-auto max-w-xl">
-          <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[#EAF6FF]/50" />
+          <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--brand-offwhite)]/50" />
           <input
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t('blog.search')}
             className="
-              w-full rounded-full border border-[#EAF6FF]/20
-              bg-[#EAF6FF]/10 py-4 pl-14 pr-6
-              text-[#EAF6FF] backdrop-blur-md
-              placeholder:text-[#EAF6FF]/50
+              w-full rounded-full border border-[var(--brand-offwhite)]/20
+              bg-[var(--brand-offwhite)]/10 py-4 pl-14 pr-6
+              text-[var(--brand-offwhite)] backdrop-blur-md
+              placeholder:text-[var(--brand-offwhite)]/50
               transition-all
               focus:outline-none focus:ring-2 focus:ring-primary/50
             "
