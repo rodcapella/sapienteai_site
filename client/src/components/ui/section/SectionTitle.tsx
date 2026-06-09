@@ -17,7 +17,7 @@ export function SectionTitle({ label, title, description, variant = "dark" }: Pr
           className={cn(
             "mb-5 inline-flex items-center justify-center rounded-full px-5 py-2 text-[12px] font-black uppercase tracking-[0.24em]",
             isLight
-              ? "border border-[var(--brand-cyan)]/25 bg-[#10266f]/10 text-[var(--brand-primary)] shadow-[0_14px_35px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] backdrop-blur-xl"
+              ? "border border-[var(--brand-cyan)]/25 bg-[var(--brand-navy)]/10 text-[var(--brand-primary)] shadow-[0_14px_35px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] backdrop-blur-xl"
               : "border border-[var(--brand-cyan)]/25 bg-[var(--brand-cyan)]/10 text-[var(--brand-cyan)] shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright) 16%,transparent)]",
           )}
         >
@@ -40,7 +40,7 @@ export function SectionTitle({ label, title, description, variant = "dark" }: Pr
         <p
           className={cn(
             "mx-auto max-w-2xl text-[14px] font-medium leading-relaxed",
-            isLight ? "text-[#0A4F8F]" : "text-[var(--brand-offwhite)]/72",
+            isLight ? "text-[var(--brand-blue-mid)]" : "text-[var(--brand-offwhite)]/72",
           )}
         >
           {description}

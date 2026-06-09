@@ -251,14 +251,14 @@ export default function About() {
               {content.founders.intro.highlights.map((item: any, index: number) => (
                 <Reveal key={item.value} delay={index * 100}>
                   <div className="grid gap-5 p-6 transition duration-500 hover:-translate-y-1 md:grid-cols-[80px_1fr] md:p-8">
-                    <div className="text-[2.375rem] font-black leading-none text-[#0057FF]">
+                    <div className="text-[2.375rem] font-black leading-none text-[var(--brand-blue-bright)]">
                       {item.value}
                     </div>
                     <div>
-                      <h3 className="mb-3 text-2xl font-black text-[#0057FF]">
+                      <h3 className="mb-3 text-2xl font-black text-[var(--brand-blue-bright)]">
                         {item.title}
                       </h3>
-                      <p className="text-base font-medium leading-relaxed text-[#0057FF]/75">
+                      <p className="text-base font-medium leading-relaxed text-[var(--brand-blue-bright)]/75">
                         {item.text}
                       </p>
                     </div>

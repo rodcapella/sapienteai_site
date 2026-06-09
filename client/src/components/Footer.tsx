@@ -10,10 +10,10 @@ import { getNavLinks, getLegalLinks } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
 
 const footerTitleClass =
-  "font-serif text-[12px] font-bold uppercase tracking-[0.16em] bg-[linear-gradient(90deg,#00F0FF,#0047AB)] bg-clip-text text-transparent";
+  "font-serif text-[12px] font-bold uppercase tracking-[0.16em] bg-[linear-gradient(90deg,var(--brand-cyan-bright),var(--brand-blue-deep))] bg-clip-text text-transparent";
 
 const footerColumnClass =
-  "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,transparent,var(--brand-darkest)_12%,#004aad_50%,var(--brand-darkest)_88%,transparent)]";
+  "relative xl:pl-5 xl:before:absolute xl:before:left-0 xl:before:top-0 xl:before:h-full xl:before:w-px xl:before:bg-[linear-gradient(180deg,transparent,var(--brand-darkest)_12%,var(--brand-blue-deep)_50%,var(--brand-darkest)_88%,transparent)]";
 
 function XIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -248,9 +248,9 @@ export default function Footer() {
           <div className="mb-3 h-px bg-[var(--brand-primary)]/20" />
 
           {/* Copyright */}
-          <p className="text-center font-serif text-[10px] italic font-normal uppercase tracking-[0.18em] text-[#FFFFFF]/70">
+          <p className="text-center font-serif text-[10px] italic font-normal uppercase tracking-[0.18em] text-[white]/70">
             {t("footer.copyright")} •{" "}
-            <Link href={`/${lang}/sitemap`} className="text-[#FFFFFF]/70 transition-colors hover:text-[var(--brand-cyan)]">
+            <Link href={`/${lang}/sitemap`} className="text-[white]/70 transition-colors hover:text-[var(--brand-cyan)]">
               {t("footer.sitemap")}
             </Link>
           </p>
@@ -341,9 +341,9 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3">
-            <p className="text-center font-serif text-[9px] italic font-normal uppercase tracking-[0.24em] text-[#FFFFFF]/70">
+            <p className="text-center font-serif text-[9px] italic font-normal uppercase tracking-[0.24em] text-[white]/70">
               {t("footer.copyright")} |{" "}
-              <Link href={`/${lang}/sitemap`} className="font-normal italic text-[#FFFFFF]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">
+              <Link href={`/${lang}/sitemap`} className="font-normal italic text-[white]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">
                 {t("footer.sitemap")}
               </Link>{" "}
               |

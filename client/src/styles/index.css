@@ -19,6 +19,13 @@
   --brand-purple-bright: #7861ff;
   --brand-offwhite: #eaf6ff;
   --brand-white: #ffffff;
+  --brand-blue-deep: #004aad;
+  --brand-blue-bright: #0057ff;
+  --brand-blue-mid: #0a4f8f;
+  --brand-near-dark: #050d24;
+  --brand-near-dark2: #081120;
+  --brand-navy: #10266f;
+  --brand-blue-accent: #4a7ccf;
 
   /* Aliases */
   --primary: var(--brand-primary);

@@ -48,7 +48,7 @@ export function InternalHero({
         )}
 
         <Reveal delay={100}>
-          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_color-mix(in_srgb,black 58%,transparent)]" style={{ fontFamily: "var(--font-heading)", color: "#FFFFFF", fontSize: "clamp(26px, 5.5vw, 40px)" }}>
+          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_color-mix(in_srgb,black 58%,transparent)]" style={{ fontFamily: "var(--font-heading)", color: "white", fontSize: "clamp(26px, 5.5vw, 40px)" }}>
             {title}
             {highlight && (
               <>
@@ -63,7 +63,7 @@ export function InternalHero({
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mt-8 max-w-4xl leading-relaxed drop-shadow-[0_4px_18px_color-mix(in_srgb,black 45%,transparent)]" style={{ fontFamily: "var(--font-body)", color: "#FFFFFF", fontSize: "18px" }}>
+            <p className="mt-8 max-w-4xl leading-relaxed drop-shadow-[0_4px_18px_color-mix(in_srgb,black 45%,transparent)]" style={{ fontFamily: "var(--font-body)", color: "white", fontSize: "18px" }}>
               {subtitle}
             </p>
           </Reveal>

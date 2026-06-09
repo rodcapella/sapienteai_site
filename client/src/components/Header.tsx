@@ -99,7 +99,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               {/* ThemeToggle temporariamente desativado: primeira versão será lançada apenas com tema claro. */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-cyan-mid)]/[0.12] hover:text-[var(--brand-cyan-bright)] dark:bg-[#081120]"
+                className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-cyan-mid)]/[0.12] hover:text-[var(--brand-cyan-bright)] dark:bg-[var(--brand-near-dark2)]"
                 aria-label="Toggle menu"
                 type="button"
               >
@@ -109,7 +109,7 @@ export default function Header({ onContactClick }: HeaderProps) {
           </nav>
 
           {isMobileMenuOpen && (
-            <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[color-mix(in_srgb,var(--section-ice)_94%,transparent)] p-6 pt-28 text-[var(--brand-night)] backdrop-blur-2xl dark:bg-[#050d24]/98 dark:text-[var(--brand-offwhite)] lg:hidden">
+            <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[color-mix(in_srgb,var(--section-ice)_94%,transparent)] p-6 pt-28 text-[var(--brand-night)] backdrop-blur-2xl dark:bg-[var(--brand-near-dark)]/98 dark:text-[var(--brand-offwhite)] lg:hidden">
               <div className="mb-8 flex items-center justify-between border-b border-[var(--brand-purple)]/20 pb-6 dark:border-white/10">
                 <span className="text-xs font-black uppercase tracking-widest text-[var(--brand-night)]/45 dark:text-[var(--brand-offwhite)]/40">{t("nav.language") || "Language"}</span>
                 <LanguageSelector />

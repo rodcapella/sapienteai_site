@@ -167,8 +167,8 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   return (
     <Modal isOpen={isOpen} onClose={closeModal} closeLabel={text.closeLabel} ariaDescribedBy="newsletter-modal-description">
       <DialogHeader className="relative z-10 mb-7 space-y-3 pr-10 text-left">
-        <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "#FFFFFF" }}>
-          <span className="inline-flex items-center gap-2 !text-white" style={{ color: "#FFFFFF" }}>
+        <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "white" }}>
+          <span className="inline-flex items-center gap-2 !text-white" style={{ color: "white" }}>
             <Mail className="h-7 w-7 text-[var(--brand-cyan)]" />
             {text.title}
           </span>

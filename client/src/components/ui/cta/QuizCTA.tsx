@@ -85,7 +85,7 @@ export function QuizCTA() {
               {renderTitle(content.title, content.title_highlight)}
             </h2>
 
-            <p className="mt-3 text-[13px] font-medium leading-relaxed text-[var(--muted-foreground)] dark:text-[#4A7CCF]">
+            <p className="mt-3 text-[13px] font-medium leading-relaxed text-[var(--muted-foreground)] dark:text-[var(--brand-blue-accent)]">
               {renderDescription(
                 content.description,
                 content.description_highlight

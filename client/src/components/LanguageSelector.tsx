@@ -1,13 +1,11 @@
-﻿import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useLanguage } from "@/hooks/useLanguage";
-import { preloadPage } from "@/hooks/usePreload";
-import { useLocation } from "wouter";
 import { useRef } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+
+import { useTranslation } from "@/hooks/useTranslation";
+import { preloadPage } from "@/hooks/usePreload";
 
 export function LanguageSelector() {
-  const { lang } = useLanguage();
-  const [location, setLocation] = useLocation();
-
+  const { lang, switchLanguage, getLanguagePath } = useTranslation();
   const ref = useRef<HTMLButtonElement>(null);
 
   const x = useMotionValue(0);
@@ -26,10 +24,8 @@ export function LanguageSelector() {
     x.set(dx * 0.15);
     y.set(dy * 0.15);
 
-    if (ref.current) {
-      ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
-      ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
-    }
+    ref.current?.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    ref.current?.style.setProperty("--y", `${e.clientY - rect.top}px`);
   };
 
   const handleMouseLeave = () => {
@@ -37,35 +33,15 @@ export function LanguageSelector() {
     y.set(0);
   };
 
-  const handleSwitch = () => {
-    const scrollY = window.scrollY;
-
-    const newLang = lang === "pt" ? "en" : "pt";
-    const newPath = location.replace(/^\/(pt|en)/, `/${newLang}`);
-
-    preloadPage(newPath);
-    setLocation(newPath);
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        window.scrollTo(0, scrollY);
-      });
-    });
-  };
-
   const flagSrc = lang === "pt" ? "/media/flags/pt-PT.webp" : "/media/flags/en.webp";
 
   return (
     <motion.button
       ref={ref}
-      onClick={handleSwitch}
+      onClick={() => switchLanguage(undefined, { preserveScroll: true, preload: preloadPage })}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onMouseEnter={() => {
-        const newLang = lang === "pt" ? "en" : "pt";
-        const newPath = location.replace(/^\/(pt|en)/, `/${newLang}`);
-        preloadPage(newPath);
-      }}
+      onMouseEnter={() => preloadPage(getLanguagePath())}
       style={{
         x: springX,
         y: springY,
@@ -86,7 +62,7 @@ export function LanguageSelector() {
       />
 
       <div className="relative z-10 h-4 w-6 flex-shrink-0 overflow-hidden rounded-sm shadow-sm">
-        <img src={flagSrc} alt={lang === "pt" ? "Português" : "English"} className="h-full w-full object-cover" />
+        <img src={flagSrc} alt={lang === "pt" ? "Portugues" : "English"} className="h-full w-full object-cover" />
       </div>
 
       <span className="relative z-10 text-xs font-black uppercase tracking-[0.2em] text-[var(--brand-primary)] transition-colors duration-300 group-hover:text-[var(--brand-cyan-bright)]">

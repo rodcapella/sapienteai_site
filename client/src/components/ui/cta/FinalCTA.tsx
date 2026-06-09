@@ -79,13 +79,13 @@ export function FinalCTA({
   const titleColor = isAboutVariant
     ? "var(--brand-night)"
     : isHomeVariant
-      ? "#FFFFFF"
-      : "#000000";
+      ? "white"
+      : "black";
 
   const descriptionColor = isAboutVariant
     ? "var(--brand-night)"
     : isHomeVariant
-      ? "#FFFFFF"
+      ? "white"
       : "var(--brand-night)";
 
   const highlightColor = isAboutVariant
@@ -132,7 +132,7 @@ export function FinalCTA({
                 className="font-black leading-[1.08]"
                 style={{
                   fontFamily: "var(--font-heading)",
-                  color: "#FFFFFF",
+                  color: "white",
                   fontSize: titleFontSize,
                 }}
               >
@@ -146,7 +146,7 @@ export function FinalCTA({
                   className="font-medium leading-relaxed"
                   style={{
                     fontFamily: "var(--font-body)",
-                    color: "#FFFFFF",
+                    color: "white",
                     fontSize: descriptionFontSize,
                   }}
                 >
