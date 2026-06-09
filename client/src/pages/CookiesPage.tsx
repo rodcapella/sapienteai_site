@@ -223,7 +223,7 @@ export default function CookiesPage(_props: { lang?: string }) {
   const activeSectionData = (content.sectionContent as Record<string, SectionContent>)[activeSection];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white text-[var(--brand-night)]">
 
       {/* ── Hero ── */}
       <InternalHero

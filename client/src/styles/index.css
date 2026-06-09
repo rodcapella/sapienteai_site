@@ -74,6 +74,7 @@
   /* Gradients */
   --brand-gradient: linear-gradient(135deg, #001547 0%, #012050 45%, #0ab4ff 78%, #55d4f2 100%);
   --brand-gradient-hover: linear-gradient(135deg, #012050 0%, #0ab4ff 58%, #55d4f2 100%);
+  --brand-gradient-border: linear-gradient(90deg, var(--brand-cyan-bright), var(--brand-primary));
 }
 
 .dark {
@@ -109,6 +110,37 @@
 }
 
 html { scroll-behavior: smooth; }
+
+/* ── Scrollbar global ──────────────────────────────────────────────────────── */
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-cyan-mid) var(--brand-darkest);
+}
+
+/* Chromium / Safari */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--brand-darkest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--brand-cyan-bright), var(--brand-primary));
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--brand-cyan), var(--brand-cyan-mid));
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--brand-darkest);
+}
 
 body {
   margin: 0;

@@ -30,31 +30,29 @@ const Sitemap            = lazy(() => w(import("@/pages/Sitemap")));
 const VisibilityValidator= lazy(() => import("@/pages/VisibilityValidator"));
 const NotFound           = lazy(() => import("@/pages/NotFound"));
 
-// ─── Idle route preloader ─────────────────────────────────────────────────────
-// Triggered once after initial paint — chunks land in the module cache so
-// subsequent navigations are instant (no network round-trip on click).
+// ─── Route preloading ─────────────────────────────────────────────────────────
+// Idle  → only the 4 core pages (almost always visited).
+// Hover → remaining pages loaded on NavLink mouseenter (see navConfig).
+// On-demand → legal/quiz/sitemap load only when navigated to.
 
-const routeModules = [
+const coreRoutes = [
   () => import("@/pages/Home"),
   () => import("@/pages/About"),
   () => import("@/pages/Services"),
-  () => import("@/pages/FAQ"),
-  () => import("@/pages/Terms"),
-  () => import("@/pages/Privacy"),
-  () => import("@/pages/CookiesPage"),
-  () => import("@/pages/Trust"),
-  () => import("@/pages/GenerativeAIPolicy"),
-  () => import("@/pages/Blog"),
-  () => import("@/pages/News"),
-  () => import("@/pages/QuizAI"),
-  () => import("@/pages/Sitemap"),
-  () => import("@/pages/VisibilityValidator"),
-  () => import("@/pages/NotFound"),
 ];
 
-function preloadAllRoutes() {
-  routeModules.forEach((load) => load());
+function preloadCoreRoutes() {
+  coreRoutes.forEach((load) => load());
 }
+
+// Exposed so NavLinks can call these on hover
+export const preloadRoute: Record<string, () => void> = {
+  about:    () => import("@/pages/About"),
+  services: () => import("@/pages/Services"),
+  faq:      () => import("@/pages/FAQ"),
+  blog:     () => import("@/pages/Blog"),
+  quiz:     () => import("@/pages/QuizAI"),
+};
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
@@ -88,13 +86,13 @@ export default function App() {
     localStorage.setItem("lang", location.startsWith("/en") ? "en" : "pt");
   }, [location]);
 
-  // Preload all route chunks during browser idle time
+  // Preload core route chunks during browser idle time (mobile-friendly: only 4 pages)
   useEffect(() => {
     if ("requestIdleCallback" in window) {
-      const id = requestIdleCallback(preloadAllRoutes, { timeout: 3000 });
+      const id = requestIdleCallback(preloadCoreRoutes, { timeout: 4000 });
       return () => cancelIdleCallback(id);
     }
-    const id = window.setTimeout(preloadAllRoutes, 2500);
+    const id = window.setTimeout(preloadCoreRoutes, 3000);
     return () => window.clearTimeout(id);
   }, []);
 

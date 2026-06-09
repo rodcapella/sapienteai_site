@@ -1,25 +1,44 @@
 .legal-page {
-  background: var(--brand-offwhite);
+  background: white;
   color: var(--brand-night);
 }
 
 /* LAYOUT */
 .legal-main {
-  padding: 80px 52px 100px;
+  padding: 0 52px 100px;
 }
 
 .legal-inner {
-  display: grid;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
-  grid-template-columns: 260px 1fr;
-  gap: 72px;
+  padding-top: 48px;
 }
 
-/* SIDEBAR */
-.legal-sidebar {
+/* STICKY NAV */
+.legal-sticky-nav {
   position: sticky;
-  top: 104px;
+  top: 64px;
+  z-index: 30;
+  margin-inline: -52px;
+  background: color-mix(in srgb, white 95%, transparent);
+  padding: 12px 52px;
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--brand-night) 8%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.legal-sticky-nav.is-fixed {
+  position: fixed;
+  inset-inline: 0;
+  top: 64px;
+  margin-inline: 0;
+}
+
+.legal-sticky-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .legal-section-label,
@@ -28,34 +47,41 @@
   font: 900 12px var(--font-detail);
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: #60A5FA;
+  color: var(--brand-blue-accent);
 }
 
 .legal-cats {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
 }
 
 .legal-cat {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid transparent;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
   background: transparent;
-  font: 700 14px var(--font-body);
+  font: 600 13px var(--font-body);
   cursor: pointer;
+  color: var(--brand-night);
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
 }
 
 .legal-cat:hover {
-  background: #e8f4fd;
+  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  color: var(--brand-primary);
 }
 
 .legal-cat.active {
-  background: #e8f4fd;
-  border-color: #184173;
+  background: color-mix(in srgb, var(--brand-primary) 12%, transparent);
+  color: var(--brand-primary);
+  font-weight: 700;
 }
 
 /* DOCUMENTO */
@@ -64,8 +90,8 @@
   margin-bottom: 28px;
   padding: 28px;
   border-radius: 18px;
-  border: 1px solid #184173;
-  background: #eaf6ff;
+  border: 1px solid var(--brand-mid);
+  background: white;
 }
 
 .legal-document-card::before {
@@ -90,8 +116,8 @@
 /* LISTA */
 .legal-list {
   border-radius: 18px;
-  background: #eaf6ff;
-  border: 2px solid #184173;
+  background: white;
+  border: 2px solid var(--brand-mid);
   overflow: hidden;
 }
 
@@ -111,9 +137,24 @@
   cursor: pointer;
 }
 
+.legal-q-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.legal-q-symbol {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--brand-primary);
+}
+
 .legal-q-text {
   font: 900 16px var(--font-heading);
   text-align: left;
+  color: var(--brand-night);
   flex: 1;
 }
 
@@ -124,7 +165,7 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: #00D1FF;
+  background: var(--brand-cyan-bright);
   border: 1px solid color-mix(in srgb, var(--brand-purple) 70%, transparent);
   transition: .3s;
 }
@@ -150,6 +191,29 @@
   color: color-mix(in srgb, var(--brand-night) 65%, transparent);
 }
 
+.legal-a-inner ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-a-inner ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.legal-check {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: var(--color-success);
+}
+
 /* RESPONSIVO */
 @media (max-width: 900px) {
   .legal-main {
@@ -157,17 +221,14 @@
     padding-right: 24px;
   }
 
-  .legal-inner {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .legal-sidebar {
-    position: static;
+  .legal-sticky-nav {
+    top: 64px;
+    margin-inline: -24px;
+    padding-inline: 16px;
   }
 
   .legal-cats {
-    flex-direction: row;
-    overflow-x: auto;
+    max-width: min(360px, calc(100vw - 32px));
+    max-height: 220px;
   }
 }

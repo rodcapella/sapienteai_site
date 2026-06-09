@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type ComponentType } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
+import { useFixedAfterScroll } from "@/hooks/useFixedAfterScroll";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -94,6 +95,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   );
 
   const [openSection, setOpenSection] = useState("");
+  const nav = useFixedAfterScroll<HTMLDivElement>();
   const activeSection = sections.find((section) => section.id === openSection) || sections[0];
 
   useSEOHead({
@@ -113,26 +115,27 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
       <section className="legal-main">
         <div className="legal-main-bg" />
+        {nav.isFixed && <div aria-hidden="true" style={{ height: nav.height }} />}
+        <div ref={nav.ref} className={`legal-sticky-nav ${nav.isFixed ? "is-fixed" : ""}`}>
+          <div className="legal-sticky-nav-inner">
+            <div className="legal-group-title">{legalCopy.sidebar}</div>
+            <div className="legal-cats">
+              {sections.map((section) => {
+                const isActive = section.id === activeSection?.id;
+                const Icon = section.Icon;
+
+                return (
+                  <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => setOpenSection(section.id)}>
+                    <Icon className="h-4 w-4" />
+                    <span>{section.title}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
         <div className="legal-inner">
-          <Reveal>
-            <aside className="legal-sidebar">
-              <div className="legal-group-title">{legalCopy.sidebar}</div>
-              <div className="legal-cats">
-                {sections.map((section) => {
-                  const isActive = section.id === activeSection?.id;
-                  const Icon = section.Icon;
-
-                  return (
-                    <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => setOpenSection(section.id)}>
-                      <Icon className="h-4 w-4" />
-                      <span>{section.title}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </aside>
-          </Reveal>
-
           <Reveal delay={80}>
             <div className="legal-content">
               <div className="legal-group-title">{legalCopy.group}</div>

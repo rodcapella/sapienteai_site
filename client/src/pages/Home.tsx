@@ -29,7 +29,6 @@ type HomeBannerSectionProps = {
   file: string;
   label?: string;
   id?: string;
-  maxHeight?: number;
   desktopHeight?: 480;
 };
 
@@ -47,26 +46,29 @@ function getHomeBannerSrc(lang: string, file: string) {
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
-function HomeBannerSection({ lang, file, label, id, maxHeight, desktopHeight }: HomeBannerSectionProps) {
-  const backgroundSrc = getHomeBannerSrc(lang, file);
+function HomeBannerSection({ lang, file, label, id, desktopHeight }: HomeBannerSectionProps) {
+  const bannerSrc = getHomeBannerSrc(lang, file);
+  const hasFixedDesktopHeight = desktopHeight === 480;
 
   return (
     <section
       id={id}
       className={[
-        "relative block w-full overflow-hidden bg-[var(--section-ice)] bg-contain bg-center bg-no-repeat m-0 p-0 border-0",
-        desktopHeight === 480 ? "md:h-[480px]" : "",
+        "relative block w-full overflow-hidden bg-[var(--section-ice)] m-0 p-0 border-0",
+        hasFixedDesktopHeight ? "md:h-[480px]" : "",
       ].filter(Boolean).join(" ")}
-      style={{ backgroundImage: `url(${backgroundSrc})`, maxHeight: maxHeight ? `${maxHeight}px` : undefined }}
       aria-label={label}
     >
       <Reveal>
         <img
-          src={backgroundSrc}
+          src={bannerSrc}
           alt=""
           aria-hidden="true"
-          className="block h-auto w-full object-contain opacity-0"
-          style={{ maxHeight: maxHeight ? `${maxHeight}px` : undefined }}
+          className={[
+            "block w-full",
+            hasFixedDesktopHeight ? "h-auto object-contain md:h-full md:object-cover" : "h-auto object-contain",
+          ].join(" ")}
+          loading="lazy"
         />
       </Reveal>
     </section>
@@ -104,7 +106,6 @@ export default function Home() {
           lang={lang}
           file={banner}
           desktopHeight={index === 0 || index === 4 || index === 5 ? 480 : undefined}
-          maxHeight={index === 4 || index === 5 ? 580 : undefined}
           label={[
             isPT ? "O que nos diferencia" : "What makes us different",
             content.coreServices.label,

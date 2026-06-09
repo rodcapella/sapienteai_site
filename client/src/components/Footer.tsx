@@ -139,7 +139,7 @@ export default function Footer() {
         <img src="/media/bg/bg_footer.webp" alt="" className="h-full w-full object-cover" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-5 pb-14 pt-6 md:px-6 md:pb-10 md:pt-8">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-5 pb-10 pt-6 md:px-6 md:pb-0 md:pt-8">
 
         {/* ── MOBILE LAYOUT (< sm) ─────────────────────────────────────── */}
         <div className="flex flex-col gap-0 sm:hidden">
@@ -258,7 +258,7 @@ export default function Footer() {
 
         {/* ── DESKTOP LAYOUT (sm+) ─────────────────────────────────────── */}
         <div className="hidden sm:block">
-          <div className="mb-3 grid grid-cols-2 gap-5 xl:grid-cols-[1.2fr_0.8fr_0.8fr_1fr_1.3fr]">
+          <div className="mb-3 grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-[1.2fr_0.8fr_0.8fr_1fr_1.3fr]">
 
             {/* Logo + Description */}
             <div className="col-span-1 xl:col-span-1">
@@ -340,7 +340,7 @@ export default function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3">
+          <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3 pb-3">
             <p className="text-center font-serif text-[9px] italic font-normal uppercase tracking-[0.24em] text-[white]/70">
               {t("footer.copyright")} |{" "}
               <Link href={`/${lang}/sitemap`} className="font-normal italic text-[white]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">

@@ -78,7 +78,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <div className="grid w-full max-w-[620px] grid-cols-5 items-center gap-2 xl:max-w-[680px] xl:gap-3">
                 {navLinks.map((link) => (
                   <div key={link.href} className="flex min-w-0 justify-center text-center">
-                    <NavLink href={link.href}>{link.label}</NavLink>
+                    <NavLink href={link.href} onMouseEnter={link.preload}>{link.label}</NavLink>
                   </div>
                 ))}
               </div>
@@ -117,7 +117,7 @@ export default function Header({ onContactClick }: HeaderProps) {
 
               <div className="flex flex-col space-y-6">
                 {navLinks.map((link) => (
-                  <NavLink key={link.href} variant="mobile" href={link.href} onClick={handleNavClick}>
+                  <NavLink key={link.href} variant="mobile" href={link.href} onClick={handleNavClick} onMouseEnter={link.preload}>
                     {link.label}
                   </NavLink>
                 ))}

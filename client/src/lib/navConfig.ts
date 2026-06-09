@@ -6,6 +6,7 @@
 export type NavItem = {
   href: string;
   label: string;
+  preload?: () => void;
 };
 
 export function getNavLinks(lang: string, t: (key: string) => string): NavItem[] {
@@ -14,10 +15,10 @@ export function getNavLinks(lang: string, t: (key: string) => string): NavItem[]
 
   return [
     { href: `/${lang}`,          label: t("nav.home") },
-    { href: `/${lang}/about`,    label: t("nav.about") },
-    { href: `/${lang}/services`, label: t("nav.services") },
-    { href: `/${lang}/faq`,      label: t("nav.faq") },
-    { href: quizHref,            label: quizLabel },
+    { href: `/${lang}/about`,    label: t("nav.about"),    preload: () => import("@/pages/About") },
+    { href: `/${lang}/services`, label: t("nav.services"), preload: () => import("@/pages/Services") },
+    { href: `/${lang}/faq`,      label: t("nav.faq"),      preload: () => import("@/pages/FAQ") },
+    { href: quizHref,            label: quizLabel,         preload: () => import("@/pages/QuizAI") },
   ];
 }
 

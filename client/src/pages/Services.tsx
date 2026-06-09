@@ -6,6 +6,7 @@ import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useSEOHead } from "@/hooks/useSEOHead";
+import { useFixedAfterScroll } from "@/hooks/useFixedAfterScroll";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
@@ -20,40 +21,60 @@ type ServiceSection = {
   backgroundImage: string;
 };
 
-// ─── Sidebar Nav ─────────────────────────────────────────────────────────────
+// ─── Sticky Nav ──────────────────────────────────────────────────────────────
 
-function ServicesSidebar({
+function ServicesStickyNav({
   sections,
   active,
   onSelect,
+  title,
 }: {
   sections: ServiceSection[];
   active: string;
   onSelect: (id: string) => void;
+  title: string;
 }) {
+  const nav = useFixedAfterScroll<HTMLDivElement>();
+
   return (
-    <nav className="flex flex-col gap-1.5">
-      {sections.map((s) => {
-        const Icon = Icons[s.icon] as React.ElementType;
-        const isActive = active === s.id;
-        return (
-          <button
-            key={s.id}
-            type="button"
-            onClick={() => onSelect(s.id)}
-            className={[
-              "flex w-full items-center gap-2.5 rounded-xl border px-3 py-2.5 text-left text-sm font-bold transition-all duration-200",
-              isActive
-                ? "border-[var(--brand-mid)] bg-[var(--brand-offwhite)] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid) 12%,transparent)]"
-                : "border-[var(--brand-mid)]/35 bg-white text-[var(--brand-night)] hover:border-[var(--brand-mid)] hover:bg-[var(--brand-offwhite)]/70",
-            ].join(" ")}
-          >
-            {Icon && <Icon className="h-4 w-4 shrink-0" />}
-            <span>{s.navLabel}</span>
-          </button>
-        );
-      })}
-    </nav>
+    <>
+      {nav.isFixed && <div aria-hidden="true" style={{ height: nav.height }} />}
+      <div
+        ref={nav.ref}
+        className={[
+          "z-30 bg-white/95 px-4 py-4 shadow-sm backdrop-blur-md",
+          nav.isFixed ? "fixed inset-x-0 top-16" : "relative",
+        ].join(" ")}
+      >
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="legal-group-title mb-3">
+          {title}
+        </div>
+        <nav className="flex max-h-[calc(100vh-120px)] max-w-sm flex-col gap-1.5 overflow-y-auto pr-1 [scrollbar-width:thin]">
+          {sections.map((s) => {
+            const Icon = Icons[s.icon] as React.ElementType;
+            const isActive = active === s.id;
+            return (
+              <button
+                key={s.id}
+                type="button"
+                onClick={() => onSelect(s.id)}
+                className={[
+                  "flex w-full items-center gap-2.5 rounded-xl border-0 px-3 py-2.5 text-left text-sm font-bold transition-all duration-200",
+                  isActive
+                    ? "bg-[var(--brand-offwhite)] text-[var(--brand-primary)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid) 12%,transparent)]"
+                    : "bg-transparent text-[var(--brand-night)] hover:bg-[var(--brand-offwhite)]/70 hover:text-[var(--brand-primary)]",
+                ].join(" ")}
+              >
+                {Icon && <Icon className="h-4 w-4 shrink-0" />}
+                <span>{s.navLabel}</span>
+              </button>
+            );
+          })}
+        </nav>
+      </div>
+      </div>
+    </>
   );
 }
 
@@ -76,7 +97,7 @@ export default function Services(_props: { lang?: string }) {
 
   const handleSelectSection = (id: string) => {
     setActiveSection(id);
-    document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   useEffect(() => {
@@ -114,48 +135,13 @@ export default function Services(_props: { lang?: string }) {
         compact
       />
 
-      {/* ── Mobile Nav — sticky abaixo do hero, sempre visível ── */}
-      <div className="sticky top-16 z-30 flex gap-2 overflow-x-auto bg-white/95 px-4 py-2.5 shadow-sm backdrop-blur-md lg:hidden">
-        {sections.map((s) => {
-          const Icon = Icons[s.icon] as React.ElementType;
-          const isActive = activeSection === s.id;
-          return (
-            <button
-              key={s.id}
-              type="button"
-              onClick={() => handleSelectSection(s.id)}
-              className={[
-                "flex min-h-9 shrink-0 items-center justify-center gap-2 rounded-full border px-4 py-1.5 text-sm font-black transition-all",
-                isActive
-                  ? "border-[var(--brand-mid)] bg-[var(--brand-offwhite)] text-[var(--brand-night)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid) 12%,transparent)]"
-                  : "border-[var(--brand-mid)]/35 bg-white text-[var(--brand-night)] hover:border-[var(--brand-mid)] hover:bg-[var(--brand-offwhite)]/70",
-              ].join(" ")}
-            >
-              <Icon className="h-3.5 w-3.5 shrink-0" />
-              {s.navLabel}
-            </button>
-          );
-        })}
-      </div>
-
       {/* ── Docs Layout ── */}
-      <section className="flex-1 bg-white px-0 pb-6 pt-20 md:pb-8 md:pt-28">
+      <section className="flex-1 bg-white px-0 pb-6 pt-8 md:pb-8 md:pt-10">
+        <ServicesStickyNav sections={sections} active={activeSection} onSelect={handleSelectSection} title={lang === "en" ? "Services" : "Serviços"} />
+
         <div className="w-full px-4 sm:px-6">
           <div className="w-full">
-            <div className="grid w-full items-start gap-5 lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-5 xl:grid-cols-[190px_minmax(0,1fr)]">
-
-              {/* Sidebar fixa desktop */}
-              <aside className="hidden self-start lg:sticky lg:top-20 lg:block lg:max-h-[calc(100vh-5rem)] lg:w-full lg:overflow-y-auto lg:pb-6 lg:pt-1">
-                <div className="legal-sidebar-title mb-3">
-                  {lang === "en" ? "Services" : "Serviços"}
-                </div>
-                <ServicesSidebar
-                  sections={sections}
-                  active={activeSection}
-                  onSelect={handleSelectSection}
-                />
-              </aside>
-
+            <div className="w-full">
               {/* Conteúdo */}
               <main className="flex min-w-0 flex-1 flex-col gap-6">
                 <div className="contents">

@@ -6,6 +6,7 @@ import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useSEOHead } from "@/hooks/useSEOHead";
+import { useFixedAfterScroll } from "@/hooks/useFixedAfterScroll";
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
@@ -69,6 +70,7 @@ export default function FAQ() {
 
   const [activeCategory, setActiveCategory] = useState(categories[0]?.id || "general");
   const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+  const nav = useFixedAfterScroll<HTMLDivElement>();
   const active = categories.find((category) => category.id === activeCategory) || categories[0];
 
   useSEOHead({
@@ -107,33 +109,34 @@ export default function FAQ() {
       />
 
       <section className="faq-main">
-        <div className="faq-inner">
-          <Reveal>
-            <aside className="faq-sidebar">
-              <div className="faq-group-title">{pageCopy.sidebar}</div>
-              <div className="faq-cats">
-                {categories.map((category) => {
-                  const Icon = category.icon;
-                  const isActive = category.id === active.id;
-                  return (
-                    <button
-                      key={category.id}
-                      type="button"
-                      className={`faq-cat ${isActive ? "active" : ""}`}
-                      onClick={() => {
-                        setActiveCategory(category.id);
-                        setOpenQuestion(null);
-                      }}
-                    >
-                      <Icon className="h-4 w-4" />
-                      <span>{category.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </aside>
-          </Reveal>
+        {nav.isFixed && <div aria-hidden="true" style={{ height: nav.height }} />}
+        <div ref={nav.ref} className={`faq-sticky-nav ${nav.isFixed ? "is-fixed" : ""}`}>
+          <div className="faq-sticky-nav-inner">
+            <div className="faq-group-title">{pageCopy.sidebar}</div>
+            <div className="faq-cats">
+              {categories.map((category) => {
+                const Icon = category.icon;
+                const isActive = category.id === active.id;
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    className={`faq-cat ${isActive ? "active" : ""}`}
+                    onClick={() => {
+                      setActiveCategory(category.id);
+                      setOpenQuestion(null);
+                    }}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span>{category.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
 
+        <div className="faq-inner">
           <Reveal delay={80}>
             <div className="faq-content">
               <div className="faq-group-title">{active.label}</div>

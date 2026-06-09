@@ -80,7 +80,7 @@ jspm_packages/
 # Yarn Integrity file
 .yarn-integrity
 
-# parcel-bundler cache (https://parceljs.org/)
+# parcel-bundler cache
 .cache
 .parcel-cache
 
@@ -106,5 +106,34 @@ temp/
 *.sqlite
 *.sqlite3
 
-# Webdev artifacts (checkpoint zips, migrations, etc.)
+# Webdev artifacts
 .webdev/
+
+# Playwright
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+
+# Vercel
+.vercel/
+
+# Turbo
+.turbo/
+
+# Vitest
+vitest-report/
+html-report/
+
+# Generated screenshots/videos
+screenshots/
+videos/
+
+# Misc caches
+.cache-loader/
+.sass-cache/
+
+# Local certificates
+*.pem
+*.key
+*.crt
