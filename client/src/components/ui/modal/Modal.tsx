@@ -8,7 +8,7 @@ import { type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Icons } from "@/lib/icons";
+import { AlertTriangle, CheckCircle2, LoaderCircle, X } from "@/lib/icons";
 
 import "@/styles/modal.css";
 
@@ -64,7 +64,7 @@ export function ModalStatusNode({ submitState, feedbackMessage }: ModalStatusNod
         role="status"
         aria-live="polite"
       >
-        <Icons.LoaderCircle className="h-4 w-4 animate-spin text-[var(--brand-cyan)]" />
+        <LoaderCircle className="h-4 w-4 animate-spin text-[var(--brand-cyan)]" />
         <span>{feedbackMessage}</span>
       </motion.div>
     );
@@ -79,7 +79,7 @@ export function ModalStatusNode({ submitState, feedbackMessage }: ModalStatusNod
         role="status"
         aria-live="polite"
       >
-        <Icons.CheckCircle2 className="h-5 w-5 text-emerald-300" />
+        <CheckCircle2 className="h-5 w-5 text-emerald-300" />
         <span>{feedbackMessage}</span>
       </motion.div>
     );
@@ -93,7 +93,7 @@ export function ModalStatusNode({ submitState, feedbackMessage }: ModalStatusNod
       role="alert"
       aria-live="assertive"
     >
-      <Icons.AlertTriangle className="h-5 w-5 text-red-300" />
+      <AlertTriangle className="h-5 w-5 text-red-300" />
       <span>{feedbackMessage}</span>
     </motion.div>
   );
@@ -153,7 +153,7 @@ export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children }
             aria-label={closeLabel}
             className="absolute right-4 top-4 z-20 rounded-full border border-[rgba(10,180,255,0.4)] bg-[var(--brand-primary)] p-2 text-white transition-all duration-300 hover:border-[rgba(10,180,255,0.88)] hover:bg-[var(--brand-primary)] hover:shadow-[0_0_20px_rgba(10,180,255,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]"
           >
-            <Icons.X className="h-4 w-4" />
+            <X className="h-4 w-4" />
           </button>
 
           {children}

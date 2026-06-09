@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import { useTranslation } from "@/hooks/useTranslation";
-import { Icons } from "@/lib/icons";
+import { ArrowRight } from "@/lib/icons";
 import ContactModal from "@/components/ContactModal";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -16,12 +16,12 @@ import { homeEN } from "@/content/en/home";
 
 const HOME_BANNER_BASE_PATH = "/media/banners";
 const HOME_BANNERS = [
-  "home_o_que_nos_diferencia.png",
-  "home_resultados_gera_ia.png",
-  "home_como_ajudamos_ai.png",
-  "home_marketing_digital_ia.png",
-  "home_automacao_ia.png",
-  "home_personalidade_marca.png",
+  "home_o_que_nos_diferencia.webp",
+  "home_resultados_gera_ia.webp",
+  "home_como_ajudamos_ai.webp",
+  "home_marketing_digital_ia.webp",
+  "home_automacao_ia.webp",
+  "home_personalidade_marca.webp",
 ];
 
 type HomeBannerSectionProps = {
@@ -36,12 +36,12 @@ type HomeBannerSectionProps = {
 function getHomeBannerSrc(lang: string, file: string) {
   const folder = lang === "en" ? "EN" : "PT";
   const englishFileMap: Record<string, string> = {
-    "home_o_que_nos_diferencia.png": "home_o_que_nos_diferencia_en.png",
-    "home_resultados_gera_ia.png": "home_resultados_gera_ia_en.png",
-    "home_automacao_ia.png": "home_automacao_ia_en.png",
-    "home_personalidade_marca.png": "home_personalidade_marca_en.png",
-    "home_como_ajudamos_ai.png": "home_como_ajudamos_ai_en.png",
-    "home_marketing_digital_ia.png": "home_marketing_digital_ia_en.png",
+    "home_o_que_nos_diferencia.webp": "home_o_que_nos_diferencia_en.webp",
+    "home_resultados_gera_ia.webp": "home_resultados_gera_ia_en.webp",
+    "home_automacao_ia.webp": "home_automacao_ia_en.webp",
+    "home_personalidade_marca.webp": "home_personalidade_marca_en.webp",
+    "home_como_ajudamos_ai.webp": "home_como_ajudamos_ai_en.webp",
+    "home_marketing_digital_ia.webp": "home_marketing_digital_ia_en.webp",
   };
   const localizedFile = lang === "en" ? englishFileMap[file] || file : file;
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
@@ -90,7 +90,7 @@ export default function Home() {
 
           <motion.button type="button" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="group inline-flex items-center gap-4 rounded-full border border-[#0A84FF]/55 bg-[#0A84FF] px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[#EAF6FF] backdrop-blur-xl transition-all duration-500 hover:border-[#0A84FF] hover:bg-[#0A84FF] hover:text-[#EAF6FF] hover:shadow-[0_0_35px_rgba(10,132,255,0.45)]" onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}>
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#EAF6FF]/45 bg-[#EAF6FF]/15 text-[#EAF6FF] transition-transform duration-500 group-hover:translate-x-1">
-              <Icons.ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </span>
             {content.hero.ctaSecondary}
           </motion.button>

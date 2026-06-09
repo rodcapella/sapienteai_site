@@ -80,6 +80,14 @@ function loadTurnstileScript(): Promise<void> {
   });
 }
 
+/**
+ * Call this on hover of any button that opens a modal containing TurnstileWidget.
+ * The Cloudflare script is fetched once and cached — subsequent renders are instant.
+ */
+export function preloadTurnstile(): void {
+  loadTurnstileScript().catch(() => { /* ignore preload errors silently */ });
+}
+
 export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadError = true, theme = "light" }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);

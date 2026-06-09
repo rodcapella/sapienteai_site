@@ -2,9 +2,10 @@ import { useState, type SVGProps } from "react";
 import { Link } from "wouter";
 
 import NewsletterModal from "@/components/NewsletterModal";
+import { preloadTurnstile } from "@/components/TurnstileWidget";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Icons } from "@/lib/icons";
+import { ArrowUp, ChevronDown, Facebook, Instagram, Linkedin, Mail, MapPin, Music2, Phone } from "@/lib/icons";
 import { getNavLinks, getLegalLinks } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
 
@@ -54,7 +55,7 @@ function MobileAccordion({
         aria-expanded={open}
       >
         <span className={footerTitleClass}>{title}</span>
-        <Icons.ChevronDown
+        <ChevronDown
           className={cn(
             "h-3.5 w-3.5 text-[var(--brand-cyan)] transition-transform duration-300",
             open && "rotate-180",
@@ -79,10 +80,10 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   const socialLinks = [
-    { name: "LinkedIn",  icon: Icons.Linkedin,   url: "https://www.linkedin.com/company/sapiente-ai/" },
-    { name: "Instagram", icon: Icons.Instagram,  url: "https://www.instagram.com/sapienteai/" },
-    { name: "Facebook",  icon: Icons.Facebook,   url: "https://facebook.com/sapienteai" },
-    { name: "TikTok",    icon: Icons.Music2,     url: "https://www.tiktok.com/@sapienteai" },
+    { name: "LinkedIn",  icon: Linkedin,   url: "https://www.linkedin.com/company/sapiente-ai/" },
+    { name: "Instagram", icon: Instagram,  url: "https://www.instagram.com/sapienteai/" },
+    { name: "Facebook",  icon: Facebook,   url: "https://facebook.com/sapienteai" },
+    { name: "TikTok",    icon: Music2,     url: "https://www.tiktok.com/@sapienteai" },
     { name: "X",         icon: XIcon,            url: "https://x.com/SapienteAI" },
     { name: "Pinterest", icon: PinterestIcon,    url: "https://www.pinterest.com/sapienteai" },
   ];
@@ -91,9 +92,9 @@ export default function Footer() {
   const legalLinks = getLegalLinks(lang, t);
 
   const contactItems = [
-    { icon: Icons.Mail,   text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
-    { icon: Icons.Phone,  text: "+351 910 567 575", href: "https://wa.me/351910567575?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Sapiente.AI" },
-    { icon: Icons.MapPin, text: "Aveiro, Portugal" },
+    { icon: Mail,   text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
+    { icon: Phone,  text: "+351 910 567 575", href: "https://wa.me/351910567575?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Sapiente.AI" },
+    { icon: MapPin, text: "Aveiro, Portugal" },
   ];
 
   const linkListClass = "space-y-2";
@@ -106,12 +107,12 @@ export default function Footer() {
       <a
         key={social.name}
         href={social.url}
-        className="group inline-flex h-[38px] w-[38px] items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-cyan)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
+        className="group inline-flex h-[38px] w-[38px] items-center justify-center rounded-xl border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/70 text-[var(--brand-cyan)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--brand-cyan)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)] sm:h-8 sm:w-8"
         aria-label={social.name}
         target="_blank"
         rel="noopener noreferrer nofollow"
       >
-        <Icon className="h-4 w-4" />
+        <Icon className="h-4 w-4 sm:h-3.5 sm:w-3.5" />
       </a>
     );
   };
@@ -123,7 +124,8 @@ export default function Footer() {
       </p>
       <PremiumButton
         onClick={() => setIsNewsletterOpen(true)}
-        className="w-full !rounded-2xl !bg-[var(--brand-cyan)] !py-2 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
+        onMouseEnter={preloadTurnstile}
+        className="w-full !rounded-2xl !bg-[var(--brand-cyan)] !py-2 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] sm:!min-h-[42px] sm:!px-4 sm:!py-0 sm:!text-[11px] sm:!tracking-[0.14em] sm:!whitespace-nowrap [&>span]:!text-[var(--brand-night)] sm:[&>span]:!text-[11px] hover:[&>span]:!text-[var(--brand-offwhite)]"
         variant="secondary"
       >
         {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
@@ -134,10 +136,10 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-[var(--brand-primary)]/30 font-serif text-[var(--brand-offwhite)]">
       <div className="pointer-events-none absolute inset-0">
-        <img src="/media/bg/bg_footer.png" alt="" className="h-full w-full object-cover" />
+        <img src="/media/bg/bg_footer.webp" alt="" className="h-full w-full object-cover" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-screen-xl px-5 py-6 md:px-6 md:py-8">
+      <div className="relative z-10 mx-auto max-w-screen-xl px-5 pb-14 pt-6 md:px-6 md:pb-10 md:pt-8">
 
         {/* ── MOBILE LAYOUT (< sm) ─────────────────────────────────────── */}
         <div className="flex flex-col gap-0 sm:hidden">
@@ -145,7 +147,7 @@ export default function Footer() {
           {/* Logo + descrição */}
           <div className="mb-4">
             <img
-              src="/media/logos/Logo_Sapiente_fundo_escuro.png"
+              src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
               alt="Sapiente.AI"
               className="mb-2 h-10 w-auto object-contain"
             />
@@ -256,12 +258,12 @@ export default function Footer() {
 
         {/* ── DESKTOP LAYOUT (sm+) ─────────────────────────────────────── */}
         <div className="hidden sm:block">
-          <div className="mb-3 grid grid-cols-2 gap-5 xl:grid-cols-5">
+          <div className="mb-3 grid grid-cols-2 gap-5 xl:grid-cols-[1.2fr_0.8fr_0.8fr_1fr_1.3fr]">
 
             {/* Logo + Description */}
             <div className="col-span-1 xl:col-span-1">
               <div className="mb-2 inline-block">
-                <img src="/media/logos/Logo_Sapiente_fundo_escuro.png" alt="Sapiente.AI" className="h-12 w-auto object-contain md:h-14" />
+                <img src="/media/logos/Logo_Sapiente_fundo_escuro.webp" alt="Sapiente.AI" className="h-12 w-auto object-contain md:h-14" />
               </div>
               <p className="max-w-sm font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
                 {t("footer.description")}
@@ -358,7 +360,7 @@ export default function Footer() {
         aria-label="Back to top"
         className="absolute bottom-4 right-4 z-20 inline-flex h-7 w-7 items-center justify-center rounded-lg border border-[var(--brand-primary)]/35 bg-[var(--brand-deep)]/85 text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand-cyan)]/55 hover:bg-[var(--brand-primary)]/70 hover:text-[var(--brand-offwhite)] hover:shadow-[0_12px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)]"
       >
-        <Icons.ArrowUp className="h-2.5 w-2.5" />
+        <ArrowUp className="h-2.5 w-2.5" />
       </button>
 
       <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />

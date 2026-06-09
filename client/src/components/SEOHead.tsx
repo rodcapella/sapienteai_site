@@ -26,7 +26,7 @@ function formatPageTitle(title: string) {
 export function setSEOHead({
   title,
   description,
-  image = '/media/logos/logo_sapiente_transparente.png',
+  image = '/media/logos/logo_sapiente_transparente.webp',
   url = 'https://sapienteai.com',
   type = 'website',
   keywords = 'inteligência artificial, machine learning, IA generativa, automação, transformação digital'

@@ -109,7 +109,7 @@ export default function Services(_props: { lang?: string }) {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
-        image="/media/bg/servicos/bg_Servicos.png"
+        image="/media/bg/servicos/bg_Servicos.webp"
         imageAlt="Sapiente.AI"
         compact
       />
@@ -125,7 +125,7 @@ export default function Services(_props: { lang?: string }) {
               type="button"
               onClick={() => handleSelectSection(s.id)}
               className={[
-                "flex min-h-9 shrink-0 items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-black transition-all",
+                "flex min-h-9 shrink-0 items-center justify-center gap-2 rounded-full border px-4 py-1.5 text-sm font-black transition-all",
                 isActive
                   ? "border-[#184173] bg-[#eaf6ff] text-[var(--brand-night)] shadow-[0_8px_18px_rgba(24,65,115,0.12)]"
                   : "border-[#184173]/35 bg-white text-[var(--brand-night)] hover:border-[#184173] hover:bg-[#eaf6ff]/70",
@@ -172,12 +172,12 @@ export default function Services(_props: { lang?: string }) {
                         key={section.id}
                         id={`service-${section.id}`}
                         aria-label={section.navLabel}
-                        className="min-h-[420px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat px-8 py-6 md:px-10 lg:px-12"
+                        className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat px-5 py-5 md:min-h-[420px] md:px-10 lg:px-12"
                         style={{ backgroundImage: `url(${section.backgroundImage})` }}
                       >
                         <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
-                            <div className="max-w-[440px] py-5 text-left">
+                            <div className="max-w-[440px] rounded-2xl bg-white/90 p-5 text-left shadow-[0_14px_34px_rgba(1,32,80,0.12)] md:py-5 lg:bg-transparent lg:p-0 lg:shadow-none">
                               <p className="mb-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-night)]">
                                 {data.eyebrow}
                               </p>
@@ -190,7 +190,7 @@ export default function Services(_props: { lang?: string }) {
                                 {data.description}
                               </p>
 
-                              <div className="mt-11 max-w-[390px]">
+                              <div className="mt-8 max-w-[390px] md:mt-11">
                                 <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
                                   {data.audienceLabel}
                                 </p>
@@ -213,7 +213,7 @@ export default function Services(_props: { lang?: string }) {
                           </Reveal>
 
                           <Reveal delay={120}>
-                            <ul className="ml-auto grid max-w-[390px] gap-5 py-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)]">
+                            <ul className="ml-auto grid max-w-[390px] gap-4 rounded-2xl bg-white/90 p-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_rgba(1,32,80,0.12)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
                               {data.bullets.map((bullet) => (
                                 <li key={bullet} className="flex items-start gap-4">
                                   <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />

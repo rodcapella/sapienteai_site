@@ -28,7 +28,7 @@ const navLinkVariants = cva(
         `,
 
         mobile: `
-          border-[var(--brand-primary)]/30 px-4 py-3 text-[var(--brand-primary)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10 hover:text-[var(--brand-night)] text-base font-black
+          w-full border-[var(--brand-primary)]/30 px-4 py-3 text-[var(--brand-primary)] hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10 hover:text-[var(--brand-night)] text-base font-black
         `
       },
 
@@ -69,7 +69,7 @@ export function NavLink({
   const magnetic = useMagnetic(16);
 
   return (
-    <Link href={href} onClick={onClick}>
+    <Link href={href} onClick={onClick} className={variant === "mobile" ? "block w-full" : undefined}>
       <span
         ref={magnetic.ref}
         onMouseMove={magnetic.onMouseMove}

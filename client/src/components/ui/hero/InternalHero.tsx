@@ -19,7 +19,7 @@ export function InternalHero({
   highlight,
   subtitle,
   label,
-  image = "/media/bg/bg_hero.png",
+  image = "/media/bg/bg_hero.webp",
   imageAlt = "Sapiente.AI",
   children,
   compact = false,
@@ -28,7 +28,7 @@ export function InternalHero({
     <Section
       className={[
         "InternalHero hero relative flex items-center justify-start overflow-hidden",
-        compact ? "min-h-[580px] pt-28 pb-20 md:pt-40 md:pb-24" : "min-h-[580px] pt-28 pb-20 md:min-h-[720px] md:pt-40 md:pb-28",
+        compact ? "min-h-[520px] pt-24 pb-16 md:min-h-[580px] md:pt-40 md:pb-24" : "min-h-[520px] pt-24 pb-16 md:min-h-[720px] md:pt-40 md:pb-28",
       ].join(" ")}
     >
       <div

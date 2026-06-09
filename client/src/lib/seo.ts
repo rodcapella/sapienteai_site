@@ -119,7 +119,7 @@ export const organizationSchema = {
   'name': 'Sapiente.AI',
   'alternateName': 'Sapiente IA',
   'url': 'https://sapienteai.com',
-  'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png',
+  'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.webp',
   'description': 'Soluções de inteligência artificial aplicada para transformação digital de empresas',
   'sameAs': [
     'https://twitter.com/SapienteAI',
@@ -191,7 +191,7 @@ export const localBusinessSchema = {
   'name': 'Sapiente.AI',
   'description': 'Soluções de inteligência artificial aplicada',
   'url': 'https://sapienteai.com',
-  'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.png',
+  'logo': 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663348112016/UCZcamqTyYghcjGW.webp',
   'address': {
     '@type': 'PostalAddress',
     'addressCountry': 'BR',

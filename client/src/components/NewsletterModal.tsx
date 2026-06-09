@@ -6,7 +6,7 @@ import { getContent } from "@/lib/content";
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import TurnstileWidget from "@/components/TurnstileWidget";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
-import { Icons } from "@/lib/icons";
+import { CheckCircle2, ChevronDown, LoaderCircle, Mail } from "@/lib/icons";
 import {
   AnimatedStatus,
   Modal,
@@ -169,7 +169,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       <DialogHeader className="relative z-10 mb-7 space-y-3 pr-10 text-left">
         <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "#FFFFFF" }}>
           <span className="inline-flex items-center gap-2 !text-white" style={{ color: "#FFFFFF" }}>
-            <Icons.Mail className="h-7 w-7 text-[var(--brand-cyan)]" />
+            <Mail className="h-7 w-7 text-[var(--brand-cyan)]" />
             {text.title}
           </span>
         </DialogTitle>
@@ -206,9 +206,9 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
           <div className="relative">
             <select name="source" value={formData.source} onChange={(e) => updateField("source", e.target.value)} className={sourceSelectClass} disabled={submitState === "loading"}>
               <option value="" disabled>{text.placeholders.source}</option>
-              {sourceOptions[lang].map((o) => <option key={o} value={o}>{o}</option>)}
+              {sourceOptions.map((o) => <option key={o} value={o}>{o}</option>)}
             </select>
-            <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+            <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
           </div>
         </label>
 
@@ -238,10 +238,10 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
           className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}
         >
           {submitState === "loading"
-            ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.loading}</>
+            ? <><LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.loading}</>
             : submitState === "success"
-            ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.success}</>
-            : <><Icons.Mail className="h-4 w-4" />{text.submit.idle}</>}
+            ? <><CheckCircle2 className="h-4 w-4" />{text.submit.success}</>
+            : <><Mail className="h-4 w-4" />{text.submit.idle}</>}
         </PremiumButton>
       </form>
     </Modal>

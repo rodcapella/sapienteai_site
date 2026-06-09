@@ -95,11 +95,11 @@ export function FinalCTA({
   const getFallbackBackground = () => {
     switch (variant) {
       case "home":
-        return "/media/bg/bg_finalCTA_home.png";
+        return "/media/bg/bg_finalCTA_home.webp";
       case "about":
-        return "/media/bg/final_CTA_sobre.png";
+        return "/media/bg/final_CTA_sobre.webp";
       default:
-        return "/media/bg/bg_finalCTA.png";
+        return "/media/bg/bg_finalCTA.webp";
     }
   };
 

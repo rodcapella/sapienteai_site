@@ -5,7 +5,7 @@ import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
-import { Icons } from "@/lib/icons";
+import { AlertCircle, ArrowRight, Brain, Check, CheckCircle2, Globe, LoaderCircle, MapPin, RotateCcw, Search } from "@/lib/icons";
 
 import "@/styles/visibilityValidator.css";
 
@@ -23,9 +23,9 @@ type ValidationResult = {
 };
 
 const typeConfig = {
-  seo: { Icon: Icons.Globe },
-  geo: { Icon: Icons.MapPin },
-  aeo: { Icon: Icons.Brain },
+  seo: { Icon: Globe },
+  geo: { Icon: MapPin },
+  aeo: { Icon: Brain },
 };
 
 const copy = {
@@ -250,7 +250,7 @@ export default function VisibilityValidator() {
         title={text.hero.title}
         highlight={text.hero.highlight}
         subtitle={text.hero.subtitle}
-        image="/media/bg/servicos/bg_Servicos.png"
+        image="/media/bg/servicos/bg_Servicos.webp"
         imageAlt="Sapiente.AI"
         compact
       />
@@ -262,7 +262,7 @@ export default function VisibilityValidator() {
             <section className="visibility-validator-panel visibility-validator-form-panel">
               <div className="visibility-validator-panel-header">
                 <span>{text.form.title}</span>
-                <Icons.Search size={20} />
+                <Search size={20} />
               </div>
 
               <div className="visibility-validator-fields">
@@ -285,7 +285,7 @@ export default function VisibilityValidator() {
 
                   return (
                     <button type="button" key={type} onClick={() => toggleType(type)} className={checked ? "is-selected" : ""} disabled={isLoading} aria-pressed={checked}>
-                      <span className="visibility-validator-check">{checked && <Icons.Check size={14} />}</span>
+                      <span className="visibility-validator-check">{checked && <Check size={14} />}</span>
                       <Icon size={18} />
                       {text.types[type]}
                     </button>
@@ -295,7 +295,7 @@ export default function VisibilityValidator() {
 
               {feedback && (
                 <p className="visibility-validator-feedback" role="alert">
-                  <Icons.AlertCircle size={16} />
+                  <AlertCircle size={16} />
                   {feedback}
                 </p>
               )}
@@ -303,13 +303,13 @@ export default function VisibilityValidator() {
               <button type="button" className="visibility-validator-submit" onClick={handleValidate} disabled={isLoading}>
                 {isLoading ? (
                   <>
-                    <Icons.LoaderCircle size={18} className="animate-spin" />
+                    <LoaderCircle size={18} className="animate-spin" />
                     {text.form.loading}
                   </>
                 ) : (
                   <>
                     {text.form.button}
-                    <Icons.ArrowRight size={18} />
+                    <ArrowRight size={18} />
                   </>
                 )}
               </button>
@@ -322,7 +322,7 @@ export default function VisibilityValidator() {
             <section className="visibility-validator-panel visibility-validator-results-panel">
               {!hasSearched ? (
                 <div className="visibility-validator-empty">
-                  <Icons.Globe size={56} />
+                  <Globe size={56} />
                   <h2>{text.results.idleTitle}</h2>
                   <p>{text.results.idleText}</p>
                 </div>
@@ -332,7 +332,7 @@ export default function VisibilityValidator() {
                     <h2>{text.results.title}</h2>
                     {results.length > 0 && (
                       <button type="button" onClick={reset}>
-                        <Icons.RotateCcw size={16} />
+                        <RotateCcw size={16} />
                         {text.results.reset}
                       </button>
                     )}
@@ -367,7 +367,7 @@ export default function VisibilityValidator() {
                           <ul>
                             {result.details.map((detail) => (
                               <li key={detail}>
-                                <Icons.CheckCircle2 size={16} />
+                                <CheckCircle2 size={16} />
                                 {detail}
                               </li>
                             ))}

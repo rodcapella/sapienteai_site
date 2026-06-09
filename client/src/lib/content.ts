@@ -25,6 +25,9 @@ import { iaGenerativaPolicyEN } from "@/content/en/iaGenerativaPolicy";
 import { modalsPT } from "@/content/pt/modals";
 import { modalsEN } from "@/content/en/modals";
 
+import { cookiesPT } from "@/content/pt/cookies";
+import { cookiesEN } from "@/content/en/cookies";
+
 import { notFoundPT } from "@/content/pt/notFound";
 import { notFoundEN } from "@/content/en/notFound";
 
@@ -64,6 +67,10 @@ const contentMap = {
   modals: {
     pt: modalsPT,
     en: modalsEN,
+  },
+  cookies: {
+    pt: cookiesPT,
+    en: cookiesEN,
   },
   notFound: {
     pt: notFoundPT,

@@ -6,7 +6,7 @@ import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { quizContentEn } from "@/content/en/quiz";
 import { quizContentPt } from "@/content/pt/quiz";
-import { Icons } from "@/lib/icons";
+import { ArrowLeft, ArrowRight, BarChart3, Clock, PanelLeft, RotateCcw, Send, Target, TrendingUp } from "@/lib/icons";
 
 import "@/styles/quizAI.css";
 
@@ -99,34 +99,34 @@ export default function QuizAI() {
     lang === "en"
       ? [
           {
-            icon: Icons.TrendingUp,
+            icon: TrendingUp,
             title: "Growth strategy",
             desc: "There is room to attract more clients with a digital strategy oriented to results and well-managed campaigns.",
           },
           {
-            icon: Icons.Send,
+            icon: Send,
             title: "Digital marketing",
             desc: "Your digital presence can be strengthened with consistent content and growth strategies with AI.",
           },
           {
-            icon: Icons.PanelLeft,
+            icon: PanelLeft,
             title: "Web development",
             desc: "Your website should be an active lead-generation tool, not just a static online presence.",
           },
         ]
       : [
           {
-            icon: Icons.TrendingUp,
+            icon: TrendingUp,
             title: "Estratégia de crescimento",
             desc: "Há oportunidade de atrair mais clientes com uma estratégia digital orientada a resultados e campanhas bem geridas.",
           },
           {
-            icon: Icons.Send,
+            icon: Send,
             title: "Marketing digital",
             desc: "A sua presença digital pode ser reforçada com conteúdo consistente e estratégias de crescimento com IA.",
           },
           {
-            icon: Icons.PanelLeft,
+            icon: PanelLeft,
             title: "Desenvolvimento web",
             desc: "O seu website precisa de ser uma ferramenta ativa de captação, não apenas uma presença online estática.",
           },
@@ -173,7 +173,7 @@ export default function QuizAI() {
         title={startIntro.title}
         highlight={startIntro.highlight}
         subtitle={startIntro.subtitle}
-        image="/media/bg/servicos/bg_Servicos.png"
+        image="/media/bg/servicos/bg_Servicos.webp"
         imageAlt="Sapiente.AI"
         compact
       />
@@ -192,15 +192,15 @@ export default function QuizAI() {
 
               <div className="quiz-stats-grid" aria-label={content.duration}>
                 <div className="quiz-stat-item">
-                  <Icons.Clock className="text-primary" size={20} />
+                  <Clock className="text-primary" size={20} />
                   <span>{startIntro.stats[0]}</span>
                 </div>
                 <div className="quiz-stat-item">
-                  <Icons.Target className="text-primary" size={20} />
+                  <Target className="text-primary" size={20} />
                   <span>{startIntro.stats[1]}</span>
                 </div>
                 <div className="quiz-stat-item">
-                  <Icons.BarChart3 className="text-primary" size={20} />
+                  <BarChart3 className="text-primary" size={20} />
                   <span>{startIntro.stats[2]}</span>
                 </div>
               </div>
@@ -208,7 +208,7 @@ export default function QuizAI() {
               <div className="quiz-action-wrapper">
                 <button type="button" onClick={startQuiz} className="quiz-cta-premium-btn">
                   <span>{content.startButton}</span>
-                  <Icons.ArrowRight size={20} />
+                  <ArrowRight size={20} />
                 </button>
               </div>
             </div>
@@ -253,12 +253,12 @@ export default function QuizAI() {
               
               <div className="quiz-question-actions">
                 <button type="button" onClick={previousQuestion} disabled={current === 0} className="quiz-nav-secondary-btn">
-                  <Icons.ArrowLeft size={18} />
+                  <ArrowLeft size={18} />
                   {lang === "en" ? "Previous" : "Anterior"}
                 </button>
                 <button type="button" onClick={nextQuestion} disabled={selected === null} className="quiz-nav-primary-btn">
                   {current + 1 >= questions.length ? content.resultButton : lang === "en" ? "Next" : "Próxima"}
-                  <Icons.ArrowRight size={18} />
+                  <ArrowRight size={18} />
                 </button>
               </div>
             </div>
@@ -311,7 +311,7 @@ export default function QuizAI() {
                     {lang === "en" ? "View services" : "Ver serviços"}
                   </a>
                   <button type="button" onClick={restartQuiz} className="quiz-restart-action-btn">
-                    <Icons.RotateCcw size={16} />
+                    <RotateCcw size={16} />
                     {content.restartButton}
                   </button>
                 </div>

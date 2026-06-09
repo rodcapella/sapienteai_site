@@ -53,7 +53,7 @@ export function LanguageSelector() {
     });
   };
 
-  const flagSrc = lang === "pt" ? "/media/flags/pt-PT.png" : "/media/flags/en.png";
+  const flagSrc = lang === "pt" ? "/media/flags/pt-PT.webp" : "/media/flags/en.webp";
 
   return (
     <motion.button

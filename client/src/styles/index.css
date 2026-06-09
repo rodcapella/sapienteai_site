@@ -8,10 +8,17 @@
   /* Brand */
   --brand-night: #001547;
   --brand-deep: #012050;
+  --brand-mid: #184173;
+  --brand-darkest: #050816;
   --brand-primary: #0a84ff;
+  --brand-primary-hover: #0877ff;
   --brand-cyan: #55d4f2;
+  --brand-cyan-bright: #00d1ff;
+  --brand-cyan-mid: #0ab4ff;
   --brand-purple: #7A5CFC;
+  --brand-purple-bright: #7861ff;
   --brand-offwhite: #eaf6ff;
+  --brand-white: #ffffff;
 
   /* Aliases */
   --primary: var(--brand-primary);

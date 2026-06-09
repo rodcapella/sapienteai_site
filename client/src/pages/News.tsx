@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Icons } from "@/lib/icons";
+import { Calendar, Search, User } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,9 +10,9 @@ import { SectionCard } from "@/components/ui/section/SectionCard";
 
 import { useSEOHead } from '@/hooks/useSEOHead';
 
-const Search = Icons.Search; 
-const Calendar = Icons.Calendar; 
-const User = Icons.User; 
+
+
+
 
 export default function News() {
   const [searchQuery, setSearchQuery] = useState('');

@@ -6,7 +6,7 @@ import { getContent } from "@/lib/content";
 import { DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import TurnstileWidget from "@/components/TurnstileWidget";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
-import { Icons } from "@/lib/icons";
+import { CheckCircle2, ChevronDown, LoaderCircle, MessageSquareText } from "@/lib/icons";
 import {
   AnimatedStatus,
   Modal,
@@ -219,10 +219,10 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal} closeLabel={text.closeLabel} ariaDescribedBy="contact-modal-description">
-      <DialogHeader className="relative z-10 mb-7 space-y-3 text-left">
+      <DialogHeader className="relative z-10 mb-7 space-y-3 pr-10 text-left">
         <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "#FFFFFF" }}>
           <span className="inline-flex items-center gap-2 !text-white" style={{ color: "#FFFFFF" }}>
-            <Icons.MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />
+            <MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />
             {text.title}
           </span>
         </DialogTitle>
@@ -262,9 +262,9 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
                 disabled={submitState === "loading"}
               >
                 <option value="" disabled hidden>{text.placeholders.topic}</option>
-                {topicOptions[lang].map((o) => <option key={o} value={o}>{o}</option>)}
+                {topicOptions.map((o) => <option key={o} value={o}>{o}</option>)}
               </select>
-              <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+              <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
             </div>
             {touched.topic && errors.topic && <p className="text-xs text-red-300">{errors.topic}</p>}
           </div>
@@ -294,9 +294,9 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
                 disabled={submitState === "loading"}
               >
                 <option value="" disabled>{text.placeholders.source}</option>
-                {sourceOptions[lang].map((o) => <option key={o} value={o}>{o}</option>)}
+                {sourceOptions.map((o) => <option key={o} value={o}>{o}</option>)}
               </select>
-              <Icons.ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
+              <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
             </div>
           </div>
         </div>
@@ -329,10 +329,10 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
             className={`w-full !rounded-xl !bg-[var(--brand-primary)] !px-6 !py-4 !text-sm !text-white !tracking-[0.16em] hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white ${submitState === "loading" ? "pointer-events-none opacity-80" : ""}`}
           >
             {submitState === "loading"
-              ? <><Icons.LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.processing}</>
+              ? <><LoaderCircle className="h-4 w-4 animate-spin" />{text.submit.processing}</>
               : submitState === "success"
-              ? <><Icons.CheckCircle2 className="h-4 w-4" />{text.submit.successButton}</>
-              : <><Icons.MessageSquareText className="h-4 w-4" />{text.submit.idle}</>}
+              ? <><CheckCircle2 className="h-4 w-4" />{text.submit.successButton}</>
+              : <><MessageSquareText className="h-4 w-4" />{text.submit.idle}</>}
           </PremiumButton>
         </div>
 

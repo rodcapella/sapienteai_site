@@ -8,7 +8,7 @@ import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Icons } from "@/lib/icons";
+import { ArrowRight, Home, Mail, ShieldCheck, Sparkles } from "@/lib/icons";
 
 type SitemapLink = {
   title: string;
@@ -123,7 +123,7 @@ function SitemapGroupBlock({ group, icon: Icon }: { group: SitemapGroup; icon: E
           <li key={link.href || link.title}>
             {link.href ? (
               <Link href={link.href} className={linkClass}>
-                {renderLinkContent(link, Icons.ArrowRight)}
+                {renderLinkContent(link, ArrowRight)}
               </Link>
             ) : (
               <a
@@ -134,7 +134,7 @@ function SitemapGroupBlock({ group, icon: Icon }: { group: SitemapGroup; icon: E
                 }}
                 className={linkClass}
               >
-                {renderLinkContent(link, Icons.Mail)}
+                {renderLinkContent(link, Mail)}
               </a>
             )}
           </li>
@@ -232,7 +232,7 @@ export default function Sitemap() {
 
             <div className="grid gap-8">
               {groups.map((group, index) => {
-                const Icon = [Icons.Home, Icons.Sparkles, Icons.ShieldCheck][index];
+                const Icon = [Home, Sparkles, ShieldCheck][index];
                 return (
                   <Reveal key={group.label} delay={index * 100}>
                     <SitemapGroupBlock group={group} icon={Icon} />

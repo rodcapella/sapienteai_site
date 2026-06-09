@@ -6,7 +6,7 @@ import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { Icons } from "@/lib/icons";
+import { CheckCircle, Cpu, Database, History, Lock, Mail, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
 import "@/styles/legal.css";
 
 type LegalContentSection = {
@@ -32,14 +32,14 @@ interface LegalDocumentPageProps {
 }
 
 const fallbackIcons = [
-  Icons.ShieldCheck,
-  Icons.Scale,
-  Icons.Lock,
-  Icons.Database,
-  Icons.UserCheck,
-  Icons.Cpu,
-  Icons.History,
-  Icons.Mail,
+  ShieldCheck,
+  Scale,
+  Lock,
+  Database,
+  UserCheck,
+  Cpu,
+  History,
+  Mail,
 ];
 
 function getLegalPageTitle(slug: string, lang: string) {
@@ -156,7 +156,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
                             <ul>
                               {section.content.map((item, index) => (
                                 <li key={index}>
-                                  <Icons.CheckCircle className="legal-check" />
+                                  <CheckCircle className="legal-check" />
                                   <span>{item}</span>
                                 </li>
                               ))}

@@ -177,7 +177,7 @@ export default function About() {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
-        image="/media/bg/sobre/bg_Sobre_nos.png"
+        image="/media/bg/sobre/bg_Sobre_nos.webp"
         imageAlt="Sapiente.AI"
       />
 
@@ -187,8 +187,8 @@ export default function About() {
       {/* COMO TRABALHAMOS */}
       <SectionBackground
         image={lang === "pt"
-          ? "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.png"
-          : "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.png"}
+          ? "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp"
+          : "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp"}
         overlay="medium"
         blur="sm"
         className="bg-blue-tint"
@@ -212,8 +212,8 @@ export default function About() {
             <Reveal>
               <SectionBackground
                 image={lang === "pt"
-                  ? "/media/bg/sobre/pt/bg_Sobre_Founders.png"
-                  : "/media/bg/sobre/en/bg_Sobre_Founders_en.png"}
+                  ? "/media/bg/sobre/pt/bg_Sobre_Founders.webp"
+                  : "/media/bg/sobre/en/bg_Sobre_Founders_en.webp"}
                 overlay="strong"
                 blur="sm"
                 className="h-full p-7 md:p-9"
@@ -281,7 +281,7 @@ export default function About() {
         description_highlight={content.founders.cta.description_highlight}
         button={content.founders.cta.button}
         variant="about"
-        backgroundSrc="/media/bg/final_CTA_sobre.png"
+        backgroundSrc="/media/bg/final_CTA_sobre.webp"
       />
 
     </div>

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import ContactModal from "@/components/ContactModal";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
-import { Icons } from "@/lib/icons";
+import { ArrowRight } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 export type FAQItem = {
@@ -181,7 +181,7 @@ export function FAQContactCTA({ lang }: FAQContactCTAProps) {
 
         <PremiumButton onClick={() => setIsContactOpen(true)} className="w-full md:w-auto" size="md">
           {content.button}
-          <Icons.ArrowRight className="h-4 w-4" />
+          <ArrowRight className="h-4 w-4" />
         </PremiumButton>
       </div>
 

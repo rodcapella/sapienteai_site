@@ -1,5 +1,5 @@
 import { useTheme } from "@/hooks/useTheme";
-import { Icons } from "@/lib/icons";
+import { Moon, Sun } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 export function ThemeToggle() {
@@ -19,14 +19,14 @@ export function ThemeToggle() {
     >
       <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,212,255,0.3),transparent_65%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-      <Icons.Sun
+      <Sun
         className={cn(
           "absolute h-4 w-4 transition-all duration-500",
           theme === "light" ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-75 opacity-0",
         )}
       />
 
-      <Icons.Moon
+      <Moon
         className={cn(
           "absolute h-4 w-4 transition-all duration-500",
           theme === "dark" ? "rotate-0 scale-100 opacity-100" : "rotate-90 scale-75 opacity-0",

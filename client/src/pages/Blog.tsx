@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
-import { Icons } from "@/lib/icons";
+import { ArrowRight, Calendar, Search, Tag, User } from "@/lib/icons";
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -15,11 +15,11 @@ import { useTranslation } from '@/hooks/useTranslation';
 import { getAllBlogArticles } from '@/lib/blogData';
 import { useSEOHead } from '@/hooks/useSEOHead';
 
-const Search = Icons.Search;
-const Tag = Icons.Tag;
-const ArrowRight = Icons.ArrowRight;
-const Calendar = Icons.Calendar;
-const User = Icons.User;
+
+
+
+
+
 
 const articles = getAllBlogArticles();
 

@@ -3,7 +3,6 @@ import { Link } from "wouter";
 
 import { useTranslation } from "@/hooks/useTranslation";
 
-import { Icons } from "@/lib/icons";
 
 type ConsentValue = "accepted" | "rejected" | "custom";
 

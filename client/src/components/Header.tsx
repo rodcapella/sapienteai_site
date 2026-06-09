@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
 import ContactModal from "@/components/ContactModal";
+import { preloadTurnstile } from "@/components/TurnstileWidget";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Icons } from "@/lib/icons";
+import { Menu, X } from "@/lib/icons";
 import { getNavLinks } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
 
@@ -61,13 +62,13 @@ export default function Header({ onContactClick }: HeaderProps) {
           <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-14 md:h-16" : "h-16 md:h-[68px]")}>
             <div className="flex h-full w-[180px] shrink-0 items-center gap-2 overflow-hidden xl:w-[210px]">
               <img
-                src="/media/logos/Logo_Sapiente_fundo_claro.png"
+                src="/media/logos/Logo_Sapiente_fundo_claro.webp"
                 alt="Sapiente.AI"
                 className={cn(logoClassName, "dark:hidden")}
               />
 
               <img
-                src="/media/logos/Logo_Sapiente_fundo_escuro.png"
+                src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
                 alt="Sapiente.AI"
                 className={cn(logoClassName, "hidden dark:block")}
               />
@@ -89,7 +90,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 <LanguageSelector />
               </div>
               {/* ThemeToggle temporariamente desativado: primeira versão será lançada apenas com tema claro. */}
-              <PremiumButton onClick={handleContactClick} className="min-w-[148px] whitespace-nowrap px-5 py-2 text-sm" variant="primary">
+              <PremiumButton onClick={handleContactClick} onMouseEnter={preloadTurnstile} className="min-w-[148px] whitespace-nowrap px-5 py-2 text-sm" variant="primary">
                 {contactLabel}
               </PremiumButton>
             </div>
@@ -102,7 +103,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 aria-label="Toggle menu"
                 type="button"
               >
-                {isMobileMenuOpen ? <Icons.X className="h-6 w-6" /> : <Icons.Menu className="h-6 w-6" />}
+                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
           </nav>
@@ -123,7 +124,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               </div>
 
               <div className="mt-auto pt-8">
-                <PremiumButton onClick={handleContactClick} className="w-full" variant="primary">
+                <PremiumButton onClick={handleContactClick} onMouseEnter={preloadTurnstile} className="w-full" variant="primary">
                   {contactLabel}
                 </PremiumButton>
               </div>

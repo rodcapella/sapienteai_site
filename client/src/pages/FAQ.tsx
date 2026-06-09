@@ -9,7 +9,7 @@ import { useSEOHead } from "@/hooks/useSEOHead";
 import { generateFAQSchema } from "@/lib/faqSchema";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
-import { Icons } from "@/lib/icons";
+import { BarChart3, Cpu, Database, Globe, HelpCircle, MessageCircle } from "@/lib/icons";
 import "@/styles/faq.css";
 
 function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
@@ -33,12 +33,12 @@ function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
         };
 
   return [
-    { id: "general",    label: labels.general,    icon: Icons.HelpCircle,    items: items.slice(0, 8) },
-    { id: "content",    label: labels.content,    icon: Icons.MessageCircle, items: items.slice(8, 17) },
-    { id: "websites",   label: labels.websites,   icon: Icons.Globe,         items: items.slice(17, 24) },
-    { id: "automation", label: labels.automation, icon: Icons.Cpu,           items: items.slice(24, 31) },
-    { id: "data",       label: labels.data,       icon: Icons.Database,      items: items.slice(35) },
-    { id: "business",   label: labels.business,   icon: Icons.BarChart3,     items: items.slice(31, 35) },
+    { id: "general",    label: labels.general,    icon: HelpCircle,    items: items.slice(0, 8) },
+    { id: "content",    label: labels.content,    icon: MessageCircle, items: items.slice(8, 17) },
+    { id: "websites",   label: labels.websites,   icon: Globe,         items: items.slice(17, 24) },
+    { id: "automation", label: labels.automation, icon: Cpu,           items: items.slice(24, 31) },
+    { id: "data",       label: labels.data,       icon: Database,      items: items.slice(35) },
+    { id: "business",   label: labels.business,   icon: BarChart3,     items: items.slice(31, 35) },
   ].filter((category) => category.items.length > 0);
 }
 
@@ -101,7 +101,7 @@ export default function FAQ() {
         title={pageCopy.title}
         highlight={pageCopy.highlight}
         subtitle={pageCopy.subtitle}
-        image="/media/bg/servicos/bg_Servicos.png"
+        image="/media/bg/servicos/bg_Servicos.webp"
         imageAlt="Sapiente.AI"
         compact
       />

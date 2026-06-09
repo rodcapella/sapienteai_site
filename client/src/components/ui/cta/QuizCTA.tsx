@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Icons } from "@/lib/icons";
+import { HelpCircle } from "@/lib/icons";
 
 const highlightStyle = {
   font: "inherit",
@@ -71,7 +71,7 @@ export function QuizCTA() {
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 
   return (
-    <section className="relative flex items-center overflow-hidden bg-[var(--section-ice)] px-6 py-12 text-[var(--foreground)] md:py-16">
+    <section className="relative flex items-center overflow-hidden bg-[var(--section-ice)] px-6 py-12 text-[var(--foreground)] md:h-[400px] md:py-16">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(0,209,255,0.12),transparent_34%)]" />
 
       <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
@@ -97,7 +97,7 @@ export function QuizCTA() {
         <Reveal delay={120}>
           <Link href={href}>
             <PremiumButton variant="primary" size="lg">
-              <Icons.HelpCircle className="h-4 w-4" />
+              <HelpCircle className="h-4 w-4" />
               {content.button}
             </PremiumButton>
           </Link>
