@@ -109,13 +109,25 @@ export default function Header({ onContactClick }: HeaderProps) {
           </nav>
 
           {isMobileMenuOpen && (
-            <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[color-mix(in_srgb,var(--section-ice)_94%,transparent)] p-6 pt-28 text-[var(--brand-night)] backdrop-blur-2xl dark:bg-[var(--brand-near-dark)]/98 dark:text-[var(--brand-offwhite)] lg:hidden">
-              <div className="mb-8 flex items-center justify-between border-b border-[var(--brand-purple)]/20 pb-6 dark:border-white/10">
-                <span className="text-xs font-black uppercase tracking-widest text-[var(--brand-night)]/45 dark:text-[var(--brand-offwhite)]/40">{t("nav.language") || "Language"}</span>
-                <LanguageSelector />
+            <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[color-mix(in_srgb,var(--section-ice)_96%,transparent)] px-5 pt-5 pb-6 text-[var(--brand-night)] backdrop-blur-2xl dark:bg-[var(--brand-near-dark)]/98 dark:text-[var(--brand-offwhite)] lg:hidden">
+
+              {/* Barra topo: fechar + seletor de idioma */}
+              <div className="mb-5 flex items-center justify-between border-b border-[var(--brand-purple)]/20 pb-4 dark:border-white/10">
+                <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--brand-night)]/40 dark:text-[var(--brand-offwhite)]/40">{t("nav.language") || "Language"}</span>
+                <div className="flex items-center gap-3">
+                  <LanguageSelector />
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--brand-primary)]/40 text-[var(--brand-primary)] transition-colors hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
+                    aria-label="Fechar menu"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
               </div>
 
-              <div className="flex flex-col space-y-6">
+              <div className="flex flex-col divide-y divide-[var(--brand-primary)]/10">
                 {navLinks.map((link) => (
                   <NavLink key={link.href} variant="mobile" href={link.href} onClick={handleNavClick} onMouseEnter={link.preload}>
                     {link.label}
@@ -123,7 +135,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                 ))}
               </div>
 
-              <div className="mt-auto pt-8">
+              <div className="mt-auto pt-6">
                 <PremiumButton onClick={handleContactClick} onMouseEnter={preloadTurnstile} className="w-full" variant="primary">
                   {contactLabel}
                 </PremiumButton>

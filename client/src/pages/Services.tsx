@@ -47,10 +47,8 @@ function ServicesStickyNav({
         ].join(" ")}
       >
       <div className="mx-auto w-full max-w-6xl">
-        <div className="legal-group-title mb-3">
-          {title}
-        </div>
-        <nav className="flex max-h-[calc(100vh-120px)] max-w-sm flex-col gap-1.5 overflow-y-auto pr-1 [scrollbar-width:thin]">
+        <div className="legal-group-title mb-3">{title}</div>
+        <nav className="flex flex-row flex-wrap gap-1.5">
           {sections.map((s) => {
             const Icon = Icons[s.icon] as React.ElementType;
             const isActive = active === s.id;
@@ -60,9 +58,9 @@ function ServicesStickyNav({
                 type="button"
                 onClick={() => onSelect(s.id)}
                 className={[
-                  "flex w-full items-center gap-2.5 rounded-xl border-0 px-3 py-2.5 text-left text-sm font-bold transition-all duration-200",
+                  "flex items-center gap-2 rounded-xl border-0 px-3 py-2 text-sm font-bold transition-all duration-200",
                   isActive
-                    ? "bg-[var(--brand-offwhite)] text-[var(--brand-primary)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid) 12%,transparent)]"
+                    ? "bg-[var(--brand-offwhite)] text-[var(--brand-primary)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid)_12%,transparent)]"
                     : "bg-transparent text-[var(--brand-night)] hover:bg-[var(--brand-offwhite)]/70 hover:text-[var(--brand-primary)]",
                 ].join(" ")}
               >

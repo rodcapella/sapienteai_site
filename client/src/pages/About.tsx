@@ -145,6 +145,35 @@ function AboutOriginSection({ lang }: { lang: "pt" | "en" }) {
   );
 }
 
+// ─── Banner sections ──────────────────────────────────────────────────────────
+
+const aboutBanners = {
+  pt: {
+    founders:      "/media/bg/sobre/pt/bg_Sobre_Founders.webp",
+    howWeWork:     "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
+  },
+  en: {
+    founders:      "/media/bg/sobre/en/bg_Sobre_Founders_en.webp",
+    howWeWork:     "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
+  },
+};
+
+function AboutBannerSection({ src, label }: { src: string; label: string }) {
+  return (
+    <section className="relative block w-full overflow-hidden bg-[var(--section-ice)] m-0 p-0 border-0" aria-label={label}>
+      <Reveal>
+        <img
+          src={src}
+          alt=""
+          aria-hidden="true"
+          className="block w-full h-auto object-contain"
+          loading="lazy"
+        />
+      </Reveal>
+    </section>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function About() {
@@ -152,6 +181,8 @@ export default function About() {
 
   const content = getContent("about", lang);
   const aboutLabel = lang === "pt" ? "Sobre Nós" : t("nav.about");
+  const isPT = lang !== "en";
+  const banners = isPT ? aboutBanners.pt : aboutBanners.en;
 
   useSEOHead(
     {
@@ -178,6 +209,16 @@ export default function About() {
 
       {/* NOSSA HISTÓRIA */}
       <AboutOriginSection lang={lang === "en" ? "en" : "pt"} />
+
+      {/* BANNERS */}
+      <AboutBannerSection
+        src={banners.founders}
+        label={isPT ? "Founders" : "Founders"}
+      />
+      <AboutBannerSection
+        src={banners.howWeWork}
+        label={isPT ? "Como trabalhamos" : "How we work"}
+      />
 
       <QuizCTA />
 

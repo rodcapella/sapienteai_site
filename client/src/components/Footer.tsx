@@ -157,15 +157,6 @@ export default function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="mb-4 h-px bg-[var(--brand-primary)]/20" />
-
-          {/* Newsletter — acção principal */}
-          <div className="mb-4">
-            <p className={cn(footerTitleClass, "mb-3")}>{t("footer.newsletter")}</p>
-            {newsletterBlock}
-          </div>
-
-          {/* Divider */}
           <div className="mb-1 h-px bg-[var(--brand-primary)]/20" />
 
           {/* Navegação — acordeão */}
@@ -233,6 +224,15 @@ export default function Footer() {
 
           {/* Divider */}
           <div className="my-4 h-px bg-[var(--brand-primary)]/20" />
+
+          {/* Newsletter */}
+          <div className="mb-4">
+            <p className={cn(footerTitleClass, "mb-3")}>{t("footer.newsletter")}</p>
+            {newsletterBlock}
+          </div>
+
+          {/* Divider */}
+          <div className="mb-4 h-px bg-[var(--brand-primary)]/20" />
 
           {/* Siga-nos */}
           <div className="mb-4">

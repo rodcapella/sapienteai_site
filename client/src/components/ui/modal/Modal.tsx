@@ -112,7 +112,7 @@ export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children }
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
         showCloseButton={false}
-        className="w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[var(--brand-cyan-bright)]/[0.5] bg-[linear-gradient(145deg,color-mix(in srgb,var(--brand-darkest) 85%,transparent),color-mix(in srgb,var(--brand-darkest) 80%,transparent))] p-0 shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright) 32%,transparent),0_0_60px_color-mix(in_srgb,var(--brand-cyan-bright) 32%,transparent),0_24px_90px_color-mix(in_srgb,var(--brand-darkest) 65%,transparent)] backdrop-blur-2xl sm:max-w-2xl"
+        className="w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[var(--brand-cyan-bright)]/[0.5] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--brand-darkest)_97%,transparent),color-mix(in_srgb,var(--brand-darkest)_95%,transparent))] p-0 shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_0_60px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_24px_90px_color-mix(in_srgb,var(--brand-darkest)_65%,transparent)] backdrop-blur-2xl sm:max-w-2xl"
         aria-describedby={ariaDescribedBy}
       >
         <motion.div

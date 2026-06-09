@@ -71,10 +71,10 @@ export function FinalCTA({
   const isCentered = align ? align === "center" : isHomeVariant || isAboutVariant;
 
   const titleFontSize = isHomeVariant || isAboutVariant
-    ? "clamp(32px, 4vw, 44px)"
-    : "clamp(24px, 5vw, 32px)";
+    ? "clamp(28px, 5vw, 44px)"
+    : "clamp(22px, 4vw, 32px)";
 
-  const descriptionFontSize = "clamp(13px, 1.2vw, 16px)";
+  const descriptionFontSize = "clamp(15px, 1.6vw, 16px)";
 
   const titleColor = isAboutVariant
     ? "var(--brand-night)"
@@ -118,15 +118,15 @@ export function FinalCTA({
   if (isHomeVariant) {
     return (
       <>
-        <section className="final-cta relative w-full overflow-hidden bg-[var(--section-ice)] md:h-[450px]">
+        <section className="final-cta relative w-full overflow-hidden bg-[var(--section-ice)] min-h-[340px] md:min-h-0 md:h-[450px]">
           <img
             src={computedBackgroundSrc}
             alt=""
             aria-hidden="true"
-            className="block h-auto w-full object-contain md:h-full md:object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-center"
           />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
+          <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 py-14 text-center md:absolute md:inset-0 md:py-0">
             <Reveal>
               <h2
                 className="font-black leading-[1.08]"
@@ -173,7 +173,7 @@ export function FinalCTA({
       <Section
         className={cn(
           "final-cta relative overflow-hidden",
-          "min-h-[380px] py-14 md:h-[450px] md:min-h-0 md:py-16",
+          "min-h-0 py-10 md:h-[450px] md:min-h-0 md:py-16",
           isCentered ? "text-center" : "text-left"
         )}
       >

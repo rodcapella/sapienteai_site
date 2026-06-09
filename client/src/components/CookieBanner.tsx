@@ -211,6 +211,20 @@ export default function CookieBanner() {
     }
   }, []);
 
+  // Reabre o banner quando o botão flutuante de cookies é clicado
+  useEffect(() => {
+    const handleOpenPreferences = () => {
+      const stored = getStoredPreferences();
+      if (stored) setPreferences(stored);
+      setShowPreferences(true);
+      setShowBanner(true);
+      requestAnimationFrame(() => setIsVisible(true));
+    };
+
+    window.addEventListener(OPEN_PREFERENCES_EVENT, handleOpenPreferences);
+    return () => window.removeEventListener(OPEN_PREFERENCES_EVENT, handleOpenPreferences);
+  }, []);
+
   const dismiss = () => {
     setIsVisible(false);
     window.setTimeout(() => setShowBanner(false), 300);
@@ -262,7 +276,7 @@ export default function CookieBanner() {
       <aside
         role="dialog"
         className={[
-          "fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-5xl rounded-xl border border-[var(--brand-cyan-bright)] bg-[var(--brand-offwhite)] p-2.5 sm:inset-x-4 sm:bottom-4 sm:rounded-2xl sm:p-4",
+          "fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-5xl rounded-xl border border-[var(--brand-cyan-bright)] bg-[var(--brand-offwhite)] p-2.5 transition duration-300 ease-out sm:inset-x-4 sm:bottom-4 sm:rounded-2xl sm:p-4",
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         ].join(" ")}
       >

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 
 import { useTranslation } from "@/hooks/useTranslation";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { ArrowRight } from "@/lib/icons";
 import ContactModal from "@/components/ContactModal";
 
@@ -80,18 +81,34 @@ export default function Home() {
   const isPT = lang === "pt";
   const content = isPT ? homePT : homeEN;
 
+  useSEOHead({
+    title: isPT
+      ? "Sapiente.AI - Inteligência Artificial Aplicada | Transformação Digital"
+      : "Sapiente.AI - Applied Artificial Intelligence | Digital Transformation",
+    description: isPT
+      ? "Soluções de IA aplicada para transformação digital. Machine Learning, IA Generativa, Automação Inteligente."
+      : "Applied AI solutions for digital transformation. Machine Learning, Generative AI, Intelligent Automation.",
+    url: `https://sapienteai.com/${lang}`,
+  }, [lang]);
+
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
     <div className="home-page flex flex-col bg-[var(--section-ice)]">
       <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
-        <div className="flex flex-col items-start justify-start gap-5 sm:flex-row sm:gap-8">
+        <div className="flex w-full flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-6">
           <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full !rounded-2xl sm:w-auto sm:!rounded-full">
             {content.hero.ctaPrimary}
           </PremiumButton>
 
-          <motion.button type="button" whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} className="group inline-flex items-center gap-4 rounded-full border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.2em] text-[var(--brand-offwhite)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-[var(--brand-offwhite)] hover:shadow-[0_0_35px_color-mix(in_srgb,var(--brand-primary) 45%,transparent)]" onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}>
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--brand-offwhite)]/45 bg-[var(--brand-offwhite)]/15 text-[var(--brand-offwhite)] transition-transform duration-500 group-hover:translate-x-1">
+          <motion.button
+            type="button"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-offwhite)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:shadow-[0_0_35px_color-mix(in_srgb,var(--brand-primary)_45%,transparent)] sm:w-auto sm:justify-start sm:rounded-full"
+            onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--brand-offwhite)]/45 bg-[var(--brand-offwhite)]/15 text-[var(--brand-offwhite)] transition-transform duration-500 group-hover:translate-x-1">
               <ArrowRight className="h-4 w-4" />
             </span>
             {content.hero.ctaSecondary}
@@ -107,12 +124,12 @@ export default function Home() {
           file={banner}
           desktopHeight={index === 0 || index === 4 || index === 5 ? 480 : undefined}
           label={[
-            isPT ? "O que nos diferencia" : "What makes us different",
-            content.coreServices.label,
-            content.coreServices.title,
-            content.marketingAI.title,
-            content.beforeAfter.title,
-            content.brandPersonality.title,
+            content.bannerLabels.whatMakesDifferent,
+            content.bannerLabels.coreServices,
+            content.bannerLabels.marketing,
+            content.bannerLabels.automation,
+            content.bannerLabels.beforeAfter,
+            content.bannerLabels.brandPersonality,
           ][index]}
         />
       ))}

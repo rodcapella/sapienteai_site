@@ -27,8 +27,10 @@ export function InternalHero({
   return (
     <Section
       className={[
-        "InternalHero hero relative flex items-center justify-start overflow-hidden",
-        compact ? "min-h-[520px] pt-24 pb-16 md:min-h-[580px] md:pt-40 md:pb-24" : "min-h-[520px] pt-24 pb-16 md:min-h-[720px] md:pt-40 md:pb-28",
+        "InternalHero hero relative flex items-start justify-start overflow-hidden",
+        compact
+          ? "min-h-[480px] pt-16 pb-10 md:min-h-[580px] md:pt-40 md:pb-24"
+          : "min-h-[520px] pt-16 pb-12 md:min-h-[720px] md:pt-40 md:pb-28",
       ].join(" ")}
     >
       <div
@@ -38,22 +40,31 @@ export function InternalHero({
         aria-label={imageAlt}
       />
 
-      <div className="relative z-10 w-full max-w-6xl px-8 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
+      <div className="relative z-10 w-full max-w-6xl px-5 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
         {label && (
           <Reveal>
-            <div className="inline-flex items-center rounded-xl border-2 bg-transparent px-5 py-2 text-[10px] font-black uppercase tracking-[0.18em] text-white sm:rounded-full sm:px-6 sm:py-2.5 sm:text-xs sm:tracking-[0.32em]" style={{ borderColor: "var(--brand-primary)", fontFamily: "var(--font-detail)" }}>
+            <div
+              className="inline-flex items-center rounded-xl border-2 bg-transparent px-4 py-1.5 text-[9px] font-black uppercase tracking-[0.14em] text-white sm:rounded-full sm:px-6 sm:py-2.5 sm:text-xs sm:tracking-[0.28em]"
+              style={{ borderColor: "var(--brand-primary)", fontFamily: "var(--font-detail)" }}
+            >
               {label}
             </div>
           </Reveal>
         )}
 
         <Reveal delay={100}>
-          <h1 className="mt-10 max-w-5xl font-extrabold leading-[1.02] drop-shadow-[0_8px_32px_color-mix(in_srgb,black 58%,transparent)]" style={{ fontFamily: "var(--font-heading)", color: "white", fontSize: "clamp(26px, 5.5vw, 40px)" }}>
+          <h1
+            className="mt-4 max-w-5xl font-extrabold leading-[1.05] drop-shadow-[0_8px_32px_color-mix(in_srgb,black_58%,transparent)]"
+            style={{ fontFamily: "var(--font-heading)", color: "white", fontSize: "clamp(26px, 6vw, 40px)" }}
+          >
             {title}
             {highlight && (
               <>
                 <br />
-                <span className="internal-hero-highlight" style={{ fontFamily: "var(--font-heading)", color: "var(--brand-primary)", WebkitTextFillColor: "var(--brand-primary)", fontSize: "clamp(26px, 5.5vw, 40px)" }}>
+                <span
+                  className="internal-hero-highlight"
+                  style={{ fontFamily: "var(--font-heading)", color: "var(--brand-primary)", WebkitTextFillColor: "var(--brand-primary)", fontSize: "clamp(26px, 6vw, 40px)" }}
+                >
                   {highlight}
                 </span>
               </>
@@ -63,7 +74,10 @@ export function InternalHero({
 
         {subtitle && (
           <Reveal delay={200}>
-            <p className="mt-8 max-w-4xl leading-relaxed drop-shadow-[0_4px_18px_color-mix(in_srgb,black 45%,transparent)]" style={{ fontFamily: "var(--font-body)", color: "white", fontSize: "18px" }}>
+            <p
+              className="mt-3 max-w-4xl whitespace-pre-line leading-relaxed drop-shadow-[0_4px_18px_color-mix(in_srgb,black_45%,transparent)]"
+              style={{ fontFamily: "var(--font-body)", color: "white", fontSize: "clamp(13px, 2vw, 17px)" }}
+            >
               {subtitle}
             </p>
           </Reveal>
@@ -71,7 +85,7 @@ export function InternalHero({
 
         {children && (
           <Reveal delay={280}>
-            <div className="mt-10 max-w-3xl">{children}</div>
+            <div className="mt-8 w-full max-w-3xl">{children}</div>
           </Reveal>
         )}
       </div>

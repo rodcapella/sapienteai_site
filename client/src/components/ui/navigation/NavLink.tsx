@@ -36,10 +36,18 @@ const navLinkVariants = cva(
         `,
 
         mobile: `
-          w-full border border-[var(--brand-primary)]/30 rounded-xl px-4 py-3
-          text-[var(--brand-primary)] hover:text-[var(--brand-cyan-bright)]
-          hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10
-          text-base font-black
+          w-full py-2.5 text-[15px]
+          text-[var(--brand-night)] hover:text-[var(--brand-cyan-bright)]
+          dark:text-[var(--brand-primary)] dark:hover:text-[var(--brand-cyan-bright)]
+
+          after:absolute after:left-0 after:-bottom-0.5
+          after:h-[2px] after:w-full
+          after:bg-[var(--brand-gradient-border)]
+          after:rounded-full
+          after:origin-left after:scale-x-0
+          after:transition-transform after:duration-500
+
+          group-hover:after:scale-x-100
         `
       },
 
