@@ -2,8 +2,6 @@
 import { Link, useLocation } from 'wouter';
 import { ArrowRight, Calendar, Search, Tag, User } from "@/lib/icons";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import NewsletterModal from '@/components/NewsletterModal';
 
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -55,8 +53,7 @@ export default function Blog() {
   }, [allCategory, selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
+    <div className="flex flex-col">
 
       <InternalHero label={t('nav.blog')} title={t('blog.title')} subtitle={t('blog.subtitle')} compact>
         <div className="relative mx-auto max-w-xl">
@@ -181,8 +178,6 @@ export default function Blog() {
       </Section>
 
       <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
-
-      <Footer />
     </div>
   );
 }

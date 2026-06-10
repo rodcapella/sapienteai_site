@@ -8,6 +8,7 @@ interface SEOConfig {
   url?: string;
   type?: "website" | "article";
   keywords?: string;
+  noindex?: boolean;
 }
 
 /**

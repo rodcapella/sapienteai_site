@@ -7,73 +7,26 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 
-// ─── Nossa História / Our Story ───────────────────────────────────────────────
+type AboutOriginContent = {
+  eyebrow: string;
+  title: string;
+  titleBrand: string;
+  titleSuffix: string;
+  paragraphs: string[];
+  cards: {
+    icon: string;
+    title: string;
+    text: string;
+  }[];
+};
 
-const originContent = {
-  pt: {
-    eyebrow: "A nossa história",
-    title: "Como a",
-    titleBrand: "SAPIENTE.AI",
-    titleSuffix: "nasceu",
-    paragraphs: [
-      "Vimos o mesmo problema repetido em dezenas de negócios: empresas a contratar agências que entregavam relatórios bonitos sem resultados, ferramentas que ninguém sabia usar, e consultores que desapareciam após o diagnóstico.",
-      "O mercado estava fragmentado. Cada fornecedor entregava uma peça, mas ninguém montava o puzzle completo.",
-      "Criámos a Sapiente.AI para ser exactamente o contrário disso. Um parceiro único que pensa o negócio de forma integrada e executa do início ao fim, com transparência e métricas reais.",
-      "Hoje, combinamos tecnologia de ponta com proximidade humana. Trabalhamos como se fôssemos parte da equipa dos nossos clientes porque acreditamos que é assim que a transformação digital realmente acontece.",
-    ],
-    cards: [
-      {
-        icon: "Eye",
-        title: "VISÃO",
-        text: "Ser uma referência em inovação tecnológica para PMEs e profissionais no mercado lusófono, aplicando IA com rigor e validação humana para gerar crescimento sustentável.",
-      },
-      {
-        icon: "Handshake",
-        title: "MISSÃO",
-        text: "Criamos soluções digitais que fazem negócios crescer, automatizam operações e transformam dados em decisões estratégicas combinando expertise humana com IA avançada.",
-      },
-      {
-        icon: "Target",
-        title: "POSICIONAMENTO",
-        text: "Não somos uma agência. Não somos uma consultoria. Somos o parceiro tecnológico que une estratégia, execução e IA num só lugar.",
-      },
-    ],
-  },
-  en: {
-    eyebrow: "Our story",
-    title: "How",
-    titleBrand: "SAPIENTE.AI",
-    titleSuffix: "was born",
-    paragraphs: [
-      "We saw the same problem repeated across dozens of businesses: companies hiring agencies that delivered polished reports without results, tools nobody knew how to use, and consultants who disappeared after the diagnosis.",
-      "The market was fragmented. Each vendor delivered a piece, but nobody assembled the full picture.",
-      "We built Sapiente.AI to be exactly the opposite. A single partner that thinks about your business holistically and executes from start to finish, with full transparency and real metrics.",
-      "Today, we combine cutting-edge technology with human proximity. We work as if we were part of our clients' teams because we believe that's how digital transformation truly happens.",
-    ],
-    cards: [
-      {
-        icon: "Eye",
-        title: "VISION",
-        text: "To be a reference in technological innovation for SMEs and professionals in the Portuguese-speaking market, applying AI with rigour and human validation to generate sustainable growth.",
-      },
-      {
-        icon: "Handshake",
-        title: "MISSION",
-        text: "We create digital solutions that grow businesses, automate operations and transform data into strategic decisions, combining human expertise with advanced AI.",
-      },
-      {
-        icon: "Target",
-        title: "POSITIONING",
-        text: "We're not an agency. We're not a consultancy. We're the technology partner that unites strategy, execution and AI in one place.",
-      },
-    ],
-  },
-} as const;
+type AboutVisualSectionContent = {
+  image: string;
+  alt: string;
+};
 
-type Lang = keyof typeof originContent;
-
-function AboutOriginSection({ lang }: { lang: Lang }) {
-  const c = originContent[lang];
+function AboutOriginSection({ content }: { content: AboutOriginContent }) {
+  const c = content;
 
   return (
     <section className="bg-white px-6 py-16 md:py-24">
@@ -81,7 +34,7 @@ function AboutOriginSection({ lang }: { lang: Lang }) {
         <Reveal>
           <div className="flex flex-col gap-6">
             <p
-              className="text-[13px] font-semibold italic text-[var(--brand-primary)]"
+              className="text-[17px] font-semibold uppercase text-[var(--brand-primary)]"
               style={{ fontFamily: "var(--font-heading)" }}
             >
               {c.eyebrow}
@@ -115,7 +68,7 @@ function AboutOriginSection({ lang }: { lang: Lang }) {
 
         <div className="flex flex-col gap-4">
           {c.cards.map((card, index) => {
-            const Icon = Icons[card.icon];
+            const Icon = Icons[card.icon as keyof typeof Icons];
 
             if (!Icon) return null;
 
@@ -151,6 +104,26 @@ function AboutOriginSection({ lang }: { lang: Lang }) {
   );
 }
 
+function AboutVisualSection({ content }: { content: AboutVisualSectionContent }) {
+  return (
+    <section className="bg-white px-4 py-5 md:px-6 md:py-8">
+      <Reveal>
+        <div className="mx-auto max-w-7xl overflow-x-auto rounded-2xl md:overflow-visible">
+          <img
+            src={content.image}
+            alt={content.alt}
+            width={1920}
+            height={700}
+            className="aspect-[1920/700] h-auto w-[920px] max-w-none md:w-full"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function About() {
@@ -158,7 +131,6 @@ export default function About() {
 
   const content = getContent("about", lang);
   const isPT = lang !== "en";
-  const pageLang: Lang = isPT ? "pt" : "en";
   const aboutLabel = isPT ? "Sobre Nós" : t("nav.about");
 
   useSEOHead(
@@ -182,7 +154,9 @@ export default function About() {
         imageAlt="Sapiente.AI"
       />
 
-      <AboutOriginSection lang={pageLang} />
+      <AboutOriginSection content={content.origin} />
+      <AboutVisualSection content={content.visualSections.founders} />
+      <AboutVisualSection content={content.visualSections.howWeWork} />
 
       <QuizCTA />
 
@@ -190,9 +164,10 @@ export default function About() {
         title={content.cta.title}
         title_highlight={content.cta.title_highlight}
         description={content.cta.description}
+        description_highlight={content.cta.description_highlight}
         button={content.cta.button}
         variant="about"
-        backgroundSrc="/media/bg/finalCTA/final_CTA_servicos.webp"
+        backgroundSrc="/media/bg/finalCTA/final_CTA_sobre.webp"
       />
     </div>
   );

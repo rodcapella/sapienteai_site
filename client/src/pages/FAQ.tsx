@@ -74,7 +74,7 @@ export default function FAQ() {
   useSEOHead({
     title: `${content.title} - Sapiente.AI`,
     description: content.subtitle,
-    url: `${window.location.origin}/${lang}/faq`,
+    url: `https://www.sapienteai.com/${lang}/faq`,
     type: "website",
   }, [lang, content]);
 

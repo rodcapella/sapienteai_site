@@ -55,7 +55,7 @@ function ServicesStickyNav({
                 type="button"
                 onClick={() => onSelect(s.id)}
                 className={[
-                  "flex items-center gap-2 rounded-xl border-0 px-3 py-2 text-sm font-bold transition-all duration-200",
+                  "flex min-h-11 items-center gap-2 rounded-xl border-0 px-3 py-2 text-sm font-bold transition-all duration-200",
                   isActive
                     ? "bg-[var(--brand-offwhite)] text-[var(--brand-primary)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid)_12%,transparent)]"
                     : "bg-transparent text-[var(--brand-night)] hover:bg-[var(--brand-offwhite)]/70 hover:text-[var(--brand-primary)]",
@@ -153,12 +153,12 @@ export default function Services() {
                         key={section.id}
                         id={`service-${section.id}`}
                         aria-label={section.navLabel}
-                        className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat px-5 py-5 md:min-h-[420px] md:px-10 lg:px-12"
+                        className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat px-4 py-5 md:min-h-[420px] md:px-10 lg:px-12"
                         style={{ backgroundImage: `url(${section.backgroundImage})` }}
                       >
                         <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
-                            <div className="max-w-[440px] rounded-2xl bg-white/90 p-5 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:py-5 lg:bg-transparent lg:p-0 lg:shadow-none">
+                            <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:bg-transparent lg:p-0 lg:shadow-none">
                               <p className="mb-4 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
                                 {data.eyebrow}
                               </p>
@@ -194,7 +194,7 @@ export default function Services() {
                           </Reveal>
 
                           <Reveal delay={120}>
-                            <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/90 p-5 sm:ml-auto sm:max-w-[390px] font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
+                            <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 sm:ml-auto sm:max-w-[390px] md:p-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
                               {data.bullets.map((bullet) => (
                                 <li key={bullet} className="flex items-start gap-4">
                                   <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
@@ -225,6 +225,7 @@ export default function Services() {
         description_highlight={content.finalCta.description_highlight}
         button={content.finalCta.button}
         variant="services"
+        backgroundSrc="/media/bg/finalCTA/final_CTA_servicos.webp"
       />
 
       <ContactModal

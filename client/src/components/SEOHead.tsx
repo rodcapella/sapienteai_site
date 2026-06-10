@@ -10,6 +10,7 @@ interface SEOHeadProps {
   url?: string;
   type?: 'website' | 'article';
   keywords?: string;
+  noindex?: boolean;
 }
 
 function formatPageTitle(title: string) {
@@ -26,10 +27,11 @@ function formatPageTitle(title: string) {
 export function setSEOHead({
   title,
   description,
-  image = '/media/logos/logo_sapiente_transparente.webp',
-  url = 'https://sapienteai.com',
+  image = 'https://www.sapienteai.com/media/logos/Logo_Sapiente_fundo_escuro.webp',
+  url = 'https://www.sapienteai.com',
   type = 'website',
-  keywords = 'inteligência artificial, machine learning, IA generativa, automação, transformação digital'
+  keywords = 'inteligência artificial, machine learning, IA generativa, automação, transformação digital',
+  noindex = false,
 }: SEOHeadProps) {
   const formattedTitle = formatPageTitle(title);
 
@@ -54,6 +56,7 @@ export function setSEOHead({
 
   updateMetaTag('description', description);
   updateMetaTag('keywords', keywords);
+  updateMetaTag('robots', noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
 
   updateMetaTag('og:title', formattedTitle, true);
   updateMetaTag('og:description', description, true);

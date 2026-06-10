@@ -9,10 +9,12 @@ export function Section({ className, ...props }: React.ComponentProps<"section">
     !classes.includes("hero") &&
     !classes.includes("InternalHero");
 
+  const isHero = classes.includes("hero") || classes.includes("InternalHero");
+
   return (
     <section
       className={cn(
-        "py-16 md:py-32 px-6",
+        isHero ? "py-16 md:py-32" : "py-16 md:py-32 px-6",
         shouldUseStandardBackground && "standard-section-bg",
         className,
       )}

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 
 import ContactModal from "@/components/ContactModal";
@@ -22,6 +22,8 @@ export default function Header({ onContactClick }: HeaderProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -29,6 +31,50 @@ export default function Header({ onContactClick }: HeaderProps) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Focus management: move focus into overlay when open, return when closed
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      closeBtnRef.current?.focus();
+    } else {
+      menuBtnRef.current?.focus();
+    }
+  }, [isMobileMenuOpen]);
+
+  // Trap focus within overlay + close on Escape
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+
+      const overlay = document.getElementById("mobile-nav");
+      if (!overlay) return;
+
+      const focusable = Array.from(
+        overlay.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileMenuOpen]);
 
   const handleContactClick = () => {
     if (onContactClick) onContactClick();
@@ -104,9 +150,12 @@ export default function Header({ onContactClick }: HeaderProps) {
             <div className="col-start-3 flex items-center justify-end gap-3 lg:hidden">
               {/* ThemeToggle temporariamente desativado: primeira versão será lançada apenas com tema claro. */}
               <button
+                ref={menuBtnRef}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-cyan-mid)]/[0.12] hover:text-[var(--brand-cyan-bright)] dark:bg-[var(--brand-near-dark2)]"
-                aria-label="Toggle menu"
+                aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-nav"
                 type="button"
               >
                 {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -116,6 +165,10 @@ export default function Header({ onContactClick }: HeaderProps) {
 
           {/* Mobile overlay — sempre presente, animado por translate+opacity */}
           <div
+            id="mobile-nav"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navegação"
             className={cn(
               "fixed inset-0 z-40 flex flex-col bg-white dark:bg-[var(--brand-near-dark)] lg:hidden",
               "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
@@ -139,6 +192,7 @@ export default function Header({ onContactClick }: HeaderProps) {
               <div className="flex items-center gap-3">
                 <LanguageSelector />
                 <button
+                  ref={closeBtnRef}
                   type="button"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--brand-primary)]/30 text-[var(--brand-primary)] transition-colors hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"

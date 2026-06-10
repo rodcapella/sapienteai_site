@@ -178,8 +178,6 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       payload.append("turnstile_token", turnstileToken || "verification_unavailable");
       payload.append("turnstile_status", turnstileToken ? "verified" : "unavailable");
       payload.append("_subject", `${text.subject} - ${formData.topic.trim()} - ${formData.name.trim()}`);
-      payload.append("_captcha", "false");
-
       const response = await fetch("https://formsubmit.co/contato@sapienteai.com", {
         method: "POST",
         headers: { Accept: "application/json" },

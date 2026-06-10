@@ -104,6 +104,7 @@
 .faq-cat,
 .legal-cat {
   display: flex;
+  min-height: 44px;
   align-items: flex-start;
   gap: 10px;
   padding: 10px 14px;
@@ -439,7 +440,7 @@
 
   .faq-cat,
   .legal-cat {
-    padding: 7px 12px;
+    padding: 9px 12px;
     font-size: 13px;
   }
 }

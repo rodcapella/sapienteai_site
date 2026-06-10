@@ -1,9 +1,6 @@
 ﻿import { useState, useEffect } from 'react';
 import { Calendar, Search, User } from "@/lib/icons";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
@@ -21,8 +18,9 @@ export default function News() {
     title: 'Notícias de IA - Sapiente.AI',
     description: 'Últimas novidades em inteligência artificial.',
     keywords: 'IA, notícias, machine learning',
-    url: 'https://sapienteai.com/noticias',
-    type: 'website'
+    url: 'https://sapienteai.com/pt/news',
+    type: 'website',
+    noindex: true,
   }, []);
 
   const articles = [
@@ -34,7 +32,7 @@ export default function News() {
       date: '2026-02-25',
       category: 'Releases',
       tags: ['GPT-5', 'OpenAI'],
-      image: 'https://via.placeholder.com/600x400',
+      image: '/media/banners/PT/home_o_que_nos_diferencia.webp',
       featured: true
     }
   ];
@@ -44,9 +42,7 @@ export default function News() {
   );
 
   return (
-    <div className="standard-section-bg min-h-screen text-[var(--brand-offwhite)] relative overflow-hidden">
-
-      <Header />
+    <div className="standard-section-bg text-[var(--brand-offwhite)] relative overflow-hidden">
 
       <InternalHero label="News" title="AI Updates & Releases" subtitle="Acompanhe as tendências e lançamentos mais relevantes em IA." compact>
           <div className="relative mx-auto max-w-xl">
@@ -165,7 +161,6 @@ export default function News() {
         </div>
       </Section>
 
-      <Footer />
     </div>
   );
 }
