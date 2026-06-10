@@ -237,5 +237,32 @@ export const faqPT = {
       answer:
         "Sim. Assinamos NDAs, usamos encriptação e controlo de acessos. Os seus dados são seus, nós apenas extraímos valor deles.",
     },
+
+    // ─── CAUDA LONGA — alto valor de pesquisa ─────────────────────────────────
+    {
+      question: "Quanto custa contratar um serviço de automação com IA para PME?",
+      answer:
+        "O investimento varia consoante a complexidade do processo a automatizar. Projetos simples de automação (como respostas automáticas, follow-ups ou relatórios) podem começar entre 500€ e 1.500€. Soluções mais completas de integração de sistemas ou machine learning personalizado situam-se geralmente entre 2.000€ e 10.000€. Oferecemos sempre um diagnóstico gratuito antes de qualquer proposta.",
+    },
+    {
+      question: "Qual o preço de um website com IA e otimizado para conversão em Portugal?",
+      answer:
+        "Um website profissional orientado à conversão, com copywriting estratégico, SEO técnico e integração de ferramentas de IA (como chatbot ou formulários inteligentes), tem um investimento típico entre 1.500€ e 5.000€ dependendo do número de páginas e funcionalidades. Inclui sempre otimização para motores de pesquisa (SEO e GEO).",
+    },
+    {
+      question: "Qual é a diferença entre usar o ChatGPT e contratar automação personalizada?",
+      answer:
+        "O ChatGPT é uma ferramenta genérica — responde a perguntas mas não conhece o seu negócio, os seus clientes nem os seus processos. A automação personalizada integra IA diretamente nos seus sistemas (CRM, email, ERP, website) e é treinada com os dados da sua empresa. O resultado: automação que trabalha 24/7 especificamente para os seus objetivos, não para os de toda a gente.",
+    },
+    {
+      question: "A Sapiente.AI trabalha com empresas em Portugal e no Brasil?",
+      answer:
+        "Sim. Temos clientes em Portugal (principalmente na região de Aveiro, Porto e Lisboa) e no Brasil. Trabalhamos 100% remotamente e online, pelo que a localização não é uma limitação. As nossas soluções são desenvolvidas em português europeu e brasileiro conforme o contexto do cliente.",
+    },
+    {
+      question: "Como posso implementar um chatbot inteligente no meu negócio?",
+      answer:
+        "O processo tem 3 fases: (1) Diagnóstico — identificamos os casos de uso mais valiosos (atendimento, qualificação de leads, suporte pós-venda); (2) Desenvolvimento — configuramos e treinamos o chatbot com o conteúdo e tom de voz da sua marca; (3) Integração — ligamos ao seu website, WhatsApp, Instagram ou CRM. Um chatbot básico pode estar operacional em 2 a 4 semanas. Contacte-nos para uma demonstração gratuita.",
+    },
   ],
 };

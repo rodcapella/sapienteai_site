@@ -1,4 +1,7 @@
-﻿import { QuizCTA } from "@/components/ui/cta/QuizCTA";
+﻿import { useEffect } from "react";
+import { useState } from "react";
+
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
@@ -23,6 +26,19 @@ type AboutOriginContent = {
 type AboutVisualSectionContent = {
   image: string;
   alt: string;
+  links?: {
+    label: string;
+    options: {
+      label: string;
+      href: string;
+    }[];
+    area: {
+      left: string;
+      top: string;
+      width: string;
+      height: string;
+    };
+  }[];
 };
 
 function AboutOriginSection({ content }: { content: AboutOriginContent }) {
@@ -104,17 +120,75 @@ function AboutOriginSection({ content }: { content: AboutOriginContent }) {
   );
 }
 
-function AboutVisualSection({ content }: { content: AboutVisualSectionContent }) {
+function AboutVisualSection({ content, founders }: { content: AboutVisualSectionContent; founders?: { label: string; names: string[] } }) {
+  const [activeFounder, setActiveFounder] = useState<number | null>(null);
+
   return (
     <section
       className="relative w-full overflow-hidden bg-white aspect-[1920/700] bg-contain bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${content.image})` }}
       aria-label={content.alt}
-    />
+    >
+      {content.links?.map((link, index) => {
+        const menuId = `founder-link-options-${index}`;
+        const menuTop = `calc(${link.area.top} + 10%)`;
+        const menuTransform = index === 0 ? "translateX(-40%)" : undefined;
+
+        return (
+          <div key={link.label}>
+            <button
+              type="button"
+              aria-label={`Escolher link de ${link.label}`}
+              aria-expanded={activeFounder === index}
+              aria-controls={menuId}
+              className="absolute rounded-2xl outline-none transition focus-visible:ring-4 focus-visible:ring-[var(--brand-primary)]/70"
+              style={link.area}
+              onClick={() =>
+                setActiveFounder((current) => (current === index ? null : index))
+              }
+            />
+
+            {activeFounder === index && (
+              <div
+                id={menuId}
+                className="absolute z-20 flex min-w-[136px] flex-col gap-1 rounded-xl border border-[var(--brand-primary)]/20 bg-white/95 p-2 shadow-xl backdrop-blur-sm sm:min-w-[160px]"
+                style={{ left: link.area.left, top: menuTop, transform: menuTransform }}
+              >
+                <p
+                  className="px-2 pb-1 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--brand-night)]"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {link.label}
+                </p>
+                {link.options.map((option) => (
+                  <a
+                    key={option.href}
+                    href={option.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg px-3 py-2 text-[12px] font-bold text-[var(--brand-primary)] transition hover:bg-[var(--surface)] focus-visible:bg-[var(--surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]/60 sm:text-[13px]"
+                  >
+                    {option.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Texto dos founders visível para crawlers e LLMs mas visualmente integrado na imagem */}
+      {founders && (
+        <div className="sr-only" data-speakable>
+          <p>{founders.label}</p>
+          {founders.names.map((name) => <span key={name}>{name}</span>)}
+        </div>
+      )}
+    </section>
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
+// -----------------------------------------------------------------------------
 
 export default function About() {
   const { t, lang } = useTranslation();
@@ -125,13 +199,71 @@ export default function About() {
 
   useSEOHead(
     {
-      title: `${aboutLabel} - SAPIENTE.AI`,
-      description: content.hero.title,
-      url: `https://sapienteai.com/${lang}/about`,
+      title: `${aboutLabel} - Sapiente.AI`,
+      description: content.seoDescription,
+      url: `https://www.sapienteai.com/${lang}/about`,
       type: "website",
     },
     [lang, content, aboutLabel],
   );
+
+  // Inject Person schema for founders — E-E-A-T + GEO entity recognition
+  useEffect(() => {
+    const foundersSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": isPT ? "Fundadores da Sapiente.AI" : "Sapiente.AI Founders",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Person",
+            "name": "Rodrigo Póvoa",
+            "jobTitle": isPT ? "Co-fundador" : "Co-founder",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Sapiente.AI",
+              "url": "https://www.sapienteai.com"
+            },
+            "url": "https://www.rpovoadata.tech/",
+            "sameAs": [
+              "https://www.linkedin.com/in/rodrigocspovoa/",
+              "https://www.rpovoadata.tech/"
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Person",
+            "name": "Tatiane Gomes",
+            "jobTitle": isPT ? "Co-fundadora" : "Co-founder",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Sapiente.AI",
+              "url": "https://www.sapienteai.com"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/tatiane-gomes-333098302/",
+              "https://www.instagram.com/tatianegomespovoa"
+            ]
+          }
+        }
+      ]
+    };
+    const id = "founders-schema-ld";
+    let el = document.getElementById(id) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement("script");
+      el.id = id;
+      el.type = "application/ld+json";
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(foundersSchema);
+    return () => { document.getElementById(id)?.remove(); };
+  }, [isPT]);
 
   return (
     <div className="flex flex-col">
@@ -146,7 +278,15 @@ export default function About() {
       />
 
       <AboutOriginSection content={content.origin} />
-      <AboutVisualSection content={content.visualSections.founders} />
+      <AboutVisualSection
+        content={content.visualSections.founders}
+        founders={{
+          label: isPT ? "Fundadores da Sapiente.AI, empresa de inteligência artificial sediada em Aveiro, Portugal." : "Founders of Sapiente.AI, an applied AI company based in Aveiro, Portugal.",
+          names: isPT
+            ? ["Rodrigo Póvoa, co-fundador da Sapiente.AI.", "Tatiane Gomes, co-fundadora da Sapiente.AI."]
+            : ["Rodrigo Póvoa, co-founder of Sapiente.AI.", "Tatiane Gomes, co-founder of Sapiente.AI."]
+        }}
+      />
       <AboutVisualSection content={content.visualSections.howWeWork} />
 
       <QuizCTA />

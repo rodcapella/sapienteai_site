@@ -132,7 +132,7 @@ export default function Sitemap() {
   useSEOHead({
     title: `${content.label} - Sapiente.AI`,
     description: content.subtitle,
-    url: `https://sapienteai.com/${lang}/sitemap`,
+    url: `https://www.sapienteai.com/${lang}/sitemap`,
     type: "website",
   }, [content, lang]);
 

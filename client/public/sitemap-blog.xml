@@ -2,27 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://sapienteai.com/pt/blog/artificial-intelligence-revolutionizing-business</loc>
-    <priority>0.8</priority>
+    <loc>https://www.sapienteai.com/pt/blog/artificial-intelligence-revolutionizing-business</loc>
+    <lastmod>2026-06-10</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/blog/practical-machine-learning-real-applications</loc>
-    <priority>0.8</priority>
+    <loc>https://www.sapienteai.com/pt/blog/practical-machine-learning-real-applications</loc>
+    <lastmod>2026-06-10</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/blog/ai-trends-2026-what-to-expect</loc>
-    <priority>0.8</priority>
+    <loc>https://www.sapienteai.com/pt/blog/ai-trends-2026-what-to-expect</loc>
+    <lastmod>2026-06-10</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/blog/artificial-intelligence-revolutionizing-business</loc>
-    <priority>0.8</priority>
+    <loc>https://www.sapienteai.com/en/blog/artificial-intelligence-revolutionizing-business</loc>
+    <lastmod>2026-06-10</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/blog/practical-machine-learning-real-applications</loc>
-    <priority>0.8</priority>
+    <loc>https://www.sapienteai.com/en/blog/practical-machine-learning-real-applications</loc>
+    <lastmod>2026-06-10</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/blog/ai-trends-2026-what-to-expect</loc>
-    <priority>0.8</priority>
+    <loc>https://www.sapienteai.com/en/blog/ai-trends-2026-what-to-expect</loc>
+    <lastmod>2026-06-10</lastmod>
+    <priority>0.7</priority>
   </url>
+
 </urlset>

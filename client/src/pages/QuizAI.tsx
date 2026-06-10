@@ -23,11 +23,13 @@ export default function QuizAI() {
   const lang: QuizLang = rawLang === "en" ? "en" : "pt";
 
   useSEOHead({
-    title: lang === "en" ? "AI Quiz" : "Quiz IA",
-    description:
-      lang === "en"
-        ? "Artificial Intelligence business assessment."
-        : "Avaliação do potencial de Inteligência Artificial para empresas.",
+    title: lang === "en"
+      ? "AI Readiness Quiz — Discover your business's AI potential · Sapiente.AI"
+      : "Quiz IA — Descubra o potencial de Inteligência Artificial do seu negócio · Sapiente.AI",
+    description: lang === "en"
+      ? "Answer 10 quick questions and get a personalised report on where AI and automation can reduce costs, increase sales and save time in your business."
+      : "Responda a 10 perguntas rápidas e receba um relatório personalizado sobre onde a IA e automação podem reduzir custos, aumentar vendas e poupar tempo no seu negócio.",
+    url: `https://www.sapienteai.com/${lang}/${lang === "en" ? "quiz-ai" : "quiz-ia"}`,
   }, [lang]);
 
   const [screen, setScreen] = useState<QuizScreen>("start");

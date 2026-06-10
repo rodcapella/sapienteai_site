@@ -79,6 +79,7 @@ export default function FAQ() {
   }, [lang, content]);
 
   useEffect(() => {
+    // Schema completo (todas as perguntas) — crawlers que executam JS
     const existing = document.getElementById("faq-schema");
     if (existing) existing.remove();
 
@@ -89,8 +90,20 @@ export default function FAQ() {
     script.innerHTML = JSON.stringify(schema);
     document.head.appendChild(script);
 
+    // Schema parcial estático (top 8) — crawlers que NÃO executam JS (Bing, Perplexity, etc.)
+    const existingStatic = document.getElementById("faq-schema-static");
+    if (existingStatic) existingStatic.remove();
+
+    const staticSchema = generateFAQSchema(content.items.slice(0, 8));
+    const staticScript = document.createElement("script");
+    staticScript.id = "faq-schema-static";
+    staticScript.type = "application/ld+json";
+    staticScript.innerHTML = JSON.stringify(staticSchema);
+    document.head.insertBefore(staticScript, document.head.firstChild);
+
     return () => {
-      script.remove();
+      document.getElementById("faq-schema")?.remove();
+      document.getElementById("faq-schema-static")?.remove();
     };
   }, [content]);
 
@@ -141,14 +154,27 @@ export default function FAQ() {
               <div className="faq-list">
                 {active.items.map((item, index) => {
                   const questionId = `${active.id}-${index}`;
+                  const answerId  = `${questionId}-answer`;
                   const isOpen = openQuestion === questionId;
                   return (
                     <div key={item.question} className={`faq-item ${isOpen ? "open" : ""}`}>
-                      <button type="button" className="faq-q" onClick={() => setOpenQuestion(isOpen ? null : questionId)}>
+                      <button
+                        type="button"
+                        id={questionId}
+                        className="faq-q"
+                        aria-expanded={isOpen}
+                        aria-controls={answerId}
+                        onClick={() => setOpenQuestion(isOpen ? null : questionId)}
+                      >
                         <span className="faq-q-text">{item.question}</span>
-                        <span className="faq-q-icon">+</span>
+                        <span className="faq-q-icon" aria-hidden="true">+</span>
                       </button>
-                      <div className="faq-a">
+                      <div
+                        id={answerId}
+                        role="region"
+                        aria-labelledby={questionId}
+                        className="faq-a"
+                      >
                         <div className="faq-a-inner">{item.answer}</div>
                       </div>
                     </div>

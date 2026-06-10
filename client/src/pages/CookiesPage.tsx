@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -11,7 +11,7 @@ import { getContent } from "@/lib/content";
 import { Check, Globe, Icons, Mail, RefreshCw } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
-// ─── Tipos ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Tipos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 type CookieSection = {
   id: string;
@@ -41,7 +41,7 @@ type SectionContent = {
   resetLabel?: string;
 };
 
-// ─── Reset consent button ─────────────────────────────────────────────────────
+// â”€â”€â”€ Reset consent button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function ResetConsentButton({ label }: { label: string }) {
   function handleReset() {
@@ -68,7 +68,7 @@ function ResetConsentButton({ label }: { label: string }) {
   );
 }
 
-// ─── Section detail ───────────────────────────────────────────────────────────
+// â”€â”€â”€ Section detail â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function CookieDetail({
   data,
@@ -201,7 +201,7 @@ function CookieDetail({
   );
 }
 
-// ─── Página principal ─────────────────────────────────────────────────────────
+// â”€â”€â”€ PÃ¡gina principal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function CookiesPage() {
   const { lang } = useTranslation();
@@ -213,13 +213,13 @@ export default function CookiesPage() {
   const [activeSection, setActiveSection] = useState(sections[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const contactTopic = lang === "en" ? "Cookie Policy" : "Política de Cookies";
+  const contactTopic = lang === "en" ? "Cookie Policy" : "PolÃ­tica de Cookies";
   const contactLabel = lang === "en" ? "Talk to us" : "Falar connosco";
 
   useSEOHead({
-    title: `${hero.label} — Sapiente.AI`,
+    title: `${hero.label} â€” Sapiente.AI`,
     description: hero.subtitle,
-    url: `https://sapienteai.com/${lang}/cookies`,
+    url: `https://www.sapienteai.com/${lang}/cookies`,
     type: "website",
   }, [hero, lang]);
 
@@ -263,7 +263,7 @@ export default function CookiesPage() {
             </div>
           </aside>
 
-          {/* Conteúdo variável */}
+          {/* ConteÃºdo variÃ¡vel */}
           <Reveal delay={80}>
             <div className="legal-document-card">
               {activeSectionData && (

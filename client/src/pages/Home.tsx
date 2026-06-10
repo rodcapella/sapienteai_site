@@ -23,11 +23,21 @@ const HOME_BANNERS = [
   "home_personalidade_marca.webp",
 ];
 
+type BannerTextContent = {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  items?: { title: string; description?: string }[];
+  /** posição do card: esquerda ou direita da imagem */
+  align?: "left" | "right";
+};
+
 type HomeBannerSectionProps = {
   lang: string;
   file: string;
   label?: string;
   id?: string;
+  textContent?: BannerTextContent;
 };
 
 function getHomeBannerSrc(lang: string, file: string) {
@@ -42,24 +52,76 @@ function getHomeBannerSrc(lang: string, file: string) {
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
-function HomeBannerSection({ lang, file, label, id }: HomeBannerSectionProps) {
+function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSectionProps) {
   const bannerSrc = getHomeBannerSrc(lang, file);
+  const align = textContent?.align ?? "left";
 
   return (
     <section
       id={id}
-      className="relative w-full overflow-hidden bg-[var(--section-ice)] aspect-[1920/700]"
+      className="relative min-h-[320px] w-full overflow-hidden bg-[var(--section-ice)] sm:aspect-[1920/700] sm:min-h-0"
       aria-label={label}
     >
+      {/* Imagem de fundo */}
       <Reveal className="absolute inset-0">
         <img
           src={bannerSrc}
           alt=""
           aria-hidden="true"
+          width="1920"
+          height="700"
           className="h-full w-full object-contain"
           loading="lazy"
         />
       </Reveal>
+
+      {/* Card de texto visível — indexável por crawlers e LLMs */}
+      {textContent && (
+        <Reveal delay={120} className="relative z-10 flex min-h-[320px] items-center py-6 sm:absolute sm:inset-0 sm:min-h-0 sm:py-0">
+          <div className={[
+            "pointer-events-none relative flex w-full items-center px-6 sm:absolute sm:inset-y-0 sm:px-10 md:px-16",
+            align === "right" ? "right-0 justify-end" : "left-0 justify-start",
+          ].join(" ")}>
+            <div
+              data-speakable
+              className="max-w-[330px] rounded-2xl bg-white/92 p-4 shadow-[0_14px_40px_color-mix(in_srgb,var(--brand-deep)_14%,transparent)] backdrop-blur-sm sm:max-w-[380px] sm:p-5 md:max-w-[420px] md:p-7"
+            >
+              {textContent.eyebrow && (
+                <p className="mb-1.5 font-[var(--font-detail)] text-[9px] font-black uppercase tracking-[0.16em] text-[var(--brand-primary)] sm:mb-2 sm:text-[10px] sm:tracking-[0.18em]">
+                  {textContent.eyebrow}
+                </p>
+              )}
+              <h2 className="mb-2 font-[var(--font-heading)] text-[1rem] font-black leading-tight text-[var(--brand-night)] sm:mb-3 sm:text-[clamp(1.1rem,2.4vw,1.55rem)]">
+                {textContent.title}
+              </h2>
+              <p className="mb-0 font-[var(--font-body)] text-[12px] font-medium leading-snug text-[var(--brand-night)]/70 sm:text-[13px] sm:leading-relaxed md:text-[14px]">
+                {textContent.description}
+              </p>
+              {textContent.items && textContent.items.length > 0 && (
+                <ul className="mt-2 flex flex-col gap-1 sm:mt-3 sm:gap-1.5">
+                  {textContent.items.slice(0, 5).map((item, itemIndex) => (
+                    <li
+                      key={item.title}
+                      className={[
+                        "items-start gap-2",
+                        itemIndex > 2 ? "hidden sm:flex" : "flex",
+                      ].join(" ")}
+                    >
+                      <span className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-primary)]" />
+                      <span className="font-[var(--font-body)] text-[11px] font-semibold leading-snug text-[var(--brand-night)] sm:text-[12px]">
+                        {item.title}
+                        {item.description && (
+                          <span className="hidden font-normal text-[var(--brand-night)]/60 sm:block">{item.description}</span>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </Reveal>
+      )}
     </section>
   );
 }
@@ -76,16 +138,64 @@ export default function Home() {
     description: isPT
       ? "Soluções de IA aplicada para transformação digital. Machine Learning, IA Generativa, Automação Inteligente."
       : "Applied AI solutions for digital transformation. Machine Learning, Generative AI, Intelligent Automation.",
-    url: `https://sapienteai.com/${lang}`,
+    url: `https://www.sapienteai.com/${lang}`,
   }, [lang]);
 
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const bannerLabels: (string | undefined)[] = [
-    isPT ? "O que nos diferencia" : "What makes us different",
-    content.coreServices?.label,
-    content.marketingAI?.title,
-    content.brandPersonality?.title,
+  const bannerTextContent = [
+    // Banner 1 — O que nos diferencia
+    {
+      eyebrow: isPT ? "Por que a Sapiente.AI" : "Why Sapiente.AI",
+      title: isPT ? "O que nos diferencia" : "What makes us different",
+      description: isPT
+        ? "Combinamos estratégia, IA, automação e validação humana para criar soluções digitais orientadas a resultados reais."
+        : "We combine strategy, AI, automation, and human validation to build digital solutions focused on measurable business outcomes.",
+      items: isPT
+        ? [
+            { title: "Parceiro único do início ao fim" },
+            { title: "Transparência e métricas reais" },
+            { title: "Tecnologia aplicada ao seu negócio específico" },
+            { title: "Resultados mensuráveis, não relatórios bonitos" },
+          ]
+        : [
+            { title: "Single partner from start to finish" },
+            { title: "Full transparency and real metrics" },
+            { title: "Technology tailored to your specific business" },
+            { title: "Measurable results, not polished reports" },
+          ],
+      align: "left" as const,
+    },
+    // Banner 2 — Core Services
+    {
+      eyebrow: content.coreServices?.label,
+      title: content.coreServices?.title ?? (isPT ? "Onde a IA impacta o seu negócio" : "Where AI impacts your business"),
+      description: isPT
+        ? "Aquisição de clientes, eficiência operacional, websites de conversão, análise de dados, chatbots 24/7, redes sociais e conteúdo visual."
+        : "Customer acquisition, operational efficiency, conversion websites, data analytics, 24/7 chatbots, social media and visual content.",
+      items: content.coreServices?.items?.slice(0, 5),
+      align: "right" as const,
+    },
+    // Banner 3 — Marketing AI
+    {
+      eyebrow: content.marketingAI?.label,
+      title: content.marketingAI?.title ?? (isPT ? "Marketing digital com inteligência artificial" : "Digital marketing with artificial intelligence"),
+      description: content.marketingAI?.subtitle ?? (isPT
+        ? "Branding estratégico, conteúdo com IA e reporting de performance para crescimento sustentável."
+        : "Strategic branding, AI-powered content and performance reporting for sustainable growth."),
+      items: content.marketingAI?.cards?.map((c: { title: string }) => ({ title: c.title })),
+      align: "left" as const,
+    },
+    // Banner 4 — Brand Personality
+    {
+      eyebrow: content.brandPersonality?.label,
+      title: content.brandPersonality?.title ?? (isPT ? "Uma parceira tecnológica para o crescimento" : "A technology partner for growth"),
+      description: isPT
+        ? "Trabalhamos como extensão da sua equipa — inteligentes, visionários, confiáveis e focados em resultados."
+        : "We work as an extension of your team — intelligent, visionary, reliable, and results-focused.",
+      items: content.brandPersonality?.traits?.map((t: { title: string }) => ({ title: t.title })),
+      align: "right" as const,
+    },
   ];
 
   return (
@@ -117,7 +227,8 @@ export default function Home() {
           id={index === 0 ? "core-services" : undefined}
           lang={lang}
           file={banner}
-          label={bannerLabels[index]}
+          label={bannerTextContent[index]?.title}
+          textContent={bannerTextContent[index]}
         />
       ))}
       

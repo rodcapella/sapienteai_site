@@ -103,6 +103,29 @@ export const homeEN = {
     ],
   },
 
+  bannerSeo: [
+    {
+      title: "What makes Sapiente.AI different",
+      description:
+        "Sapiente.AI combines strategy, artificial intelligence, automation, and human validation to build digital solutions focused on measurable business outcomes.",
+    },
+    {
+      title: "Where AI directly impacts your business",
+      description:
+        "We support customer acquisition, operational efficiency, conversion-focused websites, data analytics, intelligent chatbots, social media management, and high-performance visual content.",
+    },
+    {
+      title: "Innovation applied to demand generation and performance",
+      description:
+        "We unite strategic branding, AI-powered content, digital avatars, reporting, and continuous optimization to turn digital marketing into measurable growth.",
+    },
+    {
+      title: "A technology partner for performance and growth",
+      description:
+        "We work as an intelligent, visionary, reliable, and results-focused technology partner, aligning AI and automation with business goals.",
+    },
+  ],
+
   beforeAfter: {
     label: "Transformation",
     title: "The real impact of AI automation",

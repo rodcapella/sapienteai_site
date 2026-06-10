@@ -37,7 +37,7 @@ export default function Blog() {
     title: 'Blog - Sapiente.AI',
     description: lang === "en" ? 'Commercial insights on AI and business technology.' : 'Insights sobre IA e tecnologia aplicada ao negócio.',
     keywords: lang === "en" ? 'AI, machine learning, automation' : 'IA, machine learning, automação',
-    url: `https://sapienteai.com/${lang}/blog`,
+    url: `https://www.sapienteai.com/${lang}/blog`,
     type: 'website'
   }, [lang]);
 

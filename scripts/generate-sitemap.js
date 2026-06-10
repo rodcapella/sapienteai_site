@@ -1,64 +1,107 @@
-import fs from "fs";
+﻿import fs from "fs";
 import path from "path";
 
-const BASE_URL = "https://sapienteai.com";
-
+const BASE_URL = "https://www.sapienteai.com";
+const TODAY = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 const languages = ["pt", "en"];
 
+// Páginas com prioridades explícitas
 const pages = [
-  "",
-  "/about",
-  "/services",
-  "/faq",
-  "/terms",
-  "/privacy",
-  "/trust",
-  "/generative-ai-policy",
-  "/blog",
-  "/seo-geo-aeo-validator",
-  "/sitemap"
+  { path: "",                        priority: "1.0" },
+  { path: "/about",                  priority: "0.9" },
+  { path: "/services",               priority: "0.9" },
+  { path: "/faq",                    priority: "0.9" },
+  { path: "/blog",                   priority: "0.8" },
+  { path: "/seo-geo-aeo-validator",  priority: "0.6" },
+  { path: "/sitemap",                priority: "0.5" },
+  { path: "/cookies",                priority: "0.4" },
+  { path: "/terms",                  priority: "0.4" },
+  { path: "/privacy",                priority: "0.4" },
+  { path: "/trust",                  priority: "0.4" },
+  { path: "/generative-ai-policy",   priority: "0.4" },
 ];
 
-const urls = languages.flatMap((lang) => [
-  ...pages.map((p) => `${BASE_URL}/${lang}${p}`),
-  `${BASE_URL}/${lang}/${lang === "pt" ? "quiz-ia" : "quiz-ai"}`,
+const pageUrls = languages.flatMap((lang) => [
+  ...pages.map(({ path: p, priority }) => ({
+    loc: `${BASE_URL}/${lang}${p}`,
+    priority,
+  })),
+  {
+    loc: `${BASE_URL}/${lang}/${lang === "pt" ? "quiz-ia" : "quiz-ai"}`,
+    priority: "0.8",
+  },
 ]);
 
 const blogDataPath = path.resolve("./client/src/lib/blogData.ts");
 const blogSlugs = fs.existsSync(blogDataPath)
-  ? [...fs.readFileSync(blogDataPath, "utf8").matchAll(/slug:\s*['"]([^'"]+)['"]/g)].map((match) => match[1])
+  ? [...fs.readFileSync(blogDataPath, "utf8").matchAll(/slug:\s*['"]([^'"]+)['"]/g)].map((m) => m[1])
   : [];
 const blogUrls = languages.flatMap((lang) =>
-  blogSlugs.map((slug) => `${BASE_URL}/${lang}/blog/${slug}`)
+  blogSlugs.map((slug) => ({
+    loc: `${BASE_URL}/${lang}/blog/${slug}`,
+    priority: "0.7",
+  }))
 );
 
-function toUrlSet(urls) {
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls
-  .map(
-    (url) => `
-  <url>
-    <loc>${url}</loc>
-    <priority>${url.endsWith(`/${url.split("/")[3]}`) ? "1.0" : "0.8"}</priority>
-  </url>`
-  )
-  .join("")}
-</urlset>`;
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+function toUrlEntry({ loc, priority }) {
+  return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${TODAY}</lastmod>\n    <priority>${priority}</priority>\n  </url>`;
 }
 
-const xml = toUrlSet(urls);
+function toUrlSet(entries) {
+  return [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    ``,
+    ...entries.map(toUrlEntry),
+    ``,
+    `</urlset>`,
+  ].join("\n");
+}
+
+function toSitemapIndex(sitemaps) {
+  const items = sitemaps
+    .map(
+      (loc) =>
+        `  <sitemap>\n    <loc>${loc}</loc>\n    <lastmod>${TODAY}</lastmod>\n  </sitemap>`
+    )
+    .join("\n");
+  return [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<!-- Sitemap Index — gerado automaticamente por scripts/generate-sitemap.js -->`,
+    `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    ``,
+    items,
+    ``,
+    `</sitemapindex>`,
+  ].join("\n");
+}
+
+// ── Escrita ───────────────────────────────────────────────────────────────────
 
 const publicDir = path.resolve("./client/public");
+if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
 
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir, { recursive: true });
-}
+// sitemap.xml → sitemap index
+fs.writeFileSync(
+  path.join(publicDir, "sitemap.xml"),
+  toSitemapIndex([
+    `${BASE_URL}/sitemap-pages.xml`,
+    `${BASE_URL}/sitemap-blog.xml`,
+  ])
+);
 
-fs.writeFileSync(path.join(publicDir, "sitemap.xml"), xml);
-fs.writeFileSync(path.join(publicDir, "sitemap-pages.xml"), xml);
+// sitemap-pages.xml
+fs.writeFileSync(path.join(publicDir, "sitemap-pages.xml"), toUrlSet(pageUrls));
+
+// sitemap-blog.xml
 fs.writeFileSync(path.join(publicDir, "sitemap-blog.xml"), toUrlSet(blogUrls));
-fs.writeFileSync(path.join(publicDir, "sitemap-blog-xml"), toUrlSet(blogUrls));
+
+// sitemap-news.xml (reservado para notícias futuras)
 fs.writeFileSync(path.join(publicDir, "sitemap-news.xml"), toUrlSet([]));
 
-console.log("✅ Sitemap gerado");
+console.log(`✅ Sitemaps gerados (${TODAY})`);
+console.log(`   sitemap.xml         → sitemap index`);
+console.log(`   sitemap-pages.xml   → ${pageUrls.length} URLs`);
+console.log(`   sitemap-blog.xml    → ${blogUrls.length} URLs`);

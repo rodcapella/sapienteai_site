@@ -4,24 +4,22 @@ import { Calendar, Search, User } from "@/lib/icons";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Section } from "@/components/ui/section/Section";
 import { SectionCard } from "@/components/ui/section/SectionCard";
-
 import { useSEOHead } from '@/hooks/useSEOHead';
-
-
-
+import { useTranslation } from '@/hooks/useTranslation';
 
 
 export default function News() {
+  const { lang } = useTranslation();
   const [searchQuery, setSearchQuery] = useState('');
 
   useSEOHead({
-    title: 'Notícias de IA - Sapiente.AI',
-    description: 'Últimas novidades em inteligência artificial.',
+    title: lang === 'en' ? 'AI News - Sapiente.AI' : 'Notícias de IA - Sapiente.AI',
+    description: lang === 'en' ? 'Latest news in artificial intelligence.' : 'Últimas novidades em inteligência artificial.',
     keywords: 'IA, notícias, machine learning',
-    url: 'https://sapienteai.com/pt/news',
+    url: `https://www.sapienteai.com/${lang}/news`,
     type: 'website',
     noindex: true,
-  }, []);
+  }, [lang]);
 
   const articles = [
     {
@@ -120,7 +118,7 @@ export default function News() {
 
                 {/* CTA */}
                 <span className="text-[var(--brand-cyan-bright)] text-sm font-black">
-                  Ler mais →
+                  Ler mais ?
                 </span>
 
               </SectionCard>

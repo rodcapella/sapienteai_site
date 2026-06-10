@@ -59,6 +59,7 @@ export function InternalHero({
 
         <Reveal delay={100}>
           <h1
+            data-speakable
             className="mt-4 max-w-5xl whitespace-pre-line font-extrabold leading-[1.05] drop-shadow-[0_8px_32px_color-mix(in_srgb,black_58%,transparent)]"
             style={{ fontFamily: "var(--font-heading)", color: "white", fontSize: "clamp(26px, 6vw, 40px)" }}
           >
@@ -80,7 +81,7 @@ export function InternalHero({
         {subtitle && (
           <Reveal delay={200}>
             <p
-              className="mt-3 max-w-4xl whitespace-pre-line leading-relaxed drop-shadow-[0_4px_18px_color-mix(in_srgb,black_45%,transparent)]"
+              className="hero-subtitle mt-3 max-w-4xl whitespace-pre-line leading-relaxed drop-shadow-[0_4px_18px_color-mix(in_srgb,black_45%,transparent)]"
               style={{ fontFamily: "var(--font-body)", color: "white", fontSize: "clamp(13px, 2vw, 17px)" }}
             >
               {subtitle}

@@ -1,92 +1,92 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://sapienteai.com/pt</loc>
+    <loc>https://www.sapienteai.com/pt</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/about</loc>
+    <loc>https://www.sapienteai.com/pt/about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/services</loc>
+    <loc>https://www.sapienteai.com/pt/services</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/faq</loc>
+    <loc>https://www.sapienteai.com/pt/faq</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/terms</loc>
+    <loc>https://www.sapienteai.com/pt/terms</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/privacy</loc>
+    <loc>https://www.sapienteai.com/pt/privacy</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/trust</loc>
+    <loc>https://www.sapienteai.com/pt/trust</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/generative-ai-policy</loc>
+    <loc>https://www.sapienteai.com/pt/generative-ai-policy</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/blog</loc>
+    <loc>https://www.sapienteai.com/pt/blog</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/sitemap</loc>
+    <loc>https://www.sapienteai.com/pt/sitemap</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/pt/quiz-ia</loc>
+    <loc>https://www.sapienteai.com/pt/quiz-ia</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en</loc>
+    <loc>https://www.sapienteai.com/en</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/about</loc>
+    <loc>https://www.sapienteai.com/en/about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/services</loc>
+    <loc>https://www.sapienteai.com/en/services</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/faq</loc>
+    <loc>https://www.sapienteai.com/en/faq</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/terms</loc>
+    <loc>https://www.sapienteai.com/en/terms</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/privacy</loc>
+    <loc>https://www.sapienteai.com/en/privacy</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/trust</loc>
+    <loc>https://www.sapienteai.com/en/trust</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/generative-ai-policy</loc>
+    <loc>https://www.sapienteai.com/en/generative-ai-policy</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/blog</loc>
+    <loc>https://www.sapienteai.com/en/blog</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/sitemap</loc>
+    <loc>https://www.sapienteai.com/en/sitemap</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sapienteai.com/en/quiz-ai</loc>
+    <loc>https://www.sapienteai.com/en/quiz-ai</loc>
     <priority>0.8</priority>
   </url>
 </urlset>

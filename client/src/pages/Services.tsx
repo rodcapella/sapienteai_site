@@ -12,7 +12,7 @@ import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
-// ─── Tipos ───────────────────────────────────────────────────────────────────
+// --- Tipos -------------------------------------------------------------------
 
 type ServiceSection = {
   id: string;
@@ -21,7 +21,7 @@ type ServiceSection = {
   backgroundImage: string;
 };
 
-// ─── Sticky Nav ──────────────────────────────────────────────────────────────
+// --- Sticky Nav --------------------------------------------------------------
 
 function ServicesStickyNav({
   sections,
@@ -73,7 +73,7 @@ function ServicesStickyNav({
   );
 }
 
-// ─── Página principal ─────────────────────────────────────────────────────────
+// --- Página principal ---------------------------------------------------------
 
 export default function Services() {
   const { lang } = useTranslation();
@@ -86,8 +86,43 @@ export default function Services() {
   useSEOHead({
     title: `${content.hero.label} — Sapiente.AI`,
     description: content.hero.subtitle,
-    url: `https://sapienteai.com/${lang}/services`,
+    url: `https://www.sapienteai.com/${lang}/services`,
     type: "website",
+  }, [content, lang]);
+
+  // Inject Service schema for GEO — each visual service as a named entity
+  useEffect(() => {
+    const vs = content.visualServices as Record<string, { title: string; description: string }>;
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": content.hero.label,
+      "url": `https://www.sapienteai.com/${lang}/services`,
+      "itemListElement": Object.values(vs).map((s, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "item": {
+          "@type": "Service",
+          "name": s.title.replace(/\n/g, " "),
+          "description": s.description,
+          "provider": {
+            "@type": "Organization",
+            "name": "Sapiente.AI",
+            "url": "https://www.sapienteai.com"
+          }
+        }
+      }))
+    };
+    const id = "service-schema-ld";
+    let el = document.getElementById(id) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement("script");
+      el.id = id;
+      el.type = "application/ld+json";
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(serviceSchema);
+    return () => { document.getElementById(id)?.remove(); };
   }, [content, lang]);
 
   const handleSelectSection = (id: string) => {
@@ -119,7 +154,7 @@ export default function Services() {
 
   return (
     <div className="flex flex-col">
-      {/* ── Hero ── */}
+      {/* -- Hero -- */}
       <InternalHero
         label={content.hero.label}
         title={content.hero.title}
@@ -130,7 +165,7 @@ export default function Services() {
         compact
       />
 
-      {/* ── Docs Layout ── */}
+      {/* -- Docs Layout -- */}
       <section className="flex-1 bg-white px-0 pb-6 pt-8 md:pb-8 md:pt-10">
         <ServicesStickyNav sections={sections} active={activeSection} onSelect={handleSelectSection} />
 
@@ -217,7 +252,7 @@ export default function Services() {
 
       <QuizCTA />
 
-      {/* ── Final CTA ── */}
+      {/* -- Final CTA -- */}
       <FinalCTA
         title={content.finalCta.title}
         title_highlight={content.finalCta.highlight}

@@ -237,5 +237,32 @@ export const faqEN = {
       answer:
         "Yes. We sign NDAs, use encryption, and enforce access controls. Your data belongs to you — we simply extract value from it.",
     },
+
+    // ─── LONG-TAIL — high search value ────────────────────────────────────────
+    {
+      question: "How much does AI automation cost for a small or medium-sized business?",
+      answer:
+        "Investment varies by complexity. Simple automations (automated replies, follow-ups, reports) typically start between €500–€1,500. More complete solutions involving system integrations or custom machine learning generally range from €2,000 to €10,000. We always offer a free diagnostic before any proposal.",
+    },
+    {
+      question: "What is the difference between using ChatGPT and hiring custom AI automation?",
+      answer:
+        "ChatGPT is a general-purpose tool — it answers questions but doesn't know your business, your customers, or your processes. Custom automation integrates AI directly into your systems (CRM, email, ERP, website) and is trained on your company's data. The result: automation that works 24/7 specifically for your goals, not everyone else's.",
+    },
+    {
+      question: "How can I implement an intelligent chatbot for my business?",
+      answer:
+        "The process has 3 phases: (1) Diagnosis — we identify the most valuable use cases (support, lead qualification, post-sale); (2) Development — we configure and train the chatbot with your brand's content and tone of voice; (3) Integration — we connect it to your website, WhatsApp, Instagram, or CRM. A basic chatbot can be live in 2–4 weeks. Contact us for a free demo.",
+    },
+    {
+      question: "Does Sapiente.AI work with businesses outside Portugal?",
+      answer:
+        "Yes. We work 100% remotely and serve clients across Portugal, Brazil, and other Portuguese-speaking markets. Location is not a constraint — all our work is delivered online. We adapt our solutions to both European and Brazilian Portuguese contexts.",
+    },
+    {
+      question: "What AI tools and technologies does Sapiente.AI use?",
+      answer:
+        "We use a combination of leading AI platforms and custom solutions: OpenAI models (GPT-4/o), automation tools like Make and n8n, data analytics via Power BI, chatbot frameworks, and custom machine learning pipelines. We always select the right tool for each use case rather than applying a one-size-fits-all approach.",
+    },
   ],
 };

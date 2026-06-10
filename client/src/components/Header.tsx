@@ -114,6 +114,8 @@ export default function Header({ onContactClick }: HeaderProps) {
               <img
                 src="/media/logos/Logo_Sapiente_fundo_claro.webp"
                 alt="Sapiente.AI"
+                width="210"
+                height="52"
                 className={cn(logoClassName, "dark:hidden")}
                 loading="eager"
                 fetchPriority="high"
@@ -123,6 +125,8 @@ export default function Header({ onContactClick }: HeaderProps) {
               <img
                 src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
                 alt="Sapiente.AI"
+                width="210"
+                height="52"
                 className={cn(logoClassName, "hidden dark:block")}
                 loading="eager"
                 fetchPriority="high"
@@ -170,8 +174,9 @@ export default function Header({ onContactClick }: HeaderProps) {
           {/* Mobile overlay — sempre presente, animado por translate+opacity */}
           <div
             id="mobile-nav"
-            role="dialog"
-            aria-modal="true"
+            role={isMobileMenuOpen ? "dialog" : undefined}
+            aria-modal={isMobileMenuOpen ? "true" : undefined}
+            aria-hidden={!isMobileMenuOpen}
             aria-label="Menu de navegação"
             className={cn(
               "fixed inset-x-0 top-0 z-[60] flex h-dvh flex-col bg-white dark:bg-[var(--brand-near-dark)] lg:hidden",

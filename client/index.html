@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 
   <head>
     <meta charset="UTF-8" />
@@ -25,17 +25,17 @@
     <meta property="og:url" content="https://www.sapienteai.com" />
     <meta property="og:title" content="Sapiente.AI - Inteligência Artificial Aplicada" />
     <meta property="og:description" content="Soluções de IA aplicada para transformação digital. Machine Learning, IA Generativa, Automação Inteligente." />
-    <meta property="og:image" content="https://www.sapienteai.com/media/logos/Logo_Sapiente_fundo_escuro.webp" />
+    <meta property="og:image" content="https://www.sapienteai.com/media/og/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale" content="pt_PT" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://www.sapienteai.com" />
     <meta name="twitter:title" content="Sapiente.AI - Inteligência Artificial Aplicada" />
     <meta name="twitter:description" content="Soluções de IA aplicada para transformação digital." />
-    <meta name="twitter:image" content="https://www.sapienteai.com/media/logos/Logo_Sapiente_fundo_escuro.webp" />
+    <meta name="twitter:image" content="https://www.sapienteai.com/media/og/og-image.jpg" />
     <meta name="twitter:site" content="@SapienteAI" />
     
     <!-- Additional SEO -->
@@ -58,16 +58,25 @@
     <link rel="icon" type="image/png" href="/media/logos/logo_sapiente_transparente.webp" />
     <link rel="apple-touch-icon" href="/media/logos/logo_sapiente_transparente.webp" />
     
-    <!-- JSON-LD Structured Data -->
+    <!-- JSON-LD Structured Data: Organization + LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": ["Organization", "LocalBusiness"],
       "name": "Sapiente.AI",
       "alternateName": "Sapiente IA",
       "url": "https://www.sapienteai.com",
       "logo": "https://www.sapienteai.com/media/logos/logo_sapiente_transparente.webp",
-      "description": "Soluções de inteligência artificial aplicada para transformação digital de empresas",
+      "image": "https://www.sapienteai.com/media/og/og-image.jpg",
+      "description": "Parceiro de inteligência artificial aplicada, automação e transformação digital para empresas e profissionais no mercado lusófono.",
+      "foundingDate": "2023",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Aveiro",
+        "addressCountry": "PT"
+      },
+      "telephone": "+351910567575",
+      "email": "contato@sapienteai.com",
       "sameAs": [
         "https://twitter.com/SapienteAI",
         "https://linkedin.com/company/sapiente-ai"
@@ -75,54 +84,47 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Service",
-        "email": "contato@sapienteai.com"
+        "telephone": "+351910567575",
+        "email": "contato@sapienteai.com",
+        "availableLanguage": ["Portuguese", "English"]
       },
-      "areaServed": ["BR", "PT"],
+      "areaServed": ["PT", "BR"],
       "knowsAbout": [
-        "Artificial Intelligence",
-        "Data Engineer",
-        "Data Analytics",
+        "Inteligência Artificial Aplicada",
+        "Machine Learning",
+        "IA Generativa",
+        "Automação de Processos",
+        "Transformação Digital",
         "Business Intelligence",
-        "Apps Development",
-        "Websites Development",
-        "Automation",
-        "Digital Marketing",
-        "Merchandise"
+        "Análise de Dados",
+        "Marketing Digital com IA",
+        "Desenvolvimento Web",
+        "Chatbots Inteligentes"
       ]
     }
     </script>
-    
-    <!-- FAQ Schema Markup for AEO/GEO -->
+
+    <!-- JSON-LD Structured Data: WebSite + SearchAction + Speakable -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "O que é Inteligência Artificial aplicada a negócios?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Inteligência Artificial aplicada a negócios é o uso de algoritmos, modelos preditivos e automação inteligente para otimizar processos, analisar grandes volumes de dados e tomar decisões mais precisas e rápidas."
-          }
+      "@type": "WebSite",
+      "name": "Sapiente.AI",
+      "url": "https://www.sapienteai.com",
+      "inLanguage": ["pt-PT", "en"],
+      "description": "Soluções de inteligência artificial aplicada, automação e transformação digital para empresas.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.sapienteai.com/pt/faq?q={search_term_string}"
         },
-        {
-          "@type": "Question",
-          "name": "Como a IA pode reduzir custos empresariais?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A IA reduz custos através de: automação de processos repetitivos (redução de até 40%), otimização de inventário com previsão de demanda, análise preditiva para evitar desperdícios, e tomada de decisão mais rápida e precisa."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Qual a diferença entre IA e automação?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Automação executa tarefas pré-programadas. IA aprende com dados e se adapta continuamente. A Sapiente.AI combina ambas: usamos automação para eficiência e IA para inteligência adaptativa."
-          }
-        }
-      ]
+        "query-input": "required name=search_term_string"
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".hero-subtitle", "[data-speakable]"]
+      }
     }
     </script>
   </head>

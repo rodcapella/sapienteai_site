@@ -13,10 +13,9 @@ export function Reveal({ children, className, delay = 0 }: Props) {
   return (
     <div
       ref={ref}
+      aria-hidden={!isVisible || undefined}
       className={cn(
-        `
-        transition-all duration-700 ease-out
-        `,
+        "transition-all duration-700 ease-out",
         isVisible
           ? "opacity-100 translate-y-0"
           : "opacity-0 translate-y-6",
@@ -24,6 +23,7 @@ export function Reveal({ children, className, delay = 0 }: Props) {
       )}
       style={{
         transitionDelay: `${delay}ms`,
+        willChange: isVisible ? "auto" : "opacity, transform",
       }}
     >
       {children}

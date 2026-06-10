@@ -1,14 +1,20 @@
 ﻿import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useSEOHead } from "@/hooks/useSEOHead";
 import { getContent } from "@/lib/content";
 import { AlertCircle, Home } from "@/lib/icons";
 
 export default function NotFound() {
   const [, setLocation] = useLocation();
   const { lang } = useTranslation();
-
   const content = getContent("notFound", lang);
+
+  useSEOHead({
+    title: lang === "en" ? "404 – Page not found · Sapiente.AI" : "404 – Página não encontrada · Sapiente.AI",
+    description: lang === "en" ? "This page does not exist." : "Esta página não existe.",
+    noindex: true,
+  }, [lang]);
 
   return (
     <div className="standard-section-bg min-h-screen flex items-center justify-center text-[var(--brand-offwhite)] relative overflow-hidden">
