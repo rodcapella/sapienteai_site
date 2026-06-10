@@ -247,7 +247,7 @@
 /* ── LEGAL LIST (legal/cookies/sitemap) ─────────────────────────────────────*/
 .legal-list {
   border-radius: 18px;
-  background: white;
+  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
   border: 2px solid var(--brand-mid);
   overflow: hidden;
 }

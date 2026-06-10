@@ -50,13 +50,13 @@ function SitemapCard({ group }: { group: SitemapGroup }) {
 
   return (
     <div className="legal-document-card !p-0 overflow-hidden">
-      {/* CabeÃ§alho do card */}
+      {/* Cabeçalho do card */}
       <div className="flex items-center gap-4 border-b border-[color-mix(in_srgb,var(--brand-mid)_40%,transparent)] px-6 py-5">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--brand-primary)_12%,transparent)]">
           <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
         </div>
         <div>
-          <p className="legal-sidebar-label !mb-0">{group.label}</p>
+          <p className="legal-sidebar-label !mb-0 !text-[var(--brand-night)]">{group.label}</p>
           <h2 className="font-[var(--font-heading)] text-[20px] font-black leading-tight text-[var(--brand-night)]">
             {group.title}
           </h2>
@@ -130,7 +130,7 @@ export default function Sitemap() {
   ];
 
   useSEOHead({
-    title: `${content.label} â€” Sapiente.AI`,
+    title: `${content.label} - Sapiente.AI`,
     description: content.subtitle,
     url: `https://sapienteai.com/${lang}/sitemap`,
     type: "website",

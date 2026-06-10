@@ -9,8 +9,8 @@ export const aboutPT = {
   cta: {
     title: "Pronto para transformar",
     title_highlight: "o seu negócio?",
-    description:
-      "Fazemos um diagnóstico gratuito e mostramos exactamente onde pode automatizar, reduzir custos e aumentar vendas.",
+    description:"Fazemos um diagnóstico gratuito e mostramos exactamente onde",
+    description_highlight: "pode automatizar, reduzir custos e aumentar vendas.",
     button: "Falar connosco",
   },
   origin: {

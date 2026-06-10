@@ -2,7 +2,7 @@ export const sitemapPT = {
   label: "Mapa do Site",
   title: "Todas as páginas",
   highlight: "num só lugar.",
-  subtitle: "Navegue facilmente por todas as secções do site da Sapiente.AI.",
+  subtitle: "Navegue facilmente por todas as secções do nosso website.",
   imageAlt: "Mapa do site Sapiente.AI",
   sections: {
     main: "Páginas principais",

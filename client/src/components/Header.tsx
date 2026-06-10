@@ -32,6 +32,10 @@ export default function Header({ onContactClick }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [lang]);
+
   // Focus management: move focus into overlay when open, return when closed
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -170,12 +174,14 @@ export default function Header({ onContactClick }: HeaderProps) {
             aria-modal="true"
             aria-label="Menu de navegação"
             className={cn(
-              "fixed inset-0 z-40 flex flex-col bg-white dark:bg-[var(--brand-near-dark)] lg:hidden",
-              "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
-              isMobileMenuOpen
-                ? "translate-y-0 opacity-100 pointer-events-auto"
-                : "-translate-y-3 opacity-0 pointer-events-none"
+              "fixed inset-x-0 top-0 z-[60] flex h-dvh flex-col bg-white dark:bg-[var(--brand-near-dark)] lg:hidden",
+              "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
             )}
+            style={{
+              opacity: isMobileMenuOpen ? 1 : 0,
+              pointerEvents: isMobileMenuOpen ? "auto" : "none",
+              transform: isMobileMenuOpen ? "translateY(0)" : "translateY(-12px)",
+            }}
           >
             {/* Topo: logo + idioma + fechar */}
             <div className="flex h-16 shrink-0 items-center justify-between border-b border-[var(--brand-primary)]/15 px-5">
@@ -195,7 +201,7 @@ export default function Header({ onContactClick }: HeaderProps) {
                   ref={closeBtnRef}
                   type="button"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--brand-primary)]/30 text-[var(--brand-primary)] transition-colors hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-primary)]/30 text-[var(--brand-primary)] transition-colors hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
                   aria-label="Fechar menu"
                 >
                   <X className="h-5 w-5" />

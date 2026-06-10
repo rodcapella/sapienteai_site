@@ -106,21 +106,11 @@ function AboutOriginSection({ content }: { content: AboutOriginContent }) {
 
 function AboutVisualSection({ content }: { content: AboutVisualSectionContent }) {
   return (
-    <section className="bg-white px-4 py-5 md:px-6 md:py-8">
-      <Reveal>
-        <div className="mx-auto max-w-7xl overflow-x-auto rounded-2xl md:overflow-visible">
-          <img
-            src={content.image}
-            alt={content.alt}
-            width={1920}
-            height={700}
-            className="aspect-[1920/700] h-auto w-[920px] max-w-none md:w-full"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </Reveal>
-    </section>
+    <section
+      className="relative w-full overflow-hidden bg-white aspect-[1920/700] bg-contain bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${content.image})` }}
+      aria-label={content.alt}
+    />
   );
 }
 
@@ -152,6 +142,7 @@ export default function About() {
         subtitle={content.hero.subtitle}
         image="/media/bg/sobre/bg_Sobre_nos.webp"
         imageAlt="Sapiente.AI"
+        compact
       />
 
       <AboutOriginSection content={content.origin} />

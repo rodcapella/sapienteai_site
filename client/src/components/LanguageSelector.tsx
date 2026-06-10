@@ -46,7 +46,7 @@ export function LanguageSelector() {
         x: springX,
         y: springY,
       }}
-      className="relative flex items-center gap-3 overflow-hidden rounded-full border border-[var(--brand-primary)] !bg-transparent px-5 py-2.5 backdrop-blur-xl transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:shadow-[var(--shadow-neon-blue)] dark:!bg-transparent group"
+      className="relative flex min-h-11 items-center gap-3 overflow-hidden rounded-full border border-[var(--brand-primary)] !bg-transparent px-5 py-2.5 backdrop-blur-xl transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:shadow-[var(--shadow-neon-blue)] dark:!bg-transparent group"
     >
       <span
         className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"

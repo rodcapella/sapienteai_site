@@ -159,11 +159,11 @@ export default function Services() {
                         <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
                             <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:bg-transparent lg:p-0 lg:shadow-none">
-                              <p className="mb-4 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
+                              <p className="mb-4 font-[var(--font-heading)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
                                 {data.eyebrow}
                               </p>
 
-                              <h2 className="whitespace-pre-line font-[var(--font-body)] text-[clamp(2.1rem,4.7vw,4rem)] font-black leading-[0.98] tracking-normal text-[var(--brand-primary)]">
+                              <h2 className="whitespace-pre-line font-[var(--font-body)] text-[clamp(2.1rem,4.7vw,4rem)] font-black leading-[0.98] tracking-normal text-[var(--brand-primary)]" style={{ fontFamily: "var(--font-body)" }}>
                                 {data.title}
                               </h2>
 

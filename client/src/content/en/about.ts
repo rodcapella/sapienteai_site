@@ -9,8 +9,8 @@ export const aboutEN = {
   cta: {
     title: "Ready to transform",
     title_highlight: "your business?",
-    description:
-      "We run a free diagnostic and show you exactly where you can automate, reduce costs, and increase sales.",
+    description: "We run a free diagnostic and show you exactly where you",
+    description_highlight: "can automate, reduce costs, and increase sales.",
     button: "Talk to us",
   },
   origin: {

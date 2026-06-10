@@ -2,7 +2,7 @@ export const sitemapEN = {
   label: "Sitemap",
   title: "All pages",
   highlight: "in one place.",
-  subtitle: "Easily navigate all sections of the Sapiente.AI website.",
+  subtitle: "Easily navigate all sections of our website.",
   imageAlt: "Sapiente.AI sitemap",
   sections: {
     main: "Main pages",
