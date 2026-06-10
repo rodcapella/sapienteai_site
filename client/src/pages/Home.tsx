@@ -48,15 +48,15 @@ function HomeBannerSection({ lang, file, label, id }: HomeBannerSectionProps) {
   return (
     <section
       id={id}
-      className="relative block w-full overflow-hidden bg-[var(--section-ice)] m-0 p-0 border-0"
+      className="relative w-full overflow-hidden bg-[var(--section-ice)] aspect-[1920/700]"
       aria-label={label}
     >
-      <Reveal>
+      <Reveal className="absolute inset-0">
         <img
           src={bannerSrc}
           alt=""
           aria-hidden="true"
-          className="block h-auto w-full object-contain"
+          className="h-full w-full object-contain"
           loading="lazy"
         />
       </Reveal>

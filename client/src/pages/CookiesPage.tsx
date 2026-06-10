@@ -1,6 +1,8 @@
 import { useState } from "react";
 
+import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useSEOHead } from "@/hooks/useSEOHead";
@@ -54,14 +56,15 @@ function ResetConsentButton({ label }: { label: string }) {
   }
 
   return (
-    <button
-      type="button"
+    <PremiumButton
+      size="sm"
+      variant="outline"
       onClick={handleReset}
-      className="mt-6 inline-flex items-center gap-2 rounded-xl border border-[var(--brand-primary)]/30 bg-[var(--brand-primary)]/8 px-5 py-2.5 text-[13px] font-black uppercase tracking-wider text-[var(--brand-primary)] transition-all duration-200 hover:bg-[var(--brand-primary)]/15"
+      className="mt-6"
     >
       <RefreshCw className="h-3.5 w-3.5" />
       {label}
-    </button>
+    </PremiumButton>
   );
 }
 
@@ -72,11 +75,15 @@ function CookieDetail({
   tableHeaders,
   tableYes,
   tableNo,
+  onContact,
+  contactLabel,
 }: {
   data: SectionContent;
   tableHeaders: { type: string; purpose: string; required: string };
   tableYes: string;
   tableNo: string;
+  onContact?: () => void;
+  contactLabel?: string;
 }) {
   return (
     <div>
@@ -168,20 +175,17 @@ function CookieDetail({
       )}
 
       {/* Contact block */}
-      {data.contact && (
+      {data.contact && onContact && (
         <Reveal delay={80}>
           <div className="mt-6 flex items-center gap-4 rounded-2xl border border-[var(--brand-mid)]/30 bg-white px-6 py-5 shadow-sm">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--brand-mid)]/30 bg-[var(--brand-primary)]/8 text-[var(--brand-primary)]">
               <Mail className="h-5 w-5" />
             </span>
             <div>
-              <p className="text-sm font-black text-[var(--brand-night)]">{data.contact.company}</p>
-              <a
-                href={`mailto:${data.contact.email}`}
-                className="text-sm font-medium text-[var(--brand-primary)] underline-offset-2 hover:underline"
-              >
-                {data.contact.email}
-              </a>
+              <p className="mb-2 text-sm font-black text-[var(--brand-night)]">{data.contact.company}</p>
+              <PremiumButton size="sm" onClick={onContact}>
+                {contactLabel}
+              </PremiumButton>
             </div>
           </div>
         </Reveal>
@@ -207,6 +211,10 @@ export default function CookiesPage() {
   const cta  = content.cta;
 
   const [activeSection, setActiveSection] = useState(sections[0].id);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
+  const contactTopic = lang === "en" ? "Cookie Policy" : "Política de Cookies";
+  const contactLabel = lang === "en" ? "Talk to us" : "Falar connosco";
 
   useSEOHead({
     title: `${hero.label} — Sapiente.AI`,
@@ -225,7 +233,7 @@ export default function CookiesPage() {
         title={hero.title}
         highlight={hero.highlight}
         subtitle={hero.subtitle}
-        image="/media/bg/bg_legal.webp"
+        image="/media/bg/bg_LegalPages.webp"
         imageAlt="Sapiente.AI Cookie Policy"
         compact
       />
@@ -265,6 +273,8 @@ export default function CookiesPage() {
                   tableHeaders={content.tableHeaders}
                   tableYes={content.tableYes}
                   tableNo={content.tableNo}
+                  onContact={() => setIsContactOpen(true)}
+                  contactLabel={contactLabel}
                 />
               )}
             </div>
@@ -279,6 +289,14 @@ export default function CookiesPage() {
         description={cta.description}
         button={cta.button}
       />
+
+      {isContactOpen && (
+        <ContactModal
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+          initialTopic={contactTopic}
+        />
+      )}
 
     </div>
   );

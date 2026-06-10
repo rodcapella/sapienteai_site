@@ -88,21 +88,18 @@ export function FinalCTA({
       ? "white"
       : "var(--brand-night)";
 
-  const highlightColor = isAboutVariant || isServicesVariant
-    ? "text-[var(--brand-night)]"
-    : "text-[var(--brand-primary)]";
+  const highlightColor = "text-[var(--brand-primary)]";
 
   const getFallbackBackground = () => {
     switch (variant) {
       case "home":
-        return "/media/bg/bg_finalCTA_home.webp";
+        return "/media/bg/finalCTA/bg_finalCTA_home.webp";
       case "about":
-        return "/media/bg/final_CTA_sobre.webp";
+        return "/media/bg/finalCTA/final_CTA_sobre.webp";
       case "services":
-        // TODO: substituir por imagem própria de serviços quando disponível
-        return "/media/bg/final_CTA_sobre.webp";
+        return "/media/bg/finalCTA/final_CTA_sobre.webp";
       default:
-        return "/media/bg/bg_finalCTA.webp";
+        return "/media/bg/finalCTA/bg_finalCTA.webp";
     }
   };
 
@@ -121,7 +118,7 @@ export function FinalCTA({
   if (isHomeVariant) {
     return (
       <>
-        <section className="final-cta relative w-full overflow-hidden bg-[var(--section-ice)]">
+        <section className="final-cta relative min-h-[360px] w-full overflow-hidden bg-[var(--section-ice)] md:h-[450px]">
           <img
             src={computedBackgroundSrc}
             alt=""
@@ -199,7 +196,7 @@ export function FinalCTA({
             className={cn(
               "w-full flex flex-col",
               !isCentered
-                ? "max-w-[580px] items-start text-left"
+                ? "max-w-[760px] items-start text-left"
                 : "max-w-3xl mx-auto items-center text-center"
             )}
           >

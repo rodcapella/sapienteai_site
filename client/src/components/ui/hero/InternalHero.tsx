@@ -59,7 +59,7 @@ export function InternalHero({
 
         <Reveal delay={100}>
           <h1
-            className="mt-4 max-w-5xl font-extrabold leading-[1.05] drop-shadow-[0_8px_32px_color-mix(in_srgb,black_58%,transparent)]"
+            className="mt-4 max-w-5xl whitespace-pre-line font-extrabold leading-[1.05] drop-shadow-[0_8px_32px_color-mix(in_srgb,black_58%,transparent)]"
             style={{ fontFamily: "var(--font-heading)", color: "white", fontSize: "clamp(26px, 6vw, 40px)" }}
           >
             {title}

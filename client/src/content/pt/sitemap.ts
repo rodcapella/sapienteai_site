@@ -1,0 +1,27 @@
+export const sitemapPT = {
+  label: "Mapa do Site",
+  title: "Todas as páginas",
+  highlight: "num só lugar.",
+  subtitle: "Navegue facilmente por todas as secções do site da Sapiente.AI.",
+  imageAlt: "Mapa do site Sapiente.AI",
+  sections: {
+    main: "Páginas principais",
+    mainTitle: "Navegação principal",
+    resources: "Recursos e ferramentas",
+    resourcesTitle: "Conteúdos úteis",
+    legal: "Informação legal",
+    legalTitle: "Transparência e confiança",
+  },
+  links: {
+    home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
+    about: ["Sobre Nós", "A nossa visão, método de trabalho e forma de aplicar IA."],
+    services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
+    faq: ["FAQ", "Respostas às perguntas mais frequentes sobre os nossos serviços."],
+    quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
+    newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
+    terms: ["Termos de Serviço", "Condições de utilização do site e dos nossos serviços."],
+    privacy: ["Política de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
+    trust: ["Confiança & Segurança", "Princípios de segurança, ética e responsabilidade."],
+    policy: ["Política de IA Generativa", "Como enquadramos o uso responsável de IA generativa."],
+  },
+} as const;

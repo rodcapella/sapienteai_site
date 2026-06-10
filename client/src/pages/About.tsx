@@ -192,7 +192,7 @@ export default function About() {
         description={content.cta.description}
         button={content.cta.button}
         variant="about"
-        backgroundSrc="/media/bg/final_CTA_servicos.webp"
+        backgroundSrc="/media/bg/finalCTA/final_CTA_servicos.webp"
       />
     </div>
   );

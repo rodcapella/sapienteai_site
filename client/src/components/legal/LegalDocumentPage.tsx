@@ -31,6 +31,9 @@ interface LegalDocumentPageProps {
   fallbackDescription: string;
 }
 
+/** Remove leading "1. ", "2. " … from section titles for display */
+const stripNumber = (s: string) => s.replace(/^\d+\.\s*/, "");
+
 const fallbackIcons = [
   ShieldCheck,
   Scale,
@@ -60,7 +63,7 @@ function getLegalCta(lang: string) {
       title_highlight: "to your business?",
       description: "Talk to us and understand how we can",
       description_highlight: "structure a clear, secure solution aligned with your goals.",
-      button: "Contact",
+      button: "Get in Touch",
     };
   }
 
@@ -69,7 +72,7 @@ function getLegalCta(lang: string) {
     title_highlight: "ao seu negócio?",
     description: "Fale connosco e perceba como podemos",
     description_highlight: "estruturar uma solução clara, segura e alinhada aos seus objetivos.",
-    button: "Contacto",
+    button: "Falar Connosco",
   };
 }
 
@@ -109,7 +112,15 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
   return (
     <div className="legal-page flex flex-col">
-      <InternalHero label={heroLabel} title={heroTitle} highlight={content.highlight} subtitle={heroSubtitle} compact />
+      <InternalHero
+        label={heroLabel}
+        title={heroTitle}
+        highlight={content.highlight}
+        subtitle={heroSubtitle}
+        image="/media/bg/bg_LegalPages.webp"
+        imageAlt="Sapiente.AI Legal"
+        compact
+      />
 
       <section className="legal-main">
         <div className="legal-inner">
@@ -124,8 +135,8 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
 
                 return (
                   <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => setOpenSection(section.id)}>
-                    <Icon className="h-4 w-4" />
-                    <span>{section.title}</span>
+                    <Icon className="h-4 w-4 shrink-0" />
+                    <span>{stripNumber(section.title)}</span>
                   </button>
                 );
               })}
@@ -146,7 +157,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
                       <button type="button" className="legal-q" onClick={() => setOpenSection(isOpen ? "" : section.id)}>
                         <span className="legal-q-main">
                           <Icon className="legal-q-symbol" />
-                          <span className="legal-q-text">{section.title}</span>
+                          <span className="legal-q-text">{stripNumber(section.title)}</span>
                         </span>
                         <span className="legal-q-icon">+</span>
                       </button>

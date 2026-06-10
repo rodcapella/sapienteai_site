@@ -81,8 +81,8 @@
   margin: 0 auto;
   padding-top: 48px;
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 48px;
+  grid-template-columns: 240px 1fr;
+  gap: 72px;
   align-items: start;
 }
 
@@ -104,18 +104,20 @@
 .faq-cat,
 .legal-cat {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   padding: 10px 14px;
   border-radius: 10px;
   border: 0;
   background: transparent;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   color: var(--brand-night);
   transition: background 0.2s ease, color 0.2s ease;
-  white-space: nowrap;
+  text-align: left;
+  line-height: 1.35;
+  word-break: break-word;
 }
 
 .faq-cat:hover,
@@ -419,7 +421,7 @@
   .faq-inner,
   .legal-inner {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
     padding-top: 32px;
   }
 

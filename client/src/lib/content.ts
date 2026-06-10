@@ -31,6 +31,9 @@ import { cookiesEN } from "@/content/en/cookies";
 import { notFoundPT } from "@/content/pt/notFound";
 import { notFoundEN } from "@/content/en/notFound";
 
+import { sitemapPT } from "@/content/pt/sitemap";
+import { sitemapEN } from "@/content/en/sitemap";
+
 const contentMap = {
   home: {
     pt: homePT,
@@ -75,6 +78,10 @@ const contentMap = {
   notFound: {
     pt: notFoundPT,
     en: notFoundEN,
+  },
+  sitemap: {
+    pt: sitemapPT,
+    en: sitemapEN,
   }
 } as const;
 

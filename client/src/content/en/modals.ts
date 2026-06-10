@@ -20,6 +20,7 @@ export const modalsEN = {
       "Content creation",
       "Digital project",
       "Partnerships",
+      "Cookie Policy",
       "Questions",
       "Services: AI",
       "Services: Automation",

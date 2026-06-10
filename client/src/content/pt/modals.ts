@@ -19,6 +19,7 @@ export const modalsPT = {
       "Criação de conteúdo",
       "Diagnóstico de negócio",
       "Dúvidas",
+      "Política de Cookies",
       "Parcerias",
       "Projeto digital",
       "Serviços: IA",

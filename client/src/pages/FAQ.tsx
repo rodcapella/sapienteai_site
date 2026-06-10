@@ -101,7 +101,7 @@ export default function FAQ() {
         title={pageCopy.title}
         highlight={pageCopy.highlight}
         subtitle={pageCopy.subtitle}
-        image="/media/bg/servicos/bg_Servicos.webp"
+        image="/media/bg/bg_FAQ.webp"
         imageAlt="Sapiente.AI"
         compact
       />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import type { ElementType } from "react";
 import { Link } from "wouter";
 
@@ -7,6 +7,7 @@ import { useSEOHead } from "@/hooks/useSEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
+import { getContent } from "@/lib/content";
 import { ArrowRight, Home, Mail, ShieldCheck, Sparkles } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
@@ -24,60 +25,6 @@ type SitemapGroup = {
   links: SitemapLink[];
 };
 
-const copy = {
-  pt: {
-    label: "Mapa do Site",
-    title: "Todas as páginas",
-    highlight: "num só lugar.",
-    subtitle: "Navegue facilmente por todas as secções do site da Sapiente.AI.",
-    sections: {
-      main: "Páginas principais",
-      mainTitle: "Navegação principal",
-      resources: "Recursos e ferramentas",
-      resourcesTitle: "Conteúdos úteis",
-      legal: "Informação legal",
-      legalTitle: "Transparência e confiança",
-    },
-    links: {
-      home: ["Início", "Visão geral das soluções, serviços e proposta de valor."],
-      about: ["Sobre Nós", "A nossa visão, método de trabalho e forma de aplicar IA."],
-      services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
-      faq: ["FAQ", "Respostas às perguntas mais frequentes sobre os nossos serviços."],
-      quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
-      newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],
-      terms: ["Termos de Serviço", "Condições de utilização do site e dos nossos serviços."],
-      privacy: ["Política de Privacidade", "Como recolhemos, tratamos e protegemos dados pessoais."],
-      trust: ["Confiança & Segurança", "Princípios de segurança, ética e responsabilidade."],
-      policy: ["Política de IA Generativa", "Como enquadramos o uso responsável de IA generativa."],
-    },
-  },
-  en: {
-    label: "Sitemap",
-    title: "All pages",
-    highlight: "in one place.",
-    subtitle: "Easily navigate all sections of the Sapiente.AI website.",
-    sections: {
-      main: "Main pages",
-      mainTitle: "Main navigation",
-      resources: "Resources and tools",
-      resourcesTitle: "Useful content",
-      legal: "Legal information",
-      legalTitle: "Transparency and trust",
-    },
-    links: {
-      home: ["Home", "Overview of our solutions, services, and value proposition."],
-      about: ["About us", "Our vision, working method, and approach to applied AI."],
-      services: ["Services", "Digital solutions, automation, marketing and applied AI for growth."],
-      faq: ["FAQ", "Quick answers to the most common questions about our services."],
-      quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
-      newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
-      terms: ["Terms of Service", "Terms of use for the website and services."],
-      privacy: ["Privacy Policy", "How we collect, process, and protect personal data."],
-      trust: ["Trust & Security", "Security, ethics, and accountability principles."],
-      policy: ["Generative AI Policy", "How we frame responsible use of generative AI."],
-    },
-  },
-} as const;
 
 function makeLink(lang: string, path = "") {
   return `/${lang}${path}`;
@@ -103,7 +50,7 @@ function SitemapCard({ group }: { group: SitemapGroup }) {
 
   return (
     <div className="legal-document-card !p-0 overflow-hidden">
-      {/* Cabeçalho do card */}
+      {/* CabeÃ§alho do card */}
       <div className="flex items-center gap-4 border-b border-[color-mix(in_srgb,var(--brand-mid)_40%,transparent)] px-6 py-5">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_srgb,var(--brand-primary)_12%,transparent)]">
           <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
@@ -142,7 +89,7 @@ function SitemapCard({ group }: { group: SitemapGroup }) {
 
 export default function Sitemap() {
   const { lang } = useTranslation();
-  const content = copy[lang];
+  const content = getContent("sitemap", lang);
   const l = content.links;
   const quizHref = lang === "pt" ? makeLink(lang, "/quiz-ia") : makeLink(lang, "/quiz-ai");
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
@@ -183,7 +130,7 @@ export default function Sitemap() {
   ];
 
   useSEOHead({
-    title: `${content.label} — Sapiente.AI`,
+    title: `${content.label} â€” Sapiente.AI`,
     description: content.subtitle,
     url: `https://sapienteai.com/${lang}/sitemap`,
     type: "website",
@@ -196,6 +143,8 @@ export default function Sitemap() {
         title={content.title}
         highlight={content.highlight}
         subtitle={content.subtitle}
+        image="/media/bg/bg_Mapa_Site.webp"
+        imageAlt={content.imageAlt}
         compact
       />
 

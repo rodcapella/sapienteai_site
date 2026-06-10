@@ -169,7 +169,14 @@ function ToggleSwitch({
 
   return (
     <div className="flex shrink-0 items-center gap-2">
-      <span className="min-w-[68px] text-right text-[10px] font-black uppercase tracking-[0.08em] text-[var(--brand-night)]/70">
+      <span
+        className={[
+          "min-w-[68px] text-right text-[10px] font-black uppercase tracking-[0.08em] transition-colors duration-300",
+          checked
+            ? "text-[var(--brand-primary)]"
+            : "text-[var(--brand-night)]/50",
+        ].join(" ")}
+      >
         {stateLabel}
       </span>
       <button
@@ -186,7 +193,7 @@ function ToggleSwitch({
             : "cursor-pointer",
           checked
             ? "border-[var(--brand-primary)] bg-[var(--brand-primary)]/20"
-            : "border-[var(--brand-night)]/35 bg-[var(--brand-night)]/12",
+            : "border-[var(--brand-night)]/55 bg-[var(--brand-night)]/20",
         ].join(" ")}
       >
         <span
@@ -194,7 +201,7 @@ function ToggleSwitch({
             "pointer-events-none absolute top-0.5 h-5 w-5 rounded-full transition duration-300",
             checked
               ? "left-[calc(100%-1.375rem)] bg-[var(--brand-primary)]"
-              : "left-0.5 bg-[var(--brand-night)]/55",
+              : "left-0.5 bg-[var(--brand-night)]/75",
           ].join(" ")}
         />
       </button>
