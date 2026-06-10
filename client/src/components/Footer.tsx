@@ -248,7 +248,7 @@ export default function Footer() {
           <div className="mb-3 h-px bg-[var(--brand-primary)]/20" />
 
           {/* Copyright */}
-          <p className="text-center font-serif text-[10px] italic font-normal uppercase tracking-[0.18em] text-[white]/70">
+          <p className="text-center font-serif text-[13px] font-normal text-[white]/70">
             {t("footer.copyright")} •{" "}
             <Link href={`/${lang}/sitemap`} className="text-[white]/70 transition-colors hover:text-[var(--brand-cyan)]">
               {t("footer.sitemap")}
@@ -341,9 +341,9 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3 pb-3">
-            <p className="text-center font-serif text-[11px] italic font-normal uppercase tracking-[0.18em] text-[white]/70">
+            <p className="text-center font-serif text-[13px] font-normal text-[white]/70">
               {t("footer.copyright")} |{" "}
-              <Link href={`/${lang}/sitemap`} className="font-normal italic text-[white]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">
+              <Link href={`/${lang}/sitemap`} className="font-normal text-[white]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">
                 {t("footer.sitemap")}
               </Link>{" "}
               |

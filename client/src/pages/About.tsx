@@ -1,5 +1,4 @@
 ﻿import { useEffect } from "react";
-import { useState } from "react";
 
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -45,7 +44,7 @@ function AboutOriginSection({ content }: { content: AboutOriginContent }) {
   const c = content;
 
   return (
-    <section className="bg-white px-6 py-16 md:py-24">
+    <section className="content-atmosphere bg-white px-6 py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1fr_420px] lg:gap-16 xl:gap-24">
         <Reveal>
           <div className="flex flex-col gap-6">
@@ -121,70 +120,56 @@ function AboutOriginSection({ content }: { content: AboutOriginContent }) {
 }
 
 function AboutVisualSection({ content, founders }: { content: AboutVisualSectionContent; founders?: { label: string; names: string[] } }) {
-  const [activeFounder, setActiveFounder] = useState<number | null>(null);
-
   return (
-    <section
-      className="relative w-full overflow-hidden bg-white aspect-[1920/700] bg-contain bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${content.image})` }}
-      aria-label={content.alt}
-    >
-      {content.links?.map((link, index) => {
-        const menuId = `founder-link-options-${index}`;
-        const menuTop = `calc(${link.area.top} + 10%)`;
-        const menuTransform = index === 0 ? "translateX(-40%)" : undefined;
+    <div className="content-atmosphere bg-white">
+      <section
+        className="relative w-full overflow-hidden bg-white aspect-[1920/700] bg-contain bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${content.image})` }}
+        aria-label={content.alt}
+      >
+        {/* Texto dos founders visível para crawlers e LLMs mas visualmente integrado na imagem */}
+        {founders && (
+          <div className="sr-only" data-speakable>
+            <p>{founders.label}</p>
+            {founders.names.map((name) => <span key={name}>{name}</span>)}
+          </div>
+        )}
+      </section>
 
-        return (
-          <div key={link.label}>
-            <button
-              type="button"
-              aria-label={`Escolher link de ${link.label}`}
-              aria-expanded={activeFounder === index}
-              aria-controls={menuId}
-              className="absolute rounded-2xl outline-none transition focus-visible:ring-4 focus-visible:ring-[var(--brand-primary)]/70"
-              style={link.area}
-              onClick={() =>
-                setActiveFounder((current) => (current === index ? null : index))
-              }
-            />
-
-            {activeFounder === index && (
+      {content.links && content.links.length > 0 && (
+        <div className="px-6 pb-10 pt-4 md:pb-14">
+          <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
+            {content.links.map((link) => (
               <div
-                id={menuId}
-                className="absolute z-20 flex min-w-[136px] flex-col gap-1 rounded-xl border border-[var(--brand-primary)]/20 bg-white/95 p-2 shadow-xl backdrop-blur-sm sm:min-w-[160px]"
-                style={{ left: link.area.left, top: menuTop, transform: menuTransform }}
+                key={link.label}
+                className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--brand-primary)]/15 bg-white p-4 text-center shadow-sm"
               >
                 <p
-                  className="px-2 pb-1 text-[10px] font-black uppercase tracking-[0.12em] text-[var(--brand-night)]"
+                  className="text-[12px] font-black uppercase tracking-[0.16em] text-[var(--brand-night)]"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   {link.label}
                 </p>
-                {link.options.map((option) => (
-                  <a
-                    key={option.href}
-                    href={option.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg px-3 py-2 text-[12px] font-bold text-[var(--brand-primary)] transition hover:bg-[var(--surface)] focus-visible:bg-[var(--surface)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]/60 sm:text-[13px]"
-                  >
-                    {option.label}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        );
-      })}
 
-      {/* Texto dos founders visível para crawlers e LLMs mas visualmente integrado na imagem */}
-      {founders && (
-        <div className="sr-only" data-speakable>
-          <p>{founders.label}</p>
-          {founders.names.map((name) => <span key={name}>{name}</span>)}
+                <div className="flex flex-wrap justify-center gap-2">
+                  {link.options.map((option) => (
+                    <a
+                      key={option.href}
+                      href={option.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="rounded-full border border-[var(--brand-primary)]/25 px-4 py-2 text-[12px] font-black uppercase tracking-[0.08em] text-[var(--brand-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]/60"
+                    >
+                      {option.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
 

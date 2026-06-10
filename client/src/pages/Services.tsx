@@ -166,7 +166,7 @@ export default function Services() {
       />
 
       {/* -- Docs Layout -- */}
-      <section className="flex-1 bg-white px-0 pb-6 pt-8 md:pb-8 md:pt-10">
+      <section className="content-atmosphere flex-1 bg-white px-0 pb-6 pt-8 md:pb-8 md:pt-10">
         <ServicesStickyNav sections={sections} active={activeSection} onSelect={handleSelectSection} />
 
         <div className="w-full px-4 sm:px-6">

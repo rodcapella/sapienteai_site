@@ -31,7 +31,7 @@ interface LegalDocumentPageProps {
   fallbackDescription: string;
 }
 
-/** Remove leading "1. ", "2. " â€¦ from section titles for display */
+/** Remove leading "1. ", "2. " … from section titles for display */
 const stripNumber = (s: string) => s.replace(/^\d+\.\s*/, "");
 
 const fallbackIcons = [
@@ -47,10 +47,10 @@ const fallbackIcons = [
 
 function getLegalPageTitle(slug: string, lang: string) {
   const titles: Record<string, Record<string, string>> = {
-    terms: { pt: "Termos de ServiÃ§o", en: "Terms of Service" },
-    privacy: { pt: "PolÃ­tica de Privacidade", en: "Privacy Policy" },
-    trust: { pt: "ConfianÃ§a e SeguranÃ§a", en: "Trust & Security" },
-    "generative-ai-policy": { pt: "PolÃ­tica de IA Generativa", en: "Generative AI Policy" },
+    terms: { pt: "Termos de Serviço", en: "Terms of Service" },
+    privacy: { pt: "Política de Privacidade", en: "Privacy Policy" },
+    trust: { pt: "Confiança e Segurança", en: "Trust & Security" },
+    "generative-ai-policy": { pt: "Política de IA Generativa", en: "Generative AI Policy" },
   };
 
   return titles[slug]?.[lang === "en" ? "en" : "pt"];
@@ -69,9 +69,9 @@ function getLegalCta(lang: string) {
 
   return {
     title: "Precisa de ajuda para aplicar isto",
-    title_highlight: "ao seu negÃ³cio?",
+    title_highlight: "ao seu negócio?",
     description: "Fale connosco e perceba como podemos",
-    description_highlight: "estruturar uma soluÃ§Ã£o clara, segura e alinhada aos seus objetivos.",
+    description_highlight: "estruturar uma solução clara, segura e alinhada aos seus objetivos.",
     button: "Falar Connosco",
   };
 }
@@ -85,7 +85,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
   const heroLabel = content.label || pageTitle;
   const heroTitle = usesStatementHero ? content.subtitle || content.title : content.title;
   const heroSubtitle = usesStatementHero ? content.lastUpdated || content.title : content.subtitle || content.lastUpdated;
-  const legalCopy = lang === "en" ? { sidebar: "Topics", group: "Document details" } : { sidebar: "TÃ³picos", group: "Detalhes do documento" };
+  const legalCopy = lang === "en" ? { sidebar: "Topics", group: "Document details" } : { sidebar: "Tópicos", group: "Detalhes do documento" };
   const sections = useMemo(
     () =>
       content.sections.map((section, index) => ({
@@ -125,7 +125,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
       <section className="legal-main">
         <div className="legal-inner">
 
-          {/* Sidebar de tÃ³picos */}
+          {/* Sidebar de tópicos */}
           <aside className="legal-sidebar">
             <div className="legal-sidebar-label">{legalCopy.sidebar}</div>
             <div className="legal-cats">
@@ -143,7 +143,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
             </div>
           </aside>
 
-          {/* ConteÃºdo das secÃ§Ãµes */}
+          {/* Conteúdo das secções */}
           <Reveal delay={80}>
             <div className="legal-content">
               <div className="legal-group-title">{legalCopy.group}</div>

@@ -59,7 +59,7 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
   return (
     <section
       id={id}
-      className="relative min-h-[320px] w-full overflow-hidden bg-[var(--section-ice)] sm:aspect-[1920/700] sm:min-h-0"
+      className="content-atmosphere relative min-h-[320px] w-full overflow-hidden bg-[var(--section-ice)] sm:aspect-[1920/700] sm:min-h-0"
       aria-label={label}
     >
       {/* Imagem de fundo */}
