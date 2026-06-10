@@ -29,16 +29,20 @@ const copy = {
     title: "Privacidade e cookies",
     message:
       "Usamos cookies essenciais e, com a sua autorização, métricas para melhorar a experiência no site.",
-    acceptAll: "Aceitar",
-    rejectOptional: "Recusar",
-    customize: "Preferências",
+    acceptAll: "Aceitar todos",
+    rejectOptional: "Recusar todos",
+    customize: "Configurar",
     savePreferences: "Guardar preferências",
     preferencesTitle: "Preferências de cookies",
     close: "Fechar",
     alwaysOn: "Sempre ativo",
+    enabled: "Ativado",
+    disabled: "Desativado",
+    legalIntro: "Para saber mais, consulte a nossa",
+    legalJoin: "e",
     links: {
-      privacy: "Privacidade",
-      cookies: "Cookies",
+      privacy: "Política de Privacidade",
+      cookies: "Política de Cookies",
       terms: "Termos",
     },
     preferences: {
@@ -63,16 +67,20 @@ const copy = {
     title: "Privacy and cookies",
     message:
       "We use essential cookies and, with your permission, analytics to improve the website experience.",
-    acceptAll: "Accept",
-    rejectOptional: "Reject",
-    customize: "Preferences",
+    acceptAll: "Accept all",
+    rejectOptional: "Reject all",
+    customize: "Configure",
     savePreferences: "Save preferences",
     preferencesTitle: "Cookie preferences",
     close: "Close",
     alwaysOn: "Always on",
+    enabled: "Enabled",
+    disabled: "Disabled",
+    legalIntro: "To learn more, read our",
+    legalJoin: "and",
     links: {
-      privacy: "Privacy",
-      cookies: "Cookies",
+      privacy: "Privacy Policy",
+      cookies: "Cookie Policy",
       terms: "Terms",
     },
     preferences: {
@@ -148,37 +156,49 @@ function ToggleSwitch({
   checked,
   disabled = false,
   onChange,
+  enabledLabel,
+  disabledLabel,
 }: {
   checked: boolean;
   disabled?: boolean;
   onChange: (checked: boolean) => void;
+  enabledLabel: string;
+  disabledLabel: string;
 }) {
+  const stateLabel = checked ? enabledLabel : disabledLabel;
+
   return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={checked}
-      disabled={disabled}
-      onClick={() => !disabled && onChange(!checked)}
-      className={[
-        "relative inline-flex h-6 w-11 shrink-0 rounded-full border transition duration-300",
-        disabled
-          ? "cursor-not-allowed border-[var(--brand-cyan-bright)]/50 bg-white dark:bg-[var(--brand-night)]"
-          : "cursor-pointer",
-        checked
-          ? "border-[var(--brand-cyan-bright)] bg-white dark:bg-[var(--brand-cyan-bright)]/35"
-          : "border-[var(--brand-cyan-bright)]/50 bg-white dark:bg-[var(--brand-night)]",
-      ].join(" ")}
-    >
-      <span
+    <div className="flex shrink-0 items-center gap-2">
+      <span className="min-w-[68px] text-right text-[10px] font-black uppercase tracking-[0.08em] text-[var(--brand-night)]/70">
+        {stateLabel}
+      </span>
+      <button
+        type="button"
+        role="switch"
+        aria-checked={checked}
+        aria-label={stateLabel}
+        disabled={disabled}
+        onClick={() => !disabled && onChange(!checked)}
         className={[
-          "pointer-events-none absolute top-0.5 h-5 w-5 rounded-full transition duration-300",
+          "relative inline-flex h-6 w-11 shrink-0 rounded-full border transition duration-300",
+          disabled
+            ? "cursor-not-allowed border-[var(--brand-primary)]/45 bg-[var(--brand-offwhite)]"
+            : "cursor-pointer",
           checked
-            ? "left-[calc(100%-1.375rem)] bg-[var(--brand-cyan-bright)]"
-            : "left-0.5 bg-[var(--brand-night)]/35 dark:bg-[var(--brand-offwhite)]/70",
+            ? "border-[var(--brand-primary)] bg-[var(--brand-primary)]/20"
+            : "border-[var(--brand-night)]/35 bg-[var(--brand-night)]/12",
         ].join(" ")}
-      />
-    </button>
+      >
+        <span
+          className={[
+            "pointer-events-none absolute top-0.5 h-5 w-5 rounded-full transition duration-300",
+            checked
+              ? "left-[calc(100%-1.375rem)] bg-[var(--brand-primary)]"
+              : "left-0.5 bg-[var(--brand-night)]/55",
+          ].join(" ")}
+        />
+      </button>
+    </div>
   );
 }
 
@@ -263,14 +283,31 @@ export default function CookieBanner() {
     { key: "marketing" as const, locked: false, ...text.preferences.marketing },
   ];
 
+  const choiceButtonClass =
+    "min-h-10 rounded-full border px-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.1em] transition sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
+
   const secondaryButtonClass =
-    "min-h-7 rounded-full border border-[var(--brand-cyan-bright)] bg-transparent px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-[var(--brand-night)] transition hover:bg-[var(--brand-cyan-bright)]/[0.16] dark:text-[var(--brand-offwhite)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
+    "min-h-10 rounded-full border border-[var(--brand-night)]/20 bg-transparent px-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.1em] text-[var(--brand-night)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/8 sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
 
   const rejectButtonClass =
-    "min-h-7 rounded-full border border-[var(--brand-night)]/20 bg-white px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-[var(--brand-night)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-offwhite)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
+    `${choiceButtonClass} border-[var(--brand-primary)] bg-white text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/8`;
 
   const primaryButtonClass =
-    "min-h-7 rounded-full border border-[var(--brand-primary)] bg-[var(--brand-primary)] px-2.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.1em] text-white transition hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid) 34%,transparent)] sm:min-h-10 sm:px-4 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-5";
+    `${choiceButtonClass} border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid) 34%,transparent)]`;
+
+  const LegalLinks = () => (
+    <p className="mt-2 font-[var(--font-body)] text-[10px] font-medium leading-snug text-[var(--brand-night)]/65 sm:text-xs">
+      {text.legalIntro}{" "}
+      <Link href={cookiesHref} className="font-bold text-[var(--brand-primary)] underline-offset-2 hover:underline">
+        {text.links.cookies}
+      </Link>{" "}
+      {text.legalJoin}{" "}
+      <Link href={privacyHref} className="font-bold text-[var(--brand-primary)] underline-offset-2 hover:underline">
+        {text.links.privacy}
+      </Link>
+      .
+    </p>
+  );
 
   if (!showBanner) return null;
 
@@ -286,34 +323,30 @@ export default function CookieBanner() {
         {!showPreferences && (
           <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
             <div className="min-w-0 text-[var(--brand-night)]">
-              <h2 className="font-[var(--font-heading)] text-sm font-black leading-tight sm:text-base">
+              <h2 className="font-[var(--font-body)] !text-base font-black leading-tight sm:!text-lg">
                 {text.title}
               </h2>
               <p className="mt-1 font-[var(--font-body)] text-xs font-medium leading-snug text-[var(--brand-night)]/70 sm:text-sm">
                 {text.message}
               </p>
-              <div className="mt-1 flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[var(--brand-primary)] sm:text-[11px]">
-                <Link href={privacyHref}>{text.links.privacy}</Link>
-                <Link href={cookiesHref}>{text.links.cookies}</Link>
-                <Link href={termsHref}>{text.links.terms}</Link>
-              </div>
+              <LegalLinks />
             </div>
 
-            <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:justify-end sm:gap-3">
-              <button
-                type="button"
-                onClick={() => setShowPreferences(true)}
-                className={secondaryButtonClass}
-              >
-                {text.customize}
-              </button>
-
+            <div className="grid gap-2 sm:grid-cols-3 sm:justify-end sm:gap-3">
               <button
                 type="button"
                 onClick={handleRejectOptional}
                 className={rejectButtonClass}
               >
                 {text.rejectOptional}
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setShowPreferences(true)}
+                className={secondaryButtonClass}
+              >
+                {text.customize}
               </button>
 
               <button
@@ -330,7 +363,7 @@ export default function CookieBanner() {
         {showPreferences && (
           <div className="grid gap-3 text-[var(--brand-night)]">
             <div>
-              <h2 className="font-[var(--font-heading)] text-sm font-black sm:text-base">
+              <h2 className="font-[var(--font-body)] !text-base font-black leading-tight sm:!text-lg">
                 {text.preferencesTitle}
               </h2>
               <div className="mt-3 grid gap-2">
@@ -347,6 +380,8 @@ export default function CookieBanner() {
                     ) : (
                       <ToggleSwitch
                         checked={preferences[row.key]}
+                        enabledLabel={text.enabled}
+                        disabledLabel={text.disabled}
                         onChange={(checked) => setPreferences((prev) => ({ ...prev, [row.key]: checked }))}
                       />
                     )}
@@ -355,23 +390,33 @@ export default function CookieBanner() {
               </div>
             </div>
 
-          <div className="flex justify-end gap-3">
-            <button
-              type="button"
-              onClick={handleRejectOptional}
-              className={rejectButtonClass}
-            >
-              {text.rejectOptional}
-            </button>
+            <LegalLinks />
 
-            <button
-              type="button"
-              onClick={handleSaveCustom}
-              className={primaryButtonClass}
-            >
-              {text.savePreferences}
-            </button>
-          </div>
+            <div className="grid gap-2 sm:grid-cols-3 sm:justify-end sm:gap-3">
+              <button
+                type="button"
+                onClick={handleRejectOptional}
+                className={rejectButtonClass}
+              >
+                {text.rejectOptional}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleSaveCustom}
+                className={secondaryButtonClass}
+              >
+                {text.savePreferences}
+              </button>
+
+              <button
+                type="button"
+                onClick={handleAcceptAll}
+                className={primaryButtonClass}
+              >
+                {text.acceptAll}
+              </button>
+            </div>
           </div>
         )}
       </aside>

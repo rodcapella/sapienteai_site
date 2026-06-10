@@ -1,7 +1,6 @@
 ﻿import ContactModal from "@/components/ContactModal";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { Section } from "@/components/ui/section/Section";
 import { useState } from "react";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
@@ -174,10 +173,9 @@ export function FinalCTA({
 
   return (
     <>
-      <Section
+      <section
         className={cn(
-          "final-cta relative overflow-hidden",
-          "py-10 md:py-16",
+          "final-cta relative overflow-hidden py-10 md:py-16 px-6",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -240,7 +238,7 @@ export function FinalCTA({
             </Reveal>
           </div>
         </div>
-      </Section>
+      </section>
 
       {!href && isContactOpen && (
         <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />

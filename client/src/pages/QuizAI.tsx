@@ -42,22 +42,7 @@ export default function QuizAI() {
     return answer === questions[index]?.correct ? total + 1 : total;
   }, 0);
   
-  const startIntro =
-    lang === "en"
-      ? {
-          badge: "AI Quiz",
-          title: "What is the AI potential",
-          highlight: "in your business?",
-          subtitle: "Answer 10 questions about your business and discover where artificial intelligence can have the biggest impact.",
-          stats: ["3 minutes", "10 questions", "Instant result"],
-        }
-      : {
-          badge: "Quiz IA",
-          title: "Qual o potencial de IA",
-          highlight: "no seu negócio?",
-          subtitle: "Responda a 10 perguntas sobre o seu negócio e descubra em que áreas a inteligência artificial pode ter mais impacto.",
-          stats: ["3 minutos", "10 perguntas", "Resultado imediato"],
-        };
+  const startIntro = content.startIntro;
 
   const progress = ((current + 1) / questions.length) * 100;
   const resultPercent = Math.round((score / questions.length) * 100);

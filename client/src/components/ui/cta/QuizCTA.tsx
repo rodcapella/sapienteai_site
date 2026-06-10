@@ -71,21 +71,21 @@ export function QuizCTA() {
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 
   return (
-    <section className="relative flex items-center overflow-hidden bg-[var(--section-ice)] px-6 py-8 text-[var(--foreground)] md:py-16">
+    <section className="relative flex items-center overflow-hidden bg-[var(--section-ice)] px-4 py-8 text-[var(--foreground)] sm:px-6 md:py-16">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in srgb,var(--brand-cyan-bright) 12%,transparent),transparent_34%)]" />
 
-      <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
+      <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-3 text-center sm:gap-5">
         <Reveal>
           <div className="flex flex-col items-center">
             <p className="mb-3 font-detail text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
               {content.label}
             </p>
 
-            <h2 className="font-heading text-[22px] font-black leading-tight text-[var(--foreground)] dark:text-[var(--brand-primary)] md:text-[32px]">
+            <h2 className="font-heading font-black leading-tight text-[var(--foreground)] dark:text-[var(--brand-primary)]" style={{ fontSize: "clamp(20px, 5vw, 32px)" }}>
               {renderTitle(content.title, content.title_highlight)}
             </h2>
 
-            <p className="mt-3 text-[13px] font-medium leading-relaxed text-[var(--muted-foreground)] dark:text-[var(--brand-blue-accent)]">
+            <p className="mt-3 font-medium leading-relaxed text-[var(--muted-foreground)] dark:text-[var(--brand-blue-accent)]" style={{ fontSize: "clamp(13px, 2vw, 15px)" }}>
               {renderDescription(
                 content.description,
                 content.description_highlight

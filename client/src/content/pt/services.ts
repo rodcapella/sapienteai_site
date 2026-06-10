@@ -12,7 +12,7 @@ export const servicesPT = {
     label: "O que fazemos",
     title: "Soluções integradas para cada etapa do",
     highlight: "crescimento.",
-    subtitle: "Unimos estratégia, tecnologia e inteligência artificial para criar sistemas, automatizar processos e gerar resultados reais para o seu negócio.",
+    subtitle: "Unimos estratégia, tecnologia e inteligência artificial para criar sistemas, automatizar\nprocessos e gerar resultados reais para o seu negócio.",
   },
   intro: {
     eyebrow: "O que fazemos",

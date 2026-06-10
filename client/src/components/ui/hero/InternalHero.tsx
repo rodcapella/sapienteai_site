@@ -29,16 +29,21 @@ export function InternalHero({
       className={[
         "InternalHero hero relative flex items-start justify-start overflow-hidden",
         compact
-          ? "min-h-[480px] pt-16 pb-10 md:min-h-[580px] md:pt-40 md:pb-24"
-          : "min-h-[520px] pt-16 pb-12 md:min-h-[720px] md:pt-40 md:pb-28",
+          ? "min-h-[380px] pt-14 pb-8 md:min-h-[460px] md:pt-32 md:pb-16"
+          : "min-h-[420px] pt-14 pb-10 md:min-h-[580px] md:pt-32 md:pb-20",
       ].join(" ")}
     >
-      <div
-        className="absolute inset-0 bg-[var(--brand-night)] bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${image})`, backgroundPosition: "center top" }}
-        role="img"
-        aria-label={imageAlt}
-      />
+      <div className="absolute inset-0 bg-[var(--brand-night)]" aria-hidden="true">
+        <img
+          src={image}
+          alt={imageAlt}
+          className="h-full w-full object-cover"
+          style={{ objectPosition: "center top" }}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </div>
 
       <div className="relative z-10 w-full max-w-6xl px-5 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
         {label && (

@@ -65,12 +65,18 @@ export default function Header({ onContactClick }: HeaderProps) {
                 src="/media/logos/Logo_Sapiente_fundo_claro.webp"
                 alt="Sapiente.AI"
                 className={cn(logoClassName, "dark:hidden")}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
 
               <img
                 src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
                 alt="Sapiente.AI"
                 className={cn(logoClassName, "hidden dark:block")}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
 
@@ -108,40 +114,66 @@ export default function Header({ onContactClick }: HeaderProps) {
             </div>
           </nav>
 
-          {isMobileMenuOpen && (
-            <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-[color-mix(in_srgb,var(--section-ice)_96%,transparent)] px-5 pt-5 pb-6 text-[var(--brand-night)] backdrop-blur-2xl dark:bg-[var(--brand-near-dark)]/98 dark:text-[var(--brand-offwhite)] lg:hidden">
-
-              {/* Barra topo: fechar + seletor de idioma */}
-              <div className="mb-5 flex items-center justify-between border-b border-[var(--brand-purple)]/20 pb-4 dark:border-white/10">
-                <span className="text-[10px] font-black uppercase tracking-[0.18em] text-[var(--brand-night)]/40 dark:text-[var(--brand-offwhite)]/40">{t("nav.language") || "Language"}</span>
-                <div className="flex items-center gap-3">
-                  <LanguageSelector />
-                  <button
-                    type="button"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--brand-primary)]/40 text-[var(--brand-primary)] transition-colors hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
-                    aria-label="Fechar menu"
-                  >
-                    <X className="h-5 w-5" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex flex-col divide-y divide-[var(--brand-primary)]/10">
-                {navLinks.map((link) => (
-                  <NavLink key={link.href} variant="mobile" href={link.href} onClick={handleNavClick} onMouseEnter={link.preload}>
-                    {link.label}
-                  </NavLink>
-                ))}
-              </div>
-
-              <div className="mt-auto pt-6">
-                <PremiumButton onClick={handleContactClick} onMouseEnter={preloadTurnstile} className="w-full" variant="primary">
-                  {contactLabel}
-                </PremiumButton>
+          {/* Mobile overlay — sempre presente, animado por translate+opacity */}
+          <div
+            className={cn(
+              "fixed inset-0 z-40 flex flex-col bg-white dark:bg-[var(--brand-near-dark)] lg:hidden",
+              "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
+              isMobileMenuOpen
+                ? "translate-y-0 opacity-100 pointer-events-auto"
+                : "-translate-y-3 opacity-0 pointer-events-none"
+            )}
+          >
+            {/* Topo: logo + idioma + fechar */}
+            <div className="flex h-16 shrink-0 items-center justify-between border-b border-[var(--brand-primary)]/15 px-5">
+              <img
+                src="/media/logos/Logo_Sapiente_fundo_claro.webp"
+                alt="Sapiente.AI"
+                className="h-9 w-auto object-contain dark:hidden"
+              />
+              <img
+                src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
+                alt="Sapiente.AI"
+                className="hidden h-9 w-auto object-contain dark:block"
+              />
+              <div className="flex items-center gap-3">
+                <LanguageSelector />
+                <button
+                  type="button"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-[var(--brand-primary)]/30 text-[var(--brand-primary)] transition-colors hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/10"
+                  aria-label="Fechar menu"
+                >
+                  <X className="h-5 w-5" />
+                </button>
               </div>
             </div>
-          )}
+
+            {/* Links de navegação */}
+            <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-5">
+              {navLinks.map((link, i) => (
+                <div
+                  key={link.href}
+                  className="transition-all duration-300"
+                  style={{ transitionDelay: isMobileMenuOpen ? `${i * 40}ms` : "0ms" }}
+                >
+                  <NavLink variant="mobile" href={link.href} onClick={handleNavClick} onMouseEnter={link.preload}>
+                    {link.label}
+                  </NavLink>
+                </div>
+              ))}
+            </nav>
+
+            {/* Rodapé: CTA */}
+            <div className="shrink-0 border-t border-[var(--brand-primary)]/15 px-5 pb-8 pt-5">
+              <PremiumButton onClick={handleContactClick} onMouseEnter={preloadTurnstile} className="w-full" variant="primary">
+                {contactLabel}
+              </PremiumButton>
+              <p className="mt-3 text-center text-[11px] font-medium text-[var(--brand-night)]/40 dark:text-[var(--brand-offwhite)]/30">
+                sapienteai.com
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 

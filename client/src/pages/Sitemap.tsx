@@ -8,7 +8,7 @@ import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
 import { ArrowRight, Home, Mail, ShieldCheck, Sparkles } from "@/lib/icons";
-import "@/styles/legal.css";
+import "@/styles/faq_legal.css";
 
 type SitemapLink = {
   title: string;

@@ -12,7 +12,7 @@ export const servicesEN = {
     label: "What We Do",
     title: "Integrated solutions for every stage of your",
     highlight: "growth.",
-    subtitle: "We combine strategy, technology, and artificial intelligence to build systems, automate processes, and drive real results for your business.",
+    subtitle: "We combine strategy, technology, and artificial intelligence to build systems, automate\nprocesses, and drive real results for your business.",
   },
   intro: {
     eyebrow: "What We Do",

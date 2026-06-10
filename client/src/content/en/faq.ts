@@ -1,8 +1,16 @@
 export const faqEN = {
+  hero: {
+    label: "Frequently Asked Questions",
+    title: "Have questions?",
+    highlight: "We have answers.",
+    subtitle:
+      "We gathered the most common questions about how we work, what we deliver and how Sapiente.AI creates business impact with AI, automation and digital strategy.",
+  },
   eyebrow: "FAQ",
   title: "Frequently Asked Questions",
   title_highlight: "straight to the point.",
   subtitle: "Clear, direct answers about how we use AI to help businesses grow, automate processes, and deliver real results.",
+  sidebar: "Categories",
 
   cta: {
     title: "Didn't find the ",

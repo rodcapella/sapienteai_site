@@ -4,7 +4,7 @@ export const aboutPT = {
     title: "Tecnologia que serve pessoas.",
     highlight: "Resultados reais.",
     subtitle:
-      "A Sapiente.AI nasceu da convicção de que a inteligência artificial não é um privilégio de grandes empresas. É uma ferramenta poderosa que, bem aplicada, transforma qualquer negócio, independentemente da sua dimensão.",
+      "A Sapiente.AI nasceu da convicção de que a inteligência artificial não é um privilégio\nde grandes empresas. É uma ferramenta poderosa que, bem aplicada, transforma qualquer negócio,\nindependentemente da sua dimensão.",
   },
   cta: {
     title: "Pronto para transformar",

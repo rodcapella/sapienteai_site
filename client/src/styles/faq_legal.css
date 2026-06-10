@@ -1,0 +1,443 @@
+/* ─── faq_legal.css ──────────────────────────────────────────────────────────
+   Estilos partilhados por FAQ, Legal, Sitemap, Cookies e Services.
+   Base: faq.css  ·  Adição: .legal-document-card e classes legal-*
+──────────────────────────────────────────────────────────────────────────── */
+
+/* ── PAGE ───────────────────────────────────────────────────────────────────*/
+.faq-page,
+.legal-page {
+  background: white;
+  color: var(--brand-night);
+}
+
+/* ── HERO (usado pelo FAQ) ──────────────────────────────────────────────────*/
+.faq-hero-card {
+  position: relative;
+  overflow: hidden;
+  padding: 120px 52px 72px;
+  border-bottom: 1px solid rgba(10, 132, 255, 0.15);
+  background: white;
+}
+
+.faq-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.faq-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(38px, 5vw, 62px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.faq-hero-title .accent {
+  color: var(--brand-primary);
+}
+
+.faq-hero-sub {
+  max-width: 540px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+/* ── LABELS ─────────────────────────────────────────────────────────────────*/
+.faq-section-label,
+.faq-sidebar-title,
+.faq-sidebar-label,
+.faq-group-title,
+.legal-section-label,
+.legal-sidebar-title,
+.legal-sidebar-label,
+.legal-group-title {
+  font-family: var(--font-detail);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-primary);
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+/* ── LAYOUT ─────────────────────────────────────────────────────────────────*/
+.faq-main,
+.legal-main {
+  padding: 0 52px 64px;
+  background: white;
+}
+
+.faq-inner,
+.legal-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 48px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* ── SIDEBAR ────────────────────────────────────────────────────────────────*/
+.faq-sidebar,
+.legal-sidebar {
+  position: sticky;
+  top: 84px;
+  background: white;
+}
+
+.faq-cats,
+.legal-cats {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faq-cat,
+.legal-cat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--brand-night);
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.faq-cat:hover,
+.legal-cat:hover {
+  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  color: var(--brand-primary);
+}
+
+.faq-cat.active,
+.legal-cat.active {
+  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  color: var(--brand-primary);
+  font-weight: 800;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--brand-mid) 12%, transparent);
+}
+
+.faq-cat-count {
+  font-size: 10px;
+  font-weight: 900;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ── DOCUMENT CARD (legal/cookies/sitemap) ──────────────────────────────────
+   Card que envolve o conteúdo principal, criando separação visual da sidebar.
+──────────────────────────────────────────────────────────────────────────── */
+.legal-document-card {
+  position: relative;
+  margin-bottom: 28px;
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid var(--brand-mid);
+  background: white;
+}
+
+.legal-document-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  border-radius: 18px 18px 0 0;
+  background: linear-gradient(90deg, var(--brand-purple), var(--brand-primary), var(--brand-cyan));
+}
+
+.legal-document-card h2 {
+  font: 900 clamp(28px, 3vw, 40px) var(--font-heading);
+}
+
+.legal-document-card p {
+  font: 500 15px var(--font-body);
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--brand-night) 60%, transparent);
+}
+
+/* ── FAQ LIST (perguntas/respostas do FAQ) ──────────────────────────────────*/
+.faq-list {
+  border-radius: 18px;
+  border: 2px solid var(--brand-mid);
+  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  overflow: hidden;
+}
+
+.faq-item {
+  border-top: 1px solid rgba(10, 132, 255, 0.15);
+}
+
+.faq-item:first-child {
+  border-top: none;
+}
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.faq-q-text {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 900;
+  text-align: left;
+}
+
+.faq-q-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--brand-cyan-bright);
+  color: var(--brand-night);
+  border: 1px solid rgba(122, 92, 252, 0.5);
+  transition: 0.3s ease;
+}
+
+.faq-item.open .faq-q-icon {
+  transform: rotate(45deg);
+}
+
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.faq-item.open .faq-a {
+  max-height: 520px;
+}
+
+.faq-a-inner {
+  padding: 0 24px 24px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* ── LEGAL LIST (legal/cookies/sitemap) ─────────────────────────────────────*/
+.legal-list {
+  border-radius: 18px;
+  background: white;
+  border: 2px solid var(--brand-mid);
+  overflow: hidden;
+}
+
+.legal-item {
+  border-top: 1px solid color-mix(in srgb, var(--brand-purple) 12%, transparent);
+}
+
+.legal-item:first-child {
+  border-top: none;
+}
+
+.legal-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 24px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.legal-q-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.legal-q-symbol {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--brand-primary);
+}
+
+.legal-q-text {
+  font: 900 16px var(--font-heading);
+  text-align: left;
+  color: var(--brand-night);
+  flex: 1;
+}
+
+.legal-q-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--brand-cyan-bright);
+  border: 1px solid color-mix(in srgb, var(--brand-purple) 70%, transparent);
+  transition: 0.3s;
+}
+
+.legal-item.open .legal-q-icon {
+  transform: rotate(45deg);
+}
+
+.legal-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.legal-item.open .legal-a {
+  max-height: 760px;
+}
+
+.legal-a-inner {
+  padding: 0 24px 24px 58px;
+  font: 14px var(--font-body);
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--brand-night) 65%, transparent);
+}
+
+.legal-a-inner ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legal-a-inner ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.legal-check {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  color: var(--color-success);
+}
+
+/* ── DARK MODE ──────────────────────────────────────────────────────────────*/
+.dark .faq-page,
+.dark .faq-hero-card,
+.dark .faq-main,
+.dark .legal-page,
+.dark .legal-main {
+  background: var(--brand-night);
+  color: var(--brand-offwhite);
+}
+
+.dark .faq-sidebar,
+.dark .legal-sidebar {
+  background: var(--brand-night);
+}
+
+.dark .faq-hero-sub {
+  color: rgba(234, 246, 255, 0.7);
+}
+
+.dark .faq-cat,
+.dark .legal-cat {
+  color: var(--brand-offwhite);
+}
+
+.dark .faq-cat:hover,
+.dark .legal-cat:hover {
+  background: rgba(0, 209, 255, 0.2);
+}
+
+.dark .faq-cat.active,
+.dark .legal-cat.active {
+  background: rgba(0, 209, 255, 0.35);
+}
+
+.dark .faq-list {
+  background: rgba(1, 32, 80, 0.6);
+}
+
+.dark .legal-document-card,
+.dark .legal-list {
+  background: rgba(1, 32, 80, 0.6);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark .faq-a-inner {
+  color: rgba(234, 246, 255, 0.85);
+}
+
+/* ── RESPONSIVO ─────────────────────────────────────────────────────────────*/
+@media (max-width: 900px) {
+  .faq-hero-card {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 64px;
+    padding-bottom: 40px;
+  }
+
+  .faq-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-main,
+  .legal-main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .faq-inner,
+  .legal-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 32px;
+  }
+
+  .faq-sidebar,
+  .legal-sidebar {
+    position: static;
+  }
+
+  .faq-cats,
+  .legal-cats {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .faq-cat,
+  .legal-cat {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+}

@@ -10,7 +10,7 @@ import { useFixedAfterScroll } from "@/hooks/useFixedAfterScroll";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
-import "@/styles/legal.css";
+import "@/styles/faq_legal.css";
 
 // ─── Tipos ───────────────────────────────────────────────────────────────────
 
@@ -75,7 +75,7 @@ function ServicesStickyNav({
 
 // ─── Página principal ─────────────────────────────────────────────────────────
 
-export default function Services(_props: { lang?: string }) {
+export default function Services() {
   const { lang } = useTranslation();
   const content = getContent("services", lang);
   const sections = content.sections as ServiceSection[];
@@ -159,7 +159,7 @@ export default function Services(_props: { lang?: string }) {
                         <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>
                             <div className="max-w-[440px] rounded-2xl bg-white/90 p-5 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:py-5 lg:bg-transparent lg:p-0 lg:shadow-none">
-                              <p className="mb-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-night)]">
+                              <p className="mb-4 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
                                 {data.eyebrow}
                               </p>
 
@@ -167,11 +167,11 @@ export default function Services(_props: { lang?: string }) {
                                 {data.title}
                               </h2>
 
-                              <p className="mt-7 max-w-[390px] font-[var(--font-body)] text-[15px] font-medium leading-[1.16] text-[var(--brand-night)]">
+                              <p className="mt-7 max-w-full font-[var(--font-body)] text-[15px] font-medium leading-[1.16] text-[var(--brand-night)] sm:max-w-[390px]">
                                 {data.description}
                               </p>
 
-                              <div className="mt-8 max-w-[390px] md:mt-11">
+                              <div className="mt-8 max-w-full sm:max-w-[390px] md:mt-11">
                                 <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
                                   {data.audienceLabel}
                                 </p>
@@ -194,7 +194,7 @@ export default function Services(_props: { lang?: string }) {
                           </Reveal>
 
                           <Reveal delay={120}>
-                            <ul className="ml-auto grid max-w-[390px] gap-4 rounded-2xl bg-white/90 p-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
+                            <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/90 p-5 sm:ml-auto sm:max-w-[390px] font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
                               {data.bullets.map((bullet) => (
                                 <li key={bullet} className="flex items-start gap-4">
                                   <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />

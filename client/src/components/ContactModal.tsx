@@ -232,7 +232,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       </DialogHeader>
 
       <form onSubmit={handleSubmit} className="relative z-10 space-y-4" noValidate>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <label htmlFor="contact-name" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.name)}</label>
             <input id="contact-name" name="name" type="text" autoComplete="name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} onBlur={() => handleBlur("name")} placeholder={text.placeholders.name} className={fieldClass("name")} aria-required="true" aria-invalid={Boolean(touched.name && errors.name)} disabled={submitState === "loading"} />
@@ -246,7 +246,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <label htmlFor="contact-topic" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.topic)}</label>
             <div className="relative">
@@ -275,7 +275,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <label htmlFor="contact-company" className={MODAL_LABEL_CLASS}>{text.labels.company}</label>
             <input id="contact-company" name="company" type="text" autoComplete="organization" value={formData.company} onChange={(e) => handleChange("company", e.target.value)} onBlur={() => handleBlur("company")} placeholder={text.placeholders.company} className={fieldClass("company")} disabled={submitState === "loading"} />
@@ -303,7 +303,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
         <div className="space-y-1.5">
           <label htmlFor="contact-message" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.message)}</label>
-          <textarea id="contact-message" name="message" rows={5} value={formData.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} placeholder={text.placeholders.message} className={`${fieldClass("message")} resize-none`} aria-required="true" aria-invalid={Boolean(touched.message && errors.message)} disabled={submitState === "loading"} />
+          <textarea id="contact-message" name="message" rows={4} value={formData.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} placeholder={text.placeholders.message} className={`${fieldClass("message")} resize-none`} aria-required="true" aria-invalid={Boolean(touched.message && errors.message)} disabled={submitState === "loading"} />
           {touched.message && errors.message && <p className="text-xs text-red-300">{errors.message}</p>}
         </div>
 

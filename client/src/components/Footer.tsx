@@ -341,7 +341,7 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3 pb-3">
-            <p className="text-center font-serif text-[9px] italic font-normal uppercase tracking-[0.24em] text-[white]/70">
+            <p className="text-center font-serif text-[11px] italic font-normal uppercase tracking-[0.18em] text-[white]/70">
               {t("footer.copyright")} |{" "}
               <Link href={`/${lang}/sitemap`} className="font-normal italic text-[white]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">
                 {t("footer.sitemap")}

@@ -1,8 +1,16 @@
 export const faqPT = {
+  hero: {
+    label: "Perguntas frequentes",
+    title: "Tem dúvidas?",
+    highlight: "Temos respostas.",
+    subtitle:
+      "Reunimos as perguntas mais comuns sobre como trabalhamos, o que entregamos e como a Sapiente.AI ajuda negócios a crescer com IA, automação e estratégia digital.",
+  },
   eyebrow: "FAQ",
   title: "Perguntas Frequentes",
   title_highlight: "sem rodeios.",
   subtitle: "Respostas claras e diretas sobre como usamos IA para ajudar empresas a crescer, automatizar processos e aumentar resultados reais.",
+  sidebar: "Categorias",
 
   cta: {
     title: "Não encontrou a ",

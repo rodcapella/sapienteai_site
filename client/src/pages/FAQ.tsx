@@ -10,7 +10,7 @@ import { generateFAQSchema } from "@/lib/faqSchema";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { BarChart3, Cpu, Database, Globe, HelpCircle, MessageCircle } from "@/lib/icons";
-import "@/styles/faq.css";
+import "@/styles/faq_legal.css";
 
 function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
   const labels =
@@ -48,14 +48,14 @@ function getFAQCopy(lang: string) {
         label: "Frequently Asked Questions",
         title: "Have questions?",
         highlight: "We have answers.",
-        subtitle: "We gathered the most common questions about how we work, what we deliver and how Sapiente.AI creates business impact with AI, automation and digital strategy.",
+        subtitle: "We gathered the most common questions about how we work, what we deliver and how\nSapiente.AI creates business impact with AI, automation and digital strategy.",
         sidebar: "Categories",
       }
     : {
         label: "Perguntas frequentes",
         title: "Tem dúvidas?",
         highlight: "Temos respostas.",
-        subtitle: "Reunimos as perguntas mais comuns sobre como trabalhamos, o que entregamos e como a Sapiente.AI ajuda negócios a crescer com IA, automação e estratégia digital.",
+        subtitle: "Reunimos as perguntas mais comuns sobre como trabalhamos, o que entregamos e como\na Sapiente.AI ajuda negócios a crescer com IA, automação e estratégia digital.",
         sidebar: "Categorias",
       };
 }

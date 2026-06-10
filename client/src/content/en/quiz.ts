@@ -1,4 +1,12 @@
 export const quizContentEn = {
+  startIntro: {
+    badge: "AI Quiz",
+    title: "What is the AI potential",
+    highlight: "in your business?",
+    subtitle:
+      "Answer 10 questions about your business and discover where artificial intelligence can have the biggest impact.",
+    stats: ["3 minutes", "10 questions", "Instant result"],
+  },
   badge: "AI Quiz",
   title: "How much do you know about",
   highlight: "Artificial Intelligence",

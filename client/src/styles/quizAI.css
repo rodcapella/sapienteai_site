@@ -85,8 +85,9 @@
 }
 
 .quiz-question-text {
-  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-size: clamp(1.2rem, 4vw, 2.3rem);
   text-align: left;
+  word-break: break-word;
 }
 
 .quiz-result-main-heading {
@@ -188,6 +189,12 @@
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
+  .quiz-result-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
   .quiz-result-cards-grid {
     grid-template-columns: 1fr;
   }

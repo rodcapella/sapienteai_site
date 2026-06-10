@@ -45,15 +45,6 @@ function preloadCoreRoutes() {
   coreRoutes.forEach((load) => load());
 }
 
-// Exposed so NavLinks can call these on hover
-export const preloadRoute: Record<string, () => void> = {
-  about:    () => import("@/pages/About"),
-  services: () => import("@/pages/Services"),
-  faq:      () => import("@/pages/FAQ"),
-  blog:     () => import("@/pages/Blog"),
-  quiz:     () => import("@/pages/QuizAI"),
-};
-
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 export default function App() {

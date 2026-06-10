@@ -7,7 +7,7 @@ const sectionCardVariants = cva(
   `
   group relative overflow-hidden
   rounded-[2rem] border
-  p-8 md:p-10
+  p-5 sm:p-8 md:p-10
   backdrop-blur-3xl
   transition-all duration-700 ease-[0.16,1,0.3,1]
   transform-gpu
