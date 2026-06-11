@@ -162,11 +162,11 @@ export default function Footer() {
         <div className="flex flex-col gap-0 sm:hidden">
 
           {/* Logo + descrição */}
-          <div className="mb-4">
+          <div className="mb-4 flex items-center gap-3">
             <img
               src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
               alt="Sapiente.AI"
-              className="mb-2 h-10 w-auto object-contain"
+              className="h-14 w-auto shrink-0 object-contain"
             />
             <p className="font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
               {t("footer.description")}
@@ -244,8 +244,14 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="mb-4">
-            <p className={cn(footerTitleClass, "mb-3")}>{t("footer.newsletter")}</p>
-            {newsletterBlock}
+            <PremiumButton
+              onClick={() => setIsNewsletterOpen(true)}
+              onMouseEnter={preloadTurnstile}
+              className="w-full !rounded-2xl !bg-[var(--brand-cyan)] !py-2.5 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-offwhite)]"
+              variant="secondary"
+            >
+              {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}
+            </PremiumButton>
           </div>
 
           {/* Divider */}

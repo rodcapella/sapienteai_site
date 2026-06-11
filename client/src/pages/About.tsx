@@ -130,9 +130,9 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
 
   return (
-    <div className="content-atmosphere bg-white">
+    <div className="content-atmosphere overflow-hidden bg-white">
       <section
-        className="relative w-full overflow-hidden bg-white min-h-[220px] sm:min-h-0 sm:aspect-[1920/700] bg-cover bg-center bg-no-repeat"
+        className="relative w-full bg-white aspect-[1920/700] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${content.image})` }}
         aria-label={content.alt}
         onClick={() => setActiveHotspot(null)}
@@ -168,10 +168,10 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
                 ].join(" ")}
               />
 
-              {/* Popup com ícones — aparece no fundo do hotspot */}
+              {/* Popup com ícones — aparece centrado dentro do hotspot */}
               {isOpen && (
                 <div
-                  className="absolute bottom-[-44px] left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5 rounded-full border border-[var(--brand-cyan-bright)]/40 bg-[color-mix(in_srgb,var(--brand-night)_92%,transparent)] px-3 py-1.5 shadow-[0_8px_24px_color-mix(in_srgb,var(--brand-night)_40%,transparent)] backdrop-blur-sm"
+                  className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5 rounded-full border border-[var(--brand-cyan-bright)]/40 bg-[color-mix(in_srgb,var(--brand-night)_92%,transparent)] px-3 py-1.5 shadow-[0_8px_24px_color-mix(in_srgb,var(--brand-night)_40%,transparent)] backdrop-blur-sm"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span className="mr-1 text-[10px] font-black uppercase tracking-[0.12em] text-white/60 whitespace-nowrap">

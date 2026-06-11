@@ -120,7 +120,7 @@ export function FinalCTA({
             src={computedBackgroundSrc}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="absolute inset-0 h-full w-full object-cover object-left md:object-center"
           />
 
           <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 py-8 text-center md:absolute md:inset-0 md:py-0">
@@ -177,7 +177,10 @@ export function FinalCTA({
           <img
             src={computedBackgroundSrc}
             alt=""
-            className="h-full w-full object-cover object-[center_40%] md:object-center"
+            className={cn(
+              "h-full w-full object-cover md:object-center",
+              isServicesVariant ? "object-right" : "object-left"
+            )}
           />
         </div>
 

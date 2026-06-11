@@ -59,7 +59,7 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
   return (
     <section
       id={id}
-      className="content-atmosphere relative min-h-[320px] w-full overflow-hidden bg-[var(--section-ice)] sm:aspect-[1920/700] sm:min-h-0"
+      className="content-atmosphere relative w-full overflow-hidden bg-[var(--section-ice)] aspect-[1920/700] sm:aspect-[1920/700]"
       aria-label={label}
     >
       {/* Imagem de fundo */}
@@ -174,7 +174,7 @@ export default function Home() {
     <div className="home-page flex flex-col bg-[var(--section-ice)]">
       <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
         <div className="flex w-full flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-6">
-          <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full !rounded-2xl sm:w-auto sm:!rounded-full">
+          <PremiumButton onClick={() => setIsContactOpen(true)} size="lg" variant="primary" className="w-full !rounded-2xl !px-7 !py-3 sm:!px-11 sm:!py-5 sm:w-auto sm:!rounded-full">
             {content.hero.ctaPrimary}
           </PremiumButton>
 
@@ -182,10 +182,10 @@ export default function Home() {
             type="button"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)] px-5 py-3 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-offwhite)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:shadow-[0_0_35px_color-mix(in_srgb,var(--brand-primary)_45%,transparent)] sm:w-auto sm:justify-start sm:rounded-full"
+            className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--brand-primary)]/55 bg-[var(--brand-primary)] px-4 py-2.5 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-offwhite)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:shadow-[0_0_35px_color-mix(in_srgb,var(--brand-primary)_45%,transparent)] sm:w-auto sm:justify-start sm:rounded-full sm:px-5 sm:py-3"
             onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}
           >
-            <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[var(--brand-offwhite)]/45 bg-[var(--brand-offwhite)]/15 text-[var(--brand-offwhite)] transition-transform duration-500 group-hover:translate-x-1">
+            <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[var(--brand-offwhite)]/45 bg-[var(--brand-offwhite)]/15 text-[var(--brand-offwhite)] transition-transform duration-500 group-hover:translate-x-1 sm:h-8 sm:w-8">
               <ArrowRight className="h-4 w-4" />
             </span>
             {content.hero.ctaSecondary}
