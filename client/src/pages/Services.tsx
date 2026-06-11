@@ -38,6 +38,7 @@ function ServicesStickyNav({
     <>
       {nav.isFixed && <div aria-hidden="true" style={{ height: nav.height }} />}
       <div
+        id="services-menu"
         ref={nav.ref}
         className={[
           "z-30 bg-white/95 px-4 py-3 shadow-sm backdrop-blur-md md:py-4",
@@ -241,6 +242,12 @@ export default function Services() {
                           </Reveal>
                         </div>
                       </div>
+                      <a
+                        href="#services-menu"
+                        className="md:hidden mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 hover:opacity-100 transition-opacity"
+                      >
+                        {lang === "pt" ? "↑ Voltar ao menu" : "↑ Back to menu"}
+                      </a>
                     );
                   })}
                 </div>

@@ -126,7 +126,7 @@ export default function Sitemap() {
         { title: l.policy[0],  description: l.policy[1],  href: makeLink(lang, "/generative-ai-policy") },
         { title: l.privacy[0], description: l.privacy[1], href: makeLink(lang, "/privacy") },
         { title: l.terms[0],   description: l.terms[1],   href: makeLink(lang, "/terms") },
-      ],
+      ].sort((a, b) => a.title.localeCompare(b.title, lang === "pt" ? "pt" : "en")),
     },
   ];
 
@@ -153,7 +153,7 @@ export default function Sitemap() {
         <div className="legal-inner">
 
           {/* Sidebar */}
-          <aside className="legal-sidebar">
+          <aside id="sitemap-menu" className="legal-sidebar">
             <div className="legal-sidebar-label">{content.label}</div>
             <div className="legal-cats">
               {groups.map((group) => {
@@ -180,6 +180,12 @@ export default function Sitemap() {
               <Reveal key={group.label} delay={index * 80}>
                 <div id={`sitemap-${group.label}`}>
                   <SitemapCard group={group} />
+                  <a
+                    href="#sitemap-menu"
+                    className="md:hidden mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 hover:opacity-100 transition-opacity"
+                  >
+                    {content.backToMenu}
+                  </a>
                 </div>
               </Reveal>
             ))}

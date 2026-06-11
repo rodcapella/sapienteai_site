@@ -1,4 +1,4 @@
-﻿import { useEffect } from "react";
+﻿import { useEffect, useState } from "react";
 
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
-import { Icons } from "@/lib/icons";
+import { Globe, Icons, Instagram, Linkedin } from "@/lib/icons";
 
 type AboutOriginContent = {
   eyebrow: string;
@@ -119,13 +119,23 @@ function AboutOriginSection({ content }: { content: AboutOriginContent }) {
   );
 }
 
+function linkIcon(label: string) {
+  const l = label.toLowerCase();
+  if (l === "linkedin")  return <Linkedin  className="h-4 w-4" />;
+  if (l === "instagram") return <Instagram className="h-4 w-4" />;
+  return <Globe className="h-4 w-4" />;
+}
+
 function AboutVisualSection({ content, founders }: { content: AboutVisualSectionContent; founders?: { label: string; names: string[] } }) {
+  const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+
   return (
     <div className="content-atmosphere bg-white">
       <section
-        className="relative w-full overflow-hidden bg-white aspect-[1920/700] bg-contain bg-center bg-no-repeat"
+        className="relative w-full overflow-hidden bg-white min-h-[220px] sm:min-h-0 sm:aspect-[1920/700] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${content.image})` }}
         aria-label={content.alt}
+        onClick={() => setActiveHotspot(null)}
       >
         {/* Texto dos founders visível para crawlers e LLMs mas visualmente integrado na imagem */}
         {founders && (
@@ -134,44 +144,57 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
             {founders.names.map((name) => <span key={name}>{name}</span>)}
           </div>
         )}
-      </section>
 
-      {content.links && content.links.length > 0 && (
-        <div className="px-6 py-6 md:py-8">
-          <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
-            {content.links.map((link) => (
+        {/* Hotspots por founder — hover no desktop, tap no mobile */}
+        {content.links?.map((link) => {
+          const isOpen = activeHotspot === link.label;
+          return (
+            <div
+              key={link.label}
+              className="absolute cursor-pointer"
+              style={{ left: link.area.left, top: link.area.top, width: link.area.width, height: link.area.height }}
+              onMouseEnter={() => setActiveHotspot(link.label)}
+              onMouseLeave={() => setActiveHotspot(null)}
+              onClick={(e) => { e.stopPropagation(); setActiveHotspot(isOpen ? null : link.label); }}
+              aria-label={link.label}
+            >
+              {/* Overlay visível no hover/tap */}
               <div
-                key={link.label}
-                className="relative flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-[var(--brand-primary)]/45 bg-[color-mix(in_srgb,var(--brand-night)_94%,transparent)] p-5 text-center"
-              >
-                <span className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-purple),var(--brand-primary),var(--brand-cyan-bright))]" />
-                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--brand-primary)_24%,transparent),transparent_58%)] opacity-70" />
+                className={[
+                  "absolute inset-0 rounded-xl transition-all duration-200",
+                  isOpen
+                    ? "bg-[color-mix(in_srgb,var(--brand-night)_55%,transparent)] ring-2 ring-[var(--brand-cyan-bright)]/60"
+                    : "bg-transparent hover:bg-[color-mix(in_srgb,var(--brand-night)_30%,transparent)]",
+                ].join(" ")}
+              />
 
-                <p
-                  className="relative text-[12px] font-black uppercase tracking-[0.18em] text-white"
-                  style={{ fontFamily: "var(--font-body)" }}
+              {/* Popup com ícones — aparece no fundo do hotspot */}
+              {isOpen && (
+                <div
+                  className="absolute bottom-[-44px] left-1/2 z-20 -translate-x-1/2 flex items-center gap-1.5 rounded-full border border-[var(--brand-cyan-bright)]/40 bg-[color-mix(in_srgb,var(--brand-night)_92%,transparent)] px-3 py-1.5 shadow-[0_8px_24px_color-mix(in_srgb,var(--brand-night)_40%,transparent)] backdrop-blur-sm"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  {link.label}
-                </p>
-
-                <div className="relative flex flex-wrap justify-center gap-2">
+                  <span className="mr-1 text-[10px] font-black uppercase tracking-[0.12em] text-white/60 whitespace-nowrap">
+                    {link.label.split(" ")[0]}
+                  </span>
                   {link.options.map((option) => (
                     <a
                       key={option.href}
                       href={option.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full border border-[var(--brand-cyan-bright)]/45 bg-[color-mix(in_srgb,var(--brand-primary)_14%,transparent)] px-4 py-2 text-[12px] font-black uppercase tracking-[0.08em] text-[var(--brand-cyan-bright)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-primary)_14%,transparent)] transition hover:-translate-y-0.5 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_12px_26px_color-mix(in_srgb,var(--brand-primary)_28%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan-bright)]/70"
+                      aria-label={option.label}
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-[var(--brand-cyan-bright)]/35 bg-[color-mix(in_srgb,var(--brand-primary)_20%,transparent)] text-[var(--brand-cyan-bright)] transition hover:bg-[var(--brand-primary)] hover:text-white hover:border-[var(--brand-cyan-bright)]"
                     >
-                      {option.label}
+                      {linkIcon(option.label)}
                     </a>
                   ))}
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+              )}
+            </div>
+          );
+        })}
+      </section>
     </div>
   );
 }

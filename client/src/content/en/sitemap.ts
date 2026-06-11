@@ -4,6 +4,7 @@ export const sitemapEN = {
   highlight: "in one place.",
   subtitle: "Easily navigate all sections of our website.",
   imageAlt: "Sapiente.AI sitemap",
+  backToMenu: "↑ Back to menu",
   sections: {
     main: "Main pages",
     mainTitle: "Main navigation",

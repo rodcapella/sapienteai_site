@@ -20,10 +20,10 @@ type FinalCTAProps = {
 function renderTitle(title: string, highlight?: string, highlightClass?: string) {
   return (
     <>
-      {title}
+      {title}{highlight ? " " : ""}
       {highlight && (
         <>
-          <br />
+          <br className="hidden sm:block" />
           <span className={highlightClass} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
             {highlight}
           </span>
@@ -38,14 +38,11 @@ function renderDescription(description?: string, highlight?: string, highlightCl
 
   return (
     <>
-      {description}
+      {description}{highlight ? " " : ""}
       {highlight && (
-        <>
-          <br />
-          <span className={highlightClass} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
-            {highlight}
-          </span>
-        </>
+        <span className={highlightClass} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+          {highlight}
+        </span>
       )}
     </>
   );
@@ -71,8 +68,8 @@ export function FinalCTA({
   const isCentered = align ? align === "center" : isHomeVariant || isAboutVariant || isServicesVariant;
 
   const titleFontSize = isHomeVariant || isAboutVariant || isServicesVariant
-    ? "clamp(28px, 5vw, 44px)"
-    : "clamp(22px, 4vw, 32px)";
+    ? "clamp(22px, 4.5vw, 44px)"
+    : "clamp(18px, 3.5vw, 32px)";
 
   const descriptionFontSize = "clamp(15px, 1.6vw, 16px)";
 
@@ -172,7 +169,7 @@ export function FinalCTA({
     <>
       <section
         className={cn(
-          "final-cta relative overflow-hidden py-10 md:py-16 px-6",
+          "final-cta relative overflow-hidden min-h-[320px] py-8 md:min-h-[380px] md:py-16 px-6 flex items-center",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -180,7 +177,7 @@ export function FinalCTA({
           <img
             src={computedBackgroundSrc}
             alt=""
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover object-[center_40%] md:object-center"
           />
         </div>
 

@@ -264,13 +264,16 @@ export default function Footer() {
           {/* Divider */}
           <div className="mb-3 h-px bg-[var(--brand-primary)]/20" />
 
-          {/* Copyright */}
-          <p className="text-center" style={copyrightStyle}>
-            <CopyrightText />
-            <span className={copyrightClass}> • </span>
+          {/* Mapa do site */}
+          <p className="mb-3 text-center">
             <Link href={`/${lang}/sitemap`} className={`${copyrightClass} transition-colors hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
               {t("footer.sitemap")}
             </Link>
+          </p>
+
+          {/* Copyright */}
+          <p className="text-center" style={copyrightStyle}>
+            <CopyrightText />
           </p>
         </div>
 
@@ -358,15 +361,11 @@ export default function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3 pb-3">
-            <p className="text-center" style={copyrightStyle}>
-              <CopyrightText />
-              <span className={copyrightClass}> | </span>
-              <Link href={`/${lang}/sitemap`} className={`${copyrightClass} transition-colors duration-200 hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
-                {t("footer.sitemap")}
-              </Link>
-              <span className={copyrightClass}> |</span>
-            </p>
+          <div className="border-t border-[var(--brand-primary)]/15 pt-3 pb-3 flex flex-col items-center gap-1.5">
+            <Link href={`/${lang}/sitemap`} className={`${copyrightClass} transition-colors duration-200 hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
+              {t("footer.sitemap")}
+            </Link>
+            <CopyrightText />
           </div>
         </div>
 
