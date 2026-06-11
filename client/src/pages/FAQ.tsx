@@ -116,6 +116,8 @@ export default function FAQ() {
         subtitle={pageCopy.subtitle}
         image="/media/bg/bg_FAQ.webp"
         imageAlt="Sapiente.AI"
+        imageFit="contain"
+        imagePosition="right center"
         compact
       />
 

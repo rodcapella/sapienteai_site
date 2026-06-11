@@ -28,5 +28,6 @@ export function getLegalLinks(lang: string, t: (key: string) => string): NavItem
     { href: `/${lang}/privacy`,              label: t("footer.privacy") },
     { href: `/${lang}/trust`,                label: t("footer.trust") },
     { href: `/${lang}/generative-ai-policy`, label: t("footer.generative-ai-policy") },
+    { href: `/${lang}/cookies`,              label: t("footer.cookies") },
   ];
 }

@@ -203,19 +203,35 @@
   position: absolute;
   inset-inline: 0;
   top: 0;
-  height: 3px;
+  height: 4px;
   border-radius: 18px 18px 0 0;
   background: linear-gradient(90deg, var(--brand-purple), var(--brand-primary), var(--brand-cyan));
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--brand-primary) 28%, transparent);
 }
 
 .legal-document-card h2 {
   font: 900 clamp(28px, 3vw, 40px) var(--font-heading);
+  color: var(--brand-night);
 }
 
 .legal-document-card p {
   font: 500 15px var(--font-body);
   line-height: 1.75;
   color: color-mix(in srgb, var(--brand-night) 60%, transparent);
+}
+
+.legal-document-card .cookie-section-eyebrow {
+  font: 900 11px var(--font-detail);
+  letter-spacing: 0.22em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--brand-primary);
+}
+
+.legal-document-card .cookie-card-topic-title {
+  font: 800 14px var(--font-body);
+  line-height: 1.35;
+  color: var(--brand-night);
 }
 
 /* ── FAQ LIST (perguntas/respostas do FAQ) ──────────────────────────────────*/

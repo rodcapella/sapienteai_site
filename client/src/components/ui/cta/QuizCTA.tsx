@@ -9,7 +9,6 @@ const highlightStyle = {
   fontWeight: "inherit",
   lineHeight: "inherit",
   letterSpacing: "inherit",
-  // Aplica o gradiente linear de 90º diretamente no texto
   backgroundImage: "linear-gradient(90deg, #5de0e6 0%, #004aad 100%)",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
@@ -18,7 +17,7 @@ const highlightStyle = {
 const quizCtaContent = {
   pt: {
     label: "Quiz IA",
-    title: "Descubra o potencial da IA", // Corrigido de potcacial para potencial
+    title: "Descubra o potencial da IA",
     title_highlight: "para o seu negócio",
     description:
       "Responda a um quiz rápido e perceba onde a inteligência artificial pode gerar",
@@ -71,24 +70,25 @@ export function QuizCTA() {
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 
   return (
-    <section className="relative flex items-center overflow-hidden bg-[var(--section-ice)] px-4 py-12 text-[var(--foreground)] sm:px-6 md:py-20">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in srgb,var(--brand-cyan-bright) 12%,transparent),transparent_34%)]" />
+    <section className="relative w-full overflow-hidden bg-[var(--section-ice)] py-16 md:py-24">
+      {/* Luz de fundo sutil */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,color-mix(in srgb,var(--brand-cyan-bright) 8%,transparent),transparent_40%)]" />
 
-      {/* Alterado max-w-2xl para max-w-5xl e adicionado md:flex-row para alinhar na horizontal */}
-      <div className="relative z-10 mx-auto flex max-w-5xl flex-col md:flex-row items-center justify-between gap-8 w-full">
+      {/* Container principal estruturado com alinhamento vertical forçado (items-center) */}
+      <div className="relative z-10 container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl">
         
-        {/* Lado Esquerdo: Conteúdo de Texto (Alinhado à esquerda no desktop) */}
-        <div className="flex-1 text-center md:text-left max-w-2xl">
+        {/* Lado Esquerdo: Texto alinhado e equilibrado */}
+        <div className="w-full md:w-3/5 text-center md:text-left flex flex-col justify-center">
           <Reveal>
             <p className="mb-3 font-detail text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
               {content.label}
             </p>
 
-            <h2 className="font-heading font-black leading-tight text-[var(--foreground)]" style={{ fontSize: "clamp(22px, 4vw, 36px)" }}>
+            <h2 className="font-heading font-black leading-tight text-[var(--foreground)]" style={{ fontSize: "clamp(24px, 4.5vw, 38px)" }}>
               {renderTitle(content.title, content.title_highlight)}
             </h2>
 
-            <p className="mt-4 font-medium leading-relaxed text-[var(--muted-foreground)]" style={{ fontSize: "clamp(14px, 2vw, 16px)" }}>
+            <p className="mt-4 font-medium leading-relaxed text-[var(--muted-foreground)]" style={{ fontSize: "clamp(14px, 1.8vw, 16px)" }}>
               {renderDescription(
                 content.description,
                 content.description_highlight
@@ -97,22 +97,26 @@ export function QuizCTA() {
           </Reveal>
         </div>
 
-        {/* Lado Direito: Botão em Destaque com o Gradiente Customizado */}
-        <div className="flex-shrink-0 w-full md:w-auto flex justify-center">
+        {/* Lado Direito: Wrapper do botão garantindo centralização e o efeito Glow */}
+        <div className="w-full md:w-2/5 flex justify-center md:justify-end items-center">
           <Reveal delay={120}>
-            <Link href={href} className="w-full sm:w-auto">
+            <Link href={href} className="inline-block structure-reset">
               <PremiumButton 
                 variant="primary" 
                 size="lg"
-                className="w-full sm:w-auto text-white font-bold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="text-white font-bold tracking-wide rounded-full transition-all duration-300 transform hover:scale-105"
                 style={{
                   background: "linear-gradient(90deg, #5de0e6 0%, #004aad 100%)",
                   border: "none",
-                  padding: "16px 32px",
-                  fontSize: "16px"
+                  padding: "18px 36px",
+                  fontSize: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 8px 24px rgba(93, 224, 230, 0.35)", // Efeito Glow Neon sutil
                 }}
               >
-                <HelpCircle className="h-5 w-5 mr-2 animate-pulse" />
+                <HelpCircle className="h-5 w-5 mr-2.5 animate-pulse" />
                 {content.button}
               </PremiumButton>
             </Link>

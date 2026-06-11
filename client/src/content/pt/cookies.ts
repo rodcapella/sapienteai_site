@@ -110,7 +110,7 @@ export const cookiesPT = {
       description: "Se tiver alguma questão sobre a nossa utilização de cookies ou esta política, contacte-nos. Responderemos o mais brevemente possível.",
       contact:     { company: "Sapiente.AI", email: "contato@sapienteai.com" },
       bullets: [
-        "Envie um email com o assunto 'Cookies'.",
+        "Envie um email com o assunto 'Política de Cookies'.",
         "Resposta garantida em até 5 dias úteis.",
         "Pode também exercer os seus direitos RGPD pelo mesmo canal.",
       ],

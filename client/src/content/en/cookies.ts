@@ -110,7 +110,7 @@ export const cookiesEN = {
       description: "If you have any questions about our use of cookies or this policy, please get in touch. We will respond as soon as possible.",
       contact:     { company: "Sapiente.AI", email: "contato@sapienteai.com" },
       bullets: [
-        "Send an email with the subject 'Cookies'.",
+        "Send an email with the subject 'Cookie Policy'.",
         "Response guaranteed within 5 business days.",
         "You can also exercise your GDPR rights through the same channel.",
       ],

@@ -89,7 +89,7 @@ export function PremiumButton({
 
       <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in srgb,white 18%,transparent),transparent_55%)] opacity-18" />
 
-      <span className="relative z-10 flex items-center justify-center gap-3 text-[12px] text-white">{children}</span>
+      <span className="relative z-10 flex items-center justify-center gap-3 text-[12px] text-inherit">{children}</span>
     </motion.button>
   );
 }

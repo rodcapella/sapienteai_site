@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -8,10 +8,10 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
-import { Check, Globe, Icons, Mail, RefreshCw } from "@/lib/icons";
+import { Check, Globe, Icons, RefreshCw } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
-// â”€â”€â”€ Tipos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Tipos ───────────────────────────────────────────────────────────────────
 
 type CookieSection = {
   id: string;
@@ -41,7 +41,7 @@ type SectionContent = {
   resetLabel?: string;
 };
 
-// â”€â”€â”€ Reset consent button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Reset consent button ─────────────────────────────────────────────────────
 
 function ResetConsentButton({ label }: { label: string }) {
   function handleReset() {
@@ -68,7 +68,7 @@ function ResetConsentButton({ label }: { label: string }) {
   );
 }
 
-// â”€â”€â”€ Section detail â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Section detail ───────────────────────────────────────────────────────────
 
 function CookieDetail({
   data,
@@ -88,7 +88,7 @@ function CookieDetail({
   return (
     <div>
       <Reveal>
-        <p className="mb-3 text-[11px] font-black uppercase tracking-[0.22em] text-[var(--brand-primary)]">
+        <p className="cookie-section-eyebrow mb-3">
           {data.eyebrow}
         </p>
         <h2 className="mb-5 text-[clamp(1.4rem,3vw,2rem)] font-black leading-tight text-[var(--brand-night)]">
@@ -151,7 +151,7 @@ function CookieDetail({
                   <Globe className="h-3 w-3" />
                 </span>
                 <div>
-                  <p className="mb-1 text-sm font-bold text-[var(--brand-night)]">{browser.name}</p>
+                  <p className="cookie-card-topic-title mb-1">{browser.name}</p>
                   <p className="text-sm font-medium leading-relaxed text-[color-mix(in_srgb,var(--brand-night)_60%,transparent)]">{browser.steps}</p>
                 </div>
               </div>
@@ -177,17 +177,9 @@ function CookieDetail({
       {/* Contact block */}
       {data.contact && onContact && (
         <Reveal delay={80}>
-          <div className="mt-6 flex items-center gap-4 rounded-2xl border border-[var(--brand-mid)]/30 bg-white px-6 py-5 shadow-sm">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--brand-mid)]/30 bg-[var(--brand-primary)]/8 text-[var(--brand-primary)]">
-              <Mail className="h-5 w-5" />
-            </span>
-            <div>
-              <p className="mb-2 text-sm font-black text-[var(--brand-night)]">{data.contact.company}</p>
-              <PremiumButton size="sm" onClick={onContact}>
-                {contactLabel}
-              </PremiumButton>
-            </div>
-          </div>
+          <PremiumButton size="sm" onClick={onContact} className="mt-6">
+            {contactLabel}
+          </PremiumButton>
         </Reveal>
       )}
 
@@ -201,7 +193,7 @@ function CookieDetail({
   );
 }
 
-// â”€â”€â”€ PÃ¡gina principal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Página principal ─────────────────────────────────────────────────────────
 
 export default function CookiesPage() {
   const { lang } = useTranslation();
@@ -213,11 +205,11 @@ export default function CookiesPage() {
   const [activeSection, setActiveSection] = useState(sections[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const contactTopic = lang === "en" ? "Cookie Policy" : "PolÃ­tica de Cookies";
+  const contactTopic = lang === "en" ? "Cookie Policy" : "Política de Cookies";
   const contactLabel = lang === "en" ? "Talk to us" : "Falar connosco";
 
   useSEOHead({
-    title: `${hero.label} â€” Sapiente.AI`,
+    title: `${hero.label} – Sapiente.AI`,
     description: hero.subtitle,
     url: `https://www.sapienteai.com/${lang}/cookies`,
     type: "website",
@@ -253,7 +245,12 @@ export default function CookiesPage() {
                     key={s.id}
                     type="button"
                     onClick={() => setActiveSection(s.id)}
-                    className={`legal-cat ${isActive ? "active" : ""}`}
+                    className={[
+                      "flex min-h-11 w-full items-center gap-2 rounded-xl border px-4 py-3 text-left text-[13px] font-black uppercase tracking-[0.08em] shadow-sm transition-all duration-200",
+                      isActive
+                        ? "border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white shadow-[0_12px_26px_color-mix(in_srgb,var(--brand-primary)_22%,transparent)]"
+                        : "border-[var(--brand-primary)]/20 bg-white text-[var(--brand-primary)] hover:-translate-y-0.5 hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_12px_26px_color-mix(in_srgb,var(--brand-primary)_18%,transparent)]",
+                    ].join(" ")}
                   >
                     {Icon && <Icon className="h-4 w-4 shrink-0" />}
                     <span>{s.navLabel}</span>
@@ -263,7 +260,7 @@ export default function CookiesPage() {
             </div>
           </aside>
 
-          {/* ConteÃºdo variÃ¡vel */}
+          {/* Conteúdo variável */}
           <Reveal delay={80}>
             <div className="legal-document-card">
               {activeSectionData && (

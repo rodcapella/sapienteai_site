@@ -75,52 +75,23 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
         />
       </Reveal>
 
-      {/* Card de texto visível — indexável por crawlers e LLMs */}
+      {/* Transcrição indexável/acessível do conteúdo que está na imagem do banner */}
       {textContent && (
-        <Reveal delay={120} className="relative z-10 flex min-h-[320px] items-center py-6 sm:absolute sm:inset-0 sm:min-h-0 sm:py-0">
-          <div className={[
-            "pointer-events-none relative flex w-full items-center px-6 sm:absolute sm:inset-y-0 sm:px-10 md:px-16",
-            align === "right" ? "right-0 justify-end" : "left-0 justify-start",
-          ].join(" ")}>
-            <div
-              data-speakable
-              className="max-w-[330px] rounded-2xl bg-white/92 p-4 shadow-[0_14px_40px_color-mix(in_srgb,var(--brand-deep)_14%,transparent)] backdrop-blur-sm sm:max-w-[380px] sm:p-5 md:max-w-[420px] md:p-7"
-            >
-              {textContent.eyebrow && (
-                <p className="mb-1.5 font-[var(--font-detail)] text-[9px] font-black uppercase tracking-[0.16em] text-[var(--brand-primary)] sm:mb-2 sm:text-[10px] sm:tracking-[0.18em]">
-                  {textContent.eyebrow}
-                </p>
-              )}
-              <h2 className="mb-2 font-[var(--font-heading)] text-[1rem] font-black leading-tight text-[var(--brand-night)] sm:mb-3 sm:text-[clamp(1.1rem,2.4vw,1.55rem)]">
-                {textContent.title}
-              </h2>
-              <p className="mb-0 font-[var(--font-body)] text-[12px] font-medium leading-snug text-[var(--brand-night)]/70 sm:text-[13px] sm:leading-relaxed md:text-[14px]">
-                {textContent.description}
-              </p>
-              {textContent.items && textContent.items.length > 0 && (
-                <ul className="mt-2 flex flex-col gap-1 sm:mt-3 sm:gap-1.5">
-                  {textContent.items.slice(0, 5).map((item, itemIndex) => (
-                    <li
-                      key={item.title}
-                      className={[
-                        "items-start gap-2",
-                        itemIndex > 2 ? "hidden sm:flex" : "flex",
-                      ].join(" ")}
-                    >
-                      <span className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-primary)]" />
-                      <span className="font-[var(--font-body)] text-[11px] font-semibold leading-snug text-[var(--brand-night)] sm:text-[12px]">
-                        {item.title}
-                        {item.description && (
-                          <span className="hidden font-normal text-[var(--brand-night)]/60 sm:block">{item.description}</span>
-                        )}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </div>
-        </Reveal>
+        <div data-speakable className="sr-only">
+          {textContent.eyebrow && <p>{textContent.eyebrow}</p>}
+          <h2>{textContent.title}</h2>
+          <p>{textContent.description}</p>
+          {textContent.items && textContent.items.length > 0 && (
+            <ul>
+              {textContent.items.slice(0, 5).map((item) => (
+                <li key={item.title}>
+                  {item.title}
+                  {item.description ? `: ${item.description}` : ""}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
     </section>
   );

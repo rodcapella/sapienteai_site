@@ -10,6 +10,8 @@ type InternalHeroProps = {
   label?: ReactNode;
   image?: string;
   imageAlt?: string;
+  imageFit?: "cover" | "contain";
+  imagePosition?: string;
   children?: ReactNode;
   compact?: boolean;
 };
@@ -21,6 +23,8 @@ export function InternalHero({
   label,
   image = "/media/bg/bg_hero.webp",
   imageAlt = "Sapiente.AI",
+  imageFit = "cover",
+  imagePosition = "center top",
   children,
   compact = false,
 }: InternalHeroProps) {
@@ -37,8 +41,8 @@ export function InternalHero({
         <img
           src={image}
           alt={imageAlt}
-          className="h-full w-full object-cover"
-          style={{ objectPosition: "center top" }}
+          className="h-full w-full"
+          style={{ objectFit: imageFit, objectPosition: imagePosition }}
           loading="eager"
           fetchPriority="high"
           decoding="async"
