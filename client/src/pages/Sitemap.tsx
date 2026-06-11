@@ -121,10 +121,11 @@ export default function Sitemap() {
       title: content.sections.legalTitle,
       icon: ShieldCheck,
       links: [
-        { title: l.terms[0], description: l.terms[1], href: makeLink(lang, "/terms") },
+        { title: l.trust[0],   description: l.trust[1],   href: makeLink(lang, "/trust") },
+        { title: l.cookies[0], description: l.cookies[1], href: makeLink(lang, "/cookies") },
+        { title: l.policy[0],  description: l.policy[1],  href: makeLink(lang, "/generative-ai-policy") },
         { title: l.privacy[0], description: l.privacy[1], href: makeLink(lang, "/privacy") },
-        { title: l.trust[0], description: l.trust[1], href: makeLink(lang, "/trust") },
-        { title: l.policy[0], description: l.policy[1], href: makeLink(lang, "/generative-ai-policy") },
+        { title: l.terms[0],   description: l.terms[1],   href: makeLink(lang, "/terms") },
       ],
     },
   ];

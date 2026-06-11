@@ -49,7 +49,7 @@ export const aboutPT = {
       image: "/media/bg/sobre/pt/bg_Sobre_Founders.webp",
       links: [
         {
-          label: "Rodrigo Povoa",
+          label: "Rodrigo Póvoa",
           options: [
             { label: "Website", href: "https://www.rpovoadata.tech/" },
             { label: "LinkedIn", href: "https://www.linkedin.com/in/rodrigocspovoa/" },

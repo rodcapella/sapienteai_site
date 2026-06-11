@@ -49,7 +49,7 @@
       image: "/media/bg/sobre/en/bg_Sobre_Founders_en.webp",
       links: [
         {
-          label: "Rodrigo Povoa",
+          label: "Rodrigo Póvoa",
           options: [
             { label: "Website", href: "https://www.rpovoadata.tech/" },
             { label: "LinkedIn", href: "https://www.linkedin.com/in/rodrigocspovoa/" },

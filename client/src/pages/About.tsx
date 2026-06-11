@@ -137,18 +137,12 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
       </section>
 
       {content.links && content.links.length > 0 && (
-        <div
-          className="relative overflow-hidden bg-cover bg-center bg-no-repeat px-6 pb-12 pt-5 md:pb-16 md:pt-6"
-          style={{ backgroundImage: `url(${content.image})` }}
-        >
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,white_62%,transparent),color-mix(in_srgb,var(--brand-cyan-bright)_22%,white)_42%,color-mix(in_srgb,var(--brand-night)_10%,white))]" aria-hidden="true" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--brand-primary)_12%,transparent),transparent_46%)]" aria-hidden="true" />
-
-          <div className="relative z-10 mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
+        <div className="px-6 py-6 md:py-8">
+          <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
             {content.links.map((link) => (
               <div
                 key={link.label}
-                className="relative flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-[var(--brand-primary)]/45 bg-[color-mix(in_srgb,var(--brand-night)_94%,transparent)] p-5 text-center shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-night)_18%,transparent)] backdrop-blur-md"
+                className="relative flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-[var(--brand-primary)]/45 bg-[color-mix(in_srgb,var(--brand-night)_94%,transparent)] p-5 text-center"
               >
                 <span className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-purple),var(--brand-primary),var(--brand-cyan-bright))]" />
                 <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--brand-primary)_24%,transparent),transparent_58%)] opacity-70" />

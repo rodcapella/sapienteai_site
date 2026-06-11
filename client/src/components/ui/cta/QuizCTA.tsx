@@ -30,12 +30,7 @@ function renderTitle(title: string, highlight?: string) {
     <>
       {title}{" "}
       {highlight && (
-        <>
-          <br className="hidden md:block" />
-          <span className="quiz-text-gradient">
-            {highlight}
-          </span>
-        </>
+        <span className="quiz-text-gradient">{highlight}</span>
       )}
     </>
   );
@@ -60,40 +55,37 @@ export function QuizCTA() {
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 
   return (
-    <section className="relative flex min-h-[340px] w-full items-center overflow-hidden bg-[var(--section-ice)] py-12 md:min-h-[415px] md:py-0">
+    <section className="relative flex w-full items-center overflow-hidden bg-[var(--section-ice)] py-5 md:h-[220px] md:py-0">
       {/* Luz de fundo sutil */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,color-mix(in srgb,var(--brand-cyan-bright) 8%,transparent),transparent_40%)]" />
 
-      {/* Container principal estruturado com alinhamento vertical forçado (items-center) */}
-      <div className="relative z-10 container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 max-w-6xl">
-        
-        {/* Lado Esquerdo: Texto alinhado e equilibrado */}
-        <div className="w-full md:w-3/5 text-center md:text-left flex flex-col justify-center">
+      <div className="relative z-10 container mx-auto px-6 md:px-12 flex flex-row items-center justify-between gap-4 md:gap-12 max-w-6xl">
+
+        {/* Texto */}
+        <div className="flex flex-col justify-center text-left min-w-0">
           <Reveal>
-            <p className="mb-3 font-detail text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
+            <p className="mb-1 font-detail text-[11px] font-black uppercase tracking-[0.24em] text-[var(--brand-primary)]">
               {content.label}
             </p>
 
-            <h2 className="font-heading font-black leading-tight text-[var(--foreground)]" style={{ fontSize: "clamp(24px, 4.5vw, 38px)" }}>
+            <h2 className="font-heading font-black leading-[1.15] text-[var(--foreground)]" style={{ fontSize: "clamp(16px, 2.4vw, 28px)" }}>
               {renderTitle(content.title, content.title_highlight)}
             </h2>
 
-            <p className="mt-4 font-medium leading-relaxed text-[var(--muted-foreground)]" style={{ fontSize: "clamp(14px, 1.8vw, 16px)" }}>
-              {renderDescription(
-                content.description,
-                content.description_highlight
-              )}
+            <p className="hidden md:block mt-2 font-medium leading-snug text-[var(--muted-foreground)] text-[14px]">
+              {renderDescription(content.description, content.description_highlight)}
             </p>
           </Reveal>
         </div>
 
-{/* Lado Direito: Wrapper do botão corrigido para forçar o Gradiente e o Glow */}
-        <div className="w-full md:w-2/5 flex justify-center md:justify-end items-center">
+        {/* Botão */}
+        <div className="shrink-0 flex items-center">
           <Reveal delay={120}>
             <div className="quiz-gradient-btn-wrapper">
               <Link href={href}>
                 <HelpCircle size={20} />
-                {content.button}
+                <span className="hidden sm:inline">{content.button}</span>
+                <span className="sm:hidden">{lang === "en" ? "Quiz" : "Quiz IA"}</span>
               </Link>
             </div>
           </Reveal>

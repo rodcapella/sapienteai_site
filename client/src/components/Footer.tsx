@@ -100,6 +100,23 @@ export default function Footer() {
   const linkListClass = "space-y-2";
   const linkClass =
     "font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan)]";
+  const copyrightClass =
+    "font-[var(--font-body)] text-[12px] font-medium tracking-normal text-[white]/70";
+  const copyrightStyle = {
+    fontFamily: "var(--font-body)",
+    fontVariantNumeric: "lining-nums proportional-nums",
+    fontFeatureSettings: "\"lnum\" 1, \"pnum\" 1",
+  };
+  const copyrightRights = lang === "pt" ? "Todos os direitos reservados" : "All rights reserved";
+  const CopyrightText = () => (
+    <span className={copyrightClass} style={copyrightStyle}>
+      <span aria-hidden="true">©</span>
+      <span className="mx-1">2026</span>
+      <span>SAPIENTE.AI</span>
+      <span className="mx-1">•</span>
+      <span>{copyrightRights}</span>
+    </span>
+  );
 
   const socialIcon = (social: (typeof socialLinks)[number]) => {
     const Icon = social.icon;
@@ -248,9 +265,10 @@ export default function Footer() {
           <div className="mb-3 h-px bg-[var(--brand-primary)]/20" />
 
           {/* Copyright */}
-          <p className="text-center font-[var(--font-body)] text-[12px] font-medium tracking-normal text-[white]/70">
-            {t("footer.copyright")} •{" "}
-            <Link href={`/${lang}/sitemap`} className="font-medium text-[white]/70 transition-colors hover:text-[var(--brand-cyan)]">
+          <p className="text-center" style={copyrightStyle}>
+            <CopyrightText />
+            <span className={copyrightClass}> • </span>
+            <Link href={`/${lang}/sitemap`} className={`${copyrightClass} transition-colors hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
               {t("footer.sitemap")}
             </Link>
           </p>
@@ -341,12 +359,13 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="flex items-center justify-center border-t border-[var(--brand-primary)]/15 pt-3 pb-3">
-            <p className="text-center font-[var(--font-body)] text-[12px] font-medium tracking-normal text-[white]/70">
-              {t("footer.copyright")} |{" "}
-              <Link href={`/${lang}/sitemap`} className="font-medium text-[white]/70 transition-colors duration-200 hover:text-[var(--brand-cyan)]">
+            <p className="text-center" style={copyrightStyle}>
+              <CopyrightText />
+              <span className={copyrightClass}> | </span>
+              <Link href={`/${lang}/sitemap`} className={`${copyrightClass} transition-colors duration-200 hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
                 {t("footer.sitemap")}
-              </Link>{" "}
-              |
+              </Link>
+              <span className={copyrightClass}> |</span>
             </p>
           </div>
         </div>

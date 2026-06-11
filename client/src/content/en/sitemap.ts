@@ -19,6 +19,7 @@ export const sitemapEN = {
     faq: ["FAQ", "Quick answers to the most common questions about our services."],
     quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
     newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],
+    cookies: ["Cookie Policy", "How we use cookies and tracking technologies on the site."],
     terms: ["Terms of Service", "Terms of use for the website and services."],
     privacy: ["Privacy Policy", "How we collect, process, and protect personal data."],
     trust: ["Trust & Security", "Security, ethics, and accountability principles."],
