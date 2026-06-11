@@ -17,10 +17,10 @@ import { homeEN } from "@/content/en/home";
 
 const HOME_BANNER_BASE_PATH = "/media/banners";
 const HOME_BANNERS = [
-  "home_o_que_nos_diferencia.webp",
-  "home_resultados_gera_ia.webp",
-  "home_marketing_digital_ia.webp",
-  "home_personalidade_marca.webp",
+  "home_o_que_nos_diferencia.png",
+  "home_resultados_gera_ia.png",
+  "home_marketing_digital_ia.png",
+  "home_personalidade_marca.png",
 ];
 
 type BannerTextContent = {
@@ -43,10 +43,10 @@ type HomeBannerSectionProps = {
 function getHomeBannerSrc(lang: string, file: string) {
   const folder = lang === "en" ? "EN" : "PT";
   const englishFileMap: Record<string, string> = {
-    "home_o_que_nos_diferencia.webp":  "home_o_que_nos_diferencia_en.webp",
-    "home_resultados_gera_ia.webp":    "home_resultados_gera_ia_en.webp",
-    "home_marketing_digital_ia.webp":  "home_marketing_digital_ia_en.webp",
-    "home_personalidade_marca.webp":   "home_personalidade_marca_en.webp",
+    "home_o_que_nos_diferencia.png":  "home_o_que_nos_diferencia_en.png",
+    "home_resultados_gera_ia.png":    "home_resultados_gera_ia_en.png",
+    "home_marketing_digital_ia.png":  "home_marketing_digital_ia_en.png",
+    "home_personalidade_marca.png":   "home_personalidade_marca_en.png",
   };
   const localizedFile = lang === "en" ? englishFileMap[file] || file : file;
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
@@ -71,7 +71,8 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
           width="1920"
           height="700"
           className="h-full w-full object-contain"
-          loading="lazy"
+          loading="eager"
+          decoding="async"
         />
       </Reveal>
 

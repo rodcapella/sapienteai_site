@@ -137,28 +137,37 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
       </section>
 
       {content.links && content.links.length > 0 && (
-        <div className="px-6 pb-10 pt-4 md:pb-14">
-          <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
+        <div
+          className="relative overflow-hidden bg-cover bg-center bg-no-repeat px-6 pb-12 pt-5 md:pb-16 md:pt-6"
+          style={{ backgroundImage: `url(${content.image})` }}
+        >
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_srgb,white_62%,transparent),color-mix(in_srgb,var(--brand-cyan-bright)_22%,white)_42%,color-mix(in_srgb,var(--brand-night)_10%,white))]" aria-hidden="true" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--brand-primary)_12%,transparent),transparent_46%)]" aria-hidden="true" />
+
+          <div className="relative z-10 mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
             {content.links.map((link) => (
               <div
                 key={link.label}
-                className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-[var(--brand-primary)]/15 bg-white p-4 text-center shadow-sm"
+                className="relative flex flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-[var(--brand-primary)]/45 bg-[color-mix(in_srgb,var(--brand-night)_94%,transparent)] p-5 text-center shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-night)_18%,transparent)] backdrop-blur-md"
               >
+                <span className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-[linear-gradient(90deg,var(--brand-purple),var(--brand-primary),var(--brand-cyan-bright))]" />
+                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,color-mix(in_srgb,var(--brand-primary)_24%,transparent),transparent_58%)] opacity-70" />
+
                 <p
-                  className="text-[12px] font-black uppercase tracking-[0.16em] text-[var(--brand-night)]"
+                  className="relative text-[12px] font-black uppercase tracking-[0.18em] text-white"
                   style={{ fontFamily: "var(--font-body)" }}
                 >
                   {link.label}
                 </p>
 
-                <div className="flex flex-wrap justify-center gap-2">
+                <div className="relative flex flex-wrap justify-center gap-2">
                   {link.options.map((option) => (
                     <a
                       key={option.href}
                       href={option.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="rounded-full border border-[var(--brand-primary)]/25 px-4 py-2 text-[12px] font-black uppercase tracking-[0.08em] text-[var(--brand-primary)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]/60"
+                      className="rounded-full border border-[var(--brand-cyan-bright)]/45 bg-[color-mix(in_srgb,var(--brand-primary)_14%,transparent)] px-4 py-2 text-[12px] font-black uppercase tracking-[0.08em] text-[var(--brand-cyan-bright)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-primary)_14%,transparent)] transition hover:-translate-y-0.5 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_12px_26px_color-mix(in_srgb,var(--brand-primary)_28%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan-bright)]/70"
                     >
                       {option.label}
                     </a>

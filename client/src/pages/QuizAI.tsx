@@ -18,6 +18,7 @@ const quizContent = {
   en: quizContentEn,
 };
 
+
 export default function QuizAI() {
   const { lang: rawLang } = useTranslation();
   const lang: QuizLang = rawLang === "en" ? "en" : "pt";
@@ -160,7 +161,7 @@ export default function QuizAI() {
         title={startIntro.title}
         highlight={startIntro.highlight}
         subtitle={startIntro.subtitle}
-        image="/media/bg/servicos/bg_Servicos.webp"
+        image="/media/bg/bg_Quiz.webp"
         imageAlt="Sapiente.AI"
         compact
       />
@@ -173,7 +174,7 @@ export default function QuizAI() {
             style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2.2rem, 5vw, 3.6rem)", color: "var(--brand-night)" }}
           >
             {startIntro.title}{" "}
-            <span style={{ color: "var(--brand-primary)" }}>{startIntro.highlight}</span>
+            <span className="quiz-text-gradient">{startIntro.highlight}</span>
           </h2>
 
           <p
@@ -198,14 +199,12 @@ export default function QuizAI() {
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={startQuiz}
-            className="mt-10 inline-flex items-center gap-3 rounded-full bg-[var(--brand-primary)] px-8 py-4 font-[var(--font-body)] text-[13px] font-black uppercase tracking-[0.16em] text-white shadow-[0_10px_28px_color-mix(in_srgb,var(--brand-primary)_30%,transparent)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_color-mix(in_srgb,var(--brand-primary)_42%,transparent)]"
-          >
-            <span>{content.startButton}</span>
-            <ArrowRight size={18} />
-          </button>
+          <div className="quiz-gradient-btn-wrapper mt-10">
+            <button type="button" onClick={startQuiz}>
+              <span>{content.startButton}</span>
+              <ArrowRight size={18} className="animate-pulse" />
+            </button>
+          </div>
         </section>
       )}
 

@@ -130,6 +130,56 @@
   background: #0068e8;
 }
 
+/* ── BOTÃO GRADIENTE PRINCIPAL ───────────────────────────────────────────────
+   Wrapper que aplica o gradiente cyan→azul + glow neon.
+   O botão interno deve ter background transparente para revelar o gradiente.
+────────────────────────────────────────────────────────────────────────────── */
+.quiz-gradient-btn-wrapper {
+  display: inline-block;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5de0e6 0%, #004aad 100%);
+  box-shadow: 0 8px 24px rgba(93, 224, 230, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-gradient-btn-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(93, 224, 230, 0.6);
+}
+
+.quiz-gradient-btn-wrapper > button,
+.quiz-gradient-btn-wrapper > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  background: transparent;
+  border: none;
+  padding: 16px 36px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Highlight de texto com gradiente (títulos/spans) */
+.quiz-text-gradient {
+  background-image: linear-gradient(90deg, #5de0e6 0%, #004aad 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  font: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
 /* OPÇÕES */
 .quiz-options {
   display: grid;

@@ -1,18 +1,8 @@
 ﻿import { Link } from "wouter";
-import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
 import { HelpCircle } from "@/lib/icons";
-
-const highlightStyle = {
-  font: "inherit",
-  fontWeight: "inherit",
-  lineHeight: "inherit",
-  letterSpacing: "inherit",
-  backgroundImage: "linear-gradient(90deg, #5de0e6 0%, #004aad 100%)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-};
+import "@/styles/quizAI.css";
 
 const quizCtaContent = {
   pt: {
@@ -42,7 +32,7 @@ function renderTitle(title: string, highlight?: string) {
       {highlight && (
         <>
           <br className="hidden md:block" />
-          <span style={highlightStyle}>
+          <span className="quiz-text-gradient">
             {highlight}
           </span>
         </>
@@ -70,7 +60,7 @@ export function QuizCTA() {
   const href = lang === "en" ? "/en/quiz-ai" : "/pt/quiz-ia";
 
   return (
-    <section className="relative w-full overflow-hidden bg-[var(--section-ice)] py-16 md:py-24">
+    <section className="relative flex min-h-[340px] w-full items-center overflow-hidden bg-[var(--section-ice)] py-12 md:min-h-[415px] md:py-0">
       {/* Luz de fundo sutil */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,color-mix(in srgb,var(--brand-cyan-bright) 8%,transparent),transparent_40%)]" />
 
@@ -100,33 +90,12 @@ export function QuizCTA() {
 {/* Lado Direito: Wrapper do botão corrigido para forçar o Gradiente e o Glow */}
         <div className="w-full md:w-2/5 flex justify-center md:justify-end items-center">
           <Reveal delay={120}>
-            <Link href={href} className="inline-block structure-reset">
-              {/* Esta DIV externa garante a aplicação correta do gradiente e do brilho sem interferência do componente */}
-              <div 
-                className="rounded-full transition-all duration-300 transform hover:scale-105"
-                style={{
-                  background: "linear-gradient(90deg, #5de0e6 0%, #004aad 100%)",
-                  boxShadow: "0 8px 24px rgba(93, 224, 230, 0.45)", // Brilho neon visível
-                  padding: "2px", // Cria uma borda fina perfeita se o botão de dentro for escuro, ou serve de base total
-                }}
-              >
-                <PremiumButton 
-                  size="lg"
-                  className="text-white font-bold tracking-wide rounded-full border-none bg-transparent hover:bg-transparent"
-                  style={{
-                    background: "transparent", // Força o botão a ficar transparente para exibir o gradiente de fundo da div
-                    padding: "16px 36px",
-                    fontSize: "16px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <HelpCircle className="h-5 w-5 mr-2.5 text-white" />
-                  {content.button}
-                </PremiumButton>
-              </div>
-            </Link>
+            <div className="quiz-gradient-btn-wrapper">
+              <Link href={href}>
+                <HelpCircle size={20} />
+                {content.button}
+              </Link>
+            </div>
           </Reveal>
         </div>
 

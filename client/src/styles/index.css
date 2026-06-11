@@ -220,3 +220,12 @@ button, .button, [role="button"] {
     linear-gradient(28deg, transparent 0 38%, color-mix(in srgb, var(--brand-primary) 5%, transparent) 38.1% 38.25%, transparent 38.45%),
     linear-gradient(152deg, transparent 0 58%, color-mix(in srgb, var(--brand-cyan-bright) 4%, transparent) 58.1% 58.25%, transparent 58.45%);
 }
+
+.content-atmosphere > :not(.absolute) {
+  position: relative;
+  z-index: 1;
+}
+
+.content-atmosphere > .absolute {
+  z-index: 1;
+}

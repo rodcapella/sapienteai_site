@@ -152,35 +152,37 @@ export default function FAQ() {
           <Reveal delay={80}>
             <div className="faq-content">
               <div className="faq-group-title">{active.label}</div>
-              <div className="faq-list">
-                {active.items.map((item, index) => {
-                  const questionId = `${active.id}-${index}`;
-                  const answerId  = `${questionId}-answer`;
-                  const isOpen = openQuestion === questionId;
-                  return (
-                    <div key={item.question} className={`faq-item ${isOpen ? "open" : ""}`}>
-                      <button
-                        type="button"
-                        id={questionId}
-                        className="faq-q"
-                        aria-expanded={isOpen}
-                        aria-controls={answerId}
-                        onClick={() => setOpenQuestion(isOpen ? null : questionId)}
-                      >
-                        <span className="faq-q-text">{item.question}</span>
-                        <span className="faq-q-icon" aria-hidden="true">+</span>
-                      </button>
-                      <div
-                        id={answerId}
-                        role="region"
-                        aria-labelledby={questionId}
-                        className="faq-a"
-                      >
-                        <div className="faq-a-inner">{item.answer}</div>
+              <div className="legal-document-card legal-document-card--list">
+                <div className="faq-list">
+                  {active.items.map((item, index) => {
+                    const questionId = `${active.id}-${index}`;
+                    const answerId  = `${questionId}-answer`;
+                    const isOpen = openQuestion === questionId;
+                    return (
+                      <div key={item.question} className={`faq-item ${isOpen ? "open" : ""}`}>
+                        <button
+                          type="button"
+                          id={questionId}
+                          className="faq-q"
+                          aria-expanded={isOpen}
+                          aria-controls={answerId}
+                          onClick={() => setOpenQuestion(isOpen ? null : questionId)}
+                        >
+                          <span className="faq-q-text">{item.question}</span>
+                          <span className="faq-q-icon" aria-hidden="true">+</span>
+                        </button>
+                        <div
+                          id={answerId}
+                          role="region"
+                          aria-labelledby={questionId}
+                          className="faq-a"
+                        >
+                          <div className="faq-a-inner">{item.answer}</div>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </Reveal>
