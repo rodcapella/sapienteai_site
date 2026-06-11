@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState, type ComponentType } from "react";
+import { useEffect, useMemo, useState, type ComponentType, type ReactNode } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
@@ -11,9 +11,19 @@ import "@/styles/faq_legal.css";
 
 type LegalContentSection = {
   id?: string;
+  navLabel?: string;
   title: string;
-  content: string | string[];
+  content: ReactNode | string | string[];
   icon?: ComponentType<{ className?: string }>;
+};
+
+type LegalCta = {
+  title: string;
+  highlight?: string;
+  title_highlight?: string;
+  description: string;
+  description_highlight?: string;
+  button: string;
 };
 
 type LegalContent = {
@@ -23,15 +33,19 @@ type LegalContent = {
   subtitle?: string;
   lastUpdated?: string;
   sections: LegalContentSection[];
+  sidebarTitle?: string;
+  groupTitle?: string;
+  cta?: LegalCta;
 };
 
 interface LegalDocumentPageProps {
   content: LegalContent;
   slug: string;
   fallbackDescription: string;
+  showQuizCTA?: boolean;
 }
 
-/** Remove leading "1. ", "2. " … from section titles for display */
+/** Remove leading "1. ", "2. " ... from section titles for display */
 const stripNumber = (s: string) => s.replace(/^\d+\.\s*/, "");
 
 const fallbackIcons = [
@@ -51,12 +65,13 @@ function getLegalPageTitle(slug: string, lang: string) {
     privacy: { pt: "Política de Privacidade", en: "Privacy Policy" },
     trust: { pt: "Confiança e Segurança", en: "Trust & Security" },
     "generative-ai-policy": { pt: "Política de IA Generativa", en: "Generative AI Policy" },
+    cookies: { pt: "Política de Cookies", en: "Cookie Policy" },
   };
 
   return titles[slug]?.[lang === "en" ? "en" : "pt"];
 }
 
-function getLegalCta(lang: string) {
+function getLegalCta(lang: string): LegalCta {
   if (lang === "en") {
     return {
       title: "Need help applying this",
@@ -76,16 +91,27 @@ function getLegalCta(lang: string) {
   };
 }
 
-export default function LegalDocumentPage({ content, slug, fallbackDescription }: LegalDocumentPageProps) {
+export default function LegalDocumentPage({
+  content,
+  slug,
+  fallbackDescription,
+  showQuizCTA = true,
+}: LegalDocumentPageProps) {
   const { lang } = useTranslation();
   const pageTitle = getLegalPageTitle(slug, lang) || content.title;
-  const cta = getLegalCta(lang);
+  const cta = content.cta || getLegalCta(lang);
   const statementHeroSlugs = ["terms", "privacy", "generative-ai-policy", "trust"];
   const usesStatementHero = statementHeroSlugs.includes(slug);
   const heroLabel = content.label || pageTitle;
   const heroTitle = usesStatementHero ? content.subtitle || content.title : content.title;
   const heroSubtitle = usesStatementHero ? content.lastUpdated || content.title : content.subtitle || content.lastUpdated;
-  const legalCopy = lang === "en" ? { sidebar: "Topics", group: "Document details" } : { sidebar: "Tópicos", group: "Detalhes do documento" };
+  const defaultLegalCopy = lang === "en"
+    ? { sidebar: "Topics", group: "Document details" }
+    : { sidebar: "Tópicos", group: "Detalhes do documento" };
+  const legalCopy = {
+    sidebar: content.sidebarTitle || defaultLegalCopy.sidebar,
+    group: content.groupTitle || defaultLegalCopy.group,
+  };
   const sections = useMemo(
     () =>
       content.sections.map((section, index) => ({
@@ -136,7 +162,7 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
                 return (
                   <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => setOpenSection(section.id)}>
                     <Icon className="h-4 w-4 shrink-0" />
-                    <span>{stripNumber(section.title)}</span>
+                    <span>{section.navLabel || stripNumber(section.title)}</span>
                   </button>
                 );
               })}
@@ -147,39 +173,43 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
           <Reveal delay={80}>
             <div className="legal-content">
               <div className="legal-group-title">{legalCopy.group}</div>
-              <div className="legal-list">
-                {sections.map((section) => {
-                  const isOpen = openSection === section.id;
-                  const Icon = section.Icon;
+              <div className="legal-document-card legal-document-card--list">
+                <div className="legal-list">
+                  {sections.map((section) => {
+                    const isOpen = openSection === section.id;
+                    const Icon = section.Icon;
 
-                  return (
-                    <div key={section.id} className={`legal-item ${isOpen ? "open" : ""}`}>
-                      <button type="button" className="legal-q" onClick={() => setOpenSection(isOpen ? "" : section.id)}>
-                        <span className="legal-q-main">
-                          <Icon className="legal-q-symbol" />
-                          <span className="legal-q-text">{stripNumber(section.title)}</span>
-                        </span>
-                        <span className="legal-q-icon">+</span>
-                      </button>
-                      <div className="legal-a">
-                        <div className="legal-a-inner">
-                          {Array.isArray(section.content) ? (
-                            <ul>
-                              {section.content.map((item, index) => (
-                                <li key={index}>
-                                  <CheckCircle className="legal-check" />
-                                  <span>{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          ) : (
-                            <p>{section.content}</p>
-                          )}
+                    return (
+                      <div key={section.id} className={`legal-item ${isOpen ? "open" : ""}`}>
+                        <button type="button" className="legal-q" onClick={() => setOpenSection(isOpen ? "" : section.id)}>
+                          <span className="legal-q-main">
+                            <Icon className="legal-q-symbol" />
+                            <span className="legal-q-text">{stripNumber(section.title)}</span>
+                          </span>
+                          <span className="legal-q-icon">+</span>
+                        </button>
+                        <div className="legal-a">
+                          <div className="legal-a-inner">
+                            {Array.isArray(section.content) ? (
+                              <ul>
+                                {section.content.map((item, index) => (
+                                  <li key={index}>
+                                    <CheckCircle className="legal-check" />
+                                    <span>{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            ) : typeof section.content === "string" ? (
+                              <p>{section.content}</p>
+                            ) : (
+                              section.content
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </Reveal>
@@ -187,10 +217,10 @@ export default function LegalDocumentPage({ content, slug, fallbackDescription }
         </div>
       </section>
 
-      <QuizCTA />
+      {showQuizCTA && <QuizCTA />}
       <FinalCTA
         title={cta.title}
-        title_highlight={cta.title_highlight}
+        title_highlight={cta.title_highlight || cta.highlight}
         description={cta.description}
         description_highlight={cta.description_highlight}
         button={cta.button}

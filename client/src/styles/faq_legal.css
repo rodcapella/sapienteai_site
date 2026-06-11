@@ -209,6 +209,17 @@
   box-shadow: 0 2px 12px color-mix(in srgb, var(--brand-primary) 28%, transparent);
 }
 
+.legal-document-card--list {
+  overflow: hidden;
+  padding: 0;
+}
+
+.legal-document-card--list .legal-list {
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+}
+
 .legal-document-card h2 {
   font: 900 clamp(28px, 3vw, 40px) var(--font-heading);
   color: var(--brand-night);

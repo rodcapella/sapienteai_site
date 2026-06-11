@@ -162,7 +162,6 @@ export default function Services() {
         subtitle={content.hero.subtitle}
         image="/media/bg/servicos/bg_Servicos.webp"
         imageAlt="Sapiente.AI"
-        imageFit="contain"
         imagePosition="right center"
         compact
       />

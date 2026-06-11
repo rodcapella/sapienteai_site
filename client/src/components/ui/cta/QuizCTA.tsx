@@ -97,28 +97,35 @@ export function QuizCTA() {
           </Reveal>
         </div>
 
-        {/* Lado Direito: Wrapper do botão garantindo centralização e o efeito Glow */}
+{/* Lado Direito: Wrapper do botão corrigido para forçar o Gradiente e o Glow */}
         <div className="w-full md:w-2/5 flex justify-center md:justify-end items-center">
           <Reveal delay={120}>
             <Link href={href} className="inline-block structure-reset">
-              <PremiumButton 
-                variant="primary" 
-                size="lg"
-                className="text-white font-bold tracking-wide rounded-full transition-all duration-300 transform hover:scale-105"
+              {/* Esta DIV externa garante a aplicação correta do gradiente e do brilho sem interferência do componente */}
+              <div 
+                className="rounded-full transition-all duration-300 transform hover:scale-105"
                 style={{
                   background: "linear-gradient(90deg, #5de0e6 0%, #004aad 100%)",
-                  border: "none",
-                  padding: "18px 36px",
-                  fontSize: "16px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 8px 24px rgba(93, 224, 230, 0.35)", // Efeito Glow Neon sutil
+                  boxShadow: "0 8px 24px rgba(93, 224, 230, 0.45)", // Brilho neon visível
+                  padding: "2px", // Cria uma borda fina perfeita se o botão de dentro for escuro, ou serve de base total
                 }}
               >
-                <HelpCircle className="h-5 w-5 mr-2.5 animate-pulse" />
-                {content.button}
-              </PremiumButton>
+                <PremiumButton 
+                  size="lg"
+                  className="text-white font-bold tracking-wide rounded-full border-none bg-transparent hover:bg-transparent"
+                  style={{
+                    background: "transparent", // Força o botão a ficar transparente para exibir o gradiente de fundo da div
+                    padding: "16px 36px",
+                    fontSize: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <HelpCircle className="h-5 w-5 mr-2.5 text-white" />
+                  {content.button}
+                </PremiumButton>
+              </div>
             </Link>
           </Reveal>
         </div>

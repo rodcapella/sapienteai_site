@@ -29,5 +29,5 @@ export function getLegalLinks(lang: string, t: (key: string) => string): NavItem
     { href: `/${lang}/trust`,                label: t("footer.trust") },
     { href: `/${lang}/generative-ai-policy`, label: t("footer.generative-ai-policy") },
     { href: `/${lang}/cookies`,              label: t("footer.cookies") },
-  ];
+  ].sort((a, b) => a.label.localeCompare(b.label, lang === "en" ? "en" : "pt"));
 }
