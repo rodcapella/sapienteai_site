@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -186,8 +186,8 @@ export default function Services() {
                     if (!data) return null;
 
                     return (
+                      <React.Fragment key={section.id}>
                       <div
-                        key={section.id}
                         id={`service-${section.id}`}
                         aria-label={section.navLabel}
                         className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat px-4 py-5 md:min-h-[420px] md:px-10 lg:px-12"
@@ -248,6 +248,7 @@ export default function Services() {
                       >
                         {lang === "pt" ? "↑ Voltar ao menu" : "↑ Back to menu"}
                       </a>
+                      </React.Fragment>
                     );
                   })}
                 </div>
