@@ -165,6 +165,7 @@ export default function CookiesPage() {
     title: content.hero.title,
     highlight: content.hero.highlight,
     subtitle: content.hero.subtitle,
+    lastUpdated: content.lastUpdated,
     sidebarTitle: content.sidebarTitle,
     groupTitle: lang === "en" ? "Cookie policy details" : "Detalhes da política de cookies",
     cta: {

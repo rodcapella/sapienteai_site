@@ -5,6 +5,8 @@ export const trustContentEN = {
   subtitle:
     "Sapiente.AI is engineered to operate with security, transparency, and consistency in critical environments.",
 
+  lastUpdated: "Last updated: June 2026",
+
   sections: [
     {
       title: "Security",

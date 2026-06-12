@@ -7,6 +7,8 @@ export const iaGenerativaPolicyEN = {
   subtitle: "Clear guidelines for the responsible, transparent, and secure use of",
   highlight: "generative artificial intelligence.",
 
+  lastUpdated: "Last updated: June 2026",
+
   sections: [
     {
       id: "shadow-ai",

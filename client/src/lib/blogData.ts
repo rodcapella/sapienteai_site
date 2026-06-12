@@ -22,7 +22,7 @@ export const blogArticles: BlogArticle[] = [
     date: '2026-02-15',
     readTime: 8,
     category: 'Artificial Intelligence',
-    image: 'https://images.unsplash.com/photo-1677442d019cecf8cdc5b4a6f355cc1d1b6d4d8f?w=800',
+    image: '/media/banners/PT/home_automacao_ia.webp',
     tags: ['IA', 'Negócios', 'Transformação Digital', 'Inovação'],
     content: `# Artificial Intelligence: How It is Revolutionizing Business in 2026
 
@@ -82,7 +82,7 @@ Artificial Intelligence is no longer the future—it is the present. Companies t
     date: '2026-02-10',
     readTime: 10,
     category: 'Machine Learning',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f70d504f0?w=800',
+    image: '/media/banners/PT/home_resultados_gera_ia.webp',
     tags: ['Machine Learning', 'Dados', 'Algoritmos', 'ROI'],
     content: `# Practical Machine Learning: Real Applications that Generate ROI
 
@@ -175,7 +175,7 @@ Machine Learning is not a single project—it's a continuous journey of learning
     date: '2026-02-05',
     readTime: 9,
     category: 'Trends',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop',
+    image: '/media/banners/PT/home_marketing_digital_ia.webp',
     tags: ['Tendências', 'IA Generativa', 'Mercado', 'Futuro'],
     content: `# Tendências de IA para 2026: O Que Esperar do Mercado
 

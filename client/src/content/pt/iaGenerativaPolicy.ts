@@ -7,6 +7,8 @@ export const iaGenerativaPolicyPT = {
   subtitle: "Regras claras para uma utilização responsável, transparente e segura da",
   highlight: "inteligência artificial generativa.",
 
+  lastUpdated: "Última atualização: Junho de 2026",
+
   sections: [
     {
       id: "shadow-ai",

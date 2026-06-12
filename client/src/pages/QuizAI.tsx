@@ -319,7 +319,16 @@ export default function QuizAI() {
       </section>
       )}
 
-      <FinalCTA title={content.ctaTitle} title_highlight={content.ctaHighlight} description={content.ctaText} description_highlight={content.ctaTextHighlight}  button={content.ctaButton} />
+      {screen === "result" && (
+        <FinalCTA
+          title={content.ctaTitle}
+          title_highlight={content.ctaHighlight}
+          description={content.ctaText}
+          description_highlight={content.ctaTextHighlight}
+          button={content.ctaButton}
+          backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
+        />
+      )}
     </main>
   );
 }

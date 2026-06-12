@@ -20,14 +20,11 @@ type FinalCTAProps = {
 function renderTitle(title: string, highlight?: string, highlightClass?: string) {
   return (
     <>
-      {title}{highlight ? " " : ""}
+      {title}
       {highlight && (
-        <>
-          <br className="hidden sm:block" />
-          <span className={highlightClass} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
-            {highlight}
-          </span>
-        </>
+        <span className={cn("block", highlightClass)} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+          {highlight}
+        </span>
       )}
     </>
   );
@@ -38,9 +35,9 @@ function renderDescription(description?: string, highlight?: string, highlightCl
 
   return (
     <>
-      {description}{highlight ? " " : ""}
+      {description}
       {highlight && (
-        <span className={highlightClass} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+        <span className={cn("block", highlightClass)} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
           {highlight}
         </span>
       )}
@@ -101,6 +98,7 @@ export function FinalCTA({
   };
 
   const computedBackgroundSrc = backgroundSrc || getFallbackBackground();
+  const usesDefaultFinalCtaBackground = /\/bg_finalCTA\.(webp|png)$/.test(computedBackgroundSrc);
 
   const buttonElement = (
     <PremiumButton
@@ -169,7 +167,8 @@ export function FinalCTA({
     <>
       <section
         className={cn(
-          "final-cta relative overflow-hidden min-h-[320px] py-8 md:min-h-[380px] md:py-16 px-6 flex items-center",
+          "final-cta relative overflow-hidden min-h-[320px] py-8 md:py-16 px-6 flex items-center",
+          isAboutVariant || isServicesVariant ? "md:min-h-[350px]" : "md:min-h-[380px]",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -179,7 +178,7 @@ export function FinalCTA({
             alt=""
             className={cn(
               "h-full w-full object-cover md:object-center",
-              isServicesVariant ? "object-right" : "object-left"
+              isServicesVariant || usesDefaultFinalCtaBackground ? "object-right" : "object-left"
             )}
           />
         </div>

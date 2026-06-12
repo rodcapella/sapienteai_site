@@ -21,6 +21,12 @@ import { useSEOHead } from '@/hooks/useSEOHead';
 
 const articles = getAllBlogArticles();
 
+const englishImageMap: Record<string, string> = {
+  "/media/banners/PT/home_automacao_ia.webp": "/media/banners/EN/home_automacao_ia_en.webp",
+  "/media/banners/PT/home_resultados_gera_ia.webp": "/media/banners/EN/home_resultados_gera_ia_en.webp",
+  "/media/banners/PT/home_marketing_digital_ia.webp": "/media/banners/EN/home_marketing_digital_ia_en.webp",
+};
+
 export default function Blog() {
   const { t, lang } = useTranslation();
   const allCategory = lang === "en" ? "All" : "Todos";
@@ -102,13 +108,13 @@ export default function Blog() {
           {filteredArticles.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
               {filteredArticles.map(article => (
-                <Link key={article.id} href={`/${lang}/blog/${article.slug}`} className="group h-full">
-                  <SectionCard className="bg-[var(--card)] border-[var(--brand-purple)]/18 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-8">
+                <Link key={article.id} href={`/${lang}/blog/${article.slug}`} className="group block h-full min-w-0">
+                  <SectionCard className="bg-[var(--card)] border-[var(--brand-purple)]/18 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-5 sm:p-8">
 
                     {/* IMAGE */}
-                    <div className="h-56 -mx-8 -mt-8 mb-8 overflow-hidden rounded-t-2xl">
+                    <div className="h-48 -mx-5 -mt-5 mb-6 overflow-hidden rounded-t-2xl sm:h-56 sm:-mx-8 sm:-mt-8 sm:mb-8">
                       <img
-                        src={article.image}
+                        src={lang === "en" ? englishImageMap[article.image] || article.image : article.image}
                         alt={article.title}
                         loading="lazy"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"

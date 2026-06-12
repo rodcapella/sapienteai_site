@@ -2,6 +2,8 @@ export const cookiesPT = {
   // ── navegação lateral ────────────────────────────────────────────────────────
   sidebarTitle: "Secções",
 
+  lastUpdated: "Última atualização: Junho de 2026",
+
   sections: [
     { id: "what",    navLabel: "O que são",     icon: "Info"        },
     { id: "use",     navLabel: "Que cookies",   icon: "List"        },

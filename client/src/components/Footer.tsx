@@ -142,7 +142,7 @@ export default function Footer() {
       <PremiumButton
         onClick={() => setIsNewsletterOpen(true)}
         onMouseEnter={preloadTurnstile}
-        className="w-full !rounded-2xl !bg-[var(--brand-cyan)] !py-2 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] sm:!min-h-[42px] sm:!px-4 sm:!py-0 sm:!text-[11px] sm:!tracking-[0.14em] sm:!whitespace-nowrap [&>span]:!text-[var(--brand-night)] sm:[&>span]:!text-[11px] hover:[&>span]:!text-[var(--brand-offwhite)]"
+        className="w-full !rounded-2xl !bg-[var(--brand-cyan)] !py-2 !text-xs !text-[var(--brand-night)] hover:!bg-[var(--brand-primary)] hover:!text-[var(--brand-offwhite)] sm:!min-h-[34px] sm:!w-auto sm:!rounded-xl sm:!px-3.5 sm:!py-0 sm:!text-[10px] sm:!tracking-[0.12em] sm:!whitespace-nowrap [&>span]:!text-[var(--brand-night)] sm:[&>span]:!text-[10px] hover:[&>span]:!text-[var(--brand-offwhite)]"
         variant="secondary"
       >
         {lang === "pt" ? "Assinar Newsletter" : "Subscribe Newsletter"}

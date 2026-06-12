@@ -146,36 +146,58 @@
 
 .faq-cat,
 .legal-cat {
+  position: relative;
   display: flex;
   min-height: 44px;
   align-items: flex-start;
   gap: 10px;
-  padding: 10px 14px;
+  padding: 10px 14px 10px 16px;
   border-radius: 10px;
-  border: 0;
+  border: 1px solid transparent;
   background: transparent;
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
   color: var(--brand-night);
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
   text-align: left;
   line-height: 1.35;
   word-break: break-word;
 }
 
+.faq-cat svg,
+.legal-cat svg {
+  width: 18px;
+  height: 18px;
+  color: color-mix(in srgb, var(--brand-night) 55%, transparent);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
 .faq-cat:hover,
 .legal-cat:hover {
-  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  background: color-mix(in srgb, var(--brand-primary) 12%, transparent);
+  border-color: color-mix(in srgb, var(--brand-primary) 18%, transparent);
   color: var(--brand-primary);
+}
+
+.faq-cat:hover svg,
+.legal-cat:hover svg {
+  color: var(--brand-primary);
+  transform: translateX(1px);
 }
 
 .faq-cat.active,
 .legal-cat.active {
-  background: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--brand-primary) 18%, transparent), color-mix(in srgb, var(--brand-cyan-bright) 8%, transparent));
+  border-color: color-mix(in srgb, var(--brand-primary) 28%, transparent);
   color: var(--brand-primary);
-  font-weight: 800;
-  box-shadow: 0 8px 18px color-mix(in srgb, var(--brand-mid) 12%, transparent);
+  font-weight: 900;
+  box-shadow: inset 4px 0 0 var(--brand-primary), 0 10px 22px color-mix(in srgb, var(--brand-mid) 15%, transparent);
+}
+
+.faq-cat.active svg,
+.legal-cat.active svg {
+  color: var(--brand-primary);
 }
 
 .faq-cat-count {
@@ -291,11 +313,18 @@
   background: var(--brand-cyan-bright);
   color: var(--brand-night);
   border: 1px solid rgba(122, 92, 252, 0.5);
-  transition: 0.3s ease;
+  font-family: var(--font-body);
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .faq-item.open .faq-q-icon {
-  transform: rotate(45deg);
+  transform: scale(1.04);
+  border-color: color-mix(in srgb, var(--brand-primary) 70%, transparent);
+  background: var(--brand-primary);
+  color: white;
 }
 
 .faq-a {

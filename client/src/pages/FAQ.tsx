@@ -66,9 +66,10 @@ export default function FAQ() {
   const content = getContent("faq", lang);
   const pageCopy = getFAQCopy(normalizedLang);
   const categories = useMemo(() => createFAQCategories(content.items, normalizedLang), [content.items, normalizedLang]);
+  const initialCategoryId = categories[0]?.id || "general";
 
-  const [activeCategory, setActiveCategory] = useState(categories[0]?.id || "general");
-  const [openQuestion, setOpenQuestion] = useState<string | null>(null);
+  const [activeCategory, setActiveCategory] = useState(initialCategoryId);
+  const [openQuestion, setOpenQuestion] = useState<string | null>(categories[0] ? `${categories[0].id}-0` : null);
   const active = categories.find((category) => category.id === activeCategory) || categories[0];
 
   useSEOHead({
@@ -107,6 +108,14 @@ export default function FAQ() {
     };
   }, [content]);
 
+  useEffect(() => {
+    const currentCategory = categories.find((category) => category.id === activeCategory) || categories[0];
+    if (!currentCategory) return;
+
+    setActiveCategory(currentCategory.id);
+    setOpenQuestion(`${currentCategory.id}-0`);
+  }, [categories, activeCategory]);
+
   return (
     <div className="faq-page flex flex-col">
       <InternalHero
@@ -137,7 +146,7 @@ export default function FAQ() {
                     className={`faq-cat ${isActive ? "active" : ""}`}
                     onClick={() => {
                       setActiveCategory(category.id);
-                      setOpenQuestion(null);
+                      setOpenQuestion(`${category.id}-0`);
                     }}
                   >
                     <Icon className="h-4 w-4" />
@@ -169,7 +178,7 @@ export default function FAQ() {
                           onClick={() => setOpenQuestion(isOpen ? null : questionId)}
                         >
                           <span className="faq-q-text">{item.question}</span>
-                          <span className="faq-q-icon" aria-hidden="true">+</span>
+                          <span className="faq-q-icon" aria-hidden="true">{isOpen ? "-" : "+"}</span>
                         </button>
                         <div
                           id={answerId}
@@ -197,6 +206,7 @@ export default function FAQ() {
         description={content.cta.description}
         description_highlight={content.cta.description_highlight}
         button={content.cta.button}
+        variant="home"
       />
     </div>
   );

@@ -5,6 +5,8 @@ export const trustContentPT = {
   subtitle:
     "A Sapiente.AI foi desenhada para operar com segurança, transparência e consistência em ambientes críticos.",
 
+  lastUpdated: "Última atualização: Junho de 2026",
+
   sections: [
     {
       title: "Segurança",

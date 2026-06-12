@@ -2,6 +2,8 @@ export const cookiesEN = {
   // ── sidebar navigation ───────────────────────────────────────────────────────
   sidebarTitle: "Sections",
 
+  lastUpdated: "Last updated: June 2026",
+
   sections: [
     { id: "what",    navLabel: "What are cookies", icon: "Info"        },
     { id: "use",     navLabel: "Cookies we use",   icon: "List"        },

@@ -224,6 +224,7 @@ export default function LegalDocumentPage({
         description={cta.description}
         description_highlight={cta.description_highlight}
         button={cta.button}
+        backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
       />
     </div>
   );
