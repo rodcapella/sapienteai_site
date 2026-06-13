@@ -49,7 +49,12 @@ function ResetConsentButton({ label }: { label: string }) {
   }
 
   return (
-    <PremiumButton size="sm" variant="outline" onClick={handleReset} className="mt-6">
+    <PremiumButton
+      size="sm"
+      variant="primary"
+      onClick={handleReset}
+      className="mt-6 shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-cyan-mid)_20%,transparent)] hover:scale-[1.01] hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_18%,transparent),0_14px_30px_color-mix(in_srgb,var(--brand-cyan-mid)_18%,transparent)]"
+    >
       <RefreshCw className="h-3.5 w-3.5" />
       {label}
     </PremiumButton>

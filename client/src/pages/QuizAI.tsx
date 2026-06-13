@@ -18,6 +18,12 @@ const quizContent = {
   en: quizContentEn,
 };
 
+function getResultColor(percent: number) {
+  if (percent <= 25) return "#ef4444";
+  if (percent <= 49) return "#f97316";
+  if (percent <= 75) return "#facc15";
+  return "#22c55e";
+}
 
 export default function QuizAI() {
   const { lang: rawLang } = useTranslation();
@@ -50,6 +56,7 @@ export default function QuizAI() {
   const progress = ((current + 1) / questions.length) * 100;
   const resultPercent = Math.round((score / questions.length) * 100);
   const resultRingOffset = 314 - (314 * resultPercent) / 100;
+  const resultColor = getResultColor(resultPercent);
   const servicesHref = `/${lang}/services`;
   
   const resultSummary =
@@ -265,9 +272,9 @@ export default function QuizAI() {
         {screen === "result" && (
           <div className="quiz-screen quiz-result anim-in">
             <div className="quiz-result-inner">
-              <div className="quiz-score-ring-container">
+              <div className="quiz-score-ring-container" style={{ "--quiz-result-color": resultColor } as React.CSSProperties}>
                 <svg viewBox="0 0 120 120" className="quiz-svg-ring" aria-hidden="true">
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="color-mix(in srgb,var(--brand-primary) 8%,transparent)" strokeWidth="6" />
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="color-mix(in srgb,var(--quiz-result-color) 16%,transparent)" strokeWidth="6" />
                   <circle cx="60" cy="60" r="50" fill="none" strokeWidth="8" strokeLinecap="round" strokeDasharray="314" strokeDashoffset={resultRingOffset} transform="rotate(-90 60 60)" className="score-ring-gradient" />
                 </svg>
                 <div className="quiz-score-overlay-text">

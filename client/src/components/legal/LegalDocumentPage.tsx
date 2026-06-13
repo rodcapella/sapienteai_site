@@ -59,6 +59,14 @@ const fallbackIcons = [
   Mail,
 ];
 
+function joinHeroSubtitle(...parts: Array<string | undefined>) {
+  const cleanParts = parts
+    .map((part) => part?.trim())
+    .filter((part): part is string => Boolean(part));
+
+  return Array.from(new Set(cleanParts)).join("\n");
+}
+
 function getLegalPageTitle(slug: string, lang: string) {
   const titles: Record<string, Record<string, string>> = {
     terms: { pt: "Termos de Serviço", en: "Terms of Service" },
@@ -104,7 +112,9 @@ export default function LegalDocumentPage({
   const usesStatementHero = statementHeroSlugs.includes(slug);
   const heroLabel = content.label || pageTitle;
   const heroTitle = usesStatementHero ? content.subtitle || content.title : content.title;
-  const heroSubtitle = usesStatementHero ? content.lastUpdated || content.title : content.subtitle || content.lastUpdated;
+  const heroSubtitle = usesStatementHero
+    ? joinHeroSubtitle(content.lastUpdated || content.title)
+    : joinHeroSubtitle(content.subtitle, content.lastUpdated);
   const defaultLegalCopy = lang === "en"
     ? { sidebar: "Topics", group: "Document details" }
     : { sidebar: "Tópicos", group: "Detalhes do documento" };
@@ -186,7 +196,7 @@ export default function LegalDocumentPage({
                             <Icon className="legal-q-symbol" />
                             <span className="legal-q-text">{stripNumber(section.title)}</span>
                           </span>
-                          <span className="legal-q-icon">+</span>
+                          <span className="legal-q-icon" aria-hidden="true">{isOpen ? "-" : "+"}</span>
                         </button>
                         <div className="legal-a">
                           <div className="legal-a-inner">

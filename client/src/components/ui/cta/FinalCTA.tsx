@@ -168,6 +168,7 @@ export function FinalCTA({
       <section
         className={cn(
           "final-cta relative overflow-hidden min-h-[320px] py-8 md:py-16 px-6 flex items-center",
+          "bg-[var(--brand-night)] -mb-px",
           isAboutVariant || isServicesVariant ? "md:min-h-[350px]" : "md:min-h-[380px]",
           isCentered ? "text-center" : "text-left"
         )}
@@ -177,8 +178,9 @@ export function FinalCTA({
             src={computedBackgroundSrc}
             alt=""
             className={cn(
-              "h-full w-full object-cover md:object-center",
-              isServicesVariant || usesDefaultFinalCtaBackground ? "object-right" : "object-left"
+              "block w-full object-cover md:object-center",
+              usesDefaultFinalCtaBackground ? "h-[116%] object-right object-top" : "h-full",
+              isServicesVariant ? "object-right" : !usesDefaultFinalCtaBackground ? "object-left" : ""
             )}
           />
         </div>

@@ -39,7 +39,7 @@ function SitemapCard({ group }: { group: SitemapGroup }) {
   const renderItem = (link: SitemapLink, ArrowIcon: ElementType) => (
     <>
       <div className="min-w-0">
-        <p className="legal-q-text mb-0.5 text-[15px]">{link.title}</p>
+        <p className="legal-q-text mb-0.5 text-[15px] !text-[var(--brand-deep)]">{link.title}</p>
         <p className="text-[13px] font-medium leading-relaxed text-[color-mix(in_srgb,var(--brand-night)_55%,transparent)]">
           {link.description}
         </p>
@@ -56,8 +56,8 @@ function SitemapCard({ group }: { group: SitemapGroup }) {
           <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
         </div>
         <div>
-          <p className="legal-sidebar-label !mb-0 !text-[var(--brand-night)]">{group.label}</p>
-          <h2 className="font-[var(--font-heading)] text-[20px] font-black leading-tight text-[var(--brand-night)]">
+          <p className="legal-sidebar-label !mb-0 !text-[var(--brand-deep)]">{group.label}</p>
+          <h2 className="font-[var(--font-heading)] text-[20px] font-black leading-tight text-[var(--brand-deep)]">
             {group.title}
           </h2>
         </div>

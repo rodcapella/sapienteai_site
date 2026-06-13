@@ -206,7 +206,7 @@ export default function FAQ() {
         description={content.cta.description}
         description_highlight={content.cta.description_highlight}
         button={content.cta.button}
-        variant="home"
+        backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
       />
     </div>
   );

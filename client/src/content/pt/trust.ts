@@ -3,6 +3,7 @@ export const trustContentPT = {
   highlight: "Projetado para confiança.",
   subtitle:
     "A Sapiente.AI foi desenhada para operar com segurança, transparência e consistência em ambientes críticos.",
+  lastUpdated: "Última atualização: Junho de 2026",
 
   sections: [
     {
@@ -46,7 +47,8 @@ export const trustContentPT = {
         "Human-in-the-loop em decisões críticas",
         "Mitigação de vieses algorítmicos",
         "Explicabilidade quando aplicável",
-        "Uso controlado de automação"
+        "Uso controlado de automação",
+        "Rotulagem e transparência para conteúdos gerados ou manipulados por IA, conforme descrito na nossa Política de IA Generativa"
       ]
     },
     {

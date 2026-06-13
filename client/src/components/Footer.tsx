@@ -90,10 +90,15 @@ export default function Footer() {
 
   const navLinks = getNavLinks(lang, t);
   const legalLinks = getLegalLinks(lang, t);
+  const whatsappMessage =
+    lang === "en"
+      ? "Hello, I would like to know more about Sapiente.AI"
+      : "Olá, gostaria de saber mais sobre a Sapiente.AI";
+  const whatsappHref = `https://wa.me/351910567575?text=${encodeURIComponent(whatsappMessage)}`;
 
   const contactItems = [
     { icon: Mail,   text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
-    { icon: Phone,  text: "+351 910 567 575", href: "https://wa.me/351910567575?text=Olá%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Sapiente.AI" },
+    { icon: Phone,  text: "+351 910 567 575", href: whatsappHref },
     { icon: MapPin, text: "Aveiro, Portugal" },
   ];
 

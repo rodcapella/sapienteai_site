@@ -30,12 +30,13 @@ export const termsContentEN = {
         "Use services strictly for lawful purposes in compliance with EU and international law.",
         "Prohibition of 'Reverse Engineering' or attempting to extract the source code of our AI models.",
         "Strict prohibition of using the services to generate harmful, biased, or illegal content.",
+        "When publishing, distributing, or externally using AI-generated or AI-manipulated content, the user must comply with applicable legal obligations on transparency, labelling, and human review, including those under the EU AI Act.",
         "Maintenance of account credential confidentiality and reporting of any security breaches."
       ]
     },
     {
       id: "ip",
-      icon: FileText, // Representing IP and Documentation
+      icon: FileText,
       title: "4. Intellectual Property",
       content:
         "All algorithms, software, trademarks, and methodologies are the exclusive property of Sapiente.AI. Usage of our services does not grant any transfer of ownership. Any output generated may be subject to specific licensing agreements defined in your service contract."

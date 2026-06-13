@@ -30,6 +30,7 @@ export const termsContentPT = {
         "Utilizar os serviços estritamente para fins lícitos, em conformidade com as leis da UE e internacionais.",
         "Proibição de 'Engenharia Reversa' ou tentativa de extração do código-fonte dos nossos modelos de IA.",
         "Proibição de utilizar os serviços para gerar conteúdo danoso, enviesado ou ilegal.",
+        "Quando publicar, distribuir ou utilizar externamente conteúdos gerados ou manipulados por IA, o utilizador deve cumprir as obrigações legais de transparência, rotulagem e revisão humana aplicáveis, incluindo as previstas no Regulamento IA da UE.",
         "Manutenção da confidencialidade das credenciais de acesso e reporte de qualquer falha de segurança."
       ]
     },

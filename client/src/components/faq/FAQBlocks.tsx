@@ -74,7 +74,7 @@ export function FAQCategoryNav({ categories, activeCategory, onChange, sidebarTi
               type="button"
               onClick={() => onChange(category.id)}
               className={cn(
-                "group flex min-w-max items-center gap-3 rounded-xl border px-4 py-3 text-left font-serif text-[14px] font-semibold transition-colors duration-200 lg:min-w-0",
+                "group flex min-w-max items-center gap-3 rounded-xl border px-4 py-3 text-left font-[var(--font-body)] text-[14px] font-semibold transition-colors duration-200 lg:min-w-0",
                 isActive
                   ? "border-[var(--brand-purple-bright)]/35 bg-[var(--card)] text-[var(--brand-night)] shadow-[0_10px_28px_color-mix(in_srgb,var(--brand-purple) 8%,transparent)] dark:border-[var(--brand-cyan-bright)]/42 dark:bg-[var(--brand-night)] dark:text-[var(--brand-offwhite)]"
                   : "border-transparent bg-transparent text-[var(--brand-night)]/54 hover:bg-[var(--brand-purple)]/10 hover:text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]/54 dark:hover:bg-[var(--brand-night)]/72 dark:hover:text-[var(--brand-offwhite)]",
@@ -124,7 +124,7 @@ export function FAQAccordionLine({ item, isOpen, onToggle }: FAQAccordionLinePro
             transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="max-w-3xl pb-7 font-serif text-[14px] font-medium leading-[1.85] text-[var(--brand-night)]/62 dark:text-[var(--brand-cyan)]">
+            <p className="max-w-3xl pb-7 font-[var(--font-body)] text-[14px] font-medium leading-[1.85] text-[var(--brand-night)]/62 dark:text-[var(--brand-cyan)]">
               {item.answer}
             </p>
           </motion.div>
@@ -174,7 +174,7 @@ export function FAQContactCTA({ lang }: FAQContactCTAProps) {
           <h2 className="font-heading text-[26px] font-black leading-tight text-[var(--brand-night)] dark:text-[var(--brand-offwhite)]">
             {content.title}
           </h2>
-          <p className="mt-3 max-w-xl font-serif text-[14px] font-medium leading-relaxed text-[var(--brand-night)]/62 dark:text-[var(--brand-offwhite)]/74">
+          <p className="mt-3 max-w-xl font-[var(--font-body)] text-[14px] font-medium leading-relaxed text-[var(--brand-night)]/62 dark:text-[var(--brand-offwhite)]/74">
             {content.description}
           </p>
         </div>

@@ -3,6 +3,7 @@ export const trustContentEN = {
   highlight: "Designed for trust.",
   subtitle:
     "Sapiente.AI is engineered to operate with security, transparency, and consistency in critical environments.",
+  lastUpdated: "Last updated: June 2026",
 
   sections: [
     {
@@ -46,7 +47,8 @@ export const trustContentEN = {
         "Human-in-the-loop for critical decisions",
         "Bias mitigation strategies",
         "Explainability where applicable",
-        "Controlled automation usage"
+        "Controlled automation usage",
+        "Labelling and transparency for AI-generated or AI-manipulated content, as described in our Generative AI Policy"
       ]
     },
     {
