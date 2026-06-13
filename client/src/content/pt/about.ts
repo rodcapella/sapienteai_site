@@ -75,9 +75,7 @@ export const aboutPT = {
     howWeWork: {
       image: "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
       mobileImages: [
-        "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
-        "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
-        "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
+        "/media/bg/sobre/pt/bg_Sobre_mobile_como_trabalhamos.webp"
       ],
       alt: "Como trabalhamos: ágil, transparente e orientado a resultados",
     },

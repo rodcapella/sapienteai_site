@@ -75,9 +75,7 @@
     howWeWork: {
       image: "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
       mobileImages: [
-        "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
-        "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
-        "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
+        "/media/bg/sobre/en/bg_Sobre_mobile_como_trabalhamos_en.webp"
       ],
       alt: "How we work: agile, transparent and results-oriented",
     },

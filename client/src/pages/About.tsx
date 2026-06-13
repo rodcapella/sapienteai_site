@@ -211,7 +211,7 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
         {mobileImages.map((image, index) => (
           <div
             key={`${image}-${index}`}
-            className="min-h-[100svh] w-full bg-cover bg-center bg-no-repeat"
+            className="min-h-[60svh] w-full bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${image})` }}
             aria-hidden="true"
           />

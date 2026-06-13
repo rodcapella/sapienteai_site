@@ -62,7 +62,8 @@ export function FinalCTA({
   const isAboutVariant = variant === "about";
   const isServicesVariant = variant === "services";
 
-  const isCentered = align ? align === "center" : isHomeVariant || isAboutVariant || isServicesVariant;
+  const isCentered = align ? align === "center" : isHomeVariant;
+  const isRightAligned = isAboutVariant || isServicesVariant;
 
   const titleFontSize = isHomeVariant || isAboutVariant || isServicesVariant
     ? "clamp(22px, 4.5vw, 44px)"
@@ -103,7 +104,7 @@ export function FinalCTA({
   const buttonElement = (
     <PremiumButton
       onClick={href ? undefined : () => setIsContactOpen(true)}
-      className="opacity-50 sm:opacity-100 !bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white"
+      className="opacity-50 hover:opacity-100 sm:opacity-100 !bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white"
       size="lg"
     >
       {button}
@@ -169,7 +170,7 @@ export function FinalCTA({
         className={cn(
           "final-cta relative overflow-hidden min-h-[224px] py-8 md:py-16 px-6 flex items-center",
           "bg-[var(--brand-night)] -mb-px",
-          isAboutVariant || isServicesVariant ? "md:min-h-[350px]" : "md:min-h-[380px]",
+          isAboutVariant || isServicesVariant ? "md:h-[310px] md:min-h-0" : "md:min-h-[380px]",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -196,9 +197,11 @@ export function FinalCTA({
           <div
             className={cn(
               "w-full flex flex-col",
-              !isCentered
-                ? "max-w-[760px] items-start text-left"
-                : "max-w-3xl mx-auto items-center text-center"
+              isRightAligned
+                ? "max-w-[760px] items-end text-right ml-auto"
+                : !isCentered
+                  ? "max-w-[760px] items-start text-left"
+                  : "max-w-3xl mx-auto items-center text-center"
             )}
           >
             <Reveal className={isCentered ? "mx-auto" : "w-full"}>
