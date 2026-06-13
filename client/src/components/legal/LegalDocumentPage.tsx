@@ -157,6 +157,19 @@ export default function LegalDocumentPage({
     setOpenSection("");
   }, [sections]);
 
+  const handleSelectSection = (sectionId: string) => {
+    setOpenSection(sectionId);
+
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      requestAnimationFrame(() => {
+        document.getElementById(`legal-section-${sectionId}`)?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    }
+  };
+
   return (
     <div className="legal-page flex flex-col">
       <InternalHero
@@ -166,6 +179,7 @@ export default function LegalDocumentPage({
         subtitle={heroSubtitle}
         image="/media/bg/bg_LegalPages.webp"
         imageAlt="Sapiente.AI Legal"
+        imagePosition="right center"
         compact
       />
 
@@ -181,7 +195,7 @@ export default function LegalDocumentPage({
                 const Icon = section.Icon;
 
                 return (
-                  <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => setOpenSection(section.id)}>
+                  <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => handleSelectSection(section.id)}>
                     <Icon className="h-4 w-4 shrink-0" />
                     <span>{section.navLabel || stripNumber(section.title)}</span>
                   </button>
@@ -201,7 +215,7 @@ export default function LegalDocumentPage({
                     const Icon = section.Icon;
 
                     return (
-                      <div key={section.id} className={`legal-item ${isOpen ? "open" : ""}`}>
+                      <div key={section.id} id={`legal-section-${section.id}`} className={`legal-item scroll-mt-28 ${isOpen ? "open" : ""}`}>
                         <button type="button" className="legal-q" onClick={() => setOpenSection(isOpen ? "" : section.id)}>
                           <span className="legal-q-main">
                             <Icon className="legal-q-symbol" />

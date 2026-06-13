@@ -24,6 +24,7 @@ type AboutOriginContent = {
 
 type AboutVisualSectionContent = {
   image: string;
+  mobileImages?: string[];
   alt: string;
   links?: {
     label: string;
@@ -128,11 +129,14 @@ function linkIcon(label: string) {
 
 function AboutVisualSection({ content, founders }: { content: AboutVisualSectionContent; founders?: { label: string; names: string[] } }) {
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
+  const mobileImages = content.mobileImages && content.mobileImages.length > 0
+    ? content.mobileImages
+    : [content.image, content.image, content.image];
 
   return (
     <div className="content-atmosphere overflow-hidden bg-white">
       <section
-        className="relative w-full bg-white aspect-[1920/700] bg-cover bg-center bg-no-repeat"
+        className="relative hidden w-full bg-white aspect-[1920/700] bg-cover bg-center bg-no-repeat md:block"
         style={{ backgroundImage: `url(${content.image})` }}
         aria-label={content.alt}
         onClick={() => setActiveHotspot(null)}
@@ -194,6 +198,24 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
             </div>
           );
         })}
+      </section>
+
+      <section className="bg-white md:hidden" aria-label={content.alt}>
+        {founders && (
+          <div className="sr-only" data-speakable>
+            <p>{founders.label}</p>
+            {founders.names.map((name) => <span key={name}>{name}</span>)}
+          </div>
+        )}
+
+        {mobileImages.map((image, index) => (
+          <div
+            key={`${image}-${index}`}
+            className="min-h-[100svh] w-full bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${image})` }}
+            aria-hidden="true"
+          />
+        ))}
       </section>
     </div>
   );

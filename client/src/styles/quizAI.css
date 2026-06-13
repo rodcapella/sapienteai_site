@@ -9,7 +9,7 @@
   --danger: #ef4444;
 
   width: 100%;
-  background: var(--surface);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
 }
@@ -19,19 +19,49 @@
 }
 
 /* LAYOUT BASE */
+.quiz-intro-section,
 .quiz-experience-container {
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(5, 8, 22, 0.94) 0%, rgba(5, 8, 22, 0.82) 44%, rgba(5, 8, 22, 0.58) 100%),
+    url("/media/bg/bg_Quiz.webp") center / cover no-repeat;
+}
+
+.quiz-intro-section::before,
+.quiz-experience-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--brand-primary) 20%, transparent), transparent 28%),
+    radial-gradient(circle at 84% 72%, color-mix(in srgb, var(--brand-cyan-bright) 16%, transparent), transparent 32%);
+}
+
+.quiz-intro-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.quiz-intro-section h2 {
+  color: #fff !important;
+}
+
+.quiz-intro-section p,
+.quiz-intro-section .text-\[var\(--brand-night\)\] {
+  color: color-mix(in srgb, white 84%, transparent) !important;
+}
+
+.quiz-experience-container {
   min-height: calc(100vh - 112px);
   padding: 72px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--brand-primary) 10%, transparent), transparent 26%),
-    radial-gradient(circle at 84% 72%, color-mix(in srgb, var(--brand-cyan-bright) 12%, transparent), transparent 30%),
-    linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--surface) 88%, white));
 }
 
 .quiz-bg-radials {
@@ -361,6 +391,7 @@
 .quiz-options {
   display: grid;
   gap: 14px;
+  margin-top: 28px;
 }
 
 .quiz-option-modern {
@@ -471,6 +502,8 @@
 
 .quiz-result-modern-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: color-mix(in srgb, white 58%, var(--surface));
   border: 1px solid color-mix(in srgb, var(--brand-primary) 36%, var(--brand-mid));
@@ -518,6 +551,7 @@
 }
 
 .quiz-card-priority-tag {
+  margin-top: auto;
   font-family: var(--font-detail);
   font-size: 10px;
   font-weight: 900;
@@ -642,7 +676,7 @@
 
   .quiz-options {
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 22px;
   }
 
   .quiz-option-modern {

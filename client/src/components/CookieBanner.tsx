@@ -291,10 +291,10 @@ export default function CookieBanner() {
   ];
 
   const choiceButtonClass =
-    "min-h-10 rounded-full border px-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.1em] transition sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
+    "min-h-8 rounded-full border px-3.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.09em] transition sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
 
   const secondaryButtonClass =
-    "min-h-10 rounded-full border border-[var(--brand-night)]/20 bg-transparent px-4 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.1em] text-[var(--brand-night)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/8 sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
+    "min-h-8 rounded-full border border-[var(--brand-night)]/20 bg-transparent px-3.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.09em] text-[var(--brand-night)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/8 sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
 
   const rejectButtonClass =
     `${choiceButtonClass} border-[var(--brand-primary)] bg-white text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/8`;
@@ -323,23 +323,23 @@ export default function CookieBanner() {
       <aside
         role="dialog"
         className={[
-          "fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-5xl rounded-xl border border-[var(--brand-cyan-bright)] bg-[var(--brand-offwhite)] p-2.5 transition duration-300 ease-out sm:inset-x-4 sm:bottom-4 sm:rounded-2xl sm:p-4",
+          "fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-5xl rounded-xl border border-[var(--brand-cyan-bright)] bg-[var(--brand-offwhite)] p-2 transition duration-300 ease-out sm:inset-x-4 sm:bottom-4 sm:rounded-2xl sm:p-4",
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
         ].join(" ")}
       >
         {!showPreferences && (
-          <div className="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
+          <div className="grid gap-2.5 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
             <div className="min-w-0 text-[var(--brand-night)]">
-              <h2 className="font-[var(--font-body)] !text-base font-black leading-tight sm:!text-lg">
+              <h2 className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
                 {text.title}
               </h2>
-              <p className="mt-1 font-[var(--font-body)] text-xs font-medium leading-snug text-[var(--brand-night)]/70 sm:text-sm">
+              <p className="mt-0.5 font-[var(--font-body)] text-[11px] font-medium leading-snug text-[var(--brand-night)]/70 sm:mt-1 sm:text-sm">
                 {text.message}
               </p>
               <LegalLinks />
             </div>
 
-            <div className="grid gap-2 sm:grid-cols-3 sm:justify-end sm:gap-3">
+            <div className="grid gap-1.5 sm:grid-cols-3 sm:justify-end sm:gap-3">
               <button
                 type="button"
                 onClick={handleRejectOptional}
@@ -368,14 +368,14 @@ export default function CookieBanner() {
         )}
 
         {showPreferences && (
-          <div className="grid gap-3 text-[var(--brand-night)]">
+          <div className="grid gap-2.5 text-[var(--brand-night)] sm:gap-3">
             <div>
-              <h2 className="font-[var(--font-body)] !text-base font-black leading-tight sm:!text-lg">
+              <h2 className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
                 {text.preferencesTitle}
               </h2>
-              <div className="mt-3 grid gap-2">
+              <div className="mt-2 grid gap-1.5 sm:mt-3 sm:gap-2">
                 {preferenceRows.map((row) => (
-                  <div key={row.key} className="flex items-center justify-between gap-3 rounded-xl bg-white/75 px-3 py-2">
+                  <div key={row.key} className="flex items-center justify-between gap-2.5 rounded-xl bg-white/75 px-3 py-1.5 sm:gap-3 sm:py-2">
                     <div>
                       <p className="text-xs font-black">{row.label}</p>
                       <p className="text-[11px] font-medium leading-snug text-[var(--brand-night)]/65">{row.description}</p>
@@ -399,7 +399,7 @@ export default function CookieBanner() {
 
             <LegalLinks />
 
-            <div className="grid gap-2 sm:grid-cols-3 sm:justify-end sm:gap-3">
+            <div className="grid gap-1.5 sm:grid-cols-3 sm:justify-end sm:gap-3">
               <button
                 type="button"
                 onClick={handleRejectOptional}

@@ -47,6 +47,11 @@ export const aboutPT = {
   visualSections: {
     founders: {
       image: "/media/bg/sobre/pt/bg_Sobre_Founders.webp",
+      mobileImages: [
+        "/media/bg/sobre/pt/bg_founders_mobile_rod.webp",
+        "/media/bg/sobre/pt/bg_founders_mobile_tati.webp",
+        "/media/bg/sobre/pt/bg_founders_mobile_ia.webp",
+      ],
       links: [
         {
           label: "Rodrigo Póvoa",
@@ -69,6 +74,11 @@ export const aboutPT = {
     },
     howWeWork: {
       image: "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
+      mobileImages: [
+        "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
+        "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
+        "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
+      ],
       alt: "Como trabalhamos: ágil, transparente e orientado a resultados",
     },
   },

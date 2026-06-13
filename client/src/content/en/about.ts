@@ -47,6 +47,11 @@
   visualSections: {
     founders: {
       image: "/media/bg/sobre/en/bg_Sobre_Founders_en.webp",
+      mobileImages: [
+        "/media/bg/sobre/en/founders_mobile_rod_en.webp",
+        "/media/bg/sobre/en/founders_mobile_tati_en.webp",
+        "/media/bg/sobre/en/founders_mobile_ia_en.webp",
+      ],
       links: [
         {
           label: "Rodrigo Póvoa",
@@ -69,6 +74,11 @@
     },
     howWeWork: {
       image: "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
+      mobileImages: [
+        "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
+        "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
+        "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
+      ],
       alt: "How we work: agile, transparent and results-oriented",
     },
   },

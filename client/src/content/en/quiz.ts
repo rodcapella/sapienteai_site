@@ -4,7 +4,7 @@ export const quizContentEn = {
     title: "What is the AI potential",
     highlight: "in your business?",
     subtitle:
-      "Answer 10 questions about your business and discover where artificial intelligence can have the biggest impact.",
+      "Answer 10 questions about your business and discover where\nartificial intelligence can have the biggest impact.",
     stats: ["3 minutes", "10 questions", "Instant result"],
   },
   badge: "AI Quiz",

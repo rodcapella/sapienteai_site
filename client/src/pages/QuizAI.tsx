@@ -175,7 +175,7 @@ export default function QuizAI() {
 
       {/* ── Intro section ── */}
       {screen === "start" && (
-        <section className="flex flex-col items-center justify-center bg-white px-6 py-16 text-center md:py-20">
+        <section className="quiz-intro-section flex flex-col items-center justify-center px-6 py-16 text-center md:py-20">
           <h2
             className="max-w-2xl font-black leading-[1.06]"
             style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2.2rem, 5vw, 3.6rem)", color: "var(--brand-night)" }}

@@ -103,7 +103,7 @@ export function FinalCTA({
   const buttonElement = (
     <PremiumButton
       onClick={href ? undefined : () => setIsContactOpen(true)}
-      className="!bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white"
+      className="opacity-50 sm:opacity-100 !bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white"
       size="lg"
     >
       {button}
@@ -113,7 +113,7 @@ export function FinalCTA({
   if (isHomeVariant) {
     return (
       <>
-        <section className="final-cta relative min-h-[360px] w-full overflow-hidden bg-[var(--section-ice)] md:h-[450px]">
+        <section className="final-cta relative min-h-[252px] w-full overflow-hidden bg-[var(--section-ice)] md:h-[450px]">
           <img
             src={computedBackgroundSrc}
             alt=""
@@ -138,7 +138,7 @@ export function FinalCTA({
             {description && (
               <Reveal delay={110}>
                 <p
-                  className="font-medium leading-relaxed"
+                  className="hidden font-medium leading-relaxed sm:block"
                   style={{
                     fontFamily: "var(--font-body)",
                     color: "white",
@@ -167,7 +167,7 @@ export function FinalCTA({
     <>
       <section
         className={cn(
-          "final-cta relative overflow-hidden min-h-[320px] py-8 md:py-16 px-6 flex items-center",
+          "final-cta relative overflow-hidden min-h-[224px] py-8 md:py-16 px-6 flex items-center",
           "bg-[var(--brand-night)] -mb-px",
           isAboutVariant || isServicesVariant ? "md:min-h-[350px]" : "md:min-h-[380px]",
           isCentered ? "text-center" : "text-left"
@@ -179,8 +179,8 @@ export function FinalCTA({
             alt=""
             className={cn(
               "block w-full object-cover md:object-center",
-              usesDefaultFinalCtaBackground ? "h-[116%] object-right object-top" : "h-full",
-              isServicesVariant ? "object-right" : !usesDefaultFinalCtaBackground ? "object-left" : ""
+              "h-full",
+              usesDefaultFinalCtaBackground || isServicesVariant ? "object-right" : "object-left"
             )}
           />
         </div>
@@ -217,7 +217,7 @@ export function FinalCTA({
             {description && (
               <Reveal delay={110} className={isCentered ? "mx-auto" : "w-full"}>
                 <p
-                  className="mt-3 font-medium leading-relaxed"
+                  className="mt-3 hidden font-medium leading-relaxed sm:block"
                   style={{
                     fontFamily: "var(--font-body)",
                     color: descriptionColor,

@@ -21,6 +21,15 @@ type ServiceSection = {
   backgroundImage: string;
 };
 
+const serviceMobileBackgroundPosition: Record<string, string> = {
+  ia: "68% top",
+  automacao: "68% top",
+  crescimento: "67% top",
+  "dados-bi": "67% top",
+  desenvolvimento: "66% top",
+  marketing: "66% top",
+};
+
 // --- Sticky Nav --------------------------------------------------------------
 
 function ServicesStickyNav({
@@ -190,8 +199,11 @@ export default function Services() {
                       <div
                         id={`service-${section.id}`}
                         aria-label={section.navLabel}
-                        className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-center bg-no-repeat px-4 py-5 md:min-h-[420px] md:px-10 lg:px-12"
-                        style={{ backgroundImage: `url(${section.backgroundImage})` }}
+                        className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-[position:var(--service-mobile-bg-position)] bg-no-repeat px-4 py-5 md:min-h-[420px] md:bg-center md:px-10 lg:px-12"
+                        style={{
+                          backgroundImage: `url(${section.backgroundImage})`,
+                          "--service-mobile-bg-position": serviceMobileBackgroundPosition[section.id] || "center top",
+                        } as React.CSSProperties}
                       >
                         <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
                           <Reveal>

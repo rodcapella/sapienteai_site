@@ -4,7 +4,7 @@ export const quizContentPt = {
     title: "Qual o potencial de IA",
     highlight: "no seu negócio?",
     subtitle:
-      "Responda a 10 perguntas sobre o seu negócio e descubra em que áreas a inteligência artificial pode ter mais impacto.",
+      "Responda a 10 perguntas sobre o seu negócio e descubra em que áreas a\ninteligência artificial pode ter mais impacto.",
     stats: ["3 minutos", "10 perguntas", "Resultado imediato"],
   },
   badge: "Quiz sobre IA",
