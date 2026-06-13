@@ -56,7 +56,7 @@ function SitemapCard({ group }: { group: SitemapGroup }) {
           <Icon className="h-5 w-5 text-[var(--brand-primary)]" />
         </div>
         <div>
-          <p className="legal-sidebar-label !mb-0 !text-[var(--brand-deep)]">{group.label}</p>
+          <p className="legal-sidebar-label !mb-0 !text-[var(--brand-primary)]">{group.label}</p>
           <h2 className="font-[var(--font-heading)] text-[20px] font-black leading-tight text-[var(--brand-deep)]">
             {group.title}
           </h2>
@@ -93,7 +93,7 @@ export default function Sitemap() {
   const l = content.links;
   const quizHref = lang === "pt" ? makeLink(lang, "/quiz-ia") : makeLink(lang, "/quiz-ai");
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
-  const [activeGroup, setActiveGroup] = useState(content.sections.main);
+  const [activeGroup, setActiveGroup] = useState<string>(content.sections.main);
 
   const groups: SitemapGroup[] = [
     {

@@ -59,12 +59,23 @@ const fallbackIcons = [
   Mail,
 ];
 
-function joinHeroSubtitle(...parts: Array<string | undefined>) {
-  const cleanParts = parts
-    .map((part) => part?.trim())
-    .filter((part): part is string => Boolean(part));
+function renderHeroSubtitle(text?: string, lastUpdated?: string) {
+  const cleanText = text?.trim();
+  const cleanLastUpdated = lastUpdated?.trim();
 
-  return Array.from(new Set(cleanParts)).join("\n");
+  if (!cleanText && !cleanLastUpdated) return undefined;
+
+  return (
+    <>
+      {cleanText && <span>{cleanText}</span>}
+      {cleanText && cleanLastUpdated && <br />}
+      {cleanLastUpdated && (
+        <span style={{ fontSize: "calc(1em - 2px)", lineHeight: "inherit" }}>
+          {cleanLastUpdated}
+        </span>
+      )}
+    </>
+  );
 }
 
 function getLegalPageTitle(slug: string, lang: string) {
@@ -113,8 +124,8 @@ export default function LegalDocumentPage({
   const heroLabel = content.label || pageTitle;
   const heroTitle = usesStatementHero ? content.subtitle || content.title : content.title;
   const heroSubtitle = usesStatementHero
-    ? joinHeroSubtitle(content.lastUpdated || content.title)
-    : joinHeroSubtitle(content.subtitle, content.lastUpdated);
+    ? renderHeroSubtitle(undefined, content.lastUpdated || content.title)
+    : renderHeroSubtitle(content.subtitle, content.lastUpdated);
   const defaultLegalCopy = lang === "en"
     ? { sidebar: "Topics", group: "Document details" }
     : { sidebar: "Tópicos", group: "Detalhes do documento" };

@@ -41,7 +41,7 @@ function renderDescription(description: string, highlight?: string) {
     <>
       {description}{" "}
       {highlight && (
-        <span className="block mt-1 font-semibold text-[var(--foreground)] dark:text-white">
+        <span className="quiz-text-gradient block mt-1 font-semibold">
           {highlight}
         </span>
       )}
