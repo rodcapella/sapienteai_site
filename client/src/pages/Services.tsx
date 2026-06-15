@@ -55,7 +55,7 @@ function ServicesStickyNav({
         ].join(" ")}
       >
       <div className="mx-auto w-full max-w-6xl">
-        <nav className="flex flex-row flex-wrap justify-center gap-1.5">
+        <nav className="flex flex-row flex-wrap justify-center gap-2">
           {sections.map((s) => {
             const Icon = Icons[s.icon] as React.ElementType;
             const isActive = active === s.id;
@@ -65,13 +65,13 @@ function ServicesStickyNav({
                 type="button"
                 onClick={() => onSelect(s.id)}
                 className={[
-                  "flex min-h-11 items-center gap-2 rounded-xl border-0 px-3 py-2 text-sm font-bold transition-all duration-200",
+                  "flex min-h-11 items-center gap-2.5 rounded-xl border-0 px-4 py-2 text-[13px] font-black transition-all duration-200 md:text-sm",
                   isActive
-                    ? "bg-[var(--brand-offwhite)] text-[var(--brand-primary)] shadow-[0_8px_18px_color-mix(in_srgb,var(--brand-mid)_12%,transparent)]"
-                    : "bg-transparent text-[var(--brand-night)] hover:bg-[var(--brand-offwhite)]/70 hover:text-[var(--brand-primary)]",
+                    ? "bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-cyan))] text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary)_22%,transparent)]"
+                    : "bg-transparent text-[var(--brand-night)] hover:bg-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)]",
                 ].join(" ")}
               >
-                {Icon && <Icon className="h-4 w-4 shrink-0" />}
+                {Icon && <Icon className="h-[18px] w-[18px] shrink-0" />}
                 <span>{s.navLabel}</span>
               </button>
             );
@@ -205,7 +205,7 @@ export default function Services() {
                           "--service-mobile-bg-position": serviceMobileBackgroundPosition[section.id] || "center top",
                         } as React.CSSProperties}
                       >
-                        <div className="grid min-h-[inherit] gap-8 lg:grid-cols-[minmax(260px,0.72fr)_minmax(260px,0.55fr)] lg:items-center xl:grid-cols-[minmax(320px,0.78fr)_minmax(300px,0.52fr)]">
+                        <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(300px,0.68fr)_minmax(280px,0.46fr)] lg:items-center xl:grid-cols-[minmax(340px,0.68fr)_minmax(300px,0.44fr)]">
                           <Reveal>
                             <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:bg-transparent lg:p-0 lg:shadow-none">
                               <p className="mb-4 font-[var(--font-heading)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
@@ -216,15 +216,15 @@ export default function Services() {
                                 {data.title}
                               </h2>
 
-                              <p className="mt-7 max-w-full font-[var(--font-body)] text-[15px] font-medium leading-[1.16] text-[var(--brand-night)] sm:max-w-[390px]">
+                              <p className="mt-7 max-w-full font-[var(--font-body)] text-[16px] font-medium leading-[1.42] text-[var(--brand-night)] sm:max-w-[410px]">
                                 {data.description}
                               </p>
 
-                              <div className="mt-8 max-w-full sm:max-w-[390px] md:mt-11">
+                              <div className="mt-8 max-w-full sm:max-w-[410px] md:mt-10">
                                 <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
                                   {data.audienceLabel}
                                 </p>
-                                <p className="font-[var(--font-body)] text-[14px] font-semibold leading-[1.12] text-[var(--brand-night)]">
+                                <p className="font-[var(--font-body)] text-[15px] font-semibold leading-[1.35] text-[var(--brand-night)]">
                                   {data.audience}
                                 </p>
                               </div>
@@ -243,7 +243,7 @@ export default function Services() {
                           </Reveal>
 
                           <Reveal delay={120}>
-                            <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 sm:ml-auto sm:max-w-[390px] md:p-5 font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
+                            <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 sm:max-w-[410px] md:p-5 font-[var(--font-body)] text-[16px] font-medium leading-[1.5] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:mx-0 lg:justify-self-start lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
                               {data.bullets.map((bullet) => (
                                 <li key={bullet} className="flex items-start gap-4">
                                   <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />

@@ -6,7 +6,7 @@ import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { CheckCircle, Cpu, Database, History, Lock, Mail, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
+import { CheckCircle, CheckCircle2, Cpu, History, Lock, Mail, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
 type LegalContentSection = {
@@ -52,7 +52,7 @@ const fallbackIcons = [
   ShieldCheck,
   Scale,
   Lock,
-  Database,
+  CheckCircle2,
   UserCheck,
   Cpu,
   History,
@@ -143,7 +143,7 @@ export default function LegalDocumentPage({
     [content.sections],
   );
 
-  const [openSection, setOpenSection] = useState("");
+  const [openSection, setOpenSection] = useState(sections[0]?.id || "");
   const activeSection = sections.find((section) => section.id === openSection) || sections[0];
 
   useSEOHead({
@@ -154,7 +154,7 @@ export default function LegalDocumentPage({
   }, [lang, content, slug, fallbackDescription]);
 
   useEffect(() => {
-    setOpenSection("");
+    setOpenSection(sections[0]?.id || "");
   }, [sections]);
 
   const handleSelectSection = (sectionId: string) => {
@@ -252,15 +252,17 @@ export default function LegalDocumentPage({
         </div>
       </section>
 
-      {showQuizCTA && <QuizCTA />}
-      <FinalCTA
-        title={cta.title}
-        title_highlight={cta.title_highlight || cta.highlight}
-        description={cta.description}
-        description_highlight={cta.description_highlight}
-        button={cta.button}
-        backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
-      />
+      <div className="-mb-px">
+        {showQuizCTA && <QuizCTA />}
+        <FinalCTA
+          title={cta.title}
+          title_highlight={cta.title_highlight || cta.highlight}
+          description={cta.description}
+          description_highlight={cta.description_highlight}
+          button={cta.button}
+          backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
+        />
+      </div>
     </div>
   );
 }

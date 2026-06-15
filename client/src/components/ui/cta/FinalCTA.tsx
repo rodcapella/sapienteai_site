@@ -22,7 +22,7 @@ function renderTitle(title: string, highlight?: string, highlightClass?: string)
     <>
       {title}
       {highlight && (
-        <span className={cn("block", highlightClass)} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+        <span className={cn("block", highlightClass)} style={{ fontFamily: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
           {highlight}
         </span>
       )}
@@ -37,7 +37,7 @@ function renderDescription(description?: string, highlight?: string, highlightCl
     <>
       {description}
       {highlight && (
-        <span className={cn("block", highlightClass)} style={{ font: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
+        <span className={cn("block", highlightClass)} style={{ fontFamily: "inherit", lineHeight: "inherit", letterSpacing: "inherit" }}>
           {highlight}
         </span>
       )}
@@ -84,6 +84,9 @@ export function FinalCTA({
       : "var(--brand-night)";
 
   const highlightColor = "text-[var(--brand-primary)]";
+  const descriptionHighlightColor = isHomeVariant
+    ? "font-extrabold text-[var(--brand-cyan)]"
+    : "font-extrabold text-[var(--brand-night)]";
 
   const getFallbackBackground = () => {
     switch (variant) {
@@ -121,6 +124,10 @@ export function FinalCTA({
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover object-left md:object-center"
           />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[linear-gradient(90deg,color-mix(in_srgb,var(--brand-night)_82%,transparent)_0%,color-mix(in_srgb,var(--brand-night)_62%,transparent)_42%,color-mix(in_srgb,var(--brand-night)_22%,transparent)_100%)] md:bg-[linear-gradient(90deg,color-mix(in_srgb,var(--brand-night)_72%,transparent)_0%,color-mix(in_srgb,var(--brand-night)_44%,transparent)_48%,transparent_100%)]"
+          />
 
           <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 py-8 text-center md:absolute md:inset-0 md:py-0">
             <Reveal>
@@ -146,13 +153,15 @@ export function FinalCTA({
                     fontSize: descriptionFontSize,
                   }}
                 >
-                  {renderDescription(description, description_highlight, highlightColor)}
+                  {renderDescription(description, description_highlight, descriptionHighlightColor)}
                 </p>
               </Reveal>
             )}
 
             <Reveal delay={220}>
-              {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
+              <div className="rounded-full bg-[color-mix(in_srgb,var(--brand-night)_20%,transparent)] p-1 backdrop-blur-[2px]">
+                {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
+              </div>
             </Reveal>
           </div>
         </section>
@@ -179,12 +188,22 @@ export function FinalCTA({
             src={computedBackgroundSrc}
             alt=""
             className={cn(
-              "block w-full object-cover md:object-center",
+              "block w-full object-cover",
               "h-full",
-              usesDefaultFinalCtaBackground || isServicesVariant ? "object-right" : "object-left"
+              isAboutVariant
+                ? "object-[left_bottom]"
+                : usesDefaultFinalCtaBackground || isServicesVariant
+                  ? "object-right"
+                  : "object-left md:object-center"
             )}
           />
         </div>
+        {(isAboutVariant || isServicesVariant) && (
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,color-mix(in_srgb,white_34%,transparent)_42%,color-mix(in_srgb,white_88%,transparent)_70%,white_100%)]"
+          />
+        )}
 
         <div
           className={cn(
@@ -201,7 +220,8 @@ export function FinalCTA({
                 ? "max-w-[760px] items-end text-right ml-auto"
                 : !isCentered
                   ? "max-w-[760px] items-start text-left"
-                  : "max-w-3xl mx-auto items-center text-center"
+                  : "max-w-3xl mx-auto items-center text-center",
+              (isAboutVariant || isServicesVariant) && "rounded-2xl bg-white/70 p-5 shadow-[0_18px_46px_color-mix(in_srgb,var(--brand-night)_9%,transparent)] backdrop-blur-[2px] sm:p-6 md:bg-white/62 md:p-7"
             )}
           >
             <Reveal className={isCentered ? "mx-auto" : "w-full"}>
@@ -227,13 +247,13 @@ export function FinalCTA({
                     fontSize: descriptionFontSize,
                   }}
                 >
-                  {renderDescription(description, description_highlight, highlightColor)}
+                  {renderDescription(description, description_highlight, descriptionHighlightColor)}
                 </p>
               </Reveal>
             )}
 
             <Reveal delay={220} className={isCentered ? "mx-auto" : ""}>
-              <div className={cn("mt-6 flex w-full", isCentered ? "justify-center" : "justify-start")}>
+              <div className={cn("mt-6 flex w-full", isCentered ? "justify-center" : isRightAligned ? "justify-end" : "justify-start")}>
                 {href ? <Link href={href}>{buttonElement}</Link> : buttonElement}
               </div>
             </Reveal>

@@ -30,7 +30,7 @@ export default function News() {
       date: '2026-02-25',
       category: 'Releases',
       tags: ['GPT-5', 'OpenAI'],
-      image: '/media/banners/PT/home_o_que_nos_diferencia.png',
+      image: '/media/banners/PT/home_o_que_nos_diferencia.webp',
       featured: true
     }
   ];

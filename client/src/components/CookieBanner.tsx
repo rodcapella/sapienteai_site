@@ -303,7 +303,7 @@ export default function CookieBanner() {
     `${choiceButtonClass} border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid) 34%,transparent)]`;
 
   const LegalLinks = () => (
-    <p className="mt-2 font-[var(--font-body)] text-[10px] font-medium leading-snug text-[var(--brand-night)]/65 sm:text-xs">
+    <p className="mt-2 font-[var(--font-body)] text-[11px] font-semibold leading-snug text-[var(--brand-night)]/78 sm:text-[13px]">
       {text.legalIntro}{" "}
       <Link href={cookiesHref} className="font-bold text-[var(--brand-primary)] underline-offset-2 hover:underline">
         {text.links.cookies}
@@ -320,6 +320,15 @@ export default function CookieBanner() {
 
   return (
     <>
+      {showPreferences && (
+        <div
+          aria-hidden="true"
+          className={[
+            "fixed inset-0 z-[79] bg-[var(--brand-night)]/28 backdrop-blur-[1px] transition-opacity duration-300",
+            isVisible ? "opacity-100" : "opacity-0",
+          ].join(" ")}
+        />
+      )}
       <aside
         role="dialog"
         className={[
@@ -377,8 +386,8 @@ export default function CookieBanner() {
                 {preferenceRows.map((row) => (
                   <div key={row.key} className="flex items-center justify-between gap-2.5 rounded-xl bg-white/75 px-3 py-1.5 sm:gap-3 sm:py-2">
                     <div>
-                      <p className="text-xs font-black">{row.label}</p>
-                      <p className="text-[11px] font-medium leading-snug text-[var(--brand-night)]/65">{row.description}</p>
+                      <p className="text-[13px] font-black text-[var(--brand-night)] sm:text-sm">{row.label}</p>
+                      <p className="text-[12px] font-semibold leading-snug text-[var(--brand-night)]/78 sm:text-[13px]">{row.description}</p>
                     </div>
                     {row.locked ? (
                       <span className="shrink-0 text-[10px] font-black uppercase tracking-[0.08em] text-[var(--brand-primary)]">

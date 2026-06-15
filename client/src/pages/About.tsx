@@ -45,8 +45,8 @@ function AboutOriginSection({ content }: { content: AboutOriginContent }) {
   const c = content;
 
   return (
-    <section className="content-atmosphere bg-white px-6 py-16 md:py-24">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1fr_420px] lg:gap-16 xl:gap-24">
+    <section className="content-atmosphere bg-white px-6 py-12 md:py-18">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_420px] lg:gap-14 xl:gap-20">
         <Reveal>
           <div className="flex flex-col gap-6">
             <p

@@ -1,5 +1,5 @@
 .quiz-ai-page {
-  --bg: #050816;
+  --bg: white;
   --surface: #e8f4fd;
   --text: #000246;
   --accent: #0877ff;
@@ -24,9 +24,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  background:
-    linear-gradient(90deg, rgba(5, 8, 22, 0.94) 0%, rgba(5, 8, 22, 0.82) 44%, rgba(5, 8, 22, 0.58) 100%),
-    url("/media/bg/bg_Quiz.webp") center / cover no-repeat;
+  background: white;
 }
 
 .quiz-intro-section::before,
@@ -37,8 +35,16 @@
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--brand-primary) 20%, transparent), transparent 28%),
-    radial-gradient(circle at 84% 72%, color-mix(in srgb, var(--brand-cyan-bright) 16%, transparent), transparent 32%);
+    radial-gradient(circle at 15% 18%, color-mix(in srgb, var(--brand-primary) 11%, transparent) 0 2px, transparent 3px),
+    radial-gradient(circle at 76% 28%, color-mix(in srgb, var(--brand-cyan-bright) 10%, transparent) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 78%, color-mix(in srgb, var(--brand-primary) 9%, transparent) 0 2px, transparent 3px),
+    radial-gradient(circle at 22% 82%, color-mix(in srgb, var(--brand-cyan) 9%, transparent) 0 2px, transparent 3px),
+    linear-gradient(115deg, transparent 0 22%, color-mix(in srgb, var(--brand-primary) 4%, transparent) 22.2% 22.35%, transparent 22.6% 48%, color-mix(in srgb, var(--brand-cyan-bright) 3%, transparent) 48.15% 48.3%, transparent 48.55%),
+    radial-gradient(circle at 85% 16%, color-mix(in srgb, var(--brand-primary) 6%, transparent), transparent 28%),
+    radial-gradient(circle at 8% 72%, color-mix(in srgb, var(--brand-cyan) 5%, transparent), transparent 26%);
+  background-size: 320px 240px, 360px 280px, 420px 300px, 380px 260px, 100% 100%, 100% 100%, 100% 100%;
+  opacity: 0.55;
+  filter: blur(0.4px);
 }
 
 .quiz-intro-section > * {
@@ -47,12 +53,12 @@
 }
 
 .quiz-intro-section h2 {
-  color: #fff !important;
+  color: var(--brand-night) !important;
 }
 
 .quiz-intro-section p,
 .quiz-intro-section .text-\[var\(--brand-night\)\] {
-  color: color-mix(in srgb, white 84%, transparent) !important;
+  color: color-mix(in srgb, var(--brand-night) 65%, transparent) !important;
 }
 
 .quiz-experience-container {

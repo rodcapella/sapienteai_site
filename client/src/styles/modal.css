@@ -36,7 +36,7 @@
 
 /* Placeholder option (empty value) */
 .modal-select.is-placeholder {
-  color: rgba(0, 209, 255, 0.62);
+  color: rgba(234, 246, 255, 0.72);
 }
 
 .modal-select.is-filled {
@@ -46,6 +46,26 @@
 .modal-scrollarea {
   scrollbar-color: rgba(85, 212, 242, 0.72) rgba(5, 8, 27, 0.36);
   scrollbar-width: thin;
+}
+
+.modal-scrollarea::after {
+  content: "";
+  position: sticky;
+  bottom: -1px;
+  z-index: 10;
+  display: block;
+  height: 18px;
+  margin: 0 -20px -28px;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--brand-darkest) 92%, transparent));
+}
+
+@media (min-width: 640px) {
+  .modal-scrollarea::after {
+    margin-right: -32px;
+    margin-bottom: -40px;
+    margin-left: -32px;
+  }
 }
 
 .modal-scrollarea::-webkit-scrollbar {

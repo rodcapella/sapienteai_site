@@ -26,7 +26,7 @@ export const MODAL_LABEL_CLASS =
   "font-[var(--font-detail)] text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-offwhite)]/[0.85]";
 
 export const MODAL_INPUT_BASE =
-  "w-full rounded-xl border bg-[linear-gradient(145deg,color-mix(in srgb,var(--brand-darkest) 86%,transparent),color-mix(in srgb,var(--brand-darkest) 62%,transparent))] px-4 py-3 font-[var(--font-body)] text-sm text-[var(--brand-offwhite)] placeholder:text-[var(--brand-cyan-bright)]/[0.62] outline-none transition-all duration-300 " +
+  "w-full rounded-xl border bg-[linear-gradient(145deg,color-mix(in srgb,var(--brand-darkest) 86%,transparent),color-mix(in srgb,var(--brand-darkest) 62%,transparent))] px-4 py-3 font-[var(--font-body)] text-sm text-[var(--brand-offwhite)] placeholder:text-[var(--brand-offwhite)]/[0.72] outline-none transition-all duration-300 " +
   "hover:border-[var(--brand-cyan-bright)]/[0.58] hover:shadow-[0_0_18px_color-mix(in_srgb,var(--brand-cyan-bright) 20%,transparent)] " +
   "focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright) 70%,transparent),0_0_26px_color-mix(in_srgb,var(--brand-cyan-bright) 28%,transparent)] focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan)]";
 
@@ -119,7 +119,7 @@ export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children }
           initial={{ opacity: 0, scale: 0.97, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.28, ease: "easeOut" }}
-          className="modal-scrollarea relative max-h-[92vh] overflow-y-auto p-5 sm:p-8"
+          className="modal-scrollarea relative max-h-[88svh] overflow-y-auto p-5 pb-7 sm:max-h-[86vh] sm:p-8 sm:pb-10"
         >
           <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden>
             <div
@@ -151,9 +151,9 @@ export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children }
             type="button"
             onClick={onClose}
             aria-label={closeLabel}
-            className="absolute right-4 top-4 z-20 rounded-full border border-[var(--brand-cyan-mid)]/[0.4] bg-[var(--brand-primary)] p-2 text-white transition-all duration-300 hover:border-[var(--brand-cyan-mid)]/[0.88] hover:bg-[var(--brand-primary)] hover:shadow-[0_0_20px_color-mix(in_srgb,var(--brand-cyan-mid) 45%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)]"
+            className="absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--brand-cyan-mid)]/[0.62] bg-[var(--brand-primary)] text-white shadow-[0_0_18px_color-mix(in_srgb,var(--brand-primary)_34%,transparent)] transition-all duration-300 hover:scale-105 hover:border-[var(--brand-cyan-mid)]/[0.95] hover:bg-[var(--brand-primary-hover)] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid)_55%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)] sm:h-10 sm:w-10"
           >
-            <X className="h-4 w-4" />
+            <X className="h-5 w-5" />
           </button>
 
           {children}
