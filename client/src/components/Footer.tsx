@@ -156,7 +156,7 @@ export default function Footer() {
   );
 
   return (
-    <footer className="relative overflow-hidden border-t border-[var(--brand-primary)]/30 font-serif text-[var(--brand-offwhite)]">
+    <footer className="relative -mt-px overflow-hidden border-t border-[var(--brand-primary)]/30 bg-[var(--brand-night)] font-serif text-[var(--brand-offwhite)]">
       <div className="pointer-events-none absolute inset-0">
         <img src="/media/bg/bg_footer.webp" alt="" className="h-full w-full object-cover" />
       </div>

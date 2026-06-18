@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -35,20 +35,20 @@ const copy = {
       label: "Ferramenta gratuita",
       title: "Valide a visibilidade",
       highlight: "da sua marca.",
-      subtitle: "FaÃ§a um diagnÃ³stico preliminar da presenÃ§a da sua marca em pesquisa, mapas e respostas de IA.",
+      subtitle: "Faça um diagnóstico preliminar da presença da sua marca em pesquisa, mapas e respostas de IA.",
     },
     form: {
-      title: "InformaÃ§Ãµes da marca",
+      title: "Informações da marca",
       brand: "Nome da marca",
       brandPlaceholder: "Ex: Sapiente.AI",
       website: "Website",
       websitePlaceholder: "Ex: sapienteai.com",
-      types: "Tipos de validaÃ§Ã£o",
-      button: "Iniciar validaÃ§Ã£o",
+      types: "Tipos de validação",
+      button: "Iniciar validação",
       loading: "A analisar...",
       required: "Preencha o nome da marca e o website.",
-      emptyTypes: "Selecione pelo menos um tipo de validaÃ§Ã£o.",
-      note: "Esta leitura Ã© um diagnÃ³stico preliminar. Para anÃ¡lise real, cruzamos dados tÃ©cnicos, conteÃºdo, entidades, presenÃ§a local e sinais de autoridade.",
+      emptyTypes: "Selecione pelo menos um tipo de validação.",
+      note: "Esta leitura é um diagnóstico preliminar. Para análise real, cruzamos dados técnicos, conteúdo, entidades, presença local e sinais de autoridade.",
     },
     types: {
       seo: "SEO (Google)",
@@ -56,39 +56,51 @@ const copy = {
       aeo: "AEO (IA)",
     },
     results: {
-      idleTitle: "Nenhuma anÃ¡lise realizada",
-      idleText: "Preencha os dados e inicie a validaÃ§Ã£o para ver o diagnÃ³stico.",
-      title: "Resultados da validaÃ§Ã£o",
+      idleTitle: "Nenhuma análise realizada",
+      idleText: "Preencha os dados e inicie a validação para ver o diagnóstico.",
+      title: "Resultados da validação",
       score: "Score de visibilidade",
       status: "Estado",
-      reset: "Nova validaÃ§Ã£o",
+      reset: "Nova validação",
       found: "Detectado",
       partial: "Parcial",
-      "not-found": "NÃ£o detectado",
+      "not-found": "Não detectado",
       priority: "Prioridade sugerida",
     },
     resultCopy: {
       seo: {
         title: "SEO (Pesquisa)",
-        description: "PresenÃ§a em motores de busca e qualidade de sinais orgÃ¢nicos.",
-        details: ["Rever tÃ­tulos, descriÃ§Ãµes e estrutura semÃ¢ntica das pÃ¡ginas principais.", "Criar clusters de conteÃºdo por serviÃ§o, setor e intenÃ§Ã£o de pesquisa.", "Melhorar dados estruturados, performance e links internos."],
+        description: "Presença em motores de busca e qualidade de sinais orgânicos.",
+        details: [
+          "Rever títulos, descrições e estrutura semântica das páginas principais.",
+          "Criar clusters de conteúdo por serviço, setor e intenção de pesquisa.",
+          "Melhorar dados estruturados, performance e links internos.",
+        ],
       },
       geo: {
         title: "GEO (Pesquisa local)",
-        description: "ConsistÃªncia da presenÃ§a local em mapas, perfis e diretÃ³rios.",
-        details: ["Uniformizar nome, morada, contactos e categorias em perfis locais.", "ReforÃ§ar pÃ¡ginas locais ou setoriais com provas, avaliaÃ§Ãµes e FAQs.", "Monitorizar citaÃ§Ãµes, avaliaÃ§Ãµes e sinais de proximidade."],
+        description: "Consistência da presença local em mapas, perfis e diretórios.",
+        details: [
+          "Uniformizar nome, morada, contactos e categorias em perfis locais.",
+          "Reforçar páginas locais ou setoriais com provas, avaliações e FAQs.",
+          "Monitorizar citações, avaliações e sinais de proximidade.",
+        ],
       },
       aeo: {
         title: "AEO (Respostas com IA)",
         description: "Capacidade de ser compreendido, citado e recomendado por motores de resposta.",
-        details: ["Transformar serviÃ§os em respostas claras, objetivas e verificÃ¡veis.", "Publicar FAQs, glossÃ¡rios e pÃ¡ginas com entidades bem definidas.", "Fortalecer autoridade com exemplos, fontes, casos e dados estruturados."],
+        details: [
+          "Transformar serviços em respostas claras, objetivas e verificáveis.",
+          "Publicar FAQs, glossários e páginas com entidades bem definidas.",
+          "Fortalecer autoridade com exemplos, fontes, casos e dados estruturados.",
+        ],
       },
     },
     cta: {
-      title: "Quer transformar este diagnÃ³stico",
+      title: "Quer transformar este diagnóstico",
       highlight: "num plano real?",
-      description: "Analisamos a sua presenÃ§a digital e criamos um plano concreto para melhorar SEO, visibilidade local e respostas de IA.",
-      button: "Quero o diagnÃ³stico gratuito",
+      description: "Analisamos a sua presença digital e criamos um plano concreto para melhorar SEO, visibilidade local e respostas de IA.",
+      button: "Quero o diagnóstico gratuito",
     },
   },
   en: {
@@ -133,17 +145,29 @@ const copy = {
       seo: {
         title: "SEO (Search)",
         description: "Presence in search engines and quality of organic signals.",
-        details: ["Review titles, descriptions, and semantic structure on key pages.", "Create content clusters by service, sector, and search intent.", "Improve structured data, performance, and internal linking."],
+        details: [
+          "Review titles, descriptions, and semantic structure on key pages.",
+          "Create content clusters by service, sector, and search intent.",
+          "Improve structured data, performance, and internal linking.",
+        ],
       },
       geo: {
         title: "GEO (Local search)",
         description: "Consistency of local presence across maps, profiles, and directories.",
-        details: ["Standardize name, address, contacts, and categories in local profiles.", "Strengthen local or sector pages with proof, reviews, and FAQs.", "Monitor citations, reviews, and proximity signals."],
+        details: [
+          "Standardize name, address, contacts, and categories in local profiles.",
+          "Strengthen local or sector pages with proof, reviews, and FAQs.",
+          "Monitor citations, reviews, and proximity signals.",
+        ],
       },
       aeo: {
         title: "AEO (AI answers)",
         description: "Ability to be understood, cited, and recommended by answer engines.",
-        details: ["Turn services into clear, objective, and verifiable answers.", "Publish FAQs, glossaries, and pages with well-defined entities.", "Strengthen authority with examples, sources, cases, and structured data."],
+        details: [
+          "Turn services into clear, objective, and verifiable answers.",
+          "Publish FAQs, glossaries, and pages with well-defined entities.",
+          "Strengthen authority with examples, sources, cases, and structured data.",
+        ],
       },
     },
     cta: {

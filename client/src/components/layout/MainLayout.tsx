@@ -9,7 +9,7 @@ function PageFallback() {
   return (
     <div className="flex min-h-[60vh] items-center justify-center">
       <div className="animate-pulse text-sm tracking-wide text-[var(--brand-offwhite)]/40">
-        Loading…
+        Loading...
       </div>
     </div>
   );
@@ -24,11 +24,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="relative min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-foreground">
-
       <Header />
 
       <main className="flex-1 w-full pt-16 md:pt-[68px]">
-        {/* Suspense boundary scoped to page content — Header/Footer stay visible during lazy loads */}
+        {/* Suspense boundary scoped to page content - Header/Footer stay visible during lazy loads */}
         <Suspense fallback={<PageFallback />}>
           <AnimatePresence mode="wait">
             <motion.div
@@ -45,7 +44,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       </main>
 
       <Footer />
-
     </div>
   );
 }

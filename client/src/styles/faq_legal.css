@@ -142,15 +142,15 @@
 }
 
 .legal-content .legal-group-title {
-  margin-bottom: 18px;
-  padding-left: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(24px, 2.4vw, 34px);
+  margin-bottom: 12px;
+  padding-left: 4px;
+  font-family: var(--font-detail);
+  font-size: 11px;
   font-weight: 900;
-  line-height: 1.08;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--brand-night);
+  line-height: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-primary);
 }
 
 /* ── SIDEBAR ────────────────────────────────────────────────────────────────*/
@@ -203,6 +203,11 @@
   display: flex;
   min-height: 18px;
   align-items: center;
+  font: 900 16px var(--font-heading);
+  line-height: 1.25;
+  text-align: left;
+  color: inherit;
+  flex: 1;
 }
 
 .faq-cat:hover,
@@ -595,8 +600,9 @@
   }
 
   .legal-content .legal-group-title {
-    margin-bottom: 14px;
-    font-size: clamp(22px, 8vw, 28px);
+    margin-bottom: 12px;
+    font-size: 11px;
+    line-height: normal;
   }
 
   .faq-q {
@@ -648,6 +654,11 @@
   }
 
   .legal-q-text {
+    font-size: 15px;
+    line-height: 1.2;
+  }
+
+  .legal-cat span {
     font-size: 15px;
     line-height: 1.2;
   }

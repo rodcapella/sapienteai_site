@@ -86,7 +86,9 @@ export function FinalCTA({
   const highlightColor = "text-[var(--brand-primary)]";
   const descriptionHighlightColor = isHomeVariant
     ? "font-extrabold text-[var(--brand-cyan)]"
-    : "font-extrabold text-[var(--brand-night)]";
+    : isAboutVariant || isServicesVariant
+      ? "font-extrabold text-[var(--brand-primary)]"
+      : "font-extrabold text-[var(--brand-night)]";
 
   const getFallbackBackground = () => {
     switch (variant) {
@@ -190,9 +192,9 @@ export function FinalCTA({
             className={cn(
               "block w-full object-cover",
               "h-full",
-              isAboutVariant
-                ? "object-[left_bottom]"
-                : usesDefaultFinalCtaBackground || isServicesVariant
+              isAboutVariant || isServicesVariant
+                ? "object-[12%_center] md:object-[14%_center]"
+                : usesDefaultFinalCtaBackground
                   ? "object-right"
                   : "object-left md:object-center"
             )}

@@ -1,8 +1,8 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
-
 
 type ConsentValue = "accepted" | "rejected" | "custom";
 
@@ -238,7 +238,6 @@ export default function CookieBanner() {
     }
   }, []);
 
-  // Reabre o banner quando o botão flutuante de cookies é clicado
   useEffect(() => {
     const handleOpenPreferences = () => {
       const stored = getStoredPreferences();
@@ -290,17 +289,17 @@ export default function CookieBanner() {
     { key: "marketing" as const, locked: false, ...text.preferences.marketing },
   ];
 
-  const choiceButtonClass =
-    "min-h-8 rounded-full border px-3.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.09em] transition sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
-
-  const secondaryButtonClass =
-    "min-h-8 rounded-full border border-[var(--brand-night)]/20 bg-transparent px-3.5 font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.09em] text-[var(--brand-night)] transition hover:border-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/8 sm:min-h-11 sm:px-5 sm:text-xs sm:tracking-[0.12em] lg:min-h-12 lg:px-6";
+  const cookieButtonClass =
+    "w-full !min-h-8 sm:!min-h-11 lg:!min-h-12 !px-3.5 sm:!px-5 lg:!px-6 !py-0 !text-[10px] sm:!text-xs !tracking-[0.09em] sm:!tracking-[0.12em]";
 
   const rejectButtonClass =
-    `${choiceButtonClass} border-[var(--brand-primary)] bg-white text-[var(--brand-primary)] hover:bg-[var(--brand-primary)]/8`;
+    `${cookieButtonClass} !border-[var(--brand-primary)] !bg-white !text-[var(--brand-primary)] hover:!bg-[var(--brand-primary)]/8 hover:!text-[var(--brand-primary)] hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_18%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_14%,transparent)] [&>span]:!text-[var(--brand-primary)] hover:[&>span]:!text-[var(--brand-primary)]`;
+
+  const secondaryButtonClass =
+    `${cookieButtonClass} !border-[var(--brand-night)]/20 !bg-transparent !text-[var(--brand-night)] hover:!border-[var(--brand-primary)] hover:!bg-[var(--brand-primary)]/8 hover:!text-[var(--brand-primary)] hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_16%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_12%,transparent)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-primary)]`;
 
   const primaryButtonClass =
-    `${choiceButtonClass} border-[var(--brand-primary)] bg-[var(--brand-primary)] text-white hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid) 34%,transparent)]`;
+    `${cookieButtonClass} !bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent)] [&>span]:!text-white hover:[&>span]:!text-white`;
 
   const LegalLinks = () => (
     <p className="mt-2 font-[var(--font-body)] text-[11px] font-semibold leading-snug text-[var(--brand-night)]/78 sm:text-[13px]">
@@ -349,29 +348,32 @@ export default function CookieBanner() {
             </div>
 
             <div className="grid gap-1.5 sm:grid-cols-3 sm:justify-end sm:gap-3">
-              <button
-                type="button"
+              <PremiumButton
                 onClick={handleRejectOptional}
+                variant="outline"
+                size="sm"
                 className={rejectButtonClass}
               >
                 {text.rejectOptional}
-              </button>
+              </PremiumButton>
 
-              <button
-                type="button"
+              <PremiumButton
                 onClick={() => setShowPreferences(true)}
+                variant="outline"
+                size="sm"
                 className={secondaryButtonClass}
               >
                 {text.customize}
-              </button>
+              </PremiumButton>
 
-              <button
-                type="button"
+              <PremiumButton
                 onClick={handleAcceptAll}
+                variant="primary"
+                size="sm"
                 className={primaryButtonClass}
               >
                 {text.acceptAll}
-              </button>
+              </PremiumButton>
             </div>
           </div>
         )}
@@ -409,29 +411,32 @@ export default function CookieBanner() {
             <LegalLinks />
 
             <div className="grid gap-1.5 sm:grid-cols-3 sm:justify-end sm:gap-3">
-              <button
-                type="button"
+              <PremiumButton
                 onClick={handleRejectOptional}
+                variant="outline"
+                size="sm"
                 className={rejectButtonClass}
               >
                 {text.rejectOptional}
-              </button>
+              </PremiumButton>
 
-              <button
-                type="button"
+              <PremiumButton
                 onClick={handleSaveCustom}
+                variant="outline"
+                size="sm"
                 className={secondaryButtonClass}
               >
                 {text.savePreferences}
-              </button>
+              </PremiumButton>
 
-              <button
-                type="button"
+              <PremiumButton
                 onClick={handleAcceptAll}
+                variant="primary"
+                size="sm"
                 className={primaryButtonClass}
               >
                 {text.acceptAll}
-              </button>
+              </PremiumButton>
             </div>
           </div>
         )}

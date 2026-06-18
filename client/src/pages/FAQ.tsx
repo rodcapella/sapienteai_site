@@ -33,12 +33,12 @@ function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
         };
 
   return [
-    { id: "general",    label: labels.general,    icon: HelpCircle,    items: items.slice(0, 8) },
-    { id: "content",    label: labels.content,    icon: MessageCircle, items: items.slice(8, 17) },
-    { id: "websites",   label: labels.websites,   icon: Globe,         items: items.slice(17, 24) },
-    { id: "automation", label: labels.automation, icon: Cpu,           items: items.slice(24, 31) },
-    { id: "data",       label: labels.data,       icon: Database,      items: items.slice(35) },
-    { id: "business",   label: labels.business,   icon: BarChart3,     items: items.slice(31, 35) },
+    { id: "general", label: labels.general, icon: HelpCircle, items: items.slice(0, 8) },
+    { id: "content", label: labels.content, icon: MessageCircle, items: items.slice(8, 17) },
+    { id: "websites", label: labels.websites, icon: Globe, items: items.slice(17, 24) },
+    { id: "automation", label: labels.automation, icon: Cpu, items: items.slice(24, 31) },
+    { id: "data", label: labels.data, icon: Database, items: items.slice(35) },
+    { id: "business", label: labels.business, icon: BarChart3, items: items.slice(31, 35) },
   ].filter((category) => category.items.length > 0);
 }
 
@@ -80,7 +80,7 @@ export default function FAQ() {
   }, [lang, content]);
 
   useEffect(() => {
-    // Schema completo (todas as perguntas) — crawlers que executam JS
+    // Schema completo (todas as perguntas) - crawlers que executam JS
     const existing = document.getElementById("faq-schema");
     if (existing) existing.remove();
 
@@ -91,7 +91,7 @@ export default function FAQ() {
     script.innerHTML = JSON.stringify(schema);
     document.head.appendChild(script);
 
-    // Schema parcial estático (top 8) — crawlers que NÃO executam JS (Bing, Perplexity, etc.)
+    // Schema parcial estatico (top 8) - crawlers que NAO executam JS (Bing, Perplexity, etc.)
     const existingStatic = document.getElementById("faq-schema-static");
     if (existingStatic) existingStatic.remove();
 
@@ -131,7 +131,6 @@ export default function FAQ() {
 
       <section className="faq-main">
         <div className="faq-inner">
-
           {/* Sidebar de categorias */}
           <aside className="faq-sidebar">
             <div className="faq-sidebar-label">{pageCopy.sidebar}</div>
@@ -165,7 +164,7 @@ export default function FAQ() {
                 <div className="faq-list">
                   {active.items.map((item, index) => {
                     const questionId = `${active.id}-${index}`;
-                    const answerId  = `${questionId}-answer`;
+                    const answerId = `${questionId}-answer`;
                     const isOpen = openQuestion === questionId;
                     return (
                       <div key={item.question} className={`faq-item ${isOpen ? "open" : ""}`}>
@@ -195,7 +194,6 @@ export default function FAQ() {
               </div>
             </div>
           </Reveal>
-
         </div>
       </section>
 

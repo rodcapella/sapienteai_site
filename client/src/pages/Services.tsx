@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import ContactModal from "@/components/ContactModal";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -11,8 +11,6 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
 import { Icons } from "@/lib/icons";
 import "@/styles/faq_legal.css";
-
-// --- Tipos -------------------------------------------------------------------
 
 type ServiceSection = {
   id: string;
@@ -29,8 +27,6 @@ const serviceMobileBackgroundPosition: Record<string, string> = {
   desenvolvimento: "66% top",
   marketing: "66% top",
 };
-
-// --- Sticky Nav --------------------------------------------------------------
 
 function ServicesStickyNav({
   sections,
@@ -54,36 +50,34 @@ function ServicesStickyNav({
           nav.isFixed ? "fixed inset-x-0 top-16" : "relative",
         ].join(" ")}
       >
-      <div className="mx-auto w-full max-w-6xl">
-        <nav className="flex flex-row flex-wrap justify-center gap-2">
-          {sections.map((s) => {
-            const Icon = Icons[s.icon] as React.ElementType;
-            const isActive = active === s.id;
-            return (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => onSelect(s.id)}
-                className={[
-                  "flex min-h-11 items-center gap-2.5 rounded-xl border-0 px-4 py-2 text-[13px] font-black transition-all duration-200 md:text-sm",
-                  isActive
-                    ? "bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-cyan))] text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary)_22%,transparent)]"
-                    : "bg-transparent text-[var(--brand-night)] hover:bg-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)]",
-                ].join(" ")}
-              >
-                {Icon && <Icon className="h-[18px] w-[18px] shrink-0" />}
-                <span>{s.navLabel}</span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
+        <div className="mx-auto w-full max-w-6xl">
+          <nav className="grid grid-cols-3 gap-2 sm:flex sm:flex-row sm:flex-wrap sm:justify-center">
+            {sections.map((s) => {
+              const Icon = Icons[s.icon] as React.ElementType;
+              const isActive = active === s.id;
+              return (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => onSelect(s.id)}
+                  className={[
+                    "flex min-h-[68px] w-full flex-col items-center justify-center gap-1 rounded-xl border-0 px-2 py-2 text-center text-[10px] font-black leading-tight transition-all duration-200 sm:min-h-11 sm:w-auto sm:flex-row sm:gap-2.5 sm:px-4 sm:text-[13px] sm:leading-normal md:text-sm",
+                    isActive
+                      ? "bg-[linear-gradient(135deg,var(--brand-primary),var(--brand-cyan))] text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary)_22%,transparent)]"
+                      : "bg-transparent text-[var(--brand-night)] hover:bg-[var(--brand-offwhite)]/80 hover:text-[var(--brand-primary)]",
+                  ].join(" ")}
+                >
+                  {Icon && <Icon className="h-4 w-4 shrink-0 sm:h-[18px] sm:w-[18px]" />}
+                  <span className="max-w-[72px] sm:max-w-none">{s.navLabel}</span>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
       </div>
     </>
   );
 }
-
-// --- Página principal ---------------------------------------------------------
 
 export default function Services() {
   const { lang } = useTranslation();
@@ -92,6 +86,8 @@ export default function Services() {
   const [activeSection, setActiveSection] = useState(sections[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
+  const manualSelectionRef = useRef<string | null>(null);
+  const manualSelectionTimeoutRef = useRef<number | null>(null);
 
   useSEOHead({
     title: `${content.hero.label} — Sapiente.AI`,
@@ -100,29 +96,29 @@ export default function Services() {
     type: "website",
   }, [content, lang]);
 
-  // Inject Service schema for GEO — each visual service as a named entity
   useEffect(() => {
     const vs = content.visualServices as Record<string, { title: string; description: string }>;
     const serviceSchema = {
       "@context": "https://schema.org",
       "@type": "ItemList",
-      "name": content.hero.label,
-      "url": `https://www.sapienteai.com/${lang}/services`,
-      "itemListElement": Object.values(vs).map((s, i) => ({
+      name: content.hero.label,
+      url: `https://www.sapienteai.com/${lang}/services`,
+      itemListElement: Object.values(vs).map((s, i) => ({
         "@type": "ListItem",
-        "position": i + 1,
-        "item": {
+        position: i + 1,
+        item: {
           "@type": "Service",
-          "name": s.title.replace(/\n/g, " "),
-          "description": s.description,
-          "provider": {
+          name: s.title.replace(/\n/g, " "),
+          description: s.description,
+          provider: {
             "@type": "Organization",
-            "name": "Sapiente.AI",
-            "url": "https://www.sapienteai.com"
-          }
-        }
-      }))
+            name: "Sapiente.AI",
+            url: "https://www.sapienteai.com",
+          },
+        },
+      })),
     };
+
     const id = "service-schema-ld";
     let el = document.getElementById(id) as HTMLScriptElement | null;
     if (!el) {
@@ -132,23 +128,55 @@ export default function Services() {
       document.head.appendChild(el);
     }
     el.textContent = JSON.stringify(serviceSchema);
-    return () => { document.getElementById(id)?.remove(); };
+
+    return () => {
+      document.getElementById(id)?.remove();
+    };
   }, [content, lang]);
 
+  useEffect(() => {
+    const hash = window.location.hash.replace("#service-", "");
+    const hashedSection = sections.find((section) => section.id === hash);
+
+    if (!hashedSection) return;
+
+    setActiveSection(hashedSection.id);
+    window.requestAnimationFrame(() => {
+      document.getElementById(`service-${hashedSection.id}`)?.scrollIntoView({
+        behavior: "auto",
+        block: "center",
+      });
+    });
+  }, [sections]);
+
   const handleSelectSection = (id: string) => {
+    if (manualSelectionTimeoutRef.current) {
+      window.clearTimeout(manualSelectionTimeoutRef.current);
+    }
+
+    manualSelectionRef.current = id;
     setActiveSection(id);
+    window.history.replaceState(null, "", `#service-${id}`);
     document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    manualSelectionTimeoutRef.current = window.setTimeout(() => {
+      manualSelectionRef.current = null;
+    }, 900);
   };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        if (manualSelectionRef.current) return;
+
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
         if (visible?.target.id.startsWith("service-")) {
-          setActiveSection(visible.target.id.replace("service-", ""));
+          const nextSection = visible.target.id.replace("service-", "");
+          setActiveSection(nextSection);
+          window.history.replaceState(null, "", `#service-${nextSection}`);
         }
       },
       { rootMargin: "-35% 0px -45% 0px", threshold: [0.2, 0.45, 0.7] },
@@ -159,12 +187,16 @@ export default function Services() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      if (manualSelectionTimeoutRef.current) {
+        window.clearTimeout(manualSelectionTimeoutRef.current);
+      }
+    };
   }, [sections]);
 
   return (
     <div className="flex flex-col">
-      {/* -- Hero -- */}
       <InternalHero
         label={content.hero.label}
         title={content.hero.title}
@@ -176,14 +208,12 @@ export default function Services() {
         compact
       />
 
-      {/* -- Docs Layout -- */}
       <section className="content-atmosphere flex-1 bg-white px-0 pb-6 pt-8 md:pb-8 md:pt-10">
         <ServicesStickyNav sections={sections} active={activeSection} onSelect={handleSelectSection} />
 
         <div className="w-full px-4 sm:px-6">
           <div className="w-full">
             <div className="w-full">
-              {/* Conteúdo */}
               <main className="flex min-w-0 flex-1 flex-col gap-6">
                 <div className="contents">
                   {sections.map((section) => {
@@ -196,76 +226,78 @@ export default function Services() {
 
                     return (
                       <React.Fragment key={section.id}>
-                      <div
-                        id={`service-${section.id}`}
-                        aria-label={section.navLabel}
-                        className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-[position:var(--service-mobile-bg-position)] bg-no-repeat px-4 py-5 md:min-h-[420px] md:bg-center md:px-10 lg:px-12"
-                        style={{
-                          backgroundImage: `url(${section.backgroundImage})`,
-                          "--service-mobile-bg-position": serviceMobileBackgroundPosition[section.id] || "center top",
-                        } as React.CSSProperties}
-                      >
-                        <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(300px,0.68fr)_minmax(280px,0.46fr)] lg:items-center xl:grid-cols-[minmax(340px,0.68fr)_minmax(300px,0.44fr)]">
-                          <Reveal>
-                            <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:bg-transparent lg:p-0 lg:shadow-none">
-                              <p className="mb-4 font-[var(--font-heading)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
-                                {data.eyebrow}
-                              </p>
-
-                              <h2 className="whitespace-pre-line font-[var(--font-body)] text-[clamp(2.1rem,4.7vw,4rem)] font-black leading-[0.98] tracking-normal text-[var(--brand-primary)]" style={{ fontFamily: "var(--font-body)" }}>
-                                {data.title}
-                              </h2>
-
-                              <p className="mt-7 max-w-full font-[var(--font-body)] text-[16px] font-medium leading-[1.42] text-[var(--brand-night)] sm:max-w-[410px]">
-                                {data.description}
-                              </p>
-
-                              <div className="mt-8 max-w-full sm:max-w-[410px] md:mt-10">
-                                <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
-                                  {data.audienceLabel}
+                        <div
+                          id={`service-${section.id}`}
+                          aria-label={section.navLabel}
+                          className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-[position:var(--service-mobile-bg-position)] bg-no-repeat px-4 py-5 md:min-h-[420px] md:bg-center md:px-10 lg:px-12"
+                          style={{
+                            backgroundImage: `url(${section.backgroundImage})`,
+                            "--service-mobile-bg-position": serviceMobileBackgroundPosition[section.id] || "center top",
+                          } as React.CSSProperties}
+                        >
+                          <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(320px,0.62fr)_minmax(300px,0.38fr)] lg:items-center lg:gap-10 xl:grid-cols-[minmax(360px,0.6fr)_minmax(320px,0.4fr)] xl:gap-16">
+                            <Reveal>
+                              <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:max-w-[420px] lg:bg-transparent lg:p-0 lg:pr-10 lg:shadow-none xl:pr-14">
+                                <p className="mb-4 font-[var(--font-heading)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
+                                  {data.eyebrow}
                                 </p>
-                                <p className="font-[var(--font-body)] text-[15px] font-semibold leading-[1.35] text-[var(--brand-night)]">
-                                  {data.audience}
+
+                                <h2
+                                  className="whitespace-pre-line font-[var(--font-body)] text-[clamp(2.1rem,4.7vw,4rem)] font-black leading-[0.98] tracking-normal text-[var(--brand-primary)]"
+                                  style={{ fontFamily: "var(--font-body)" }}
+                                >
+                                  {data.title}
+                                </h2>
+
+                                <p className="mt-7 max-w-full font-[var(--font-body)] text-[16px] font-medium leading-[1.42] text-[var(--brand-night)] sm:max-w-[410px]">
+                                  {data.description}
                                 </p>
+
+                                <div className="mt-8 max-w-full sm:max-w-[410px] md:mt-10">
+                                  <p className="mb-2 font-[var(--font-detail)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
+                                    {data.audienceLabel}
+                                  </p>
+                                  <p className="font-[var(--font-body)] text-[15px] font-semibold leading-[1.35] text-[var(--brand-night)]">
+                                    {data.audience}
+                                  </p>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    setSelectedContactTopic(data.topic);
+                                    setIsContactOpen(true);
+                                  }}
+                                  className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--brand-primary)] px-7 font-[var(--font-body)] text-[12px] font-black uppercase tracking-normal text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary) 18%,transparent)] transition hover:-translate-y-0.5 hover:bg-[var(--brand-primary-hover)] hover:shadow-[0_14px_30px_color-mix(in_srgb,var(--brand-primary) 26%,transparent)]"
+                                >
+                                  {data.cta}
+                                </button>
                               </div>
+                            </Reveal>
 
-                              <button
-                                type="button"
-                                onClick={() => {
-                                  setSelectedContactTopic(data.topic);
-                                  setIsContactOpen(true);
-                                }}
-                                className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--brand-primary)] px-7 font-[var(--font-body)] text-[12px] font-black uppercase tracking-normal text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary) 18%,transparent)] transition hover:-translate-y-0.5 hover:bg-[var(--brand-primary-hover)] hover:shadow-[0_14px_30px_color-mix(in_srgb,var(--brand-primary) 26%,transparent)]"
-                              >
-                                {data.cta}
-                              </button>
-                            </div>
-                          </Reveal>
-
-                          <Reveal delay={120}>
-                            <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 sm:max-w-[410px] md:p-5 font-[var(--font-body)] text-[16px] font-medium leading-[1.5] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] lg:mx-0 lg:justify-self-start lg:bg-transparent lg:p-0 lg:py-5 lg:shadow-none">
-                              {data.bullets.map((bullet) => (
-                                <li key={bullet} className="flex items-start gap-4">
-                                  <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
-                                  <span>{bullet}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </Reveal>
+                            <Reveal delay={120}>
+                              <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 font-[var(--font-body)] text-[16px] font-medium leading-[1.6] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] sm:max-w-[410px] md:p-5 lg:ml-auto lg:max-w-[360px] lg:justify-self-end lg:rounded-[28px] lg:bg-white/78 lg:p-5 lg:py-6 lg:shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-deep)_10%,transparent)] lg:backdrop-blur-[2px] xl:max-w-[390px]">
+                                {data.bullets.map((bullet) => (
+                                  <li key={bullet} className="flex items-start gap-4">
+                                    <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
+                                    <span>{bullet}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </Reveal>
+                          </div>
                         </div>
-                      </div>
-                      <a
-                        href="#services-menu"
-                        className="md:hidden mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 hover:opacity-100 transition-opacity"
-                      >
-                        {lang === "pt" ? "↑ Voltar ao menu" : "↑ Back to menu"}
-                      </a>
+                        <a
+                          href="#services-menu"
+                          className="mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 transition-opacity hover:opacity-100 md:hidden"
+                        >
+                          {lang === "pt" ? "↑ Voltar ao menu" : "↑ Back to menu"}
+                        </a>
                       </React.Fragment>
                     );
                   })}
                 </div>
               </main>
-
             </div>
           </div>
         </div>
@@ -273,7 +305,6 @@ export default function Services() {
 
       <QuizCTA />
 
-      {/* -- Final CTA -- */}
       <FinalCTA
         title={content.finalCta.title}
         title_highlight={content.finalCta.highlight}

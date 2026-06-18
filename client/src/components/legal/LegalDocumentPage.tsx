@@ -47,6 +47,8 @@ interface LegalDocumentPageProps {
 
 /** Remove leading "1. ", "2. " ... from section titles for display */
 const stripNumber = (s: string) => s.replace(/^\d+\.\s*/, "");
+const isMeaningfulText = (value?: string | null) =>
+  typeof value === "string" && value.trim() !== "" && value.trim().toLowerCase() !== "undefined";
 
 const fallbackIcons = [
   ShieldCheck,
@@ -68,9 +70,16 @@ function renderHeroSubtitle(text?: string, lastUpdated?: string) {
   return (
     <>
       {cleanText && <span>{cleanText}</span>}
-      {cleanText && cleanLastUpdated && <br />}
       {cleanLastUpdated && (
-        <span style={{ fontSize: "calc(1em - 2px)", lineHeight: "inherit" }}>
+        <span
+          style={{
+            display: "block",
+            marginTop: "3em",
+            fontSize: "calc(1em - 2px)",
+            lineHeight: "inherit",
+            fontStyle: "italic",
+          }}
+        >
           {cleanLastUpdated}
         </span>
       )}
@@ -130,17 +139,23 @@ export default function LegalDocumentPage({
     ? { sidebar: "Topics", group: "Document details" }
     : { sidebar: "Tópicos", group: "Detalhes do documento" };
   const legalCopy = {
-    sidebar: content.sidebarTitle || defaultLegalCopy.sidebar,
-    group: content.groupTitle || defaultLegalCopy.group,
+    sidebar: isMeaningfulText(content.sidebarTitle) ? content.sidebarTitle : defaultLegalCopy.sidebar,
+    group: isMeaningfulText(content.groupTitle) ? content.groupTitle : defaultLegalCopy.group,
   };
   const sections = useMemo(
     () =>
       content.sections.map((section, index) => ({
         ...section,
         id: section.id || `section-${index}`,
+        navLabel: isMeaningfulText(section.navLabel)
+          ? section.navLabel
+          : isMeaningfulText(section.title)
+            ? stripNumber(section.title)
+            : `${pageTitle} ${index + 1}`,
+        title: isMeaningfulText(section.title) ? section.title : `${pageTitle} ${index + 1}`,
         Icon: section.icon || fallbackIcons[index % fallbackIcons.length],
       })),
-    [content.sections],
+    [content.sections, pageTitle],
   );
 
   const [openSection, setOpenSection] = useState(sections[0]?.id || "");
@@ -197,7 +212,7 @@ export default function LegalDocumentPage({
                 return (
                   <button key={section.id} type="button" className={`legal-cat ${isActive ? "active" : ""}`} onClick={() => handleSelectSection(section.id)}>
                     <Icon className="h-4 w-4 shrink-0" />
-                    <span>{section.navLabel || stripNumber(section.title)}</span>
+                    <span>{section.navLabel}</span>
                   </button>
                 );
               })}

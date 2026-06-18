@@ -36,6 +36,9 @@ type SectionContent = {
   resetLabel?: string;
 };
 
+const isMeaningfulText = (value?: string | null) =>
+  typeof value === "string" && value.trim() !== "" && value.trim().toLowerCase() !== "undefined";
+
 function ResetConsentButton({ label }: { label: string }) {
   function handleReset() {
     try {
@@ -53,7 +56,7 @@ function ResetConsentButton({ label }: { label: string }) {
       size="sm"
       variant="primary"
       onClick={handleReset}
-      className="mt-6 shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-cyan-mid)_20%,transparent)] hover:scale-[1.01] hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_18%,transparent),0_14px_30px_color-mix(in_srgb,var(--brand-cyan-mid)_18%,transparent)]"
+      className="mt-6 min-w-[240px] shadow-[0_12px_30px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent)] hover:scale-[1.03] hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_22%,transparent)]"
     >
       <RefreshCw className="h-3.5 w-3.5" />
       {label}
@@ -79,7 +82,6 @@ function CookieDetail({
   return (
     <div className="cookie-detail">
       <p className="cookie-section-eyebrow mb-3">{data.eyebrow}</p>
-      <h2 className="mb-5">{data.title}</h2>
       <p className="mb-8 max-w-2xl">{data.description}</p>
 
       {data.table && (
@@ -146,7 +148,12 @@ function CookieDetail({
       )}
 
       {data.contact && onContact && (
-        <PremiumButton size="sm" onClick={onContact} className="mt-6">
+        <PremiumButton
+          size="sm"
+          variant="primary"
+          onClick={onContact}
+          className="mt-6 min-w-[200px] shadow-[0_12px_30px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent)] hover:scale-[1.03] hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_22%,transparent)]"
+        >
           {contactLabel}
         </PremiumButton>
       )}
@@ -182,11 +189,12 @@ export default function CookiesPage() {
     sections: sections.map((section) => {
       const data = (content.sectionContent as Record<string, SectionContent>)[section.id];
       const Icon = Icons[section.icon];
+      const fallbackTitle = isMeaningfulText(section.navLabel) ? section.navLabel : section.id;
 
       return {
         id: section.id,
-        navLabel: section.navLabel,
-        title: data.title,
+        navLabel: isMeaningfulText(section.navLabel) ? section.navLabel : fallbackTitle,
+        title: isMeaningfulText(data?.title) ? data.title : fallbackTitle,
         icon: Icon,
         content: (
           <CookieDetail
