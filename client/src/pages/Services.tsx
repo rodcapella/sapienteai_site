@@ -252,7 +252,7 @@ export default function Services() {
                             "--service-mobile-bg-position": serviceMobileBackgroundPosition[section.id] || "center top",
                           } as React.CSSProperties}
                         >
-                          <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(320px,0.56fr)_minmax(300px,0.44fr)] lg:items-center lg:gap-16 xl:grid-cols-[minmax(360px,0.54fr)_minmax(330px,0.46fr)] xl:gap-24">
+                          <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(320px,0.54fr)_minmax(300px,0.46fr)] lg:items-center lg:gap-20 xl:grid-cols-[minmax(360px,0.52fr)_minmax(330px,0.48fr)] xl:gap-28">
                             <Reveal>
                               <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:max-w-[390px] lg:bg-transparent lg:p-0 lg:pr-12 lg:shadow-none xl:max-w-[410px] xl:pr-16">
                                 <p className="mb-4 font-[var(--font-heading)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
@@ -293,7 +293,7 @@ export default function Services() {
                             </Reveal>
 
                             <Reveal delay={120}>
-                              <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 font-[var(--font-body)] text-[16px] font-medium leading-[1.6] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] sm:max-w-[410px] md:p-5 lg:ml-auto lg:mr-0 lg:max-w-[320px] lg:justify-self-end lg:self-center lg:rounded-[28px] lg:bg-white/88 lg:p-6 lg:py-7 lg:pl-7 lg:shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-deep)_10%,transparent)] lg:backdrop-blur-[4px] xl:max-w-[360px] xl:p-7 xl:pl-8">
+                              <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 font-[var(--font-body)] text-[16px] font-medium leading-[1.6] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] sm:max-w-[410px] md:p-5 lg:ml-12 lg:mr-0 lg:max-w-[300px] lg:justify-self-end lg:self-center lg:rounded-[28px] lg:bg-white/88 lg:p-6 lg:py-7 lg:pl-7 lg:shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-deep)_10%,transparent)] lg:backdrop-blur-[4px] xl:ml-20 xl:max-w-[330px] xl:p-7 xl:pl-8 2xl:ml-24">
                                 {data.bullets.map((bullet) => (
                                   <li key={bullet} className="flex items-start gap-4">
                                     <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
@@ -306,7 +306,7 @@ export default function Services() {
                         </div>
                         <a
                           href="#services-menu"
-                          className="mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 transition-opacity hover:opacity-100 md:hidden"
+                          className="mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 transition-opacity hover:opacity-100 md:justify-end md:pr-2"
                         >
                           {lang === "pt" ? "↑ Voltar ao menu" : "↑ Back to menu"}
                         </a>
