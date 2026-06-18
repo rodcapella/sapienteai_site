@@ -108,6 +108,25 @@ export default function Services() {
     }, behavior === "smooth" ? 460 : 40);
   };
 
+  const scrollToMenu = (behavior: ScrollBehavior) => {
+    const menu = document.getElementById("services-menu");
+    if (!menu) return;
+
+    const headerOffset = window.innerWidth >= 1024 ? 88 : window.innerWidth >= 768 ? 80 : 64;
+    const menuTop = menu.getBoundingClientRect().top + window.scrollY;
+    const targetTop = Math.max(menuTop - headerOffset - 12, 0);
+
+    window.scrollTo({ top: targetTop, behavior });
+
+    window.setTimeout(() => {
+      if (Math.abs(window.scrollY - targetTop) <= 4) return;
+
+      document.documentElement.scrollTop = targetTop;
+      document.body.scrollTop = targetTop;
+      window.scrollTo(0, targetTop);
+    }, behavior === "smooth" ? 460 : 40);
+  };
+
   useSEOHead({
     title: `${content.hero.label} — Sapiente.AI`,
     description: content.hero.subtitle,
@@ -306,6 +325,11 @@ export default function Services() {
                         </div>
                         <a
                           href="#services-menu"
+                          onClick={(event) => {
+                            event.preventDefault();
+                            window.history.replaceState(null, "", "#services-menu");
+                            scrollToMenu("smooth");
+                          }}
                           className="mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 transition-opacity hover:opacity-100 md:justify-end md:pr-2"
                         >
                           {lang === "pt" ? "↑ Voltar ao menu" : "↑ Back to menu"}
