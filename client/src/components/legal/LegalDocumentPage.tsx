@@ -267,7 +267,7 @@ export default function LegalDocumentPage({
         </div>
       </section>
 
-      <div className="-mb-px">
+      <div className="-mb-1 bg-[var(--brand-night)]">
         {showQuizCTA && <QuizCTA />}
         <FinalCTA
           title={cta.title}

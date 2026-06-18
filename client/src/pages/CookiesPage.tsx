@@ -189,11 +189,15 @@ export default function CookiesPage() {
     sections: sections.map((section) => {
       const data = (content.sectionContent as Record<string, SectionContent>)[section.id];
       const Icon = Icons[section.icon];
-      const fallbackTitle = isMeaningfulText(section.navLabel) ? section.navLabel : section.id;
+      const fallbackTitle = isMeaningfulText(data?.title)
+        ? data.title
+        : isMeaningfulText(section.navLabel)
+          ? section.navLabel
+          : section.id;
 
       return {
         id: section.id,
-        navLabel: isMeaningfulText(section.navLabel) ? section.navLabel : fallbackTitle,
+        navLabel: fallbackTitle,
         title: isMeaningfulText(data?.title) ? data.title : fallbackTitle,
         icon: Icon,
         content: (

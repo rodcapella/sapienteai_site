@@ -61,9 +61,10 @@ export function FinalCTA({
   const isHomeVariant = variant === "home";
   const isAboutVariant = variant === "about";
   const isServicesVariant = variant === "services";
+  const usesEditorialLightLayout = isAboutVariant || isServicesVariant;
 
   const isCentered = align ? align === "center" : isHomeVariant;
-  const isRightAligned = isServicesVariant;
+  const isRightAligned = false;
 
   const titleFontSize = isHomeVariant || isAboutVariant || isServicesVariant
     ? "clamp(22px, 4.5vw, 44px)"
@@ -71,13 +72,13 @@ export function FinalCTA({
 
   const descriptionFontSize = "clamp(15px, 1.6vw, 16px)";
 
-  const titleColor = isAboutVariant || isServicesVariant
+  const titleColor = usesEditorialLightLayout
     ? "var(--brand-night)"
     : isHomeVariant
       ? "white"
       : "black";
 
-  const descriptionColor = isAboutVariant || isServicesVariant
+  const descriptionColor = usesEditorialLightLayout
     ? "var(--brand-night)"
     : isHomeVariant
       ? "white"
@@ -86,9 +87,9 @@ export function FinalCTA({
   const highlightColor = "text-[var(--brand-primary)]";
   const descriptionHighlightColor = isHomeVariant
     ? "font-extrabold text-[var(--brand-cyan)]"
-    : isAboutVariant || isServicesVariant
+    : usesEditorialLightLayout
       ? "font-extrabold text-[var(--brand-primary)]"
-      : "font-extrabold text-[var(--brand-night)]";
+      : "font-extrabold text-[var(--brand-primary)]";
 
   const getFallbackBackground = () => {
     switch (variant) {
@@ -190,26 +191,21 @@ export function FinalCTA({
             src={computedBackgroundSrc}
             alt=""
             className={cn(
-              "block w-full object-cover",
-              "h-full",
-              isAboutVariant
-                ? "object-[82%_center] md:object-[78%_center]"
-                : isServicesVariant
-                  ? "object-[12%_center] md:object-[14%_center]"
+              "block h-full w-full object-cover",
+              usesEditorialLightLayout
+                ? "object-[16%_center] md:object-[12%_center]"
                 : usesDefaultFinalCtaBackground
                   ? "object-right"
                   : "object-left md:object-center"
             )}
           />
         </div>
-        {(isAboutVariant || isServicesVariant) && (
+        {usesEditorialLightLayout && (
           <div
             aria-hidden="true"
             className={cn(
               "pointer-events-none absolute inset-0",
-              isAboutVariant
-                ? "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]"
-                : "bg-[linear-gradient(90deg,transparent_0%,color-mix(in_srgb,white_34%,transparent)_42%,color-mix(in_srgb,white_88%,transparent)_70%,white_100%)]"
+              "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]"
             )}
           />
         )}
@@ -230,7 +226,7 @@ export function FinalCTA({
                 : !isCentered
                   ? "max-w-[760px] items-start text-left"
                   : "max-w-3xl mx-auto items-center text-center",
-              (isAboutVariant || isServicesVariant) && "rounded-2xl bg-white/70 p-5 shadow-[0_18px_46px_color-mix(in_srgb,var(--brand-night)_9%,transparent)] backdrop-blur-[2px] sm:p-6 md:bg-white/62 md:p-7"
+              usesEditorialLightLayout && "rounded-2xl bg-white/70 p-5 shadow-[0_18px_46px_color-mix(in_srgb,var(--brand-night)_9%,transparent)] backdrop-blur-[2px] sm:p-6 md:bg-white/62 md:p-7"
             )}
           >
             <Reveal className={isCentered ? "mx-auto" : "w-full"}>

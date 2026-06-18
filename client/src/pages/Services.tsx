@@ -87,7 +87,26 @@ export default function Services() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
   const manualSelectionRef = useRef<string | null>(null);
-  const manualSelectionTimeoutRef = useRef<number | null>(null);
+
+  const scrollToSection = (id: string, behavior: ScrollBehavior) => {
+    const section = document.getElementById(`service-${id}`);
+    if (!section) return;
+
+    const stickyMenuHeight = document.getElementById("services-menu")?.getBoundingClientRect().height ?? 72;
+    const headerOffset = window.innerWidth >= 1024 ? 88 : window.innerWidth >= 768 ? 80 : 64;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+    const targetTop = Math.max(sectionTop - stickyMenuHeight - headerOffset - 12, 0);
+
+    window.scrollTo({ top: targetTop, behavior });
+
+    window.setTimeout(() => {
+      if (Math.abs(window.scrollY - targetTop) <= 4) return;
+
+      document.documentElement.scrollTop = targetTop;
+      document.body.scrollTop = targetTop;
+      window.scrollTo(0, targetTop);
+    }, behavior === "smooth" ? 460 : 40);
+  };
 
   useSEOHead({
     title: `${content.hero.label} — Sapiente.AI`,
@@ -142,32 +161,33 @@ export default function Services() {
 
     setActiveSection(hashedSection.id);
     window.requestAnimationFrame(() => {
-      document.getElementById(`service-${hashedSection.id}`)?.scrollIntoView({
-        behavior: "auto",
-        block: "center",
-      });
+      scrollToSection(hashedSection.id, "auto");
     });
   }, [sections]);
 
   const handleSelectSection = (id: string) => {
-    if (manualSelectionTimeoutRef.current) {
-      window.clearTimeout(manualSelectionTimeoutRef.current);
-    }
-
     manualSelectionRef.current = id;
     setActiveSection(id);
     window.history.replaceState(null, "", `#service-${id}`);
-    document.getElementById(`service-${id}`)?.scrollIntoView({ behavior: "smooth", block: "center" });
-
-    manualSelectionTimeoutRef.current = window.setTimeout(() => {
-      manualSelectionRef.current = null;
-    }, 900);
+    scrollToSection(id, "smooth");
   };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (manualSelectionRef.current) return;
+        const manuallySelectedId = manualSelectionRef.current;
+
+        if (manuallySelectedId) {
+          const selectedEntry = entries.find((entry) => entry.target.id === `service-${manuallySelectedId}`);
+
+          if (selectedEntry?.isIntersecting && selectedEntry.intersectionRatio >= 0.35) {
+            manualSelectionRef.current = null;
+            setActiveSection(manuallySelectedId);
+            window.history.replaceState(null, "", `#service-${manuallySelectedId}`);
+          }
+
+          return;
+        }
 
         const visible = entries
           .filter((entry) => entry.isIntersecting)
@@ -189,9 +209,6 @@ export default function Services() {
 
     return () => {
       observer.disconnect();
-      if (manualSelectionTimeoutRef.current) {
-        window.clearTimeout(manualSelectionTimeoutRef.current);
-      }
     };
   }, [sections]);
 
@@ -235,9 +252,9 @@ export default function Services() {
                             "--service-mobile-bg-position": serviceMobileBackgroundPosition[section.id] || "center top",
                           } as React.CSSProperties}
                         >
-                          <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(320px,0.62fr)_minmax(300px,0.38fr)] lg:items-center lg:gap-10 xl:grid-cols-[minmax(360px,0.6fr)_minmax(320px,0.4fr)] xl:gap-16">
+                          <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(320px,0.56fr)_minmax(300px,0.44fr)] lg:items-center lg:gap-16 xl:grid-cols-[minmax(360px,0.54fr)_minmax(330px,0.46fr)] xl:gap-24">
                             <Reveal>
-                              <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:max-w-[420px] lg:bg-transparent lg:p-0 lg:pr-10 lg:shadow-none xl:pr-14">
+                              <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:max-w-[390px] lg:bg-transparent lg:p-0 lg:pr-12 lg:shadow-none xl:max-w-[410px] xl:pr-16">
                                 <p className="mb-4 font-[var(--font-heading)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
                                   {data.eyebrow}
                                 </p>
@@ -276,7 +293,7 @@ export default function Services() {
                             </Reveal>
 
                             <Reveal delay={120}>
-                              <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 font-[var(--font-body)] text-[16px] font-medium leading-[1.6] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] sm:max-w-[410px] md:p-5 lg:ml-auto lg:max-w-[360px] lg:justify-self-end lg:rounded-[28px] lg:bg-white/78 lg:p-5 lg:py-6 lg:shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-deep)_10%,transparent)] lg:backdrop-blur-[2px] xl:max-w-[390px]">
+                              <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 font-[var(--font-body)] text-[16px] font-medium leading-[1.6] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] sm:max-w-[410px] md:p-5 lg:ml-auto lg:mr-0 lg:max-w-[320px] lg:justify-self-end lg:self-center lg:rounded-[28px] lg:bg-white/88 lg:p-6 lg:py-7 lg:pl-7 lg:shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-deep)_10%,transparent)] lg:backdrop-blur-[4px] xl:max-w-[360px] xl:p-7 xl:pl-8">
                                 {data.bullets.map((bullet) => (
                                   <li key={bullet} className="flex items-start gap-4">
                                     <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
