@@ -63,7 +63,7 @@ export function FinalCTA({
   const isServicesVariant = variant === "services";
 
   const isCentered = align ? align === "center" : isHomeVariant;
-  const isRightAligned = isAboutVariant || isServicesVariant;
+  const isRightAligned = isServicesVariant;
 
   const titleFontSize = isHomeVariant || isAboutVariant || isServicesVariant
     ? "clamp(22px, 4.5vw, 44px)"
@@ -97,7 +97,7 @@ export function FinalCTA({
       case "about":
         return "/media/bg/finalCTA/final_CTA_sobre.webp";
       case "services":
-        return "/media/bg/finalCTA/final_CTA_sobre.webp";
+        return "/media/bg/finalCTA/final_CTA_servicos.webp";
       default:
         return "/media/bg/finalCTA/bg_finalCTA.webp";
     }
@@ -181,7 +181,7 @@ export function FinalCTA({
         className={cn(
           "final-cta relative overflow-hidden min-h-[224px] py-8 md:py-16 px-6 flex items-center",
           "bg-[var(--brand-night)] -mb-px",
-          isAboutVariant || isServicesVariant ? "md:h-[310px] md:min-h-0" : "md:min-h-[380px]",
+          isAboutVariant || isServicesVariant ? "md:h-[310px] md:min-h-0" : "md:h-[330px] md:min-h-0",
           isCentered ? "text-center" : "text-left"
         )}
       >
@@ -192,8 +192,10 @@ export function FinalCTA({
             className={cn(
               "block w-full object-cover",
               "h-full",
-              isAboutVariant || isServicesVariant
-                ? "object-[12%_center] md:object-[14%_center]"
+              isAboutVariant
+                ? "object-[82%_center] md:object-[78%_center]"
+                : isServicesVariant
+                  ? "object-[12%_center] md:object-[14%_center]"
                 : usesDefaultFinalCtaBackground
                   ? "object-right"
                   : "object-left md:object-center"
@@ -203,7 +205,12 @@ export function FinalCTA({
         {(isAboutVariant || isServicesVariant) && (
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,color-mix(in_srgb,white_34%,transparent)_42%,color-mix(in_srgb,white_88%,transparent)_70%,white_100%)]"
+            className={cn(
+              "pointer-events-none absolute inset-0",
+              isAboutVariant
+                ? "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]"
+                : "bg-[linear-gradient(90deg,transparent_0%,color-mix(in_srgb,white_34%,transparent)_42%,color-mix(in_srgb,white_88%,transparent)_70%,white_100%)]"
+            )}
           />
         )}
 

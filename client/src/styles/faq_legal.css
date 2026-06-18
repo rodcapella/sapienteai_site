@@ -130,15 +130,15 @@
 }
 
 .faq-content .faq-group-title {
-  margin-bottom: 18px;
-  padding-left: 0;
-  font-family: var(--font-heading);
-  font-size: clamp(24px, 2.4vw, 34px);
+  margin-bottom: 12px;
+  padding-left: 4px;
+  font-family: var(--font-detail);
+  font-size: 11px;
   font-weight: 900;
-  line-height: 1.08;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--brand-night);
+  line-height: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brand-primary);
 }
 
 .legal-content .legal-group-title {
@@ -203,8 +203,8 @@
   display: flex;
   min-height: 18px;
   align-items: center;
-  font: 900 16px var(--font-heading);
-  line-height: 1.25;
+  font: inherit;
+  line-height: inherit;
   text-align: left;
   color: inherit;
   flex: 1;
@@ -659,8 +659,8 @@
   }
 
   .legal-cat span {
-    font-size: 15px;
-    line-height: 1.2;
+    font-size: inherit;
+    line-height: inherit;
   }
 
   .legal-a-inner {

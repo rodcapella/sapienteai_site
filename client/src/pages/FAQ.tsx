@@ -197,15 +197,17 @@ export default function FAQ() {
         </div>
       </section>
 
-      <QuizCTA />
-      <FinalCTA
-        title={content.cta.title}
-        title_highlight={content.cta.title_highlight}
-        description={content.cta.description}
-        description_highlight={content.cta.description_highlight}
-        button={content.cta.button}
-        backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
-      />
+      <div className="-mb-px">
+        <QuizCTA />
+        <FinalCTA
+          title={content.cta.title}
+          title_highlight={content.cta.title_highlight}
+          description={content.cta.description}
+          description_highlight={content.cta.description_highlight}
+          button={content.cta.button}
+          backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
+        />
+      </div>
     </div>
   );
 }
