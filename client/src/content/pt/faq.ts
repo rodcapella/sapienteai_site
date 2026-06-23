@@ -242,12 +242,12 @@ export const faqPT = {
     {
       question: "Quanto custa contratar um serviço de automação com IA para PME?",
       answer:
-        "O investimento varia consoante a complexidade do processo a automatizar. Projetos simples de automação (como respostas automáticas, follow-ups ou relatórios) podem começar entre 500€ e 1.500€. Soluções mais completas de integração de sistemas ou machine learning personalizado situam-se geralmente entre 2.000€ e 10.000€. Oferecemos sempre um diagnóstico gratuito antes de qualquer proposta.",
+        "O investimento depende dos objetivos, da complexidade do processo e do nível de integração necessário. Cada empresa parte de um contexto diferente, por isso preferimos avaliar primeiro o cenário real antes de indicar qualquer enquadramento. Fale connosco para fazermos uma avaliação gratuita e percebermos qual a solução mais adequada para a sua PME.",
     },
     {
       question: "Qual o preço de um website com IA e otimizado para conversão em Portugal?",
       answer:
-        "Um website profissional orientado à conversão, com copywriting estratégico, SEO técnico e integração de ferramentas de IA (como chatbot ou formulários inteligentes), tem um investimento típico entre 1.500€ e 5.000€ dependendo do número de páginas e funcionalidades. Inclui sempre otimização para motores de pesquisa (SEO e GEO).",
+        "O valor depende do tipo de website, do número de páginas, das integrações, da componente de IA e do nível de otimização para conversão que o projeto exige. Em vez de indicar um valor genérico, preferimos analisar o seu caso e recomendar a estrutura certa para o seu objetivo. Entre em contacto connosco para fazermos uma avaliação gratuita.",
     },
     {
       question: "Qual é a diferença entre usar o ChatGPT e contratar automação personalizada?",
@@ -262,7 +262,7 @@ export const faqPT = {
     {
       question: "Como posso implementar um chatbot inteligente no meu negócio?",
       answer:
-        "O processo tem 3 fases: (1) Diagnóstico — identificamos os casos de uso mais valiosos (atendimento, qualificação de leads, suporte pós-venda); (2) Desenvolvimento — configuramos e treinamos o chatbot com o conteúdo e tom de voz da sua marca; (3) Integração — ligamos ao seu website, WhatsApp, Instagram ou CRM. Um chatbot básico pode estar operacional em 2 a 4 semanas. Contacte-nos para uma demonstração gratuita.",
+        "O processo segue esta ordem: 1. Diagnóstico — identificamos os casos de uso mais valiosos, como atendimento, qualificação de leads ou suporte pós-venda. 2. Desenvolvimento — configuramos e treinamos o chatbot com o conteúdo, as regras e o tom de voz da sua marca. 3. Integração — ligamos a solução ao seu website, WhatsApp, Instagram ou CRM. 4. Entrada em operação — um chatbot básico pode ficar operacional em 2 a 4 semanas. Se quiser, podemos fazer uma demonstração gratuita e avaliar o melhor formato para o seu negócio.",
     },
   ],
 };

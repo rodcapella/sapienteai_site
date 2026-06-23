@@ -123,7 +123,7 @@ export default function LegalDocumentPage({
   content,
   slug,
   fallbackDescription,
-  showQuizCTA = true,
+  showQuizCTA = false,
 }: LegalDocumentPageProps) {
   const { lang } = useTranslation();
   const pageTitle = getLegalPageTitle(slug, lang) || content.title;
@@ -267,7 +267,7 @@ export default function LegalDocumentPage({
         </div>
       </section>
 
-      <div className="-mb-1 bg-[var(--brand-night)]">
+      <div className="legal-page-final-cta bg-[var(--brand-night)]">
         {showQuizCTA && <QuizCTA />}
         <FinalCTA
           title={cta.title}

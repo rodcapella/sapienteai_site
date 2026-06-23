@@ -560,6 +560,17 @@
   color: rgba(234, 246, 255, 0.85);
 }
 
+.legal-page-final-cta {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -1px;
+  background: var(--brand-night);
+}
+
+.legal-page-final-cta .final-cta {
+  margin-bottom: 0;
+}
+
 /* ── RESPONSIVO ─────────────────────────────────────────────────────────────*/
 @media (max-width: 900px) {
   .faq-hero-card {
@@ -621,17 +632,26 @@
     line-height: 1.7;
   }
 
-  .faq-cats,
-  .legal-cats {
+  .faq-cats {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 6px;
+  }
+
+  .legal-cats {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 8px;
   }
 
   .faq-cat,
   .legal-cat {
     padding: 9px 12px;
     font-size: 13px;
+  }
+
+  .legal-cat {
+    width: 100%;
   }
 
   .legal-content,
@@ -704,5 +724,16 @@
 
   .cookie-detail .mb-8 {
     margin-bottom: 1.25rem;
+  }
+
+  .legal-page-final-cta {
+    margin-bottom: -2px;
+  }
+
+  .legal-page-final-cta .final-cta {
+    min-height: 190px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.25rem;
+    align-items: flex-start;
   }
 }

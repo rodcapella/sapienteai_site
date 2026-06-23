@@ -242,7 +242,12 @@ export const faqEN = {
     {
       question: "How much does AI automation cost for a small or medium-sized business?",
       answer:
-        "Investment varies by complexity. Simple automations (automated replies, follow-ups, reports) typically start between €500–€1,500. More complete solutions involving system integrations or custom machine learning generally range from €2,000 to €10,000. We always offer a free diagnostic before any proposal.",
+        "The investment depends on your goals, the complexity of the process, and the level of integration required. Every business starts from a different context, so we prefer to assess the real scenario before suggesting any pricing frame. Get in touch for a free evaluation so we can recommend the most appropriate solution for your business.",
+    },
+    {
+      question: "What is the price of an AI-powered, conversion-optimised website in Portugal?",
+      answer:
+        "The final cost depends on the type of website, the number of pages, the integrations involved, the AI layer, and the level of conversion optimisation required. Rather than giving a generic figure, we prefer to review your case and recommend the right structure for your goals. Get in touch and we will be happy to carry out a free evaluation.",
     },
     {
       question: "What is the difference between using ChatGPT and hiring custom AI automation?",
@@ -252,7 +257,7 @@ export const faqEN = {
     {
       question: "How can I implement an intelligent chatbot for my business?",
       answer:
-        "The process has 3 phases: (1) Diagnosis — we identify the most valuable use cases (support, lead qualification, post-sale); (2) Development — we configure and train the chatbot with your brand's content and tone of voice; (3) Integration — we connect it to your website, WhatsApp, Instagram, or CRM. A basic chatbot can be live in 2–4 weeks. Contact us for a free demo.",
+        "The process follows this order: 1. Diagnosis — we identify the most valuable use cases, such as support, lead qualification, or post-sale communication. 2. Development — we configure and train the chatbot with your brand content, rules, and tone of voice. 3. Integration — we connect the solution to your website, WhatsApp, Instagram, or CRM. 4. Go-live — a basic chatbot can be operational within 2 to 4 weeks. If you'd like, we can also schedule a free demo and recommend the best format for your business.",
     },
     {
       question: "Does Sapiente.AI work with businesses outside Portugal?",

@@ -160,13 +160,13 @@ export default function Header({ onContactClick }: HeaderProps) {
               <button
                 ref={menuBtnRef}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="rounded-2xl border border-[var(--brand-primary)] bg-transparent p-2.5 text-[var(--brand-primary)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-cyan-mid)]/[0.12] hover:text-[var(--brand-cyan-bright)] dark:bg-[var(--brand-near-dark2)]"
+                className="rounded-2xl border-2 border-[var(--brand-primary)]/70 bg-[var(--brand-primary)]/[0.05] p-3 text-[var(--brand-primary)] shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary)_10%,transparent)] transition-all duration-300 hover:border-[var(--brand-cyan-bright)] hover:bg-[var(--brand-cyan-mid)]/[0.14] hover:text-[var(--brand-cyan-bright)] dark:bg-[var(--brand-near-dark2)] dark:border-[var(--brand-cyan-bright)]/55"
                 aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-nav"
                 type="button"
               >
-                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
               </button>
             </div>
           </nav>

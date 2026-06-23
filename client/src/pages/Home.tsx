@@ -178,7 +178,7 @@ export default function Home() {
             onClick={() => setIsContactOpen(true)}
             size="lg"
             variant="primary"
-            className="w-full !rounded-2xl !border !border-[var(--brand-cyan-bright)] !bg-[var(--brand-cyan)] !px-7 !py-3 !text-[var(--brand-night)] shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright)_42%,transparent),0_18px_44px_color-mix(in_srgb,var(--brand-cyan-bright)_30%,transparent)] hover:!bg-[var(--brand-cyan-bright)] hover:!text-[var(--brand-night)] sm:!w-auto sm:!rounded-full sm:!px-11 sm:!py-5 [&>span]:!text-[var(--brand-night)]"
+            className="w-full !rounded-2xl !border !border-[var(--brand-cyan-bright)] !bg-[var(--brand-cyan)] !px-7 !py-2.5 !text-[var(--brand-night)] shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright)_42%,transparent),0_18px_44px_color-mix(in_srgb,var(--brand-cyan-bright)_30%,transparent)] hover:!bg-[var(--brand-cyan-bright)] hover:!text-[var(--brand-night)] sm:!w-auto sm:!rounded-full sm:!px-11 sm:!py-5 [&>span]:!text-[var(--brand-night)]"
           >
             {content.hero.ctaPrimary}
           </PremiumButton>
@@ -187,10 +187,10 @@ export default function Home() {
             type="button"
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-white/35 bg-white/8 px-4 py-2.5 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-offwhite)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-cyan-bright)]/70 hover:bg-white/14 hover:shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright)_20%,transparent)] sm:w-auto sm:justify-start sm:rounded-full sm:px-5 sm:py-3"
+            className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--brand-cyan-bright)]/55 bg-transparent px-4 py-2.5 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-cyan-bright)]/80 hover:bg-[color-mix(in_srgb,var(--brand-primary)_10%,transparent)] hover:text-[var(--brand-cyan-bright)] hover:shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright)_16%,transparent)] sm:w-auto sm:justify-start sm:rounded-full sm:px-5 sm:py-3 sm:border-white/35 sm:bg-white/8 sm:text-[var(--brand-offwhite)] sm:hover:border-[var(--brand-cyan-bright)]/70 sm:hover:bg-white/14 sm:hover:text-[var(--brand-offwhite)] sm:hover:shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright)_20%,transparent)]"
             onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}
           >
-            <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[var(--brand-cyan-bright)]/55 bg-[var(--brand-cyan-bright)]/12 text-[var(--brand-cyan-bright)] transition-transform duration-500 group-hover:translate-x-1 sm:h-8 sm:w-8">
+            <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[var(--brand-cyan-bright)]/55 bg-[var(--brand-cyan-bright)]/10 text-[var(--brand-cyan-bright)] transition-transform duration-500 group-hover:translate-x-1 sm:h-8 sm:w-8 sm:bg-[var(--brand-cyan-bright)]/12">
               <ArrowRight className="h-4 w-4" />
             </span>
             {content.hero.ctaSecondary}

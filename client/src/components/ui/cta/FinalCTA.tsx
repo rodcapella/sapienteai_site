@@ -62,6 +62,14 @@ export function FinalCTA({
   const isAboutVariant = variant === "about";
   const isServicesVariant = variant === "services";
   const usesEditorialLightLayout = isAboutVariant || isServicesVariant;
+  const editorialImagePosition = isAboutVariant
+    ? "object-right md:object-[12%_center]"
+    : isServicesVariant
+      ? "object-[88%_center] md:object-[12%_center]"
+      : "object-right md:object-[12%_center]";
+  const editorialMobileOverlay = isServicesVariant
+    ? "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_92%,transparent)_38%,color-mix(in_srgb,white_40%,transparent)_62%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]"
+    : "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_46%,color-mix(in_srgb,white_60%,transparent)_70%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]";
 
   const isCentered = align ? align === "center" : isHomeVariant;
   const isRightAligned = false;
@@ -127,10 +135,6 @@ export function FinalCTA({
             aria-hidden="true"
             className="absolute inset-0 h-full w-full object-cover object-left md:object-center"
           />
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[linear-gradient(90deg,color-mix(in_srgb,var(--brand-night)_82%,transparent)_0%,color-mix(in_srgb,var(--brand-night)_62%,transparent)_42%,color-mix(in_srgb,var(--brand-night)_22%,transparent)_100%)] md:bg-[linear-gradient(90deg,color-mix(in_srgb,var(--brand-night)_72%,transparent)_0%,color-mix(in_srgb,var(--brand-night)_44%,transparent)_48%,transparent_100%)]"
-          />
 
           <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 py-8 text-center md:absolute md:inset-0 md:py-0">
             <Reveal>
@@ -193,7 +197,7 @@ export function FinalCTA({
             className={cn(
               "block h-full w-full object-cover",
               usesEditorialLightLayout
-                ? "object-[16%_center] md:object-[12%_center]"
+                ? editorialImagePosition
                 : usesDefaultFinalCtaBackground
                   ? "object-right"
                   : "object-left md:object-center"
@@ -205,7 +209,7 @@ export function FinalCTA({
             aria-hidden="true"
             className={cn(
               "pointer-events-none absolute inset-0",
-              "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]"
+              editorialMobileOverlay
             )}
           />
         )}

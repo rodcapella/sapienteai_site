@@ -211,7 +211,7 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
         {mobileImages.map((image, index) => (
           <div
             key={`${image}-${index}`}
-            className="min-h-[60svh] w-full bg-cover bg-center bg-no-repeat"
+            className="min-h-[100svh] w-full bg-contain bg-top bg-no-repeat"
             style={{ backgroundImage: `url(${image})` }}
             aria-hidden="true"
           />
@@ -331,7 +331,7 @@ export default function About() {
         description_highlight={content.cta.description_highlight}
         button={content.cta.button}
         variant="about"
-        backgroundSrc="/media/bg/finalCTA/final_CTA_servicos.webp"
+        backgroundSrc="/media/bg/finalCTA/final_CTA_sobre.webp"
       />
     </div>
   );

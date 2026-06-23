@@ -265,13 +265,13 @@ export default function Services() {
                         <div
                           id={`service-${section.id}`}
                           aria-label={section.navLabel}
-                          className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-[position:var(--service-mobile-bg-position)] bg-no-repeat px-4 py-5 md:min-h-[420px] md:bg-center md:px-10 lg:px-12"
+                          className="min-h-[360px] w-full scroll-mt-32 rounded-2xl bg-cover bg-[position:var(--service-mobile-bg-position)] bg-no-repeat px-4 py-5 md:min-h-[420px] md:px-10 md:bg-none lg:px-12"
                           style={{
                             backgroundImage: `url(${section.backgroundImage})`,
                             "--service-mobile-bg-position": serviceMobileBackgroundPosition[section.id] || "center top",
                           } as React.CSSProperties}
                         >
-                          <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(320px,0.54fr)_minmax(300px,0.46fr)] lg:items-center lg:gap-20 xl:grid-cols-[minmax(360px,0.52fr)_minmax(330px,0.48fr)] xl:gap-28">
+                          <div className="mx-auto grid min-h-[inherit] max-w-6xl gap-6 lg:grid-cols-[minmax(300px,0.95fr)_minmax(300px,0.9fr)_minmax(280px,0.8fr)] lg:items-center lg:gap-10 xl:grid-cols-[minmax(340px,0.95fr)_minmax(360px,0.9fr)_minmax(320px,0.8fr)] xl:gap-14">
                             <Reveal>
                               <div className="max-w-[440px] rounded-2xl bg-white/95 p-4 text-left shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] md:p-5 lg:max-w-[390px] lg:bg-transparent lg:p-0 lg:pr-12 lg:shadow-none xl:max-w-[410px] xl:pr-16">
                                 <p className="mb-4 font-[var(--font-heading)] text-[12px] font-black uppercase tracking-[0.12em] text-[var(--brand-primary)]">
@@ -311,8 +311,20 @@ export default function Services() {
                               </div>
                             </Reveal>
 
+                            <Reveal delay={90}>
+                              <div
+                                className="hidden h-full min-h-[360px] w-full lg:block"
+                                aria-hidden="true"
+                              >
+                                <div
+                                  className="h-full w-full bg-contain bg-center bg-no-repeat"
+                                  style={{ backgroundImage: `url(${section.backgroundImage})` }}
+                                />
+                              </div>
+                            </Reveal>
+
                             <Reveal delay={120}>
-                              <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 font-[var(--font-body)] text-[16px] font-medium leading-[1.6] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] sm:max-w-[410px] md:p-5 lg:ml-12 lg:mr-0 lg:max-w-[300px] lg:justify-self-end lg:self-center lg:rounded-[28px] lg:bg-white/88 lg:p-6 lg:py-7 lg:pl-7 lg:shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-deep)_10%,transparent)] lg:backdrop-blur-[4px] xl:ml-20 xl:max-w-[330px] xl:p-7 xl:pl-8 2xl:ml-24">
+                              <ul className="mx-auto grid max-w-full gap-4 rounded-2xl bg-white/95 p-4 font-[var(--font-body)] text-[16px] font-medium leading-[1.6] text-[var(--brand-night)] shadow-[0_14px_34px_color-mix(in_srgb,var(--brand-deep) 12%,transparent)] sm:max-w-[410px] md:p-5 lg:ml-0 lg:mr-0 lg:max-w-[320px] lg:justify-self-end lg:self-center lg:rounded-[28px] lg:bg-white/88 lg:p-6 lg:py-7 lg:pl-7 lg:shadow-[0_18px_42px_color-mix(in_srgb,var(--brand-deep)_10%,transparent)] lg:backdrop-blur-[4px] xl:max-w-[340px] xl:p-7 xl:pl-8">
                                 {data.bullets.map((bullet) => (
                                   <li key={bullet} className="flex items-start gap-4">
                                     <span className="mt-[0.7em] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-night)]" />
