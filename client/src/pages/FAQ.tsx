@@ -197,7 +197,7 @@ export default function FAQ() {
         </div>
       </section>
 
-      <div className="-mb-px">
+      <div className="faq-page-final-cta">
         <QuizCTA />
         <FinalCTA
           title={content.cta.title}

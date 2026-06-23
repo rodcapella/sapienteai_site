@@ -8,6 +8,11 @@
 .legal-page {
   background: white;
   color: var(--brand-night);
+  margin-bottom: -1px;
+}
+
+.faq-page {
+  margin-bottom: -1px;
 }
 
 /* ── HERO (usado pelo FAQ) ──────────────────────────────────────────────────*/
@@ -567,7 +572,18 @@
   background: var(--brand-night);
 }
 
+.faq-page-final-cta {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: -1px;
+  background: var(--brand-night);
+}
+
 .legal-page-final-cta .final-cta {
+  margin-bottom: 0;
+}
+
+.faq-page-final-cta .final-cta {
   margin-bottom: 0;
 }
 
@@ -727,13 +743,36 @@
   }
 
   .legal-page-final-cta {
-    margin-bottom: -2px;
+    margin-bottom: -8px;
+    padding-bottom: 0;
+  }
+
+  .faq-page-final-cta {
+    margin-bottom: -8px;
+    padding-bottom: 0;
   }
 
   .legal-page-final-cta .final-cta {
     min-height: 190px;
     padding-top: 1.5rem;
-    padding-bottom: 1.25rem;
+    padding-bottom: 1rem;
     align-items: flex-start;
+    margin-bottom: -8px;
+  }
+
+  .faq-page-final-cta .final-cta {
+    min-height: 190px;
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+    align-items: flex-start;
+    margin-bottom: -8px;
+  }
+
+  .legal-page + footer {
+    margin-top: -8px;
+  }
+
+  .faq-page + footer {
+    margin-top: -8px;
   }
 }

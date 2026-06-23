@@ -35,7 +35,8 @@ export const cookiesEN = {
   cta: {
     title:       "Questions about",
     highlight:   "privacy or cookies?",
-    description: "Our team is available to clarify any questions about your data handling or cookie preferences.",
+    description: "Our team is available to clarify any questions about",
+    description_highlight: "your data handling or cookie preferences.",
     button:      "Talk to the team",
   },
 
@@ -76,8 +77,8 @@ export const cookiesEN = {
       description: "When you first visit our website, a banner will ask for your cookie preferences. You may accept all cookies, reject optional ones, or customise your choices.",
       bullets: [
         "Accept all cookies (includes analytics and marketing).",
-        "Reject optional — only essential cookies remain active.",
-        "Customise — choose category by category what you allow.",
+        "Reject optional: only essential cookies remain active.",
+        "Customise: choose category by category what you allow.",
         "Change your preferences at any time via the footer link.",
       ],
       resetLabel: "Review cookie preferences",

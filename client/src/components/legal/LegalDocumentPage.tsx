@@ -234,7 +234,7 @@ export default function LegalDocumentPage({
                         <button type="button" className="legal-q" onClick={() => setOpenSection(isOpen ? "" : section.id)}>
                           <span className="legal-q-main">
                             <Icon className="legal-q-symbol" />
-                            <span className="legal-q-text">{stripNumber(section.title)}</span>
+                            <span className="legal-q-text">{section.navLabel}</span>
                           </span>
                           <span className="legal-q-icon" aria-hidden="true">{isOpen ? "-" : "+"}</span>
                         </button>

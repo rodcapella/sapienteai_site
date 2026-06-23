@@ -1,6 +1,6 @@
 // /content/pt/privacy.ts
 import { createElement as h } from "react";
-import { Gavel, Hourglass, Info, Mail, Share2, ShieldCheck, Target, UserCog, UserPlus } from "@/lib/icons";
+import { FileText, Gavel, Hourglass, Mail, Share2, ShieldCheck, Target, UserCog, UserPlus } from "@/lib/icons";
 
 const privacyMailtoPT = "mailto:contato@sapienteai.com?subject=Pol%C3%ADtica%20de%20Privacidade";
 
@@ -35,12 +35,15 @@ export const privacyPT = {
     {
       id: "intro",
       icon: ShieldCheck,
+      navLabel: "Quem somos",
       title: "1. Quem somos e o que fazemos",
-      content: "A Sapiente.AI é uma empresa de consultoria em Inteligência Artificial, sediada em Aveiro, Portugal. Esta política explica como tratamos os seus dados pessoais quando visita o nosso site ou nos contacta.",
+      content:
+        "A Sapiente.AI é uma empresa de consultoria em Inteligência Artificial, sediada em Aveiro, Portugal. Esta política explica como tratamos os seus dados pessoais quando visita o nosso site ou nos contacta.",
     },
     {
       id: "data",
       icon: UserPlus,
+      navLabel: "Dados recolhidos",
       title: "2. Que dados recolhemos",
       content: [
         "Nome e e-mail profissional (quando preenche o formulário de contacto ou assina a newsletter).",
@@ -54,6 +57,7 @@ export const privacyPT = {
     {
       id: "purpose",
       icon: Target,
+      navLabel: "Utilização",
       title: "3. Para que usamos os seus dados",
       content: [
         "Responder às suas perguntas e enviar orçamentos.",
@@ -64,18 +68,23 @@ export const privacyPT = {
     {
       id: "legal",
       icon: Gavel,
+      navLabel: "Base legal",
       title: "4. Base legal para o tratamento",
-      content: "Tratamos os seus dados com base no seu consentimento (ex: newsletter) ou no nosso interesse legítimo em responder a contactos comerciais. Nunca vendemos ou partilhamos os seus dados com terceiros para marketing.",
+      content:
+        "Tratamos os seus dados com base no seu consentimento (ex: newsletter) ou no nosso interesse legítimo em responder a contactos comerciais. Nunca vendemos ou partilhamos os seus dados com terceiros para marketing.",
     },
     {
       id: "sharing",
       icon: Share2,
+      navLabel: "Partilha",
       title: "5. Partilha com terceiros",
-      content: "Usamos apenas ferramentas essenciais para o funcionamento do site e gestão de contactos (ex: servidor de e-mail, plataforma de newsletter). Todos os nossos fornecedores respeitam o RGPD e os dados permanecem na União Europeia.",
+      content:
+        "Usamos apenas ferramentas essenciais para o funcionamento do site e gestão de contactos (ex: servidor de e-mail, plataforma de newsletter). Todos os nossos fornecedores respeitam o RGPD e os dados permanecem na União Europeia.",
     },
     {
       id: "rights",
       icon: UserCog,
+      navLabel: "Direitos",
       title: "6. Os seus direitos",
       content: h(
         "p",
@@ -95,20 +104,28 @@ export const privacyPT = {
     {
       id: "retention",
       icon: Hourglass,
+      navLabel: "Retenção",
       title: "7. Quanto tempo guardamos os dados",
-      content: "Guardamos os seus dados enquanto mantivermos uma relação comercial ou enquanto for necessário para responder a obrigações legais. Depois disso, são eliminados ou anonimizados.",
+      content:
+        "Guardamos os seus dados enquanto mantivermos uma relação comercial ou enquanto for necessário para responder a obrigações legais. Depois disso, são eliminados ou anonimizados.",
     },
     {
       id: "contact",
       icon: Mail,
+      navLabel: "Contacto",
       title: "8. Contacto para questões de privacidade",
-      content: createPrivacyContactBlockPT("Tem dúvidas sobre a nossa Política de Privacidade ou quer exercer os seus direitos? Escreva para contato@sapienteai.com com o assunto 'Política de Privacidade'. Responderemos o mais rápido possível."),
+      content: createPrivacyContactBlockPT(
+        "Tem dúvidas sobre a nossa Política de Privacidade ou quer exercer os seus direitos? Fale connosco através do botão abaixo e responderemos o mais rápido possível.",
+      ),
     },
     {
       id: "gdpr-details",
-      icon: Info,
+      icon: FileText,
+      navLabel: "Anexo RGPD",
       title: "9. Informação adicional para clientes (RGPD)",
-      content: createPrivacyContactBlockPT("Se for nosso cliente ou parceiro comercial e precisar de detalhes técnicos como subcontratantes, medidas de segurança ou cláusulas contratuais, solicite o nosso 'Anexo de Tratamento de Dados' através do e-mail contato@sapienteai.com com o assunto 'Política de Privacidade'."),
+      content: createPrivacyContactBlockPT(
+        "Se for nosso cliente ou parceiro comercial e precisar de detalhes técnicos como subcontratantes, medidas de segurança ou cláusulas contratuais, pode solicitar o nosso 'Anexo de Tratamento de Dados' através do botão abaixo.",
+      ),
     },
   ],
 };

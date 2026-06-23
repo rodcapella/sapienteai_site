@@ -71,9 +71,9 @@ export const iaGenerativaPolicyEN = {
       title: "6. Response to AI-Specific Security Incidents",
       content: [
         "In addition to classic security incidents, Sapiente.AI actively monitors:",
-        "Prompt injection attacks - attempts to manipulate model behavior through malicious inputs;",
-        "Extraction attacks - attempts to obtain training data or confidential information from model responses;",
-        "Inadvertent data leakage - when the model reproduces sensitive information from previous interactions.",
+        "Prompt injection attacks: attempts to manipulate model behavior through malicious inputs;",
+        "Extraction attacks: attempts to obtain training data or confidential information from model responses;",
+        "Inadvertent data leakage: when the model reproduces sensitive information from previous interactions.",
         "Any team member who notices anomalous responses or suspects any vulnerability in our systems must report the situation immediately to internal management. As a protective measure, the company may temporarily suspend access to AI tools while the situation is evaluated."
       ]
     },

@@ -114,6 +114,7 @@ export function FinalCTA({
 
   const computedBackgroundSrc = backgroundSrc || getFallbackBackground();
   const usesDefaultFinalCtaBackground = /\/bg_finalCTA\.(webp|png)$/.test(computedBackgroundSrc);
+  const usesMobileGlassPanel = !isHomeVariant && !usesEditorialLightLayout && usesDefaultFinalCtaBackground;
 
   const buttonElement = (
     <PremiumButton
@@ -230,7 +231,8 @@ export function FinalCTA({
                 : !isCentered
                   ? "max-w-[760px] items-start text-left"
                   : "max-w-3xl mx-auto items-center text-center",
-              usesEditorialLightLayout && "rounded-2xl bg-white/70 p-5 shadow-[0_18px_46px_color-mix(in_srgb,var(--brand-night)_9%,transparent)] backdrop-blur-[2px] sm:p-6 md:bg-white/62 md:p-7"
+              usesEditorialLightLayout && "rounded-2xl bg-white/70 p-5 shadow-[0_18px_46px_color-mix(in_srgb,var(--brand-night)_9%,transparent)] backdrop-blur-[2px] sm:p-6 md:bg-white/62 md:p-7",
+              usesMobileGlassPanel && "rounded-2xl border border-white/45 bg-white/78 p-4 shadow-[0_18px_40px_color-mix(in_srgb,var(--brand-night)_10%,transparent)] backdrop-blur-[5px] sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-0"
             )}
           >
             <Reveal className={isCentered ? "mx-auto" : "w-full"}>

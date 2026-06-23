@@ -1,6 +1,6 @@
 // /content/en/privacy.ts
 import { createElement as h } from "react";
-import { Gavel, Hourglass, Info, Mail, Share2, ShieldCheck, Target, UserCog, UserPlus } from "@/lib/icons";
+import { FileText, Gavel, Hourglass, Mail, Share2, ShieldCheck, Target, UserCog, UserPlus } from "@/lib/icons";
 
 const privacyMailtoEN = "mailto:contato@sapienteai.com?subject=Privacy%20Policy";
 
@@ -35,12 +35,15 @@ export const privacyEN = {
     {
       id: "intro",
       icon: ShieldCheck,
+      navLabel: "Who we are",
       title: "1. Who we are and what we do",
-      content: "Sapiente.AI is an Artificial Intelligence consulting company based in Aveiro, Portugal. This policy explains how we handle your personal data when you visit our website or contact us.",
+      content:
+        "Sapiente.AI is an Artificial Intelligence consulting company based in Aveiro, Portugal. This policy explains how we handle your personal data when you visit our website or contact us.",
     },
     {
       id: "data",
       icon: UserPlus,
+      navLabel: "Data collected",
       title: "2. What data we collect",
       content: [
         "Name and work email (when you fill out the contact form or sign up for the newsletter).",
@@ -54,6 +57,7 @@ export const privacyEN = {
     {
       id: "purpose",
       icon: Target,
+      navLabel: "Usage",
       title: "3. How we use your data",
       content: [
         "To answer your questions and send you quotes.",
@@ -64,18 +68,23 @@ export const privacyEN = {
     {
       id: "legal",
       icon: Gavel,
+      navLabel: "Legal basis",
       title: "4. Legal basis for processing",
-      content: "We process your data based on your consent (e.g., newsletter) or our legitimate interest in responding to business inquiries. We never sell or share your data with third parties for marketing purposes.",
+      content:
+        "We process your data based on your consent (e.g., newsletter) or our legitimate interest in responding to business inquiries. We never sell or share your data with third parties for marketing purposes.",
     },
     {
       id: "sharing",
       icon: Share2,
+      navLabel: "Sharing",
       title: "5. Sharing with third parties",
-      content: "We only use essential tools to run our website and manage contacts (e.g., email server, newsletter platform). All our providers comply with the GDPR and your data remains within the European Union.",
+      content:
+        "We only use essential tools to run our website and manage contacts (e.g., email server, newsletter platform). All our providers comply with the GDPR and your data remains within the European Union.",
     },
     {
       id: "rights",
       icon: UserCog,
+      navLabel: "Rights",
       title: "6. Your rights",
       content: h(
         "p",
@@ -95,20 +104,28 @@ export const privacyEN = {
     {
       id: "retention",
       icon: Hourglass,
+      navLabel: "Retention",
       title: "7. How long we keep your data",
-      content: "We keep your data as long as we have an active business relationship or as needed to comply with legal obligations. After that, it is deleted or anonymized.",
+      content:
+        "We keep your data as long as we have an active business relationship or as needed to comply with legal obligations. After that, it is deleted or anonymized.",
     },
     {
       id: "contact",
       icon: Mail,
+      navLabel: "Contact",
       title: "8. Contact for privacy questions",
-      content: createPrivacyContactBlockEN("Any questions about our Privacy Policy or want to exercise your rights? Write to contato@sapienteai.com with the subject 'Privacy Policy'. We will reply as soon as possible."),
+      content: createPrivacyContactBlockEN(
+        "Any questions about our Privacy Policy or want to exercise your rights? Use the button below to contact us and we will reply as soon as possible.",
+      ),
     },
     {
       id: "gdpr-details",
-      icon: Info,
+      icon: FileText,
+      navLabel: "GDPR addendum",
       title: "9. Additional Information for Clients (GDPR)",
-      content: createPrivacyContactBlockEN("If you are a client or business partner and require technical details such as subcontractors, security measures, or contractual clauses, please request our 'Data Processing Addendum' by emailing contato@sapienteai.com with the subject 'Privacy Policy'."),
+      content: createPrivacyContactBlockEN(
+        "If you are a client or business partner and require technical details such as subcontractors, security measures, or contractual clauses, you can request our 'Data Processing Addendum' using the button below.",
+      ),
     },
   ],
 };

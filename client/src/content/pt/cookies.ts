@@ -35,7 +35,8 @@ export const cookiesPT = {
   cta: {
     title:       "Tem dúvidas sobre",
     highlight:   "privacidade ou cookies?",
-    description: "A nossa equipa está disponível para esclarecer qualquer questão sobre o tratamento dos seus dados ou preferências de cookies.",
+    description: "A nossa equipa está disponível para esclarecer qualquer questão sobre o",
+    description_highlight: "tratamento dos seus dados ou preferências de cookies.",
     button:      "Falar com a equipa",
   },
 
@@ -76,8 +77,8 @@ export const cookiesPT = {
       description: "Na primeira visita ao nosso website, será apresentado um banner a solicitar as suas preferências de cookies. Pode aceitar todos os cookies, rejeitar os opcionais ou personalizar as suas escolhas.",
       bullets: [
         "Aceitar todos os cookies (inclui analytics e marketing).",
-        "Rejeitar opcionais — apenas os cookies essenciais ficam ativos.",
-        "Personalizar — escolha categoria a categoria o que permite.",
+        "Rejeitar opcionais: apenas os cookies essenciais ficam ativos.",
+        "Personalizar: escolha categoria a categoria o que permite.",
         "Alterar as suas preferências a qualquer momento através do rodapé.",
       ],
       resetLabel: "Rever preferências de cookies",

@@ -1,4 +1,4 @@
-import { CheckCircle2, Cpu, Lock, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
+import { CheckCircle2, Gavel, Lock, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
 
 export const trustContentPT = {
   label: "Confiança & Segurança",
@@ -60,7 +60,7 @@ export const trustContentPT = {
     },
     {
       title: "Governança",
-      icon: Cpu,
+      icon: Gavel,
       content: [
         "Rastreabilidade de operações",
         "Auditorias internas periódicas",
