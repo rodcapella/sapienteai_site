@@ -6,7 +6,7 @@ import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { CheckCircle, CheckCircle2, Cpu, History, Lock, Mail, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
+import { Check, CheckCircle2, Cpu, History, Lock, Mail, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
 type LegalContentSection = {
@@ -244,7 +244,9 @@ export default function LegalDocumentPage({
                               <ul>
                                 {section.content.map((item, index) => (
                                   <li key={index}>
-                                    <CheckCircle className="legal-check" />
+                                    <span className="legal-check">
+                                      <Check className="h-3 w-3" />
+                                    </span>
                                     <span>{item}</span>
                                   </li>
                                 ))}

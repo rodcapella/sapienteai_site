@@ -62,11 +62,11 @@ export function FinalCTA({
   const isAboutVariant = variant === "about";
   const isServicesVariant = variant === "services";
   const usesEditorialLightLayout = isAboutVariant || isServicesVariant;
-  const editorialImagePosition = isAboutVariant
-    ? "object-right md:object-[12%_center]"
+  const editorialImageClass = isAboutVariant
+    ? "object-contain object-left md:object-cover md:object-[12%_center]"
     : isServicesVariant
-      ? "object-[88%_center] md:object-[12%_center]"
-      : "object-right md:object-[12%_center]";
+      ? "object-contain object-right md:object-cover md:object-[12%_center]"
+      : "object-contain object-right md:object-cover md:object-[12%_center]";
   const editorialMobileOverlay = isServicesVariant
     ? "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_92%,transparent)_38%,color-mix(in_srgb,white_40%,transparent)_62%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]"
     : "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_46%,color-mix(in_srgb,white_60%,transparent)_70%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]";
@@ -119,7 +119,10 @@ export function FinalCTA({
   const buttonElement = (
     <PremiumButton
       onClick={href ? undefined : () => setIsContactOpen(true)}
-      className="opacity-50 hover:opacity-100 sm:opacity-100 !bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white"
+      className={cn(
+        "opacity-50 hover:opacity-100 sm:opacity-100 !bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white [&>span]:!text-white",
+        isHomeVariant && "!px-5 !py-2.5 !text-[10px] sm:!px-11 sm:!py-5 sm:!text-[12px] [&>span]:!text-[10px] sm:[&>span]:!text-[12px]"
+      )}
       size="lg"
     >
       {button}
@@ -137,7 +140,7 @@ export function FinalCTA({
             className="absolute inset-0 h-full w-full object-cover object-left md:object-center"
           />
 
-          <div className="relative z-10 flex flex-col items-center justify-center gap-4 px-6 py-8 text-center md:absolute md:inset-0 md:py-0">
+          <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 px-6 py-6 text-center md:gap-4 md:py-0">
             <Reveal>
               <h2
                 className="font-black leading-[1.08]"
@@ -196,9 +199,9 @@ export function FinalCTA({
             src={computedBackgroundSrc}
             alt=""
             className={cn(
-              "block h-full w-full object-cover",
+              "block h-full w-full",
               usesEditorialLightLayout
-                ? editorialImagePosition
+                ? editorialImageClass
                 : usesDefaultFinalCtaBackground
                   ? "object-right"
                   : "object-left md:object-center"

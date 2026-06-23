@@ -510,11 +510,23 @@
 }
 
 .legal-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   margin-top: 2px;
-  color: var(--color-success);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand-primary) 12%, white);
+  border: 1px solid color-mix(in srgb, var(--brand-primary) 22%, transparent);
+  color: var(--brand-primary);
+  box-shadow: 0 6px 14px color-mix(in srgb, var(--brand-primary) 10%, transparent);
+}
+
+.legal-check svg {
+  width: 11px;
+  height: 11px;
 }
 
 /* ── DARK MODE ──────────────────────────────────────────────────────────────*/

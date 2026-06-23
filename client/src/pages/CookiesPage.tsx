@@ -81,7 +81,6 @@ function CookieDetail({
 }) {
   return (
     <div className="cookie-detail">
-      <p className="cookie-section-eyebrow mb-3">{data.eyebrow}</p>
       <p className="mb-8 max-w-2xl">{data.description}</p>
 
       {data.table && (
@@ -140,7 +139,9 @@ function CookieDetail({
         <ul>
           {data.bullets.map((bullet, index) => (
             <li key={index}>
-              <Check className="legal-check" />
+              <span className="legal-check">
+                <Check className="h-3 w-3" />
+              </span>
               <span>{bullet}</span>
             </li>
           ))}
@@ -184,6 +185,7 @@ export default function CookiesPage() {
       title: content.cta.title,
       title_highlight: content.cta.highlight,
       description: content.cta.description,
+      description_highlight: content.cta.description_highlight,
       button: content.cta.button,
     },
     sections: sections.map((section) => {

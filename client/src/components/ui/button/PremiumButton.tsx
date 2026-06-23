@@ -60,9 +60,9 @@ export function PremiumButton({
   };
 
   const sizeClasses = {
-    sm: "px-5 py-2.5 text-[11px] sm:px-6 sm:py-3 sm:text-[12px]",
-    md: "px-6 py-3 text-[11px] sm:px-8 sm:py-4 sm:text-[12px]",
-    lg: "px-8 py-4 text-[11px] sm:px-11 sm:py-5 sm:text-[12px]",
+    sm: "px-4 py-2 text-[10px] sm:px-6 sm:py-3 sm:text-[12px]",
+    md: "px-5 py-2.5 text-[10px] sm:px-8 sm:py-4 sm:text-[12px]",
+    lg: "px-6 py-3 text-[10px] sm:px-11 sm:py-5 sm:text-[12px]",
   };
 
   return (
@@ -89,7 +89,7 @@ export function PremiumButton({
 
       <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in srgb,white 18%,transparent),transparent_55%)] opacity-18" />
 
-      <span className="relative z-10 flex items-center justify-center gap-2 text-[11px] text-inherit sm:gap-3 sm:text-[12px]">{children}</span>
+      <span className="relative z-10 flex items-center justify-center gap-1.5 text-[10px] text-inherit sm:gap-3 sm:text-[12px]">{children}</span>
     </motion.button>
   );
 }

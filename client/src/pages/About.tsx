@@ -132,6 +132,7 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
   const mobileImages = content.mobileImages && content.mobileImages.length > 0
     ? content.mobileImages
     : [content.image, content.image, content.image];
+  const usesMobileSplitImages = mobileImages.length > 1;
 
   return (
     <div className="content-atmosphere overflow-hidden bg-white">
@@ -211,8 +212,17 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
         {mobileImages.map((image, index) => (
           <div
             key={`${image}-${index}`}
-            className="min-h-[100svh] w-full bg-contain bg-top bg-no-repeat"
-            style={{ backgroundImage: `url(${image})` }}
+            className={[
+              "w-full bg-no-repeat",
+              usesMobileSplitImages
+                ? "min-h-[88svh] bg-cover bg-center"
+                : "min-h-[82svh] bg-cover bg-center",
+            ].join(" ")}
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundPosition: "center center",
+              backgroundSize: usesMobileSplitImages ? "cover" : "112% auto",
+            }}
             aria-hidden="true"
           />
         ))}

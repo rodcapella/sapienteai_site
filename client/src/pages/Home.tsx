@@ -102,6 +102,44 @@ export default function Home() {
   const { lang } = useTranslation();
   const isPT = lang === "pt";
   const content = isPT ? homePT : homeEN;
+  const heroTitle = isPT ? (
+    <>
+      <span className="sm:hidden">
+        Inteligência que
+        <br />
+        impulsiona.
+      </span>
+      <span className="hidden sm:inline">{content.hero.title}</span>
+    </>
+  ) : (
+    <>
+      <span className="sm:hidden">
+        Intelligence that
+        <br />
+        drives growth.
+      </span>
+      <span className="hidden sm:inline">{content.hero.title}</span>
+    </>
+  );
+  const heroHighlight = isPT ? (
+    <>
+      <span className="sm:hidden">
+        Resultados que
+        <br />
+        transformam.
+      </span>
+      <span className="hidden sm:inline">{content.hero.highlight}</span>
+    </>
+  ) : (
+    <>
+      <span className="sm:hidden">
+        Results that
+        <br />
+        scale.
+      </span>
+      <span className="hidden sm:inline">{content.hero.highlight}</span>
+    </>
+  );
 
   useSEOHead({
     title: isPT
@@ -172,7 +210,7 @@ export default function Home() {
 
   return (
     <div className="home-page flex flex-col bg-[var(--section-ice)]">
-      <InternalHero label={content.hero.label} title={content.hero.title} highlight={content.hero.highlight} subtitle={content.hero.subtitle}>
+      <InternalHero label={content.hero.label} title={heroTitle} highlight={heroHighlight} subtitle={content.hero.subtitle}>
         <div className="flex w-full flex-col gap-2.5 sm:flex-row sm:items-center sm:gap-6">
           <PremiumButton
             onClick={() => setIsContactOpen(true)}
