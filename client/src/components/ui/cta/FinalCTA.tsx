@@ -72,7 +72,7 @@ export function FinalCTA({
     : "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_46%,color-mix(in_srgb,white_60%,transparent)_70%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]";
 
   const isCentered = align ? align === "center" : isHomeVariant;
-  const isRightAligned = false;
+  const isRightAligned = isAboutVariant && !isCentered;
 
   const titleFontSize = isHomeVariant || isAboutVariant || isServicesVariant
     ? "clamp(22px, 4.5vw, 44px)"
@@ -223,14 +223,16 @@ export function FinalCTA({
             "relative z-10 mx-auto w-full",
             isCentered
               ? "max-w-3xl px-6 sm:px-10 text-center"
-              : "max-w-7xl px-6 sm:px-8 text-left"
+              : isRightAligned
+                ? "max-w-7xl px-6 sm:px-8 text-left md:text-right"
+                : "max-w-7xl px-6 sm:px-8 text-left"
           )}
         >
           <div
             className={cn(
               "w-full flex flex-col",
               isRightAligned
-                ? "max-w-[760px] items-end text-right ml-auto"
+                ? "max-w-[760px] items-start text-left md:ml-auto md:items-end md:text-right"
                 : !isCentered
                   ? "max-w-[760px] items-start text-left"
                   : "max-w-3xl mx-auto items-center text-center",
