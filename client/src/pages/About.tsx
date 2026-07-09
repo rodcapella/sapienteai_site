@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -276,12 +276,14 @@ export default function About() {
 
   useSEOHead(
     {
-      title: `${aboutLabel} - Sapiente.AI`,
+      title: lang === "en"
+        ? "About Sapiente.AI | Applied AI, strategy and execution"
+        : "Sobre a Sapiente.AI | IA aplicada, estratégia e execução",
       description: content.seoDescription,
       url: `https://www.sapienteai.com/${lang}/about`,
       type: "website",
     },
-    [lang, content, aboutLabel],
+    [lang, content],
   );
 
   // Inject Person schema for founders — E-E-A-T + GEO entity recognition

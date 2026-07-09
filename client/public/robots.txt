@@ -1,14 +1,11 @@
-# SAPIENTE.AI — robots.txt
-# Optimized for SEO, AEO (Answer Engine Optimization) and GEO
+# SAPIENTE.AI robots.txt
 
-# ── Regras gerais ──────────────────────────────────────────────────────────────
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /private
 Disallow: /.env
 
-# ── Motores de pesquisa principais ─────────────────────────────────────────────
 User-agent: Googlebot
 Allow: /
 
@@ -22,7 +19,6 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# ── Crawlers de IA / LLMs (AEO) ────────────────────────────────────────────────
 User-agent: GPTBot
 Allow: /
 
@@ -44,5 +40,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# ── Sitemap ────────────────────────────────────────────────────────────────────
 Sitemap: https://www.sapienteai.com/sitemap.xml

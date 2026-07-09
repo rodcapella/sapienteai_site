@@ -1,8 +1,6 @@
-import { lazy, useEffect } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { Redirect, Route, useLocation } from "wouter";
 
-import CookieBanner from "@/components/CookieBanner";
-import CookieFloatingButton from "@/components/CookieFloatingButton";
 import MainLayout from "@/components/layout/MainLayout";
 import { ThemeTransition } from "@/components/ThemeTransition";
 import { useTheme } from "@/hooks/useTheme";
@@ -29,6 +27,8 @@ const QuizAI             = lazy(() => import("@/pages/QuizAI"));
 const Sitemap            = lazy(() => w(import("@/pages/Sitemap")));
 const VisibilityValidator= lazy(() => import("@/pages/VisibilityValidator"));
 const NotFound           = lazy(() => import("@/pages/NotFound"));
+const CookieBanner       = lazy(() => import("@/components/CookieBanner"));
+const CookieFloatingButton = lazy(() => import("@/components/CookieFloatingButton"));
 
 // ─── Route preloading ─────────────────────────────────────────────────────────
 // Idle  → only the 4 core pages (almost always visited).
@@ -50,6 +50,7 @@ function preloadCoreRoutes() {
 export default function App() {
   const [location, setLocation] = useLocation();
   const { isTransitioning } = useTheme();
+  const [shouldRenderCookieUi, setShouldRenderCookieUi] = useState(false);
 
   // Language redirect on first load
   useEffect(() => {
@@ -87,6 +88,16 @@ export default function App() {
     return () => window.clearTimeout(id);
   }, []);
 
+  useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      const id = requestIdleCallback(() => setShouldRenderCookieUi(true), { timeout: 2500 });
+      return () => cancelIdleCallback(id);
+    }
+
+    const id = window.setTimeout(() => setShouldRenderCookieUi(true), 1200);
+    return () => window.clearTimeout(id);
+  }, []);
+
   return (
     <>
       <ThemeTransition trigger={isTransitioning} />
@@ -116,8 +127,12 @@ export default function App() {
         <Route path="/:lang/404">{(params) => <NotFound lang={params.lang} />}</Route>
       </MainLayout>
 
-      <CookieFloatingButton />
-      <CookieBanner />
+      {shouldRenderCookieUi && (
+        <Suspense fallback={null}>
+          <CookieFloatingButton />
+          <CookieBanner />
+        </Suspense>
+      )}
     </>
   );
 }

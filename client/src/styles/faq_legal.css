@@ -8,11 +8,7 @@
 .legal-page {
   background: white;
   color: var(--brand-night);
-  margin-bottom: -1px;
-}
-
-.faq-page {
-  margin-bottom: -1px;
+  margin-bottom: 0;
 }
 
 /* ── HERO (usado pelo FAQ) ──────────────────────────────────────────────────*/
@@ -580,14 +576,14 @@
 .legal-page-final-cta {
   position: relative;
   overflow: hidden;
-  margin-bottom: -1px;
+  margin-bottom: 0;
   background: var(--brand-night);
 }
 
 .faq-page-final-cta {
   position: relative;
   overflow: hidden;
-  margin-bottom: -1px;
+  margin-bottom: 0;
   background: var(--brand-night);
 }
 
@@ -755,12 +751,12 @@
   }
 
   .legal-page-final-cta {
-    margin-bottom: -8px;
+    margin-bottom: 0;
     padding-bottom: 0;
   }
 
   .faq-page-final-cta {
-    margin-bottom: -8px;
+    margin-bottom: 0;
     padding-bottom: 0;
   }
 
@@ -769,7 +765,7 @@
     padding-top: 1.5rem;
     padding-bottom: 1rem;
     align-items: flex-start;
-    margin-bottom: -8px;
+    margin-bottom: 0;
   }
 
   .faq-page-final-cta .final-cta {
@@ -777,44 +773,24 @@
     padding-top: 1.5rem;
     padding-bottom: 1rem;
     align-items: flex-start;
-    margin-bottom: -8px;
-  }
-
-  .legal-page + footer {
-    margin-top: -8px;
-  }
-
-  .faq-page + footer {
-    margin-top: -8px;
+    margin-bottom: 0;
   }
 }
 
 
-/* FAQ CTA to footer join fix */
-.faq-page-final-cta {
-  margin-bottom: -8px;
-  padding-bottom: 0;
+/* FAQ/Legal CTA to footer join fix */
+.faq-page,
+.legal-page {
+  min-height: 100%;
 }
 
-.faq-page-final-cta .final-cta {
-  margin-bottom: -8px;
-}
-
-.faq-page + footer {
-  margin-top: -8px;
-}
-
-
-/* Legal CTA to footer join fix */
+.faq-page-final-cta,
 .legal-page-final-cta {
-  margin-bottom: -8px;
+  display: block;
   padding-bottom: 0;
 }
 
+.faq-page-final-cta .final-cta,
 .legal-page-final-cta .final-cta {
-  margin-bottom: -8px;
-}
-
-.legal-page + footer {
-  margin-top: -8px;
+  margin-bottom: 0;
 }

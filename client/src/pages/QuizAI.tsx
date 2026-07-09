@@ -31,11 +31,11 @@ export default function QuizAI() {
 
   useSEOHead({
     title: lang === "en"
-      ? "AI Readiness Quiz — Discover your business's AI potential · Sapiente.AI"
-      : "Quiz IA — Descubra o potencial de Inteligência Artificial do seu negócio · Sapiente.AI",
+      ? "AI Quiz for Business | Discover your AI potential"
+      : "Quiz IA para Empresas | Descubra o potencial do seu negócio",
     description: lang === "en"
-      ? "Answer 10 quick questions and get a personalised report on where AI and automation can reduce costs, increase sales and save time in your business."
-      : "Responda a 10 perguntas rápidas e receba um relatório personalizado sobre onde a IA e automação podem reduzir custos, aumentar vendas e poupar tempo no seu negócio.",
+      ? "Answer 10 quick questions and receive a practical read on where AI and automation can save time, reduce costs and create growth in your business."
+      : "Responda a 10 perguntas rápidas e receba uma leitura prática sobre onde a IA e a automação podem poupar tempo, reduzir custos e gerar crescimento no seu negócio.",
     url: `https://www.sapienteai.com/${lang}/${lang === "en" ? "quiz-ai" : "quiz-ia"}`,
   }, [lang]);
 

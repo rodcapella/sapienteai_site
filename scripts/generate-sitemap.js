@@ -1,4 +1,4 @@
-﻿import fs from "fs";
+import fs from "fs";
 import path from "path";
 
 const BASE_URL = "https://www.sapienteai.com";
@@ -11,9 +11,7 @@ const pages = [
   { path: "/about",                  priority: "0.9" },
   { path: "/services",               priority: "0.9" },
   { path: "/faq",                    priority: "0.9" },
-  { path: "/blog",                   priority: "0.8" },
-  { path: "/seo-geo-aeo-validator",  priority: "0.6" },
-  { path: "/sitemap",                priority: "0.5" },
+  { path: "/blog",                   priority: "0.8" },  { path: "/sitemap",                priority: "0.5" },
   { path: "/cookies",                priority: "0.4" },
   { path: "/terms",                  priority: "0.4" },
   { path: "/privacy",                priority: "0.4" },

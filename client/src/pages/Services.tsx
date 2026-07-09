@@ -128,8 +128,12 @@ export default function Services() {
   };
 
   useSEOHead({
-    title: `${content.hero.label} — Sapiente.AI`,
-    description: content.hero.subtitle,
+    title: lang === "en"
+      ? "AI Services, Automation, Websites and Digital Marketing"
+      : "Serviços de IA, Automação, Websites e Marketing Digital",
+    description: lang === "en"
+      ? "Explore Sapiente.AI services for automation, applied AI, conversion-focused websites, data analytics and digital marketing built for business growth."
+      : "Conheça os serviços da Sapiente.AI em automação, IA aplicada, websites orientados à conversão, análise de dados e marketing digital para crescimento do negócio.",
     url: `https://www.sapienteai.com/${lang}/services`,
     type: "website",
   }, [content, lang]);

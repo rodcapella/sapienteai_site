@@ -1,7 +1,6 @@
-﻿import { useEffect, useRef, useState } from "react";
+﻿import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 
-import ContactModal from "@/components/ContactModal";
 import { preloadTurnstile } from "@/components/TurnstileWidget";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
@@ -10,6 +9,8 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { Menu, X } from "@/lib/icons";
 import { getNavLinks } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
+
+const ContactModal = lazy(() => import("@/components/ContactModal"));
 
 interface HeaderProps {
   onContactClick?: () => void;
@@ -242,7 +243,10 @@ export default function Header({ onContactClick }: HeaderProps) {
         </div>
       </header>
 
-      {!onContactClick && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
+      <Suspense fallback={null}>{!onContactClick && isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}</Suspense>
     </>
   );
 }
+
+
+

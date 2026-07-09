@@ -1,10 +1,8 @@
-﻿import { useState } from "react";
-import { motion } from "framer-motion";
+﻿import { Suspense, lazy, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { ArrowRight } from "@/lib/icons";
-import ContactModal from "@/components/ContactModal";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
@@ -14,6 +12,8 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 
 import { homePT } from "@/content/pt/home";
 import { homeEN } from "@/content/en/home";
+
+const ContactModal = lazy(() => import("@/components/ContactModal"));
 
 const HOME_BANNER_BASE_PATH = "/media/banners";
 const HOME_BANNERS = [
@@ -28,7 +28,7 @@ type BannerTextContent = {
   title: string;
   description: string;
   items?: { title: string; description?: string }[];
-  /** posição do card: esquerda ou direita da imagem */
+  /** posiÃ§Ã£o do card: esquerda ou direita da imagem */
   align?: "left" | "right";
 };
 
@@ -76,7 +76,7 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
         />
       </Reveal>
 
-      {/* Transcrição indexável/acessível do conteúdo que está na imagem do banner */}
+      {/* TranscriÃ§Ã£o indexÃ¡vel/acessÃ­vel do conteÃºdo que estÃ¡ na imagem do banner */}
       {textContent && (
         <div data-speakable className="sr-only">
           {textContent.eyebrow && <p>{textContent.eyebrow}</p>}
@@ -105,7 +105,7 @@ export default function Home() {
   const heroTitle = isPT ? (
     <>
       <span className="sm:hidden">
-        Inteligência que
+        InteligÃªncia que
         <br />
         impulsiona.
       </span>
@@ -143,30 +143,30 @@ export default function Home() {
 
   useSEOHead({
     title: isPT
-      ? "Sapiente.AI - Inteligência Artificial Aplicada | Transformação Digital"
-      : "Sapiente.AI - Applied Artificial Intelligence | Digital Transformation",
+      ? "IA Aplicada para Empresas | AutomaÃ§Ã£o, ConversÃ£o e Crescimento"
+      : "Applied AI for Business | Automation, Conversion and Growth",
     description: isPT
-      ? "Soluções de IA aplicada para transformação digital. Machine Learning, IA Generativa, Automação Inteligente."
-      : "Applied AI solutions for digital transformation. Machine Learning, Generative AI, Intelligent Automation.",
+      ? "A Sapiente.AI ajuda empresas a crescer com automaÃ§Ã£o, websites orientados Ã  conversÃ£o, chatbots, anÃ¡lise de dados e marketing digital com inteligÃªncia artificial."
+      : "Sapiente.AI helps businesses grow with automation, conversion-focused websites, chatbots, data analytics and AI-powered digital marketing.",
     url: `https://www.sapienteai.com/${lang}`,
   }, [lang]);
 
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const bannerTextContent = [
-    // Banner 1 — O que nos diferencia
+    // Banner 1 â€” O que nos diferencia
     {
       eyebrow: isPT ? "Por que a Sapiente.AI" : "Why Sapiente.AI",
       title: isPT ? "O que nos diferencia" : "What makes us different",
       description: isPT
-        ? "Combinamos estratégia, IA, automação e validação humana para criar soluções digitais orientadas a resultados reais."
+        ? "Combinamos estratÃ©gia, IA, automaÃ§Ã£o e validaÃ§Ã£o humana para criar soluÃ§Ãµes digitais orientadas a resultados reais."
         : "We combine strategy, AI, automation, and human validation to build digital solutions focused on measurable business outcomes.",
       items: isPT
         ? [
-            { title: "Parceiro único do início ao fim" },
-            { title: "Transparência e métricas reais" },
-            { title: "Tecnologia aplicada ao seu negócio específico" },
-            { title: "Resultados mensuráveis, não relatórios bonitos" },
+            { title: "Parceiro Ãºnico do inÃ­cio ao fim" },
+            { title: "TransparÃªncia e mÃ©tricas reais" },
+            { title: "Tecnologia aplicada ao seu negÃ³cio especÃ­fico" },
+            { title: "Resultados mensurÃ¡veis, nÃ£o relatÃ³rios bonitos" },
           ]
         : [
             { title: "Single partner from start to finish" },
@@ -176,37 +176,63 @@ export default function Home() {
           ],
       align: "left" as const,
     },
-    // Banner 2 — Core Services
+    // Banner 2 â€” Core Services
     {
       eyebrow: content.coreServices?.label,
-      title: content.coreServices?.title ?? (isPT ? "Onde a IA impacta o seu negócio" : "Where AI impacts your business"),
+      title: content.coreServices?.title ?? (isPT ? "Onde a IA impacta o seu negÃ³cio" : "Where AI impacts your business"),
       description: isPT
-        ? "Aquisição de clientes, eficiência operacional, websites de conversão, análise de dados, chatbots 24/7, redes sociais e conteúdo visual."
+        ? "AquisiÃ§Ã£o de clientes, eficiÃªncia operacional, websites de conversÃ£o, anÃ¡lise de dados, chatbots 24/7, redes sociais e conteÃºdo visual."
         : "Customer acquisition, operational efficiency, conversion websites, data analytics, 24/7 chatbots, social media and visual content.",
       items: content.coreServices?.items?.slice(0, 5),
       align: "right" as const,
     },
-    // Banner 3 — Marketing AI
+    // Banner 3 â€” Marketing AI
     {
       eyebrow: content.marketingAI?.label,
-      title: content.marketingAI?.title ?? (isPT ? "Marketing digital com inteligência artificial" : "Digital marketing with artificial intelligence"),
+      title: content.marketingAI?.title ?? (isPT ? "Marketing digital com inteligÃªncia artificial" : "Digital marketing with artificial intelligence"),
       description: content.marketingAI?.subtitle ?? (isPT
-        ? "Branding estratégico, conteúdo com IA e reporting de performance para crescimento sustentável."
+        ? "Branding estratÃ©gico, conteÃºdo com IA e reporting de performance para crescimento sustentÃ¡vel."
         : "Strategic branding, AI-powered content and performance reporting for sustainable growth."),
       items: content.marketingAI?.cards?.map((c: { title: string }) => ({ title: c.title })),
       align: "left" as const,
     },
-    // Banner 4 — Brand Personality
+    // Banner 4 â€” Brand Personality
     {
       eyebrow: content.brandPersonality?.label,
-      title: content.brandPersonality?.title ?? (isPT ? "Uma parceira tecnológica para o crescimento" : "A technology partner for growth"),
+      title: content.brandPersonality?.title ?? (isPT ? "Uma parceira tecnolÃ³gica para o crescimento" : "A technology partner for growth"),
       description: isPT
-        ? "Trabalhamos como extensão da sua equipa — inteligentes, visionários, confiáveis e focados em resultados."
-        : "We work as an extension of your team — intelligent, visionary, reliable, and results-focused.",
+        ? "Trabalhamos como extensÃ£o da sua equipa â€” inteligentes, visionÃ¡rios, confiÃ¡veis e focados em resultados."
+        : "We work as an extension of your team â€” intelligent, visionary, reliable, and results-focused.",
       items: content.brandPersonality?.traits?.map((t: { title: string }) => ({ title: t.title })),
       align: "right" as const,
     },
   ];
+
+  const homeSeoSummary = isPT
+    ? {
+        eyebrow: "IA aplicada para empresas",
+        title: "AutomaÃ§Ã£o, aquisiÃ§Ã£o de clientes e crescimento com foco comercial",
+        description:
+          "A Sapiente.AI combina estratÃ©gia, inteligÃªncia artificial e execuÃ§Ã£o para transformar tecnologia em captaÃ§Ã£o de leads, eficiÃªncia operacional e resultados mensurÃ¡veis.",
+        points: [
+          "AutomaÃ§Ã£o de processos, atendimento e operaÃ§Ãµes internas",
+          "Websites orientados Ã  conversÃ£o e geraÃ§Ã£o de oportunidades",
+          "Marketing digital com IA, conteÃºdos e campanhas de performance",
+          "Dashboards, anÃ¡lise de dados e apoio Ã  decisÃ£o comercial",
+        ],
+      }
+    : {
+        eyebrow: "Applied AI for business",
+        title: "Automation, lead generation and growth with commercial focus",
+        description:
+          "Sapiente.AI combines strategy, artificial intelligence and execution to turn technology into lead generation, operational efficiency and measurable business results.",
+        points: [
+          "Process, support and internal operations automation",
+          "Conversion-focused websites built to generate opportunities",
+          "AI-powered digital marketing, content and performance campaigns",
+          "Dashboards, data analytics and decision support for growth",
+        ],
+      };
 
   return (
     <div className="home-page flex flex-col bg-[var(--section-ice)]">
@@ -221,20 +247,48 @@ export default function Home() {
             {content.hero.ctaPrimary}
           </PremiumButton>
 
-          <motion.button
+          <button
             type="button"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--brand-cyan-bright)]/55 bg-transparent px-4 py-2.5 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-500 hover:border-[var(--brand-cyan-bright)]/80 hover:bg-[color-mix(in_srgb,var(--brand-primary)_10%,transparent)] hover:text-[var(--brand-cyan-bright)] hover:shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright)_16%,transparent)] sm:w-auto sm:justify-start sm:rounded-full sm:px-5 sm:py-3 sm:border-white/35 sm:bg-white/8 sm:text-[var(--brand-offwhite)] sm:hover:border-[var(--brand-cyan-bright)]/70 sm:hover:bg-white/14 sm:hover:text-[var(--brand-offwhite)] sm:hover:shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright)_20%,transparent)]"
+            className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl border border-[var(--brand-cyan-bright)]/55 bg-transparent px-4 py-2.5 text-sm font-black uppercase tracking-[0.18em] text-[var(--brand-cyan)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-[var(--brand-cyan-bright)]/80 hover:bg-[color-mix(in_srgb,var(--brand-primary)_10%,transparent)] hover:text-[var(--brand-cyan-bright)] hover:shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright)_16%,transparent)] active:scale-[0.98] sm:w-auto sm:justify-start sm:rounded-full sm:px-5 sm:py-3 sm:border-white/35 sm:bg-white/8 sm:text-[var(--brand-offwhite)] sm:hover:border-[var(--brand-cyan-bright)]/70 sm:hover:bg-white/14 sm:hover:text-[var(--brand-offwhite)] sm:hover:shadow-[0_0_28px_color-mix(in_srgb,var(--brand-cyan-bright)_20%,transparent)]"
             onClick={() => document.getElementById("core-services")?.scrollIntoView({ behavior: "smooth" })}
           >
             <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[var(--brand-cyan-bright)]/55 bg-[var(--brand-cyan-bright)]/10 text-[var(--brand-cyan-bright)] transition-transform duration-500 group-hover:translate-x-1 sm:h-8 sm:w-8 sm:bg-[var(--brand-cyan-bright)]/12">
               <ArrowRight className="h-4 w-4" />
             </span>
             {content.hero.ctaSecondary}
-          </motion.button>
+          </button>
         </div>
       </InternalHero>
+
+      <section className="content-atmosphere bg-white px-6 py-10 md:py-14">
+        <div className="mx-auto max-w-6xl rounded-[30px] border border-[var(--brand-mid)]/30 bg-[color-mix(in_srgb,var(--section-ice)_88%,white)] p-6 shadow-[0_20px_48px_color-mix(in_srgb,var(--brand-deep)_8%,transparent)] md:p-8 lg:p-10">
+          <p className="font-[var(--font-body)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+            {homeSeoSummary.eyebrow}
+          </p>
+          <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+            <div data-speakable>
+              <h2 className="font-[var(--font-heading)] text-[clamp(1.9rem,3.2vw,3rem)] font-black leading-[1.05] text-[var(--brand-night)]">
+                {homeSeoSummary.title}
+              </h2>
+              <p className="mt-4 max-w-2xl font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)]/74 md:text-[16px]">
+                {homeSeoSummary.description}
+              </p>
+            </div>
+
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              {homeSeoSummary.points.map((point) => (
+                <li
+                  key={point}
+                  className="flex items-start gap-3 rounded-2xl border border-[var(--brand-mid)]/25 bg-white/88 px-4 py-4 font-[var(--font-body)] text-[14px] font-semibold leading-relaxed text-[var(--brand-night)] shadow-[0_12px_28px_color-mix(in_srgb,var(--brand-deep)_6%,transparent)]"
+                >
+                  <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[var(--brand-primary)]" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {HOME_BANNERS.map((banner, index) => (
         <HomeBannerSection
@@ -256,7 +310,9 @@ export default function Home() {
         button={content.finalCta.button} 
         variant="home" />
 
-      {isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}
+      <Suspense fallback={null}>{isContactOpen && <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />}</Suspense>
     </div>
   );
 }
+
+

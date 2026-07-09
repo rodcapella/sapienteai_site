@@ -1,9 +1,10 @@
-﻿import ContactModal from "@/components/ContactModal";
-import { PremiumButton } from "@/components/ui/button/PremiumButton";
+﻿import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Link } from "wouter";
 import { cn } from "@/lib/utils";
+
+const ContactModal = lazy(() => import("@/components/ContactModal"));
 
 type FinalCTAProps = {
   title: string;
@@ -177,9 +178,9 @@ export function FinalCTA({
           </div>
         </section>
 
-        {!href && isContactOpen && (
+        <Suspense fallback={null}>{!href && isContactOpen && (
           <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
-        )}
+        )}</Suspense>
       </>
     );
   }
@@ -277,9 +278,10 @@ export function FinalCTA({
         </div>
       </section>
 
-      {!href && isContactOpen && (
+      <Suspense fallback={null}>{!href && isContactOpen && (
         <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
-      )}
+      )}</Suspense>
     </>
   );
 }
+

@@ -214,6 +214,7 @@ export default function VisibilityValidator() {
     description: text.hero.subtitle,
     url: `https://www.sapienteai.com/${lang}/seo-geo-aeo-validator`,
     type: "website",
+    noindex: true,
   }, [lang, text]);
 
   const enabledTypes = (Object.keys(selectedTypes) as ValidationType[]).filter((type) => selectedTypes[type]);

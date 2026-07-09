@@ -1,13 +1,14 @@
-﻿import { useState, type SVGProps } from "react";
+﻿import { Suspense, lazy, useState, type SVGProps } from "react";
 import { Link } from "wouter";
 
-import NewsletterModal from "@/components/NewsletterModal";
 import { preloadTurnstile } from "@/components/TurnstileWidget";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { ArrowUp, ChevronDown, Facebook, Instagram, Linkedin, Mail, MapPin, Music2, Phone } from "@/lib/icons";
 import { getNavLinks, getLegalLinks } from "@/lib/navConfig";
 import { cn } from "@/lib/utils";
+
+const NewsletterModal = lazy(() => import("@/components/NewsletterModal"));
 
 const footerTitleClass =
   "font-serif text-[12px] font-bold uppercase tracking-[0.16em] bg-[linear-gradient(90deg,var(--brand-cyan-bright),var(--brand-blue-deep))] bg-clip-text text-transparent";
@@ -392,7 +393,10 @@ export default function Footer() {
         <ArrowUp className="h-2.5 w-2.5" />
       </button>
 
-      <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
+      <Suspense fallback={null}>{isNewsletterOpen && <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />}</Suspense>
     </footer>
   );
 }
+
+
+

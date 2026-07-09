@@ -27,11 +27,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.sapienteai.com/pt/seo-geo-aeo-validator</loc>
-    <lastmod>2026-07-09</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://www.sapienteai.com/pt/sitemap</loc>
     <lastmod>2026-07-09</lastmod>
     <priority>0.5</priority>
@@ -90,11 +85,6 @@
     <loc>https://www.sapienteai.com/en/blog</loc>
     <lastmod>2026-07-09</lastmod>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.sapienteai.com/en/seo-geo-aeo-validator</loc>
-    <lastmod>2026-07-09</lastmod>
-    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.sapienteai.com/en/sitemap</loc>

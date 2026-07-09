@@ -186,7 +186,7 @@ export default function LegalDocumentPage({
   };
 
   return (
-    <div className="legal-page flex flex-col">
+    <div className="legal-page flex min-h-full flex-1 flex-col">
       <InternalHero
         label={heroLabel}
         title={heroTitle}
@@ -269,7 +269,7 @@ export default function LegalDocumentPage({
         </div>
       </section>
 
-      <div className="legal-page-final-cta bg-[var(--brand-night)]">
+      <div className="legal-page-final-cta mt-auto bg-[var(--brand-night)]">
         {showQuizCTA && <QuizCTA />}
         <FinalCTA
           title={cta.title}

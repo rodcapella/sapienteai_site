@@ -73,14 +73,17 @@ export default function FAQ() {
   const active = categories.find((category) => category.id === activeCategory) || categories[0];
 
   useSEOHead({
-    title: `${content.title} - Sapiente.AI`,
-    description: content.subtitle,
+    title: lang === "en"
+      ? "FAQ | AI, automation and digital services answers"
+      : "FAQ | Respostas sobre IA, automação e serviços digitais",
+    description: lang === "en"
+      ? "Find answers about Sapiente.AI services, delivery model, timelines, pricing approach, automation and applied artificial intelligence."
+      : "Encontre respostas sobre os serviços da Sapiente.AI, modelo de trabalho, prazos, abordagem comercial, automação e inteligência artificial aplicada.",
     url: `https://www.sapienteai.com/${lang}/faq`,
     type: "website",
   }, [lang, content]);
 
   useEffect(() => {
-    // Schema completo (todas as perguntas) - crawlers que executam JS
     const existing = document.getElementById("faq-schema");
     if (existing) existing.remove();
 
@@ -91,20 +94,8 @@ export default function FAQ() {
     script.innerHTML = JSON.stringify(schema);
     document.head.appendChild(script);
 
-    // Schema parcial estatico (top 8) - crawlers que NAO executam JS (Bing, Perplexity, etc.)
-    const existingStatic = document.getElementById("faq-schema-static");
-    if (existingStatic) existingStatic.remove();
-
-    const staticSchema = generateFAQSchema(content.items.slice(0, 8));
-    const staticScript = document.createElement("script");
-    staticScript.id = "faq-schema-static";
-    staticScript.type = "application/ld+json";
-    staticScript.innerHTML = JSON.stringify(staticSchema);
-    document.head.insertBefore(staticScript, document.head.firstChild);
-
     return () => {
       document.getElementById("faq-schema")?.remove();
-      document.getElementById("faq-schema-static")?.remove();
     };
   }, [content]);
 
@@ -117,7 +108,7 @@ export default function FAQ() {
   }, [categories, activeCategory]);
 
   return (
-    <div className="faq-page flex flex-col">
+    <div className="faq-page flex min-h-full flex-1 flex-col">
       <InternalHero
         label={pageCopy.label}
         title={pageCopy.title}
@@ -197,7 +188,7 @@ export default function FAQ() {
         </div>
       </section>
 
-      <div className="faq-page-final-cta">
+      <div className="faq-page-final-cta mt-auto">
         <QuizCTA />
         <FinalCTA
           title={content.cta.title}

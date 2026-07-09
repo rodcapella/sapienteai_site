@@ -1,5 +1,4 @@
-import { Suspense, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+﻿import { Suspense, useEffect } from "react";
 import { useLocation } from "wouter";
 
 import Header from "@/components/Header";
@@ -26,20 +25,14 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     <div className="relative min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-foreground">
       <Header />
 
-      <main className="flex-1 w-full pt-16 md:pt-[68px]">
-        {/* Suspense boundary scoped to page content - Header/Footer stay visible during lazy loads */}
+      <main className="flex min-h-0 flex-1 w-full flex-col pt-16 md:pt-[68px]">
         <Suspense fallback={<PageFallback />}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+          <div
+            key={location}
+            className="flex min-h-full flex-1 flex-col animate-in fade-in slide-in-from-bottom-2 duration-500"
+          >
+            {children}
+          </div>
         </Suspense>
       </main>
 
