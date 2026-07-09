@@ -180,7 +180,7 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span className="mr-1 text-[10px] font-black uppercase tracking-[0.12em] text-white/60 whitespace-nowrap">
-                    {link.label.split(" ")[0]}
+                    {link.label}
                   </span>
                   {link.options.map((option) => (
                     <a
@@ -226,6 +226,40 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
             aria-hidden="true"
           />
         ))}
+
+        {content.links && content.links.length > 0 && (
+          <div className="mx-auto flex w-full max-w-xl flex-col gap-4 px-6 pb-8">
+            {content.links.map((link) => (
+              <div
+                key={`${link.label}-mobile`}
+                className="rounded-2xl border border-[var(--brand-mid)]/70 bg-white px-4 py-4 shadow-[0_12px_30px_color-mix(in_srgb,var(--brand-night)_10%,transparent)]"
+              >
+                <p
+                  className="text-center text-[13px] font-black uppercase tracking-[0.16em] text-[var(--brand-night)]"
+                  style={{ fontFamily: "var(--font-body)" }}
+                >
+                  {link.label}
+                </p>
+
+                <div className="mt-3 flex flex-wrap items-center justify-center gap-2.5">
+                  {link.options.map((option) => (
+                    <a
+                      key={`${link.label}-${option.href}`}
+                      href={option.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${link.label} - ${option.label}`}
+                      className="inline-flex min-h-10 items-center gap-2 rounded-full border border-[var(--brand-primary)]/22 bg-[color-mix(in_srgb,var(--brand-primary)_8%,white)] px-4 py-2 font-[var(--font-body)] text-[11px] font-black uppercase tracking-[0.14em] text-[var(--brand-primary)] transition hover:border-[var(--brand-primary)]/45 hover:bg-[var(--brand-primary)] hover:text-white"
+                    >
+                      {linkIcon(option.label)}
+                      <span>{option.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
@@ -346,3 +380,5 @@ export default function About() {
     </div>
   );
 }
+
+

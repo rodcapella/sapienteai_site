@@ -788,3 +788,33 @@
     margin-top: -8px;
   }
 }
+
+
+/* FAQ CTA to footer join fix */
+.faq-page-final-cta {
+  margin-bottom: -8px;
+  padding-bottom: 0;
+}
+
+.faq-page-final-cta .final-cta {
+  margin-bottom: -8px;
+}
+
+.faq-page + footer {
+  margin-top: -8px;
+}
+
+
+/* Legal CTA to footer join fix */
+.legal-page-final-cta {
+  margin-bottom: -8px;
+  padding-bottom: 0;
+}
+
+.legal-page-final-cta .final-cta {
+  margin-bottom: -8px;
+}
+
+.legal-page + footer {
+  margin-top: -8px;
+}

@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -52,6 +52,7 @@ export default function QuizAI() {
   }, 0);
   
   const startIntro = content.startIntro;
+  const introHeading = lang === "en" ? { title: "AI", highlight: "Quiz" } : { title: "Quiz", highlight: "IA" };
 
   const progress = ((current + 1) / questions.length) * 100;
   const resultPercent = Math.round((score / questions.length) * 100);
@@ -180,8 +181,8 @@ export default function QuizAI() {
             className="max-w-2xl font-black leading-[1.06]"
             style={{ fontFamily: "var(--font-heading)", fontSize: "clamp(2.2rem, 5vw, 3.6rem)", color: "var(--brand-night)" }}
           >
-            {startIntro.title}{" "}
-            <span className="quiz-text-gradient">{startIntro.highlight}</span>
+            {introHeading.title}{" "}
+            <span className="quiz-text-gradient">{introHeading.highlight}</span>
           </h2>
 
           <p
