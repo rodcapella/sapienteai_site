@@ -2,6 +2,7 @@
 
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
+import { cn } from "@/lib/utils";
 
 type InternalHeroProps = {
   title: ReactNode;
@@ -14,6 +15,7 @@ type InternalHeroProps = {
   imagePosition?: string;
   children?: ReactNode;
   compact?: boolean;
+  contentPanelClassName?: string;
 };
 
 export function InternalHero({
@@ -27,6 +29,7 @@ export function InternalHero({
   imagePosition = "center top",
   children,
   compact = false,
+  contentPanelClassName,
 }: InternalHeroProps) {
   return (
     <Section
@@ -51,7 +54,12 @@ export function InternalHero({
       </div>
 
       <div className="relative z-10 w-full max-w-6xl px-5 text-left sm:px-10 md:ml-12 lg:ml-20 xl:ml-24">
-        <div className="inline-block max-w-[min(100%,42rem)] rounded-3xl bg-[rgba(0,20,50,0.35)] px-4 py-4 backdrop-blur-[4px] sm:px-5 sm:py-5 md:max-w-none md:rounded-none md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0">
+        <div
+          className={cn(
+            "inline-block max-w-[min(100%,42rem)] rounded-3xl bg-[rgba(0,20,50,0.35)] px-4 py-4 backdrop-blur-[4px] sm:px-5 sm:py-5 md:max-w-none md:rounded-none md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-0",
+            contentPanelClassName
+          )}
+        >
           {label && (
             <Reveal>
               <div

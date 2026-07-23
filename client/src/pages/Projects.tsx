@@ -204,6 +204,7 @@ export default function Projects() {
         image="/media/bg/bg_Projetos.webp"
         imageAlt={content.hero.label}
         imagePosition="center"
+        contentPanelClassName="!bg-[rgba(0,20,50,0.16)] !backdrop-blur-[1px] md:!rounded-3xl md:!px-5 md:!py-5"
         compact
       />
 
