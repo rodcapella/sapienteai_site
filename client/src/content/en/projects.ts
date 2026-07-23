@@ -22,7 +22,11 @@ export const projectsEN = {
       statusKey: "testing",
       title: "Hoje em SJM",
       description:
+<<<<<<< HEAD
         "A cultural calendar dedicated to São João da Madeira, Aveiro, bringing the city's events, initiatives and experiences together in one place.",
+=======
+        "A cultural calendar dedicated to SÃ£o JoÃ£o da Madeira, Aveiro, bringing the city's events, initiatives and experiences together in one place.",
+>>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d
       icon: "CalendarDays",
       tone: "cyan",
     },
@@ -57,3 +61,7 @@ export const projectsEN = {
     button: "Talk to us",
   },
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d

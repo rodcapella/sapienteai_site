@@ -1,4 +1,4 @@
-﻿import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArrowRight, Calendar, Search, Tag, User } from "@/lib/icons";
 
@@ -192,3 +192,4 @@ export default function Blog() {
     </div>
   );
 }
+
