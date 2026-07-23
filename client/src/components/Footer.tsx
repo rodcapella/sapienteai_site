@@ -106,8 +106,10 @@ export default function Footer() {
   const linkListClass = "space-y-2";
   const linkClass =
     "font-serif text-[13px] text-[var(--brand-offwhite)] transition-colors duration-200 hover:text-[var(--brand-cyan)]";
-  const copyrightClass =
+  const footerMetaLinkClass =
     "font-[var(--font-body)] text-[12px] font-medium tracking-normal text-[white]/70";
+  const copyrightClass =
+    "font-[var(--font-body)] text-[10px] font-medium tracking-normal text-[white]/70";
   const copyrightStyle = {
     fontFamily: "var(--font-body)",
     fontVariantNumeric: "lining-nums proportional-nums",
@@ -276,17 +278,14 @@ export default function Footer() {
           {/* Divider */}
           <div className="mb-3 h-px bg-[var(--brand-primary)]/20" />
 
-          {/* Mapa do site */}
-          <p className="mb-3 text-center">
-            <Link href={`/${lang}/sitemap`} className={`${copyrightClass} transition-colors hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
+          {/* Bottom bar */}
+          <div className="flex items-center justify-center whitespace-nowrap py-1 text-center">
+            <Link href={`/${lang}/sitemap`} className={`${footerMetaLinkClass} transition-colors hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
               {t("footer.sitemap")}
             </Link>
-          </p>
-
-          {/* Copyright */}
-          <p className="text-center" style={copyrightStyle}>
+            <span aria-hidden="true" className="mx-5 text-[12px] text-white/45">|</span>
             <CopyrightText />
-          </p>
+          </div>
         </div>
 
         {/* ── DESKTOP LAYOUT (sm+) ─────────────────────────────────────── */}
@@ -373,10 +372,11 @@ export default function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="border-t border-[var(--brand-primary)]/15 pt-3 pb-3 flex flex-col items-center gap-1.5">
-            <Link href={`/${lang}/sitemap`} className={`${copyrightClass} transition-colors duration-200 hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
+          <div className="flex items-center justify-center whitespace-nowrap border-t border-[var(--brand-primary)]/15 pb-3 pt-3">
+            <Link href={`/${lang}/sitemap`} className={`${footerMetaLinkClass} transition-colors duration-200 hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
               {t("footer.sitemap")}
             </Link>
+            <span aria-hidden="true" className="mx-12 text-[12px] text-white/45">|</span>
             <CopyrightText />
           </div>
         </div>

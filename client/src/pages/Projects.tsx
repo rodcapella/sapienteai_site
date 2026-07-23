@@ -1,6 +1,4 @@
 import { useEffect } from "react";
-import { Link } from "wouter";
-
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
@@ -8,7 +6,7 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
-import { ArrowRight, CalendarDays, RefreshCw, Search } from "@/lib/icons";
+import { CalendarDays, RefreshCw, Search } from "@/lib/icons";
 
 const projectIcons = { CalendarDays, RefreshCw, Search };
 
@@ -23,10 +21,25 @@ const projectTone = {
     glow: "bg-[var(--brand-purple-bright)]",
     icon: "text-[#b9aaff]",
   },
-  blue: {
-    surface: "from-[var(--brand-night)] via-[#06336e] to-[var(--brand-primary)]",
-    glow: "bg-[var(--brand-primary)]",
-    icon: "text-white",
+  aqua: {
+    surface: "from-[var(--brand-deep)] via-[#087f8b] to-[var(--brand-cyan)]",
+    glow: "bg-[var(--brand-cyan-bright)]",
+    icon: "text-[var(--brand-night)]",
+  },
+} as const;
+
+const projectStatusTone = {
+  development: {
+    badge: "border-amber-300 bg-amber-50 text-amber-800",
+    dot: "bg-amber-500",
+  },
+  testing: {
+    badge: "border-blue-300 bg-blue-50 text-blue-800",
+    dot: "bg-blue-500",
+  },
+  production: {
+    badge: "border-emerald-300 bg-emerald-50 text-emerald-800",
+    dot: "bg-emerald-500",
   },
 } as const;
 
@@ -212,6 +225,8 @@ export default function Projects() {
             {content.items.map((project, index) => {
               const Icon = projectIcons[project.icon as keyof typeof projectIcons];
               const tone = projectTone[project.tone as keyof typeof projectTone];
+              const statusTone =
+                projectStatusTone[project.statusKey as keyof typeof projectStatusTone];
 
               return (
                 <Reveal key={project.id} delay={index * 90} className={index === 2 ? "md:col-span-2 md:mx-auto md:w-[calc(50%-0.875rem)]" : ""}>
@@ -229,8 +244,8 @@ export default function Projects() {
                     </div>
 
                     <div className="p-6 sm:p-8">
-                      <div className="mb-4 flex items-center gap-2 text-xs font-bold text-[var(--brand-mid)]">
-                        <span className={`h-2.5 w-2.5 rounded-full ${tone.glow} shadow-[0_0_12px_currentColor]`} />
+                      <div className={`mb-4 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-bold ${statusTone.badge}`}>
+                        <span className={`h-2.5 w-2.5 rounded-full ${statusTone.dot}`} />
                         {project.status}
                       </div>
                       <h3 className="text-[clamp(1.55rem,3vw,2rem)] font-black leading-tight text-[var(--brand-night)]">
@@ -239,12 +254,6 @@ export default function Projects() {
                       <p className="mt-4 text-[15px] font-medium leading-7 text-[var(--brand-mid)]">
                         {project.description}
                       </p>
-                      {"href" in project && project.href && (
-                        <Link href={project.href} className="mt-6 inline-flex items-center gap-2 text-sm font-black text-[var(--brand-primary)] transition-all hover:gap-3 hover:text-[var(--brand-blue-deep)]">
-                          {project.linkLabel}
-                          <ArrowRight className="h-4 w-4" />
-                        </Link>
-                      )}
                     </div>
                   </article>
                 </Reveal>

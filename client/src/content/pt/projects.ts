@@ -19,6 +19,7 @@ export const projectsPT = {
       id: "hoje-sjm",
       category: "Agenda cultural",
       status: "Fase final de testes",
+      statusKey: "testing",
       title: "Hoje em SJM",
       description:
         "Uma agenda cultural dedicada a São João da Madeira, em Aveiro, criada para reunir eventos, iniciativas e experiências da cidade num só lugar.",
@@ -29,9 +30,10 @@ export const projectsPT = {
       id: "trocas-especializadas",
       category: "Economia circular",
       status: "Em desenvolvimento",
+      statusKey: "development",
       title: "Plataforma de trocas especializadas",
       description:
-        "Uma plataforma, ainda sem nome definido, pensada para facilitar a troca de itens especializados entre pessoas com interesses e necessidades em comum.",
+        "Uma plataforma criada para facilitar a troca de itens especializados entre pessoas e comunidades com interesses em comum, promovendo o acesso, a reutilização e a economia circular.",
       icon: "RefreshCw",
       tone: "purple",
     },
@@ -39,13 +41,12 @@ export const projectsPT = {
       id: "validador-visibilidade",
       category: "Tecnologia Sapiente.AI",
       status: "Em desenvolvimento",
+      statusKey: "development",
       title: "Validador de SEO, GEO e AEO",
       description:
         "Uma ferramenta online integrada no site da Sapiente.AI para avaliar a visibilidade de páginas nos motores de pesquisa e nas respostas geradas por inteligência artificial.",
       icon: "Search",
-      tone: "blue",
-      href: "/pt/seo-geo-aeo-validator",
-      linkLabel: "Conhecer o validador",
+      tone: "aqua",
     },
   ],
   cta: {
