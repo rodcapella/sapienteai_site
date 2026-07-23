@@ -33,6 +33,8 @@ import { notFoundEN } from "@/content/en/notFound";
 
 import { sitemapPT } from "@/content/pt/sitemap";
 import { sitemapEN } from "@/content/en/sitemap";
+import { projectsPT } from "@/content/pt/projects";
+import { projectsEN } from "@/content/en/projects";
 
 const contentMap = {
   home: {
@@ -82,6 +84,10 @@ const contentMap = {
   sitemap: {
     pt: sitemapPT,
     en: sitemapEN,
+  },
+  projects: {
+    pt: projectsPT,
+    en: projectsEN,
   }
 } as const;
 

@@ -104,6 +104,7 @@ export default function Sitemap() {
         { title: l.home[0], description: l.home[1], href: makeLink(lang) },
         { title: l.about[0], description: l.about[1], href: makeLink(lang, "/about") },
         { title: l.services[0], description: l.services[1], href: makeLink(lang, "/services") },
+        { title: l.projects[0], description: l.projects[1], href: makeLink(lang, "/projects") },
       ],
     },
     {

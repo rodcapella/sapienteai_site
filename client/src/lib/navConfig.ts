@@ -17,6 +17,7 @@ export function getNavLinks(lang: string, t: (key: string) => string): NavItem[]
     { href: `/${lang}`,          label: t("nav.home") },
     { href: `/${lang}/about`,    label: t("nav.about"),    preload: () => import("@/pages/About") },
     { href: `/${lang}/services`, label: t("nav.services"), preload: () => import("@/pages/Services") },
+    { href: `/${lang}/projects`, label: t("nav.projects"), preload: () => import("@/pages/Projects") },
     { href: `/${lang}/faq`,      label: t("nav.faq"),      preload: () => import("@/pages/FAQ") },
     { href: quizHref,            label: quizLabel,         preload: () => import("@/pages/QuizAI") },
   ];

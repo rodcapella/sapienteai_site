@@ -10,6 +10,7 @@ const pages = [
   { path: "",                        priority: "1.0" },
   { path: "/about",                  priority: "0.9" },
   { path: "/services",               priority: "0.9" },
+  { path: "/projects",               priority: "0.9" },
   { path: "/faq",                    priority: "0.9" },
   { path: "/blog",                   priority: "0.8" },  { path: "/sitemap",                priority: "0.5" },
   { path: "/cookies",                priority: "0.4" },

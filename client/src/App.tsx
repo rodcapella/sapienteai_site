@@ -15,6 +15,7 @@ const w = <T,>(p: Promise<{ default: T }>) =>
 const Home               = lazy(() => w(import("@/pages/Home")));
 const About              = lazy(() => w(import("@/pages/About")));
 const Services           = lazy(() => w(import("@/pages/Services")));
+const Projects           = lazy(() => w(import("@/pages/Projects")));
 const FAQ                = lazy(() => w(import("@/pages/FAQ")));
 const Terms              = lazy(() => w(import("@/pages/Terms")));
 const Privacy            = lazy(() => w(import("@/pages/Privacy")));
@@ -109,6 +110,7 @@ export default function App() {
         <Route path="/:lang">{(params) => <Home lang={params.lang} />}</Route>
         <Route path="/:lang/about">{(params) => <About lang={params.lang} />}</Route>
         <Route path="/:lang/services">{(params) => <Services lang={params.lang} />}</Route>
+        <Route path="/:lang/projects">{(params) => <Projects lang={params.lang} />}</Route>
         <Route path="/:lang/faq">{(params) => <FAQ lang={params.lang} />}</Route>
         <Route path="/:lang/terms">{(params) => <Terms lang={params.lang} />}</Route>
         <Route path="/:lang/privacy">{(params) => <Privacy lang={params.lang} />}</Route>
