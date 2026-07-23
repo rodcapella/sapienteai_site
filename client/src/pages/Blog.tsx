@@ -1,4 +1,4 @@
-﻿import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArrowRight, Calendar, Search, Tag, User } from "@/lib/icons";
 
@@ -61,7 +61,12 @@ export default function Blog() {
   return (
     <div className="flex flex-col">
 
-      <InternalHero label={t('nav.blog')} title={t('blog.title')} subtitle={t('blog.subtitle')} compact>
+      <InternalHero
+        label={t('nav.blog')}
+        title={t('blog.title')}
+        subtitle={lang === "en" ? undefined : t('blog.subtitle')}
+        compact
+      >
         <div className="relative mx-auto max-w-xl">
           <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--brand-offwhite)]/50" />
           <input
@@ -187,3 +192,4 @@ export default function Blog() {
     </div>
   );
 }
+
