@@ -9,7 +9,7 @@ export const projectsEN = {
       "Explore the digital products we are building to bring people, businesses and technology closer together.",
   },
   intro: {
-    label: "In the making",
+    label: "In development",
     title: "Purposeful projects, from idea to launch",
     description:
       "Every project starts with a real need and evolves through research, testing and validation. Follow what is in development and what is nearly ready to launch.",
@@ -19,9 +19,10 @@ export const projectsEN = {
       id: "hoje-sjm",
       category: "Cultural calendar",
       status: "Final testing",
+      statusKey: "testing",
       title: "Hoje em SJM",
       description:
-        "A cultural calendar dedicated to São João da Madeira, Aveiro, bringing the city's events, initiatives and experiences together in one place.",
+        "A cultural calendar dedicated to SÃ£o JoÃ£o da Madeira, Aveiro, bringing the city's events, initiatives and experiences together in one place.",
       icon: "CalendarDays",
       tone: "cyan",
     },
@@ -29,9 +30,10 @@ export const projectsEN = {
       id: "specialised-exchange",
       category: "Circular economy",
       status: "In development",
+      statusKey: "development",
       title: "Specialised item exchange",
       description:
-        "A platform, still awaiting its final name, designed to make it easier for people with shared interests and needs to exchange specialised items.",
+        "A platform designed to make specialised item exchanges easier among people and communities with shared interests, promoting access, reuse and the circular economy.",
       icon: "RefreshCw",
       tone: "purple",
     },
@@ -39,13 +41,12 @@ export const projectsEN = {
       id: "visibility-validator",
       category: "Sapiente.AI technology",
       status: "In development",
+      statusKey: "development",
       title: "SEO, GEO and AEO Validator",
       description:
         "An online tool integrated into the Sapiente.AI website to assess page visibility in search engines and AI-generated answers.",
       icon: "Search",
-      tone: "blue",
-      href: "/en/seo-geo-aeo-validator",
-      linkLabel: "Explore the validator",
+      tone: "aqua",
     },
   ],
   cta: {
@@ -56,3 +57,4 @@ export const projectsEN = {
     button: "Talk to us",
   },
 };
+
