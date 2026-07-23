@@ -105,7 +105,6 @@ export default function Sitemap() {
         { title: l.about[0], description: l.about[1], href: makeLink(lang, "/about") },
         { title: l.services[0], description: l.services[1], href: makeLink(lang, "/services") },
         { title: l.projects[0], description: l.projects[1], href: makeLink(lang, "/projects") },
-<<<<<<< HEAD
       ],
     },
     {
@@ -200,99 +199,3 @@ export default function Sitemap() {
     </div>
   );
 }
-=======
-      ],
-    },
-    {
-      label: content.sections.resources,
-      title: content.sections.resourcesTitle,
-      icon: Sparkles,
-      links: [
-        { title: l.faq[0], description: l.faq[1], href: makeLink(lang, "/faq") },
-        { title: l.quiz[0], description: l.quiz[1], href: quizHref },
-        { title: l.newsletter[0], description: l.newsletter[1], onClick: () => setIsNewsletterOpen(true) },
-      ],
-    },
-    {
-      label: content.sections.legal,
-      title: content.sections.legalTitle,
-      icon: ShieldCheck,
-      links: [
-        { title: l.trust[0],   description: l.trust[1],   href: makeLink(lang, "/trust") },
-        { title: l.cookies[0], description: l.cookies[1], href: makeLink(lang, "/cookies") },
-        { title: l.policy[0],  description: l.policy[1],  href: makeLink(lang, "/generative-ai-policy") },
-        { title: l.privacy[0], description: l.privacy[1], href: makeLink(lang, "/privacy") },
-        { title: l.terms[0],   description: l.terms[1],   href: makeLink(lang, "/terms") },
-      ].sort((a, b) => a.title.localeCompare(b.title, lang === "pt" ? "pt" : "en")),
-    },
-  ];
-
-  useSEOHead({
-    title: `${content.label} - Sapiente.AI`,
-    description: content.subtitle,
-    url: `https://www.sapienteai.com/${lang}/sitemap`,
-    type: "website",
-  }, [content, lang]);
-
-  return (
-    <div className="legal-page flex flex-col">
-      <InternalHero
-        label={content.label}
-        title={content.title}
-        highlight={content.highlight}
-        subtitle={content.subtitle}
-        image="/media/bg/bg_Mapa_Site.webp"
-        imageAlt={content.imageAlt}
-        compact
-      />
-
-      <section className="legal-main">
-        <div className="legal-inner">
-
-          {/* Sidebar */}
-          <aside id="sitemap-menu" className="legal-sidebar">
-            <div className="legal-sidebar-label">{content.label}</div>
-            <div className="legal-cats">
-              {groups.map((group) => {
-                const Icon = group.icon;
-                const isActive = activeGroup === group.label;
-                return (
-                  <a
-                    key={group.label}
-                    href={`#sitemap-${group.label}`}
-                    onClick={() => setActiveGroup(group.label)}
-                    className={`legal-cat ${isActive ? "active" : ""}`}
-                  >
-                    <Icon className="h-4 w-4 shrink-0" />
-                    <span>{group.label}</span>
-                  </a>
-                );
-              })}
-            </div>
-          </aside>
-
-          {/* Cards */}
-          <div className="flex flex-col gap-7">
-            {groups.map((group, index) => (
-              <Reveal key={group.label} delay={index * 80}>
-                <div id={`sitemap-${group.label}`}>
-                  <SitemapCard group={group} />
-                  <a
-                    href="#sitemap-menu"
-                    className="md:hidden mt-3 flex items-center justify-center gap-1.5 text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)] opacity-70 hover:opacity-100 transition-opacity"
-                  >
-                    {content.backToMenu}
-                  </a>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
-    </div>
-  );
-}
->>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d
