@@ -1,4 +1,4 @@
-﻿import { PremiumButton } from "@/components/ui/button/PremiumButton";
+import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Suspense, lazy, useState } from "react";
 import { Link } from "wouter";
@@ -68,9 +68,8 @@ export function FinalCTA({
     : isServicesVariant
       ? "object-contain object-right md:object-cover md:object-[12%_center]"
       : "object-contain object-right md:object-cover md:object-[12%_center]";
-  const editorialMobileOverlay = isServicesVariant
-    ? "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_92%,transparent)_38%,color-mix(in_srgb,white_40%,transparent)_62%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]"
-    : "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_46%,color-mix(in_srgb,white_60%,transparent)_70%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]";
+  const editorialMobileOverlay =
+    "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_92%,transparent)_38%,color-mix(in_srgb,white_40%,transparent)_62%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]";
 
   const isCentered = align ? align === "center" : isHomeVariant;
   const isRightAligned = isAboutVariant && !isCentered;
@@ -195,7 +194,12 @@ export function FinalCTA({
           isCentered ? "text-center" : "text-left"
         )}
       >
-        <div className="pointer-events-none absolute inset-0">
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-x-0 top-0",
+            usesDefaultFinalCtaBackground ? "-bottom-[12%]" : "bottom-0"
+          )}
+        >
           <img
             src={computedBackgroundSrc}
             alt=""
@@ -284,4 +288,5 @@ export function FinalCTA({
     </>
   );
 }
+
 
