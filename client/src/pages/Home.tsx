@@ -1,4 +1,4 @@
-﻿import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useState } from "react";
 
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
@@ -28,7 +28,7 @@ type BannerTextContent = {
   title: string;
   description: string;
   items?: { title: string; description?: string }[];
-  /** posiÃ§Ã£o do card: esquerda ou direita da imagem */
+  /** posição do card: esquerda ou direita da imagem */
   align?: "left" | "right";
 };
 
@@ -76,7 +76,7 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
         />
       </Reveal>
 
-      {/* TranscriÃ§Ã£o indexÃ¡vel/acessÃ­vel do conteÃºdo que estÃ¡ na imagem do banner */}
+      {/* Transcrição indexável/acessível do conteúdo que está na imagem do banner */}
       {textContent && (
         <div data-speakable className="sr-only">
           {textContent.eyebrow && <p>{textContent.eyebrow}</p>}
@@ -105,7 +105,7 @@ export default function Home() {
   const heroTitle = isPT ? (
     <>
       <span className="sm:hidden">
-        InteligÃªncia que
+        Inteligência que
         <br />
         impulsiona.
       </span>
@@ -143,10 +143,10 @@ export default function Home() {
 
   useSEOHead({
     title: isPT
-      ? "IA Aplicada para Empresas | AutomaÃ§Ã£o, ConversÃ£o e Crescimento"
+      ? "IA Aplicada para Empresas | Automação, Conversão e Crescimento"
       : "Applied AI for Business | Automation, Conversion and Growth",
     description: isPT
-      ? "A Sapiente.AI ajuda empresas a crescer com automaÃ§Ã£o, websites orientados Ã  conversÃ£o, chatbots, anÃ¡lise de dados e marketing digital com inteligÃªncia artificial."
+      ? "A Sapiente.AI ajuda empresas a crescer com automação, websites orientados à conversão, chatbots, análise de dados e marketing digital com inteligência artificial."
       : "Sapiente.AI helps businesses grow with automation, conversion-focused websites, chatbots, data analytics and AI-powered digital marketing.",
     url: `https://www.sapienteai.com/${lang}`,
   }, [lang]);
@@ -154,19 +154,19 @@ export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   const bannerTextContent = [
-    // Banner 1 â€” O que nos diferencia
+    // Banner 1 — O que nos diferencia
     {
       eyebrow: isPT ? "Por que a Sapiente.AI" : "Why Sapiente.AI",
       title: isPT ? "O que nos diferencia" : "What makes us different",
       description: isPT
-        ? "Combinamos estratÃ©gia, IA, automaÃ§Ã£o e validaÃ§Ã£o humana para criar soluÃ§Ãµes digitais orientadas a resultados reais."
+        ? "Combinamos estratégia, IA, automação e validação humana para criar soluções digitais orientadas a resultados reais."
         : "We combine strategy, AI, automation, and human validation to build digital solutions focused on measurable business outcomes.",
       items: isPT
         ? [
-            { title: "Parceiro Ãºnico do inÃ­cio ao fim" },
-            { title: "TransparÃªncia e mÃ©tricas reais" },
-            { title: "Tecnologia aplicada ao seu negÃ³cio especÃ­fico" },
-            { title: "Resultados mensurÃ¡veis, nÃ£o relatÃ³rios bonitos" },
+            { title: "Parceiro único do início ao fim" },
+            { title: "Transparência e métricas reais" },
+            { title: "Tecnologia aplicada ao seu negócio específico" },
+            { title: "Resultados mensuráveis, não relatórios bonitos" },
           ]
         : [
             { title: "Single partner from start to finish" },
@@ -176,33 +176,33 @@ export default function Home() {
           ],
       align: "left" as const,
     },
-    // Banner 2 â€” Core Services
+    // Banner 2 — Core Services
     {
       eyebrow: content.coreServices?.label,
-      title: content.coreServices?.title ?? (isPT ? "Onde a IA impacta o seu negÃ³cio" : "Where AI impacts your business"),
+      title: content.coreServices?.title ?? (isPT ? "Onde a IA impacta o seu negócio" : "Where AI impacts your business"),
       description: isPT
-        ? "AquisiÃ§Ã£o de clientes, eficiÃªncia operacional, websites de conversÃ£o, anÃ¡lise de dados, chatbots 24/7, redes sociais e conteÃºdo visual."
+        ? "Aquisição de clientes, eficiência operacional, websites de conversão, análise de dados, chatbots 24/7, redes sociais e conteúdo visual."
         : "Customer acquisition, operational efficiency, conversion websites, data analytics, 24/7 chatbots, social media and visual content.",
       items: content.coreServices?.items?.slice(0, 5),
       align: "right" as const,
     },
-    // Banner 3 â€” Marketing AI
+    // Banner 3 — Marketing AI
     {
       eyebrow: content.marketingAI?.label,
-      title: content.marketingAI?.title ?? (isPT ? "Marketing digital com inteligÃªncia artificial" : "Digital marketing with artificial intelligence"),
+      title: content.marketingAI?.title ?? (isPT ? "Marketing digital com inteligência artificial" : "Digital marketing with artificial intelligence"),
       description: content.marketingAI?.subtitle ?? (isPT
-        ? "Branding estratÃ©gico, conteÃºdo com IA e reporting de performance para crescimento sustentÃ¡vel."
+        ? "Branding estratégico, conteúdo com IA e reporting de performance para crescimento sustentável."
         : "Strategic branding, AI-powered content and performance reporting for sustainable growth."),
       items: content.marketingAI?.cards?.map((c: { title: string }) => ({ title: c.title })),
       align: "left" as const,
     },
-    // Banner 4 â€” Brand Personality
+    // Banner 4 — Brand Personality
     {
       eyebrow: content.brandPersonality?.label,
-      title: content.brandPersonality?.title ?? (isPT ? "Uma parceira tecnolÃ³gica para o crescimento" : "A technology partner for growth"),
+      title: content.brandPersonality?.title ?? (isPT ? "Uma parceira tecnológica para o crescimento" : "A technology partner for growth"),
       description: isPT
-        ? "Trabalhamos como extensÃ£o da sua equipa â€” inteligentes, visionÃ¡rios, confiÃ¡veis e focados em resultados."
-        : "We work as an extension of your team â€” intelligent, visionary, reliable, and results-focused.",
+        ? "Trabalhamos como extensão da sua equipa — inteligentes, visionários, confiáveis e focados em resultados."
+        : "We work as an extension of your team — intelligent, visionary, reliable, and results-focused.",
       items: content.brandPersonality?.traits?.map((t: { title: string }) => ({ title: t.title })),
       align: "right" as const,
     },
@@ -211,14 +211,14 @@ export default function Home() {
   const homeSeoSummary = isPT
     ? {
         eyebrow: "IA aplicada para empresas",
-        title: "AutomaÃ§Ã£o, aquisiÃ§Ã£o de clientes e crescimento com foco comercial",
+        title: "Automação, aquisição de clientes e crescimento com foco comercial",
         description:
-          "A Sapiente.AI combina estratÃ©gia, inteligÃªncia artificial e execuÃ§Ã£o para transformar tecnologia em captaÃ§Ã£o de leads, eficiÃªncia operacional e resultados mensurÃ¡veis.",
+          "A Sapiente.AI combina estratégia, inteligência artificial e execução para transformar tecnologia em captação de leads, eficiência operacional e resultados mensuráveis.",
         points: [
-          "AutomaÃ§Ã£o de processos, atendimento e operaÃ§Ãµes internas",
-          "Websites orientados Ã  conversÃ£o e geraÃ§Ã£o de oportunidades",
-          "Marketing digital com IA, conteÃºdos e campanhas de performance",
-          "Dashboards, anÃ¡lise de dados e apoio Ã  decisÃ£o comercial",
+          "Automação de processos, atendimento e operações internas",
+          "Websites orientados à conversão e geração de oportunidades",
+          "Marketing digital com IA, conteúdos e campanhas de performance",
+          "Dashboards, análise de dados e apoio à decisão comercial",
         ],
       }
     : {
