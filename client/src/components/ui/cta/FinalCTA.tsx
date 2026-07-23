@@ -68,8 +68,9 @@ export function FinalCTA({
     : isServicesVariant
       ? "object-contain object-right md:object-cover md:object-[12%_center]"
       : "object-contain object-right md:object-cover md:object-[12%_center]";
-  const editorialMobileOverlay =
-    "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_92%,transparent)_38%,color-mix(in_srgb,white_40%,transparent)_62%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]";
+  const editorialOverlayClass = isAboutVariant
+    ? "bg-[linear-gradient(90deg,transparent_0%,color-mix(in_srgb,white_40%,transparent)_38%,color-mix(in_srgb,white_92%,transparent)_62%,white_100%)] md:bg-[linear-gradient(90deg,transparent_0%,color-mix(in_srgb,white_58%,transparent)_46%,color-mix(in_srgb,white_94%,transparent)_72%,white_100%)]"
+    : "bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_92%,transparent)_38%,color-mix(in_srgb,white_40%,transparent)_62%,transparent_100%)] md:bg-[linear-gradient(90deg,white_0%,color-mix(in_srgb,white_94%,transparent)_28%,color-mix(in_srgb,white_58%,transparent)_54%,transparent_100%)]";
 
   const isCentered = align ? align === "center" : isHomeVariant;
   const isRightAligned = isAboutVariant && !isCentered;
@@ -218,7 +219,7 @@ export function FinalCTA({
             aria-hidden="true"
             className={cn(
               "pointer-events-none absolute inset-0",
-              editorialMobileOverlay
+              editorialOverlayClass
             )}
           />
         )}

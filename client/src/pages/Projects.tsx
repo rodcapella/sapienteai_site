@@ -53,13 +53,8 @@ export default function Projects() {
     url: `https://www.sapienteai.com/${lang}/projects`,
     type: "website",
     keywords: lang === "en"
-<<<<<<< HEAD
       ? "Sapiente.AI projects, Hoje em SJM, São João da Madeira cultural calendar, Aveiro cultural events, specialised item exchange, SEO GEO AEO validator, digital projects Portugal"
       : "projetos Sapiente.AI, Hoje em SJM, agenda cultural São João da Madeira, eventos culturais Aveiro, plataforma de trocas especializadas, validador SEO GEO AEO, projetos digitais Portugal",
-=======
-      ? "Sapiente.AI projects, Hoje em SJM, SÃ£o JoÃ£o da Madeira cultural calendar, Aveiro cultural events, specialised item exchange, SEO GEO AEO validator, digital projects Portugal"
-      : "projetos Sapiente.AI, Hoje em SJM, agenda cultural SÃ£o JoÃ£o da Madeira, eventos culturais Aveiro, plataforma de trocas especializadas, validador SEO GEO AEO, projetos digitais Portugal",
->>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d
   }, [content, lang]);
 
   useEffect(() => {
@@ -93,11 +88,7 @@ export default function Projects() {
             {
               "@type": "ListItem",
               position: 1,
-<<<<<<< HEAD
               name: isEN ? "Home" : "Início",
-=======
-              name: isEN ? "Home" : "InÃ­cio",
->>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d
               item: `https://www.sapienteai.com/${lang}`,
             },
             {
@@ -129,17 +120,10 @@ export default function Projects() {
                 author: { "@id": "https://www.sapienteai.com/#organization" },
                 about: {
                   "@type": "Place",
-<<<<<<< HEAD
                   name: "São João da Madeira, Aveiro, Portugal",
                   address: {
                     "@type": "PostalAddress",
                     addressLocality: "São João da Madeira",
-=======
-                  name: "SÃ£o JoÃ£o da Madeira, Aveiro, Portugal",
-                  address: {
-                    "@type": "PostalAddress",
-                    addressLocality: "SÃ£o JoÃ£o da Madeira",
->>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d
                     addressRegion: "Aveiro",
                     addressCountry: "PT",
                   },
@@ -151,17 +135,10 @@ export default function Projects() {
                 },
                 areaServed: {
                   "@type": "City",
-<<<<<<< HEAD
                   name: "São João da Madeira",
                   address: {
                     "@type": "PostalAddress",
                     addressLocality: "São João da Madeira",
-=======
-                  name: "SÃ£o JoÃ£o da Madeira",
-                  address: {
-                    "@type": "PostalAddress",
-                    addressLocality: "SÃ£o JoÃ£o da Madeira",
->>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d
                     addressRegion: "Aveiro",
                     addressCountry: "PT",
                   },
@@ -224,7 +201,7 @@ export default function Projects() {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
-        image="/media/bg/bg_standard.webp"
+        image="/media/bg/bg_Projetos.webp"
         imageAlt={content.hero.label}
         imagePosition="center"
         compact
@@ -297,7 +274,3 @@ export default function Projects() {
     </div>
   );
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> f089c89cd4ff1e32851f3ba221a5d8aa9f19850d
