@@ -15,6 +15,7 @@ type ContactPayload = {
 
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
+const TURNSTILE_ACTION = "contact_form";
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 const MAX_LENGTHS = {
@@ -74,8 +75,13 @@ function isRateLimited(ip: string) {
 
 async function verifyTurnstile(token: string, ip?: string) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) {
-    console.error("TURNSTILE_SECRET_KEY is not configured.");
+  const expectedHostnames = (process.env.TURNSTILE_EXPECTED_HOSTNAMES || "")
+    .split(",")
+    .map((hostname) => hostname.trim().toLowerCase())
+    .filter(Boolean);
+
+  if (!secret || expectedHostnames.length === 0) {
+    console.error("Turnstile server environment is incomplete.");
     return false;
   }
   if (!token || token === "verification_unavailable") return false;
@@ -90,8 +96,16 @@ async function verifyTurnstile(token: string, ip?: string) {
       body,
       signal: AbortSignal.timeout(5000),
     });
-    const result = await response.json() as { success?: boolean };
-    return result.success === true;
+    const result = await response.json() as {
+      success?: boolean;
+      hostname?: string;
+      action?: string;
+    };
+    const hostname = result.hostname?.toLowerCase() || "";
+
+    return result.success === true
+      && result.action === TURNSTILE_ACTION
+      && expectedHostnames.includes(hostname);
   } catch (error) {
     console.error("Turnstile verification failed.", error);
     return false;

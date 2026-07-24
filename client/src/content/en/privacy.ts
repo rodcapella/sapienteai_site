@@ -29,7 +29,7 @@ export const privacyEN = {
   title: "Privacy Policy",
   subtitle: "Your privacy matters to us",
   highlight: "Simple, clear, and GDPR compliant.",
-  lastUpdated: "Last updated: June 2026",
+  lastUpdated: "Last updated: July 2026",
 
   sections: [
     {
@@ -52,6 +52,7 @@ export const privacyEN = {
         "For cookie consent, we only store the user's decision (accepted, rejected or custom), category preferences (essential, analytics and marketing) and the cookie banner version shown.",
         "Messages you send us by email, website forms or other contact channels.",
         "Anonymous technical data (anonymized IP address, browser type) - used only for internal statistics.",
+        "To protect the contact form from abuse, Cloudflare Turnstile may process technical data required for verification, including the IP address, browser characteristics and the security challenge result.",
       ],
     },
     {
@@ -82,10 +83,18 @@ export const privacyEN = {
         "We only use essential tools to run our website and manage contacts (e.g., email server, newsletter platform). All our providers comply with the GDPR and your data remains within the European Union.",
     },
     {
+      id: "security",
+      icon: ShieldCheck,
+      navLabel: "Security",
+      title: "6. Contact form security",
+      content:
+        "The contact form uses Cloudflare Turnstile to distinguish legitimate interactions from automated submissions. The verification token is checked on our server, including the expected hostname and action, and is not used for advertising. We also use an invisible anti-spam field and a temporary submission limit per IP address.",
+    },
+    {
       id: "rights",
       icon: UserCog,
       navLabel: "Rights",
-      title: "6. Your rights",
+      title: "7. Your rights",
       content: h(
         "p",
         null,
@@ -105,7 +114,7 @@ export const privacyEN = {
       id: "retention",
       icon: Hourglass,
       navLabel: "Retention",
-      title: "7. How long we keep your data",
+      title: "8. How long we keep your data",
       content:
         "We keep your data as long as we have an active business relationship or as needed to comply with legal obligations. After that, it is deleted or anonymized.",
     },
@@ -113,7 +122,7 @@ export const privacyEN = {
       id: "contact",
       icon: Mail,
       navLabel: "Contact",
-      title: "8. Contact for privacy questions",
+      title: "9. Contact for privacy questions",
       content: createPrivacyContactBlockEN(
         "Any questions about our Privacy Policy or want to exercise your rights? Use the button below to contact us and we will reply as soon as possible.",
       ),
@@ -122,7 +131,7 @@ export const privacyEN = {
       id: "gdpr-details",
       icon: FileText,
       navLabel: "GDPR addendum",
-      title: "9. Additional Information for Clients (GDPR)",
+      title: "10. Additional Information for Clients (GDPR)",
       content: createPrivacyContactBlockEN(
         "If you are a client or business partner and require technical details such as subcontractors, security measures, or contractual clauses, you can request our 'Data Processing Addendum' using the button below.",
       ),
