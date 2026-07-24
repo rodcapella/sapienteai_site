@@ -125,6 +125,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
             theme,
             appearance: "interaction-only",
             execution: "render",
+            action: "contact_form",
             callback: (token: string) => callbacksRef.current.onVerify(token),
             "error-callback": () => {
               setFailedToLoad(true);
