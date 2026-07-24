@@ -123,7 +123,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
           const widgetId = window.turnstile.render(containerRef.current, {
             sitekey: TURNSTILE_SITE_KEY,
             theme,
-            appearance: "always",
+            appearance: "interaction-only",
             execution: "render",
             callback: (token: string) => callbacksRef.current.onVerify(token),
             "error-callback": () => {
@@ -168,7 +168,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
   }, [theme]);
 
   return (
-    <div className="my-4 flex min-h-[74px] flex-col items-center justify-center gap-2 rounded-xl border border-[var(--brand-cyan-bright)]/[0.26] bg-[var(--brand-darkest)]/[0.36] px-3 py-3">
+    <div className="my-2 flex flex-col items-center justify-center gap-2">
       <div ref={containerRef} className={failedToLoad ? "hidden" : ""} />
       {isLoading && !failedToLoad && (
         <p className="text-center text-xs font-medium text-[var(--brand-offwhite)]/[0.68]">
