@@ -66,6 +66,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileAvailable, setTurnstileAvailable] = useState(true);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [website, setWebsite] = useState("");
 
   useEffect(() => {
     if (!isOpen) return;
@@ -77,6 +78,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
     setTurnstileToken("");
     setTurnstileAvailable(true);
     setHasSubmitted(false);
+    setWebsite("");
   }, [isOpen, initialForm]);
 
   const validateField = (field: keyof FormData, value: string): string => {
@@ -148,6 +150,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
     setTurnstileToken("");
     setTurnstileAvailable(true);
     setHasSubmitted(false);
+    setWebsite("");
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -167,21 +170,23 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
     setFeedbackMessage(text.submit.loading);
 
     try {
-      const payload = new FormData();
-      payload.append("name", formData.name.trim());
-      payload.append("email", formData.email.trim());
-      payload.append("phone", formData.phone.trim() || text.fallback);
-      payload.append("company", formData.company.trim() || text.fallback);
-      payload.append("source", formData.source.trim() || text.fallback);
-      payload.append("topic", formData.topic.trim());
-      payload.append("message", formData.message.trim());
-      payload.append("turnstile_token", turnstileToken || "verification_unavailable");
-      payload.append("turnstile_status", turnstileToken ? "verified" : "unavailable");
-      payload.append("_subject", `${text.subject} - ${formData.topic.trim()} - ${formData.name.trim()}`);
-      const response = await fetch("https://formsubmit.co/contato@sapienteai.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: payload,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          company: formData.company.trim(),
+          source: formData.source.trim(),
+          topic: formData.topic.trim(),
+          message: formData.message.trim(),
+          turnstileToken: turnstileToken || "verification_unavailable",
+          website,
+        }),
       });
 
       if (!response.ok) throw new Error("submit_failed");
@@ -230,6 +235,19 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       </DialogHeader>
 
       <form onSubmit={handleSubmit} className="relative z-10 space-y-4" noValidate>
+        <div className="pointer-events-none absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+          <label htmlFor="contact-website">Website</label>
+          <input
+            id="contact-website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(event) => setWebsite(event.target.value)}
+          />
+        </div>
+
         <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <label htmlFor="contact-name" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.name)}</label>
