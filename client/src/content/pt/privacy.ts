@@ -29,7 +29,7 @@ export const privacyPT = {
   title: "Política de Privacidade",
   subtitle: "A sua privacidade é importante para nós",
   highlight: "Simples, clara e em conformidade com o RGPD.",
-  lastUpdated: "Última atualização: Junho de 2026",
+  lastUpdated: "Última atualização: Julho de 2026",
 
   sections: [
     {
@@ -52,6 +52,7 @@ export const privacyPT = {
         "Preferências técnicas guardadas no navegador, como o tema escolhido para navegação, o idioma associado à URL e as escolhas do banner de cookies.",
         "No consentimento de cookies guardamos apenas a decisão do utilizador (accepted, rejected ou custom), as preferências por categoria (essential, analytics e marketing) e a versão do banner de cookies apresentada.",
         "Dados técnicos anónimos (endereço IP anonimizado, tipo de browser) - apenas para estatísticas internas.",
+        "Para proteger o formulário de contacto contra abuso, a Cloudflare Turnstile pode tratar dados técnicos necessários à verificação, incluindo endereço IP, características do navegador e o resultado do desafio de segurança.",
       ],
     },
     {
@@ -82,10 +83,18 @@ export const privacyPT = {
         "Usamos apenas ferramentas essenciais para o funcionamento do site e gestão de contactos (ex: servidor de e-mail, plataforma de newsletter). Todos os nossos fornecedores respeitam o RGPD e os dados permanecem na União Europeia.",
     },
     {
+      id: "security",
+      icon: ShieldCheck,
+      navLabel: "Segurança",
+      title: "6. Segurança do formulário de contacto",
+      content:
+        "O formulário de contacto utiliza a Cloudflare Turnstile para distinguir interações legítimas de envios automatizados. O token de verificação é validado no nosso servidor, incluindo o hostname e a ação esperados, e não é usado para publicidade. Aplicamos ainda um campo antispam invisível e um limite temporário de tentativas por endereço IP.",
+    },
+    {
       id: "rights",
       icon: UserCog,
       navLabel: "Direitos",
-      title: "6. Os seus direitos",
+      title: "7. Os seus direitos",
       content: h(
         "p",
         null,
@@ -105,7 +114,7 @@ export const privacyPT = {
       id: "retention",
       icon: Hourglass,
       navLabel: "Retenção",
-      title: "7. Quanto tempo guardamos os dados",
+      title: "8. Quanto tempo guardamos os dados",
       content:
         "Guardamos os seus dados enquanto mantivermos uma relação comercial ou enquanto for necessário para responder a obrigações legais. Depois disso, são eliminados ou anonimizados.",
     },
@@ -113,7 +122,7 @@ export const privacyPT = {
       id: "contact",
       icon: Mail,
       navLabel: "Contacto",
-      title: "8. Contacto para questões de privacidade",
+      title: "9. Contacto para questões de privacidade",
       content: createPrivacyContactBlockPT(
         "Tem dúvidas sobre a nossa Política de Privacidade ou quer exercer os seus direitos? Fale connosco através do botão abaixo e responderemos o mais rápido possível.",
       ),
@@ -122,7 +131,7 @@ export const privacyPT = {
       id: "gdpr-details",
       icon: FileText,
       navLabel: "Anexo RGPD",
-      title: "9. Informação adicional para clientes (RGPD)",
+      title: "10. Informação adicional para clientes (RGPD)",
       content: createPrivacyContactBlockPT(
         "Se for nosso cliente ou parceiro comercial e precisar de detalhes técnicos como subcontratantes, medidas de segurança ou cláusulas contratuais, pode solicitar o nosso 'Anexo de Tratamento de Dados' através do botão abaixo.",
       ),
