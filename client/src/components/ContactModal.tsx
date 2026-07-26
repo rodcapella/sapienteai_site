@@ -53,6 +53,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
   const lang: ModalLang = rawLang === "en" ? "en" : "pt";
   const modals = getContent("modals", lang);
   const text = modals.contact;
+  const alertText = getContent("modals", "en").contact;
   const sourceOptions = modals.sourceOptions;
   const topicOptions = text.topicOptions;
 
@@ -83,30 +84,30 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
   const validateField = (field: keyof FormData, value: string): string => {
     if (requiredFields.includes(field) && !value.trim()) {
-      if (field === "name") return text.errors.name;
-      if (field === "email") return text.errors.email;
-      if (field === "topic") return text.errors.topic;
-      if (field === "message") return text.errors.message;
+      if (field === "name") return alertText.errors.name;
+      if (field === "email") return alertText.errors.email;
+      if (field === "topic") return alertText.errors.topic;
+      if (field === "message") return alertText.errors.message;
     }
     if (field === "email" && value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      return text.errors.invalidEmail;
+      return alertText.errors.invalidEmail;
     }
     return "";
   };
 
   const getRequiredFieldLabel = (field: keyof FormData) => {
     const labels: Partial<Record<keyof FormData, string>> = {
-      name: text.labels.name,
-      email: text.labels.email,
-      topic: text.labels.topic,
-      message: text.labels.message,
+      name: alertText.labels.name,
+      email: alertText.labels.email,
+      topic: alertText.labels.topic,
+      message: alertText.labels.message,
     };
     return (labels[field] || String(field)).replace(" *", "");
   };
 
   const buildMissingFieldsMessage = (fields: (keyof FormData)[]) => {
     const fieldList = fields.map(getRequiredFieldLabel).join(", ");
-    return `${text.errors.missingPrefix} ${fieldList}.`;
+    return `${alertText.errors.missingPrefix} ${fieldList}.`;
   };
 
   const validateForm = (): boolean => {
@@ -162,12 +163,12 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
     if (!turnstileToken && turnstileAvailable) {
       setSubmitState("error");
-      setFeedbackMessage(text.errors.turnstile);
+      setFeedbackMessage(alertText.errors.turnstile);
       return;
     }
 
     setSubmitState("loading");
-    setFeedbackMessage(text.submit.loading);
+    setFeedbackMessage(alertText.submit.loading);
 
     try {
       const response = await fetch("/api/contact", {
@@ -192,7 +193,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       if (!response.ok) throw new Error("submit_failed");
 
       setSubmitState("success");
-      setFeedbackMessage(text.submit.success);
+      setFeedbackMessage(alertText.submit.success);
       setFormData(initialForm);
       setErrors({});
       setTouched({});
@@ -201,7 +202,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       setHasSubmitted(false);
     } catch {
       setSubmitState("error");
-      setFeedbackMessage(text.errors.submit);
+      setFeedbackMessage(alertText.errors.submit);
     }
   };
 
@@ -327,8 +328,8 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           theme="dark"
           showLoadError
           onVerify={(token) => { setTurnstileAvailable(true); setTurnstileToken(token); if (submitState === "error") { setSubmitState("idle"); setFeedbackMessage(""); } }}
-          onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileExpired); } }}
-          onError={() => { setTurnstileAvailable(false); setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }}
+          onExpire={() => { setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(alertText.errors.turnstileExpired); } }}
+          onError={() => { setTurnstileAvailable(false); setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(alertText.errors.turnstileError); } }}
         />
 
         <AnimatedStatus submitState={submitState} feedbackMessage={feedbackMessage} />

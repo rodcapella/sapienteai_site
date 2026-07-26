@@ -31,21 +31,6 @@ const NotFound           = lazy(() => import("@/pages/NotFound"));
 const CookieBanner       = lazy(() => import("@/components/CookieBanner"));
 const CookieFloatingButton = lazy(() => import("@/components/CookieFloatingButton"));
 
-// ─── Route preloading ─────────────────────────────────────────────────────────
-// Idle  → only the 4 core pages (almost always visited).
-// Hover → remaining pages loaded on NavLink mouseenter (see navConfig).
-// On-demand → legal/quiz/sitemap load only when navigated to.
-
-const coreRoutes = [
-  () => import("@/pages/Home"),
-  () => import("@/pages/About"),
-  () => import("@/pages/Services"),
-];
-
-function preloadCoreRoutes() {
-  coreRoutes.forEach((load) => load());
-}
-
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -78,16 +63,6 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("lang", location.startsWith("/en") ? "en" : "pt");
   }, [location]);
-
-  // Preload core route chunks during browser idle time (mobile-friendly: only 4 pages)
-  useEffect(() => {
-    if ("requestIdleCallback" in window) {
-      const id = requestIdleCallback(preloadCoreRoutes, { timeout: 4000 });
-      return () => cancelIdleCallback(id);
-    }
-    const id = window.setTimeout(preloadCoreRoutes, 3000);
-    return () => window.clearTimeout(id);
-  }, []);
 
   useEffect(() => {
     if ("requestIdleCallback" in window) {

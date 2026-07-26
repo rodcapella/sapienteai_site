@@ -109,7 +109,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
       if (!TURNSTILE_SITE_KEY) {
         setFailedToLoad(true);
         setIsLoading(false);
-        setErrorMessage("A verificação de segurança não está configurada para este ambiente.");
+        setErrorMessage("Security verification is not configured for this environment.");
         callbacksRef.current.onError?.();
         return;
       }
@@ -126,12 +126,13 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
             appearance: "interaction-only",
             execution: "render",
             action: "contact_form",
+            language: "en",
             callback: (token: string) => callbacksRef.current.onVerify(token),
             "error-callback": () => {
               setFailedToLoad(true);
               setIsLoading(false);
               setErrorMessage(
-                "Não foi possível carregar a verificação de segurança. Se estiver em ambiente de teste, confirme se o domínio está autorizado no Cloudflare Turnstile.",
+                "Security verification could not be loaded. If this is a test environment, confirm that the domain is allowed in Cloudflare Turnstile.",
               );
               callbacksRef.current.onError?.();
             },
@@ -150,7 +151,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
 
           setFailedToLoad(true);
           setIsLoading(false);
-          setErrorMessage("Não foi possível carregar a verificação de segurança. Verifique bloqueadores de scripts ou tente novamente.");
+          setErrorMessage("Security verification could not be loaded. Check script blockers or try again.");
           callbacksRef.current.onError?.();
         }
       }
@@ -173,12 +174,12 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
       <div ref={containerRef} className={failedToLoad ? "hidden" : ""} />
       {isLoading && !failedToLoad && (
         <p className="text-center text-xs font-medium text-[var(--brand-offwhite)]/[0.68]">
-          A carregar verificação de segurança...
+          Loading security verification...
         </p>
       )}
       {failedToLoad && showLoadError && (
         <p className="rounded-xl border border-red-300/40 bg-red-500/10 px-4 py-3 text-center text-xs text-red-100">
-          {errorMessage || "Não foi possível carregar a verificação de segurança. Verifique bloqueadores de scripts ou tente novamente."}
+          {errorMessage || "Security verification could not be loaded. Check script blockers or try again."}
         </p>
       )}
     </div>
