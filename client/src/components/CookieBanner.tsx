@@ -293,22 +293,22 @@ export default function CookieBanner() {
     "w-full !min-h-8 sm:!min-h-11 lg:!min-h-12 !px-3.5 sm:!px-5 lg:!px-6 !py-0 !text-[10px] sm:!text-xs !tracking-[0.09em] sm:!tracking-[0.12em]";
 
   const rejectButtonClass =
-    `${cookieButtonClass} !border-[var(--brand-primary)] !bg-white !text-[var(--brand-primary)] hover:!bg-[var(--brand-primary)]/8 hover:!text-[var(--brand-primary)] hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_18%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_14%,transparent)] [&>span]:!text-[var(--brand-primary)] hover:[&>span]:!text-[var(--brand-primary)]`;
+    `${cookieButtonClass} !border-[var(--brand-blue-deep)] !bg-white !text-[var(--brand-blue-deep)] hover:!bg-[var(--brand-blue-deep)]/8 hover:!text-[var(--brand-blue-deep)] hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_18%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_14%,transparent)] [&>span]:!text-[var(--brand-blue-deep)] hover:[&>span]:!text-[var(--brand-blue-deep)]`;
 
   const secondaryButtonClass =
     `${cookieButtonClass} !border-[var(--brand-night)]/20 !bg-transparent !text-[var(--brand-night)] hover:!border-[var(--brand-primary)] hover:!bg-[var(--brand-primary)]/8 hover:!text-[var(--brand-primary)] hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_16%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_12%,transparent)] [&>span]:!text-[var(--brand-night)] hover:[&>span]:!text-[var(--brand-primary)]`;
 
   const primaryButtonClass =
-    `${cookieButtonClass} !bg-[var(--brand-primary)] !text-white hover:!bg-[var(--brand-primary)] hover:!text-white hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent)] [&>span]:!text-white hover:[&>span]:!text-white`;
+    `${cookieButtonClass} !bg-[var(--brand-blue-deep)] !text-white hover:!bg-[var(--brand-blue-deep)] hover:!text-white hover:!shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent)] [&>span]:!text-white hover:[&>span]:!text-white`;
 
   const LegalLinks = () => (
     <p className="mt-2 font-[var(--font-body)] text-[11px] font-semibold leading-snug text-[var(--brand-night)]/78 sm:text-[13px]">
       {text.legalIntro}{" "}
-      <Link href={cookiesHref} className="font-bold text-[var(--brand-primary)] underline-offset-2 hover:underline">
+      <Link href={cookiesHref} className="font-bold text-[var(--brand-blue-deep)] underline-offset-2 hover:underline">
         {text.links.cookies}
       </Link>{" "}
       {text.legalJoin}{" "}
-      <Link href={privacyHref} className="font-bold text-[var(--brand-primary)] underline-offset-2 hover:underline">
+      <Link href={privacyHref} className="font-bold text-[var(--brand-blue-deep)] underline-offset-2 hover:underline">
         {text.links.privacy}
       </Link>
       .
@@ -328,8 +328,10 @@ export default function CookieBanner() {
           ].join(" ")}
         />
       )}
-      <aside
+      <div
         role="dialog"
+        aria-labelledby="cookie-consent-title"
+        aria-modal={showPreferences || undefined}
         className={[
           "fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-5xl rounded-xl border border-[var(--brand-cyan-bright)] bg-[var(--brand-offwhite)] p-2 transition duration-300 ease-out sm:inset-x-4 sm:bottom-4 sm:rounded-2xl sm:p-4",
           isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0",
@@ -338,7 +340,7 @@ export default function CookieBanner() {
         {!showPreferences && (
           <div className="grid gap-2.5 sm:grid-cols-[1fr_auto] sm:items-center sm:gap-4">
             <div className="min-w-0 text-[var(--brand-night)]">
-              <h2 className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
+              <h2 id="cookie-consent-title" className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
                 {text.title}
               </h2>
               <p className="mt-0.5 font-[var(--font-body)] text-[11px] font-medium leading-snug text-[var(--brand-night)]/70 sm:mt-1 sm:text-sm">
@@ -381,7 +383,7 @@ export default function CookieBanner() {
         {showPreferences && (
           <div className="grid gap-2.5 text-[var(--brand-night)] sm:gap-3">
             <div>
-              <h2 className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
+              <h2 id="cookie-consent-title" className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
                 {text.preferencesTitle}
               </h2>
               <div className="mt-2 grid gap-1.5 sm:mt-3 sm:gap-2">
@@ -440,7 +442,7 @@ export default function CookieBanner() {
             </div>
           </div>
         )}
-      </aside>
+      </div>
     </>
   );
 }

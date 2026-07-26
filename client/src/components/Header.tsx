@@ -1,7 +1,7 @@
 ﻿import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 
-import { preloadTurnstile } from "@/components/TurnstileWidget";
+import { preloadTurnstile } from "@/lib/turnstileLoader";
 import { LanguageSelector } from "@/components/LanguageSelector";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { NavLink } from "@/components/ui/navigation/NavLink";
@@ -247,6 +247,5 @@ export default function Header({ onContactClick }: HeaderProps) {
     </>
   );
 }
-
 
 

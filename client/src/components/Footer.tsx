@@ -1,7 +1,7 @@
 ﻿import { Suspense, lazy, useState, type SVGProps } from "react";
 import { Link } from "wouter";
 
-import { preloadTurnstile } from "@/components/TurnstileWidget";
+import { preloadTurnstile } from "@/lib/turnstileLoader";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { ArrowUp, ChevronDown, Facebook, Instagram, Linkedin, Mail, MapPin, Music2, Phone } from "@/lib/icons";
@@ -397,6 +397,5 @@ export default function Footer() {
     </footer>
   );
 }
-
 
 

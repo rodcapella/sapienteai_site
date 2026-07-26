@@ -5,6 +5,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import {
+  loadTurnstileScript,
+  TURNSTILE_LOAD_RETRIES,
+  TURNSTILE_RETRY_DELAY_MS,
+  waitForTurnstileRetry,
+} from "@/lib/turnstileLoader";
+
 interface TurnstileWidgetProps {
   onVerify: (token: string) => void;
   onError?: () => void;
@@ -13,80 +20,7 @@ interface TurnstileWidgetProps {
   theme?: "light" | "dark";
 }
 
-const TURNSTILE_SCRIPT_ID = "cloudflare-turnstile-script";
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
-const TURNSTILE_LOAD_RETRIES = 2;
-const TURNSTILE_RETRY_DELAY_MS = 900;
-const TURNSTILE_SCRIPT_TIMEOUT_MS = 5000;
-
-function wait(ms: number) {
-  return new Promise((resolve) => window.setTimeout(resolve, ms));
-}
-
-function loadTurnstileScript(): Promise<void> {
-  return new Promise((resolve, reject) => {
-    if (window.turnstile) {
-      resolve();
-      return;
-    }
-
-    const existingScript = document.getElementById(TURNSTILE_SCRIPT_ID) as HTMLScriptElement | null;
-
-    if (existingScript) {
-      if (existingScript.dataset.failed === "true") {
-        existingScript.remove();
-      } else if (existingScript.dataset.loaded === "true") {
-        existingScript.remove();
-      } else {
-        const timeoutId = window.setTimeout(() => reject(new Error("turnstile_script_timeout")), TURNSTILE_SCRIPT_TIMEOUT_MS);
-
-        existingScript.addEventListener("load", () => {
-          window.clearTimeout(timeoutId);
-          resolve();
-        }, { once: true });
-        existingScript.addEventListener("error", () => {
-          window.clearTimeout(timeoutId);
-          existingScript.dataset.failed = "true";
-          reject(new Error("turnstile_script_failed"));
-        }, { once: true });
-        return;
-      }
-    }
-
-    const script = document.createElement("script");
-    const timeoutId = window.setTimeout(() => {
-      script.dataset.failed = "true";
-      script.remove();
-      reject(new Error("turnstile_script_timeout"));
-    }, TURNSTILE_SCRIPT_TIMEOUT_MS);
-
-    script.id = TURNSTILE_SCRIPT_ID;
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-    script.async = true;
-    script.defer = true;
-    script.onload = () => {
-      window.clearTimeout(timeoutId);
-      script.dataset.loaded = "true";
-      resolve();
-    };
-    script.onerror = () => {
-      window.clearTimeout(timeoutId);
-      script.dataset.failed = "true";
-      script.remove();
-      reject(new Error("turnstile_script_failed"));
-    };
-
-    document.head.appendChild(script);
-  });
-}
-
-/**
- * Call this on hover of any button that opens a modal containing TurnstileWidget.
- * The Cloudflare script is fetched once and cached — subsequent renders are instant.
- */
-export function preloadTurnstile(): void {
-  loadTurnstileScript().catch(() => { /* ignore preload errors silently */ });
-}
 
 export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadError = true, theme = "light" }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -145,7 +79,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
         } catch {
           if (cancelled) return;
           if (attempt < TURNSTILE_LOAD_RETRIES) {
-            await wait(TURNSTILE_RETRY_DELAY_MS);
+            await waitForTurnstileRetry(TURNSTILE_RETRY_DELAY_MS);
             continue;
           }
 
