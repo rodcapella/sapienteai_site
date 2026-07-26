@@ -163,7 +163,7 @@ export default function QuizAI() {
   };
 
   return (
-    <main className="quiz-ai-page">
+    <div className="quiz-ai-page">
       <InternalHero
         label={startIntro.badge}
         title={startIntro.title}
@@ -337,6 +337,6 @@ export default function QuizAI() {
           backgroundSrc="/media/bg/finalCTA/bg_finalCTA.webp"
         />
       )}
-    </main>
+    </div>
   );
 }

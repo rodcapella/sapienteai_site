@@ -254,7 +254,7 @@ export default function Services() {
         <div className="w-full px-4 sm:px-6">
           <div className="w-full">
             <div className="w-full">
-              <main className="flex min-w-0 flex-1 flex-col gap-6">
+              <div className="flex min-w-0 flex-1 flex-col gap-6">
                 <div className="contents">
                   {sections.map((section) => {
                     const data =
@@ -354,7 +354,7 @@ export default function Services() {
                     );
                   })}
                 </div>
-              </main>
+              </div>
             </div>
           </div>
         </div>

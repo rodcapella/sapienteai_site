@@ -1,8 +1,9 @@
-﻿import { Suspense, useEffect } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+
+const Footer = lazy(() => import("@/components/Footer"));
 
 function PageFallback() {
   return (
@@ -11,6 +12,38 @@ function PageFallback() {
         Loading...
       </div>
     </div>
+  );
+}
+
+function DeferredFooter() {
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    if (shouldRender || !sentinelRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        setShouldRender(true);
+        observer.disconnect();
+      },
+      { rootMargin: "800px 0px" },
+    );
+
+    observer.observe(sentinelRef.current);
+    return () => observer.disconnect();
+  }, [shouldRender]);
+
+  return (
+    <>
+      <div ref={sentinelRef} className="h-px" aria-hidden="true" />
+      {shouldRender && (
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      )}
+    </>
   );
 }
 
@@ -36,7 +69,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         </Suspense>
       </main>
 
-      <Footer />
+      <DeferredFooter />
     </div>
   );
 }

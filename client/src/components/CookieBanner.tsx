@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "wouter";
 
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
@@ -156,12 +156,14 @@ function ToggleSwitch({
   checked,
   disabled = false,
   onChange,
+  label,
   enabledLabel,
   disabledLabel,
 }: {
   checked: boolean;
   disabled?: boolean;
   onChange: (checked: boolean) => void;
+  label: string;
   enabledLabel: string;
   disabledLabel: string;
 }) {
@@ -183,7 +185,7 @@ function ToggleSwitch({
         type="button"
         role="switch"
         aria-checked={checked}
-        aria-label={stateLabel}
+        aria-label={`${label}: ${stateLabel}`}
         disabled={disabled}
         onClick={() => !disabled && onChange(!checked)}
         className={[
@@ -220,6 +222,9 @@ export default function CookieBanner() {
   const [showBanner, setShowBanner] = useState(false);
   const [showPreferences, setShowPreferences] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const preferencesTitleRef = useRef<HTMLHeadingElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
 
   const [preferences, setPreferences] =
     useState<CookiePreferences>(DEFAULT_PREFERENCES);
@@ -240,6 +245,7 @@ export default function CookieBanner() {
 
   useEffect(() => {
     const handleOpenPreferences = () => {
+      openerRef.current = document.activeElement as HTMLElement | null;
       const stored = getStoredPreferences();
       if (stored) setPreferences(stored);
       setShowPreferences(true);
@@ -251,9 +257,77 @@ export default function CookieBanner() {
     return () => window.removeEventListener(OPEN_PREFERENCES_EVENT, handleOpenPreferences);
   }, []);
 
+  useEffect(() => {
+    if (!showPreferences || !dialogRef.current) return;
+
+    const dialog = dialogRef.current;
+    const root = document.getElementById("root");
+    const backgroundElements = root
+      ? Array.from(root.children).filter((element) => !element.contains(dialog))
+      : [];
+    const previousStates = backgroundElements.map((element) => ({
+      element: element as HTMLElement,
+      inert: (element as HTMLElement).inert,
+      ariaHidden: element.getAttribute("aria-hidden"),
+    }));
+
+    backgroundElements.forEach((element) => {
+      (element as HTMLElement).inert = true;
+      element.setAttribute("aria-hidden", "true");
+    });
+
+    const focusableSelector =
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setShowPreferences(false);
+        requestAnimationFrame(() => openerRef.current?.focus());
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector));
+      if (focusable.length === 0) {
+        event.preventDefault();
+        preferencesTitleRef.current?.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    requestAnimationFrame(() => preferencesTitleRef.current?.focus());
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      previousStates.forEach(({ element, inert, ariaHidden }) => {
+        element.inert = inert;
+        if (ariaHidden === null) element.removeAttribute("aria-hidden");
+        else element.setAttribute("aria-hidden", ariaHidden);
+      });
+    };
+  }, [showPreferences]);
+
   const dismiss = () => {
     setIsVisible(false);
     window.setTimeout(() => setShowBanner(false), 300);
+    requestAnimationFrame(() => openerRef.current?.focus());
+  };
+
+  const openPreferences = (opener?: HTMLElement) => {
+    openerRef.current = opener || (document.activeElement as HTMLElement | null);
+    setShowPreferences(true);
   };
 
   const handleAcceptAll = () => {
@@ -329,7 +403,8 @@ export default function CookieBanner() {
         />
       )}
       <div
-        role="dialog"
+        ref={dialogRef}
+        role={showPreferences ? "dialog" : "region"}
         aria-labelledby="cookie-consent-title"
         aria-modal={showPreferences || undefined}
         className={[
@@ -360,7 +435,7 @@ export default function CookieBanner() {
               </PremiumButton>
 
               <PremiumButton
-                onClick={() => setShowPreferences(true)}
+                onClick={() => openPreferences(document.activeElement as HTMLElement)}
                 variant="outline"
                 size="sm"
                 className={secondaryButtonClass}
@@ -383,7 +458,12 @@ export default function CookieBanner() {
         {showPreferences && (
           <div className="grid gap-2.5 text-[var(--brand-night)] sm:gap-3">
             <div>
-              <h2 id="cookie-consent-title" className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
+              <h2
+                ref={preferencesTitleRef}
+                id="cookie-consent-title"
+                tabIndex={-1}
+                className="font-[var(--font-body)] !text-[15px] font-black leading-tight outline-none sm:!text-lg"
+              >
                 {text.preferencesTitle}
               </h2>
               <div className="mt-2 grid gap-1.5 sm:mt-3 sm:gap-2">
@@ -400,6 +480,7 @@ export default function CookieBanner() {
                     ) : (
                       <ToggleSwitch
                         checked={preferences[row.key]}
+                        label={row.label}
                         enabledLabel={text.enabled}
                         disabledLabel={text.disabled}
                         onChange={(checked) => setPreferences((prev) => ({ ...prev, [row.key]: checked }))}

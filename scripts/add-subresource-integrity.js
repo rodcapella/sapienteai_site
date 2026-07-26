@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { readFile, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -26,5 +26,18 @@ for (const match of matches) {
   html = html.replace(tag, securedTag);
 }
 
+const assets = await readdir(path.join(projectRoot, "dist", "assets"));
+const homeChunk = assets.find((asset) => /^Home-[\w-]+\.js$/.test(asset));
+
+if (!homeChunk) {
+  throw new Error("No production Home chunk was found for module preloading.");
+}
+
+html = html.replace(
+  "</head>",
+  `    <link rel="modulepreload" href="/assets/${homeChunk}" />\n  </head>`,
+);
+
 await writeFile(indexPath, html, "utf8");
 console.log(`Added SHA-384 integrity validation to ${matches.length} production bootstrap script(s).`);
+console.log(`Added module preload for the initial Home route: ${homeChunk}.`);

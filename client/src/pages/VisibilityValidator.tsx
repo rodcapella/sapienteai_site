@@ -269,7 +269,7 @@ export default function VisibilityValidator() {
   };
 
   return (
-    <main className="visibility-validator-page">
+    <div className="visibility-validator-page">
       <InternalHero
         label={text.hero.label}
         title={text.hero.title}
@@ -414,6 +414,6 @@ export default function VisibilityValidator() {
       </section>
 
       <FinalCTA title={text.cta.title} title_highlight={text.cta.highlight} description={text.cta.description} button={text.cta.button} align="left" />
-    </main>
+    </div>
   );
 }
