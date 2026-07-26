@@ -3,6 +3,9 @@ import App from "./App";
 import "./styles/index.css";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { initializeTrustedTypes } from "./lib/trustedTypes";
+
+initializeTrustedTypes();
 
 function applyStoredTheme() {
   try {

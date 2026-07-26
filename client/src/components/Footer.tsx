@@ -172,8 +172,10 @@ export default function Footer() {
           {/* Logo + descrição */}
           <div className="mb-4 flex items-center gap-3">
             <img
-              src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
+              src="/media/logos/Logo_Sapiente_fundo_escuro-210.webp"
               alt="Sapiente.AI"
+              width="210"
+              height="72"
               className="h-14 w-auto shrink-0 object-contain"
             />
             <p className="font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
@@ -295,7 +297,7 @@ export default function Footer() {
             {/* Logo + Description */}
             <div className="col-span-1 xl:col-span-1">
               <div className="mb-2 inline-block">
-                <img src="/media/logos/Logo_Sapiente_fundo_escuro.webp" alt="Sapiente.AI" className="h-12 w-auto object-contain md:h-14" />
+                <img src="/media/logos/Logo_Sapiente_fundo_escuro-210.webp" alt="Sapiente.AI" width="210" height="72" className="h-12 w-auto object-contain md:h-14" />
               </div>
               <p className="max-w-sm font-serif text-[13px] leading-relaxed text-[var(--brand-offwhite)]">
                 {t("footer.description")}
@@ -397,5 +399,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-

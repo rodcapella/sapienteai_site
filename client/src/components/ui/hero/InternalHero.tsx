@@ -43,6 +43,10 @@ export function InternalHero({
       <div className="absolute inset-0 bg-[var(--brand-night)]" aria-hidden="true">
         <img
           src={image}
+          srcSet={image === "/media/bg/bg_hero.webp"
+            ? "/media/bg/bg_hero-960.webp 960w, /media/bg/bg_hero-1600.webp 1600w, /media/bg/bg_hero.webp 1618w"
+            : undefined}
+          sizes={image === "/media/bg/bg_hero.webp" ? "100vw" : undefined}
           alt={imageAlt}
           className="h-full w-full"
           style={{ objectFit: imageFit, objectPosition: imagePosition }}

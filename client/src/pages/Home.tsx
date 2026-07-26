@@ -52,6 +52,10 @@ function getHomeBannerSrc(lang: string, file: string) {
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
+function getResponsiveBannerSrc(src: string, width: 960 | 1440) {
+  return src.replace(/\.webp$/, `-${width}.webp`);
+}
+
 function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSectionProps) {
   const bannerSrc = getHomeBannerSrc(lang, file);
   const align = textContent?.align ?? "left";
@@ -66,6 +70,8 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
       <Reveal className="absolute inset-0">
         <img
           src={bannerSrc}
+          srcSet={`${getResponsiveBannerSrc(bannerSrc, 960)} 960w, ${getResponsiveBannerSrc(bannerSrc, 1440)} 1440w, ${bannerSrc} 1920w`}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
           width="1920"
@@ -314,5 +320,4 @@ export default function Home() {
     </div>
   );
 }
-
 

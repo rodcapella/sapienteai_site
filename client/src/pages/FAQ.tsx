@@ -91,7 +91,7 @@ export default function FAQ() {
     const script = document.createElement("script");
     script.id = "faq-schema";
     script.type = "application/ld+json";
-    script.innerHTML = JSON.stringify(schema);
+    script.textContent = JSON.stringify(schema);
     document.head.appendChild(script);
 
     return () => {

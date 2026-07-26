@@ -113,10 +113,10 @@ export default function Header({ onContactClick }: HeaderProps) {
           <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-14 md:h-16" : "h-16 md:h-[68px]")}>
             <div className="flex h-full w-[180px] shrink-0 items-center gap-2 overflow-hidden xl:w-[210px]">
               <img
-                src="/media/logos/Logo_Sapiente_fundo_claro.webp"
+                src="/media/logos/Logo_Sapiente_fundo_claro-210.webp"
                 alt="Sapiente.AI"
                 width="210"
-                height="52"
+                height="72"
                 className={cn(logoClassName, "dark:hidden")}
                 loading="eager"
                 fetchPriority="high"
@@ -124,10 +124,10 @@ export default function Header({ onContactClick }: HeaderProps) {
               />
 
               <img
-                src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
+                src="/media/logos/Logo_Sapiente_fundo_escuro-210.webp"
                 alt="Sapiente.AI"
                 width="210"
-                height="52"
+                height="72"
                 className={cn(logoClassName, "hidden dark:block")}
                 loading="eager"
                 fetchPriority="high"
@@ -192,13 +192,17 @@ export default function Header({ onContactClick }: HeaderProps) {
             {/* Topo: logo + idioma + fechar */}
             <div className="flex h-16 shrink-0 items-center justify-between border-b border-[var(--brand-primary)]/15 px-5">
               <img
-                src="/media/logos/Logo_Sapiente_fundo_claro.webp"
+                src="/media/logos/Logo_Sapiente_fundo_claro-210.webp"
                 alt="Sapiente.AI"
+                width="210"
+                height="72"
                 className="h-9 w-auto object-contain dark:hidden"
               />
               <img
-                src="/media/logos/Logo_Sapiente_fundo_escuro.webp"
+                src="/media/logos/Logo_Sapiente_fundo_escuro-210.webp"
                 alt="Sapiente.AI"
+                width="210"
+                height="72"
                 className="hidden h-9 w-auto object-contain dark:block"
               />
               <div className="flex items-center gap-3">
@@ -247,5 +251,3 @@ export default function Header({ onContactClick }: HeaderProps) {
     </>
   );
 }
-
-

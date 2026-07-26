@@ -2,6 +2,14 @@ const TURNSTILE_SCRIPT_ID = "cloudflare-turnstile-script";
 export const TURNSTILE_LOAD_RETRIES = 2;
 export const TURNSTILE_RETRY_DELAY_MS = 900;
 const TURNSTILE_SCRIPT_TIMEOUT_MS = 5000;
+const TURNSTILE_SCRIPT_URL = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+function getTrustedTurnstileScriptUrl(): string {
+  const policy = window.sapienteTrustedTypesPolicy;
+  return policy
+    ? policy.createScriptURL(TURNSTILE_SCRIPT_URL) as unknown as string
+    : TURNSTILE_SCRIPT_URL;
+}
 
 export function waitForTurnstileRetry(ms: number) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -46,7 +54,7 @@ export function loadTurnstileScript(): Promise<void> {
     }, TURNSTILE_SCRIPT_TIMEOUT_MS);
 
     script.id = TURNSTILE_SCRIPT_ID;
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+    script.src = getTrustedTurnstileScriptUrl();
     script.async = true;
     script.defer = true;
     script.onload = () => {
