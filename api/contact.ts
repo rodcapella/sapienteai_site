@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { isDisposableEmail } from "@rodcapella/common-resources";
 import nodemailer from "nodemailer";
 
 type ContactPayload = {
@@ -148,6 +149,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: "request_rejected" });
+  }
+  if (isDisposableEmail(email)) {
+    return res.status(422).json({ error: "disposable_email" });
   }
 
   if (!await verifyTurnstile(turnstileToken, ip)) {

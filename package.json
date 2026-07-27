@@ -18,6 +18,7 @@
     "@radix-ui/react-separator": "1.1.8",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.0",
+    "@rodcapella/common-resources": "github:rodcapella/common_resources#main",
     "@vercel/node": "^3.0.0",
     "axios": "^1.7.7",
     "cheerio": "^1.0.0",

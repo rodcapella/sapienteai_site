@@ -26,6 +26,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.1.0
         version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@rodcapella/common-resources':
+        specifier: github:rodcapella/common_resources#main
+        version: https://codeload.github.com/rodcapella/common_resources/tar.gz/825df788d56b9a1ed693ea40ee398c7aa7c6d1d5
       '@vercel/node':
         specifier: ^3.0.0
         version: 3.2.29
@@ -783,6 +786,11 @@ packages:
 
   '@radix-ui/rect@1.1.1':
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
+
+  '@rodcapella/common-resources@https://codeload.github.com/rodcapella/common_resources/tar.gz/825df788d56b9a1ed693ea40ee398c7aa7c6d1d5':
+    resolution: {tarball: https://codeload.github.com/rodcapella/common_resources/tar.gz/825df788d56b9a1ed693ea40ee398c7aa7c6d1d5}
+    version: 1.0.0
+    engines: {node: '>=18'}
 
   '@rolldown/pluginutils@1.0.0-rc.3':
     resolution: {integrity: sha512-eybk3TjzzzV97Dlj5c+XrBFW57eTNhzod66y9HrBlzJ6NsCrWCp/2kaPS3K9wJmurBC0Tdw4yPjXKZqlznim3Q==}
@@ -2849,6 +2857,8 @@ snapshots:
       '@types/react-dom': 19.2.3(@types/react@19.2.14)
 
   '@radix-ui/rect@1.1.1': {}
+
+  '@rodcapella/common-resources@https://codeload.github.com/rodcapella/common_resources/tar.gz/825df788d56b9a1ed693ea40ee398c7aa7c6d1d5': {}
 
   '@rolldown/pluginutils@1.0.0-rc.3': {}
 

@@ -190,7 +190,17 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
         }),
       });
 
-      if (!response.ok) throw new Error("submit_failed");
+      if (!response.ok) {
+        const result = await response.json().catch(() => null) as { error?: string } | null;
+        if (result?.error === "disposable_email") {
+          setSubmitState("error");
+          setFeedbackMessage(
+            "This email domain appears on a public disposable-email blacklist. Please use a permanent email address.",
+          );
+          return;
+        }
+        throw new Error("submit_failed");
+      }
 
       setSubmitState("success");
       setFeedbackMessage(alertText.submit.success);
