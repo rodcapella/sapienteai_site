@@ -57,6 +57,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
   const [turnstileToken, setTurnstileToken] = useState("");
   const [turnstileAvailable, setTurnstileAvailable] = useState(true);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [website, setWebsite] = useState("");
 
   const updateField = <K extends keyof NewsletterFormData>(field: K, value: NewsletterFormData[K]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -70,6 +71,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
     setTurnstileToken("");
     setTurnstileAvailable(true);
     setHasSubmitted(false);
+    setWebsite("");
   };
 
   const closeModal = () => {
@@ -123,26 +125,33 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
     setFeedbackMessage(text.submit.loading);
 
     try {
-      const payload = new FormData();
-      payload.append("name", formData.name.trim());
-      payload.append("email", formData.email.trim());
-      payload.append("role", formData.role.trim() || "Not provided");
-      payload.append("company", formData.company.trim() || "Not provided");
-      payload.append("source", formData.source.trim() || "Not provided");
-      payload.append("privacy_consent", formData.accepted ? "Accepted" : "Not accepted");
-      payload.append("turnstile_token", turnstileToken || "verification_unavailable");
-      payload.append("turnstile_status", turnstileToken ? "verified" : "unavailable");
-      payload.append("_subject", text.subject);
-      payload.append("_captcha", "false");
-      payload.append("_template", "table");
-
-      const response = await fetch("https://formsubmit.co/contacto@sapienteai.com", {
+      const response = await fetch("/api/newsletter", {
         method: "POST",
-        headers: { Accept: "application/json" },
-        body: payload,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          role: formData.role.trim(),
+          company: formData.company.trim(),
+          source: formData.source.trim(),
+          accepted: formData.accepted,
+          turnstileToken: turnstileToken || "verification_unavailable",
+          website,
+        }),
       });
 
-      if (!response.ok) throw new Error("newsletter_submit_failed");
+      if (!response.ok) {
+        const result = await response.json().catch(() => null) as { error?: string } | null;
+        if (result?.error === "disposable_email") {
+          setSubmitState("error");
+          setFeedbackMessage(text.errors.disposableEmail);
+          return;
+        }
+        throw new Error("newsletter_submit_failed");
+      }
 
       setSubmitState("success");
       setFeedbackMessage(text.submit.success);
@@ -179,6 +188,19 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       </DialogHeader>
 
       <form onSubmit={handleSubmit} className="relative z-10 space-y-4" noValidate>
+        <div className="pointer-events-none absolute -left-[10000px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+          <label htmlFor="newsletter-website">Website</label>
+          <input
+            id="newsletter-website"
+            name="website"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(event) => setWebsite(event.target.value)}
+          />
+        </div>
+
         <label className="block space-y-1.5">
           <span className={MODAL_LABEL_CLASS}>{text.labels.name}{requiredMark}</span>
           <input name="name" required type="text" value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />

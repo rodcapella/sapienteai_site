@@ -98,6 +98,7 @@ export const modalsPT = {
       name: "Nome é obrigatório.",
       email: "Email é obrigatório.",
       invalidEmail: "Insira um email válido.",
+      disposableEmail: "Este domínio de email consta numa lista pública de endereços descartáveis. Utilize um endereço de email permanente.",
       accepted: "Confirme a autorização para receber comunicações.",
       form: "Reveja os campos obrigatórios e conclua a verificação antes de enviar.",
       turnstile: "Conclua a verificação de segurança antes de enviar.",

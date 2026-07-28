@@ -98,6 +98,7 @@ export const modalsEN = {
       name: "Name is required.",
       email: "Email is required.",
       invalidEmail: "Enter a valid email address.",
+      disposableEmail: "This email domain appears on a public disposable-email blacklist. Please use a permanent email address.",
       accepted: "Confirm authorization to receive communications.",
       form: "Please review the required fields and complete verification before sending.",
       turnstile: "Complete the security verification before sending.",

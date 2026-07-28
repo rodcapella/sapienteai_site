@@ -1,4 +1,5 @@
 import { createRoot } from "react-dom/client";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import App from "./App";
 import "./styles/index.css";
 import { LanguageProvider } from "./contexts/LanguageContext";
@@ -31,6 +32,7 @@ createRoot(document.getElementById("root")!).render(
   <ThemeProvider>
     <LanguageProvider>
       <App />
+      <SpeedInsights />
     </LanguageProvider>
   </ThemeProvider>
 );
