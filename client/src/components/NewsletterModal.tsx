@@ -138,6 +138,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
           company: formData.company.trim(),
           source: formData.source.trim(),
           accepted: formData.accepted,
+          lang,
           turnstileToken: turnstileToken || "verification_unavailable",
           website,
         }),

@@ -27,6 +27,7 @@ const News               = lazy(() => w(import("@/pages/News")));
 const QuizAI             = lazy(() => import("@/pages/QuizAI"));
 const Sitemap            = lazy(() => w(import("@/pages/Sitemap")));
 const VisibilityValidator= lazy(() => import("@/pages/VisibilityValidator"));
+const NewsletterUnsubscribe = lazy(() => import("@/pages/NewsletterUnsubscribe"));
 const NotFound           = lazy(() => import("@/pages/NotFound"));
 const CookieBanner       = lazy(() => import("@/components/CookieBanner"));
 const CookieFloatingButton = lazy(() => import("@/components/CookieFloatingButton"));
@@ -98,6 +99,7 @@ export default function App() {
         <Route path="/:lang/news">{(params) => <News lang={params.lang} />}</Route>
         <Route path="/:lang/sitemap">{(params) => <Sitemap lang={params.lang} />}</Route>
         <Route path="/:lang/seo-geo-aeo-validator"><VisibilityValidator /></Route>
+        <Route path="/:lang/newsletter/unsubscribe"><NewsletterUnsubscribe /></Route>
         <Route path="/pt/quiz-ia"><QuizAI lang="pt" /></Route>
         <Route path="/pt/quiz-ai"><Redirect to="/pt/quiz-ia" /></Route>
         <Route path="/en/quiz-ai"><QuizAI lang="en" /></Route>
