@@ -30,6 +30,7 @@ const VisibilityValidator= lazy(() => import("@/pages/VisibilityValidator"));
 const NotFound           = lazy(() => import("@/pages/NotFound"));
 const CookieBanner       = lazy(() => import("@/components/CookieBanner"));
 const CookieFloatingButton = lazy(() => import("@/components/CookieFloatingButton"));
+const WhatsAppFloatingButton = lazy(() => import("@/components/WhatsAppFloatingButton"));
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
@@ -108,6 +109,7 @@ export default function App() {
         <Suspense fallback={null}>
           <CookieFloatingButton />
           <CookieBanner />
+          <WhatsAppFloatingButton />
         </Suspense>
       )}
     </>
