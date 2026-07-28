@@ -2,7 +2,7 @@
 import { createElement as h } from "react";
 import { FileText, Gavel, Hourglass, Mail, Share2, ShieldCheck, Target, UserCog, UserPlus } from "@/lib/icons";
 
-const privacyMailtoPT = "mailto:contato@sapienteai.com?subject=Pol%C3%ADtica%20de%20Privacidade";
+const privacyMailtoPT = "mailto:contacto@sapienteai.com?subject=Pol%C3%ADtica%20de%20Privacidade";
 
 function createPrivacyContactBlockPT(text: string) {
   return h(
@@ -105,7 +105,7 @@ export const privacyPT = {
             href: privacyMailtoPT,
             className: "font-semibold text-[var(--brand-primary)] underline decoration-[var(--brand-primary)]/40 underline-offset-4",
           },
-          "contato@sapienteai.com",
+          "contacto@sapienteai.com",
         ),
         ".",
       ),

@@ -98,7 +98,7 @@ export default function Footer() {
   const whatsappHref = `https://wa.me/351910567575?text=${encodeURIComponent(whatsappMessage)}`;
 
   const contactItems = [
-    { icon: Mail,   text: "contato@sapienteai.com", href: "mailto:contato@sapienteai.com" },
+    { icon: Mail,   text: "contacto@sapienteai.com", href: "mailto:contacto@sapienteai.com" },
     { icon: Phone,  text: "+351 910 567 575", href: whatsappHref },
     { icon: MapPin, text: "Aveiro, Portugal" },
   ];

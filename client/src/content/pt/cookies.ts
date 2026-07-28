@@ -111,7 +111,7 @@ export const cookiesPT = {
       eyebrow:     "Suporte",
       title:       "Contacto",
       description: "Se tiver alguma questão sobre a nossa utilização de cookies ou esta política, contacte-nos. Responderemos o mais brevemente possível.",
-      contact:     { company: "Sapiente.AI", email: "contato@sapienteai.com" },
+      contact:     { company: "Sapiente.AI", email: "contacto@sapienteai.com" },
       bullets: [
         "Envie um email com o assunto 'Política de Cookies'.",
         "Resposta garantida em até 5 dias úteis.",

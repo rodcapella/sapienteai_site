@@ -232,11 +232,17 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
   const requiredFieldsLabel = text.requiredFields;
 
   return (
-    <Modal isOpen={isOpen} onClose={closeModal} closeLabel={text.closeLabel} ariaDescribedBy="contact-modal-description">
+    <Modal
+      isOpen={isOpen}
+      onClose={closeModal}
+      closeLabel={text.closeLabel}
+      ariaDescribedBy="contact-modal-description"
+      contentClassName="lg:max-w-[860px]"
+    >
       <DialogHeader className="relative z-10 mb-7 space-y-3 pr-10 text-left">
-        <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl" style={{ color: "white" }}>
+        <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl lg:text-[26px] lg:leading-[1.08]" style={{ color: "white" }}>
           <span className="inline-flex items-center gap-2 !text-white" style={{ color: "white" }}>
-            <MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)]" />
+            <MessageSquareText className="h-7 w-7 text-[var(--brand-cyan)] lg:h-6 lg:w-6" />
             {text.title}
           </span>
         </DialogTitle>
@@ -261,13 +267,13 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
         <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
-            <label htmlFor="contact-name" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.name)}</label>
+            <label htmlFor="contact-name" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{requiredLabel(text.labels.name)}</label>
             <input id="contact-name" name="name" type="text" autoComplete="name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} onBlur={() => handleBlur("name")} placeholder={text.placeholders.name} className={fieldClass("name")} aria-required="true" aria-invalid={Boolean(touched.name && errors.name)} disabled={submitState === "loading"} />
             {touched.name && errors.name && <p className="text-xs text-red-300">{errors.name}</p>}
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="contact-email" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.email)}</label>
+            <label htmlFor="contact-email" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{requiredLabel(text.labels.email)}</label>
             <input id="contact-email" name="email" type="email" autoComplete="email" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} onBlur={() => handleBlur("email")} placeholder={text.placeholders.email} className={fieldClass("email")} aria-required="true" aria-invalid={Boolean(touched.email && errors.email)} disabled={submitState === "loading"} />
             {touched.email && errors.email && <p className="text-xs text-red-300">{errors.email}</p>}
           </div>
@@ -275,7 +281,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
         <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
-            <label htmlFor="contact-topic" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.topic)}</label>
+            <label htmlFor="contact-topic" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{requiredLabel(text.labels.topic)}</label>
             <div className="relative">
               <select
                 id="contact-topic"
@@ -297,19 +303,19 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="contact-phone" className={MODAL_LABEL_CLASS}>{text.labels.phone}</label>
+            <label htmlFor="contact-phone" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{text.labels.phone}</label>
             <input id="contact-phone" name="phone" type="tel" autoComplete="tel" value={formData.phone} onChange={(e) => handleChange("phone", e.target.value)} onBlur={() => handleBlur("phone")} placeholder={text.placeholders.phone} className={fieldClass("phone")} disabled={submitState === "loading"} />
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
-            <label htmlFor="contact-company" className={MODAL_LABEL_CLASS}>{text.labels.company}</label>
+            <label htmlFor="contact-company" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{text.labels.company}</label>
             <input id="contact-company" name="company" type="text" autoComplete="organization" value={formData.company} onChange={(e) => handleChange("company", e.target.value)} onBlur={() => handleBlur("company")} placeholder={text.placeholders.company} className={fieldClass("company")} disabled={submitState === "loading"} />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="contact-source" className={MODAL_LABEL_CLASS}>{text.labels.source}</label>
+            <label htmlFor="contact-source" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{text.labels.source}</label>
             <div className="relative">
               <select
                 id="contact-source"
@@ -329,7 +335,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="contact-message" className={MODAL_LABEL_CLASS}>{requiredLabel(text.labels.message)}</label>
+          <label htmlFor="contact-message" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{requiredLabel(text.labels.message)}</label>
           <textarea id="contact-message" name="message" rows={4} value={formData.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} placeholder={text.placeholders.message} className={`${fieldClass("message")} resize-none`} aria-required="true" aria-invalid={Boolean(touched.message && errors.message)} disabled={submitState === "loading"} />
           {touched.message && errors.message && <p className="text-xs text-red-300">{errors.message}</p>}
         </div>

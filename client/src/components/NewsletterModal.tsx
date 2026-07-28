@@ -136,7 +136,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       payload.append("_captcha", "false");
       payload.append("_template", "table");
 
-      const response = await fetch("https://formsubmit.co/contato@sapienteai.com", {
+      const response = await fetch("https://formsubmit.co/contacto@sapienteai.com", {
         method: "POST",
         headers: { Accept: "application/json" },
         body: payload,

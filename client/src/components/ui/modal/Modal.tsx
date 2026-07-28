@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { AlertTriangle, CheckCircle2, LoaderCircle, X } from "@/lib/icons";
+import { cn } from "@/lib/utils";
 
 import "@/styles/modal.css";
 
@@ -105,14 +106,18 @@ interface ModalProps {
   closeLabel: string;
   ariaDescribedBy: string;
   children: ReactNode;
+  contentClassName?: string;
 }
 
-export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children }: ModalProps) {
+export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children, contentClassName }: ModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
         showCloseButton={false}
-        className="w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[var(--brand-cyan-bright)]/[0.5] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--brand-darkest)_97%,transparent),color-mix(in_srgb,var(--brand-darkest)_95%,transparent))] p-0 shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_0_60px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_24px_90px_color-mix(in_srgb,var(--brand-darkest)_65%,transparent)] backdrop-blur-2xl sm:max-w-2xl"
+        className={cn(
+          "w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[var(--brand-cyan-bright)]/[0.5] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--brand-darkest)_97%,transparent),color-mix(in_srgb,var(--brand-darkest)_95%,transparent))] p-0 shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_0_60px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_24px_90px_color-mix(in_srgb,var(--brand-darkest)_65%,transparent)] backdrop-blur-2xl sm:max-w-2xl",
+          contentClassName,
+        )}
         aria-describedby={ariaDescribedBy}
       >
         <motion.div
