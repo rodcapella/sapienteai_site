@@ -21,7 +21,7 @@ const TURNSTILE_ACTION = "contact_form";
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 const MAX_LENGTHS = {
-  name: 120,
+  name: 100,
   email: 254,
   role: 120,
   company: 160,

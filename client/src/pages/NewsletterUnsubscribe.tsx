@@ -125,6 +125,7 @@ export default function NewsletterUnsubscribe() {
                 <span className="mb-2 block text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-offwhite)]/80">{copy.label}</span>
                 <input
                   type="email"
+                  maxLength={254}
                   autoComplete="email"
                   value={email}
                   onChange={(event) => { setEmail(event.target.value); if (submitState === "error") setSubmitState("idle"); }}

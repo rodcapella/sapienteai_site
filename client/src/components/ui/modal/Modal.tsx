@@ -4,7 +4,7 @@
  * Provides the Dialog wrapper, background decorations, particles, and close button.
  */
 
-import { type ReactNode } from "react";
+import { type ReactNode, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -183,15 +183,31 @@ export function Modal({
 interface AnimatedStatusProps {
   submitState: ModalSubmitState;
   feedbackMessage: string;
+  focusOnSuccess?: boolean;
 }
 
-export function AnimatedStatus({ submitState, feedbackMessage }: AnimatedStatusProps) {
+export function AnimatedStatus({ submitState, feedbackMessage, focusOnSuccess = false }: AnimatedStatusProps) {
+  const statusRef = useRef<HTMLDivElement>(null);
   const node = <ModalStatusNode submitState={submitState} feedbackMessage={feedbackMessage} />;
+
+  useEffect(() => {
+    if (focusOnSuccess && submitState === "success") {
+      statusRef.current?.focus();
+    }
+  }, [focusOnSuccess, submitState]);
 
   return (
     <AnimatePresence mode="wait">
       {node && (
-        <motion.div key={submitState} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+        <motion.div
+          ref={statusRef}
+          key={submitState}
+          tabIndex={submitState === "success" ? -1 : undefined}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="focus:outline-none"
+        >
           {node}
         </motion.div>
       )}

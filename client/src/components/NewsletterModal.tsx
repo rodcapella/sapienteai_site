@@ -204,23 +204,23 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
 
         <label className="block space-y-1.5">
           <span className={MODAL_LABEL_CLASS}>{text.labels.name}{requiredMark}</span>
-          <input name="name" required type="text" value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+          <input name="name" required type="text" maxLength={100} value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
         </label>
 
         <label className="block space-y-1.5">
           <span className={MODAL_LABEL_CLASS}>{text.labels.email}{requiredMark}</span>
-          <input name="email" required type="email" value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder={text.placeholders.email} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+          <input name="email" required type="email" maxLength={254} value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder={text.placeholders.email} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
         </label>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.role}<span className={optionalClass}>{text.optional}</span></span>
-            <input name="role" type="text" value={formData.role} onChange={(e) => updateField("role", e.target.value)} placeholder={text.placeholders.role} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+            <input name="role" type="text" maxLength={120} value={formData.role} onChange={(e) => updateField("role", e.target.value)} placeholder={text.placeholders.role} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
 
           <label className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.company}<span className={optionalClass}>{text.optional}</span></span>
-            <input name="company" type="text" value={formData.company} onChange={(e) => updateField("company", e.target.value)} placeholder={text.placeholders.company} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+            <input name="company" type="text" maxLength={160} value={formData.company} onChange={(e) => updateField("company", e.target.value)} placeholder={text.placeholders.company} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
         </div>
 
@@ -248,7 +248,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
           onError={() => { setTurnstileAvailable(false); setTurnstileToken(""); if (hasSubmitted) { setSubmitState("error"); setFeedbackMessage(text.errors.turnstileError); } }}
         />
 
-        <AnimatedStatus submitState={submitState} feedbackMessage={feedbackMessage} />
+        <AnimatedStatus submitState={submitState} feedbackMessage={feedbackMessage} focusOnSuccess />
 
         <p className="text-[11px] text-[var(--brand-offwhite)]/[0.4]">
           <span className="text-[var(--brand-purple)]">*</span> {text.requiredFields}

@@ -20,13 +20,13 @@ const TURNSTILE_ACTION = "contact_form";
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 const MAX_LENGTHS = {
-  name: 120,
+  name: 100,
   email: 254,
-  phone: 60,
+  phone: 20,
   company: 160,
   source: 120,
   topic: 160,
-  message: 5000,
+  message: 1000,
 } as const;
 
 function textField(value: unknown, maxLength: number) {
