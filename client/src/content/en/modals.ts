@@ -53,6 +53,7 @@ export const modalsEN = {
       topic: "Subject is required.",
       message: "Message is required.",
       invalidEmail: "Enter a valid email address.",
+      disposableEmail: "This email domain appears on a public disposable-email blacklist. Please use a permanent email address.",
       form: "Please review the required fields and complete verification before sending.",
       turnstile: "Complete the security verification before sending.",
       turnstileExpired: "The verification expired. Please confirm it again.",

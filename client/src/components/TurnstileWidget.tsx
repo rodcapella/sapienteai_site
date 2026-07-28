@@ -5,6 +5,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { useTranslation } from "@/hooks/useTranslation";
 import {
   loadTurnstileScript,
   TURNSTILE_LOAD_RETRIES,
@@ -23,6 +24,21 @@ interface TurnstileWidgetProps {
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY || "";
 
 export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadError = true, theme = "light" }: TurnstileWidgetProps) {
+  const { lang: rawLang } = useTranslation();
+  const lang = rawLang === "en" ? "en" : "pt";
+  const messages = lang === "pt"
+    ? {
+        notConfigured: "A verificação de segurança não está configurada neste ambiente.",
+        domainError: "Não foi possível carregar a verificação de segurança. Se este for um ambiente de testes, confirme se o domínio está autorizado no Cloudflare Turnstile.",
+        loadError: "Não foi possível carregar a verificação de segurança. Verifique os bloqueadores de scripts ou tente novamente.",
+        loading: "A carregar a verificação de segurança...",
+      }
+    : {
+        notConfigured: "Security verification is not configured for this environment.",
+        domainError: "Security verification could not be loaded. If this is a test environment, confirm that the domain is allowed in Cloudflare Turnstile.",
+        loadError: "Security verification could not be loaded. Check script blockers or try again.",
+        loading: "Loading security verification...",
+      };
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const callbacksRef = useRef({ onVerify, onError, onExpire });
@@ -43,7 +59,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
       if (!TURNSTILE_SITE_KEY) {
         setFailedToLoad(true);
         setIsLoading(false);
-        setErrorMessage("Security verification is not configured for this environment.");
+        setErrorMessage(messages.notConfigured);
         callbacksRef.current.onError?.();
         return;
       }
@@ -60,14 +76,12 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
             appearance: "interaction-only",
             execution: "render",
             action: "contact_form",
-            language: "en",
+            language: lang === "pt" ? "pt-PT" : "en",
             callback: (token: string) => callbacksRef.current.onVerify(token),
             "error-callback": () => {
               setFailedToLoad(true);
               setIsLoading(false);
-              setErrorMessage(
-                "Security verification could not be loaded. If this is a test environment, confirm that the domain is allowed in Cloudflare Turnstile.",
-              );
+              setErrorMessage(messages.domainError);
               callbacksRef.current.onError?.();
             },
             "expired-callback": () => callbacksRef.current.onExpire?.(),
@@ -85,7 +99,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
 
           setFailedToLoad(true);
           setIsLoading(false);
-          setErrorMessage("Security verification could not be loaded. Check script blockers or try again.");
+          setErrorMessage(messages.loadError);
           callbacksRef.current.onError?.();
         }
       }
@@ -101,19 +115,19 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
         widgetIdRef.current = null;
       }
     };
-  }, [theme]);
+  }, [lang, theme]);
 
   return (
     <div className="my-2 flex flex-col items-center justify-center gap-2">
       <div ref={containerRef} className={failedToLoad ? "hidden" : ""} />
       {isLoading && !failedToLoad && (
         <p className="text-center text-xs font-medium text-[var(--brand-offwhite)]/[0.68]">
-          Loading security verification...
+          {messages.loading}
         </p>
       )}
       {failedToLoad && showLoadError && (
         <p className="rounded-xl border border-red-300/40 bg-red-500/10 px-4 py-3 text-center text-xs text-red-100">
-          {errorMessage || "Security verification could not be loaded. Check script blockers or try again."}
+          {errorMessage || messages.loadError}
         </p>
       )}
     </div>

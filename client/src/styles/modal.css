@@ -68,6 +68,12 @@
   }
 }
 
+@media (min-width: 1024px) {
+  .contact-modal-scrollarea::after {
+    display: none;
+  }
+}
+
 .modal-scrollarea::-webkit-scrollbar {
   width: 10px;
 }

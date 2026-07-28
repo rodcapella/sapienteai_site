@@ -53,6 +53,7 @@ export const modalsPT = {
       topic: "Tema é obrigatório.",
       message: "Mensagem é obrigatória.",
       invalidEmail: "Insira um email válido.",
+      disposableEmail: "Este domínio de email consta numa lista pública de endereços descartáveis. Utilize um endereço de email permanente.",
       form: "Reveja os campos obrigatórios e conclua a verificação antes de enviar.",
       turnstile: "Conclua a verificação de segurança antes de enviar.",
       turnstileExpired: "A verificação expirou. Por favor, confirme novamente.",

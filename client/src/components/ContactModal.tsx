@@ -53,7 +53,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
   const lang: ModalLang = rawLang === "en" ? "en" : "pt";
   const modals = getContent("modals", lang);
   const text = modals.contact;
-  const alertText = getContent("modals", "en").contact;
+  const alertText = text;
   const sourceOptions = modals.sourceOptions;
   const topicOptions = text.topicOptions;
 
@@ -194,9 +194,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
         const result = await response.json().catch(() => null) as { error?: string } | null;
         if (result?.error === "disposable_email") {
           setSubmitState("error");
-          setFeedbackMessage(
-            "This email domain appears on a public disposable-email blacklist. Please use a permanent email address.",
-          );
+          setFeedbackMessage(alertText.errors.disposableEmail);
           return;
         }
         throw new Error("submit_failed");
@@ -238,6 +236,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       closeLabel={text.closeLabel}
       ariaDescribedBy="contact-modal-description"
       contentClassName="lg:max-w-[860px]"
+      scrollAreaClassName="contact-modal-scrollarea lg:max-h-[calc(100vh-1rem)]"
     >
       <DialogHeader className="relative z-10 mb-7 space-y-3 pr-10 text-left">
         <DialogTitle className="font-heading text-2xl font-extrabold tracking-tight !text-white sm:text-3xl lg:text-[26px] lg:leading-[1.08]" style={{ color: "white" }}>
@@ -246,7 +245,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
             {text.title}
           </span>
         </DialogTitle>
-        <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base">
+        <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base lg:max-w-2xl lg:text-justify">
           {text.description}
         </DialogDescription>
       </DialogHeader>

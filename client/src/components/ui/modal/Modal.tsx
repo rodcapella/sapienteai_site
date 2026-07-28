@@ -107,9 +107,18 @@ interface ModalProps {
   ariaDescribedBy: string;
   children: ReactNode;
   contentClassName?: string;
+  scrollAreaClassName?: string;
 }
 
-export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children, contentClassName }: ModalProps) {
+export function Modal({
+  isOpen,
+  onClose,
+  closeLabel,
+  ariaDescribedBy,
+  children,
+  contentClassName,
+  scrollAreaClassName,
+}: ModalProps) {
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent
@@ -124,7 +133,10 @@ export function Modal({ isOpen, onClose, closeLabel, ariaDescribedBy, children, 
           initial={{ opacity: 0, scale: 0.97, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.28, ease: "easeOut" }}
-          className="modal-scrollarea relative max-h-[88svh] overflow-y-auto p-5 pb-7 sm:max-h-[86vh] sm:p-8 sm:pb-10"
+          className={cn(
+            "modal-scrollarea relative max-h-[88svh] overflow-y-auto p-5 pb-7 sm:max-h-[86vh] sm:p-8 sm:pb-10",
+            scrollAreaClassName,
+          )}
         >
           <div className="pointer-events-none absolute inset-0 opacity-60" aria-hidden>
             <div
