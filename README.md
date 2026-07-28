@@ -20,11 +20,11 @@ pnpm build
 O formulário envia mensagens através da função `api/contact.ts` e utiliza SMTP autenticado. Configure as seguintes variáveis protegidas na Vercel:
 
 ```text
-SMTP_HOST
-SMTP_PORT
-SMTP_USER
+SMTP_HOST=smtp-pt.securemail.pro
+SMTP_PORT=465
+SMTP_USER=contacto@sapienteai.com
 SMTP_PASSWORD
-CONTACT_EMAIL_TO
+CONTACT_EMAIL_TO=contacto@sapienteai.com
 ```
 
 Não coloque palavras-passe reais em arquivos versionados. Consulte `.env.example` apenas como referência dos nomes esperados.

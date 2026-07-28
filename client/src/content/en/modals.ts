@@ -104,6 +104,7 @@ export const modalsEN = {
       turnstile: "Complete the security verification before sending.",
       turnstileExpired: "The verification expired. Please confirm it again.",
       turnstileError: "We couldn't validate the verification. Please try again.",
+      rateLimited: "Too many attempts were made. Please wait 15 minutes before trying again.",
       submit: "We could not complete your subscription. Please try again shortly.",
       missingPrefix: "Please fill in the required fields before subscribing:",
     },

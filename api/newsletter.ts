@@ -296,7 +296,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const ip = getClientIp(req);
 
   if (isRateLimited(ip)) {
-    return res.status(429).json({ error: "request_rejected" });
+    return res.status(429).json({ error: "rate_limited" });
   }
 
   if (textField(payload.website, 200)) {
@@ -328,7 +328,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(422).json({ error: "disposable_email" });
   }
   if (!await verifyTurnstile(turnstileToken, ip)) {
-    return res.status(400).json({ error: "request_rejected" });
+    return res.status(400).json({ error: "turnstile_failed" });
   }
 
   const host = process.env.SMTP_HOST;
@@ -394,24 +394,30 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const welcomeEmail = buildWelcomeEmail(name, lang);
-    await Promise.all([
-      transporter.sendMail({
-        from: `"Sapiente.AI — Newsletter" <${user}>`,
-        to: recipient,
-        replyTo: { name, address: email },
-        subject: `Novo registo na newsletter — ${name}`,
-        text,
-        html,
-      }),
-      transporter.sendMail({
+    await transporter.sendMail({
+      from: `"Sapiente.AI — Newsletter" <${user}>`,
+      to: recipient,
+      replyTo: { name, address: email },
+      subject: `Novo registo na newsletter — ${name}`,
+      text,
+      html,
+    });
+
+    try {
+      await transporter.sendMail({
         from: `"Sapiente.AI" <${user}>`,
         to: { name, address: email },
         replyTo: user,
         subject: welcomeEmail.subject,
         text: welcomeEmail.text,
         html: welcomeEmail.html,
-      }),
-    ]);
+      });
+    } catch (confirmationError) {
+      // The registration already reached Sapiente.AI. A rejection of the
+      // confirmation message must not report the subscription as failed.
+      console.error("Newsletter confirmation delivery failed.", confirmationError);
+    }
+
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error("SMTP newsletter delivery failed.", error);

@@ -69,7 +69,8 @@
 }
 
 @media (min-width: 1024px) {
-  .contact-modal-scrollarea::after {
+  .contact-modal-scrollarea::after,
+  .newsletter-modal-scrollarea::after {
     display: none;
   }
 }
