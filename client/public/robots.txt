@@ -5,6 +5,7 @@ Allow: /
 Disallow: /admin
 Disallow: /private
 Disallow: /.env
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 User-agent: Googlebot
 Allow: /
@@ -41,3 +42,9 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.sapienteai.com/sitemap.xml
+
+# AI and agent discovery
+# Concise company and website context:
+# https://www.sapienteai.com/llms.txt
+# Extended machine-readable context:
+# https://www.sapienteai.com/llms-full.txt

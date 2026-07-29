@@ -1,0 +1,43 @@
+# Sapiente.AI
+
+> Sapiente.AI is an applied artificial intelligence, automation, data, web development and digital growth company based in São João da Madeira, Aveiro, Portugal. We help companies turn technology into measurable commercial and operational results.
+
+## Official website
+
+- [Português](https://www.sapienteai.com/pt): Página principal em português.
+- [English](https://www.sapienteai.com/en): English homepage.
+- [About](https://www.sapienteai.com/pt/about): Empresa, abordagem e fundadores.
+- [Services](https://www.sapienteai.com/pt/services): Serviços e áreas de especialização.
+- [Projects](https://www.sapienteai.com/pt/projects): Produtos digitais em desenvolvimento.
+- [FAQ](https://www.sapienteai.com/pt/faq): Perguntas frequentes.
+- [Blog](https://www.sapienteai.com/pt/blog): Artigos e conteúdos.
+- [Sitemap](https://www.sapienteai.com/sitemap.xml): Índice XML das páginas públicas.
+
+## Main capabilities
+
+- Applied artificial intelligence and generative AI
+- Intelligent process automation and systems integration
+- Customer acquisition and digital growth
+- Data analysis, dashboards and business intelligence
+- Conversion-oriented websites and web platforms
+- Digital marketing, content and performance campaigns
+- SEO, GEO and AEO strategy
+
+## Projects
+
+- Hoje em SJM: cultural agenda for São João da Madeira, in final testing.
+- Specialized exchange platform: circular-economy platform in development.
+- SEO, GEO and AEO validator: online visibility assessment tool in development.
+
+## Contact
+
+- Email: contacto@sapienteai.com
+- Telephone and WhatsApp: +351 910 567 575
+- Location: São João da Madeira, Aveiro, Portugal
+
+## Additional machine-readable information
+
+- [Full site summary](https://www.sapienteai.com/llms-full.txt)
+- [Robots policy](https://www.sapienteai.com/robots.txt)
+- [Privacy policy](https://www.sapienteai.com/pt/privacy)
+- [Generative AI policy](https://www.sapienteai.com/pt/generative-ai-policy)

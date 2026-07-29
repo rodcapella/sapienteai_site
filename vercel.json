@@ -2,6 +2,18 @@
   "installCommand": "pnpm install --no-frozen-lockfile",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/pt", "destination": "/pt/index.html" },
+    { "source": "/en", "destination": "/en/index.html" },
+    { "source": "/pt/about", "destination": "/pt/about/index.html" },
+    { "source": "/en/about", "destination": "/en/about/index.html" },
+    { "source": "/pt/services", "destination": "/pt/services/index.html" },
+    { "source": "/en/services", "destination": "/en/services/index.html" },
+    { "source": "/pt/projects", "destination": "/pt/projects/index.html" },
+    { "source": "/en/projects", "destination": "/en/projects/index.html" },
+    { "source": "/pt/faq", "destination": "/pt/faq/index.html" },
+    { "source": "/en/faq", "destination": "/en/faq/index.html" },
+    { "source": "/pt/blog", "destination": "/pt/blog/index.html" },
+    { "source": "/en/blog", "destination": "/en/blog/index.html" },
     { "source": "/((?!api/|assets/|media/|robots.txt|sitemap.*|favicon.ico).*)", "destination": "/index.html" }
   ],
   "headers": [
@@ -15,6 +27,10 @@
         {
           "key": "Vercel-CDN-Cache-Control",
           "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "Link",
+          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.txt>; rel=\"alternate\"; type=\"text/markdown\""
         }
       ]
     },
