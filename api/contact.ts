@@ -10,6 +10,7 @@ type ContactPayload = {
   source?: unknown;
   topic?: unknown;
   message?: unknown;
+  lang?: unknown;
   turnstileToken?: unknown;
   website?: unknown;
 };
@@ -45,6 +46,206 @@ function escapeHtml(value: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+type ContactConfirmationEmailTemplate = {
+  name: string;
+  topic: string;
+  message: string;
+  lang: "pt" | "en";
+};
+
+function buildContactConfirmationEmailHtml({
+  name,
+  topic,
+  message,
+  lang,
+}: ContactConfirmationEmailTemplate) {
+  const copy = lang === "en"
+    ? {
+        htmlLang: "en",
+        title: "Message received",
+        preheader: "Thank you for contacting Sapiente.AI. Your message has been received.",
+        tagline: "Applied artificial intelligence, automation and digital growth.",
+        badge: "Message confirmed",
+        heading: "Thank you for reaching out",
+        greeting: `Hello ${name},`,
+        intro: "Thank you for contacting Sapiente.AI. Your message has been received successfully and our team will respond within 48 business hours.",
+        statusLabel: "Status",
+        statusValue: "Message received",
+        statusDetail: "Successfully delivered",
+        responseLabel: "Expected response",
+        responseValue: "Within 48 hours",
+        responseDetail: "During business days",
+        reference: "Message reference",
+        messageLabel: "Your message",
+        automated: "This is an automated confirmation that your message was delivered through sapienteai.com.",
+        rights: "ALL RIGHTS RESERVED",
+      }
+    : {
+        htmlLang: "pt-PT",
+        title: "Mensagem recebida",
+        preheader: "Obrigado por contactar a Sapiente.AI. A sua mensagem foi recebida.",
+        tagline: "Inteligência artificial aplicada, automação e crescimento digital.",
+        badge: "Mensagem confirmada",
+        heading: "Obrigado pelo seu contacto",
+        greeting: `Olá ${name},`,
+        intro: "Obrigado por contactar a Sapiente.AI. A sua mensagem foi recebida com sucesso e a nossa equipa responderá num prazo de até 48 horas úteis.",
+        statusLabel: "Estado",
+        statusValue: "Mensagem recebida",
+        statusDetail: "Entregue com sucesso",
+        responseLabel: "Resposta prevista",
+        responseValue: "Até 48 horas",
+        responseDetail: "Em dias úteis",
+        reference: "Referência da mensagem",
+        messageLabel: "A sua mensagem",
+        automated: "Esta é uma confirmação automática de que a sua mensagem foi entregue através de sapienteai.com.",
+        rights: "TODOS OS DIREITOS RESERVADOS",
+      };
+
+  return `<!doctype html>
+<html lang="${copy.htmlLang}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="supported-color-schemes" content="dark" />
+    <title>${copy.title}</title>
+    <style>
+      @media only screen and (max-width: 620px) {
+        .email-shell { width: 100% !important; }
+        .email-padding { padding-left: 20px !important; padding-right: 20px !important; }
+        .column { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+        .column-gap { display: none !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0;padding:0;background-color:#001027;color:#e8f1ff;font-family:Arial,Helvetica,sans-serif;">
+    <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">
+      ${copy.preheader}
+    </div>
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%;background-color:#001027;">
+      <tr>
+        <td align="center" style="padding:16px;">
+          <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="email-shell" style="width:600px;max-width:600px;background-color:#041b38;border:1px solid #174c7d;border-collapse:separate;">
+            <tr>
+              <td class="email-padding" style="padding:18px 24px;border-bottom:1px solid #123b64;font-family:Arial,Helvetica,sans-serif;">
+                <a href="https://www.sapienteai.com" style="color:#39c8f0;font-size:21px;line-height:27px;font-weight:800;letter-spacing:0.3px;text-decoration:none;">
+                  SAPIENTE<span style="color:#1687ff;">.AI</span>
+                </a>
+                <div style="padding-top:4px;color:#a9bfd9;font-size:12px;line-height:18px;">
+                  ${copy.tagline}
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="email-padding" style="padding:28px 24px 32px;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td style="padding-bottom:8px;color:#39c8f0;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;">
+                      &#10003;&nbsp;&nbsp;${copy.badge}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-bottom:12px;color:#ffffff;font-size:32px;line-height:40px;font-weight:700;letter-spacing:-0.6px;">
+                      ${copy.heading}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-bottom:12px;color:#d4e1f1;font-size:16px;line-height:25px;">
+                      ${copy.greeting}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-bottom:28px;color:#d4e1f1;font-size:16px;line-height:25px;">
+                      ${copy.intro}
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                  <tr>
+                    <td class="column" width="49%" valign="top" style="width:49%;padding:24px;border:1px solid #174c7d;background-color:#062346;">
+                      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                          <td style="padding-bottom:18px;color:#39c8f0;font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;">${copy.statusLabel}</td>
+                        </tr>
+                        <tr>
+                          <td style="color:#ffffff;font-size:20px;line-height:28px;font-weight:700;">${copy.statusValue}</td>
+                        </tr>
+                        <tr>
+                          <td style="color:#a9bfd9;font-size:14px;line-height:20px;">${copy.statusDetail}</td>
+                        </tr>
+                      </table>
+                    </td>
+                    <td class="column-gap" width="16" style="width:16px;font-size:0;line-height:0;">&nbsp;</td>
+                    <td class="column" width="49%" valign="top" style="width:49%;padding:24px;border:1px solid #174c7d;background-color:#062346;">
+                      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                          <td style="padding-bottom:18px;color:#39c8f0;font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;">${copy.responseLabel}</td>
+                        </tr>
+                        <tr>
+                          <td style="color:#ffffff;font-size:20px;line-height:28px;font-weight:700;">${copy.responseValue}</td>
+                        </tr>
+                        <tr>
+                          <td style="color:#a9bfd9;font-size:14px;line-height:20px;">${copy.responseDetail}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:32px;border:1px solid #174c7d;border-radius:6px;border-collapse:separate;overflow:hidden;">
+                  <tr>
+                    <td style="padding:14px 24px;background-color:#082b53;border-bottom:1px solid #174c7d;color:#39c8f0;font-size:12px;font-weight:700;letter-spacing:0.5px;">
+                      ${copy.reference}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:17px 24px;color:#ffffff;font-size:15px;line-height:22px;font-weight:600;">
+                      ${topic}
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:32px;">
+                  <tr>
+                    <td style="padding-bottom:14px;color:#d4e1f1;font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;">
+                      &#9633;&nbsp;&nbsp;${copy.messageLabel}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding:24px;background-color:#082b53;border:1px solid #286da6;border-radius:8px;color:#80dcf7;font-size:17px;line-height:27px;font-weight:600;font-style:italic;">
+                      &ldquo;${message}&rdquo;
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top:28px;padding-top:24px;border-top:1px solid #174c7d;">
+                  <tr>
+                    <td style="color:#91a9c5;font-size:12px;line-height:19px;">
+                      ${copy.automated}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" style="padding:28px 24px;background-color:#001432;border-top:1px solid #174c7d;">
+                <a href="https://www.sapienteai.com" style="color:#39c8f0;font-size:12px;line-height:18px;font-weight:700;letter-spacing:1px;text-decoration:none;">
+                  SAPIENTE.AI
+                </a>
+                <div style="padding-top:7px;color:#91a9c5;font-size:11px;line-height:17px;">
+                  &copy; 2026 Sapiente.AI &mdash; ${copy.rights}
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>`;
 }
 
 function getClientIp(req: VercelRequest) {
@@ -142,6 +343,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const source = textField(payload.source, MAX_LENGTHS.source);
   const topic = textField(payload.topic, MAX_LENGTHS.topic);
   const message = textField(payload.message, MAX_LENGTHS.message);
+  const lang = payload.lang === "en" ? "en" : "pt";
   const turnstileToken = textField(payload.turnstileToken, 2048);
 
   if (!name || !email || !topic || !message) {
@@ -174,6 +376,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     port,
     secure: port === 465,
     auth: { user, pass: password },
+    connectionTimeout: 8_000,
+    greetingTimeout: 8_000,
+    socketTimeout: 10_000,
+    disableFileAccess: true,
+    disableUrlAccess: true,
   });
 
   const details = [
@@ -208,6 +415,60 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       text,
       html,
     });
+
+    const safeName = escapeHtml(name);
+    const safeTopic = escapeHtml(topic);
+    const safeMessage = escapeHtml(message).replace(/\r?\n/g, "<br />");
+    const confirmationText = lang === "en"
+      ? [
+          `Hello ${name},`,
+          "",
+          "Thank you for contacting Sapiente.AI. Your message has been received successfully and our team will respond within 48 business hours.",
+          "",
+          `Subject: ${topic}`,
+          "",
+          "Your message:",
+          message,
+          "",
+          "Sapiente.AI",
+          "https://www.sapienteai.com",
+        ]
+      : [
+          `Olá ${name},`,
+          "",
+          "Obrigado por contactar a Sapiente.AI. A sua mensagem foi recebida com sucesso e a nossa equipa responderá num prazo de até 48 horas úteis.",
+          "",
+          `Assunto: ${topic}`,
+          "",
+          "A sua mensagem:",
+          message,
+          "",
+          "Sapiente.AI",
+          "https://www.sapienteai.com",
+        ];
+
+    try {
+      await transporter.sendMail({
+        from: `"Sapiente.AI" <${user}>`,
+        to: { name, address: email },
+        replyTo: recipient,
+        subject: lang === "en"
+          ? `Message received — ${topic}`
+          : `Mensagem recebida — ${topic}`,
+        text: confirmationText.join("\n"),
+        html: buildContactConfirmationEmailHtml({
+          name: safeName,
+          topic: safeTopic,
+          message: safeMessage,
+          lang,
+        }),
+      });
+    } catch (confirmationError) {
+      // The original contact already reached Sapiente.AI. A failure in the
+      // automated acknowledgement must not tell the visitor it was lost.
+      console.error("SMTP contact confirmation delivery failed.", confirmationError);
+    }
+
     return res.status(200).json({ ok: true });
   } catch (error) {
     console.error("SMTP contact delivery failed.", error);

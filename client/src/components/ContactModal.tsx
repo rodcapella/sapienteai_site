@@ -185,6 +185,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           source: formData.source.trim(),
           topic: formData.topic.trim(),
           message: formData.message.trim(),
+          lang,
           turnstileToken: turnstileToken || "verification_unavailable",
           website,
         }),
