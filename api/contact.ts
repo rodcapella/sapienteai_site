@@ -18,6 +18,11 @@ type ContactPayload = {
 const RATE_LIMIT_MAX = 3;
 const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;
 const TURNSTILE_ACTION = "contact_form";
+const DEFAULT_TURNSTILE_HOSTNAMES = [
+  "sapienteai.com",
+  "www.sapienteai.com",
+  "sapienteaisite.vercel.app",
+];
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
 const MAX_LENGTHS = {
@@ -277,12 +282,15 @@ function isRateLimited(ip: string) {
 
 async function verifyTurnstile(token: string, ip?: string) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  const expectedHostnames = (process.env.TURNSTILE_EXPECTED_HOSTNAMES || "")
-    .split(",")
-    .map((hostname) => hostname.trim().toLowerCase())
-    .filter(Boolean);
+  const expectedHostnames = new Set([
+    ...DEFAULT_TURNSTILE_HOSTNAMES,
+    ...(process.env.TURNSTILE_EXPECTED_HOSTNAMES || "")
+      .split(",")
+      .map((hostname) => hostname.trim().toLowerCase())
+      .filter(Boolean),
+  ]);
 
-  if (!secret || expectedHostnames.length === 0) {
+  if (!secret) {
     console.error("Turnstile server environment is incomplete.");
     return false;
   }
@@ -307,7 +315,7 @@ async function verifyTurnstile(token: string, ip?: string) {
 
     return result.success === true
       && result.action === TURNSTILE_ACTION
-      && expectedHostnames.includes(hostname);
+      && expectedHostnames.has(hostname);
   } catch (error) {
     console.error("Turnstile verification failed.", error);
     return false;
@@ -324,7 +332,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const ip = getClientIp(req);
 
   if (isRateLimited(ip)) {
-    return res.status(429).json({ error: "request_rejected" });
+    return res.status(429).json({ error: "rate_limited" });
   }
 
   const website = textField(payload.website, 200);
@@ -357,7 +365,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   if (!await verifyTurnstile(turnstileToken, ip)) {
-    return res.status(400).json({ error: "request_rejected" });
+    return res.status(400).json({ error: "turnstile_failed" });
   }
 
   const host = process.env.SMTP_HOST;

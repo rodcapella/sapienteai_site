@@ -198,6 +198,25 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           setFeedbackMessage(alertText.errors.disposableEmail);
           return;
         }
+        if (result?.error === "turnstile_failed") {
+          setSubmitState("error");
+          setFeedbackMessage(alertText.errors.turnstileError);
+          setTurnstileToken("");
+          window.turnstile?.reset();
+          return;
+        }
+        if (result?.error === "rate_limited") {
+          setSubmitState("error");
+          setFeedbackMessage(alertText.errors.rateLimited);
+          setTurnstileToken("");
+          window.turnstile?.reset();
+          return;
+        }
+        if (result?.error === "request_rejected") {
+          setSubmitState("error");
+          setFeedbackMessage(alertText.errors.form);
+          return;
+        }
         throw new Error("submit_failed");
       }
 
@@ -235,7 +254,6 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
       isOpen={isOpen}
       onClose={closeModal}
       closeLabel={text.closeLabel}
-      ariaDescribedBy="contact-modal-description"
       contentClassName="lg:max-w-[860px]"
       scrollAreaClassName="contact-modal-scrollarea lg:max-h-[calc(100vh-1rem)]"
     >
@@ -246,7 +264,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
             {text.title}
           </span>
         </DialogTitle>
-        <DialogDescription id="contact-modal-description" className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base lg:max-w-2xl lg:text-justify">
+        <DialogDescription className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base lg:max-w-2xl lg:text-justify">
           {text.description}
         </DialogDescription>
       </DialogHeader>

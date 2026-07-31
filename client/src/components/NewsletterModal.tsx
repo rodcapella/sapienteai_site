@@ -193,7 +193,6 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
       isOpen={isOpen}
       onClose={closeModal}
       closeLabel={text.closeLabel}
-      ariaDescribedBy="newsletter-modal-description"
       contentClassName="lg:max-w-[900px]"
       scrollAreaClassName="newsletter-modal-scrollarea lg:max-h-[calc(100vh-1rem)] lg:p-7 lg:pb-7"
     >
@@ -204,7 +203,7 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
             {text.title}
           </span>
         </DialogTitle>
-        <DialogDescription id="newsletter-modal-description" className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base lg:max-w-2xl lg:text-sm">
+        <DialogDescription className="max-w-xl text-sm text-[var(--brand-offwhite)]/[0.76] sm:text-base lg:max-w-2xl lg:text-sm">
           {text.description}
         </DialogDescription>
       </DialogHeader>

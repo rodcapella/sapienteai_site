@@ -36,7 +36,7 @@ Crie um widget Turnstile no painel da Cloudflare e autorize os domínios de prod
 ```text
 VITE_TURNSTILE_SITE_KEY
 TURNSTILE_SECRET_KEY
-TURNSTILE_EXPECTED_HOSTNAMES=sapienteai.com,www.sapienteai.com
+TURNSTILE_EXPECTED_HOSTNAMES=sapienteai.com,www.sapienteai.com,sapienteaisite.vercel.app
 ```
 
 O frontend envia a ação fixa `contact_form`. O backend aceita o token somente quando:

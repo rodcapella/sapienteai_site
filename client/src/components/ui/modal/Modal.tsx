@@ -104,7 +104,6 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   closeLabel: string;
-  ariaDescribedBy: string;
   children: ReactNode;
   contentClassName?: string;
   scrollAreaClassName?: string;
@@ -114,7 +113,6 @@ export function Modal({
   isOpen,
   onClose,
   closeLabel,
-  ariaDescribedBy,
   children,
   contentClassName,
   scrollAreaClassName,
@@ -127,7 +125,6 @@ export function Modal({
           "w-[calc(100%-1rem)] max-w-[calc(100%-1rem)] overflow-hidden rounded-2xl border border-[var(--brand-cyan-bright)]/[0.5] bg-[linear-gradient(145deg,color-mix(in_srgb,var(--brand-darkest)_97%,transparent),color-mix(in_srgb,var(--brand-darkest)_95%,transparent))] p-0 shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_0_60px_color-mix(in_srgb,var(--brand-cyan-bright)_32%,transparent),0_24px_90px_color-mix(in_srgb,var(--brand-darkest)_65%,transparent)] backdrop-blur-2xl sm:max-w-2xl",
           contentClassName,
         )}
-        aria-describedby={ariaDescribedBy}
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.97, y: 12 }}

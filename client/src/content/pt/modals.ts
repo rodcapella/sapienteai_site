@@ -58,6 +58,7 @@ export const modalsPT = {
       turnstile: "Conclua a verificação de segurança antes de enviar.",
       turnstileExpired: "A verificação expirou. Por favor, confirme novamente.",
       turnstileError: "Não foi possível validar a verificação. Tente novamente.",
+      rateLimited: "Foram efetuadas demasiadas tentativas. Aguarde 15 minutos antes de tentar novamente.",
       submit: "Não foi possível enviar agora. Tente novamente em instantes.",
       missingPrefix: "Preencha os campos obrigatórios antes de enviar:",
     },
