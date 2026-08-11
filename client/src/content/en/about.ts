@@ -45,33 +45,6 @@
     ],
   },
   visualSections: {
-    founders: {
-      image: "/media/bg/sobre/en/bg_Sobre_Founders_en.webp",
-      mobileImages: [
-        "/media/bg/sobre/en/founders_mobile_rod_en.webp",
-        "/media/bg/sobre/en/founders_mobile_tati_en.webp",
-        "/media/bg/sobre/en/founders_mobile_ia_en.webp",
-      ],
-      links: [
-        {
-          label: "Rodrigo Póvoa",
-          options: [
-            { label: "Website", href: "https://www.rpovoadata.tech/" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/rodrigocspovoa/" },
-          ],
-          area: { left: "18.2%", top: "30%", width: "21.6%", height: "64%" },
-        },
-        {
-          label: "Tatiane Gomes",
-          options: [
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/tatiane-gomes-333098302/" },
-            { label: "Instagram", href: "https://www.instagram.com/tatianegomespovoa" },
-          ],
-          area: { left: "41.4%", top: "30%", width: "21.5%", height: "64%" },
-        },
-      ],
-      alt: "The founders behind Sapiente.AI",
-    },
     howWeWork: {
       image: "/media/bg/sobre/en/bg_Sobre_como_trabalhamos_en.webp",
       mobileImages: [

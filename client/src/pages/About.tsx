@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -127,7 +127,7 @@ function linkIcon(label: string) {
   return <Globe className="h-4 w-4" />;
 }
 
-function AboutVisualSection({ content, founders }: { content: AboutVisualSectionContent; founders?: { label: string; names: string[] } }) {
+function AboutVisualSection({ content }: { content: AboutVisualSectionContent }) {
   const [activeHotspot, setActiveHotspot] = useState<string | null>(null);
   const mobileImages = content.mobileImages && content.mobileImages.length > 0
     ? content.mobileImages
@@ -142,15 +142,7 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
         aria-label={content.alt}
         onClick={() => setActiveHotspot(null)}
       >
-        {/* Texto dos founders visível para crawlers e LLMs mas visualmente integrado na imagem */}
-        {founders && (
-          <div className="sr-only" data-speakable>
-            <p>{founders.label}</p>
-            {founders.names.map((name) => <span key={name}>{name}</span>)}
-          </div>
-        )}
-
-        {/* Hotspots por founder — hover no desktop, tap no mobile */}
+        {/* Hotspots interativos — hover no desktop, tap no mobile */}
         {content.links?.map((link) => {
           const isOpen = activeHotspot === link.label;
           return (
@@ -202,13 +194,6 @@ function AboutVisualSection({ content, founders }: { content: AboutVisualSection
       </section>
 
       <section className="bg-white md:hidden" aria-label={content.alt}>
-        {founders && (
-          <div className="sr-only" data-speakable>
-            <p>{founders.label}</p>
-            {founders.names.map((name) => <span key={name}>{name}</span>)}
-          </div>
-        )}
-
         {mobileImages.map((image, index) => (
           <div
             key={`${image}-${index}`}
@@ -286,64 +271,6 @@ export default function About() {
     [lang, content],
   );
 
-  // Inject Person schema for founders — E-E-A-T + GEO entity recognition
-  useEffect(() => {
-    const foundersSchema = {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      "name": isPT ? "Fundadores da Sapiente.AI" : "Sapiente.AI Founders",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@type": "Person",
-            "name": "Rodrigo Póvoa",
-            "jobTitle": isPT ? "Co-fundador" : "Co-founder",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Sapiente.AI",
-              "url": "https://www.sapienteai.com"
-            },
-            "url": "https://www.rpovoadata.tech/",
-            "sameAs": [
-              "https://www.linkedin.com/in/rodrigocspovoa/",
-              "https://www.rpovoadata.tech/"
-            ]
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "Person",
-            "name": "Tatiane Gomes",
-            "jobTitle": isPT ? "Co-fundadora" : "Co-founder",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Sapiente.AI",
-              "url": "https://www.sapienteai.com"
-            },
-            "sameAs": [
-              "https://www.linkedin.com/in/tatiane-gomes-333098302/",
-              "https://www.instagram.com/tatianegomespovoa"
-            ]
-          }
-        }
-      ]
-    };
-    const id = "founders-schema-ld";
-    let el = document.getElementById(id) as HTMLScriptElement | null;
-    if (!el) {
-      el = document.createElement("script");
-      el.id = id;
-      el.type = "application/ld+json";
-      document.head.appendChild(el);
-    }
-    el.textContent = JSON.stringify(foundersSchema);
-    return () => { document.getElementById(id)?.remove(); };
-  }, [isPT]);
-
   return (
     <div className="flex flex-col">
       <InternalHero
@@ -357,15 +284,6 @@ export default function About() {
       />
 
       <AboutOriginSection content={content.origin} />
-      <AboutVisualSection
-        content={content.visualSections.founders}
-        founders={{
-          label: isPT ? "Fundadores da Sapiente.AI, empresa de inteligência artificial sediada em Aveiro, Portugal." : "Founders of Sapiente.AI, an applied AI company based in Aveiro, Portugal.",
-          names: isPT
-            ? ["Rodrigo Póvoa, co-fundador da Sapiente.AI.", "Tatiane Gomes, co-fundadora da Sapiente.AI."]
-            : ["Rodrigo Póvoa, co-founder of Sapiente.AI.", "Tatiane Gomes, co-founder of Sapiente.AI."]
-        }}
-      />
       <AboutVisualSection content={content.visualSections.howWeWork} />
 
       <QuizCTA />

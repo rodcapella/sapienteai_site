@@ -45,33 +45,6 @@ export const aboutPT = {
     ],
   },
   visualSections: {
-    founders: {
-      image: "/media/bg/sobre/pt/bg_Sobre_Founders.webp",
-      mobileImages: [
-        "/media/bg/sobre/pt/bg_founders_mobile_rod.webp",
-        "/media/bg/sobre/pt/bg_founders_mobile_tati.webp",
-        "/media/bg/sobre/pt/bg_founders_mobile_ia.webp",
-      ],
-      links: [
-        {
-          label: "Rodrigo Póvoa",
-          options: [
-            { label: "Website", href: "https://www.rpovoadata.tech/" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/rodrigocspovoa/" },
-          ],
-          area: { left: "18.2%", top: "30%", width: "21.6%", height: "64%" },
-        },
-        {
-          label: "Tatiane Gomes",
-          options: [
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/tatiane-gomes-333098302/" },
-            { label: "Instagram", href: "https://www.instagram.com/tatianegomespovoa" },
-          ],
-          area: { left: "41.4%", top: "30%", width: "21.5%", height: "64%" },
-        },
-      ],
-      alt: "Os criadores por trás da Sapiente.AI",
-    },
     howWeWork: {
       image: "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
       mobileImages: [
