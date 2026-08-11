@@ -1,4 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { Redirect, Route, useLocation } from "wouter";
 
 import MainLayout from "@/components/layout/MainLayout";
@@ -114,6 +115,8 @@ export default function App() {
           <WhatsAppFloatingButton />
         </Suspense>
       )}
+
+      <Analytics />
     </>
   );
 }
