@@ -13,7 +13,7 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
-  variant?: "default" | "home" | "about" | "services";
+  variant?: "default" | "home" | "about";
   align?: "left" | "center";
   backgroundSrc?: string;
 };
@@ -106,8 +106,6 @@ export function FinalCTA({
         return "/media/bg/finalCTA/bg_finalCTA_home.webp";
       case "about":
         return "/media/bg/finalCTA/final_CTA_sobre.webp";
-      case "services":
-        return "/media/bg/finalCTA/final_CTA_servicos.webp";
       default:
         return "/media/bg/finalCTA/bg_finalCTA.webp";
     }

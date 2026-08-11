@@ -82,6 +82,7 @@ function ServicesStickyNav({
 export default function Services() {
   const { lang } = useTranslation();
   const content = getContent("services", lang);
+  const aboutContent = getContent("about", lang);
   const sections = content.sections as ServiceSection[];
   const [activeSection, setActiveSection] = useState(sections[0].id);
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -363,13 +364,13 @@ export default function Services() {
       <QuizCTA />
 
       <FinalCTA
-        title={content.finalCta.title}
-        title_highlight={content.finalCta.highlight}
-        description={content.finalCta.description}
-        description_highlight={content.finalCta.description_highlight}
-        button={content.finalCta.button}
-        variant="services"
-        backgroundSrc="/media/bg/finalCTA/final_CTA_servicos.webp"
+        title={aboutContent.cta.title}
+        title_highlight={aboutContent.cta.title_highlight}
+        description={aboutContent.cta.description}
+        description_highlight={aboutContent.cta.description_highlight}
+        button={aboutContent.cta.button}
+        variant="about"
+        backgroundSrc="/media/bg/finalCTA/final_CTA_sobre.webp"
       />
 
       <ContactModal
