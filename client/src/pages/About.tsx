@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
@@ -38,6 +38,18 @@ type AboutVisualSectionContent = {
       width: string;
       height: string;
     };
+  }[];
+};
+
+type AboutTeamContent = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  profiles: {
+    name: string;
+    role: string;
+    image: string;
+    links: { label: string; href: string }[];
   }[];
 };
 
@@ -125,6 +137,71 @@ function linkIcon(label: string) {
   if (l === "linkedin")  return <Linkedin  className="h-4 w-4" />;
   if (l === "instagram") return <Instagram className="h-4 w-4" />;
   return <Globe className="h-4 w-4" />;
+}
+
+function AboutTeamSection({ content }: { content: AboutTeamContent }) {
+  return (
+    <section className="content-atmosphere bg-white px-6 py-14 md:py-20" aria-labelledby="about-team-title">
+      <div className="mx-auto max-w-6xl">
+        <Reveal>
+          <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
+            <p className="mb-3 text-sm font-black uppercase tracking-[0.16em] text-[var(--brand-primary)]">
+              {content.eyebrow}
+            </p>
+            <h2
+              id="about-team-title"
+              className="text-[clamp(2rem,4vw,3.25rem)] font-black leading-tight tracking-tight text-[var(--brand-night)]"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              {content.title}
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base font-semibold leading-relaxed text-[var(--brand-night)]/75">
+              {content.subtitle}
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2 md:gap-8">
+          {content.profiles.map((profile, index) => (
+            <Reveal key={profile.name} delay={index * 100}>
+              <article className="overflow-hidden rounded-3xl border border-[var(--brand-mid)]/45 bg-[var(--brand-night)] shadow-[0_22px_55px_rgba(4,18,48,0.16)]">
+                <div className="relative aspect-[410/450] overflow-hidden" aria-hidden="true">
+                  <img
+                    src={profile.image}
+                    alt=""
+                    className="absolute left-[-85.5%] top-[-47.5%] h-[155.6%] w-[468.3%] max-w-none"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div className="sr-only">
+                  <h3>{profile.name}</h3>
+                  <p>{profile.role}</p>
+                </div>
+                {profile.links.length > 0 && (
+                  <div className="flex items-center justify-center gap-3 border-t border-white/10 px-5 py-4">
+                    {profile.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-[var(--brand-cyan-bright)]/35 px-4 py-2 text-xs font-black uppercase tracking-[0.12em] text-white transition-colors hover:bg-white/10"
+                        aria-label={`${profile.name}: ${link.label}`}
+                      >
+                        {linkIcon(link.label)}
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function AboutVisualSection({ content }: { content: AboutVisualSectionContent }) {
@@ -271,6 +348,59 @@ export default function About() {
     [lang, content],
   );
 
+  useEffect(() => {
+    const teamSchema = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": isPT ? "Liderança e inteligência aplicada da Sapiente.AI" : "Sapiente.AI leadership and applied intelligence",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Person",
+            "name": "Rodrigo Póvoa",
+            "jobTitle": isPT ? "Fundador e CTO" : "Founder and CTO",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Sapiente.AI",
+              "url": "https://www.sapienteai.com"
+            },
+            "url": "https://www.rpovoadata.tech/",
+            "sameAs": [
+              "https://www.linkedin.com/in/rodrigocspovoa/",
+              "https://www.rpovoadata.tech/"
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Sapiente Intelligence",
+            "applicationCategory": "BusinessApplication",
+            "creator": {
+              "@type": "Organization",
+              "name": "Sapiente.AI",
+              "url": "https://www.sapienteai.com"
+            }
+          }
+        }
+      ]
+    };
+    const id = "about-team-schema-ld";
+    let el = document.getElementById(id) as HTMLScriptElement | null;
+    if (!el) {
+      el = document.createElement("script");
+      el.id = id;
+      el.type = "application/ld+json";
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(teamSchema);
+    return () => { document.getElementById(id)?.remove(); };
+  }, [isPT]);
+
   return (
     <div className="flex flex-col">
       <InternalHero
@@ -284,6 +414,7 @@ export default function About() {
       />
 
       <AboutOriginSection content={content.origin} />
+      <AboutTeamSection content={content.visualSections.team} />
       <AboutVisualSection content={content.visualSections.howWeWork} />
 
       <QuizCTA />

@@ -45,6 +45,29 @@ export const aboutPT = {
     ],
   },
   visualSections: {
+    team: {
+      eyebrow: "Quem está por trás",
+      title: "Liderança humana. Inteligência aplicada.",
+      subtitle:
+        "Estratégia, tecnologia e inteligência artificial trabalham em conjunto para transformar desafios reais em resultados mensuráveis.",
+      profiles: [
+        {
+          name: "Rodrigo Póvoa",
+          role: "Fundador e CTO da Sapiente.AI",
+          image: "/media/bg/sobre/pt/bg_founders_mobile_rod.webp",
+          links: [
+            { label: "Website", href: "https://www.rpovoadata.tech/" },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/rodrigocspovoa/" },
+          ],
+        },
+        {
+          name: "Sapiente Intelligence",
+          role: "Inteligência aplicada da Sapiente.AI",
+          image: "/media/bg/sobre/pt/bg_founders_mobile_ia.webp",
+          links: [],
+        },
+      ],
+    },
     howWeWork: {
       image: "/media/bg/sobre/pt/bg_Sobre_como_trabalhamos.webp",
       mobileImages: [
