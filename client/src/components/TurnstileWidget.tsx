@@ -76,7 +76,7 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
             appearance: "interaction-only",
             execution: "render",
             action: "contact_form",
-            language: lang === "pt" ? "pt-PT" : "en",
+            language: lang === "pt" ? "pt-BR" : "en",
             callback: (token: string) => callbacksRef.current.onVerify(token),
             "error-callback": () => {
               setFailedToLoad(true);
