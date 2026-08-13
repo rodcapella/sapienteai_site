@@ -112,7 +112,7 @@ export const modalsPT = {
     submit: {
       idle: "Registar",
       loading: "A registar...",
-      success: "Registo confirmado! Obrigado por se juntar a nós.",
+      success: "Pedido recebido. Se este endereço já estiver inscrito, nada será alterado.",
     },
   },
 } as const;

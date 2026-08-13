@@ -72,6 +72,7 @@ function buildContactConfirmationEmailHtml({
         title: "Message received",
         preheader: "Thank you for contacting Sapiente.AI. Your message has been received.",
         tagline: "Applied artificial intelligence, automation and digital growth.",
+        footerTagline: "Digital transformation with applied artificial intelligence.",
         badge: "Message confirmed",
         heading: "Thank you for reaching out",
         greeting: `Hello ${name},`,
@@ -89,6 +90,7 @@ function buildContactConfirmationEmailHtml({
       }
     : {
         htmlLang: "pt-PT",
+        footerTagline: "Transformação digital com inteligência artificial aplicada.",
         title: "Mensagem recebida",
         preheader: "Obrigado por contactar a Sapiente.AI. A sua mensagem foi recebida.",
         tagline: "Inteligência artificial aplicada, automação e crescimento digital.",
@@ -122,6 +124,7 @@ function buildContactConfirmationEmailHtml({
         .email-padding { padding-left: 20px !important; padding-right: 20px !important; }
         .column { display: block !important; width: 100% !important; box-sizing: border-box !important; }
         .column-gap { display: none !important; }
+        .brand-logo { width: 220px !important; max-width: 100% !important; height: auto !important; }
       }
     </style>
   </head>
@@ -134,11 +137,9 @@ function buildContactConfirmationEmailHtml({
         <td align="center" style="padding:16px;">
           <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" class="email-shell" style="width:600px;max-width:600px;background-color:#041b38;border:1px solid #174c7d;border-collapse:separate;">
             <tr>
-              <td class="email-padding" style="padding:18px 24px;border-bottom:1px solid #123b64;font-family:Arial,Helvetica,sans-serif;">
-                <a href="https://www.sapienteai.com" style="color:#39c8f0;font-size:21px;line-height:27px;font-weight:800;letter-spacing:0.3px;text-decoration:none;">
-                  SAPIENTE<span style="color:#1687ff;">.AI</span>
-                </a>
-                <div style="padding-top:4px;color:#a9bfd9;font-size:12px;line-height:18px;">
+              <td class="email-padding" style="padding:20px 24px;border-bottom:1px solid #123b64;font-family:Arial,Helvetica,sans-serif;">
+                <img class="brand-logo" src="https://www.sapienteai.com/media/logos/Original/Logo_Sapiente_fundo_escuro.png" width="230" alt="Sapiente.AI" style="display:block;width:230px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none;" />
+                <div style="padding-top:8px;color:#a9bfd9;font-size:12px;line-height:18px;">
                   ${copy.tagline}
                 </div>
               </td>
@@ -236,11 +237,19 @@ function buildContactConfirmationEmailHtml({
               </td>
             </tr>
             <tr>
-              <td align="center" style="padding:28px 24px;background-color:#001432;border-top:1px solid #174c7d;">
-                <a href="https://www.sapienteai.com" style="color:#39c8f0;font-size:12px;line-height:18px;font-weight:700;letter-spacing:1px;text-decoration:none;">
-                  SAPIENTE.AI
-                </a>
-                <div style="padding-top:7px;color:#91a9c5;font-size:11px;line-height:17px;">
+              <td align="center" style="padding:30px 24px 26px;background-color:#001432;border-top:1px solid #174c7d;">
+                <table role="presentation" width="72" cellspacing="0" cellpadding="0" border="0" style="width:72px;margin:0 auto 22px;">
+                  <tr>
+                    <td width="30" height="2" style="width:30px;height:2px;background-color:#1687ff;font-size:0;line-height:0;">&nbsp;</td>
+                    <td width="12" style="width:12px;font-size:0;line-height:0;">&nbsp;</td>
+                    <td width="30" height="2" style="width:30px;height:2px;background-color:#39c8f0;font-size:0;line-height:0;">&nbsp;</td>
+                  </tr>
+                </table>
+                <img class="brand-logo" src="https://www.sapienteai.com/media/logos/Original/Logo_Sapiente_fundo_escuro.png" width="240" alt="Sapiente.AI" style="display:block;width:240px;max-width:100%;height:auto;margin:0 auto;border:0;outline:none;text-decoration:none;" />
+                <div style="padding-top:14px;color:#d4e1f1;font-size:13px;line-height:20px;">
+                  ${copy.footerTagline}
+                </div>
+                <div style="padding-top:14px;color:#91a9c5;font-size:11px;line-height:17px;letter-spacing:0.25px;">
                   &copy; 2026 Sapiente.AI &mdash; ${copy.rights}
                 </div>
               </td>

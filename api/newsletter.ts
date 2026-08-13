@@ -65,7 +65,9 @@ function buildWelcomeEmail(name: string, lang: "pt" | "en") {
     ? {
         subject: "Welcome to the Sapiente.AI newsletter",
         welcome: "Welcome!",
-        confirmed: "Your newsletter subscription is confirmed.",
+        confirmed: "Your subscription request has been received. If this address is already subscribed, no changes will be made.",
+        tagline: "Applied artificial intelligence, automation and digital growth.",
+        footerTagline: "Digital transformation with applied artificial intelligence.",
         thanks: "Thank you for subscribing",
         greeting: `Hello ${safeName}! We are delighted to have you with us at <strong>Sapiente.AI</strong>. You are now part of a community focused on the future.`,
         expectation: "Get ready to receive the latest <strong>news, market trends and exclusive AI insights</strong> directly in your inbox — completely free.",
@@ -80,7 +82,9 @@ function buildWelcomeEmail(name: string, lang: "pt" | "en") {
     : {
         subject: "Bem-vindo à newsletter Sapiente.AI",
         welcome: "Bem-vindo!",
-        confirmed: "A sua subscrição da newsletter está confirmada.",
+        confirmed: "O seu pedido de subscrição foi recebido. Se este endereço já estiver inscrito, nada será alterado.",
+        tagline: "Inteligência artificial aplicada, automação e crescimento digital.",
+        footerTagline: "Transformação digital com inteligência artificial aplicada.",
         thanks: "Obrigado por subscrever",
         greeting: `Olá ${safeName}! Ficamos muito felizes por o ter connosco na <strong>Sapiente.AI</strong>. A partir de agora, faz parte de uma comunidade focada no futuro.`,
         expectation: "Prepare-se para receber diretamente na sua caixa de entrada as últimas <strong>notícias, tendências de mercado e dicas exclusivas de IA</strong> — tudo isto de forma totalmente gratuita.",
@@ -104,13 +108,24 @@ function buildWelcomeEmail(name: string, lang: "pt" | "en") {
 
   const html = `<!doctype html>
 <html lang="${isEnglish ? "en" : "pt-PT"}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    @media only screen and (max-width:620px) {
+      .email-padding { padding-left:20px !important; padding-right:20px !important; }
+      .brand-logo { width:220px !important; max-width:100% !important; height:auto !important; }
+    }
+  </style>
+</head>
 <body style="margin:0;padding:0;background:#f0f7ff;color:#151c22;font-family:Arial,Helvetica,sans-serif">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#f0f7ff">
     <tr><td align="center" style="padding:24px 12px">
       <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="width:100%;max-width:600px;background:#ffffff">
         <tr>
-          <td style="padding:18px 32px;border-bottom:1px solid #e8eff7">
-            <img src="${baseUrl}/media/logos/Original/Logo_Sapiente_fundo_claro.png" width="180" alt="Sapiente.AI" style="display:block;width:180px;max-width:100%;height:auto;border:0">
+          <td class="email-padding" style="padding:20px 32px;background:#041b38;border-bottom:1px solid #174c7d">
+            <img class="brand-logo" src="${baseUrl}/media/logos/Original/Logo_Sapiente_fundo_escuro.png" width="230" alt="Sapiente.AI" style="display:block;width:230px;max-width:100%;height:auto;border:0;outline:none;text-decoration:none">
+            <div style="padding-top:8px;color:#a9bfd9;font-size:12px;line-height:18px">${copy.tagline}</div>
           </td>
         </tr>
         <tr>
@@ -159,11 +174,18 @@ function buildWelcomeEmail(name: string, lang: "pt" | "en") {
           </td>
         </tr>
         <tr>
-          <td align="center" style="padding:34px 24px;background:#001432;color:#ffffff">
-            <img src="${baseUrl}/media/logos/Original/Logo_Sapiente_fundo_escuro.png" width="190" alt="Sapiente.AI" style="display:block;width:190px;max-width:100%;height:auto;margin:0 auto 24px;border:0">
-            <p style="margin:0 0 18px;font-size:13px;line-height:22px">
-              <a href="${baseUrl}${pagePrefix}/privacy" style="color:#dce8f8;text-decoration:none">${copy.privacy}</a>
-              &nbsp;&nbsp;·&nbsp;&nbsp; <a href="${baseUrl}${pagePrefix}/newsletter/unsubscribe" style="color:#dce8f8;text-decoration:none">${copy.unsubscribe}</a>
+          <td align="center" style="padding:30px 24px 26px;background:#001432;color:#ffffff;border-top:1px solid #174c7d">
+            <table role="presentation" width="72" cellspacing="0" cellpadding="0" border="0" style="width:72px;margin:0 auto 22px">
+              <tr>
+                <td width="30" height="2" style="width:30px;height:2px;background:#1687ff;font-size:0;line-height:0">&nbsp;</td>
+                <td width="12" style="width:12px;font-size:0;line-height:0">&nbsp;</td>
+                <td width="30" height="2" style="width:30px;height:2px;background:#39c8f0;font-size:0;line-height:0">&nbsp;</td>
+              </tr>
+            </table>
+            <img class="brand-logo" src="${baseUrl}/media/logos/Original/Logo_Sapiente_fundo_escuro.png" width="240" alt="Sapiente.AI" style="display:block;width:240px;max-width:100%;height:auto;margin:0 auto;border:0;outline:none;text-decoration:none">
+            <p style="margin:14px 0 16px;color:#d4e1f1;font-size:13px;line-height:20px">${copy.footerTagline}</p>
+            <p style="margin:0 0 14px;font-size:12px;line-height:19px">
+              <a href="${baseUrl}${pagePrefix}/newsletter/unsubscribe" style="color:#39c8f0;text-decoration:underline">${copy.unsubscribe}</a>
             </p>
             <p style="margin:0;font-size:11px;line-height:18px;letter-spacing:1px;color:#aebdd0">© 2026 SAPIENTE.AI · ${copy.rights}</p>
           </td>
@@ -185,7 +207,7 @@ function buildCancellationEmail(lang: "pt" | "en") {
     ? {
         subject: "Newsletter unsubscribe request received",
         title: "Request received",
-        message: "We have received your request to unsubscribe from the Sapiente.AI newsletter. Your email address will be removed from future newsletter communications.",
+        message: "If this email address is subscribed, it will be removed from future communications.",
         note: "Thank you for being part of our community.",
         follow: "YOU CAN STILL FOLLOW US",
         privacy: "Privacy Policy",
@@ -194,7 +216,7 @@ function buildCancellationEmail(lang: "pt" | "en") {
     : {
         subject: "Pedido de cancelamento da newsletter recebido",
         title: "Pedido recebido",
-        message: "Recebemos o seu pedido de cancelamento da newsletter Sapiente.AI. O seu endereço será removido das próximas comunicações da newsletter.",
+        message: "Se este endereço estiver inscrito, será removido das próximas comunicações.",
         note: "Obrigado por ter feito parte da nossa comunidade.",
         follow: "PODE CONTINUAR A ACOMPANHAR-NOS",
         privacy: "Política de Privacidade",
@@ -342,26 +364,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(503).json({ error: "request_failed" });
   }
 
-  const details = [
-    ["Nome", name],
-    ["E-mail", email],
-    ["Cargo", role || "Não informado"],
-    ["Empresa", company || "Não informada"],
-    ["Como nos conheceu", source || "Não informado"],
-    ["Consentimento", "Aceite"],
-  ];
-  const text = details.map(([label, value]) => `${label}: ${value}`).join("\n");
-  const html = `
-    <h2>Novo registo na newsletter Sapiente.AI</h2>
-    <table cellpadding="6" cellspacing="0" style="border-collapse:collapse">
-      ${details.map(([label, value]) => `
-        <tr>
-          <th align="left" style="border-bottom:1px solid #dbeafe">${escapeHtml(label)}</th>
-          <td style="border-bottom:1px solid #dbeafe">${escapeHtml(value)}</td>
-        </tr>`).join("")}
-    </table>
-  `;
-
   try {
     const transporter = nodemailer.createTransport({
       host,
@@ -395,28 +397,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const welcomeEmail = buildWelcomeEmail(name, lang);
     await transporter.sendMail({
-      from: `"Sapiente.AI — Newsletter" <${user}>`,
-      to: recipient,
-      replyTo: { name, address: email },
-      subject: `Novo registo na newsletter — ${name}`,
-      text,
-      html,
+      from: `"Sapiente.AI" <${user}>`,
+      to: { name, address: email },
+      replyTo: user,
+      subject: welcomeEmail.subject,
+      text: welcomeEmail.text,
+      html: welcomeEmail.html,
     });
-
-    try {
-      await transporter.sendMail({
-        from: `"Sapiente.AI" <${user}>`,
-        to: { name, address: email },
-        replyTo: user,
-        subject: welcomeEmail.subject,
-        text: welcomeEmail.text,
-        html: welcomeEmail.html,
-      });
-    } catch (confirmationError) {
-      // The registration already reached Sapiente.AI. A rejection of the
-      // confirmation message must not report the subscription as failed.
-      console.error("Newsletter confirmation delivery failed.", confirmationError);
-    }
 
     return res.status(200).json({ ok: true });
   } catch (error) {

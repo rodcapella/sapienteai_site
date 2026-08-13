@@ -112,7 +112,7 @@ export const modalsEN = {
     submit: {
       idle: "Subscribe",
       loading: "Subscribing...",
-      success: "Subscription confirmed! Thank you for joining us.",
+      success: "Request received. If this address is already subscribed, no changes will be made.",
     },
   },
 } as const;
