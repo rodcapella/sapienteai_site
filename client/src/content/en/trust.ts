@@ -1,6 +1,7 @@
 import { CheckCircle2, Gavel, Lock, Scale, ShieldCheck, UserCheck } from "@/lib/icons";
 
 export const trustContentEN = {
+  title: "Trust & Security",
   label: "Trust & Security",
   highlight: "Designed for trust.",
   subtitle:

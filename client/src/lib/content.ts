@@ -91,7 +91,11 @@ const contentMap = {
   }
 } as const;
 
-export function getContent<Page extends keyof typeof contentMap>(page: Page, lang: string): (typeof contentMap)[Page]["pt" | "en"] {
+type ContentMap = typeof contentMap;
+type LocalizedContent<Page extends keyof ContentMap> = ContentMap[Page][keyof ContentMap[Page]];
+
+export function getContent<Page extends keyof ContentMap>(page: Page, lang: string): LocalizedContent<Page> {
   const safeLang = lang === "en" ? "en" : "pt";
-  return contentMap[page][safeLang];
+  const localized = contentMap[page] as unknown as Record<"pt" | "en", LocalizedContent<Page>>;
+  return localized[safeLang];
 }

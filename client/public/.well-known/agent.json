@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "name": "Sapiente.AI",
+  "description": "Applied AI, automation, data, web development and digital growth.",
+  "url": "https://www.sapienteai.com",
+  "languages": [
+    "pt-PT",
+    "en"
+  ],
+  "contact": {
+    "email": "contacto@sapienteai.com",
+    "telephone": "+351910567575"
+  },
+  "location": {
+    "locality": "São João da Madeira",
+    "region": "Aveiro",
+    "country": "PT"
+  },
+  "discovery": {
+    "llms": "https://www.sapienteai.com/llms.txt",
+    "llms_full": "https://www.sapienteai.com/llms-full.txt",
+    "sitemap": "https://www.sapienteai.com/sitemap.xml",
+    "robots": "https://www.sapienteai.com/robots.txt"
+  },
+  "content_negotiation": {
+    "media_type": "text/markdown",
+    "header": "Accept: text/markdown"
+  },
+  "content_signals": {
+    "ai_train": false,
+    "search": true,
+    "ai_input": true
+  },
+  "capabilities": [
+    "applied-ai",
+    "automation",
+    "data-analytics",
+    "web-development",
+    "digital-marketing",
+    "seo",
+    "geo",
+    "aeo"
+  ]
+}

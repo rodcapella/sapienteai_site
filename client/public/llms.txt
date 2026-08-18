@@ -1,43 +1,28 @@
 # Sapiente.AI
 
-> Sapiente.AI is an applied artificial intelligence, automation, data, web development and digital growth company based in São João da Madeira, Aveiro, Portugal. We help companies turn technology into measurable commercial and operational results.
+> Applied artificial intelligence, automation, data, web development and digital growth company based in São João da Madeira, Aveiro, Portugal.
 
-## Official website
+## Official information
 
-- [Português](https://www.sapienteai.com/pt): Página principal em português.
-- [English](https://www.sapienteai.com/en): English homepage.
-- [About](https://www.sapienteai.com/pt/about): Empresa, abordagem e fundadores.
-- [Services](https://www.sapienteai.com/pt/services): Serviços e áreas de especialização.
-- [Projects](https://www.sapienteai.com/pt/projects): Produtos digitais em desenvolvimento.
-- [FAQ](https://www.sapienteai.com/pt/faq): Perguntas frequentes.
-- [Blog](https://www.sapienteai.com/pt/blog): Artigos e conteúdos.
-- [Sitemap](https://www.sapienteai.com/sitemap.xml): Índice XML das páginas públicas.
-
-## Main capabilities
-
-- Applied artificial intelligence and generative AI
-- Intelligent process automation and systems integration
-- Customer acquisition and digital growth
-- Data analysis, dashboards and business intelligence
-- Conversion-oriented websites and web platforms
-- Digital marketing, content and performance campaigns
-- SEO, GEO and AEO strategy
-
-## Projects
-
-- Hoje em SJM: cultural agenda for São João da Madeira, in final testing.
-- Specialized exchange platform: circular-economy platform in development.
-- SEO, GEO and AEO validator: online visibility assessment tool in development.
-
-## Contact
-
+- Website: https://www.sapienteai.com
 - Email: contacto@sapienteai.com
 - Telephone and WhatsApp: +351 910 567 575
-- Location: São João da Madeira, Aveiro, Portugal
+- Languages: Portuguese and English
+- Content preferences: ai-train=no, search=yes, ai-input=yes
 
-## Additional machine-readable information
+## Main pages
 
-- [Full site summary](https://www.sapienteai.com/llms-full.txt)
+- [Inteligência Artificial Aplicada ao seu Negócio](https://www.sapienteai.com/pt): Inteligência artificial, automação, dados, websites e marketing digital orientados ao crescimento de empresas.
+- [Sobre](https://www.sapienteai.com/pt/about): Conheça a Sapiente.AI, a sua abordagem e os fundadores em São João da Madeira, Aveiro, Portugal.
+- [Serviços de IA, Automação, Websites e Marketing Digital](https://www.sapienteai.com/pt/services): Conheça os serviços da Sapiente.AI em automação, IA aplicada, websites orientados à conversão, análise de dados e marketing digital.
+- [Projetos](https://www.sapienteai.com/pt/projects): Conheça os produtos digitais em desenvolvimento da Sapiente.AI.
+- [FAQ | Respostas sobre IA, automação e serviços digitais](https://www.sapienteai.com/pt/faq): Encontre respostas sobre os serviços da Sapiente.AI, modelo de trabalho, automação e inteligência artificial aplicada.
+- [Blog](https://www.sapienteai.com/pt/blog): Artigos sobre inteligência artificial, automação, dados, tecnologia e crescimento digital.
+- [Applied Artificial Intelligence for Business](https://www.sapienteai.com/en): Artificial intelligence, automation, data, websites and digital marketing focused on business growth.
+
+## Discovery
+
+- [Full context](https://www.sapienteai.com/llms-full.txt)
+- [Agent manifest](https://www.sapienteai.com/.well-known/agent.json)
+- [Sitemap](https://www.sapienteai.com/sitemap.xml)
 - [Robots policy](https://www.sapienteai.com/robots.txt)
-- [Privacy policy](https://www.sapienteai.com/pt/privacy)
-- [Generative AI policy](https://www.sapienteai.com/pt/generative-ai-policy)

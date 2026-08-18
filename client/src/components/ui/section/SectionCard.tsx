@@ -1,7 +1,7 @@
 ﻿import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 import { useMouseGlow } from "@/hooks/useMouseGlow";
-import { motion } from "framer-motion";
+import { motion, type HTMLMotionProps } from "framer-motion";
 
 const sectionCardVariants = cva(
   `
@@ -56,9 +56,10 @@ const sectionCardVariants = cva(
   },
 );
 
-type Props = React.ComponentProps<"div"> &
+type Props = Omit<HTMLMotionProps<"div">, "children"> &
   VariantProps<typeof sectionCardVariants> & {
     delay?: number;
+    children?: React.ReactNode;
   };
 
 export function SectionCard({ className, variant, children, delay = 0, ...props }: Props) {

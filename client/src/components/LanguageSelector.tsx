@@ -8,15 +8,16 @@ export function LanguageSelector() {
   const ref = useRef<HTMLButtonElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
+    const element = ref.current;
+    if (!element) return;
+    const rect = element.getBoundingClientRect();
 
     const dx = e.clientX - (rect.left + rect.width / 2);
     const dy = e.clientY - (rect.top + rect.height / 2);
 
-    ref.current.style.transform = `translate3d(${dx * 0.15}px, ${dy * 0.15}px, 0)`;
-    ref.current.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    ref.current.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    element.style.transform = `translate3d(${dx * 0.15}px, ${dy * 0.15}px, 0)`;
+    element.style.setProperty("--x", `${e.clientX - rect.left}px`);
+    element.style.setProperty("--y", `${e.clientY - rect.top}px`);
   };
 
   const handleMouseLeave = () => {

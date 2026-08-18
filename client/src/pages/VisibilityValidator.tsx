@@ -252,7 +252,7 @@ export default function VisibilityValidator() {
         status: getStatus(score),
         title: resultText.title,
         description: resultText.description,
-        details: resultText.details,
+        details: [...resultText.details],
       };
     });
 

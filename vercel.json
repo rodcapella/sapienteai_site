@@ -1,22 +1,61 @@
 {
   "installCommand": "pnpm install --no-frozen-lockfile",
+  "redirects": [
+    { "source": "/", "destination": "/pt", "permanent": false },
+    { "source": "/blog", "destination": "/pt/blog", "permanent": true },
+    { "source": "/pt/quiz-ai", "destination": "/pt/quiz-ia", "permanent": true },
+    { "source": "/en/quiz-ia", "destination": "/en/quiz-ai", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/pt", "destination": "/pt/index.html" },
-    { "source": "/en", "destination": "/en/index.html" },
-    { "source": "/pt/about", "destination": "/pt/about/index.html" },
-    { "source": "/en/about", "destination": "/en/about/index.html" },
-    { "source": "/pt/services", "destination": "/pt/services/index.html" },
-    { "source": "/en/services", "destination": "/en/services/index.html" },
-    { "source": "/pt/projects", "destination": "/pt/projects/index.html" },
-    { "source": "/en/projects", "destination": "/en/projects/index.html" },
-    { "source": "/pt/faq", "destination": "/pt/faq/index.html" },
-    { "source": "/en/faq", "destination": "/en/faq/index.html" },
-    { "source": "/pt/blog", "destination": "/pt/blog/index.html" },
-    { "source": "/en/blog", "destination": "/en/blog/index.html" },
-    { "source": "/((?!api/|assets/|media/|robots.txt|sitemap.*|favicon.ico).*)", "destination": "/index.html" }
+    {
+      "source": "/pt",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "destination": "/pt/index.md"
+    },
+    {
+      "source": "/en",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "destination": "/en/index.md"
+    },
+    {
+      "source": "/:lang(pt|en)/:path*",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "destination": "/:lang/:path*/index.md"
+    },
+    { "source": "/pt/news", "destination": "/index.html" },
+    { "source": "/en/news", "destination": "/index.html" },
+    { "source": "/pt/seo-geo-aeo-validator", "destination": "/index.html" },
+    { "source": "/en/seo-geo-aeo-validator", "destination": "/index.html" },
+    { "source": "/pt/newsletter/unsubscribe", "destination": "/index.html" },
+    { "source": "/en/newsletter/unsubscribe", "destination": "/index.html" },
+    { "source": "/pt/404", "destination": "/404.html" },
+    { "source": "/en/404", "destination": "/404.html" }
   ],
   "headers": [
+    {
+      "source": "/pt",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/en",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/:lang(pt|en)/:path*",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
     {
       "source": "/((?!api/|assets/|media/|robots.txt|sitemap.*|favicon.ico).*)",
       "headers": [
@@ -31,7 +70,22 @@
         {
           "key": "Link",
           "value": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.txt>; rel=\"alternate\"; type=\"text/markdown\""
+        },
+        {
+          "key": "Vary",
+          "value": "Accept"
+        },
+        {
+          "key": "Content-Signal",
+          "value": "ai-train=no, search=yes, ai-input=yes"
         }
+      ]
+    },
+    {
+      "source": "/(.*).md",
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept" }
       ]
     },
     {

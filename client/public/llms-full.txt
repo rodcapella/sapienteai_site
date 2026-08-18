@@ -1,112 +1,60 @@
-# Sapiente.AI — Full company and website context
+# Sapiente.AI — Full website context
 
 ## Identity
 
-Sapiente.AI is a technology and digital growth company headquartered in São João da Madeira, Aveiro, Portugal. The company applies artificial intelligence, automation, data analysis, web development and digital marketing to help businesses acquire customers, improve operations, reduce costs and make better decisions.
+Sapiente.AI combines strategy, artificial intelligence and execution to help organisations acquire customers, automate operations, improve decisions and create measurable digital growth.
 
-Official domain: https://www.sapienteai.com
-
-Primary languages: Portuguese (Portugal) and English.
-
-Contact:
-
-- Email: contacto@sapienteai.com
-- Telephone and WhatsApp: +351 910 567 575
+- Official domain: https://www.sapienteai.com
 - Location: São João da Madeira, Aveiro, Portugal
+- Contact: contacto@sapienteai.com · +351 910 567 575
+- Primary languages: Portuguese (Portugal) and English
 
-## Positioning
+## Capabilities
 
-Sapiente.AI combines strategy, artificial intelligence and execution. Its work is oriented toward practical implementation and measurable business outcomes rather than isolated technology experiments.
+- Applied artificial intelligence and generative AI
+- Intelligent process automation and systems integration
+- Data analysis, dashboards and business intelligence
+- Conversion-oriented websites and web platforms
+- Digital marketing, content and performance campaigns
+- SEO, GEO and AEO strategy
 
-The company serves businesses and professionals seeking to:
+## Canonical public pages
 
-- generate and qualify commercial opportunities;
-- automate repetitive processes and internal operations;
-- improve customer service with intelligent assistants;
-- turn dispersed data into dashboards and actionable information;
-- develop websites, landing pages and web platforms;
-- strengthen digital positioning, content and campaign performance;
-- improve visibility in search engines and AI-generated answers.
+- [Inteligência Artificial Aplicada ao seu Negócio](https://www.sapienteai.com/pt): Inteligência artificial, automação, dados, websites e marketing digital orientados ao crescimento de empresas.
+- [Sobre](https://www.sapienteai.com/pt/about): Conheça a Sapiente.AI, a sua abordagem e os fundadores em São João da Madeira, Aveiro, Portugal.
+- [Serviços de IA, Automação, Websites e Marketing Digital](https://www.sapienteai.com/pt/services): Conheça os serviços da Sapiente.AI em automação, IA aplicada, websites orientados à conversão, análise de dados e marketing digital.
+- [Projetos](https://www.sapienteai.com/pt/projects): Conheça os produtos digitais em desenvolvimento da Sapiente.AI.
+- [FAQ | Respostas sobre IA, automação e serviços digitais](https://www.sapienteai.com/pt/faq): Encontre respostas sobre os serviços da Sapiente.AI, modelo de trabalho, automação e inteligência artificial aplicada.
+- [Blog](https://www.sapienteai.com/pt/blog): Artigos sobre inteligência artificial, automação, dados, tecnologia e crescimento digital.
+- [Mapa do site](https://www.sapienteai.com/pt/sitemap): Encontre todas as páginas e recursos públicos da Sapiente.AI.
+- [Política de Cookies](https://www.sapienteai.com/pt/cookies): Informação sobre os cookies utilizados pela Sapiente.AI e como gerir as suas preferências.
+- [Termos de Serviço](https://www.sapienteai.com/pt/terms): Termos aplicáveis à utilização do website e dos serviços da Sapiente.AI.
+- [Política de Privacidade](https://www.sapienteai.com/pt/privacy): Como a Sapiente.AI recolhe, utiliza e protege os dados pessoais.
+- [Confiança e Segurança](https://www.sapienteai.com/pt/trust): Princípios de segurança, ética e responsabilidade aplicados pela Sapiente.AI.
+- [Política de IA Generativa](https://www.sapienteai.com/pt/generative-ai-policy): Princípios para uma utilização responsável e transparente de inteligência artificial generativa.
+- [Applied Artificial Intelligence for Business](https://www.sapienteai.com/en): Artificial intelligence, automation, data, websites and digital marketing focused on business growth.
+- [About](https://www.sapienteai.com/en/about): Meet Sapiente.AI, its approach and founders in São João da Madeira, Aveiro, Portugal.
+- [AI Services, Automation, Websites and Digital Marketing](https://www.sapienteai.com/en/services): Explore Sapiente.AI services for automation, applied AI, conversion-focused websites, data analytics and digital marketing.
+- [Projects](https://www.sapienteai.com/en/projects): Discover the digital products currently being developed by Sapiente.AI.
+- [FAQ | AI, automation and digital services answers](https://www.sapienteai.com/en/faq): Find answers about Sapiente.AI services, delivery model, automation and applied artificial intelligence.
+- [Blog](https://www.sapienteai.com/en/blog): Articles about artificial intelligence, automation, data, technology and digital growth.
+- [Sitemap](https://www.sapienteai.com/en/sitemap): Find every public Sapiente.AI page and resource.
+- [Cookie Policy](https://www.sapienteai.com/en/cookies): Information about cookies used by Sapiente.AI and how to manage your preferences.
+- [Terms of Service](https://www.sapienteai.com/en/terms): Terms that apply to the use of the Sapiente.AI website and services.
+- [Privacy Policy](https://www.sapienteai.com/en/privacy): How Sapiente.AI collects, uses and protects personal data.
+- [Trust & Security](https://www.sapienteai.com/en/trust): Security, ethics and accountability principles applied by Sapiente.AI.
+- [Generative AI Policy](https://www.sapienteai.com/en/generative-ai-policy): Principles for responsible and transparent use of generative artificial intelligence.
+- [Quiz IA](https://www.sapienteai.com/pt/quiz-ia): Descubra onde a inteligência artificial pode gerar mais eficiência e crescimento no seu negócio.
+- [AI Quiz](https://www.sapienteai.com/en/quiz-ai): Discover where artificial intelligence can create more efficiency and growth in your business.
 
-## Services
+## Published articles
 
-### Applied artificial intelligence
-
-Artificial intelligence applied directly to business processes, including intelligent chatbots, predictive analysis, decision automation, customized machine learning and intelligent customer segmentation.
-
-Portuguese: https://www.sapienteai.com/pt/services#ia
-English: https://www.sapienteai.com/en/services#ia
-
-### Intelligent process automation
-
-Automation of internal workflows, system integrations, email follow-up, customer service, document processing, notifications and operational alerts.
-
-Portuguese: https://www.sapienteai.com/pt/services#automacao
-English: https://www.sapienteai.com/en/services#automation
-
-### Growth and performance
-
-Paid traffic management, lead generation and qualification, conversion funnels, SEO, GEO, AEO, conversion-rate optimization and digital positioning.
-
-Portuguese: https://www.sapienteai.com/pt/services#crescimento
-English: https://www.sapienteai.com/en/services#growth
-
-### Data and business intelligence
-
-Customized dashboards, KPI reports, profitability analysis, consolidation of data sources, business intelligence and data storytelling.
-
-Portuguese: https://www.sapienteai.com/pt/services#dados-bi
-English: https://www.sapienteai.com/en/services#data-bi
-
-### Web development
-
-Institutional and corporate websites, conversion landing pages, responsive websites, platforms, web applications, maintenance and technical support.
-
-Portuguese: https://www.sapienteai.com/pt/services#desenvolvimento
-English: https://www.sapienteai.com/en/services#development
-
-### Digital marketing with AI
-
-Social media management, AI-assisted content production, email marketing, newsletters, visual identity, branding and high-performance visual content.
-
-Portuguese: https://www.sapienteai.com/pt/services#marketing
-English: https://www.sapienteai.com/en/services#marketing
-
-## Projects
-
-### Hoje em SJM
-
-A cultural agenda dedicated to São João da Madeira, Aveiro. It brings together events, initiatives and local experiences in one place. Status: final testing.
-
-### Specialized exchange platform
-
-A platform designed to facilitate the exchange of specialized items between people and communities with shared interests, supporting access, reuse and the circular economy. Status: in development.
-
-### SEO, GEO and AEO validator
-
-An online tool integrated with the Sapiente.AI website to assess page visibility in conventional search engines and in answers generated by artificial intelligence. Status: in development.
-
-Projects page:
-
-- Portuguese: https://www.sapienteai.com/pt/projects
-- English: https://www.sapienteai.com/en/projects
-
-## Public resources
-
-- Portuguese homepage: https://www.sapienteai.com/pt
-- English homepage: https://www.sapienteai.com/en
-- About: https://www.sapienteai.com/pt/about
-- Services: https://www.sapienteai.com/pt/services
-- Projects: https://www.sapienteai.com/pt/projects
-- FAQ: https://www.sapienteai.com/pt/faq
-- Blog: https://www.sapienteai.com/pt/blog
-- Privacy policy: https://www.sapienteai.com/pt/privacy
-- Cookies policy: https://www.sapienteai.com/pt/cookies
-- Trust center: https://www.sapienteai.com/pt/trust
-- Generative AI policy: https://www.sapienteai.com/pt/generative-ai-policy
-- Human-readable sitemap: https://www.sapienteai.com/pt/sitemap
-- XML sitemap: https://www.sapienteai.com/sitemap.xml
-- Robots policy: https://www.sapienteai.com/robots.txt
+- [Artificial Intelligence: How It is Revolutionizing Business in 2026](https://www.sapienteai.com/pt/blog/artificial-intelligence-revolutionizing-business): Discover how AI is transforming industries, increasing productivity and creating new growth opportunities for companies of all sizes.
+- [Practical Machine Learning: Real Applications that Generate ROI](https://www.sapienteai.com/pt/blog/practical-machine-learning-real-applications): Explore concrete use cases of machine learning that companies are implementing to increase revenue, reduce costs and improve customer experience.
+- [AI Trends for 2026: What to Expect from the Market](https://www.sapienteai.com/pt/blog/ai-trends-2026-what-to-expect): Analysis of the key artificial intelligence trends shaping the market in 2026, from generative AI to regulation and new opportunities.
+- [Artificial Intelligence: How It is Revolutionizing Business in 2026](https://www.sapienteai.com/en/blog/artificial-intelligence-revolutionizing-business): Discover how AI is transforming industries, increasing productivity and creating new growth opportunities for companies of all sizes.
+- [Practical Machine Learning: Real Applications that Generate ROI](https://www.sapienteai.com/en/blog/practical-machine-learning-real-applications): Explore concrete use cases of machine learning that companies are implementing to increase revenue, reduce costs and improve customer experience.
+- [AI Trends for 2026: What to Expect from the Market](https://www.sapienteai.com/en/blog/ai-trends-2026-what-to-expect): Analysis of the key artificial intelligence trends shaping the market in 2026, from generative AI to regulation and new opportunities.
 
 ## Official social profiles
 
@@ -117,8 +65,6 @@ Projects page:
 - X: https://x.com/SapienteAI
 - Pinterest: https://www.pinterest.com/sapienteai
 
-## Content and attribution
+## Attribution and usage
 
-Public factual information may be quoted or summarized with attribution to Sapiente.AI and a link to the relevant canonical page. Legal, privacy and usage information should always be verified against the current policies published on the official domain.
-
-This document is a discovery summary. The canonical website pages remain the authoritative source.
+Public factual information may be quoted or summarised with attribution to Sapiente.AI and a link to the relevant canonical page. The website pages remain the authoritative source. Content signals: ai-train=no, search=yes, ai-input=yes.

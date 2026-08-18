@@ -1,193 +1,126 @@
 import fs from "node:fs";
 import path from "node:path";
+import { alternatePath, getIndexableRoutes, SITE_ORIGIN } from "./site-routes.js";
 
-const DIST_DIR = path.resolve("dist");
-const BASE_HTML_PATH = path.join(DIST_DIR, "index.html");
-const SITE_ORIGIN = "https://www.sapienteai.com";
+const distDir = path.resolve("dist");
+const basePath = path.join(distDir, "index.html");
+if (!fs.existsSync(basePath)) throw new Error("dist/index.html not found. Run after vite build.");
+const baseHtml = fs.readFileSync(basePath, "utf8");
 
-const sharedLinks = {
-  pt: [
-    ["/pt", "Início"],
-    ["/pt/about", "Sobre"],
-    ["/pt/services", "Serviços"],
-    ["/pt/projects", "Projetos"],
-    ["/pt/faq", "FAQ"],
-    ["/pt/blog", "Blog"],
-    ["/pt/sitemap", "Mapa do site"],
-  ],
-  en: [
-    ["/en", "Home"],
-    ["/en/about", "About"],
-    ["/en/services", "Services"],
-    ["/en/projects", "Projects"],
-    ["/en/faq", "FAQ"],
-    ["/en/blog", "Blog"],
-    ["/en/sitemap", "Sitemap"],
-  ],
-};
+const escapeHtml = (value = "") => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+const absoluteImage = (image) => image?.startsWith("http") ? image : `${SITE_ORIGIN}${image || "/media/og/og-image.jpg"}`;
+const formattedTitle = (title) => title === "Sapiente.AI" ? title : `Sapiente.AI - ${title}`;
 
-const pages = [
-  {
-    path: "/pt",
-    lang: "pt",
-    title: "Sapiente.AI - Inteligência Artificial Aplicada ao seu Negócio",
-    description: "Inteligência artificial, automação, dados, websites e marketing digital orientados ao crescimento de empresas.",
-    heading: "Inteligência que impulsiona. Resultados que transformam.",
-    text: "A Sapiente.AI aplica inteligência artificial, análise de dados e automação para acelerar decisões, reduzir custos, conquistar clientes e gerar crescimento real.",
-  },
-  {
-    path: "/en",
-    lang: "en",
-    title: "Sapiente.AI - Applied Artificial Intelligence for Business",
-    description: "Artificial intelligence, automation, data, websites and digital marketing focused on business growth.",
-    heading: "Intelligence that drives. Results that transform.",
-    text: "Sapiente.AI applies artificial intelligence, data analysis and automation to accelerate decisions, reduce costs, acquire customers and generate measurable growth.",
-  },
-  {
-    path: "/pt/about",
-    lang: "pt",
-    title: "Sapiente.AI - Sobre",
-    description: "Conheça a Sapiente.AI, a sua abordagem e os fundadores em São João da Madeira, Aveiro, Portugal.",
-    heading: "Sobre a Sapiente.AI",
-    text: "Somos uma parceira tecnológica que combina estratégia, inteligência artificial e execução para transformar necessidades reais em soluções digitais úteis e mensuráveis.",
-  },
-  {
-    path: "/en/about",
-    lang: "en",
-    title: "Sapiente.AI - About",
-    description: "Meet Sapiente.AI, its approach and founders in São João da Madeira, Aveiro, Portugal.",
-    heading: "About Sapiente.AI",
-    text: "We are a technology partner combining strategy, artificial intelligence and execution to turn real needs into useful, measurable digital solutions.",
-  },
-  {
-    path: "/pt/services",
-    lang: "pt",
-    title: "Sapiente.AI - Serviços",
-    description: "IA aplicada, automação, crescimento, dados e BI, desenvolvimento web e marketing digital com IA.",
-    heading: "Serviços pensados para gerar impacto real",
-    text: "Ajudamos empresas com inteligência artificial aplicada, automação de processos, aquisição de clientes, dados e BI, websites orientados à conversão e marketing digital.",
-  },
-  {
-    path: "/en/services",
-    lang: "en",
-    title: "Sapiente.AI - Services",
-    description: "Applied AI, automation, growth, data and BI, web development and AI-powered digital marketing.",
-    heading: "Services designed to generate real impact",
-    text: "We help companies with applied artificial intelligence, process automation, customer acquisition, data and BI, conversion-oriented websites and digital marketing.",
-  },
-  {
-    path: "/pt/projects",
-    lang: "pt",
-    title: "Sapiente.AI - Projetos",
-    description: "Conheça os produtos digitais em desenvolvimento da Sapiente.AI.",
-    heading: "Ideias que ganham forma. Soluções que criam impacto.",
-    text: "Projetos atuais: Hoje em SJM, uma plataforma de trocas especializadas e um validador online de SEO, GEO e AEO.",
-  },
-  {
-    path: "/en/projects",
-    lang: "en",
-    title: "Sapiente.AI - Projects",
-    description: "Discover the digital products currently being developed by Sapiente.AI.",
-    heading: "Ideas taking shape. Solutions creating impact.",
-    text: "Current projects: Hoje em SJM, a specialized exchange platform and an online SEO, GEO and AEO validator.",
-  },
-  {
-    path: "/pt/faq",
-    lang: "pt",
-    title: "Sapiente.AI - Perguntas Frequentes",
-    description: "Respostas sobre serviços, inteligência artificial, automação, marketing digital e projetos da Sapiente.AI.",
-    heading: "Perguntas frequentes",
-    text: "Consulte respostas sobre a forma de trabalho, serviços, aplicações de inteligência artificial, automação, websites, dados e marketing digital.",
-  },
-  {
-    path: "/en/faq",
-    lang: "en",
-    title: "Sapiente.AI - Frequently Asked Questions",
-    description: "Answers about Sapiente.AI services, artificial intelligence, automation, digital marketing and projects.",
-    heading: "Frequently asked questions",
-    text: "Find answers about our approach, services and applications of artificial intelligence, automation, websites, data and digital marketing.",
-  },
-  {
-    path: "/pt/blog",
-    lang: "pt",
-    title: "Sapiente.AI - Blog",
-    description: "Artigos sobre inteligência artificial, automação, dados, tecnologia e crescimento digital.",
-    heading: "Conteúdos e perspetivas Sapiente.AI",
-    text: "Artigos práticos sobre inteligência artificial aplicada, machine learning, automação, dados, transformação digital e crescimento empresarial.",
-  },
-  {
-    path: "/en/blog",
-    lang: "en",
-    title: "Sapiente.AI - Blog",
-    description: "Articles about artificial intelligence, automation, data, technology and digital growth.",
-    heading: "Sapiente.AI insights",
-    text: "Practical articles about applied artificial intelligence, machine learning, automation, data, digital transformation and business growth.",
-  },
-];
-
-function escapeHtml(value) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+function replaceMeta(html, attribute, name, value) {
+  const expression = new RegExp(`<meta\\s+${attribute}="${name}"\\s+content="[^"]*"\\s*\\/?>(?![\\s\\S]*<meta\\s+${attribute}="${name}")`, "i");
+  const tag = `<meta ${attribute}="${name}" content="${escapeHtml(value)}" />`;
+  return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\n  </head>`);
 }
 
-function replaceMeta(html, selector, value) {
-  const escaped = escapeHtml(value);
-  if (selector === "title") {
-    return html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${escaped}</title>`);
+function routeSchema(route) {
+  const url = `${SITE_ORIGIN}${route.routePath}`;
+  const common = {
+    "@context": "https://schema.org",
+    "@type": route.schemaType || "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: route.title,
+    description: route.description,
+    inLanguage: route.lang === "pt" ? "pt-PT" : "en",
+    isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+    about: { "@id": `${SITE_ORIGIN}/#organization` },
+  };
+  if (route.schemaType === "BlogPosting") Object.assign(common, {
+    headline: route.article.title,
+    datePublished: route.article.date,
+    dateModified: route.article.date,
+    image: absoluteImage(route.article.image),
+    author: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: route.article.author || "Sapiente.AI" },
+    publisher: { "@id": `${SITE_ORIGIN}/#organization` },
+    mainEntityOfPage: { "@id": `${url}#webpage` },
+  });
+  if (route.schemaType === "FAQPage") common.mainEntity = route.faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  }));
+  return common;
+}
+
+function staticContent(route) {
+  const navigation = route.lang === "pt"
+    ? [["/pt", "Início"], ["/pt/about", "Sobre"], ["/pt/services", "Serviços"], ["/pt/projects", "Projetos"], ["/pt/faq", "FAQ"], ["/pt/blog", "Blog"]]
+    : [["/en", "Home"], ["/en/about", "About"], ["/en/services", "Services"], ["/en/projects", "Projects"], ["/en/faq", "FAQ"], ["/en/blog", "Blog"]];
+  return `<main id="prerendered-content" data-prerendered="true">
+    <article>
+      <h1>${escapeHtml(route.heading)}</h1>
+      <p>${escapeHtml(route.description)}</p>
+      ${route.schemaType === "BlogPosting" ? `<p>${escapeHtml(route.article.excerpt)}</p><p>${escapeHtml(route.article.author)} · <time datetime="${escapeHtml(route.article.date)}">${escapeHtml(route.article.date)}</time></p>` : ""}
+      ${route.schemaType === "FAQPage" ? route.faqItems.map((item) => `<section><h2>${escapeHtml(item.question)}</h2><p>${escapeHtml(item.answer)}</p></section>`).join("") : ""}
+    </article>
+    <nav aria-label="${route.lang === "pt" ? "Navegação principal" : "Main navigation"}"><ul>${navigation.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("")}</ul></nav>
+    <address>Sapiente.AI · São João da Madeira, Aveiro, Portugal · <a href="mailto:contacto@sapienteai.com">contacto@sapienteai.com</a></address>
+  </main>`;
+}
+
+function routeMarkdown(route) {
+  const url = `${SITE_ORIGIN}${route.routePath}`;
+  const lines = [
+    `# ${route.heading}`,
+    "",
+    route.description,
+    "",
+    `- Canonical: ${url}`,
+    `- Language: ${route.lang === "pt" ? "pt-PT" : "en"}`,
+    `- Publisher: Sapiente.AI`,
+  ];
+  if (route.schemaType === "FAQPage") {
+    lines.push("", "## Questions and answers", "");
+    for (const item of route.faqItems) lines.push(`### ${item.question}`, "", item.answer, "");
   }
-
-  const expression = new RegExp(`(<meta\\s+name="${selector}"\\s+content=")[^"]*(")`, "i");
-  return html.replace(expression, `$1${escaped}$2`);
+  if (route.schemaType === "BlogPosting") {
+    lines.push("", `- Author: ${route.article.author || "Sapiente.AI"}`, `- Published: ${route.article.date}`, "", route.article.content || route.article.excerpt);
+  }
+  lines.push("", `Source: ${url}`, "");
+  return lines.join("\n");
 }
 
-function fallbackMarkup(page) {
-  const links = sharedLinks[page.lang]
-    .map(([href, label]) => `<li><a href="${href}">${escapeHtml(label)}</a></li>`)
-    .join("");
-  const discoveryLabel = page.lang === "pt" ? "Recursos para agentes" : "Agent resources";
+function render(route) {
+  const url = `${SITE_ORIGIN}${route.routePath}`;
+  const title = formattedTitle(route.title);
+  const image = absoluteImage(route.image);
+  let html = baseHtml
+    .replace(/<html lang="[^"]*">/i, `<html lang="${route.lang === "pt" ? "pt-PT" : "en"}">`)
+    .replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`)
+    .replace(/<link rel="canonical" href="[^"]*"\s*\/>/i, `<link rel="canonical" href="${url}" />`)
+    .replace(/<link rel="alternate" hreflang="pt" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="pt" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
+    .replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="en" href="${SITE_ORIGIN}${alternatePath(route, "en")}" />`)
+    .replace("</head>", `  <link rel="alternate" type="text/markdown" href="${url}" />\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root">${staticContent(route)}</div>`);
 
-  return `<div id="root"><noscript>
-    <main>
-      <article>
-        <h1>${escapeHtml(page.heading)}</h1>
-        <p>${escapeHtml(page.text)}</p>
-        <p>${escapeHtml(page.description)}</p>
-      </article>
-      <nav aria-label="${page.lang === "pt" ? "Navegação principal" : "Main navigation"}">
-        <ul>${links}</ul>
-      </nav>
-      <section>
-        <h2>${discoveryLabel}</h2>
-        <p><a href="/llms.txt">llms.txt</a> · <a href="/llms-full.txt">llms-full.txt</a> · <a href="/sitemap.xml">sitemap.xml</a></p>
-      </section>
-      <address>Sapiente.AI · São João da Madeira, Aveiro, Portugal · <a href="mailto:contacto@sapienteai.com">contacto@sapienteai.com</a></address>
-    </main>
-  </noscript></div>`;
+  for (const [attribute, name, value] of [
+    ["name", "description", route.description], ["name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"],
+    ["property", "og:title", title], ["property", "og:description", route.description], ["property", "og:url", url], ["property", "og:type", route.schemaType === "BlogPosting" ? "article" : "website"], ["property", "og:image", image],
+    ["property", "og:locale", route.lang === "pt" ? "pt_PT" : "en_US"], ["property", "og:locale:alternate", route.lang === "pt" ? "en_US" : "pt_PT"],
+    ["name", "twitter:title", title], ["name", "twitter:description", route.description], ["name", "twitter:url", url], ["name", "twitter:image", image], ["name", "twitter:card", "summary_large_image"],
+  ]) html = replaceMeta(html, attribute, name, value);
+
+  html = html.replace("</head>", `  <script type="application/ld+json" id="route-schema">${JSON.stringify(routeSchema(route)).replaceAll("<", "\\u003c")}</script>\n  </head>`);
+  return html;
 }
 
-if (!fs.existsSync(BASE_HTML_PATH)) {
-  throw new Error("dist/index.html not found. Run this script after vite build.");
+const routes = getIndexableRoutes();
+for (const route of routes) {
+  const directory = path.join(distDir, ...route.routePath.split("/").filter(Boolean));
+  fs.mkdirSync(directory, { recursive: true });
+  fs.writeFileSync(path.join(directory, "index.html"), render(route));
+  fs.writeFileSync(path.join(directory, "index.md"), routeMarkdown(route));
 }
 
-const baseHtml = fs.readFileSync(BASE_HTML_PATH, "utf8");
+const notFound = baseHtml
+  .replace(/<title>[\s\S]*?<\/title>/i, "<title>404 - Sapiente.AI</title>")
+  .replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/>/i, '<meta name="robots" content="noindex, nofollow" />')
+  .replace('<div id="root"></div>', '<div id="root"><main><h1>404</h1><p>Page not found.</p><p><a href="/pt">Sapiente.AI</a></p></main></div>');
+fs.writeFileSync(path.join(distDir, "404.html"), notFound);
 
-for (const page of pages) {
-  let html = replaceMeta(baseHtml, "title", page.title);
-  html = replaceMeta(html, "description", page.description);
-  html = html
-    .replace('<html lang="pt-PT">', `<html lang="${page.lang === "pt" ? "pt-PT" : "en"}">`)
-    .replace(
-      /<link rel="canonical" href="[^"]*"\s*\/>/i,
-      `<link rel="canonical" href="${SITE_ORIGIN}${page.path}" />`,
-    )
-    .replace('<div id="root"></div>', fallbackMarkup(page));
-
-  const outputDirectory = path.join(DIST_DIR, ...page.path.split("/").filter(Boolean));
-  fs.mkdirSync(outputDirectory, { recursive: true });
-  fs.writeFileSync(path.join(outputDirectory, "index.html"), html);
-}
-
-console.log(`Generated static crawl fallbacks for ${pages.length} primary routes.`);
+console.log(`Pre-rendered ${routes.length} indexable routes and a real 404 document.`);

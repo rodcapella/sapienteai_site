@@ -5,7 +5,8 @@
   "packageManager": "pnpm@10.18.1",
   "scripts": {
     "dev": "vite --host",
-    "build": "node scripts/generate-sitemap.js && vite build && node scripts/add-subresource-integrity.js && node scripts/generate-static-crawl-pages.js",
+    "build": "node scripts/generate-sitemap.js && node scripts/generate-agent-discovery.js && vite build && node scripts/add-subresource-integrity.js && node scripts/generate-static-crawl-pages.js && node scripts/validate-build.js",
+    "test:build": "node scripts/validate-build.js",
     "preview": "vite preview --host",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",

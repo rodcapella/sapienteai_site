@@ -24,6 +24,7 @@ const CookiesPage        = lazy(() => import("@/pages/CookiesPage"));
 const Trust              = lazy(() => w(import("@/pages/Trust")));
 const GenerativeAIPolicy = lazy(() => w(import("@/pages/GenerativeAIPolicy")));
 const Blog               = lazy(() => w(import("@/pages/Blog")));
+const BlogArticle        = lazy(() => import("@/pages/BlogArticle"));
 const News               = lazy(() => w(import("@/pages/News")));
 const QuizAI             = lazy(() => import("@/pages/QuizAI"));
 const Sitemap            = lazy(() => w(import("@/pages/Sitemap")));
@@ -73,8 +74,8 @@ export default function App() {
       return () => cancelIdleCallback(id);
     }
 
-    const id = window.setTimeout(() => setShouldRenderCookieUi(true), 1200);
-    return () => window.clearTimeout(id);
+    const id = globalThis.setTimeout(() => setShouldRenderCookieUi(true), 1200);
+    return () => globalThis.clearTimeout(id);
   }, []);
 
   return (
@@ -97,15 +98,16 @@ export default function App() {
         <Route path="/:lang/trust">{(params) => <Trust lang={params.lang} />}</Route>
         <Route path="/:lang/generative-ai-policy">{(params) => <GenerativeAIPolicy lang={params.lang} />}</Route>
         <Route path="/:lang/blog">{(params) => <Blog lang={params.lang} />}</Route>
+        <Route path="/:lang/blog/:slug">{(params) => <BlogArticle lang={params.lang} slug={params.slug} />}</Route>
         <Route path="/:lang/news">{(params) => <News lang={params.lang} />}</Route>
         <Route path="/:lang/sitemap">{(params) => <Sitemap lang={params.lang} />}</Route>
         <Route path="/:lang/seo-geo-aeo-validator"><VisibilityValidator /></Route>
         <Route path="/:lang/newsletter/unsubscribe"><NewsletterUnsubscribe /></Route>
-        <Route path="/pt/quiz-ia"><QuizAI lang="pt" /></Route>
+        <Route path="/pt/quiz-ia"><QuizAI /></Route>
         <Route path="/pt/quiz-ai"><Redirect to="/pt/quiz-ia" /></Route>
-        <Route path="/en/quiz-ai"><QuizAI lang="en" /></Route>
+        <Route path="/en/quiz-ai"><QuizAI /></Route>
         <Route path="/en/quiz-ia"><Redirect to="/en/quiz-ai" /></Route>
-        <Route path="/:lang/404">{(params) => <NotFound lang={params.lang} />}</Route>
+        <Route path="/:lang/404"><NotFound /></Route>
       </MainLayout>
 
       {shouldRenderCookieUi && (

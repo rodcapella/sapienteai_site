@@ -13,7 +13,7 @@ type FinalCTAProps = {
   description_highlight?: string;
   button: string;
   href?: string;
-  variant?: "default" | "home" | "about";
+  variant?: "default" | "home" | "about" | "services";
   align?: "left" | "center";
   backgroundSrc?: string;
 };
