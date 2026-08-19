@@ -13,7 +13,6 @@ export function Reveal({ children, className, delay = 0 }: Props) {
   return (
     <div
       ref={ref}
-      aria-hidden={!isVisible || undefined}
       className={cn(
         "transition-all duration-700 ease-out",
         isVisible

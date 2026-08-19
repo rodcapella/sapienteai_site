@@ -1,38 +1,17 @@
 import { createRoot } from "react-dom/client";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 import App from "./App";
 import "./styles/index.css";
-import { LanguageProvider } from "./contexts/LanguageContext";
-import { ThemeProvider } from "./contexts/ThemeContext";
 import { initializeTrustedTypes } from "./lib/trustedTypes";
 
 initializeTrustedTypes();
 
-function applyStoredTheme() {
-  try {
-    const storedTheme = localStorage.getItem("theme");
-    const theme =
-      storedTheme === "light" || storedTheme === "dark"
-        ? storedTheme
-        : window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-
-    document.documentElement.classList.toggle("dark", theme === "dark");
-    document.documentElement.setAttribute("data-theme", theme);
-  } catch {
-    document.documentElement.classList.remove("dark");
-    document.documentElement.setAttribute("data-theme", "light");
-  }
+function applyLaunchTheme() {
+  document.documentElement.classList.remove("dark");
+  document.documentElement.setAttribute("data-theme", "light");
 }
 
-applyStoredTheme();
+applyLaunchTheme();
 
 createRoot(document.getElementById("root")!).render(
-  <ThemeProvider>
-    <LanguageProvider>
-      <App />
-      <SpeedInsights />
-    </LanguageProvider>
-  </ThemeProvider>
+  <App />
 );

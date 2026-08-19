@@ -4,7 +4,7 @@
  * Provides the Dialog wrapper, background decorations, particles, and close button.
  */
 
-import { type ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useCallback, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
@@ -117,8 +117,19 @@ export function Modal({
   contentClassName,
   scrollAreaClassName,
 }: ModalProps) {
+  const openerRef = useRef<HTMLElement | null>(
+    typeof document !== "undefined" && document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null,
+  );
+
+  const handleClose = useCallback(() => {
+    onClose();
+    requestAnimationFrame(() => openerRef.current?.focus());
+  }, [onClose]);
+
   return (
-    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && handleClose()}>
       <DialogContent
         showCloseButton={false}
         className={cn(
@@ -163,7 +174,7 @@ export function Modal({
 
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
             aria-label={closeLabel}
             className="absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--brand-cyan-mid)]/[0.62] bg-[var(--brand-primary)] text-white shadow-[0_0_18px_color-mix(in_srgb,var(--brand-primary)_34%,transparent)] transition-all duration-300 hover:scale-105 hover:border-[var(--brand-cyan-mid)]/[0.95] hover:bg-[var(--brand-primary-hover)] hover:shadow-[0_0_24px_color-mix(in_srgb,var(--brand-cyan-mid)_55%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-primary)] sm:h-10 sm:w-10"
           >

@@ -1,10 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
 import { Redirect, Route, useLocation } from "wouter";
 
 import MainLayout from "@/components/layout/MainLayout";
-import { ThemeTransition } from "@/components/ThemeTransition";
-import { useTheme } from "@/hooks/useTheme";
 
 // ─── Lazy page imports ────────────────────────────────────────────────────────
 // Suspense boundary lives in MainLayout so Header/Footer stay visible on load.
@@ -34,12 +31,12 @@ const NotFound           = lazy(() => import("@/pages/NotFound"));
 const CookieBanner       = lazy(() => import("@/components/CookieBanner"));
 const CookieFloatingButton = lazy(() => import("@/components/CookieFloatingButton"));
 const WhatsAppFloatingButton = lazy(() => import("@/components/WhatsAppFloatingButton"));
+const VercelTelemetry = lazy(() => import("@/components/VercelTelemetry"));
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
   const [location, setLocation] = useLocation();
-  const { isTransitioning } = useTheme();
   const [shouldRenderCookieUi, setShouldRenderCookieUi] = useState(false);
 
   // Language redirect on first load
@@ -80,8 +77,6 @@ export default function App() {
 
   return (
     <>
-      <ThemeTransition trigger={isTransitioning} />
-
       <Route path="/"><Redirect to="/pt" /></Route>
       <Route path="/blog"><Redirect to="/pt/blog" /></Route>
 
@@ -115,10 +110,9 @@ export default function App() {
           <CookieFloatingButton />
           <CookieBanner />
           <WhatsAppFloatingButton />
+          <VercelTelemetry />
         </Suspense>
       )}
-
-      <Analytics />
     </>
   );
 }
