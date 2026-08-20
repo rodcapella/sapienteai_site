@@ -1,6 +1,12 @@
 {
   "installCommand": "pnpm install --no-frozen-lockfile",
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "sapienteaisite.vercel.app" }],
+      "destination": "https://www.sapienteai.com/:path*",
+      "permanent": true
+    },
     { "source": "/", "destination": "/pt", "permanent": false },
     { "source": "/blog", "destination": "/pt/blog", "permanent": true },
     { "source": "/pt/quiz-ai", "destination": "/pt/quiz-ia", "permanent": true },
