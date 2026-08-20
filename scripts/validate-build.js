@@ -15,8 +15,14 @@ function read(file) {
 }
 
 const sitemap = `${read(path.resolve("client/public/sitemap-pages.xml"))}\n${read(path.resolve("client/public/sitemap-blog.xml"))}`;
+const entryHtml = read(path.resolve("dist/index.html"));
 const sitemapLocations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 check(sitemapLocations.length === routes.length, `Sitemap has ${sitemapLocations.length} URLs; expected ${routes.length}`);
+check(entryHtml.includes("<style data-entry-css>"), "Entry CSS was not inlined into the production HTML");
+check(!/<link\s+rel="stylesheet"\s+crossorigin\s+href="\/assets\/index-[^"]+\.css">/i.test(entryHtml), "Render-blocking entry stylesheet is still present");
+const homePreloads = [...entryHtml.matchAll(/<link rel="modulepreload" href="\/assets\/([^"]+\.js)"/g)].map((match) => match[1]);
+check(homePreloads.some((asset) => /^Home-[\w-]+\.js$/.test(asset)), "Initial Home chunk is not preloaded");
+check(homePreloads.length >= 5, `Only ${homePreloads.length} initial route modules are preloaded`);
 
 for (const route of routes) {
   const directory = path.join(distDir, ...route.routePath.split("/").filter(Boolean));

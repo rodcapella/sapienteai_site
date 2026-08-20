@@ -5,6 +5,7 @@ import LegalDocumentPage from "@/components/legal/LegalDocumentPage";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
+import { applyGoogleConsent } from "@/lib/googleAnalytics";
 import { Check, Globe, Icons, RefreshCw } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
@@ -42,6 +43,7 @@ const isMeaningfulText = (value?: string | null) =>
 function ResetConsentButton({ label }: { label: string }) {
   function handleReset() {
     try {
+      applyGoogleConsent({ analytics: false, marketing: false });
       localStorage.removeItem("cookieConsent");
       localStorage.removeItem("cookiePreferences");
       localStorage.removeItem("cookieBannerVersion");

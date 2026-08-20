@@ -1,6 +1,7 @@
 const ALLOWED_SCRIPT_ORIGINS = new Set([
   window.location.origin,
   "https://challenges.cloudflare.com",
+  "https://www.googletagmanager.com",
 ]);
 
 function validateScriptUrl(value: string): string {

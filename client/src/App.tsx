@@ -3,6 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Redirect, Route, useLocation } from "wouter";
 
 import MainLayout from "@/components/layout/MainLayout";
+import { trackGooglePageView } from "@/lib/googleAnalytics";
 
 // ─── Lazy page imports ────────────────────────────────────────────────────────
 // Suspense boundary lives in MainLayout so Header/Footer stay visible on load.
@@ -97,6 +98,7 @@ export default function App() {
   // Persist language preference
   useEffect(() => {
     localStorage.setItem("lang", location.startsWith("/en") ? "en" : "pt");
+    trackGooglePageView();
   }, [location]);
 
   return (

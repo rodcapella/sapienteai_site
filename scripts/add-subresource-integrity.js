@@ -33,11 +33,18 @@ if (!homeChunk) {
   throw new Error("No production Home chunk was found for module preloading.");
 }
 
-html = html.replace(
-  "</head>",
-  `    <link rel="modulepreload" href="/assets/${homeChunk}" />\n  </head>`,
-);
+const homeSource = await readFile(path.join(projectRoot, "dist", "assets", homeChunk), "utf8");
+const bootstrapAssets = new Set(matches.map((match) => path.basename(match[2])));
+const homeDependencies = [...homeSource.matchAll(/from"\.\/([^"]+\.js)"/g)]
+  .map((match) => match[1])
+  .filter((asset, index, list) => !bootstrapAssets.has(asset) && list.indexOf(asset) === index);
+const preloadedAssets = [homeChunk, ...homeDependencies];
+const preloadTags = preloadedAssets
+  .map((asset) => `    <link rel="modulepreload" href="/assets/${asset}" />`)
+  .join("\n");
+
+html = html.replace("</head>", `${preloadTags}\n  </head>`);
 
 await writeFile(indexPath, html, "utf8");
 console.log(`Added SHA-384 integrity validation to ${matches.length} production bootstrap script(s).`);
-console.log(`Added module preload for the initial Home route: ${homeChunk}.`);
+console.log(`Added module preload for Home and ${homeDependencies.length} direct dependencies.`);

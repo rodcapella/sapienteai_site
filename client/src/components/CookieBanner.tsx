@@ -3,6 +3,7 @@ import { Link } from "wouter";
 
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { useTranslation } from "@/hooks/useTranslation";
+import { applyGoogleConsent } from "@/lib/googleAnalytics";
 
 type ConsentValue = "accepted" | "rejected" | "custom";
 
@@ -150,6 +151,8 @@ function saveConsent(value: ConsentValue, preferences: CookiePreferences) {
   } catch {
     // ignore
   }
+
+  applyGoogleConsent(preferences);
 }
 
 function ToggleSwitch({

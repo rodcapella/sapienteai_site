@@ -51,7 +51,7 @@ function staticContent(route) {
   const navigation = route.lang === "pt"
     ? [["/pt", "Início"], ["/pt/about", "Sobre"], ["/pt/services", "Serviços"], ["/pt/projects", "Projetos"], ["/pt/faq", "FAQ"], ["/pt/blog", "Blog"]]
     : [["/en", "Home"], ["/en/about", "About"], ["/en/services", "Services"], ["/en/projects", "Projects"], ["/en/faq", "FAQ"], ["/en/blog", "Blog"]];
-  return `<main id="prerendered-content" data-prerendered="true">
+  return `<main id="prerendered-content" data-prerendered="true" hidden aria-hidden="true">
     <article>
       <h1>${escapeHtml(route.heading)}</h1>
       <p>${escapeHtml(route.description)}</p>

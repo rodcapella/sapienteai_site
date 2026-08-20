@@ -28,7 +28,7 @@ function DeferredFooter() {
         setShouldRender(true);
         observer.disconnect();
       },
-      { rootMargin: "800px 0px" },
+      { rootMargin: "200px 0px" },
     );
 
     observer.observe(sentinelRef.current);
@@ -58,7 +58,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     <div className="relative min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-foreground">
       <Header />
 
-      <main className="flex min-h-0 flex-1 w-full flex-col pt-16 md:pt-[68px]">
+      <main className="flex min-h-[calc(100svh-4rem)] flex-1 w-full flex-col pt-16 md:min-h-[calc(100svh-4.25rem)] md:pt-[68px]">
         <Suspense fallback={<PageFallback />}>
           <div
             key={location}
