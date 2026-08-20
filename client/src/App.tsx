@@ -1,4 +1,5 @@
 import { Suspense, lazy, useEffect, useState } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Redirect, Route, useLocation } from "wouter";
 
 import MainLayout from "@/components/layout/MainLayout";
@@ -77,6 +78,8 @@ export default function App() {
 
   return (
     <>
+      <SpeedInsights route={location} />
+
       <Route path="/"><Redirect to="/pt" /></Route>
       <Route path="/blog"><Redirect to="/pt/blog" /></Route>
 
