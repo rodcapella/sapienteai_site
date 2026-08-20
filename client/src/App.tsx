@@ -34,11 +34,44 @@ const CookieFloatingButton = lazy(() => import("@/components/CookieFloatingButto
 const WhatsAppFloatingButton = lazy(() => import("@/components/WhatsAppFloatingButton"));
 const VercelTelemetry = lazy(() => import("@/components/VercelTelemetry"));
 
+function useDeferredMount(delayMs: number, idleTimeoutMs = 2000) {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    let delayId: number | undefined;
+    let idleId: number | undefined;
+
+    const schedule = () => {
+      delayId = window.setTimeout(() => {
+        if ("requestIdleCallback" in window) {
+          idleId = window.requestIdleCallback(() => setReady(true), { timeout: idleTimeoutMs });
+          return;
+        }
+
+        setReady(true);
+      }, delayMs);
+    };
+
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+
+    return () => {
+      window.removeEventListener("load", schedule);
+      if (delayId !== undefined) window.clearTimeout(delayId);
+      if (idleId !== undefined && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+    };
+  }, [delayMs, idleTimeoutMs]);
+
+  return ready;
+}
+
 // ─── App ──────────────────────────────────────────────────────────────────────
 
 export default function App() {
   const [location, setLocation] = useLocation();
-  const [shouldRenderCookieUi, setShouldRenderCookieUi] = useState(false);
+  const shouldRenderCookieUi = useDeferredMount(1200);
+  const shouldRenderTelemetry = useDeferredMount(1800);
+  const shouldRenderWhatsApp = useDeferredMount(3000);
 
   // Language redirect on first load
   useEffect(() => {
@@ -65,16 +98,6 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("lang", location.startsWith("/en") ? "en" : "pt");
   }, [location]);
-
-  useEffect(() => {
-    if ("requestIdleCallback" in window) {
-      const id = requestIdleCallback(() => setShouldRenderCookieUi(true), { timeout: 2500 });
-      return () => cancelIdleCallback(id);
-    }
-
-    const id = globalThis.setTimeout(() => setShouldRenderCookieUi(true), 1200);
-    return () => globalThis.clearTimeout(id);
-  }, []);
 
   return (
     <>
@@ -112,7 +135,17 @@ export default function App() {
         <Suspense fallback={null}>
           <CookieFloatingButton />
           <CookieBanner />
+        </Suspense>
+      )}
+
+      {shouldRenderWhatsApp && (
+        <Suspense fallback={null}>
           <WhatsAppFloatingButton />
+        </Suspense>
+      )}
+
+      {shouldRenderTelemetry && (
+        <Suspense fallback={null}>
           <VercelTelemetry />
         </Suspense>
       )}

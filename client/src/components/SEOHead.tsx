@@ -30,7 +30,15 @@ function formatPageTitle(title: string) {
 }
 
 function normalizeCanonicalUrl(url: string) {
-  return url.replace(/^https:\/\/sapienteai\.com/i, SITE_ORIGIN);
+  const absoluteUrl = url.startsWith("/") ? `${SITE_ORIGIN}${url}` : url;
+  const normalizedUrl = absoluteUrl.replace(/^https?:\/\/(?:www\.)?sapienteai\.com/i, SITE_ORIGIN);
+  const canonical = new URL(normalizedUrl, SITE_ORIGIN);
+
+  if (canonical.pathname === "/") canonical.pathname = "/pt";
+  canonical.search = "";
+  canonical.hash = "";
+
+  return canonical.toString();
 }
 
 function getLocalizedHref(url: string, lang: "pt" | "en") {
@@ -47,7 +55,7 @@ export function setSEOHead({
   title,
   description,
   image = DEFAULT_OG_IMAGE,
-  url = SITE_ORIGIN,
+  url = `${SITE_ORIGIN}/pt`,
   type = "website",
   keywords = DEFAULT_KEYWORDS,
   noindex = false,
@@ -120,7 +128,7 @@ export function setSEOHead({
   [
     { lang: "pt", href: getLocalizedHref(canonicalUrl, "pt") },
     { lang: "en", href: getLocalizedHref(canonicalUrl, "en") },
-    { lang: "x-default", href: `${SITE_ORIGIN}/` },
+    { lang: "x-default", href: `${SITE_ORIGIN}/pt` },
   ].forEach(({ lang, href }) => {
     const alternate = document.createElement("link");
     alternate.rel = "alternate";

@@ -3,7 +3,7 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "sapienteaisite.vercel.app" }],
+      "has": [{ "type": "host", "value": "sapienteai-site.vercel.app" }],
       "destination": "https://www.sapienteai.com/:path*",
       "permanent": true
     },

@@ -95,6 +95,7 @@ function render(route) {
     .replace(/<link rel="canonical" href="[^"]*"\s*\/>/i, `<link rel="canonical" href="${url}" />`)
     .replace(/<link rel="alternate" hreflang="pt" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="pt" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
     .replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="en" href="${SITE_ORIGIN}${alternatePath(route, "en")}" />`)
+    .replace(/<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/pt" />`)
     .replace("</head>", `  <link rel="alternate" type="text/markdown" href="${url}" />\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${staticContent(route)}</div>`);
 

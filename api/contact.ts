@@ -21,7 +21,7 @@ const TURNSTILE_ACTION = "contact_form";
 const DEFAULT_TURNSTILE_HOSTNAMES = [
   "sapienteai.com",
   "www.sapienteai.com",
-  "sapienteaisite.vercel.app",
+  "sapienteai-site.vercel.app",
 ];
 const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 
