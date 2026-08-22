@@ -2,7 +2,7 @@
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
 import { HelpCircle } from "@/lib/icons";
-import "@/styles/quizAI.css";
+import "@/styles/quizCTA.css";
 
 const quizCtaContent = {
   pt: {

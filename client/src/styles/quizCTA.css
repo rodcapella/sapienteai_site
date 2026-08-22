@@ -1,0 +1,44 @@
+.quiz-gradient-btn-wrapper {
+  display: inline-block;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #5de0e6 0%, #004aad 100%);
+  box-shadow: 0 8px 24px rgba(93, 224, 230, 0.45);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.quiz-gradient-btn-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(93, 224, 230, 0.6);
+}
+
+.quiz-gradient-btn-wrapper > button,
+.quiz-gradient-btn-wrapper > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: none;
+  border-radius: 999px;
+  padding: 16px 36px;
+  background: transparent;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.quiz-text-gradient {
+  display: inline-block;
+  background-image: linear-gradient(90deg, #5de0e6 0%, #004aad 100%);
+  background-clip: text;
+  font: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

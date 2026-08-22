@@ -54,7 +54,7 @@ export function LanguageSelector() {
         <img src={flagSrc} alt={lang === "pt" ? "Portugues" : "English"} className="h-full w-full object-cover" />
       </div>
 
-      <span className="relative z-10 text-xs font-black uppercase tracking-[0.2em] text-[var(--brand-primary)] transition-colors duration-300 group-hover:text-[var(--brand-cyan-bright)]">
+      <span className="relative z-10 text-xs font-black uppercase tracking-[0.2em] text-[var(--brand-blue-deep)] transition-colors duration-300 group-hover:text-[var(--brand-night)]">
         {lang}
       </span>
 

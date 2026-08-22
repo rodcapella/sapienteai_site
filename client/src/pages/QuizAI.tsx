@@ -9,6 +9,7 @@ import { quizContentPt } from "@/content/pt/quiz";
 import { ArrowLeft, ArrowRight, BarChart3, Clock, PanelLeft, RotateCcw, Send, Target, TrendingUp } from "@/lib/icons";
 
 import "@/styles/quizAI.css";
+import "@/styles/quizCTA.css";
 
 type QuizLang = "pt" | "en";
 type QuizScreen = "start" | "quiz" | "result";

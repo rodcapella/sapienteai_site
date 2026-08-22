@@ -31,7 +31,7 @@ export default function DesktopHeaderNavigation({
         <PremiumButton
           onClick={onContactClick}
           onMouseEnter={preloadTurnstile}
-          className="min-w-[148px] whitespace-nowrap px-5 py-2 text-sm"
+          className="min-w-[148px] whitespace-nowrap !bg-[var(--brand-blue-deep)] px-5 py-2 text-sm hover:!bg-[var(--brand-night)] [&>span]:!text-white"
           variant="primary"
         >
           {lang === "en" ? "Contact" : "Contacto"}
