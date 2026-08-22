@@ -49,6 +49,7 @@ function DeferredFooter() {
 
 export default function MainLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
+  const skipLabel = location.startsWith("/en") ? "Skip to main content" : "Saltar para o conteúdo principal";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,9 +57,15 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <div className="relative min-h-screen flex flex-col bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-foreground">
+      <a
+        href="#main-content"
+        className="sr-only fixed left-4 top-4 z-[100] rounded-lg bg-[var(--brand-night)] px-4 py-3 font-[var(--font-body)] font-bold text-white shadow-xl focus:not-sr-only focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-cyan-bright)]"
+      >
+        {skipLabel}
+      </a>
       <Header />
 
-      <main className="flex min-h-[calc(100svh-4rem)] flex-1 w-full flex-col pt-16 md:min-h-[calc(100svh-4.25rem)] md:pt-[68px]">
+      <main id="main-content" tabIndex={-1} className="flex min-h-[calc(100svh-4rem)] flex-1 w-full flex-col pt-16 outline-none md:min-h-[calc(100svh-4.25rem)] md:pt-[68px]">
         <Suspense fallback={<PageFallback />}>
           <div
             key={location}

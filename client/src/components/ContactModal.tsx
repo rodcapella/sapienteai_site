@@ -286,14 +286,14 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
         <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
             <label htmlFor="contact-name" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{requiredLabel(text.labels.name)}</label>
-            <input id="contact-name" name="name" type="text" maxLength={100} autoComplete="name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} onBlur={() => handleBlur("name")} placeholder={text.placeholders.name} className={fieldClass("name")} aria-required="true" aria-invalid={Boolean(touched.name && errors.name)} disabled={submitState === "loading"} />
-            {touched.name && errors.name && <p className="text-xs text-red-300">{errors.name}</p>}
+            <input id="contact-name" name="name" type="text" maxLength={100} autoComplete="name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} onBlur={() => handleBlur("name")} placeholder={text.placeholders.name} className={fieldClass("name")} aria-required="true" aria-invalid={Boolean(touched.name && errors.name)} aria-describedby={touched.name && errors.name ? "contact-name-error" : undefined} disabled={submitState === "loading"} />
+            {touched.name && errors.name && <p id="contact-name-error" className="text-xs text-red-300">{errors.name}</p>}
           </div>
 
           <div className="space-y-1.5">
             <label htmlFor="contact-email" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{requiredLabel(text.labels.email)}</label>
-            <input id="contact-email" name="email" type="email" maxLength={254} autoComplete="email" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} onBlur={() => handleBlur("email")} placeholder={text.placeholders.email} className={fieldClass("email")} aria-required="true" aria-invalid={Boolean(touched.email && errors.email)} disabled={submitState === "loading"} />
-            {touched.email && errors.email && <p className="text-xs text-red-300">{errors.email}</p>}
+            <input id="contact-email" name="email" type="email" maxLength={254} autoComplete="email" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} onBlur={() => handleBlur("email")} placeholder={text.placeholders.email} className={fieldClass("email")} aria-required="true" aria-invalid={Boolean(touched.email && errors.email)} aria-describedby={touched.email && errors.email ? "contact-email-error" : undefined} disabled={submitState === "loading"} />
+            {touched.email && errors.email && <p id="contact-email-error" className="text-xs text-red-300">{errors.email}</p>}
           </div>
         </div>
 
@@ -304,12 +304,14 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
               <select
                 id="contact-topic"
                 name="topic"
+                autoComplete="off"
                 value={formData.topic}
                 onChange={(e) => handleChange("topic", e.target.value)}
                 onBlur={() => handleBlur("topic")}
                 className={modalSelectClass(fieldClass("topic"), Boolean(formData.topic))}
                 aria-required="true"
                 aria-invalid={Boolean(touched.topic && errors.topic)}
+                aria-describedby={touched.topic && errors.topic ? "contact-topic-error" : undefined}
                 disabled={submitState === "loading"}
               >
                 <option value="" disabled hidden>{text.placeholders.topic}</option>
@@ -317,7 +319,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
               </select>
               <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--brand-cyan)]" />
             </div>
-            {touched.topic && errors.topic && <p className="text-xs text-red-300">{errors.topic}</p>}
+            {touched.topic && errors.topic && <p id="contact-topic-error" className="text-xs text-red-300">{errors.topic}</p>}
           </div>
 
           <div className="space-y-1.5">
@@ -338,6 +340,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
               <select
                 id="contact-source"
                 name="source"
+                autoComplete="off"
                 value={formData.source}
                 onChange={(e) => handleChange("source", e.target.value)}
                 onBlur={() => handleBlur("source")}
@@ -354,9 +357,9 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
 
         <div className="space-y-1.5">
           <label htmlFor="contact-message" className={`${MODAL_LABEL_CLASS} lg:min-h-[14px] lg:whitespace-nowrap lg:text-[10px] lg:leading-[14px]`}>{requiredLabel(text.labels.message)}</label>
-          <textarea id="contact-message" name="message" rows={4} maxLength={1000} value={formData.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} placeholder={text.placeholders.message} className={`${fieldClass("message")} resize-none`} aria-required="true" aria-invalid={Boolean(touched.message && errors.message)} aria-describedby="contact-message-count" disabled={submitState === "loading"} />
+          <textarea id="contact-message" name="message" rows={4} maxLength={1000} autoComplete="off" value={formData.message} onChange={(e) => handleChange("message", e.target.value)} onBlur={() => handleBlur("message")} placeholder={text.placeholders.message} className={`${fieldClass("message")} resize-none`} aria-required="true" aria-invalid={Boolean(touched.message && errors.message)} aria-describedby={touched.message && errors.message ? "contact-message-error contact-message-count" : "contact-message-count"} disabled={submitState === "loading"} />
           <div className="flex min-h-4 items-center justify-between gap-4">
-            <span className="text-xs text-red-300">{touched.message && errors.message ? errors.message : ""}</span>
+            <span id="contact-message-error" className="text-xs text-red-300">{touched.message && errors.message ? errors.message : ""}</span>
             <span id="contact-message-count" className="ml-auto text-[11px] tabular-nums text-[var(--brand-offwhite)]/55">
               {formData.message.length} / 1000
             </span>

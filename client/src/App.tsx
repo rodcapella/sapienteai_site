@@ -97,7 +97,9 @@ export default function App() {
 
   // Persist language preference
   useEffect(() => {
-    localStorage.setItem("lang", location.startsWith("/en") ? "en" : "pt");
+    const currentLang = location.startsWith("/en") ? "en" : "pt";
+    localStorage.setItem("lang", currentLang);
+    document.documentElement.lang = currentLang === "en" ? "en" : "pt-PT";
     trackGooglePageView();
   }, [location]);
 

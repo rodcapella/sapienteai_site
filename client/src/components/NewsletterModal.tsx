@@ -223,34 +223,34 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
         </div>
 
         <div className="grid gap-4 lg:grid-cols-2">
-          <label className="block space-y-1.5">
+          <label htmlFor="newsletter-name" className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.name}{requiredMark}</span>
-            <input name="name" required type="text" maxLength={100} value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+            <input id="newsletter-name" name="name" required type="text" maxLength={100} autoComplete="name" value={formData.name} onChange={(e) => updateField("name", e.target.value)} placeholder={text.placeholders.name} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
 
-          <label className="block space-y-1.5">
+          <label htmlFor="newsletter-email" className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.email}{requiredMark}</span>
-            <input name="email" required type="email" maxLength={254} value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder={text.placeholders.email} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+            <input id="newsletter-email" name="email" required type="email" maxLength={254} autoComplete="email" value={formData.email} onChange={(e) => updateField("email", e.target.value)} placeholder={text.placeholders.email} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
         </div>
 
         <div className="grid gap-4 lg:grid-cols-2">
-          <label className="block space-y-1.5">
+          <label htmlFor="newsletter-role" className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.role}<span className={optionalClass}>{text.optional}</span></span>
-            <input name="role" type="text" maxLength={120} value={formData.role} onChange={(e) => updateField("role", e.target.value)} placeholder={text.placeholders.role} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+            <input id="newsletter-role" name="role" type="text" maxLength={120} autoComplete="organization-title" value={formData.role} onChange={(e) => updateField("role", e.target.value)} placeholder={text.placeholders.role} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
 
-          <label className="block space-y-1.5">
+          <label htmlFor="newsletter-company" className="block space-y-1.5">
             <span className={MODAL_LABEL_CLASS}>{text.labels.company}<span className={optionalClass}>{text.optional}</span></span>
-            <input name="company" type="text" maxLength={160} value={formData.company} onChange={(e) => updateField("company", e.target.value)} placeholder={text.placeholders.company} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
+            <input id="newsletter-company" name="company" type="text" maxLength={160} autoComplete="organization" value={formData.company} onChange={(e) => updateField("company", e.target.value)} placeholder={text.placeholders.company} className={`${MODAL_INPUT_BASE} border-[var(--brand-cyan-bright)]/[0.28]`} disabled={submitState === "loading"} />
           </label>
         </div>
 
         <div className="grid items-stretch gap-4 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
-          <label className="block space-y-1.5">
+          <label htmlFor="newsletter-source" className="block space-y-1.5">
             <span className={`${MODAL_LABEL_CLASS} lg:text-[10px]`}>{text.labels.source}<span className={optionalClass}>{text.optional}</span></span>
             <div className="relative">
-              <select name="source" value={formData.source} onChange={(e) => updateField("source", e.target.value)} className={sourceSelectClass} disabled={submitState === "loading"}>
+              <select id="newsletter-source" name="source" autoComplete="off" value={formData.source} onChange={(e) => updateField("source", e.target.value)} className={sourceSelectClass} disabled={submitState === "loading"}>
                 <option value="" disabled>{text.placeholders.source}</option>
                 {sourceOptions.map((o) => <option key={o} value={o}>{o}</option>)}
               </select>
@@ -258,8 +258,8 @@ export default function NewsletterModal({ isOpen, onClose }: NewsletterModalProp
             </div>
           </label>
 
-          <label className="flex h-full items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[var(--brand-darkest)]/40 p-4 text-sm leading-relaxed text-[var(--brand-offwhite)]/[0.72] lg:items-center lg:py-3">
-            <input type="checkbox" required checked={formData.accepted} onChange={(e) => updateField("accepted", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 rounded border-[var(--brand-primary)]/40 bg-[var(--brand-darkest)] lg:mt-0" disabled={submitState === "loading"} />
+          <label htmlFor="newsletter-accepted" className="flex h-full items-start gap-3 rounded-xl border border-[var(--brand-primary)]/20 bg-[var(--brand-darkest)]/40 p-4 text-sm leading-relaxed text-[var(--brand-offwhite)]/[0.72] lg:items-center lg:py-3">
+            <input id="newsletter-accepted" name="accepted" type="checkbox" required checked={formData.accepted} onChange={(e) => updateField("accepted", e.target.checked)} className="mt-1 h-4 w-4 shrink-0 rounded border-[var(--brand-primary)]/40 bg-[var(--brand-darkest)] lg:mt-0" disabled={submitState === "loading"} />
             <span>{text.labels.accepted}</span>
           </label>
         </div>

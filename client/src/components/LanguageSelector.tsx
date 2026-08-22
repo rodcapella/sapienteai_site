@@ -31,6 +31,8 @@ export function LanguageSelector() {
   return (
     <button
       ref={ref}
+      type="button"
+      aria-label={lang === "pt" ? "Switch language to English" : "Mudar idioma para português"}
       onClick={() => switchLanguage(undefined, { preserveScroll: true, preload: preloadPage })}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

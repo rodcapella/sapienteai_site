@@ -282,7 +282,7 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="flex items-center justify-center whitespace-nowrap py-1 text-center">
-            <Link href={`/${lang}/sitemap`} className={`${footerMetaLinkClass} transition-colors hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
+            <Link href={`/${lang}/sitemap`} className={`${footerMetaLinkClass} underline decoration-1 underline-offset-4 transition-colors hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
               {t("footer.sitemap")}
             </Link>
             <span aria-hidden="true" className="mx-5 text-[12px] text-white/45">|</span>
@@ -375,7 +375,7 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="flex items-center justify-center whitespace-nowrap border-t border-[var(--brand-primary)]/15 pb-3 pt-3">
-            <Link href={`/${lang}/sitemap`} className={`${footerMetaLinkClass} transition-colors duration-200 hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
+            <Link href={`/${lang}/sitemap`} className={`${footerMetaLinkClass} underline decoration-1 underline-offset-4 transition-colors duration-200 hover:text-[var(--brand-cyan)]`} style={copyrightStyle}>
               {t("footer.sitemap")}
             </Link>
             <span aria-hidden="true" className="mx-12 text-[12px] text-white/45">|</span>

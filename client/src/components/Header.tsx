@@ -2,6 +2,7 @@ import { Suspense, lazy, useCallback, useEffect, useRef, useState } from "react"
 
 import { Menu, X } from "@/lib/icons";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const ContactModal = lazy(() => import("@/components/ContactModal"));
 const DesktopHeaderNavigation = lazy(() => import("@/components/header/DesktopHeaderNavigation"));
@@ -12,6 +13,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onContactClick }: HeaderProps) {
+  const { lang } = useTranslation();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(() => window.matchMedia("(min-width: 1024px)").matches);
@@ -59,7 +61,7 @@ export default function Header({ onContactClick }: HeaderProps) {
       )}>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-cyan)]/75 to-transparent" />
         <div className="container mx-auto px-4 sm:px-6">
-          <nav className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-14 md:h-16" : "h-16 md:h-[68px]")}>
+          <nav aria-label={lang === "en" ? "Main navigation" : "Navegação principal"} className={cn("grid grid-cols-[auto_1fr_auto] items-center transition-all duration-500", scrolled ? "h-14 md:h-16" : "h-16 md:h-[68px]")}>
             <div className="flex h-full w-[180px] shrink-0 items-center gap-2 overflow-hidden xl:w-[210px]">
               <img src="/media/logos/Logo_Sapiente_fundo_claro-210.webp" alt="Sapiente.AI" width="210" height="72" className={cn(logoClassName, "dark:hidden")} loading="eager" fetchPriority="high" decoding="async" />
               <img src="/media/logos/Logo_Sapiente_fundo_escuro-210.webp" alt="Sapiente.AI" width="210" height="72" className={cn(logoClassName, "hidden dark:block")} loading="eager" fetchPriority="high" decoding="async" />

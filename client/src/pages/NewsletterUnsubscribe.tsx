@@ -143,11 +143,13 @@ export default function NewsletterUnsubscribe() {
             <form onSubmit={handleSubmit} className="mx-auto mt-8 max-w-lg space-y-5 text-left" noValidate>
               <div className="pointer-events-none absolute -left-[10000px] h-px w-px overflow-hidden" aria-hidden="true">
                 <label htmlFor="unsubscribe-website">Website</label>
-                <input id="unsubscribe-website" tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} />
+                <input id="unsubscribe-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={website} onChange={(event) => setWebsite(event.target.value)} />
               </div>
-              <label className="block">
+              <label htmlFor="unsubscribe-email" className="block">
                 <span className="mb-2 block text-xs font-bold uppercase tracking-[0.14em] text-[var(--brand-offwhite)]/80">{copy.label}</span>
                 <input
+                  id="unsubscribe-email"
+                  name="email"
                   type="email"
                   required
                   maxLength={254}

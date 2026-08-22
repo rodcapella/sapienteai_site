@@ -291,14 +291,14 @@ export default function VisibilityValidator() {
               </div>
 
               <div className="visibility-validator-fields">
-                <label>
+                <label htmlFor="visibility-brand-name">
                   <span>{text.form.brand}</span>
-                  <input value={brandName} onChange={(event) => setBrandName(event.target.value)} placeholder={text.form.brandPlaceholder} disabled={isLoading} />
+                  <input id="visibility-brand-name" name="brandName" type="text" autoComplete="organization" value={brandName} onChange={(event) => setBrandName(event.target.value)} placeholder={text.form.brandPlaceholder} disabled={isLoading} />
                 </label>
 
-                <label>
+                <label htmlFor="visibility-website">
                   <span>{text.form.website}</span>
-                  <input value={website} onChange={(event) => setWebsite(event.target.value)} placeholder={text.form.websitePlaceholder} disabled={isLoading} inputMode="url" />
+                  <input id="visibility-website" name="website" type="url" autoComplete="url" value={website} onChange={(event) => setWebsite(event.target.value)} placeholder={text.form.websitePlaceholder} disabled={isLoading} inputMode="url" />
                 </label>
               </div>
 

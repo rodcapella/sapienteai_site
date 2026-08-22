@@ -51,7 +51,7 @@ function ServicesStickyNav({
         ].join(" ")}
       >
         <div className="mx-auto w-full max-w-6xl">
-          <nav className="grid grid-cols-3 gap-2 sm:flex sm:flex-row sm:flex-wrap sm:justify-center">
+          <nav aria-label="Categorias de serviços / Service categories" className="grid grid-cols-3 gap-2 sm:flex sm:flex-row sm:flex-wrap sm:justify-center">
             {sections.map((s) => {
               const Icon = Icons[s.icon] as React.ElementType;
               const isActive = active === s.id;

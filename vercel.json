@@ -7,12 +7,15 @@
       "destination": "https://www.sapienteai.com/:path*",
       "permanent": true
     },
-    { "source": "/", "destination": "/pt", "permanent": false },
     { "source": "/blog", "destination": "/pt/blog", "permanent": true },
     { "source": "/pt/quiz-ai", "destination": "/pt/quiz-ia", "permanent": true },
     { "source": "/en/quiz-ia", "destination": "/en/quiz-ai", "permanent": true }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "destination": "/pt"
+    },
     {
       "source": "/pt",
       "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],

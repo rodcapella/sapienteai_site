@@ -51,10 +51,10 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
     return () => schema.remove();
   }, [article, canonical, lang]);
 
-  if (!article) return <main className="mx-auto max-w-4xl px-6 py-32"><h1 className="font-heading text-5xl font-black">404</h1><Link href={`/${lang}/blog`} className="mt-8 inline-block text-primary">Blog</Link></main>;
+  if (!article) return <section aria-labelledby="blog-not-found-title" className="mx-auto max-w-4xl px-6 py-32"><h1 id="blog-not-found-title" className="font-heading text-5xl font-black">404</h1><Link href={`/${lang}/blog`} className="mt-8 inline-block font-bold text-primary underline underline-offset-4">Blog</Link></section>;
 
   return (
-    <main className="bg-ice px-6 py-20 md:py-28">
+    <article className="bg-ice px-6 py-20 md:py-28">
       <article className="mx-auto max-w-4xl rounded-3xl bg-white p-7 shadow-xl md:p-14">
         <p className="text-sm font-black uppercase tracking-widest text-primary">{article.category}</p>
         <h1 className="mt-5 font-heading text-4xl font-black leading-tight md:text-6xl">{article.title}</h1>
@@ -64,8 +64,8 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
           <time className="flex items-center gap-2" dateTime={article.date}><Calendar className="h-4 w-4" />{new Date(article.date).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT")}</time>
         </div>
         <div className="prose mt-10 max-w-none"><ArticleBody content={article.content} /></div>
-        <Link href={`/${lang}/blog`} className="mt-12 inline-block font-black text-primary">← {lang === "en" ? "Back to blog" : "Voltar ao blog"}</Link>
+        <Link href={`/${lang}/blog`} className="mt-12 inline-block font-black text-primary underline decoration-2 underline-offset-4">← {lang === "en" ? "Back to blog" : "Voltar ao blog"}</Link>
       </article>
-    </main>
+    </article>
   );
 }

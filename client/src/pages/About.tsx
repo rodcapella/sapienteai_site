@@ -278,12 +278,12 @@ function AboutVisualSection({ content }: { content: AboutVisualSectionContent })
               "w-full bg-no-repeat",
               usesMobileSplitImages
                 ? "min-h-[88svh] bg-cover bg-center"
-                : "min-h-[82svh] bg-cover bg-center",
+                : "aspect-[3/5] bg-center",
             ].join(" ")}
             style={{
               backgroundImage: `url(${image})`,
               backgroundPosition: "center center",
-              backgroundSize: usesMobileSplitImages ? "cover" : "112% auto",
+              backgroundSize: usesMobileSplitImages ? "cover" : "620% auto",
             }}
             aria-hidden="true"
           />

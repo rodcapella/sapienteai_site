@@ -68,8 +68,13 @@ export default function Blog() {
         compact
       >
         <div className="relative mx-auto max-w-xl">
+          <label htmlFor="blog-search" className="sr-only">{t('blog.search')}</label>
           <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--brand-offwhite)]/50" />
           <input
+            id="blog-search"
+            name="blog-search"
+            type="search"
+            autoComplete="off"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={t('blog.search')}
@@ -91,6 +96,7 @@ export default function Blog() {
           <div className="flex flex-wrap gap-3 justify-center">
             {categories.map(category => (
               <button
+                type="button"
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`

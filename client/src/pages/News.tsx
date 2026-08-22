@@ -44,8 +44,13 @@ export default function News() {
 
       <InternalHero label="News" title="AI Updates & Releases" subtitle="Acompanhe as tendências e lançamentos mais relevantes em IA." compact>
           <div className="relative mx-auto max-w-xl">
+            <label htmlFor="news-search" className="sr-only">{lang === "en" ? "Search news" : "Pesquisar notícias"}</label>
             <Search className="absolute left-4 top-3.5 h-4 w-4 text-[var(--brand-offwhite)]/45" />
             <input
+              id="news-search"
+              name="news-search"
+              type="search"
+              autoComplete="off"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Pesquisar..."
@@ -146,11 +151,16 @@ export default function News() {
             </p>
 
             <div className="flex gap-3">
+              <label htmlFor="news-email" className="sr-only">Email</label>
               <input
+                id="news-email"
+                name="email"
+                type="email"
+                autoComplete="email"
                 className="flex-1 px-4 py-2 rounded-xl bg-[var(--brand-offwhite)]/5 border border-[var(--brand-offwhite)]/10"
                 placeholder="Email"
               />
-              <button className="rounded-xl bg-[var(--brand-primary)] px-4 text-[var(--brand-offwhite)] hover:bg-[var(--brand-primary)]">
+              <button type="button" className="rounded-xl bg-[var(--brand-primary)] px-4 text-[var(--brand-offwhite)] hover:bg-[var(--brand-primary)]">
                 Inscrever
               </button>
             </div>

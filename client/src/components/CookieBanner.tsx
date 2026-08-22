@@ -381,11 +381,11 @@ export default function CookieBanner() {
   const LegalLinks = () => (
     <p className="mt-2 font-[var(--font-body)] text-[11px] font-semibold leading-snug text-[var(--brand-night)]/78 sm:text-[13px]">
       {text.legalIntro}{" "}
-      <Link href={cookiesHref} className="font-bold text-[var(--brand-blue-deep)] underline-offset-2 hover:underline">
+      <Link href={cookiesHref} className="font-bold text-[var(--brand-blue-deep)] underline decoration-1 underline-offset-2">
         {text.links.cookies}
       </Link>{" "}
       {text.legalJoin}{" "}
-      <Link href={privacyHref} className="font-bold text-[var(--brand-blue-deep)] underline-offset-2 hover:underline">
+      <Link href={privacyHref} className="font-bold text-[var(--brand-blue-deep)] underline decoration-1 underline-offset-2">
         {text.links.privacy}
       </Link>
       .
@@ -409,6 +409,7 @@ export default function CookieBanner() {
         ref={dialogRef}
         role={showPreferences ? "dialog" : "region"}
         aria-labelledby="cookie-consent-title"
+        aria-describedby={showPreferences ? "cookie-preferences-description" : "cookie-consent-description"}
         aria-modal={showPreferences || undefined}
         className={[
           "fixed inset-x-3 bottom-3 z-[80] mx-auto max-w-5xl rounded-xl border border-[var(--brand-cyan-bright)] bg-[var(--brand-offwhite)] p-2 transition duration-300 ease-out sm:inset-x-4 sm:bottom-4 sm:rounded-2xl sm:p-4",
@@ -421,7 +422,7 @@ export default function CookieBanner() {
               <h2 id="cookie-consent-title" className="font-[var(--font-body)] !text-[15px] font-black leading-tight sm:!text-lg">
                 {text.title}
               </h2>
-              <p className="mt-0.5 font-[var(--font-body)] text-[11px] font-medium leading-snug text-[var(--brand-night)]/70 sm:mt-1 sm:text-sm">
+              <p id="cookie-consent-description" className="mt-0.5 font-[var(--font-body)] text-[11px] font-medium leading-snug text-[var(--brand-night)]/70 sm:mt-1 sm:text-sm">
                 {text.message}
               </p>
               <LegalLinks />
@@ -469,6 +470,9 @@ export default function CookieBanner() {
               >
                 {text.preferencesTitle}
               </h2>
+              <p id="cookie-preferences-description" className="mt-1 text-[12px] font-medium leading-snug text-[var(--brand-night)]/72 sm:text-[13px]">
+                {text.message}
+              </p>
               <div className="mt-2 grid gap-1.5 sm:mt-3 sm:gap-2">
                 {preferenceRows.map((row) => (
                   <div key={row.key} className="flex items-center justify-between gap-2.5 rounded-xl bg-white/75 px-3 py-1.5 sm:gap-3 sm:py-2">
