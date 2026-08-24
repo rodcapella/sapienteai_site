@@ -62,7 +62,7 @@ export default function Blog() {
             </div>
           </Reveal>
 
-          <div className="mx-auto max-w-2xl">
+          <div className="mx-auto max-w-[320px] sm:max-w-2xl">
               {articles.map((article, index) => (
                 <Reveal key={article.id} delay={index * 80}>
                   <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#16467c] bg-[#0d141d] transition duration-300 hover:-translate-y-1 hover:border-[#278dff] hover:shadow-[0_24px_60px_rgba(0,112,255,.18)]">
@@ -78,14 +78,14 @@ export default function Blog() {
                       </span>
                     </Link>
 
-                    <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <div className="flex flex-1 flex-col p-5 sm:p-8">
                       <div className="mb-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-[#8da8c4]">
                         <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4" aria-hidden="true" />
                           <time dateTime={article.date}>{new Date(`${article.date}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT", { day: "2-digit", month: "long", year: "numeric" })}</time>
                         </span>
                         <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{article.readTime} {copy.minutes}</span>
                       </div>
-                      <h2 className="font-heading text-[clamp(1.35rem,2.6vw,1.8rem)] font-black leading-tight !text-[#0877ff] transition-colors group-hover:!text-[#35a8ff]">
+                      <h2 className="font-heading !text-[28px] font-black !leading-[1.12] !text-[#0877ff] transition-colors group-hover:!text-[#35a8ff] sm:!text-[clamp(1.35rem,2.6vw,1.8rem)] sm:!leading-tight">
                         <Link href={`/${lang}/blog/${article.slug}`}>{article.title}</Link>
                       </h2>
                       <p className="mt-5 line-clamp-3 text-[15px] font-medium leading-7 text-[#8da8c4]">{article.excerpt}</p>
