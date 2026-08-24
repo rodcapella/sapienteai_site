@@ -49,25 +49,19 @@ function sendCurrentPageView() {
 }
 
 function loadGoogleAnalytics() {
-  if (document.getElementById(GA_SCRIPT_ID)) {
-    if (!analyticsConfigured) {
-      gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
-      analyticsConfigured = true;
-      sendCurrentPageView();
-    }
-    return;
+  if (!analyticsConfigured) {
+    gtag("js", new Date());
+    gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
+    analyticsConfigured = true;
+    sendCurrentPageView();
   }
+
+  if (document.getElementById(GA_SCRIPT_ID)) return;
 
   const script = document.createElement("script");
   script.id = GA_SCRIPT_ID;
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-  script.addEventListener("load", () => {
-    gtag("js", new Date());
-    gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
-    analyticsConfigured = true;
-    sendCurrentPageView();
-  }, { once: true });
   document.head.appendChild(script);
 }
 

@@ -324,8 +324,9 @@ export default function CookieBanner() {
 
   const dismiss = () => {
     setIsVisible(false);
+    setShowPreferences(false);
     window.setTimeout(() => setShowBanner(false), 300);
-    requestAnimationFrame(() => openerRef.current?.focus());
+    window.setTimeout(() => openerRef.current?.focus(), 0);
   };
 
   const openPreferences = (opener?: HTMLElement) => {
