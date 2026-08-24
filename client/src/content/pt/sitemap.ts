@@ -18,6 +18,7 @@ export const sitemapPT = {
     about: ["Sobre Nós", "A nossa visão, método de trabalho e forma de aplicar IA."],
     services: ["Serviços", "Soluções digitais, automação, marketing e IA aplicada ao crescimento."],
     projects: ["Projetos", "Produtos digitais e ferramentas da Sapiente.AI em desenvolvimento."],
+    blog: ["Blog", "Artigos e perspetivas sobre IA, automação, dados e crescimento digital."],
     faq: ["FAQ", "Respostas às perguntas mais frequentes sobre os nossos serviços."],
     quiz: ["Quiz IA", "Diagnóstico inicial para identificar oportunidades de automação."],
     newsletter: ["Newsletter", "Conteúdo prático sobre IA, automação e crescimento."],

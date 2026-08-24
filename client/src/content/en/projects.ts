@@ -2,7 +2,7 @@ export const projectsEN = {
   seoDescription:
     "Explore Sapiente.AI projects in development: digital products, platforms and AI tools designed to create real impact.",
   hero: {
-    label: "Sapiente.AI Projects",
+    label: "Projects",
     title: "Ideas taking shape.",
     highlight: "Solutions creating impact.",
     subtitle:

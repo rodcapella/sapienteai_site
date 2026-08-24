@@ -18,6 +18,7 @@ export const sitemapEN = {
     about: ["About us", "Our vision, working method, and approach to applied AI."],
     services: ["Services", "Digital solutions, automation, marketing, and applied AI for growth."],
     projects: ["Projects", "Digital products and tools currently being developed by Sapiente.AI."],
+    blog: ["Blog", "Articles and perspectives on AI, automation, data, and digital growth."],
     faq: ["FAQ", "Quick answers to the most common questions about our services."],
     quiz: ["AI Quiz", "Initial diagnosis to identify automation opportunities."],
     newsletter: ["Newsletter", "Practical content on AI, automation, and growth."],

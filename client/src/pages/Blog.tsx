@@ -1,201 +1,108 @@
-import { useState, useMemo, useEffect } from 'react';
-import { Link, useLocation } from 'wouter';
-import { ArrowRight, Calendar, Search, Tag, User } from "@/lib/icons";
+import { Link } from "wouter";
 
-import NewsletterModal from '@/components/NewsletterModal';
-
+import { FinalCTA } from "@/components/ui/cta/FinalCTA";
+import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
-import { PremiumButton } from "@/components/ui/button/PremiumButton";
-import { Section } from "@/components/ui/section/Section";
-import { SectionCard } from "@/components/ui/section/SectionCard";
-
-import { useTranslation } from '@/hooks/useTranslation';
-import { getAllBlogArticles } from '@/lib/blogData';
-import { useSEOHead } from '@/hooks/useSEOHead';
-
-
-
-
-
-
-
-const articles = getAllBlogArticles();
-
-const englishImageMap: Record<string, string> = {
-  "/media/banners/PT/home_automacao_ia.webp": "/media/banners/EN/home_automacao_ia_en.webp",
-  "/media/banners/PT/home_resultados_gera_ia.webp": "/media/banners/EN/home_resultados_gera_ia_en.webp",
-  "/media/banners/PT/home_marketing_digital_ia.webp": "/media/banners/EN/home_marketing_digital_ia_en.webp",
-};
+import { Reveal } from "@/components/ui/motion/Reveal";
+import { useSEOHead } from "@/hooks/useSEOHead";
+import { useTranslation } from "@/hooks/useTranslation";
+import { getAllBlogArticles } from "@/lib/blogData";
+import { ArrowRight, Calendar, Clock } from "@/lib/icons";
 
 export default function Blog() {
-  const { t, lang } = useTranslation();
-  const allCategory = lang === "en" ? "All" : "Todos";
-  const categories = useMemo(() => [allCategory, ...Array.from(new Set(articles.map(a => a.category)))], [allCategory]);
-  const [selectedCategory, setSelectedCategory] = useState(allCategory);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
-
-  useEffect(() => {
-    setSelectedCategory(allCategory);
-  }, [allCategory]);
+  const { lang } = useTranslation();
+  const articles = getAllBlogArticles(lang);
 
   useSEOHead({
-    title: 'Blog - Sapiente.AI',
-    description: lang === "en" ? 'Commercial insights on AI and business technology.' : 'Insights sobre IA e tecnologia aplicada ao negócio.',
-    keywords: lang === "en" ? 'AI, machine learning, automation' : 'IA, machine learning, automação',
+    title: lang === "en" ? "AI and Digital Growth Blog | Sapiente.AI" : "Blog de IA e Crescimento Digital | Sapiente.AI",
+    description: lang === "en"
+      ? "Articles and practical perspectives on artificial intelligence, automation, data, technology, and digital growth."
+      : "Artigos e perspetivas práticas sobre inteligência artificial, automação, dados, tecnologia e crescimento digital.",
+    keywords: lang === "en"
+      ? "AI blog, business automation, data, digital growth"
+      : "blog inteligência artificial, automação empresarial, dados, crescimento digital",
     url: `https://www.sapienteai.com/${lang}/blog`,
-    type: 'website'
+    type: "website",
   }, [lang]);
 
-  const filteredArticles = useMemo(() => {
-    return articles.filter(article => {
-      const matchesCategory = selectedCategory === allCategory || article.category === selectedCategory;
-      const matchesSearch =
-        article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-
-      return matchesCategory && matchesSearch;
-    });
-  }, [allCategory, selectedCategory, searchQuery]);
+  const copy = lang === "en"
+    ? {
+        heroLabel: "Blog", heroTitle: "Ideas that clarify.", heroHighlight: "Knowledge that creates impact.",
+        heroSubtitle: "Practical perspectives on AI, automation, data, and technology applied to business.",
+        introLabel: "Latest insights", introTitle: "Knowledge to make better decisions",
+        introText: "Explore analyses, trends, and practical ideas for turning technology into measurable progress.",
+        read: "Read article", minutes: "min read",
+        ctaTitle: "Ready to apply these", ctaHighlight: "ideas to your business?",
+        ctaDescription: "We turn knowledge into a clear strategy, useful solutions, and",
+        ctaDescriptionHighlight: "measurable results.", ctaButton: "Talk to us",
+      }
+    : {
+        heroLabel: "Blog", heroTitle: "Ideias que esclarecem.", heroHighlight: "Conhecimento que cria impacto.",
+        heroSubtitle: "Perspetivas práticas sobre IA, automação, dados e tecnologia aplicada aos negócios.",
+        introLabel: "Conteúdos recentes", introTitle: "Conhecimento para decidir melhor",
+        introText: "Explore análises, tendências e ideias práticas para transformar tecnologia em progresso mensurável.",
+        read: "Ler artigo", minutes: "min de leitura",
+        ctaTitle: "Pronto para aplicar estas", ctaHighlight: "ideias ao seu negócio?",
+        ctaDescription: "Transformamos conhecimento em estratégia clara, soluções úteis e",
+        ctaDescriptionHighlight: "resultados mensuráveis.", ctaButton: "Falar connosco",
+      };
 
   return (
     <div className="flex flex-col">
+      <InternalHero label={copy.heroLabel} title={copy.heroTitle} highlight={copy.heroHighlight}
+        subtitle={copy.heroSubtitle} image="/media/bg/bg_blog.webp" imageAlt={copy.heroLabel} compact />
 
-      <InternalHero
-        label={t('nav.blog')}
-        title={t('blog.title')}
-        subtitle={lang === "en" ? undefined : t('blog.subtitle')}
-        compact
-      >
-        <div className="relative mx-auto max-w-xl">
-          <label htmlFor="blog-search" className="sr-only">{t('blog.search')}</label>
-          <Search className="absolute left-5 top-1/2 h-5 w-5 -translate-y-1/2 text-[var(--brand-offwhite)]/50" />
-          <input
-            id="blog-search"
-            name="blog-search"
-            type="search"
-            autoComplete="off"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={t('blog.search')}
-            className="
-              w-full rounded-full border border-[var(--brand-offwhite)]/20
-              bg-[var(--brand-offwhite)]/10 py-4 pl-14 pr-6
-              text-[var(--brand-offwhite)] backdrop-blur-md
-              placeholder:text-[var(--brand-offwhite)]/50
-              transition-all
-              focus:outline-none focus:ring-2 focus:ring-primary/50
-            "
-          />
-        </div>
-      </InternalHero>
+      <section className="bg-[#080d12] px-5 py-14 sm:px-8 md:py-20">
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
+              <p className="type-label text-[var(--brand-cyan)]">{copy.introLabel}</p>
+              <h2 className="mt-3 font-heading text-[clamp(2rem,4vw,3.2rem)] font-black leading-tight !text-white">{copy.introTitle}</h2>
+              <p className="mx-auto mt-5 max-w-2xl text-base font-medium leading-relaxed text-white/65">{copy.introText}</p>
+            </div>
+          </Reveal>
 
-      {/* FILTER - Ice White */}
-      <Section className="bg-ice py-12 md:py-20">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {categories.map(category => (
-              <button
-                type="button"
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`
-                  px-6 py-2.5 rounded-full text-sm font-black transition-all
-                  ${selectedCategory === category
-                    ? 'bg-primary text-primary-foreground shadow-lg'
-                    : 'bg-[var(--card)] text-foreground/60 border border-[var(--brand-purple)]/18 hover:bg-[var(--brand-purple)]/8'}
-                `}
-              >
-                {category === allCategory ? t('blog.all') : category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </Section>
+          <div className="mx-auto max-w-2xl">
+              {articles.map((article, index) => (
+                <Reveal key={article.id} delay={index * 80}>
+                  <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#16467c] bg-[#0d141d] transition duration-300 hover:-translate-y-1 hover:border-[#278dff] hover:shadow-[0_24px_60px_rgba(0,112,255,.18)]">
+                    <Link href={`/${lang}/blog/${article.slug}`} className="relative block aspect-[16/9] overflow-hidden border-b border-white/5">
+                      <img src={article.image} alt="" width="960" height="540"
+                        loading={index < 2 ? "eager" : "lazy"} decoding="async"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]" />
+                      <span
+                        className="absolute top-5 rounded-full border border-[#348dde]/50 bg-[#06111d]/45 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.12em] text-[#35a8ff] shadow-[0_6px_18px_rgba(0,20,50,.12)] backdrop-blur-[2px]"
+                        style={{ right: "1.25rem", left: "auto" }}
+                      >
+                        {article.category}
+                      </span>
+                    </Link>
 
-      {/* ARTICLES - Blue Tint */}
-      <Section className="bg-blue-tint py-20 md:py-32 flex-grow">
-        <div className="container mx-auto px-6">
-          {filteredArticles.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
-              {filteredArticles.map(article => (
-                <Link key={article.id} href={`/${lang}/blog/${article.slug}`} className="group block h-full min-w-0">
-                  <SectionCard className="bg-[var(--card)] border-[var(--brand-purple)]/18 shadow-md hover:shadow-2xl transition-all duration-500 h-full flex flex-col p-5 sm:p-8">
-
-                    {/* IMAGE */}
-                    <div className="h-48 -mx-5 -mt-5 mb-6 overflow-hidden rounded-t-2xl sm:h-56 sm:-mx-8 sm:-mt-8 sm:mb-8">
-                      <img
-                        src={lang === "en" ? englishImageMap[article.image] || article.image : article.image}
-                        alt={article.title}
-                        loading="lazy"
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                    </div>
-
-                    {/* CATEGORY */}
-                    <div className="mb-4 flex items-center gap-2 text-xs font-black uppercase tracking-[0.18em] text-primary">
-                      <Tag className="h-3 w-3" />
-                      {article.category}
-                    </div>
-
-                    {/* TITLE */}
-                    <h3 className="mb-4 font-heading text-2xl font-black text-foreground transition-colors line-clamp-2 group-hover:text-primary">
-                      {article.title}
-                    </h3>
-
-                    {/* EXCERPT */}
-                    <p className="mb-8 line-clamp-3 leading-relaxed text-foreground/70">
-                      {article.excerpt}
-                    </p>
-
-                    {/* META */}
-                    <div className="mt-auto flex items-center justify-between border-t border-foreground/5 pt-6 text-sm text-foreground/45">
-                      <div className="flex items-center gap-2">
-                        <User className="h-4 w-4" />
-                        {article.author}
+                    <div className="flex flex-1 flex-col p-6 sm:p-8">
+                      <div className="mb-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium text-[#8da8c4]">
+                        <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4" aria-hidden="true" />
+                          <time dateTime={article.date}>{new Date(`${article.date}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT", { day: "2-digit", month: "long", year: "numeric" })}</time>
+                        </span>
+                        <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{article.readTime} {copy.minutes}</span>
                       </div>
-
-                      <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" />
-                        {new Date(article.date).toLocaleDateString(lang === "en" ? 'en-US' : 'pt-PT')}
-                      </div>
+                      <h2 className="font-heading text-[clamp(1.35rem,2.6vw,1.8rem)] font-black leading-tight !text-[#0877ff] transition-colors group-hover:!text-[#35a8ff]">
+                        <Link href={`/${lang}/blog/${article.slug}`}>{article.title}</Link>
+                      </h2>
+                      <p className="mt-5 line-clamp-3 text-[15px] font-medium leading-7 text-[#8da8c4]">{article.excerpt}</p>
+                      <Link href={`/${lang}/blog/${article.slug}`}
+                        className="mt-7 inline-flex w-fit items-center gap-3 text-sm font-black text-[var(--brand-primary)] underline decoration-transparent underline-offset-4 transition hover:text-[var(--brand-cyan)] hover:decoration-current"
+                        aria-label={`${copy.read}: ${article.title}`}>{copy.read}<ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" /></Link>
                     </div>
-
-                  </SectionCard>
-                </Link>
+                  </article>
+                </Reveal>
               ))}
-            </div>
-          ) : (
-            <div className="text-center py-20">
-              <p className="text-2xl text-foreground/40 font-bold italic">{t('blog.noArticles')}</p>
-            </div>
-          )}
-        </div>
-      </Section>
-
-      {/* NEWSLETTER - Ice White */}
-      <Section className="bg-ice py-24 md:py-40">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <SectionCard className="bg-[var(--card)] p-10 md:p-16 shadow-xl border-[var(--brand-purple)]/20 text-center">
-              <h2 className="mb-6 font-heading text-3xl font-black text-foreground md:text-5xl">
-                {t('blog.newsletter')}
-              </h2>
-
-              <p className="mb-10 text-xl leading-relaxed text-foreground/60">
-                {t('blog.newsletterDesc')}
-              </p>
-
-              <PremiumButton onClick={() => setIsNewsletterOpen(true)} variant="primary">
-                {t('newsletter.subscribe')}
-              </PremiumButton>
-            </SectionCard>
           </div>
         </div>
-      </Section>
+      </section>
 
-      <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
+      <QuizCTA />
+      <FinalCTA title={copy.ctaTitle} title_highlight={copy.ctaHighlight} description={copy.ctaDescription}
+        description_highlight={copy.ctaDescriptionHighlight} button={copy.ctaButton} />
     </div>
   );
 }
-

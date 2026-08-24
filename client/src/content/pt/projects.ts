@@ -2,7 +2,7 @@ export const projectsPT = {
   seoDescription:
     "Conheça os projetos em desenvolvimento da Sapiente.AI: produtos digitais, plataformas e ferramentas de IA criadas para gerar impacto real.",
   hero: {
-    label: "Projetos Sapiente.AI",
+    label: "Projetos",
     title: "Ideias que ganham forma.",
     highlight: "Soluções que criam impacto.",
     subtitle:

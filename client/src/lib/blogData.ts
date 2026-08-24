@@ -10,71 +10,161 @@ export interface BlogArticle {
   category: string;
   image: string;
   tags: string[];
+  slugEn?: string;
+  titleEn?: string;
+  excerptEn?: string;
+  contentEn?: string;
+  categoryEn?: string;
+  tagsEn?: string[];
+  imageEn?: string;
+  published?: boolean;
+  seoTitle?: string;
+  seoTitleEn?: string;
+  seoDescription?: string;
+  seoDescriptionEn?: string;
+  keywords?: string;
+  keywordsEn?: string;
 }
 
 export const blogArticles: BlogArticle[] = [
   {
     id: '1',
-    slug: 'artificial-intelligence-revolutionizing-business',
-    title: 'Artificial Intelligence: How It is Revolutionizing Business in 2026',
-    excerpt: 'Discover how AI is transforming industries, increasing productivity and creating new growth opportunities for companies of all sizes.',
+    published: true,
+    slug: 'ia-deve-devolver-tempo-as-pessoas',
+    title: 'IA não deve substituir pessoas. Deve devolver tempo às pessoas.',
+    excerpt: 'O verdadeiro potencial da Inteligência Artificial não está em substituir profissionais, mas em libertá-los de tarefas repetitivas para que possam aplicar experiência, criatividade e capacidade de decisão.',
+    seoTitle: 'IA e produtividade: devolver tempo às pessoas',
+    seoDescription: 'Descubra como a IA e a automação libertam profissionais de tarefas repetitivas, aumentam a produtividade e preservam o julgamento humano.',
+    keywords: 'inteligência artificial nas empresas, IA e produtividade, automação de tarefas repetitivas, IA centrada nas pessoas, human in the loop, adoção de IA em Portugal, automação para PME, Sapiente.AI',
     author: 'Sapiente.AI',
-    date: '2026-02-15',
-    readTime: 8,
-    category: 'Artificial Intelligence',
-    image: '/media/banners/PT/home_automacao_ia.webp',
-    tags: ['IA', 'Negócios', 'Transformação Digital', 'Inovação'],
-    content: `# Artificial Intelligence: How It is Revolutionizing Business in 2026
+    date: '2026-08-24',
+    readTime: 6,
+    category: 'Inteligência Artificial',
+    image: '/media/blog/wide_professional_marketing_tech_banner_style_scen_pt.webp',
+    imageEn: '/media/blog/wide_professional_marketing_tech_banner_style_scen_en.webp',
+    tags: ['Inteligência Artificial', 'Automação', 'Produtividade', 'PME', 'Human in the Loop'],
+    content: `# IA não deve substituir pessoas. Deve devolver tempo às pessoas.
 
-Artificial Intelligence has evolved from a futuristic concept to a tangible reality that directly impacts business results. In 2026, organizations that do not adopt AI risk falling behind in an increasingly competitive market.
+A Inteligência Artificial está a mudar rapidamente a forma como trabalhamos. Ferramentas que antes apenas armazenavam ou processavam informação hoje conseguem interpretar documentos, analisar dados, pesquisar, identificar padrões, produzir conteúdo e executar tarefas que consomem diariamente horas de trabalho.
 
-## The Impact of AI on Business
+Mas talvez a discussão sobre IA esteja demasiado concentrada numa pergunta: **quantos empregos poderá substituir?**
 
-Digital transformation driven by AI is no longer optional. Leading companies have already implemented AI systems for:
+Existe outra questão que consideramos mais importante: **quanto tempo podemos devolver às pessoas?**
 
-- **Process Automation**: Reducing operational costs by up to 40%
-- **Predictive Analysis**: Making data-driven decisions in real time
-- **Personalization at Scale**: Customized experiences for each customer
-- **Resource Optimization**: Better allocation of human and financial capital
+## O problema não são as pessoas. São as tarefas.
 
-## Sectors Transformed by AI
+Em praticamente todas as empresas existem profissionais qualificados que passam parte do dia a preparar relatórios, organizar documentos, procurar informação, atualizar sistemas, cruzar dados ou responder repetidamente às mesmas questões.
 
-### Retail and E-commerce
-Personalized recommendations, demand forecasting and inventory optimization are now standard. Companies that implemented AI saw increases of up to 35% in conversions.
+São tarefas necessárias, mas muitas delas não exigem constantemente aquilo que torna essas pessoas realmente valiosas para uma organização: experiência, criatividade, contexto e capacidade de decisão.
 
-### Healthcare
-AI-assisted diagnostics, medical image analysis and disease outbreak prediction are saving lives and significantly reducing hospital costs.
+É precisamente aí que a IA pode fazer diferença. Não necessariamente substituindo o profissional, mas assumindo partes repetitivas do seu trabalho para que o seu tempo seja utilizado onde realmente acrescenta valor.
 
-### Finance
-Fraud detection, risk analysis and automated trading use AI to protect assets and maximize returns.
+## Portugal ainda tem muito espaço para avançar
 
-### Manufacturing
-Predictive maintenance, quality control and production optimization reduce waste and increase efficiency.
+Apesar de toda a atenção em torno da Inteligência Artificial, a sua utilização pelas empresas ainda está numa fase relativamente inicial, sobretudo em Portugal.
 
-## Implementation Challenges
+[GRÁFICO — Adoção de IA nas empresas: Portugal × União Europeia]
 
-Despite clear benefits, many companies still face challenges:
+*Fonte: Eurostat, 2025. Empresas com 10 ou mais pessoas ao serviço.*
 
-1. **Lack of Expertise**: Shortage of qualified AI professionals
-2. **Data Quality**: Need for clean and well-structured data
-3. **Initial Investment**: Infrastructure and training costs
-4. **Regulatory Compliance**: Compliance with RGPD, GDPR and other regulations
+A diferença mostra que existe um espaço significativo para as empresas portuguesas transformarem IA em vantagem competitiva. Para as PME, em particular, tecnologias que anteriormente exigiam grandes equipas, infraestrutura e investimento estão hoje muito mais acessíveis.
 
-## Trends for 2026
+Mas adotar IA não deveria significar simplesmente automatizar tudo o que for possível.
 
-- **Explainable AI**: Growing demand for transparency in AI decisions
-- **Edge AI**: AI processing directly on devices
-- **Generative AI**: Expansion beyond chatbots for complex content creation
-- **Responsible AI**: Focus on ethics, bias and social impact
+## A IA executa. O humano continua no controlo.
 
-## Conclusion
+Uma IA pode analisar milhares de registos, preparar um relatório, identificar uma anomalia ou sugerir uma resposta. O profissional deixa de gastar horas a produzir esse trabalho e passa a concentrar-se em compreender o resultado, verificar exceções e decidir o que fazer a seguir.
 
-Artificial Intelligence is no longer the future—it is the present. Companies that embrace this transformation now will be positioned to lead their markets in the next decade. The time to act is now.
+É este equilíbrio que defendemos:
 
-**Ready to take your company to the next level with AI? Request a strategic consultation with our specialists.**`
+**IA → Executa, analisa e propõe → Humano → Valida, contextualiza e decide**
+
+A tecnologia torna-se assim um multiplicador da capacidade humana, e não simplesmente um substituto.
+
+## Mais produtividade não deveria significar mais trabalho
+
+Imagine recuperar algumas horas todas as semanas porque relatórios são preparados automaticamente, documentos são classificados antes de chegarem à equipa ou dados provenientes de diferentes sistemas são cruzados sem intervenção manual.
+
+Essas horas podem ser utilizadas para compreender melhor um cliente, resolver um problema, desenvolver uma ideia, analisar o negócio ou tomar uma decisão que realmente necessita de experiência humana.
+
+É aqui que vemos o verdadeiro potencial da Inteligência Artificial: **não fazer as pessoas trabalharem mais, mas permitir que utilizem melhor o seu tempo.**
+
+## A nossa visão
+
+Na **Sapiente.AI**, acreditamos numa tecnologia que automatiza o repetitivo sem retirar o humano dos momentos em que julgamento e responsabilidade são essenciais.
+
+Queremos ajudar empresas a identificar onde a IA, os dados e a automação podem libertar capacidade humana e transformar processos que hoje consomem tempo em sistemas que ajudam pessoas a tomar melhores decisões.
+
+**Automatizar o repetitivo. Preservar o julgamento. Ampliar a capacidade humana.**
+
+Porque talvez o maior benefício da Inteligência Artificial não seja ensinar máquinas a trabalhar como pessoas, mas permitir que as pessoas **deixem de trabalhar como máquinas**.`,
+    slugEn: 'ai-should-give-time-back-to-people',
+    titleEn: 'AI Should Not Replace People. It Should Give Time Back to Them.',
+    excerptEn: 'The real value of artificial intelligence is not replacing skilled professionals. It is removing repetitive work so people can focus on judgment, creativity, customer relationships and better decisions.',
+    seoTitleEn: 'AI and Productivity: Giving Time Back to People',
+    seoDescriptionEn: 'Learn how AI and automation free professionals from repetitive tasks, improve productivity, and preserve human judgment in business decisions.',
+    keywordsEn: 'artificial intelligence in business, AI productivity, repetitive task automation, human-centered AI, human in the loop, AI adoption in Portugal, small business automation, Sapiente.AI',
+    categoryEn: 'Artificial Intelligence',
+    tagsEn: ['Artificial Intelligence', 'Automation', 'Productivity', 'Small Businesses', 'Human in the Loop'],
+    contentEn: `# AI Should Not Replace People. It Should Give Time Back to Them.
+
+Artificial intelligence is rapidly changing how work gets done. Tools that once simply stored or processed information can now interpret documents, analyze data, conduct research, identify patterns, create content and complete tasks that consume hours of valuable time every day.
+
+Yet much of the conversation around AI remains focused on one question: **how many jobs could it replace?**
+
+We believe there is a more useful question for business leaders: **how much time can AI give back to people?**
+
+## People are not the problem. Repetitive tasks are.
+
+In almost every organization, skilled professionals spend part of their day preparing reports, organizing documents, searching for information, updating systems, reconciling data or repeatedly answering the same questions.
+
+These tasks are necessary, but many of them do not consistently require the qualities that make people truly valuable to a business: experience, creativity, context and sound judgment.
+
+This is where AI can make a meaningful difference. Not by replacing the professional, but by taking on repetitive parts of the workload so their time can be invested where it creates greater value.
+
+## Portugal has significant room to move forward
+
+Despite the attention surrounding artificial intelligence, business adoption is still at a relatively early stage, particularly in Portugal.
+
+[CHART — AI adoption among businesses: Portugal × European Union]
+
+*Source: Eurostat, 2025. Enterprises with 10 or more people employed.*
+
+This gap represents a clear opportunity for Portuguese businesses to turn AI into a competitive advantage. For small and midsize businesses in particular, technologies that once demanded large teams, complex infrastructure and substantial investment are now far more accessible.
+
+However, adopting AI should not mean automating everything simply because it can be automated.
+
+## AI executes. People remain in control.
+
+AI can analyze thousands of records, prepare a report, flag an anomaly or recommend a response. Instead of spending hours producing that work, the professional can focus on interpreting the result, reviewing exceptions and deciding what should happen next.
+
+This is the balance we advocate:
+
+**AI → Executes, analyzes and recommends → People → Validate, contextualize and decide**
+
+Technology becomes a multiplier of human capability, not merely a substitute for it.
+
+## Greater productivity should not mean more work
+
+Imagine recovering several hours every week because reports are prepared automatically, documents are classified before reaching the team, or information from different systems is reconciled without manual intervention.
+
+Those hours can be used to understand a customer more deeply, solve a difficult problem, develop an idea, analyze the business or make a decision that genuinely requires human experience.
+
+This is where we see the real potential of artificial intelligence: **not making people work more, but enabling them to use their time more effectively.**
+
+## Our perspective
+
+At **Sapiente.AI**, we believe in technology that automates repetitive work without removing people from the moments where judgment and accountability are essential.
+
+We help businesses identify where AI, data and automation can release human capacity and turn time-consuming processes into systems that support better decisions.
+
+**Automate the repetitive. Preserve judgment. Expand human capability.**
+
+Perhaps the greatest benefit of artificial intelligence is not teaching machines to work like people, but allowing people to **stop working like machines**.`
   },
   {
     id: '2',
+    published: false,
     slug: 'practical-machine-learning-real-applications',
     title: 'Practical Machine Learning: Real Applications that Generate ROI',
     excerpt: 'Explore concrete use cases of machine learning that companies are implementing to increase revenue, reduce costs and improve customer experience.',
@@ -168,6 +258,7 @@ Machine Learning is not a single project—it's a continuous journey of learning
   },
   {
     id: '3',
+    published: false,
     slug: 'ai-trends-2026-what-to-expect',
     title: 'AI Trends for 2026: What to Expect from the Market',
     excerpt: 'Analysis of the key artificial intelligence trends shaping the market in 2026, from generative AI to regulation and new opportunities.',
@@ -306,10 +397,37 @@ O mercado de Inteligência Artificial está em transformação acelerada. Enquan
   }
 ];
 
-export function getBlogArticleBySlug(slug: string): BlogArticle | undefined {
-  return blogArticles.find(article => article.slug === slug);
+function localizeArticle(article: BlogArticle, lang: string): BlogArticle {
+  if (lang !== 'en' || !article.titleEn) return article;
+
+  return {
+    ...article,
+    slug: article.slugEn || article.slug,
+    title: article.titleEn,
+    excerpt: article.excerptEn || article.excerpt,
+    content: article.contentEn || article.content,
+    category: article.categoryEn || article.category,
+    tags: article.tagsEn || article.tags,
+    image: article.imageEn || article.image,
+    seoTitle: article.seoTitleEn || article.seoTitle,
+    seoDescription: article.seoDescriptionEn || article.seoDescription,
+    keywords: article.keywordsEn || article.keywords,
+  };
 }
 
-export function getAllBlogArticles(): BlogArticle[] {
-  return blogArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+export function getBlogArticleBySlug(slug: string, lang = 'pt'): BlogArticle | undefined {
+  const article = blogArticles.find((item) => item.published !== false && (item.slug === slug || item.slugEn === slug));
+  return article ? localizeArticle(article, lang) : undefined;
+}
+
+export function getBlogArticleAlternateSlugs(slug: string) {
+  const article = blogArticles.find((item) => item.published !== false && (item.slug === slug || item.slugEn === slug));
+  return article ? { pt: article.slug, en: article.slugEn || article.slug } : undefined;
+}
+
+export function getAllBlogArticles(lang = 'pt'): BlogArticle[] {
+  return [...blogArticles]
+    .filter((article) => article.published !== false)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map((article) => localizeArticle(article, lang));
 }

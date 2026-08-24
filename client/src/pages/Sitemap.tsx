@@ -2,20 +2,18 @@
 import type { ElementType } from "react";
 import { Link } from "wouter";
 
-import NewsletterModal from "@/components/NewsletterModal";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
-import { ArrowRight, Home, Mail, ShieldCheck, Sparkles } from "@/lib/icons";
+import { ArrowRight, Home, ShieldCheck, Sparkles } from "@/lib/icons";
 import "@/styles/faq_legal.css";
 
 type SitemapLink = {
   title: string;
   description: string;
-  href?: string;
-  onClick?: () => void;
+  href: string;
 };
 
 type SitemapGroup = {
@@ -67,19 +65,9 @@ function SitemapCard({ group }: { group: SitemapGroup }) {
       <ul className="legal-list !rounded-none !border-0">
         {group.links.map((link) => (
           <li key={link.href || link.title}>
-            {link.href ? (
-              <Link href={link.href} className={itemClass}>
-                {renderItem(link, ArrowRight)}
-              </Link>
-            ) : (
-              <a
-                href="#newsletter"
-                onClick={(e) => { e.preventDefault(); link.onClick?.(); }}
-                className={itemClass}
-              >
-                {renderItem(link, Mail)}
-              </a>
-            )}
+            <Link href={link.href} className={itemClass}>
+              {renderItem(link, ArrowRight)}
+            </Link>
           </li>
         ))}
       </ul>
@@ -92,7 +80,6 @@ export default function Sitemap() {
   const content = getContent("sitemap", lang);
   const l = content.links;
   const quizHref = lang === "pt" ? makeLink(lang, "/quiz-ia") : makeLink(lang, "/quiz-ai");
-  const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
   const [activeGroup, setActiveGroup] = useState<string>(content.sections.main);
 
   const groups: SitemapGroup[] = [
@@ -112,9 +99,9 @@ export default function Sitemap() {
       title: content.sections.resourcesTitle,
       icon: Sparkles,
       links: [
+        { title: l.blog[0], description: l.blog[1], href: makeLink(lang, "/blog") },
         { title: l.faq[0], description: l.faq[1], href: makeLink(lang, "/faq") },
         { title: l.quiz[0], description: l.quiz[1], href: quizHref },
-        { title: l.newsletter[0], description: l.newsletter[1], onClick: () => setIsNewsletterOpen(true) },
       ],
     },
     {
@@ -195,7 +182,6 @@ export default function Sitemap() {
         </div>
       </section>
 
-      <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
     </div>
   );
 }

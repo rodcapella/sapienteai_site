@@ -40,7 +40,10 @@ function sourcesFor(route) {
 
 const routes = getIndexableRoutes().map((route) => {
   const loc = `${SITE_ORIGIN}${route.routePath}`;
-  return { ...route, loc, lastmod: gitDate(sourcesFor(route)) || existingDates.get(loc) || "2026-01-01" };
+  const lastmod = route.schemaType === "BlogPosting"
+    ? route.article.date
+    : gitDate(sourcesFor(route)) || existingDates.get(loc) || "2026-01-01";
+  return { ...route, loc, lastmod };
 });
 
 const entry = ({ loc, lastmod, priority }) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <priority>${priority}</priority>\n  </url>`;

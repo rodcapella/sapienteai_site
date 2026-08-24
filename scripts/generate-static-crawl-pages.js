@@ -32,6 +32,7 @@ function routeSchema(route) {
   };
   if (route.schemaType === "BlogPosting") Object.assign(common, {
     headline: route.article.title,
+    keywords: route.article.keywords,
     datePublished: route.article.date,
     dateModified: route.article.date,
     image: absoluteImage(route.article.image),
@@ -95,12 +96,12 @@ function render(route) {
     .replace(/<link rel="canonical" href="[^"]*"\s*\/>/i, `<link rel="canonical" href="${url}" />`)
     .replace(/<link rel="alternate" hreflang="pt" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="pt" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
     .replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="en" href="${SITE_ORIGIN}${alternatePath(route, "en")}" />`)
-    .replace(/<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/pt" />`)
+    .replace(/<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
     .replace("</head>", `  <link rel="alternate" type="text/markdown" href="${url}" />\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${staticContent(route)}</div>`);
 
   for (const [attribute, name, value] of [
-    ["name", "description", route.description], ["name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"],
+    ["name", "description", route.description], ["name", "keywords", route.article?.keywords || "artificial intelligence, automation, digital transformation, Sapiente.AI"], ["name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"],
     ["property", "og:title", title], ["property", "og:description", route.description], ["property", "og:url", url], ["property", "og:type", route.schemaType === "BlogPosting" ? "article" : "website"], ["property", "og:image", image],
     ["property", "og:locale", route.lang === "pt" ? "pt_PT" : "en_US"], ["property", "og:locale:alternate", route.lang === "pt" ? "en_US" : "pt_PT"],
     ["name", "twitter:title", title], ["name", "twitter:description", route.description], ["name", "twitter:url", url], ["name", "twitter:image", image], ["name", "twitter:card", "summary_large_image"],

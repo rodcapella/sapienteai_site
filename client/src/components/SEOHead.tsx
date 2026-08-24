@@ -11,6 +11,7 @@ interface SEOHeadProps {
   type?: "website" | "article";
   keywords?: string;
   noindex?: boolean;
+  alternateUrls?: { pt: string; en: string; xDefault?: string };
 }
 
 const SITE_ORIGIN = "https://www.sapienteai.com";
@@ -59,6 +60,7 @@ export function setSEOHead({
   type = "website",
   keywords = DEFAULT_KEYWORDS,
   noindex = false,
+  alternateUrls,
 }: SEOHeadProps) {
   const formattedTitle = formatPageTitle(title);
   const canonicalUrl = normalizeCanonicalUrl(url);
@@ -125,10 +127,12 @@ export function setSEOHead({
   canonical.href = canonicalUrl;
 
   document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+  const ptAlternate = alternateUrls?.pt || getLocalizedHref(canonicalUrl, "pt");
+  const enAlternate = alternateUrls?.en || getLocalizedHref(canonicalUrl, "en");
   [
-    { lang: "pt", href: getLocalizedHref(canonicalUrl, "pt") },
-    { lang: "en", href: getLocalizedHref(canonicalUrl, "en") },
-    { lang: "x-default", href: `${SITE_ORIGIN}/pt` },
+    { lang: "pt", href: ptAlternate },
+    { lang: "en", href: enAlternate },
+    { lang: "x-default", href: alternateUrls?.xDefault || ptAlternate },
   ].forEach(({ lang, href }) => {
     const alternate = document.createElement("link");
     alternate.rel = "alternate";
@@ -146,7 +150,8 @@ export default function SEOHead({
   type,
   keywords,
   noindex,
+  alternateUrls,
 }: SEOHeadProps) {
-  setSEOHead({ title, description, image, url, type, keywords, noindex });
+  setSEOHead({ title, description, image, url, type, keywords, noindex, alternateUrls });
   return null;
 }

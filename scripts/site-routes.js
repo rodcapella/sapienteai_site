@@ -19,7 +19,7 @@ const pageDefinitions = [
   { path: "/generative-ai-policy", priority: "0.4", title: { pt: "Política de IA Generativa", en: "Generative AI Policy" }, description: { pt: "Princípios para uma utilização responsável e transparente de inteligência artificial generativa.", en: "Principles for responsible and transparent use of generative artificial intelligence." }, heading: { pt: "Política de IA Generativa", en: "Generative AI Policy" } },
 ];
 
-function parseBlogArticles() {
+function parseBlogArticles(lang = "pt") {
   const sourcePath = path.resolve("client/src/lib/blogData.ts");
   if (!fs.existsSync(sourcePath)) return [];
   const source = fs.readFileSync(sourcePath, "utf8");
@@ -27,10 +27,24 @@ function parseBlogArticles() {
   return starts.map((start, index) => source.slice(start, starts[index + 1] ?? source.indexOf("\n];", start)))
     .map((block) => {
       const read = (field) => block.match(new RegExp(`${field}:\\s*['\"]([^'\"]+)['\"]`))?.[1] || "";
-      const content = block.match(/content:\s*`([\s\S]*?)`\s*[,}]?/)?.[1]?.trim() || "";
-      return { slug: read("slug"), title: read("title"), excerpt: read("excerpt"), author: read("author"), date: read("date"), image: read("image"), content };
+      const readContent = (field) => block.match(new RegExp(`${field}:\\s*\\\`([\\s\\S]*?)\\\`\\s*[,}]?`))?.[1]?.trim() || "";
+      const slugs = { pt: read("slug"), en: read("slugEn") || read("slug") };
+      return {
+        published: !/published:\s*false/.test(block),
+        slug: slugs[lang],
+        slugs,
+        title: lang === "en" ? read("titleEn") || read("title") : read("title"),
+        excerpt: lang === "en" ? read("excerptEn") || read("excerpt") : read("excerpt"),
+        seoTitle: lang === "en" ? read("seoTitleEn") || read("seoTitle") : read("seoTitle"),
+        seoDescription: lang === "en" ? read("seoDescriptionEn") || read("seoDescription") : read("seoDescription"),
+        keywords: lang === "en" ? read("keywordsEn") || read("keywords") : read("keywords"),
+        author: read("author"),
+        date: read("date"),
+        image: lang === "en" ? read("imageEn") || read("image") : read("image"),
+        content: lang === "en" ? readContent("contentEn") || readContent("content") : readContent("content"),
+      };
     })
-    .filter((article) => article.slug);
+    .filter((article) => article.slug && article.published);
 }
 
 function parseFaqItems(lang) {
@@ -57,12 +71,12 @@ export function getIndexableRoutes() {
     { lang: "en", routePath: "/en/quiz-ai", priority: "0.8", title: "AI Quiz", description: "Discover where artificial intelligence can create more efficiency and growth in your business.", heading: "Discover the potential of AI for your business" },
   );
 
-  const articles = LANGUAGES.flatMap((lang) => parseBlogArticles().map((article) => ({
+  const articles = LANGUAGES.flatMap((lang) => parseBlogArticles(lang).map((article) => ({
     lang,
     routePath: `/${lang}/blog/${article.slug}`,
     priority: "0.7",
-    title: article.title,
-    description: article.excerpt,
+    title: article.seoTitle || article.title,
+    description: article.seoDescription || article.excerpt,
     heading: article.title,
     image: article.image,
     schemaType: "BlogPosting",
@@ -74,5 +88,6 @@ export function getIndexableRoutes() {
 
 export function alternatePath(route, language) {
   if (route.routePath === "/pt/quiz-ia" || route.routePath === "/en/quiz-ai") return language === "pt" ? "/pt/quiz-ia" : "/en/quiz-ai";
+  if (route.schemaType === "BlogPosting" && route.article?.slugs) return `/${language}/blog/${route.article.slugs[language]}`;
   return route.routePath.replace(/^\/(pt|en)(?=\/|$)/, `/${language}`);
 }
