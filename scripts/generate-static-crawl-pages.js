@@ -11,6 +11,28 @@ const escapeHtml = (value = "") => value.replaceAll("&", "&amp;").replaceAll("<"
 const absoluteImage = (image) => image?.startsWith("http") ? image : `${SITE_ORIGIN}${image || "/media/og/og-image.jpg"}`;
 const formattedTitle = (title) => title === "Sapiente.AI" ? title : `Sapiente.AI - ${title}`;
 
+const heroImages = new Map([
+  ["/", "/media/bg/bg_hero.webp"],
+  ["/about", "/media/bg/sobre/bg_Sobre_nos.webp"],
+  ["/services", "/media/bg/servicos/bg_Servicos.webp"],
+  ["/projects", "/media/bg/bg_Projetos.webp"],
+  ["/faq", "/media/bg/bg_FAQ.webp"],
+  ["/blog", "/media/bg/bg_blog.webp"],
+  ["/sitemap", "/media/bg/bg_Mapa_Site.webp"],
+  ["/quiz-ia", "/media/bg/bg_Quiz.webp"],
+  ["/quiz-ai", "/media/bg/bg_Quiz.webp"],
+]);
+
+function heroPreload(route) {
+  const localPath = route.routePath.replace(/^\/(pt|en)(?=\/|$)/, "") || "/";
+  const image = heroImages.get(localPath);
+  if (!image) return "";
+  if (localPath === "/") {
+    return `  <link rel="preload" href="/media/bg/bg_hero.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_hero-960.webp 960w, /media/bg/bg_hero-1600.webp 1600w, /media/bg/bg_hero.webp 1618w" imagesizes="100vw" fetchpriority="high" />`;
+  }
+  return `  <link rel="preload" href="${image}" as="image" type="image/webp" fetchpriority="high" />`;
+}
+
 function replaceMeta(html, attribute, name, value) {
   const expression = new RegExp(`<meta\\s+${attribute}="${name}"\\s+content="[^"]*"\\s*\\/?>(?![\\s\\S]*<meta\\s+${attribute}="${name}")`, "i");
   const tag = `<meta ${attribute}="${name}" content="${escapeHtml(value)}" />`;
@@ -97,6 +119,7 @@ function render(route) {
     .replace(/<link rel="alternate" hreflang="pt" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="pt" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
     .replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="en" href="${SITE_ORIGIN}${alternatePath(route, "en")}" />`)
     .replace(/<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
+    .replace("</head>", `${heroPreload(route)}\n  </head>`)
     .replace("</head>", `  <link rel="alternate" type="text/markdown" href="${url}" />\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${staticContent(route)}</div>`);
 
