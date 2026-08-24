@@ -50,7 +50,7 @@ export default function Blog() {
   return (
     <div className="flex flex-col">
       <InternalHero label={copy.heroLabel} title={copy.heroTitle} highlight={copy.heroHighlight}
-        subtitle={copy.heroSubtitle} image="/media/bg/bg_blog.webp" imageAlt={copy.heroLabel} compact />
+        subtitle={copy.heroSubtitle} image="/media/bg/bg_blog.webp" imageAlt={copy.heroLabel} mobileImagePosition="center" compact />
 
       <section className="bg-[#080d12] px-5 py-14 sm:px-8 md:py-20">
         <div className="mx-auto max-w-7xl">

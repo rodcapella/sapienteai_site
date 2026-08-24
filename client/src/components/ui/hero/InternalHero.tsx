@@ -1,5 +1,7 @@
 ﻿import type { ReactNode } from "react";
 
+import type { CSSProperties } from "react";
+
 import { Reveal } from "@/components/ui/motion/Reveal";
 import { Section } from "@/components/ui/section/Section";
 import { cn } from "@/lib/utils";
@@ -13,6 +15,7 @@ type InternalHeroProps = {
   imageAlt?: string;
   imageFit?: "cover" | "contain";
   imagePosition?: string;
+  mobileImagePosition?: string;
   children?: ReactNode;
   compact?: boolean;
   contentPanelClassName?: string;
@@ -27,6 +30,7 @@ export function InternalHero({
   imageAlt = "Sapiente.AI",
   imageFit = "cover",
   imagePosition = "center top",
+  mobileImagePosition,
   children,
   compact = false,
   contentPanelClassName,
@@ -48,8 +52,12 @@ export function InternalHero({
             : undefined}
           sizes={image === "/media/bg/bg_hero.webp" ? "100vw" : undefined}
           alt={imageAlt}
-          className="h-full w-full"
-          style={{ objectFit: imageFit, objectPosition: imagePosition }}
+          className="internal-hero-image h-full w-full"
+          style={{
+            objectFit: imageFit,
+            "--internal-hero-mobile-position": mobileImagePosition || imagePosition,
+            "--internal-hero-desktop-position": imagePosition,
+          } as CSSProperties}
           loading="eager"
           fetchPriority="high"
           decoding="async"

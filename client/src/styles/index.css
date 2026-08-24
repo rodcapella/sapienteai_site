@@ -245,3 +245,13 @@ button, .button, [role="button"] {
 .content-atmosphere > .absolute {
   z-index: 1;
 }
+
+.internal-hero-image {
+  object-position: var(--internal-hero-mobile-position);
+}
+
+@media (min-width: 768px) {
+  .internal-hero-image {
+    object-position: var(--internal-hero-desktop-position);
+  }
+}
