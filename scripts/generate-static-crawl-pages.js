@@ -58,7 +58,7 @@ function routeSchema(route) {
     datePublished: route.article.date,
     dateModified: route.article.date,
     image: absoluteImage(route.article.image),
-    author: { "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`, name: route.article.author || "Sapiente.AI" },
+    author: { "@type": "Person", name: route.article.author || "Rodrigo Póvoa" },
     publisher: { "@id": `${SITE_ORIGIN}/#organization` },
     mainEntityOfPage: { "@id": `${url}#webpage` },
   });

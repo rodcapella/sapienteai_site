@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { Calendar, Clock, User } from "@/lib/icons";
+import { Calendar, Clock } from "@/lib/icons";
 import { getBlogArticleAlternateSlugs, getBlogArticleBySlug } from "@/lib/blogData";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -106,7 +106,7 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
       "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${canonical}#article`,
       headline: article.title, description: article.seoDescription || article.excerpt, keywords: article.keywords || article.tags.join(", "), datePublished: article.date, dateModified: article.date,
       image: `https://www.sapienteai.com${article.image}`, inLanguage: lang === "pt" ? "pt-PT" : "en",
-      author: { "@id": "https://www.sapienteai.com/#organization" }, publisher: { "@id": "https://www.sapienteai.com/#organization" },
+      author: { "@type": "Person", name: article.author }, publisher: { "@id": "https://www.sapienteai.com/#organization" },
       mainEntityOfPage: canonical,
     });
     document.head.appendChild(schema);
@@ -116,18 +116,31 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
   if (!article) return <section aria-labelledby="blog-not-found-title" className="mx-auto max-w-4xl px-6 py-32"><h1 id="blog-not-found-title" className="font-heading text-5xl font-black">404</h1><Link href={`/${lang}/blog`} className="mt-8 inline-block font-bold text-primary underline underline-offset-4">Blog</Link></section>;
 
   return (
-    <section className="bg-ice px-6 py-20 md:py-28">
-      <article className="mx-auto max-w-4xl rounded-3xl bg-white p-7 shadow-xl md:p-14">
-        <p className="text-sm font-black uppercase tracking-widest text-primary">{article.category}</p>
-        <h1 className="mt-5 font-heading text-4xl font-black leading-tight md:text-6xl" style={{ color: "var(--brand-primary)" }}>{article.title}</h1>
-        <p className="mt-6 text-xl leading-relaxed text-foreground/65">{article.excerpt}</p>
-        <div className="mt-8 flex flex-wrap gap-6 border-b border-foreground/10 pb-8 text-sm text-foreground/55">
-          <span className="flex items-center gap-2"><User className="h-4 w-4" />{article.author}</span>
-          <time className="flex items-center gap-2" dateTime={article.date}><Calendar className="h-4 w-4" />{new Date(`${article.date}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT")}</time>
-          <span className="flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{article.readTime} {lang === "en" ? "min read" : "min de leitura"}</span>
+    <article className="bg-[#f4f9ff] pb-20 md:pb-28">
+      <header className="border-b border-[#cfe2f6] bg-[#eaf4ff] px-6 pb-14 pt-20 md:pb-16 md:pt-28">
+        <div className="mx-auto max-w-5xl">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs font-semibold text-[#587594] sm:text-sm">
+            <span className="rounded-full border border-[#9bc8f5] bg-white/75 px-3 py-1.5 font-black text-[var(--brand-primary)]">{article.category}</span>
+            <time className="flex items-center gap-2" dateTime={article.date}><Calendar className="h-4 w-4" aria-hidden="true" />{new Date(`${article.date}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT", { day: "2-digit", month: "long", year: "numeric" })}</time>
+            <span className="flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{article.readTime} {lang === "en" ? "min read" : "min de leitura"}</span>
+          </div>
+
+          <h1 className="mt-7 max-w-5xl font-heading text-[clamp(2.35rem,6vw,4.5rem)] font-black leading-[1.04]" style={{ color: "var(--brand-primary)" }}>{article.title}</h1>
+          <p className="mt-7 max-w-4xl text-lg font-medium leading-8 text-[#587594] md:text-xl">{article.excerpt}</p>
+
         </div>
-        <div className="prose mt-10 max-w-none"><ArticleBody content={article.content} lang={lang} /></div>
-        <aside className="mt-10 border-t border-foreground/10 pt-4 text-[10px] leading-4" style={{ color: "rgba(0, 0, 0, 0.48)" }} aria-label={lang === "en" ? "Statistical source" : "Fonte estatística"}>
+      </header>
+
+      <div className="mx-auto max-w-[340px] px-0 pt-10 sm:max-w-6xl sm:px-8 sm:pt-12 md:pt-16">
+        <figure className="overflow-hidden rounded-xl border border-[#b8d6f3] bg-white shadow-[0_20px_55px_rgba(0,58,122,.1)] sm:rounded-2xl md:rounded-3xl md:shadow-[0_24px_70px_rgba(0,58,122,.12)]">
+          <img src={article.image} alt={article.title} width="1559" height="1009" className="h-auto w-full object-cover" loading="eager" fetchPriority="high" decoding="async" />
+        </figure>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-[340px] px-0 sm:mt-10 sm:max-w-4xl sm:px-8 md:mt-14">
+        <div className="rounded-xl border border-[#d7e7f6] bg-white px-5 py-7 shadow-[0_16px_45px_rgba(0,58,122,.07)] sm:rounded-2xl sm:px-9 sm:py-8 md:rounded-3xl md:px-14 md:py-12 md:shadow-[0_18px_55px_rgba(0,58,122,.08)]">
+          <div className="prose max-w-none"><ArticleBody content={article.content} lang={lang} /></div>
+          <aside className="mt-10 border-t border-foreground/10 pt-4 text-[10px] leading-4" style={{ color: "rgba(0, 0, 0, 0.48)" }} aria-label={lang === "en" ? "Statistical source" : "Fonte estatística"}>
           <p>
             <span className="font-semibold">{lang === "en" ? "Statistical source: " : "Fonte estatística: "}</span>
             {lang === "en" ? "Eurostat, Enterprises using artificial intelligence technologies, 2025 (dataset isoc_eb_ai)." : "Eurostat, Empresas que utilizam tecnologias de inteligência artificial, 2025 (conjunto de dados isoc_eb_ai)."}{" "}
@@ -140,9 +153,10 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
               {lang === "en" ? "View the official Eurostat publication" : "Consultar a publicação oficial da Eurostat"}
             </a>
           </p>
-        </aside>
-        <Link href={`/${lang}/blog`} className="mt-10 inline-block font-black text-[var(--brand-primary)] underline decoration-2 underline-offset-4">← {lang === "en" ? "Back" : "Voltar"}</Link>
-      </article>
-    </section>
+          </aside>
+          <Link href={`/${lang}/blog`} className="mt-10 inline-block font-black text-[var(--brand-primary)] underline decoration-2 underline-offset-4">← {lang === "en" ? "Back" : "Voltar"}</Link>
+        </div>
+      </div>
+    </article>
   );
 }

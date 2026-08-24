@@ -36,7 +36,7 @@ export const blogArticles: BlogArticle[] = [
     seoTitle: 'IA e produtividade: devolver tempo às pessoas',
     seoDescription: 'Descubra como a IA e a automação libertam profissionais de tarefas repetitivas, aumentam a produtividade e preservam o julgamento humano.',
     keywords: 'inteligência artificial nas empresas, IA e produtividade, automação de tarefas repetitivas, IA centrada nas pessoas, human in the loop, adoção de IA em Portugal, automação para PME, Sapiente.AI',
-    author: 'Sapiente.AI',
+    author: 'Rodrigo Póvoa',
     date: '2026-08-24',
     readTime: 6,
     category: 'Inteligência Artificial',
