@@ -11,6 +11,8 @@ type StoredPreferences = {
 
 let analyticsGranted = false;
 let analyticsConfigured = false;
+let analyticsLoading = false;
+let lastTrackedPage = "";
 
 function ensureDataLayer() {
   window.dataLayer = window.dataLayer || [];
@@ -43,6 +45,10 @@ function removeAnalyticsCookies() {
 function sendCurrentPageView() {
   if (!analyticsGranted || !analyticsConfigured) return;
 
+  const pageKey = `${window.location.pathname}${window.location.search}`;
+  if (pageKey === lastTrackedPage) return;
+  lastTrackedPage = pageKey;
+
   gtag("event", "page_view", {
     send_to: GA_MEASUREMENT_ID,
     page_location: window.location.href,
@@ -51,20 +57,43 @@ function sendCurrentPageView() {
   });
 }
 
-function loadGoogleAnalytics() {
-  if (!analyticsConfigured) {
-    gtag("js", new Date());
-    gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
-    analyticsConfigured = true;
-    sendCurrentPageView();
-  }
+function configureGoogleAnalytics() {
+  if (analyticsConfigured) return;
+  gtag("js", new Date());
+  gtag("config", GA_MEASUREMENT_ID, {
+    send_page_view: false,
+    cookie_domain: "auto",
+    cookie_flags: "SameSite=Lax;Secure",
+  });
+  analyticsConfigured = true;
+  analyticsLoading = false;
+  sendCurrentPageView();
+}
 
-  if (document.getElementById(GA_SCRIPT_ID)) return;
+function loadGoogleAnalytics() {
+  if (analyticsConfigured || analyticsLoading) return;
+
+  const existing = document.getElementById(GA_SCRIPT_ID) as HTMLScriptElement | null;
+  if (existing) {
+    analyticsLoading = true;
+    if (existing.dataset.loaded === "true") configureGoogleAnalytics();
+    else existing.addEventListener("load", configureGoogleAnalytics, { once: true });
+    return;
+  }
 
   const script = document.createElement("script");
   script.id = GA_SCRIPT_ID;
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  script.addEventListener("load", () => {
+    script.dataset.loaded = "true";
+    configureGoogleAnalytics();
+  }, { once: true });
+  script.addEventListener("error", () => {
+    analyticsLoading = false;
+    script.remove();
+  }, { once: true });
+  analyticsLoading = true;
   document.head.appendChild(script);
 }
 
@@ -94,7 +123,10 @@ export function applyGoogleConsent(preferences: StoredPreferences) {
   });
 
   if (analyticsGranted) loadGoogleAnalytics();
-  else removeAnalyticsCookies();
+  else {
+    lastTrackedPage = "";
+    removeAnalyticsCookies();
+  }
 }
 
 export function restoreStoredGoogleConsent() {
