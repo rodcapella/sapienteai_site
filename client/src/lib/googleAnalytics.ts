@@ -14,9 +14,11 @@ let analyticsConfigured = false;
 
 function ensureDataLayer() {
   window.dataLayer = window.dataLayer || [];
-  window.gtag = window.gtag || function gtag(...args: unknown[]) {
-    window.dataLayer?.push(args);
-  };
+  window.gtag = window.gtag || (function gtag() {
+    // Google Tag expects the native Arguments object, matching its official
+    // bootstrap snippet. A regular nested array is not processed reliably.
+    window.dataLayer?.push(arguments);
+  } as Window["gtag"]);
 }
 
 function gtag(command: GtagCommand, target: string | Date, parameters?: Record<string, unknown>) {
@@ -42,6 +44,7 @@ function sendCurrentPageView() {
   if (!analyticsGranted || !analyticsConfigured) return;
 
   gtag("event", "page_view", {
+    send_to: GA_MEASUREMENT_ID,
     page_location: window.location.href,
     page_path: `${window.location.pathname}${window.location.search}`,
     page_title: document.title,
