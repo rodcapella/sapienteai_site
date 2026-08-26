@@ -202,6 +202,8 @@ export default function Projects() {
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
         image="/media/bg/bg_Projetos.webp"
+        imageSrcSet="/media/bg/bg_Projetos-640.webp 640w, /media/bg/bg_Projetos.webp 1024w"
+        imageSizes="100vw"
         imageAlt={content.hero.label}
         imagePosition="center"
         contentPanelClassName="!bg-[rgba(0,20,50,0.16)] !backdrop-blur-[1px] md:!rounded-3xl md:!px-5 md:!py-5"

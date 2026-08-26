@@ -32,6 +32,8 @@ for (const route of routes) {
   const canonicalMatch = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1];
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length;
   const schemaBlocks = [...html.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)];
+  const modulePreloads = [...html.matchAll(/<link rel="modulepreload" href="\/assets\/([^"]+\.js)"/g)].map((match) => match[1]);
+  const localPath = route.routePath.replace(/^\/(pt|en)(?=\/|$)/, "") || "/";
 
   check(sitemapLocations.includes(canonical), `Route absent from sitemap: ${canonical}`);
   check(canonicalMatch === canonical, `Invalid canonical for ${route.routePath}: ${canonicalMatch || "missing"}`);
@@ -43,6 +45,12 @@ for (const route of routes) {
   check(markdown.length > 100, `Markdown is empty or too short for ${route.routePath}`);
   check(markdown.includes(`# ${route.heading}`), `Markdown heading mismatch for ${route.routePath}`);
   check(markdown.includes(`Canonical: ${canonical}`), `Markdown canonical missing for ${route.routePath}`);
+  if (localPath !== "/") check(!modulePreloads.some((asset) => /^Home-[\w-]+\.js$/.test(asset)), `${route.routePath} incorrectly preloads the Home chunk`);
+  if (localPath === "/projects") check(modulePreloads.some((asset) => /^Projects-[\w-]+\.js$/.test(asset)), `${route.routePath} is missing its Projects preload`);
+  if (localPath === "/cookies") {
+    check(modulePreloads.some((asset) => /^CookiesPage-[\w-]+\.js$/.test(asset)), `${route.routePath} is missing its Cookies preload`);
+    check(html.includes("bg_LegalPages-768.webp 768w"), `${route.routePath} is missing the responsive legal hero preload`);
+  }
 }
 
 const agent = read(path.join(distDir, ".well-known", "agent.json"));

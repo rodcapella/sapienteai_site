@@ -6,6 +6,11 @@ const distDir = path.resolve("dist");
 const basePath = path.join(distDir, "index.html");
 if (!fs.existsSync(basePath)) throw new Error("dist/index.html not found. Run after vite build.");
 const baseHtml = fs.readFileSync(basePath, "utf8");
+const assetNames = fs.readdirSync(path.join(distDir, "assets"));
+const bootstrapAssets = new Set(
+  [...baseHtml.matchAll(/<script[^>]*\stype="module"[^>]*\ssrc="[^"]*\/([^/"?]+\.js)"[^>]*><\/script>/g)]
+    .map((match) => match[1]),
+);
 
 const escapeHtml = (value = "") => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 const absoluteImage = (image) => image?.startsWith("http") ? image : `${SITE_ORIGIN}${image || "/media/og/og-image.jpg"}`;
@@ -21,14 +26,52 @@ const heroImages = new Map([
   ["/sitemap", "/media/bg/bg_Mapa_Site.webp"],
   ["/quiz-ia", "/media/bg/bg_Quiz.webp"],
   ["/quiz-ai", "/media/bg/bg_Quiz.webp"],
+  ["/cookies", "/media/bg/bg_LegalPages.webp"],
+  ["/terms", "/media/bg/bg_LegalPages.webp"],
+  ["/privacy", "/media/bg/bg_LegalPages.webp"],
+  ["/trust", "/media/bg/bg_LegalPages.webp"],
+  ["/generative-ai-policy", "/media/bg/bg_LegalPages.webp"],
 ]);
 
+const routeChunkPrefixes = new Map([
+  ["/", "Home"], ["/about", "About"], ["/services", "Services"],
+  ["/projects", "Projects"], ["/faq", "FAQ"], ["/blog", "Blog"],
+  ["/sitemap", "Sitemap"], ["/quiz-ia", "QuizAI"], ["/quiz-ai", "QuizAI"],
+  ["/cookies", "CookiesPage"], ["/terms", "Terms"], ["/privacy", "Privacy"],
+  ["/trust", "Trust"], ["/generative-ai-policy", "GenerativeAIPolicy"],
+]);
+
+function localRoutePath(route) {
+  return route.routePath.replace(/^\/(pt|en)(?=\/|$)/, "") || "/";
+}
+
+function routeModulePreloads(route) {
+  const localPath = localRoutePath(route);
+  const prefix = route.schemaType === "BlogPosting" ? "BlogArticle" : routeChunkPrefixes.get(localPath);
+  if (!prefix) return "";
+  const chunk = assetNames.find((asset) => new RegExp(`^${prefix}-[\\w-]+\\.js$`).test(asset));
+  if (!chunk) return "";
+  const source = fs.readFileSync(path.join(distDir, "assets", chunk), "utf8");
+  const dependencies = [...source.matchAll(/from"\.\/([^"]+\.js)"/g)]
+    .map((match) => match[1])
+    .filter((asset, index, list) => !bootstrapAssets.has(asset) && list.indexOf(asset) === index);
+  return [chunk, ...dependencies]
+    .map((asset) => `  <link rel="modulepreload" href="/assets/${asset}" />`)
+    .join("\n");
+}
+
 function heroPreload(route) {
-  const localPath = route.routePath.replace(/^\/(pt|en)(?=\/|$)/, "") || "/";
+  const localPath = localRoutePath(route);
   const image = heroImages.get(localPath);
   if (!image) return "";
   if (localPath === "/") {
     return `  <link rel="preload" href="/media/bg/bg_hero.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_hero-960.webp 960w, /media/bg/bg_hero-1600.webp 1600w, /media/bg/bg_hero.webp 1618w" imagesizes="100vw" fetchpriority="high" />`;
+  }
+  if (localPath === "/projects") {
+    return `  <link rel="preload" href="/media/bg/bg_Projetos.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_Projetos-640.webp 640w, /media/bg/bg_Projetos.webp 1024w" imagesizes="100vw" fetchpriority="high" />`;
+  }
+  if (["/cookies", "/terms", "/privacy", "/trust", "/generative-ai-policy"].includes(localPath)) {
+    return `  <link rel="preload" href="/media/bg/bg_LegalPages-1600.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_LegalPages-768.webp 768w, /media/bg/bg_LegalPages-1600.webp 1600w, /media/bg/bg_LegalPages.webp 1920w" imagesizes="100vw" fetchpriority="high" />`;
   }
   return `  <link rel="preload" href="${image}" as="image" type="image/webp" fetchpriority="high" />`;
 }
@@ -113,13 +156,14 @@ function render(route) {
   const title = formattedTitle(route.title);
   const image = absoluteImage(route.image);
   let html = baseHtml
+    .replace(/\s*<link rel="modulepreload" href="\/assets\/[^"]+\.js" \/>/g, "")
     .replace(/<html lang="[^"]*">/i, `<html lang="${route.lang === "pt" ? "pt-PT" : "en"}">`)
     .replace(/<title>[\s\S]*?<\/title>/i, `<title>${escapeHtml(title)}</title>`)
     .replace(/<link rel="canonical" href="[^"]*"\s*\/>/i, `<link rel="canonical" href="${url}" />`)
     .replace(/<link rel="alternate" hreflang="pt" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="pt" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
     .replace(/<link rel="alternate" hreflang="en" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="en" href="${SITE_ORIGIN}${alternatePath(route, "en")}" />`)
     .replace(/<link rel="alternate" hreflang="x-default" href="[^"]*"\s*\/>/i, `<link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}${alternatePath(route, "pt")}" />`)
-    .replace("</head>", `${heroPreload(route)}\n  </head>`)
+    .replace("</head>", `${routeModulePreloads(route)}\n${heroPreload(route)}\n  </head>`)
     .replace("</head>", `  <link rel="alternate" type="text/markdown" href="${url}" />\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${staticContent(route)}</div>`);
 
