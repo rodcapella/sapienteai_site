@@ -50,6 +50,12 @@ analytics.trackGooglePageView();
 
 const commands = window.dataLayer.map((entry) => Array.from(entry));
 assert.equal(commands.map((command) => command[0]).join(","), "consent,consent,js,config,event");
+assert.equal(commands[0][0], "consent");
+assert.equal(commands[0][1], "default");
+assert.equal(commands[0][2].analytics_storage, "denied");
+assert.equal(commands[0][2].ad_storage, "denied");
+assert.equal(commands[0][2].ad_user_data, "denied");
+assert.equal(commands[0][2].ad_personalization, "denied");
 assert.equal(commands[1][0], "consent");
 assert.equal(commands[1][1], "update");
 assert.equal(commands[1][2].analytics_storage, "granted");
@@ -63,5 +69,20 @@ assert.equal(commands[3][2].allow_ad_personalization_signals, false);
 assert.equal(commands[4][1], "page_view");
 assert.equal(commands[4][2].send_to, "G-QE1MDRYVJ6");
 assert.equal(commands[4][2].page_path, "/pt/services");
+
+window.location.href = "https://www.sapienteai.com/pt/projects";
+window.location.pathname = "/pt/projects";
+analytics.trackGooglePageView();
+
+const commandsAfterRouteChange = window.dataLayer.map((entry) => Array.from(entry));
+assert.equal(
+  commandsAfterRouteChange.filter((command) => command[0] === "consent").length,
+  2,
+  "Route changes must not enqueue duplicate consent updates",
+);
+assert.equal(commandsAfterRouteChange.at(-1)[0], "event");
+assert.equal(commandsAfterRouteChange.at(-1)[1], "page_view");
+assert.equal(commandsAfterRouteChange.at(-1)[2].send_to, "G-QE1MDRYVJ6");
+assert.equal(commandsAfterRouteChange.at(-1)[2].page_path, "/pt/projects");
 
 console.log("Google Analytics validation passed: consent, config and page_view are queued in the required order.");
