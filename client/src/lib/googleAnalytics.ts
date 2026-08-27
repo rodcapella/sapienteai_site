@@ -25,6 +25,11 @@ function ensureDataLayer() {
 
 function gtag(command: GtagCommand, target: string | Date, parameters?: Record<string, unknown>) {
   ensureDataLayer();
+  if (parameters === undefined) {
+    window.gtag?.(command, target);
+    return;
+  }
+
   window.gtag?.(command, target, parameters);
 }
 

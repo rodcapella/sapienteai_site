@@ -76,7 +76,9 @@ export default function TurnstileWidget({ onVerify, onError, onExpire, showLoadE
             appearance: "interaction-only",
             execution: "render",
             action: "contact_form",
-            language: lang === "pt" ? "pt-BR" : "en",
+            // Turnstile normalizes its supported Portuguese locale in lowercase.
+            // Passing pt-BR works through a fallback but produces a console warning.
+            language: lang === "pt" ? "pt-br" : "en",
             callback: (token: string) => callbacksRef.current.onVerify(token),
             "error-callback": () => {
               setFailedToLoad(true);
