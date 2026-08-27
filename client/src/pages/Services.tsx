@@ -5,6 +5,7 @@ import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
+import { DirectAnswerSection } from "@/components/ui/section/DirectAnswerSection";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useFixedAfterScroll } from "@/hooks/useFixedAfterScroll";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -88,6 +89,43 @@ export default function Services() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [selectedContactTopic, setSelectedContactTopic] = useState(content.visualServices.ia.topic);
   const manualSelectionRef = useRef<string | null>(null);
+  const directAnswers = lang === "pt"
+    ? {
+        label: "Serviços em resumo",
+        title: "Respostas rápidas sobre os nossos serviços",
+        answers: [
+          {
+            question: "Que serviços oferece a Sapiente.AI?",
+            answer: "A Sapiente.AI presta serviços de inteligência artificial aplicada, automação de processos, análise de dados e BI, websites orientados à conversão, marketing digital e estratégias de crescimento.",
+          },
+          {
+            question: "Como é escolhida a solução certa?",
+            answer: "A solução começa por um diagnóstico dos objetivos, processos e dados disponíveis. Depois priorizamos as iniciativas com melhor relação entre impacto, esforço, risco e capacidade de gerar resultados mensuráveis.",
+          },
+          {
+            question: "As soluções integram sistemas existentes?",
+            answer: "Sim. Sempre que tecnicamente viável, integramos as soluções com websites, CRMs, plataformas de marketing, APIs e ferramentas já utilizadas pela empresa, evitando trabalho duplicado e informação dispersa.",
+          },
+        ],
+      }
+    : {
+        label: "Services at a glance",
+        title: "Direct answers about our services",
+        answers: [
+          {
+            question: "What services does Sapiente.AI provide?",
+            answer: "Sapiente.AI provides applied artificial intelligence, process automation, data analytics and BI, conversion-focused websites, digital marketing, and business growth strategy services.",
+          },
+          {
+            question: "How is the right solution selected?",
+            answer: "Each engagement starts with a review of business objectives, processes, and available data. We then prioritize initiatives by impact, effort, risk, and their ability to generate measurable results.",
+          },
+          {
+            question: "Can the solutions integrate with existing systems?",
+            answer: "Yes. When technically feasible, we integrate solutions with websites, CRMs, marketing platforms, APIs, and tools already used by the business to reduce duplicated work and disconnected information.",
+          },
+        ],
+      };
 
   const scrollToSection = (id: string, behavior: ScrollBehavior) => {
     const section = document.getElementById(`service-${id}`);
@@ -248,6 +286,8 @@ export default function Services() {
         imagePosition="right center"
         compact
       />
+
+      <DirectAnswerSection {...directAnswers} />
 
       <section className="content-atmosphere flex-1 bg-white px-0 pb-6 pt-8 md:pb-8 md:pt-10">
         <ServicesStickyNav sections={sections} active={activeSection} onSelect={handleSelectSection} />

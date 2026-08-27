@@ -84,6 +84,41 @@ function replaceMeta(html, attribute, name, value) {
 
 function routeSchema(route) {
   const url = `${SITE_ORIGIN}${route.routePath}`;
+  if (route.schemaType === "BlogPosting") {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${url}#webpage`,
+          url,
+          name: route.title,
+          description: route.description,
+          inLanguage: route.lang === "pt" ? "pt-PT" : "en",
+          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+          about: { "@id": `${SITE_ORIGIN}/#organization` },
+          mainEntity: { "@id": `${url}#article` },
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": `${url}#article`,
+          url,
+          headline: route.article.title,
+          description: route.description,
+          keywords: route.article.keywords,
+          datePublished: route.article.date,
+          dateModified: route.article.date,
+          image: absoluteImage(route.article.image),
+          inLanguage: route.lang === "pt" ? "pt-PT" : "en",
+          author: { "@type": "Person", name: route.article.author || "Rodrigo Póvoa" },
+          publisher: { "@id": `${SITE_ORIGIN}/#organization` },
+          mainEntityOfPage: { "@id": `${url}#webpage` },
+          isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+        },
+      ],
+    };
+  }
+
   const common = {
     "@context": "https://schema.org",
     "@type": route.schemaType || "WebPage",
@@ -95,16 +130,6 @@ function routeSchema(route) {
     isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
     about: { "@id": `${SITE_ORIGIN}/#organization` },
   };
-  if (route.schemaType === "BlogPosting") Object.assign(common, {
-    headline: route.article.title,
-    keywords: route.article.keywords,
-    datePublished: route.article.date,
-    dateModified: route.article.date,
-    image: absoluteImage(route.article.image),
-    author: { "@type": "Person", name: route.article.author || "Rodrigo Póvoa" },
-    publisher: { "@id": `${SITE_ORIGIN}/#organization` },
-    mainEntityOfPage: { "@id": `${url}#webpage` },
-  });
   if (route.schemaType === "FAQPage") common.mainEntity = route.faqItems.map((item) => ({
     "@type": "Question",
     name: item.question,

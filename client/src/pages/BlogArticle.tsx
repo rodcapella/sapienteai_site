@@ -106,8 +106,10 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
       "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${canonical}#article`,
       headline: article.title, description: article.seoDescription || article.excerpt, keywords: article.keywords || article.tags.join(", "), datePublished: article.date, dateModified: article.date,
       image: `https://www.sapienteai.com${article.image}`, inLanguage: lang === "pt" ? "pt-PT" : "en",
-      author: { "@type": "Person", name: article.author }, publisher: { "@id": "https://www.sapienteai.com/#organization" },
-      mainEntityOfPage: canonical,
+      author: { "@type": "Person", name: article.author || "Rodrigo Póvoa" }, publisher: { "@id": "https://www.sapienteai.com/#organization" },
+      url: canonical,
+      mainEntityOfPage: { "@id": `${canonical}#webpage` },
+      isPartOf: { "@id": "https://www.sapienteai.com/#website" },
     });
     document.head.appendChild(schema);
     return () => schema.remove();

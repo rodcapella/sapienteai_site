@@ -9,6 +9,7 @@ import { QuizCTA } from "@/components/ui/cta/QuizCTA";
 import { PremiumButton } from "@/components/ui/button/PremiumButton";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
+import { DirectAnswerSection } from "@/components/ui/section/DirectAnswerSection";
 
 import { homePT } from "@/content/pt/home";
 import { homeEN } from "@/content/en/home";
@@ -240,6 +241,44 @@ export default function Home() {
         ],
       };
 
+  const directAnswers = isPT
+    ? {
+        label: "Respostas diretas",
+        title: "Como a inteligência artificial cria valor para uma empresa?",
+        answers: [
+          {
+            question: "O que é IA aplicada aos negócios?",
+            answer: "IA aplicada aos negócios é o uso de inteligência artificial para resolver objetivos concretos, como automatizar tarefas, qualificar leads, analisar dados, melhorar o atendimento e apoiar decisões comerciais.",
+          },
+          {
+            question: "Como a Sapiente.AI ajuda empresas?",
+            answer: "A Sapiente.AI analisa processos e objetivos, identifica oportunidades de maior impacto e implementa soluções de IA, automação, dados, websites e marketing digital orientadas a resultados mensuráveis.",
+          },
+          {
+            question: "A IA substitui a equipa?",
+            answer: "Não necessariamente. A abordagem da Sapiente.AI automatiza trabalho repetitivo e mantém pessoas responsáveis pela validação, pelo contexto e pelas decisões que exigem experiência e julgamento.",
+          },
+        ],
+      }
+    : {
+        label: "Direct answers",
+        title: "How does artificial intelligence create business value?",
+        answers: [
+          {
+            question: "What is applied AI for business?",
+            answer: "Applied AI for business uses artificial intelligence to solve specific goals, including task automation, lead qualification, data analysis, customer support, and commercial decision support.",
+          },
+          {
+            question: "How does Sapiente.AI help businesses?",
+            answer: "Sapiente.AI reviews processes and objectives, identifies high-impact opportunities, and implements AI, automation, data, website, and digital marketing solutions focused on measurable results.",
+          },
+          {
+            question: "Does AI replace the team?",
+            answer: "Not necessarily. Sapiente.AI automates repetitive work while keeping people responsible for validation, context, and decisions that require experience and human judgment.",
+          },
+        ],
+      };
+
   return (
     <div className="home-page flex flex-col bg-[var(--section-ice)]">
       <InternalHero label={content.hero.label} title={heroTitle} highlight={heroHighlight} subtitle={content.hero.subtitle}>
@@ -296,6 +335,8 @@ export default function Home() {
         </div>
       </section>
 
+      <DirectAnswerSection {...directAnswers} />
+
       {HOME_BANNERS.map((banner, index) => (
         <HomeBannerSection
           key={`${lang}-${banner}`}
@@ -320,4 +361,3 @@ export default function Home() {
     </div>
   );
 }
-

@@ -62,6 +62,8 @@ function configureGoogleAnalytics() {
   gtag("js", new Date());
   gtag("config", GA_MEASUREMENT_ID, {
     send_page_view: false,
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
     cookie_domain: "auto",
     cookie_flags: "SameSite=Lax;Secure",
   });
@@ -112,14 +114,13 @@ export function initializeGoogleConsentMode() {
 
 export function applyGoogleConsent(preferences: StoredPreferences) {
   const analytics: ConsentState = preferences.analytics ? "granted" : "denied";
-  const marketing: ConsentState = preferences.marketing ? "granted" : "denied";
   analyticsGranted = analytics === "granted";
 
   gtag("consent", "update", {
     analytics_storage: analytics,
-    ad_storage: marketing,
-    ad_user_data: marketing,
-    ad_personalization: marketing,
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
   });
 
   if (analyticsGranted) loadGoogleAnalytics();

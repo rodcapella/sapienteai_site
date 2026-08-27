@@ -42,6 +42,20 @@ for (const route of routes) {
   for (const [, json] of schemaBlocks) {
     try { JSON.parse(json); } catch (error) { failures.push(`Invalid JSON-LD for ${route.routePath}: ${error.message}`); }
   }
+  if (route.schemaType === "BlogPosting") {
+    const routeSchema = schemaBlocks
+      .map(([, json]) => { try { return JSON.parse(json); } catch { return null; } })
+      .find((schema) => Array.isArray(schema?.["@graph"]));
+    const graph = routeSchema?.["@graph"] || [];
+    const webPage = graph.find((entity) => entity?.["@type"] === "WebPage");
+    const article = graph.find((entity) => entity?.["@type"] === "BlogPosting");
+    check(webPage?.["@id"] === `${canonical}#webpage`, `${route.routePath} has an invalid WebPage identifier`);
+    check(article?.["@id"] === `${canonical}#article`, `${route.routePath} has an invalid BlogPosting identifier`);
+    check(webPage?.mainEntity?.["@id"] === `${canonical}#article`, `${route.routePath} WebPage does not reference its article`);
+    check(article?.mainEntityOfPage?.["@id"] === `${canonical}#webpage`, `${route.routePath} article does not reference its WebPage`);
+    check(article?.author?.name === (route.article.author || "Rodrigo Póvoa"), `${route.routePath} has an invalid article author`);
+    check(article?.publisher?.["@id"] === `${SITE_ORIGIN}/#organization`, `${route.routePath} has an invalid article publisher`);
+  }
   check(markdown.length > 100, `Markdown is empty or too short for ${route.routePath}`);
   check(markdown.includes(`# ${route.heading}`), `Markdown heading mismatch for ${route.routePath}`);
   check(markdown.includes(`Canonical: ${canonical}`), `Markdown canonical missing for ${route.routePath}`);
