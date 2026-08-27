@@ -16,9 +16,9 @@ export default function DesktopHeaderNavigation({
   return (
     <>
       <div className="hidden min-w-0 items-center justify-center lg:flex">
-        <div className="grid w-full max-w-[700px] grid-cols-7 items-center gap-1 xl:max-w-[760px] xl:gap-2">
+        <div className="flex w-full items-center justify-center gap-x-3 xl:gap-x-6 2xl:gap-x-8">
           {navLinks.map((link) => (
-            <div key={link.href} className="flex min-w-0 justify-center text-center">
+            <div key={link.href} className="flex shrink-0 justify-center text-center">
               <NavLink href={link.href} onMouseEnter={link.preload} className="whitespace-nowrap text-[11px] tracking-[0.11em] xl:text-xs xl:tracking-[0.13em]">{link.label}</NavLink>
             </div>
           ))}
