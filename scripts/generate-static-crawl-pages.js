@@ -70,6 +70,9 @@ function heroPreload(route) {
   if (localPath === "/projects") {
     return `  <link rel="preload" href="/media/bg/bg_Projetos.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_Projetos-640.webp 640w, /media/bg/bg_Projetos.webp 1024w" imagesizes="100vw" fetchpriority="high" />`;
   }
+  if (localPath === "/sitemap") {
+    return `  <link rel="preload" href="/media/bg/bg_Mapa_Site-1600.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_Mapa_Site-768.webp 768w, /media/bg/bg_Mapa_Site-1600.webp 1600w, /media/bg/bg_Mapa_Site.webp 2076w" imagesizes="100vw" fetchpriority="high" />`;
+  }
   if (["/cookies", "/terms", "/privacy", "/trust", "/generative-ai-policy"].includes(localPath)) {
     return `  <link rel="preload" href="/media/bg/bg_LegalPages-1600.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_LegalPages-768.webp 768w, /media/bg/bg_LegalPages-1600.webp 1600w, /media/bg/bg_LegalPages.webp 1920w" imagesizes="100vw" fetchpriority="high" />`;
   }

@@ -54,6 +54,7 @@ function MobileAccordion({
         onClick={() => onToggle(id)}
         className="flex w-full items-center justify-between py-3"
         aria-expanded={open}
+        aria-controls={`footer-accordion-${id}`}
       >
         <span className={footerTitleClass}>{title}</span>
         <ChevronDown
@@ -63,7 +64,9 @@ function MobileAccordion({
           )}
         />
       </button>
-      {open && <div className="pb-4">{children}</div>}
+      <div id={`footer-accordion-${id}`} className="pb-4" hidden={!open}>
+        {children}
+      </div>
     </div>
   );
 }

@@ -61,6 +61,7 @@ for (const route of routes) {
   check(markdown.includes(`Canonical: ${canonical}`), `Markdown canonical missing for ${route.routePath}`);
   if (localPath !== "/") check(!modulePreloads.some((asset) => /^Home-[\w-]+\.js$/.test(asset)), `${route.routePath} incorrectly preloads the Home chunk`);
   if (localPath === "/projects") check(modulePreloads.some((asset) => /^Projects-[\w-]+\.js$/.test(asset)), `${route.routePath} is missing its Projects preload`);
+  if (localPath === "/sitemap") check(html.includes("bg_Mapa_Site-768.webp 768w"), `${route.routePath} is missing the responsive sitemap hero preload`);
   if (localPath === "/cookies") {
     check(modulePreloads.some((asset) => /^CookiesPage-[\w-]+\.js$/.test(asset)), `${route.routePath} is missing its Cookies preload`);
     check(html.includes("bg_LegalPages-768.webp 768w"), `${route.routePath} is missing the responsive legal hero preload`);

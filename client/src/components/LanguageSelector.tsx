@@ -59,8 +59,6 @@ export function LanguageSelector() {
       <span className="relative z-10 text-xs font-black uppercase tracking-[0.2em] text-[var(--brand-blue-deep)] transition-colors duration-300 group-hover:text-[var(--brand-night)]">
         {lang}
       </span>
-
-      <div className="absolute inset-0 -z-10 rounded-full bg-transparent blur-md dark:bg-transparent" />
     </button>
   );
 }
