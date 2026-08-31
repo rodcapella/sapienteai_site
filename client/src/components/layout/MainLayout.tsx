@@ -22,17 +22,45 @@ function DeferredFooter() {
   useEffect(() => {
     if (shouldRender || !sentinelRef.current) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        setShouldRender(true);
-        observer.disconnect();
-      },
-      { rootMargin: "200px 0px" },
-    );
+    let observer: IntersectionObserver | null = null;
+    let delayId: number | undefined;
+    let idleId: number | undefined;
 
-    observer.observe(sentinelRef.current);
-    return () => observer.disconnect();
+    const observeFooter = () => {
+      if (!sentinelRef.current || shouldRender) return;
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return;
+          setShouldRender(true);
+          observer?.disconnect();
+        },
+        { rootMargin: "0px" },
+      );
+
+      observer.observe(sentinelRef.current);
+    };
+
+    const scheduleObservation = () => {
+      delayId = window.setTimeout(() => {
+        if ("requestIdleCallback" in window) {
+          idleId = window.requestIdleCallback(observeFooter, { timeout: 1200 });
+          return;
+        }
+
+        observeFooter();
+      }, 1200);
+    };
+
+    if (document.readyState === "complete") scheduleObservation();
+    else window.addEventListener("load", scheduleObservation, { once: true });
+
+    return () => {
+      window.removeEventListener("load", scheduleObservation);
+      if (delayId !== undefined) window.clearTimeout(delayId);
+      if (idleId !== undefined && "cancelIdleCallback" in window) window.cancelIdleCallback(idleId);
+      observer?.disconnect();
+    };
   }, [shouldRender]);
 
   return (
