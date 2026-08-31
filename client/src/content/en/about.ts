@@ -61,6 +61,15 @@
           ],
         },
         {
+          name: "Tatiane Gomes",
+          role: "Co-founder of Sapiente.AI",
+          image: "/media/bg/sobre/en/founders_mobile_tati_en.webp",
+          links: [
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/tatiane-gomes-333098302/" },
+            { label: "Instagram", href: "https://www.instagram.com/tatianegomespovoa" },
+          ],
+        },
+        {
           name: "Sapiente Intelligence",
           role: "Applied intelligence by Sapiente.AI",
           image: "/media/bg/sobre/en/founders_mobile_ia_en.webp",

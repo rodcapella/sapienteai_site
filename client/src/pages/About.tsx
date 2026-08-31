@@ -161,7 +161,7 @@ function AboutTeamSection({ content }: { content: AboutTeamContent }) {
           </div>
         </Reveal>
 
-        <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2 md:gap-8">
+        <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3 md:gap-8">
           {content.profiles.map((profile, index) => (
             <Reveal key={profile.name} delay={index * 100}>
               <article className="overflow-hidden rounded-3xl border border-[var(--brand-mid)]/45 bg-[var(--brand-night)] shadow-[0_22px_55px_rgba(4,18,48,0.16)]">
@@ -376,6 +376,24 @@ export default function About() {
         {
           "@type": "ListItem",
           "position": 2,
+          "item": {
+            "@type": "Person",
+            "name": "Tatiane Gomes",
+            "jobTitle": isPT ? "Co-fundadora" : "Co-founder",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Sapiente.AI",
+              "url": "https://www.sapienteai.com"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/tatiane-gomes-333098302/",
+              "https://www.instagram.com/tatianegomespovoa"
+            ]
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "item": {
             "@type": "SoftwareApplication",
             "name": "Sapiente Intelligence",

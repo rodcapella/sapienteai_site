@@ -61,6 +61,15 @@ export const aboutPT = {
           ],
         },
         {
+          name: "Tatiane Gomes",
+          role: "Co-fundadora da Sapiente.AI",
+          image: "/media/bg/sobre/pt/bg_founders_mobile_tati.webp",
+          links: [
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/tatiane-gomes-333098302/" },
+            { label: "Instagram", href: "https://www.instagram.com/tatianegomespovoa" },
+          ],
+        },
+        {
           name: "Sapiente Intelligence",
           role: "Inteligência aplicada da Sapiente.AI",
           image: "/media/bg/sobre/pt/bg_founders_mobile_ia.webp",
