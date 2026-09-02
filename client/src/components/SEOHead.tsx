@@ -11,7 +11,7 @@ interface SEOHeadProps {
   type?: "website" | "article";
   keywords?: string;
   noindex?: boolean;
-  alternateUrls?: { pt: string; en: string; xDefault?: string };
+  alternateUrls?: { pt: string; en: string; xDefault?: string } | false;
 }
 
 const SITE_ORIGIN = "https://www.sapienteai.com";
@@ -127,6 +127,7 @@ export function setSEOHead({
   canonical.href = canonicalUrl;
 
   document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
+  if (alternateUrls === false) return;
   const ptAlternate = alternateUrls?.pt || getLocalizedHref(canonicalUrl, "pt");
   const enAlternate = alternateUrls?.en || getLocalizedHref(canonicalUrl, "en");
   [

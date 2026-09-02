@@ -31,6 +31,7 @@ function parseBlogArticles(lang = "pt") {
       const slugs = { pt: read("slug"), en: read("slugEn") || read("slug") };
       return {
         published: !/published:\s*false/.test(block),
+        availableLanguages: /availableLanguages:\s*\[\s*['"]pt['"]\s*\]/.test(block) ? ["pt"] : ["pt", "en"],
         slug: slugs[lang],
         slugs,
         title: lang === "en" ? read("titleEn") || read("title") : read("title"),
@@ -39,12 +40,14 @@ function parseBlogArticles(lang = "pt") {
         seoDescription: lang === "en" ? read("seoDescriptionEn") || read("seoDescription") : read("seoDescription"),
         keywords: lang === "en" ? read("keywordsEn") || read("keywords") : read("keywords"),
         author: read("author"),
+        sourceName: read("sourceName"),
+        sourceUrl: read("sourceUrl"),
         date: read("date"),
         image: lang === "en" ? read("imageEn") || read("image") : read("image"),
         content: lang === "en" ? readContent("contentEn") || readContent("content") : readContent("content"),
       };
     })
-    .filter((article) => article.slug && article.published);
+    .filter((article) => article.slug && article.published && article.availableLanguages.includes(lang));
 }
 
 function parseFaqItems(lang) {
@@ -81,6 +84,7 @@ export function getIndexableRoutes() {
     image: article.image,
     schemaType: "BlogPosting",
     article,
+    availableLanguages: article.availableLanguages,
   })));
 
   return [...pages, ...articles];

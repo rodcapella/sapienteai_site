@@ -115,6 +115,7 @@ function routeSchema(route) {
           inLanguage: route.lang === "pt" ? "pt-PT" : "en",
           author: { "@type": "Person", name: route.article.author || "Rodrigo Póvoa" },
           publisher: { "@id": `${SITE_ORIGIN}/#organization` },
+          ...(route.article.sourceUrl ? { citation: route.article.sourceUrl } : {}),
           mainEntityOfPage: { "@id": `${url}#webpage` },
           isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
         },
@@ -149,7 +150,7 @@ function staticContent(route) {
     <article>
       <h1>${escapeHtml(route.heading)}</h1>
       <p>${escapeHtml(route.description)}</p>
-      ${route.schemaType === "BlogPosting" ? `<p>${escapeHtml(route.article.excerpt)}</p><p>${escapeHtml(route.article.author)} · <time datetime="${escapeHtml(route.article.date)}">${escapeHtml(route.article.date)}</time></p>` : ""}
+      ${route.schemaType === "BlogPosting" ? `<p>${escapeHtml(route.article.excerpt)}</p><p>${escapeHtml(route.article.author)} · <time datetime="${escapeHtml(route.article.date)}">${escapeHtml(route.article.date)}</time></p>${route.article.sourceUrl ? `<p>${route.lang === "pt" ? "Publicado originalmente em" : "Originally published by"} <a href="${escapeHtml(route.article.sourceUrl)}">${escapeHtml(route.article.sourceName)}</a></p>` : ""}` : ""}
       ${route.schemaType === "FAQPage" ? route.faqItems.map((item) => `<section><h2>${escapeHtml(item.question)}</h2><p>${escapeHtml(item.answer)}</p></section>`).join("") : ""}
     </article>
     <nav aria-label="${route.lang === "pt" ? "Navegação principal" : "Main navigation"}"><ul>${navigation.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("")}</ul></nav>
@@ -174,6 +175,7 @@ function routeMarkdown(route) {
   }
   if (route.schemaType === "BlogPosting") {
     lines.push("", `- Author: ${route.article.author || "Sapiente.AI"}`, `- Published: ${route.article.date}`, "", route.article.content || route.article.excerpt);
+    if (route.article.sourceUrl) lines.push("", `Original publication: [${route.article.sourceName}](${route.article.sourceUrl})`);
   }
   lines.push("", `Source: ${url}`, "");
   return lines.join("\n");
@@ -194,6 +196,12 @@ function render(route) {
     .replace("</head>", `${routeModulePreloads(route)}\n${heroPreload(route)}\n  </head>`)
     .replace("</head>", `  <link rel="alternate" type="text/markdown" href="${url}" />\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${staticContent(route)}</div>`);
+
+  if (route.availableLanguages && !route.availableLanguages.includes("en")) {
+    html = html
+      .replace(/\s*<link rel="alternate" hreflang="en" href="[^"]*"\s*\/>/i, "")
+      .replace(/<meta property="og:locale:alternate" content="[^"]*"\s*\/>/i, "");
+  }
 
   for (const [attribute, name, value] of [
     ["name", "description", route.description], ["name", "keywords", route.article?.keywords || "artificial intelligence, automation, digital transformation, Sapiente.AI"], ["name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"],

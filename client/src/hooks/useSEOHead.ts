@@ -9,7 +9,7 @@ interface SEOConfig {
   type?: "website" | "article";
   keywords?: string;
   noindex?: boolean;
-  alternateUrls?: { pt: string; en: string; xDefault?: string };
+  alternateUrls?: { pt: string; en: string; xDefault?: string } | false;
 }
 
 /**

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "wouter";
-import { Calendar, Clock } from "@/lib/icons";
+import { Calendar, Clock, User } from "@/lib/icons";
 import { getBlogArticleAlternateSlugs, getBlogArticleBySlug } from "@/lib/blogData";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
@@ -90,10 +90,10 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
     keywords: article?.keywords || article?.tags.join(", "),
     url: canonical,
     type: "article",
-    alternateUrls: alternateSlugs ? {
+    alternateUrls: alternateSlugs?.pt && alternateSlugs?.en ? {
       pt: `https://www.sapienteai.com/pt/blog/${alternateSlugs.pt}`,
       en: `https://www.sapienteai.com/en/blog/${alternateSlugs.en}`,
-    } : undefined,
+    } : false,
     noindex: !article,
   }, [article, activeLang, canonical]);
 
@@ -107,6 +107,7 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
       headline: article.title, description: article.seoDescription || article.excerpt, keywords: article.keywords || article.tags.join(", "), datePublished: article.date, dateModified: article.date,
       image: `https://www.sapienteai.com${article.image}`, inLanguage: lang === "pt" ? "pt-PT" : "en",
       author: { "@type": "Person", name: article.author || "Rodrigo Póvoa" }, publisher: { "@id": "https://www.sapienteai.com/#organization" },
+      ...(article.sourceUrl ? { citation: article.sourceUrl } : {}),
       url: canonical,
       mainEntityOfPage: { "@id": `${canonical}#webpage` },
       isPartOf: { "@id": "https://www.sapienteai.com/#website" },
@@ -125,6 +126,7 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
             <span className="rounded-full border border-[#9bc8f5] bg-white/75 px-3 py-1.5 font-black text-[var(--brand-primary)]">{article.category}</span>
             <time className="flex items-center gap-2" dateTime={article.date}><Calendar className="h-4 w-4" aria-hidden="true" />{new Date(`${article.date}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT", { day: "2-digit", month: "long", year: "numeric" })}</time>
             <span className="flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{article.readTime} {lang === "en" ? "min read" : "min de leitura"}</span>
+            <span className="flex items-center gap-2"><User className="h-4 w-4" aria-hidden="true" />{article.author}</span>
           </div>
 
           <h1 className="mt-7 max-w-5xl font-heading text-[clamp(2.35rem,6vw,4.5rem)] font-black leading-[1.04]" style={{ color: "var(--brand-primary)" }}>{article.title}</h1>
@@ -142,7 +144,7 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
       <div className="mx-auto mt-8 max-w-[340px] px-0 sm:mt-10 sm:max-w-4xl sm:px-8 md:mt-14">
         <div className="rounded-xl border border-[#d7e7f6] bg-white px-5 py-7 shadow-[0_16px_45px_rgba(0,58,122,.07)] sm:rounded-2xl sm:px-9 sm:py-8 md:rounded-3xl md:px-14 md:py-12 md:shadow-[0_18px_55px_rgba(0,58,122,.08)]">
           <div className="prose max-w-none"><ArticleBody content={article.content} lang={lang} /></div>
-          <aside className="mt-10 border-t border-foreground/10 pt-4 text-[10px] leading-4" style={{ color: "rgba(0, 0, 0, 0.48)" }} aria-label={lang === "en" ? "Statistical source" : "Fonte estatística"}>
+          {article.id === "1" && <aside className="mt-10 border-t border-foreground/10 pt-4 text-[10px] leading-4" style={{ color: "rgba(0, 0, 0, 0.48)" }} aria-label={lang === "en" ? "Statistical source" : "Fonte estatística"}>
           <p>
             <span className="font-semibold">{lang === "en" ? "Statistical source: " : "Fonte estatística: "}</span>
             {lang === "en" ? "Eurostat, Enterprises using artificial intelligence technologies, 2025 (dataset isoc_eb_ai)." : "Eurostat, Empresas que utilizam tecnologias de inteligência artificial, 2025 (conjunto de dados isoc_eb_ai)."}{" "}
@@ -155,7 +157,13 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
               {lang === "en" ? "View the official Eurostat publication" : "Consultar a publicação oficial da Eurostat"}
             </a>
           </p>
-          </aside>
+          </aside>}
+          {article.sourceUrl && <aside className="mt-10 border-t border-foreground/10 pt-4 text-[10px] leading-4" style={{ color: "rgba(0, 0, 0, 0.48)" }} aria-label={lang === "en" ? "Original publication" : "Publicação original"}>
+            <span className="font-semibold">{lang === "en" ? "Originally published in: " : "Publicado originalmente em: "}</span>
+            <a href={article.sourceUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-inherit underline decoration-1 underline-offset-2 transition-opacity hover:opacity-70">
+              {article.sourceName}
+            </a>
+          </aside>}
           <Link href={`/${lang}/blog`} className="mt-10 inline-block font-black text-[var(--brand-primary)] underline decoration-2 underline-offset-4">← {lang === "en" ? "Back" : "Voltar"}</Link>
         </div>
       </div>
