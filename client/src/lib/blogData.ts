@@ -5,6 +5,7 @@ export interface BlogArticle {
   excerpt: string;
   content: string;
   author: string;
+  authorImage?: string;
   date: string;
   readTime: number;
   category: string;
@@ -40,6 +41,7 @@ export const blogArticles: BlogArticle[] = [
     seoDescription: 'Descubra como a IA e a automação libertam profissionais de tarefas repetitivas, aumentam a produtividade e preservam o julgamento humano.',
     keywords: 'inteligência artificial nas empresas, IA e produtividade, automação de tarefas repetitivas, IA centrada nas pessoas, human in the loop, adoção de IA em Portugal, automação para PME, Sapiente.AI',
     author: 'Rodrigo Póvoa',
+    authorImage: '/media/blog/rodrigo-povoa-author.webp',
     date: '2026-08-24',
     readTime: 6,
     category: 'Inteligência Artificial',
@@ -175,6 +177,7 @@ Perhaps the greatest benefit of artificial intelligence is not teaching machines
     seoDescription: 'Entenda por que qualidade e governação de dados são essenciais para empresas que pretendem usar inteligência artificial com confiança e gerar valor real.',
     keywords: 'qualidade dos dados, data quality, inteligência artificial, governação de dados, PME portuguesas, transformação digital, conformidade, RGPD, AI Act',
     author: 'Rodrigo Póvoa',
+    authorImage: '/media/blog/rodrigo-povoa-author.webp',
     date: '2026-07-15',
     readTime: 7,
     category: 'Dados e IA',

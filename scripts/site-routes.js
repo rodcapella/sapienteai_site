@@ -40,6 +40,7 @@ function parseBlogArticles(lang = "pt") {
         seoDescription: lang === "en" ? read("seoDescriptionEn") || read("seoDescription") : read("seoDescription"),
         keywords: lang === "en" ? read("keywordsEn") || read("keywords") : read("keywords"),
         author: read("author"),
+        authorImage: read("authorImage"),
         sourceName: read("sourceName"),
         sourceUrl: read("sourceUrl"),
         date: read("date"),

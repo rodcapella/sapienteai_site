@@ -84,7 +84,12 @@ export default function Blog() {
                           <time dateTime={article.date}>{new Date(`${article.date}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT", { day: "2-digit", month: "long", year: "numeric" })}</time>
                         </span>
                         <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{article.readTime} {copy.minutes}</span>
-                        <span className="inline-flex items-center gap-2"><User className="h-4 w-4" aria-hidden="true" />{article.author}</span>
+                        <span className="inline-flex items-center gap-2">
+                          {article.authorImage
+                            ? <img src={article.authorImage} alt="" width="24" height="24" loading="lazy" decoding="async" className="h-6 w-6 rounded-full object-cover" />
+                            : <User className="h-4 w-4" aria-hidden="true" />}
+                          {article.author}
+                        </span>
                       </div>
                       <h2 className="font-heading !text-[28px] font-black !leading-[1.12] !text-[#0877ff] transition-colors group-hover:!text-[#35a8ff] sm:!text-[clamp(1.35rem,2.6vw,1.8rem)] sm:!leading-tight">
                         <Link href={`/${lang}/blog/${article.slug}`}>{article.title}</Link>

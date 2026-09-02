@@ -106,7 +106,12 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
       "@context": "https://schema.org", "@type": "BlogPosting", "@id": `${canonical}#article`,
       headline: article.title, description: article.seoDescription || article.excerpt, keywords: article.keywords || article.tags.join(", "), datePublished: article.date, dateModified: article.date,
       image: `https://www.sapienteai.com${article.image}`, inLanguage: lang === "pt" ? "pt-PT" : "en",
-      author: { "@type": "Person", name: article.author || "Rodrigo Póvoa" }, publisher: { "@id": "https://www.sapienteai.com/#organization" },
+      author: {
+        "@type": "Person",
+        name: article.author || "Rodrigo Póvoa",
+        ...(article.authorImage ? { image: `https://www.sapienteai.com${article.authorImage}` } : {}),
+      },
+      publisher: { "@id": "https://www.sapienteai.com/#organization" },
       ...(article.sourceUrl ? { citation: article.sourceUrl } : {}),
       url: canonical,
       mainEntityOfPage: { "@id": `${canonical}#webpage` },
@@ -126,7 +131,12 @@ export default function BlogArticle({ lang, slug }: BlogArticleProps) {
             <span className="rounded-full border border-[#9bc8f5] bg-white/75 px-3 py-1.5 font-black text-[var(--brand-primary)]">{article.category}</span>
             <time className="flex items-center gap-2" dateTime={article.date}><Calendar className="h-4 w-4" aria-hidden="true" />{new Date(`${article.date}T12:00:00`).toLocaleDateString(lang === "en" ? "en-US" : "pt-PT", { day: "2-digit", month: "long", year: "numeric" })}</time>
             <span className="flex items-center gap-2"><Clock className="h-4 w-4" aria-hidden="true" />{article.readTime} {lang === "en" ? "min read" : "min de leitura"}</span>
-            <span className="flex items-center gap-2"><User className="h-4 w-4" aria-hidden="true" />{article.author}</span>
+            <span className="flex items-center gap-2">
+              {article.authorImage
+                ? <img src={article.authorImage} alt="" width="32" height="32" loading="eager" decoding="async" className="h-8 w-8 rounded-full object-cover" />
+                : <User className="h-4 w-4" aria-hidden="true" />}
+              {article.author}
+            </span>
           </div>
 
           <h1 className="mt-7 max-w-5xl font-heading text-[clamp(2.35rem,6vw,4.5rem)] font-black leading-[1.04]" style={{ color: "var(--brand-primary)" }}>{article.title}</h1>

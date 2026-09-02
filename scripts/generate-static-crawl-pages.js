@@ -113,7 +113,11 @@ function routeSchema(route) {
           dateModified: route.article.date,
           image: absoluteImage(route.article.image),
           inLanguage: route.lang === "pt" ? "pt-PT" : "en",
-          author: { "@type": "Person", name: route.article.author || "Rodrigo Póvoa" },
+          author: {
+            "@type": "Person",
+            name: route.article.author || "Rodrigo Póvoa",
+            ...(route.article.authorImage ? { image: absoluteImage(route.article.authorImage) } : {}),
+          },
           publisher: { "@id": `${SITE_ORIGIN}/#organization` },
           ...(route.article.sourceUrl ? { citation: route.article.sourceUrl } : {}),
           mainEntityOfPage: { "@id": `${url}#webpage` },
