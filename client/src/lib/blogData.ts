@@ -170,7 +170,7 @@ Perhaps the greatest benefit of artificial intelligence is not teaching machines
   {
     id: '2',
     published: true,
-    slug: 'sem-dados-de-qualidade-nao-ha-ia-que-salve-o-negocio',
+    slug: 'without-quality-data-no-ai-can-save-the-business',
     title: 'Sem dados de qualidade, não há IA que salve o negócio',
     excerpt: 'Porque a qualidade dos dados deixou de ser um tema técnico e passou a ser uma prioridade estratégica para gestores, decisores e empresas que querem usar IA com confiança.',
     seoTitle: 'Sem dados de qualidade, não há IA que salve o negócio',

@@ -8,6 +8,11 @@
       "permanent": true
     },
     { "source": "/blog", "destination": "/pt/blog", "permanent": true },
+    {
+      "source": "/pt/blog/sem-dados-de-qualidade-nao-ha-ia-que-salve-o-negocio",
+      "destination": "/pt/blog/without-quality-data-no-ai-can-save-the-business",
+      "permanent": true
+    },
     { "source": "/pt/quiz-ai", "destination": "/pt/quiz-ia", "permanent": true },
     { "source": "/en/quiz-ia", "destination": "/en/quiz-ai", "permanent": true }
   ],
