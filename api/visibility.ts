@@ -186,7 +186,10 @@ function status(score: number): ValidationStatus {
 
 function buildResult(type: ValidationType, checks: Array<{ label: string; passed: boolean; evidence: string; weight: number; points?: number; scored?: boolean }>, lang: "pt" | "en"): Result {
   const awardedPoints = (check: typeof checks[number]) => Math.max(0, Math.min(check.weight, check.points ?? (check.passed ? check.weight : 0)));
-  const score = Math.round(checks.filter((check) => check.scored !== false).reduce((sum, check) => sum + awardedPoints(check), 0));
+  const scoredChecks = checks.filter((check) => check.scored !== false);
+  const awardedTotal = scoredChecks.reduce((sum, check) => sum + awardedPoints(check), 0);
+  const maximumTotal = scoredChecks.reduce((sum, check) => sum + check.weight, 0);
+  const score = maximumTotal > 0 ? Math.round((awardedTotal / maximumTotal) * 100) : 0;
   const isPT = lang === "pt";
   const failed = checks.filter((check) => !check.passed);
   return {
