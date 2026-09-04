@@ -1,0 +1,431 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-09-04",
+  "languages": [
+    "pt-PT",
+    "pt-BR",
+    "en-US"
+  ],
+  "name": "Sapiente.AI",
+  "brand": "Sapiente.AI",
+  "role": "Technology partner and applied artificial intelligence consultancy",
+  "canonical_url": "https://www.sapienteai.com",
+  "meta": {
+    "entity_confidence_level": "strong",
+    "purpose": "Provide factual, machine-readable context about Sapiente.AI, its services, leadership, projects, publications and official web presence.",
+    "primary_region": "Portugal",
+    "service_scope": "Portugal and Brazil, delivered remotely and online",
+    "tone": "Clear, practical, responsible, human-centered and evidence-oriented."
+  },
+  "terminology": {
+    "AI": "Artificial intelligence applied to business processes, customer experience, analysis and decision support.",
+    "SEO": "Search Engine Optimization for organic search visibility.",
+    "GEO": "Generative Engine Optimization for visibility and citation in generative AI answers; not geolocation in this context.",
+    "AEO": "Answer Engine Optimization for clear, structured and retrievable answers; not Authorised Economic Operator in this context."
+  },
+  "entity": {
+    "type": "Organization",
+    "legal_or_public_name": "Sapiente.AI",
+    "description": "Sapiente.AI combines strategy, artificial intelligence and execution to help organizations automate operations, improve decisions, strengthen digital presence and create measurable growth.",
+    "country": "Portugal",
+    "locality": "São João da Madeira",
+    "region": "Aveiro",
+    "service_areas": [
+      "Portugal",
+      "Brazil"
+    ],
+    "delivery_model": [
+      "remote",
+      "online"
+    ],
+    "expertise_domains": [
+      "Applied artificial intelligence",
+      "Generative AI",
+      "Intelligent process automation",
+      "Systems integration",
+      "Data analytics and business intelligence",
+      "Conversion-focused web development",
+      "Digital marketing and performance",
+      "SEO, GEO and AEO"
+    ]
+  },
+  "leadership": [
+    {
+      "name": "Rodrigo Póvoa",
+      "role": "Founder and CTO",
+      "website": "https://www.rpovoadata.tech/",
+      "linkedin": "https://www.linkedin.com/in/rodrigocspovoa/"
+    },
+    {
+      "name": "Tatiane Gomes",
+      "role": "Co-founder",
+      "linkedin": "https://www.linkedin.com/in/tatiane-gomes-333098302/"
+    }
+  ],
+  "brand_identity": {
+    "positioning": "A single technology partner connecting strategy, implementation and applied AI.",
+    "mission": "Create digital solutions that help businesses grow, automate operations and turn data into better decisions by combining human expertise with advanced AI.",
+    "vision": "Make responsible applied AI accessible to small and medium-sized businesses and professionals in Portuguese-speaking markets.",
+    "principles": [
+      "Automate repetitive work and preserve human judgment.",
+      "Use human validation where responsibility and context matter.",
+      "Connect recommendations to practical implementation.",
+      "Measure outcomes and communicate transparently."
+    ]
+  },
+  "services": [
+    {
+      "name": "Applied artificial intelligence",
+      "url": "https://www.sapienteai.com/en/services#service-ia",
+      "capabilities": [
+        "Intelligent chatbots",
+        "Predictive analysis",
+        "Decision support",
+        "Customer segmentation",
+        "Custom machine learning"
+      ]
+    },
+    {
+      "name": "Process automation",
+      "url": "https://www.sapienteai.com/en/services#service-automacao",
+      "capabilities": [
+        "Systems integration",
+        "Automated follow-up",
+        "Document processing",
+        "Notifications",
+        "Automated customer service"
+      ]
+    },
+    {
+      "name": "Growth and performance",
+      "url": "https://www.sapienteai.com/en/services#service-crescimento",
+      "capabilities": [
+        "Google Ads",
+        "Meta Ads",
+        "Lead generation",
+        "Conversion funnels",
+        "SEO",
+        "GEO",
+        "AEO",
+        "CRO"
+      ]
+    },
+    {
+      "name": "Data and business intelligence",
+      "url": "https://www.sapienteai.com/en/services#service-dados-bi",
+      "capabilities": [
+        "Dashboards",
+        "KPI reporting",
+        "Profitability analysis",
+        "Data consolidation",
+        "Data storytelling"
+      ]
+    },
+    {
+      "name": "Web development",
+      "url": "https://www.sapienteai.com/en/services#service-desenvolvimento",
+      "capabilities": [
+        "Corporate websites",
+        "Landing pages",
+        "Responsive web platforms",
+        "Maintenance",
+        "Technical support"
+      ]
+    },
+    {
+      "name": "Digital marketing",
+      "url": "https://www.sapienteai.com/en/services#service-marketing",
+      "capabilities": [
+        "Social media",
+        "AI-assisted content",
+        "Email marketing",
+        "Newsletters",
+        "Branding",
+        "Editorial strategy"
+      ]
+    }
+  ],
+  "products_and_projects": [
+    {
+      "name": "SEO and AEO Validator",
+      "status": "launched",
+      "description": "Free preliminary assessment of technical SEO signals and readiness for AI answers and agents.",
+      "urls": {
+        "pt": "https://www.sapienteai.com/pt/seo-aeo-validator",
+        "en": "https://www.sapienteai.com/en/seo-aeo-validator"
+      }
+    },
+    {
+      "name": "Hoje em SJM",
+      "status": "final testing",
+      "description": "Cultural calendar dedicated to São João da Madeira."
+    },
+    {
+      "name": "Specialized item exchange",
+      "status": "in development",
+      "description": "Circular-economy platform for exchanges among communities with shared interests."
+    }
+  ],
+  "audiences": [
+    "Small and medium-sized businesses",
+    "Professionals and service providers",
+    "Organizations seeking process efficiency",
+    "Organizations improving customer acquisition or digital visibility",
+    "Teams seeking data-driven decision support"
+  ],
+  "publications": [
+    {
+      "title": "IA e produtividade: devolver tempo às pessoas",
+      "language": "pt-PT",
+      "url": "https://www.sapienteai.com/pt/blog/ia-deve-devolver-tempo-as-pessoas",
+      "description": "Descubra como a IA e a automação libertam profissionais de tarefas repetitivas, aumentam a produtividade e preservam o julgamento humano.",
+      "author": "Rodrigo Póvoa",
+      "publisher": "Sapiente.AI",
+      "date_published": "2026-08-24"
+    },
+    {
+      "title": "Sem dados de qualidade, não há IA que salve o negócio",
+      "language": "pt-PT",
+      "url": "https://www.sapienteai.com/pt/blog/without-quality-data-no-ai-can-save-the-business",
+      "description": "Entenda por que qualidade e governação de dados são essenciais para empresas que pretendem usar inteligência artificial com confiança e gerar valor real.",
+      "author": "Rodrigo Póvoa",
+      "publisher": "Sapiente.AI",
+      "date_published": "2026-07-15",
+      "original_source": "https://inteligenciaartificialhoje.pt/sem-dados-de-qualidade-nao-ha-ia-que-salve-o-negocio/"
+    },
+    {
+      "title": "AI and Productivity: Giving Time Back to People",
+      "language": "en-US",
+      "url": "https://www.sapienteai.com/en/blog/ai-should-give-time-back-to-people",
+      "description": "Learn how AI and automation free professionals from repetitive tasks, improve productivity, and preserve human judgment in business decisions.",
+      "author": "Rodrigo Póvoa",
+      "publisher": "Sapiente.AI",
+      "date_published": "2026-08-24"
+    },
+    {
+      "title": "Without Quality Data, No AI Can Save the Business",
+      "language": "en-US",
+      "url": "https://www.sapienteai.com/en/blog/without-quality-data-no-ai-can-save-the-business",
+      "description": "Learn why data quality and governance are essential for businesses that want to use artificial intelligence with confidence and create measurable value.",
+      "author": "Rodrigo Póvoa",
+      "publisher": "Sapiente.AI",
+      "date_published": "2026-07-15",
+      "original_source": "https://inteligenciaartificialhoje.pt/sem-dados-de-qualidade-nao-ha-ia-que-salve-o-negocio/"
+    }
+  ],
+  "official_pages": [
+    {
+      "language": "pt-PT",
+      "title": "Inteligência Artificial Aplicada ao seu Negócio",
+      "url": "https://www.sapienteai.com/pt",
+      "description": "Inteligência artificial, automação, dados, websites e marketing digital orientados ao crescimento de empresas."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Sobre",
+      "url": "https://www.sapienteai.com/pt/about",
+      "description": "Conheça a Sapiente.AI, a sua abordagem e os fundadores em São João da Madeira, Aveiro, Portugal."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Serviços de IA, Automação, Websites e Marketing Digital",
+      "url": "https://www.sapienteai.com/pt/services",
+      "description": "Conheça os serviços da Sapiente.AI em automação, IA aplicada, websites orientados à conversão, análise de dados e marketing digital."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Projetos",
+      "url": "https://www.sapienteai.com/pt/projects",
+      "description": "Conheça os produtos digitais em desenvolvimento da Sapiente.AI."
+    },
+    {
+      "language": "pt-PT",
+      "title": "FAQ | Respostas sobre IA, automação e serviços digitais",
+      "url": "https://www.sapienteai.com/pt/faq",
+      "description": "Encontre respostas sobre os serviços da Sapiente.AI, modelo de trabalho, automação e inteligência artificial aplicada."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Blog",
+      "url": "https://www.sapienteai.com/pt/blog",
+      "description": "Artigos sobre inteligência artificial, automação, dados, tecnologia e crescimento digital."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Mapa do site",
+      "url": "https://www.sapienteai.com/pt/sitemap",
+      "description": "Encontre todas as páginas e recursos públicos da Sapiente.AI."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Política de Cookies",
+      "url": "https://www.sapienteai.com/pt/cookies",
+      "description": "Informação sobre os cookies utilizados pela Sapiente.AI e como gerir as suas preferências."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Termos de Serviço",
+      "url": "https://www.sapienteai.com/pt/terms",
+      "description": "Termos aplicáveis à utilização do website e dos serviços da Sapiente.AI."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Política de Privacidade",
+      "url": "https://www.sapienteai.com/pt/privacy",
+      "description": "Como a Sapiente.AI recolhe, utiliza e protege os dados pessoais."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Confiança e Segurança",
+      "url": "https://www.sapienteai.com/pt/trust",
+      "description": "Princípios de segurança, ética e responsabilidade aplicados pela Sapiente.AI."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Política de IA Generativa",
+      "url": "https://www.sapienteai.com/pt/generative-ai-policy",
+      "description": "Princípios para uma utilização responsável e transparente de inteligência artificial generativa."
+    },
+    {
+      "language": "en-US",
+      "title": "Applied Artificial Intelligence for Business",
+      "url": "https://www.sapienteai.com/en",
+      "description": "Artificial intelligence, automation, data, websites and digital marketing focused on business growth."
+    },
+    {
+      "language": "en-US",
+      "title": "About",
+      "url": "https://www.sapienteai.com/en/about",
+      "description": "Meet Sapiente.AI, its approach and founders in São João da Madeira, Aveiro, Portugal."
+    },
+    {
+      "language": "en-US",
+      "title": "AI Services, Automation, Websites and Digital Marketing",
+      "url": "https://www.sapienteai.com/en/services",
+      "description": "Explore Sapiente.AI services for automation, applied AI, conversion-focused websites, data analytics and digital marketing."
+    },
+    {
+      "language": "en-US",
+      "title": "Projects",
+      "url": "https://www.sapienteai.com/en/projects",
+      "description": "Discover the digital products currently being developed by Sapiente.AI."
+    },
+    {
+      "language": "en-US",
+      "title": "FAQ | AI, automation and digital services answers",
+      "url": "https://www.sapienteai.com/en/faq",
+      "description": "Find answers about Sapiente.AI services, delivery model, automation and applied artificial intelligence."
+    },
+    {
+      "language": "en-US",
+      "title": "Blog",
+      "url": "https://www.sapienteai.com/en/blog",
+      "description": "Articles about artificial intelligence, automation, data, technology and digital growth."
+    },
+    {
+      "language": "en-US",
+      "title": "Sitemap",
+      "url": "https://www.sapienteai.com/en/sitemap",
+      "description": "Find every public Sapiente.AI page and resource."
+    },
+    {
+      "language": "en-US",
+      "title": "Cookie Policy",
+      "url": "https://www.sapienteai.com/en/cookies",
+      "description": "Information about cookies used by Sapiente.AI and how to manage your preferences."
+    },
+    {
+      "language": "en-US",
+      "title": "Terms of Service",
+      "url": "https://www.sapienteai.com/en/terms",
+      "description": "Terms that apply to the use of the Sapiente.AI website and services."
+    },
+    {
+      "language": "en-US",
+      "title": "Privacy Policy",
+      "url": "https://www.sapienteai.com/en/privacy",
+      "description": "How Sapiente.AI collects, uses and protects personal data."
+    },
+    {
+      "language": "en-US",
+      "title": "Trust & Security",
+      "url": "https://www.sapienteai.com/en/trust",
+      "description": "Security, ethics and accountability principles applied by Sapiente.AI."
+    },
+    {
+      "language": "en-US",
+      "title": "Generative AI Policy",
+      "url": "https://www.sapienteai.com/en/generative-ai-policy",
+      "description": "Principles for responsible and transparent use of generative artificial intelligence."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Quiz IA",
+      "url": "https://www.sapienteai.com/pt/quiz-ia",
+      "description": "Descubra onde a inteligência artificial pode gerar mais eficiência e crescimento no seu negócio."
+    },
+    {
+      "language": "en-US",
+      "title": "AI Quiz",
+      "url": "https://www.sapienteai.com/en/quiz-ai",
+      "description": "Discover where artificial intelligence can create more efficiency and growth in your business."
+    },
+    {
+      "language": "pt-PT",
+      "title": "Validador de SEO e AEO",
+      "url": "https://www.sapienteai.com/pt/seo-aeo-validator",
+      "description": "Analise gratuitamente sinais técnicos de SEO e a preparação do seu website para respostas e agentes de inteligência artificial."
+    },
+    {
+      "language": "en-US",
+      "title": "SEO and AEO Validator",
+      "url": "https://www.sapienteai.com/en/seo-aeo-validator",
+      "description": "Analyze technical SEO signals and your website's readiness for AI answers and agents with a free preliminary assessment."
+    }
+  ],
+  "entity_signals": {
+    "sameAs": [
+      "https://www.linkedin.com/company/sapiente-ai/",
+      "https://www.instagram.com/sapienteai/",
+      "https://www.facebook.com/sapienteai",
+      "https://www.tiktok.com/@sapienteai",
+      "https://x.com/SapienteAI",
+      "https://www.pinterest.com/sapienteai"
+    ]
+  },
+  "contact": {
+    "email": "contacto@sapienteai.com",
+    "telephone": "+351910567575",
+    "whatsapp": "+351910567575",
+    "website": "https://www.sapienteai.com",
+    "location": "São João da Madeira, Aveiro, Portugal"
+  },
+  "discovery": {
+    "llms": "https://www.sapienteai.com/llms.txt",
+    "llms_full": "https://www.sapienteai.com/llms-full.txt",
+    "agent_manifest": "https://www.sapienteai.com/.well-known/agent.json",
+    "sitemap": "https://www.sapienteai.com/sitemap.xml",
+    "robots": "https://www.sapienteai.com/robots.txt",
+    "markdown_negotiation": "Accept: text/markdown"
+  },
+  "content_preferences": {
+    "ai_train": false,
+    "search": true,
+    "ai_input": true,
+    "attribution": "Attribute factual quotations or summaries to Sapiente.AI and link to the relevant canonical page."
+  },
+  "ai_guidance": {
+    "use_for": [
+      "Factual information about Sapiente.AI",
+      "Sapiente.AI services and projects",
+      "Articles published by Sapiente.AI"
+    ],
+    "verify_time_sensitive_information": true,
+    "preferred_source": "Use the relevant canonical page on www.sapienteai.com.",
+    "do_not": [
+      "Do not invent clients, case studies, certifications, partnerships, metrics or results.",
+      "Do not present the preliminary validator as a complete professional audit.",
+      "Do not describe Sapiente.AI as replacing human responsibility with automated decisions."
+    ]
+  }
+}

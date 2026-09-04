@@ -14,9 +14,16 @@
       "permanent": true
     },
     { "source": "/pt/quiz-ai", "destination": "/pt/quiz-ia", "permanent": true },
-    { "source": "/en/quiz-ia", "destination": "/en/quiz-ai", "permanent": true }
+    { "source": "/en/quiz-ia", "destination": "/en/quiz-ai", "permanent": true },
+    { "source": "/pt/seo-geo-aeo-validator", "destination": "/pt/seo-aeo-validator", "permanent": true },
+    { "source": "/en/seo-geo-aeo-validator", "destination": "/en/seo-aeo-validator", "permanent": true }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "destination": "/pt/index.md"
+    },
     {
       "source": "/",
       "destination": "/pt"
@@ -38,14 +45,20 @@
     },
     { "source": "/pt/news", "destination": "/index.html" },
     { "source": "/en/news", "destination": "/index.html" },
-    { "source": "/pt/seo-geo-aeo-validator", "destination": "/index.html" },
-    { "source": "/en/seo-geo-aeo-validator", "destination": "/index.html" },
     { "source": "/pt/newsletter/unsubscribe", "destination": "/index.html" },
     { "source": "/en/newsletter/unsubscribe", "destination": "/index.html" },
     { "source": "/pt/404", "destination": "/404.html" },
     { "source": "/en/404", "destination": "/404.html" }
   ],
   "headers": [
+    {
+      "source": "/",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "headers": [
+        { "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
     {
       "source": "/pt",
       "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
@@ -83,7 +96,7 @@
         },
         {
           "key": "Link",
-          "value": "</llms.txt>; rel=\"alternate\"; type=\"text/markdown\", </llms-full.txt>; rel=\"alternate\"; type=\"text/markdown\""
+          "value": "</llms.txt>; rel=\"describedby\"; type=\"text/plain\", </llms-full.txt>; rel=\"alternate\"; type=\"text/plain\", </ai.json>; rel=\"describedby\"; type=\"application/json\", </.well-known/agent.json>; rel=\"service-desc\"; type=\"application/json\", </sitemap.xml>; rel=\"sitemap\"; type=\"application/xml\""
         },
         {
           "key": "Vary",

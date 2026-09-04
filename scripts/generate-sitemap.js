@@ -21,6 +21,15 @@ function gitDate(files) {
   }
 }
 
+function hasWorkingChanges(files) {
+  try {
+    execFileSync("git", ["diff", "--quiet", "--", ...files], { stdio: "ignore" });
+    return false;
+  } catch {
+    return true;
+  }
+}
+
 function sourcesFor(route) {
   if (route.schemaType === "BlogPosting") return ["client/src/lib/blogData.ts"];
   const segment = route.routePath.split("/")[2] || "home";
@@ -34,15 +43,19 @@ function sourcesFor(route) {
     privacy: ["client/src/pages/Privacy.tsx", `client/src/content/${route.lang}/privacy.ts`], trust: ["client/src/pages/Trust.tsx", `client/src/content/${route.lang}/trust.ts`],
     "generative-ai-policy": ["client/src/pages/GenerativeAIPolicy.tsx", `client/src/content/${route.lang}/iaGenerativaPolicy.ts`],
     "quiz-ia": ["client/src/pages/QuizAI.tsx", `client/src/content/${route.lang}/quiz.ts`], "quiz-ai": ["client/src/pages/QuizAI.tsx", `client/src/content/${route.lang}/quiz.ts`],
+    "seo-aeo-validator": ["client/src/pages/VisibilityValidator.tsx", "api/visibility.ts"],
   };
   return pageSources[segment] || ["client/src/App.tsx"];
 }
 
 const routes = getIndexableRoutes().map((route) => {
   const loc = `${SITE_ORIGIN}${route.routePath}`;
+  const sources = sourcesFor(route);
   const lastmod = route.schemaType === "BlogPosting"
     ? route.article.date
-    : gitDate(sourcesFor(route)) || existingDates.get(loc) || "2026-01-01";
+    : hasWorkingChanges(sources)
+      ? new Date().toISOString().slice(0, 10)
+      : gitDate(sources) || existingDates.get(loc) || "2026-01-01";
   return { ...route, loc, lastmod };
 });
 

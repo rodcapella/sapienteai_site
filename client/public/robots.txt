@@ -48,3 +48,7 @@ Sitemap: https://www.sapienteai.com/sitemap.xml
 # https://www.sapienteai.com/llms.txt
 # Extended machine-readable context:
 # https://www.sapienteai.com/llms-full.txt
+# Structured AI profile:
+# https://www.sapienteai.com/ai.json
+# Agent manifest:
+# https://www.sapienteai.com/.well-known/agent.json

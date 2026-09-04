@@ -20,6 +20,11 @@ interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialTopic?: string;
+  analysisSummary?: {
+    analyzedUrl: string;
+    analyzedAt: string;
+    results: Array<{ title: string; score: number; status: string; priorities: string[] }>;
+  };
 }
 
 type FormData = {
@@ -47,8 +52,25 @@ const INITIAL_FORM: FormData = {
 
 const requiredFields: (keyof FormData)[] = ["name", "email", "topic", "message"];
 
+function formatAnalysisMessage(summary: ContactModalProps["analysisSummary"], lang: ModalLang) {
+  if (!summary) return "";
 
-export default function ContactModal({ isOpen, onClose, initialTopic = "" }: ContactModalProps) {
+  const scores = summary.results
+    .map((result) => {
+      const priorities = result.priorities.length
+        ? `\n  ${lang === "pt" ? "Prioridades" : "Priorities"}: ${result.priorities.join(", ")}`
+        : "";
+      return `- ${result.title}: ${result.score}/100${priorities}`;
+    })
+    .join("\n");
+
+  return lang === "pt"
+    ? `Gostaria de melhorar os resultados da análise do website ${summary.analyzedUrl}.\n\nResumo dos scores:\n${scores}\n\nCaso seja necessário, solicito o envio de uma análise mais detalhada.`
+    : `I would like to improve the assessment results for ${summary.analyzedUrl}.\n\nScore summary:\n${scores}\n\nIf necessary, please send me a more detailed analysis.`;
+}
+
+
+export default function ContactModal({ isOpen, onClose, initialTopic = "", analysisSummary }: ContactModalProps) {
   const { lang: rawLang } = useTranslation();
   const lang: ModalLang = rawLang === "en" ? "en" : "pt";
   const modals = getContent("modals", lang);
@@ -57,7 +79,11 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
   const sourceOptions = modals.sourceOptions;
   const topicOptions = text.topicOptions;
 
-  const initialForm = useMemo<FormData>(() => ({ ...INITIAL_FORM, topic: initialTopic }), [initialTopic]);
+  const initialForm = useMemo<FormData>(() => ({
+    ...INITIAL_FORM,
+    topic: initialTopic,
+    message: formatAnalysisMessage(analysisSummary, lang),
+  }), [analysisSummary, initialTopic, lang]);
 
   const [formData, setFormData] = useState<FormData>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -188,6 +214,7 @@ export default function ContactModal({ isOpen, onClose, initialTopic = "" }: Con
           lang,
           turnstileToken: turnstileToken || "verification_unavailable",
           website,
+          analysisSummary,
         }),
       });
 

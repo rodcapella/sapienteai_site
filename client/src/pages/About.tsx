@@ -426,7 +426,8 @@ export default function About() {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
-        image="/media/bg/sobre/bg_Sobre_nos.webp"
+        image="/media/bg/sobre/bg_Sobre_nos-1600.webp"
+        imageSrcSet="/media/bg/sobre/bg_Sobre_nos-768.webp 768w, /media/bg/sobre/bg_Sobre_nos-1600.webp 1600w"
         imageAlt="Sapiente.AI"
         compact
       />

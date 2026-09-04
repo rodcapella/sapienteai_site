@@ -62,6 +62,11 @@ export const faqEN = {
       answer:
         "It starts with a conversation. We analyse your situation, understand your goals and challenges, and present a concrete proposal. No commitment, no sales scripts.",
     },
+    {
+      question: "Does Sapiente.AI work with businesses outside Portugal?",
+      answer:
+        "Yes. We work 100% remotely and serve clients across Portugal, Brazil, and other Portuguese-speaking markets. Location is not a constraint — all our work is delivered online. We adapt our solutions to both European and Brazilian Portuguese contexts.",
+    },
 
     // ─── MARKETING & CONTENT (8–16) ────────────────────────────────
     {
@@ -122,6 +127,11 @@ export const faqEN = {
         "Yes. Every website we build is fully responsive and mobile-optimised. Most traffic today comes from smartphones. Ignoring that means leaving opportunities on the table.",
     },
     {
+      question: "Can you help create ads so my business appears as a sponsored link on Google?",
+      answer:
+        "Yes. We help plan and structure Google Ads campaigns, from keyword selection and audience targeting to ad creation, landing pages, and conversion tracking. The goal is to appear as a sponsored link for relevant searches and turn your advertising investment into qualified leads.",
+    },
+    {
       question: "Do you work with SEO, GEO, and AEO?",
       answer:
         "Yes. We optimise your digital presence for traditional search engines, geolocated search, and AI-powered answer engines, increasing visibility and capturing qualified demand.",
@@ -177,6 +187,11 @@ export const faqEN = {
       question: "How do you ensure automations run reliably?",
       answer:
         "Every automation is tested before going live and monitored after launch. We configure failure alerts, activity logs for auditing, and review cycles to ensure everything keeps running smoothly as your business evolves.",
+    },
+    {
+      question: "How can I implement an intelligent chatbot for my business?",
+      answer:
+        "The process follows this order: 1. Diagnosis — we identify the most valuable use cases, such as support, lead qualification, or post-sale communication. 2. Development — we configure and train the chatbot with your brand content, rules, and tone of voice. 3. Integration — we connect the solution to your website, WhatsApp, Instagram, or CRM. 4. Go-live — a basic chatbot can be operational within 2 to 4 weeks. If you'd like, we can also schedule a free demo and recommend the best format for your business.",
     },
 
     // ─── INVESTMENT & SUPPORT (31–34) ──────────────────────────────
@@ -253,16 +268,6 @@ export const faqEN = {
       question: "What is the difference between using ChatGPT and hiring custom AI automation?",
       answer:
         "ChatGPT is a general-purpose tool — it answers questions but doesn't know your business, your customers, or your processes. Custom automation integrates AI directly into your systems (CRM, email, ERP, website) and is trained on your company's data. The result: automation that works 24/7 specifically for your goals, not everyone else's.",
-    },
-    {
-      question: "How can I implement an intelligent chatbot for my business?",
-      answer:
-        "The process follows this order: 1. Diagnosis — we identify the most valuable use cases, such as support, lead qualification, or post-sale communication. 2. Development — we configure and train the chatbot with your brand content, rules, and tone of voice. 3. Integration — we connect the solution to your website, WhatsApp, Instagram, or CRM. 4. Go-live — a basic chatbot can be operational within 2 to 4 weeks. If you'd like, we can also schedule a free demo and recommend the best format for your business.",
-    },
-    {
-      question: "Does Sapiente.AI work with businesses outside Portugal?",
-      answer:
-        "Yes. We work 100% remotely and serve clients across Portugal, Brazil, and other Portuguese-speaking markets. Location is not a constraint — all our work is delivered online. We adapt our solutions to both European and Brazilian Portuguese contexts.",
     },
     {
       question: "What AI tools and technologies does Sapiente.AI use?",

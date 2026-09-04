@@ -133,7 +133,7 @@ export default function Sitemap() {
         highlight={content.highlight}
         subtitle={content.subtitle}
         image="/media/bg/bg_Mapa_Site-1600.webp"
-        imageSrcSet="/media/bg/bg_Mapa_Site-768.webp 768w, /media/bg/bg_Mapa_Site-1600.webp 1600w, /media/bg/bg_Mapa_Site.webp 2076w"
+        imageSrcSet="/media/bg/bg_Mapa_Site-768.webp 768w, /media/bg/bg_Mapa_Site-1600.webp 1600w"
         imageSizes="100vw"
         imageAlt={content.imageAlt}
         compact

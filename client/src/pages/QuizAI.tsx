@@ -170,7 +170,8 @@ export default function QuizAI() {
         title={startIntro.title}
         highlight={startIntro.highlight}
         subtitle={startIntro.subtitle}
-        image="/media/bg/bg_Quiz.webp"
+        image="/media/bg/bg_Quiz-1600.webp"
+        imageSrcSet="/media/bg/bg_Quiz-768.webp 768w, /media/bg/bg_Quiz-1600.webp 1600w"
         imageAlt="Sapiente.AI"
         compact
       />

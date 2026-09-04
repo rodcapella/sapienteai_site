@@ -19,6 +19,7 @@
   "discovery": {
     "llms": "https://www.sapienteai.com/llms.txt",
     "llms_full": "https://www.sapienteai.com/llms-full.txt",
+    "ai_json": "https://www.sapienteai.com/ai.json",
     "sitemap": "https://www.sapienteai.com/sitemap.xml",
     "robots": "https://www.sapienteai.com/robots.txt"
   },

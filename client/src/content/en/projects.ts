@@ -16,6 +16,17 @@ export const projectsEN = {
   },
   items: [
     {
+      id: "visibility-validator",
+      category: "Sapiente.AI technology",
+      status: "Launched",
+      statusKey: "production",
+      title: "SEO and AEO Validator",
+      description:
+        "An online tool integrated into the Sapiente.AI website to assess page visibility in search engines and AI-generated answers.",
+      icon: "Search",
+      tone: "aqua",
+    },
+    {
       id: "hoje-sjm",
       category: "Cultural calendar",
       status: "Final testing",
@@ -36,17 +47,6 @@ export const projectsEN = {
         "A platform designed to make specialised item exchanges easier among people and communities with shared interests, promoting access, reuse and the circular economy.",
       icon: "RefreshCw",
       tone: "purple",
-    },
-    {
-      id: "visibility-validator",
-      category: "Sapiente.AI technology",
-      status: "In development",
-      statusKey: "development",
-      title: "SEO, GEO and AEO Validator",
-      description:
-        "An online tool integrated into the Sapiente.AI website to assess page visibility in search engines and AI-generated answers.",
-      icon: "Search",
-      tone: "aqua",
     },
   ],
   cta: {

@@ -17,20 +17,20 @@ const absoluteImage = (image) => image?.startsWith("http") ? image : `${SITE_ORI
 const formattedTitle = (title) => title === "Sapiente.AI" ? title : `Sapiente.AI - ${title}`;
 
 const heroImages = new Map([
-  ["/", "/media/bg/bg_hero.webp"],
-  ["/about", "/media/bg/sobre/bg_Sobre_nos.webp"],
-  ["/services", "/media/bg/servicos/bg_Servicos.webp"],
-  ["/projects", "/media/bg/bg_Projetos.webp"],
-  ["/faq", "/media/bg/bg_FAQ.webp"],
-  ["/blog", "/media/bg/bg_blog.webp"],
-  ["/sitemap", "/media/bg/bg_Mapa_Site.webp"],
-  ["/quiz-ia", "/media/bg/bg_Quiz.webp"],
-  ["/quiz-ai", "/media/bg/bg_Quiz.webp"],
-  ["/cookies", "/media/bg/bg_LegalPages.webp"],
-  ["/terms", "/media/bg/bg_LegalPages.webp"],
-  ["/privacy", "/media/bg/bg_LegalPages.webp"],
-  ["/trust", "/media/bg/bg_LegalPages.webp"],
-  ["/generative-ai-policy", "/media/bg/bg_LegalPages.webp"],
+  ["/", "/media/bg/bg_hero-1600.webp"],
+  ["/about", "/media/bg/sobre/bg_Sobre_nos-1600.webp"],
+  ["/services", "/media/bg/servicos/bg_Servicos-1600.webp"],
+  ["/projects", "/media/bg/bg_Projetos-1600.webp"],
+  ["/faq", "/media/bg/bg_FAQ-1600.webp"],
+  ["/blog", "/media/bg/bg_blog-1600.webp"],
+  ["/sitemap", "/media/bg/bg_Mapa_Site-1600.webp"],
+  ["/quiz-ia", "/media/bg/bg_Quiz-1600.webp"],
+  ["/quiz-ai", "/media/bg/bg_Quiz-1600.webp"],
+  ["/cookies", "/media/bg/bg_LegalPages-1600.webp"],
+  ["/terms", "/media/bg/bg_LegalPages-1600.webp"],
+  ["/privacy", "/media/bg/bg_LegalPages-1600.webp"],
+  ["/trust", "/media/bg/bg_LegalPages-1600.webp"],
+  ["/generative-ai-policy", "/media/bg/bg_LegalPages-1600.webp"],
 ]);
 
 const routeChunkPrefixes = new Map([
@@ -64,19 +64,8 @@ function heroPreload(route) {
   const localPath = localRoutePath(route);
   const image = heroImages.get(localPath);
   if (!image) return "";
-  if (localPath === "/") {
-    return `  <link rel="preload" href="/media/bg/bg_hero.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_hero-960.webp 960w, /media/bg/bg_hero-1600.webp 1600w, /media/bg/bg_hero.webp 1618w" imagesizes="100vw" fetchpriority="high" />`;
-  }
-  if (localPath === "/projects") {
-    return `  <link rel="preload" href="/media/bg/bg_Projetos.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_Projetos-640.webp 640w, /media/bg/bg_Projetos.webp 1024w" imagesizes="100vw" fetchpriority="high" />`;
-  }
-  if (localPath === "/sitemap") {
-    return `  <link rel="preload" href="/media/bg/bg_Mapa_Site-1600.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_Mapa_Site-768.webp 768w, /media/bg/bg_Mapa_Site-1600.webp 1600w, /media/bg/bg_Mapa_Site.webp 2076w" imagesizes="100vw" fetchpriority="high" />`;
-  }
-  if (["/cookies", "/terms", "/privacy", "/trust", "/generative-ai-policy"].includes(localPath)) {
-    return `  <link rel="preload" href="/media/bg/bg_LegalPages-1600.webp" as="image" type="image/webp" imagesrcset="/media/bg/bg_LegalPages-768.webp 768w, /media/bg/bg_LegalPages-1600.webp 1600w, /media/bg/bg_LegalPages.webp 1920w" imagesizes="100vw" fetchpriority="high" />`;
-  }
-  return `  <link rel="preload" href="${image}" as="image" type="image/webp" fetchpriority="high" />`;
+  const mobileImage = image.replace(/-1600\.webp$/, "-768.webp");
+  return `  <link rel="preload" href="${image}" as="image" type="image/webp" imagesrcset="${mobileImage} 768w, ${image} 1600w" imagesizes="100vw" fetchpriority="high" />`;
 }
 
 function replaceMeta(html, attribute, name, value) {
@@ -138,6 +127,20 @@ function routeSchema(route) {
     isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
     about: { "@id": `${SITE_ORIGIN}/#organization` },
   };
+  if (route.routePath === "/pt" || route.routePath === "/en") {
+    const services = route.lang === "pt"
+      ? ["Inteligência artificial aplicada", "Automação de processos", "Websites orientados à conversão", "Análise de dados"]
+      : ["Applied artificial intelligence", "Process automation", "Conversion-focused websites", "Data analytics"];
+    common.mainEntity = {
+      "@type": "ItemList",
+      name: route.lang === "pt" ? "Soluções da Sapiente.AI" : "Sapiente.AI solutions",
+      itemListElement: services.map((name, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: { "@type": "Service", name, provider: { "@id": `${SITE_ORIGIN}/#organization` } },
+      })),
+    };
+  }
   if (route.schemaType === "FAQPage") common.mainEntity = route.faqItems.map((item) => ({
     "@type": "Question",
     name: item.question,
@@ -150,11 +153,29 @@ function staticContent(route) {
   const navigation = route.lang === "pt"
     ? [["/pt", "Início"], ["/pt/about", "Sobre"], ["/pt/services", "Serviços"], ["/pt/projects", "Projetos"], ["/pt/faq", "FAQ"], ["/pt/blog", "Blog"]]
     : [["/en", "Home"], ["/en/about", "About"], ["/en/services", "Services"], ["/en/projects", "Projects"], ["/en/faq", "FAQ"], ["/en/blog", "Blog"]];
+  const overviewHeading = route.title !== route.heading
+    ? route.title
+    : route.lang === "pt" ? "Visão geral" : "Overview";
+  const homeAnswers = route.routePath === "/pt"
+    ? [
+        ["O que é IA aplicada aos negócios?", "É a utilização prática de inteligência artificial para automatizar tarefas, analisar informação e apoiar decisões com impacto mensurável."],
+        ["Como a Sapiente.AI ajuda empresas?", "A Sapiente.AI combina IA, automação, dados, websites e marketing digital para melhorar processos, decisões e crescimento."],
+        ["A IA substitui a equipa?", "Não necessariamente. A abordagem da Sapiente.AI automatiza o trabalho repetitivo e mantém as pessoas no controlo das decisões relevantes."],
+      ]
+    : route.routePath === "/en"
+      ? [
+          ["What is applied AI for business?", "It is the practical use of artificial intelligence to automate tasks, analyze information, and support decisions with measurable impact."],
+          ["How does Sapiente.AI help companies?", "Sapiente.AI combines AI, automation, data, conversion-focused websites, and digital marketing to improve processes, decisions, and growth."],
+          ["Does AI replace the team?", "Not necessarily. Sapiente.AI automates repetitive work while keeping people in control of important decisions."],
+        ]
+      : [];
   return `<main id="prerendered-content" data-prerendered="true" hidden aria-hidden="true">
     <article>
       <h1>${escapeHtml(route.heading)}</h1>
-      <p>${escapeHtml(route.description)}</p>
+      ${route.schemaType === "FAQPage" ? "" : `<section><h2>${escapeHtml(overviewHeading)}</h2><p>${escapeHtml(route.description)}</p></section>`}
+      ${route.schemaType === "FAQPage" ? `<p>${escapeHtml(route.description)}</p>` : ""}
       ${route.schemaType === "BlogPosting" ? `<p>${escapeHtml(route.article.excerpt)}</p><p>${escapeHtml(route.article.author)} · <time datetime="${escapeHtml(route.article.date)}">${escapeHtml(route.article.date)}</time></p>${route.article.sourceUrl ? `<p>${route.lang === "pt" ? "Publicado originalmente em" : "Originally published by"} <a href="${escapeHtml(route.article.sourceUrl)}">${escapeHtml(route.article.sourceName)}</a></p>` : ""}` : ""}
+      ${homeAnswers.map(([question, answer]) => `<section><h3>${escapeHtml(question)}</h3><p>${escapeHtml(answer)}</p></section>`).join("")}
       ${route.schemaType === "FAQPage" ? route.faqItems.map((item) => `<section><h2>${escapeHtml(item.question)}</h2><p>${escapeHtml(item.answer)}</p></section>`).join("") : ""}
     </article>
     <nav aria-label="${route.lang === "pt" ? "Navegação principal" : "Main navigation"}"><ul>${navigation.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("")}</ul></nav>

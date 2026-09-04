@@ -126,7 +126,7 @@ export default function App() {
         <Route path="/:lang/blog/:slug">{(params) => <BlogArticle lang={params.lang} slug={params.slug} />}</Route>
         <Route path="/:lang/news">{(params) => <News lang={params.lang} />}</Route>
         <Route path="/:lang/sitemap">{(params) => <Sitemap lang={params.lang} />}</Route>
-        <Route path="/:lang/seo-geo-aeo-validator"><VisibilityValidator /></Route>
+        <Route path="/:lang/seo-aeo-validator"><VisibilityValidator /></Route>
         <Route path="/:lang/newsletter/unsubscribe"><NewsletterUnsubscribe /></Route>
         <Route path="/pt/quiz-ia"><QuizAI /></Route>
         <Route path="/pt/quiz-ai"><Redirect to="/pt/quiz-ia" /></Route>

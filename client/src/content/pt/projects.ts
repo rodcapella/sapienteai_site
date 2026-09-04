@@ -16,6 +16,17 @@ export const projectsPT = {
   },
   items: [
     {
+      id: "validador-visibilidade",
+      category: "Tecnologia Sapiente.AI",
+      status: "Lançado",
+      statusKey: "production",
+      title: "Validador de SEO e AEO",
+      description:
+        "Uma ferramenta online integrada no site da Sapiente.AI para avaliar a visibilidade de páginas nos motores de pesquisa e nas respostas geradas por inteligência artificial.",
+      icon: "Search",
+      tone: "aqua",
+    },
+    {
       id: "hoje-sjm",
       category: "Agenda cultural",
       status: "Fase final de testes",
@@ -36,17 +47,6 @@ export const projectsPT = {
         "Uma plataforma criada para facilitar a troca de itens especializados entre pessoas e comunidades com interesses em comum, promovendo o acesso, a reutilização e a economia circular.",
       icon: "RefreshCw",
       tone: "purple",
-    },
-    {
-      id: "validador-visibilidade",
-      category: "Tecnologia Sapiente.AI",
-      status: "Em desenvolvimento",
-      statusKey: "development",
-      title: "Validador de SEO, GEO e AEO",
-      description:
-        "Uma ferramenta online integrada no site da Sapiente.AI para avaliar a visibilidade de páginas nos motores de pesquisa e nas respostas geradas por inteligência artificial.",
-      icon: "Search",
-      tone: "aqua",
     },
   ],
   cta: {

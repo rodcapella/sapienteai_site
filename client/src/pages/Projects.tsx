@@ -6,7 +6,7 @@ import { Reveal } from "@/components/ui/motion/Reveal";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { useTranslation } from "@/hooks/useTranslation";
 import { getContent } from "@/lib/content";
-import { CalendarDays, RefreshCw, Search } from "@/lib/icons";
+import { ArrowRight, CalendarDays, RefreshCw, Search } from "@/lib/icons";
 
 const projectIcons = { CalendarDays, RefreshCw, Search };
 
@@ -53,14 +53,14 @@ export default function Projects() {
     url: `https://www.sapienteai.com/${lang}/projects`,
     type: "website",
     keywords: lang === "en"
-      ? "Sapiente.AI projects, Hoje em SJM, São João da Madeira cultural calendar, Aveiro cultural events, specialised item exchange, SEO GEO AEO validator, digital projects Portugal"
-      : "projetos Sapiente.AI, Hoje em SJM, agenda cultural São João da Madeira, eventos culturais Aveiro, plataforma de trocas especializadas, validador SEO GEO AEO, projetos digitais Portugal",
+      ? "Sapiente.AI projects, Hoje em SJM, São João da Madeira cultural calendar, Aveiro cultural events, specialised item exchange, SEO AEO validator, digital projects Portugal"
+      : "projetos Sapiente.AI, Hoje em SJM, agenda cultural São João da Madeira, eventos culturais Aveiro, plataforma de trocas especializadas, validador SEO AEO, projetos digitais Portugal",
   }, [content, lang]);
 
   useEffect(() => {
     const isEN = lang === "en";
     const pageUrl = `https://www.sapienteai.com/${lang}/projects`;
-    const validatorUrl = `https://www.sapienteai.com/${lang}/seo-geo-aeo-validator`;
+    const validatorUrl = `https://www.sapienteai.com/${lang}/seo-aeo-validator`;
     const language = isEN ? "en" : "pt-PT";
 
     const projectSchema = {
@@ -166,7 +166,7 @@ export default function Projects() {
               item: {
                 "@type": "WebApplication",
                 "@id": `${validatorUrl}#webapplication`,
-                name: isEN ? "SEO, GEO and AEO Validator" : "Validador de SEO, GEO e AEO",
+                name: isEN ? "SEO and AEO Validator" : "Validador de SEO e AEO",
                 url: validatorUrl,
                 applicationCategory: "BusinessApplication",
                 browserRequirements: "Requires a modern web browser",
@@ -201,8 +201,8 @@ export default function Projects() {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
-        image="/media/bg/bg_Projetos.webp"
-        imageSrcSet="/media/bg/bg_Projetos-640.webp 640w, /media/bg/bg_Projetos.webp 1024w"
+        image="/media/bg/bg_Projetos-1600.webp"
+        imageSrcSet="/media/bg/bg_Projetos-768.webp 768w, /media/bg/bg_Projetos-1600.webp 1600w"
         imageSizes="100vw"
         imageAlt={content.hero.label}
         imagePosition="center"
@@ -257,6 +257,15 @@ export default function Projects() {
                       <p className="mt-4 text-[15px] font-medium leading-7 text-[var(--brand-mid)]">
                         {project.description}
                       </p>
+                      {["validador-visibilidade", "visibility-validator"].includes(project.id) && (
+                        <a
+                          href={`/${lang}/seo-aeo-validator`}
+                          className="mt-6 inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/30 bg-[var(--brand-primary)] px-5 py-2.5 text-sm font-black text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-primary)_24%,transparent)] transition hover:-translate-y-0.5 hover:bg-[var(--brand-deep)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--brand-primary)]"
+                        >
+                          {lang === "en" ? "Open validator" : "Aceder ao validador"}
+                          <ArrowRight size={16} aria-hidden="true" />
+                        </a>
+                      )}
                     </div>
                   </article>
                 </Reveal>

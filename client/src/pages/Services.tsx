@@ -280,7 +280,8 @@ export default function Services() {
         title={content.hero.title}
         highlight={content.hero.highlight}
         subtitle={content.hero.subtitle}
-        image="/media/bg/servicos/bg_Servicos.webp"
+        image="/media/bg/servicos/bg_Servicos-1600.webp"
+        imageSrcSet="/media/bg/servicos/bg_Servicos-768.webp 768w, /media/bg/servicos/bg_Servicos-1600.webp 1600w"
         imageAlt="Sapiente.AI"
         imagePosition="right center"
         compact

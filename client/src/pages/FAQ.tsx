@@ -33,12 +33,12 @@ function createFAQCategories(items: FAQItem[], lang: string): FAQCategory[] {
         };
 
   return [
-    { id: "general", label: labels.general, icon: HelpCircle, items: items.slice(0, 8) },
-    { id: "content", label: labels.content, icon: MessageCircle, items: items.slice(8, 17) },
-    { id: "websites", label: labels.websites, icon: Globe, items: items.slice(17, 24) },
-    { id: "automation", label: labels.automation, icon: Cpu, items: items.slice(24, 31) },
-    { id: "data", label: labels.data, icon: Database, items: items.slice(35) },
-    { id: "business", label: labels.business, icon: BarChart3, items: items.slice(31, 35) },
+    { id: "general", label: labels.general, icon: HelpCircle, items: items.slice(0, 9) },
+    { id: "content", label: labels.content, icon: MessageCircle, items: items.slice(9, 18) },
+    { id: "websites", label: labels.websites, icon: Globe, items: items.slice(18, 26) },
+    { id: "automation", label: labels.automation, icon: Cpu, items: items.slice(26, 34) },
+    { id: "data", label: labels.data, icon: Database, items: items.slice(38) },
+    { id: "business", label: labels.business, icon: BarChart3, items: items.slice(34, 38) },
   ].filter((category) => category.items.length > 0);
 }
 
@@ -114,7 +114,8 @@ export default function FAQ() {
         title={pageCopy.title}
         highlight={pageCopy.highlight}
         subtitle={pageCopy.subtitle}
-        image="/media/bg/bg_FAQ.webp"
+        image="/media/bg/bg_FAQ-1600.webp"
+        imageSrcSet="/media/bg/bg_FAQ-768.webp 768w, /media/bg/bg_FAQ-1600.webp 1600w"
         imageAlt="Sapiente.AI"
         imagePosition="right center"
         compact

@@ -13,6 +13,13 @@ type ContactPayload = {
   lang?: unknown;
   turnstileToken?: unknown;
   website?: unknown;
+  analysisSummary?: unknown;
+};
+
+type AnalysisSummary = {
+  analyzedUrl: string;
+  analyzedAt: string;
+  results: Array<{ title: string; score: number; status: string; priorities: string[] }>;
 };
 
 const RATE_LIMIT_MAX = 3;
@@ -51,6 +58,30 @@ function escapeHtml(value: string) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function parseAnalysisSummary(value: unknown): AnalysisSummary | null {
+  if (!value || typeof value !== "object") return null;
+  const candidate = value as Record<string, unknown>;
+  if (typeof candidate.analyzedUrl !== "string" || candidate.analyzedUrl.length > 300) return null;
+  if (typeof candidate.analyzedAt !== "string" || candidate.analyzedAt.length > 40) return null;
+  try {
+    const url = new URL(candidate.analyzedUrl);
+    if (!["http:", "https:"].includes(url.protocol)) return null;
+  } catch { return null; }
+  if (!Array.isArray(candidate.results) || candidate.results.length === 0 || candidate.results.length > 3) return null;
+  const results = candidate.results.flatMap((entry) => {
+    if (!entry || typeof entry !== "object") return [];
+    const item = entry as Record<string, unknown>;
+    if (typeof item.title !== "string" || item.title.length > 100 || typeof item.score !== "number" || !Number.isInteger(item.score) || item.score < 0 || item.score > 100) return [];
+    const priorities = Array.isArray(item.priorities)
+      ? item.priorities.filter((priority): priority is string => typeof priority === "string" && priority.length <= 120).slice(0, 3)
+      : [];
+    return [{ title: item.title, score: item.score, status: typeof item.status === "string" ? item.status.slice(0, 30) : "", priorities }];
+  });
+  return results.length === candidate.results.length
+    ? { analyzedUrl: candidate.analyzedUrl, analyzedAt: candidate.analyzedAt, results }
+    : null;
 }
 
 type ContactConfirmationEmailTemplate = {
@@ -362,6 +393,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const message = textField(payload.message, MAX_LENGTHS.message);
   const lang = payload.lang === "en" ? "en" : "pt";
   const turnstileToken = textField(payload.turnstileToken, 2048);
+  const analysisSummary = parseAnalysisSummary(payload.analysisSummary);
 
   if (!name || !email || !topic || !message) {
     return res.status(400).json({ error: "request_rejected" });
@@ -409,7 +441,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     ["Assunto", topic],
   ];
   const subject = `Novo contacto pelo site — ${topic} — ${name}`;
-  const text = `${details.map(([label, value]) => `${label}: ${value}`).join("\n")}\n\nMensagem:\n${message}`;
+  const analysisIncludedInMessage = Boolean(
+    analysisSummary
+    && message.includes(analysisSummary.analyzedUrl)
+    && analysisSummary.results.every((result) => message.includes(`${result.score}/100`)),
+  );
+  const analysisText = analysisSummary && !analysisIncludedInMessage ? `\n\nResumo da análise:\nWebsite: ${analysisSummary.analyzedUrl}\nData: ${analysisSummary.analyzedAt}\n${analysisSummary.results.map((result) => `${result.title}: ${result.score}/100${result.priorities.length ? `\nPrioridades: ${result.priorities.join(", ")}` : ""}`).join("\n")}` : "";
+  const text = `${details.map(([label, value]) => `${label}: ${value}`).join("\n")}\n\nMensagem:\n${message}${analysisText}`;
+  const analysisHtml = analysisSummary && !analysisIncludedInMessage ? `
+    <h3>Resumo da análise</h3>
+    <p><strong>Website:</strong> ${escapeHtml(analysisSummary.analyzedUrl)}<br><strong>Data:</strong> ${escapeHtml(analysisSummary.analyzedAt)}</p>
+    <table cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%;max-width:680px">
+      ${analysisSummary.results.map((result) => `
+        <tr>
+          <th align="left" style="border-bottom:1px solid #dbeafe">${escapeHtml(result.title)}</th>
+          <td style="border-bottom:1px solid #dbeafe"><strong>${result.score}/100</strong>${result.priorities.length ? `<br><small>Prioridades: ${result.priorities.map(escapeHtml).join(", ")}</small>` : ""}</td>
+        </tr>`).join("")}
+    </table>
+    <p style="font-size:12px;color:#64748b">Caso o utilizador queira mais detalhes, poderá solicitar o diagnóstico completo à equipa Sapiente.AI.</p>` : "";
   const html = `
     <h2>Novo contacto pelo site Sapiente.AI</h2>
     <table cellpadding="6" cellspacing="0" style="border-collapse:collapse">
@@ -421,6 +470,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     </table>
     <h3>Mensagem</h3>
     <p style="white-space:pre-wrap">${escapeHtml(message)}</p>
+    ${analysisHtml}
   `;
 
   try {

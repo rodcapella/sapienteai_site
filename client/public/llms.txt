@@ -1,16 +1,73 @@
 # Sapiente.AI
 
-> Applied artificial intelligence, automation, data, web development and digital growth company based in São João da Madeira, Aveiro, Portugal.
+> Technology partner that combines strategy, artificial intelligence, automation, data, web development and digital marketing to help businesses grow, operate efficiently and make better decisions.
 
-## Official information
+Sapiente.AI is based in São João da Madeira, Aveiro, Portugal, and works remotely with companies in Portugal and Brazil. Content and services are available in Portuguese and English.
 
-- Website: https://www.sapienteai.com
+## Official identity
+
+- Official name: Sapiente.AI
+- Official website: https://www.sapienteai.com
+- Business type: technology partner and applied artificial intelligence consultancy
+- Location: São João da Madeira, Aveiro, Portugal
+- Service area: Portugal and Brazil, with remote delivery
 - Email: contacto@sapienteai.com
 - Telephone and WhatsApp: +351 910 567 575
-- Languages: Portuguese and English
-- Content preferences: ai-train=no, search=yes, ai-input=yes
+- Languages: Portuguese (Portugal and Brazil) and English
+- Founder and CTO: Rodrigo Póvoa
+- Co-founder: Tatiane Gomes
 
-## Main pages
+## What Sapiente.AI does
+
+Sapiente.AI identifies business processes where technology can create measurable value and then designs and implements the solution. The company combines human judgment with artificial intelligence rather than treating AI as a substitute for people.
+
+Core principles:
+
+- Automate repetitive work while keeping people responsible for important decisions.
+- Connect strategy and implementation instead of delivering recommendations without execution.
+- Use measurable objectives, transparent communication and human validation.
+- Build solutions appropriate to the size, context and maturity of each organization.
+
+## Services
+
+- [Applied artificial intelligence](https://www.sapienteai.com/en/services#service-ia): intelligent chatbots, predictive analysis, decision support, customer segmentation and custom machine learning.
+- [Process automation](https://www.sapienteai.com/en/services#service-automacao): system integrations, automated follow-up, document processing, notifications and 24/7 automated service.
+- [Growth and performance](https://www.sapienteai.com/en/services#service-crescimento): Google and Meta Ads, lead generation, conversion funnels, SEO, GEO, AEO and conversion optimization.
+- [Data and business intelligence](https://www.sapienteai.com/en/services#service-dados-bi): dashboards, KPI reporting, profitability analysis, data consolidation and management insights.
+- [Web development](https://www.sapienteai.com/en/services#service-desenvolvimento): corporate websites, landing pages, responsive platforms, maintenance and technical support.
+- [Digital marketing](https://www.sapienteai.com/en/services#service-marketing): social media, AI-assisted content, email marketing, newsletters, branding and editorial strategy.
+
+Portuguese service overview: [Serviços da Sapiente.AI](https://www.sapienteai.com/pt/services).
+
+## Products and projects
+
+- [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): free preliminary assessment of search visibility and readiness for AI answers and agents. [Portuguese version](https://www.sapienteai.com/pt/seo-aeo-validator).
+- Hoje em SJM: a cultural calendar dedicated to São João da Madeira, currently in final testing.
+- Specialized item exchange: a circular-economy platform currently in development.
+
+## Direct answers
+
+### What is Sapiente.AI?
+
+Sapiente.AI is a technology partner and applied AI consultancy that combines strategy, execution and artificial intelligence for business growth and operational improvement.
+
+### Does Sapiente.AI replace employees with AI?
+
+No. Sapiente.AI focuses on automating repetitive tasks while preserving human validation, context, responsibility and decision-making.
+
+### Where does Sapiente.AI operate?
+
+Sapiente.AI is based in São João da Madeira, Aveiro, Portugal. It serves organizations in Portugal and Brazil through a remote and online delivery model.
+
+### Which organizations does Sapiente.AI serve?
+
+Sapiente.AI primarily works with small and medium-sized businesses and professionals that want to improve operations, customer acquisition, digital presence or data-driven decisions.
+
+### How can someone contact Sapiente.AI?
+
+Use contacto@sapienteai.com, call or message +351 910 567 575, or use the contact form on the official website.
+
+## Main Portuguese pages
 
 - [Inteligência Artificial Aplicada ao seu Negócio](https://www.sapienteai.com/pt): Inteligência artificial, automação, dados, websites e marketing digital orientados ao crescimento de empresas.
 - [Sobre](https://www.sapienteai.com/pt/about): Conheça a Sapiente.AI, a sua abordagem e os fundadores em São João da Madeira, Aveiro, Portugal.
@@ -18,11 +75,43 @@
 - [Projetos](https://www.sapienteai.com/pt/projects): Conheça os produtos digitais em desenvolvimento da Sapiente.AI.
 - [FAQ | Respostas sobre IA, automação e serviços digitais](https://www.sapienteai.com/pt/faq): Encontre respostas sobre os serviços da Sapiente.AI, modelo de trabalho, automação e inteligência artificial aplicada.
 - [Blog](https://www.sapienteai.com/pt/blog): Artigos sobre inteligência artificial, automação, dados, tecnologia e crescimento digital.
+- [Validador de SEO e AEO](https://www.sapienteai.com/pt/seo-aeo-validator): Analise gratuitamente sinais técnicos de SEO e a preparação do seu website para respostas e agentes de inteligência artificial.
+
+## Main English pages
+
 - [Applied Artificial Intelligence for Business](https://www.sapienteai.com/en): Artificial intelligence, automation, data, websites and digital marketing focused on business growth.
+- [About](https://www.sapienteai.com/en/about): Meet Sapiente.AI, its approach and founders in São João da Madeira, Aveiro, Portugal.
+- [AI Services, Automation, Websites and Digital Marketing](https://www.sapienteai.com/en/services): Explore Sapiente.AI services for automation, applied AI, conversion-focused websites, data analytics and digital marketing.
+- [Projects](https://www.sapienteai.com/en/projects): Discover the digital products currently being developed by Sapiente.AI.
+- [FAQ | AI, automation and digital services answers](https://www.sapienteai.com/en/faq): Find answers about Sapiente.AI services, delivery model, automation and applied artificial intelligence.
+- [Blog](https://www.sapienteai.com/en/blog): Articles about artificial intelligence, automation, data, technology and digital growth.
+- [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): Analyze technical SEO signals and your website's readiness for AI answers and agents with a free preliminary assessment.
 
-## Discovery
+## Published insights
 
-- [Full context](https://www.sapienteai.com/llms-full.txt)
+- [IA e produtividade: devolver tempo às pessoas](https://www.sapienteai.com/pt/blog/ia-deve-devolver-tempo-as-pessoas): Descubra como a IA e a automação libertam profissionais de tarefas repetitivas, aumentam a produtividade e preservam o julgamento humano.
+- [Sem dados de qualidade, não há IA que salve o negócio](https://www.sapienteai.com/pt/blog/without-quality-data-no-ai-can-save-the-business): Entenda por que qualidade e governação de dados são essenciais para empresas que pretendem usar inteligência artificial com confiança e gerar valor real.
+- [AI and Productivity: Giving Time Back to People](https://www.sapienteai.com/en/blog/ai-should-give-time-back-to-people): Learn how AI and automation free professionals from repetitive tasks, improve productivity, and preserve human judgment in business decisions.
+- [Without Quality Data, No AI Can Save the Business](https://www.sapienteai.com/en/blog/without-quality-data-no-ai-can-save-the-business): Learn why data quality and governance are essential for businesses that want to use artificial intelligence with confidence and create measurable value.
+
+## Official social profiles
+
+- [LinkedIn](https://www.linkedin.com/company/sapiente-ai/)
+- [Instagram](https://www.instagram.com/sapienteai/)
+- [Facebook](https://www.facebook.com/sapienteai)
+- [TikTok](https://www.tiktok.com/@sapienteai)
+- [X](https://x.com/SapienteAI)
+- [Pinterest](https://www.pinterest.com/sapienteai)
+
+## Discovery and machine-readable resources
+
+- [Full website context](https://www.sapienteai.com/llms-full.txt)
+- [Structured AI profile](https://www.sapienteai.com/ai.json)
 - [Agent manifest](https://www.sapienteai.com/.well-known/agent.json)
-- [Sitemap](https://www.sapienteai.com/sitemap.xml)
-- [Robots policy](https://www.sapienteai.com/robots.txt)
+- [XML sitemap](https://www.sapienteai.com/sitemap.xml)
+- [Robots and AI usage policy](https://www.sapienteai.com/robots.txt)
+- Markdown representations are available for canonical language routes by sending the request header `Accept: text/markdown`.
+
+## Attribution and content preferences
+
+Public factual information may be quoted or summarized with attribution to Sapiente.AI and a link to the relevant canonical page. The canonical pages on https://www.sapienteai.com are the authoritative source. Declared content preferences: ai-train=no, search=yes, ai-input=yes.

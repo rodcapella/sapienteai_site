@@ -192,8 +192,8 @@ export default function LegalDocumentPage({
         title={heroTitle}
         highlight={content.highlight}
         subtitle={heroSubtitle}
-        image="/media/bg/bg_LegalPages.webp"
-        imageSrcSet="/media/bg/bg_LegalPages-768.webp 768w, /media/bg/bg_LegalPages-1600.webp 1600w, /media/bg/bg_LegalPages.webp 1920w"
+        image="/media/bg/bg_LegalPages-1600.webp"
+        imageSrcSet="/media/bg/bg_LegalPages-768.webp 768w, /media/bg/bg_LegalPages-1600.webp 1600w"
         imageSizes="100vw"
         imageAlt="Sapiente.AI Legal"
         imagePosition="right center"

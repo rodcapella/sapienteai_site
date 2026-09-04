@@ -46,6 +46,8 @@ Sapiente.AI combines strategy, artificial intelligence and execution to help org
 - [Generative AI Policy](https://www.sapienteai.com/en/generative-ai-policy): Principles for responsible and transparent use of generative artificial intelligence.
 - [Quiz IA](https://www.sapienteai.com/pt/quiz-ia): Descubra onde a inteligência artificial pode gerar mais eficiência e crescimento no seu negócio.
 - [AI Quiz](https://www.sapienteai.com/en/quiz-ai): Discover where artificial intelligence can create more efficiency and growth in your business.
+- [Validador de SEO e AEO](https://www.sapienteai.com/pt/seo-aeo-validator): Analise gratuitamente sinais técnicos de SEO e a preparação do seu website para respostas e agentes de inteligência artificial.
+- [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): Analyze technical SEO signals and your website's readiness for AI answers and agents with a free preliminary assessment.
 
 ## Published articles
 

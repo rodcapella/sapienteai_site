@@ -16,6 +16,12 @@ type FinalCTAProps = {
   variant?: "default" | "home" | "about" | "services";
   align?: "left" | "center";
   backgroundSrc?: string;
+  initialTopic?: string;
+  analysisSummary?: {
+    analyzedUrl: string;
+    analyzedAt: string;
+    results: Array<{ title: string; score: number; status: string; priorities: string[] }>;
+  };
 };
 
 function renderTitle(title: string, highlight?: string, highlightClass?: string) {
@@ -56,6 +62,8 @@ export function FinalCTA({
   variant = "default",
   align,
   backgroundSrc,
+  initialTopic,
+  analysisSummary,
 }: FinalCTAProps) {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
@@ -179,7 +187,7 @@ export function FinalCTA({
         </section>
 
         <Suspense fallback={null}>{!href && isContactOpen && (
-          <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+          <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} initialTopic={initialTopic} analysisSummary={analysisSummary} />
         )}</Suspense>
       </>
     );
@@ -286,7 +294,7 @@ export function FinalCTA({
       </section>
 
       <Suspense fallback={null}>{!href && isContactOpen && (
-        <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+        <ContactModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} initialTopic={initialTopic} analysisSummary={analysisSummary} />
       )}</Suspense>
     </>
   );

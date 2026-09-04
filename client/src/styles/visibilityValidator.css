@@ -24,19 +24,58 @@
 .visibility-validator-inner {
   position: relative;
   z-index: 1;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 1160px;
   margin: 0 auto;
-  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-  gap: 32px;
-  align-items: start;
+  gap: 42px;
+}
+
+.visibility-validator-form-wrap {
+  width: min(100%, 900px);
+}
+
+.visibility-validator-results-wrap {
+  width: min(100%, 1040px);
 }
 
 .visibility-validator-panel {
-  border: 1px solid color-mix(in srgb, #00D1FF 46%, transparent);
-  border-radius: 18px;
-  background: color-mix(in srgb, #00D1FF 18%, var(--brand-offwhite));
-  box-shadow: 0 18px 38px rgba(1, 32, 80, .06);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--brand-primary) 36%, var(--brand-mid));
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--surface) 92%, white), color-mix(in srgb, var(--brand-primary) 7%, var(--surface)));
+  box-shadow: 0 22px 58px color-mix(in srgb, var(--brand-deep) 16%, transparent);
+}
+
+.visibility-validator-panel::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 1;
+  height: 4px;
+  background: linear-gradient(90deg, var(--brand-purple), var(--brand-primary), var(--brand-cyan));
+  box-shadow: 0 2px 14px color-mix(in srgb, var(--brand-primary) 30%, transparent);
+}
+
+.visibility-validator-panel::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, transparent 0 46%, color-mix(in srgb, var(--brand-primary) 6%, transparent) 46.1% 46.25%, transparent 46.45%),
+    radial-gradient(circle at 90% 12%, color-mix(in srgb, var(--brand-cyan-bright) 12%, transparent), transparent 22%);
+}
+
+.visibility-validator-panel > * {
+  position: relative;
+  z-index: 2;
 }
 
 .visibility-validator-form-panel {
@@ -66,6 +105,7 @@
 
 .visibility-validator-fields {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   margin-top: 26px;
 }
@@ -111,32 +151,59 @@
 
 .visibility-validator-types {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin-top: 28px;
+}
+
+.visibility-validator-types > p {
+  grid-column: 1 / -1;
 }
 
 .visibility-validator-types button {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 9px;
   width: 100%;
+  min-width: 0;
+  height: 60px;
   border: 1px solid color-mix(in srgb, #00D1FF 34%, transparent);
   border-radius: 12px;
   background: rgba(255, 255, 255, .56);
-  padding: 12px 14px;
+  padding: 10px 12px;
   color: color-mix(in srgb, var(--brand-night) 74%, transparent);
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
   text-align: left;
   transition: all .25s ease;
 }
 
-.visibility-validator-types button:hover,
+.visibility-validator-type-label {
+  min-width: 0;
+  line-height: 1.25;
+}
+
 .visibility-validator-types button.is-selected {
   border-color: color-mix(in srgb, #00D1FF 68%, transparent);
   background: color-mix(in srgb, #00D1FF 18%, var(--brand-offwhite));
   color: var(--brand-night);
+}
+
+.visibility-validator-types button.is-inactive {
+  border-color: color-mix(in srgb, var(--brand-night) 14%, transparent);
+  background: color-mix(in srgb, var(--brand-offwhite) 72%, transparent);
+  color: color-mix(in srgb, var(--brand-night) 48%, transparent);
+  opacity: 0.68;
+}
+
+.visibility-validator-types button.is-inactive:not(:disabled):hover {
+  border-color: color-mix(in srgb, #00D1FF 34%, transparent);
+  opacity: 0.82;
+}
+
+.visibility-validator-types button.is-inactive svg {
+  color: color-mix(in srgb, var(--brand-primary) 45%, transparent);
 }
 
 .visibility-validator-types button svg {
@@ -212,13 +279,13 @@
 }
 
 .visibility-validator-results-panel {
-  min-height: 520px;
+  min-height: 330px;
   padding: 28px;
 }
 
 .visibility-validator-empty {
   display: grid;
-  min-height: 460px;
+  min-height: 270px;
   place-items: center;
   align-content: center;
   text-align: center;
@@ -265,16 +332,84 @@
 
 .visibility-validator-result-list {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
 }
 
-.visibility-validator-result-card {
+.visibility-validator-impact {
+  margin-top: 24px;
+  border-top: 1px solid color-mix(in srgb, var(--brand-primary) 18%, transparent);
+  padding-top: 22px;
+}
+
+.visibility-validator-impact > h2 {
+  color: var(--brand-night);
+  font-family: var(--font-heading);
+  font-size: clamp(18px, 2vw, 23px);
+  font-weight: 900;
+  text-align: center;
+}
+
+.visibility-validator-impact > div {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.visibility-validator-impact article {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 7px 10px;
+  border: 1px solid color-mix(in srgb, var(--brand-primary) 24%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, white 70%, var(--section-ice));
+  padding: 17px;
+}
+
+.visibility-validator-impact svg {
+  grid-row: 1 / span 2;
+  color: var(--brand-primary);
+}
+
+.visibility-validator-impact h3 {
+  color: var(--brand-primary);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.visibility-validator-impact p {
+  color: color-mix(in srgb, var(--brand-night) 66%, transparent);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+.visibility-validator-result-card {
+  position: relative;
+  display: grid;
+  overflow: hidden;
   gap: 18px;
-  border: 1px solid color-mix(in srgb, #00D1FF 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-primary) 36%, var(--brand-mid));
   border-radius: 16px;
-  background: rgba(255, 255, 255, .58);
+  background: color-mix(in srgb, white 58%, var(--surface));
   padding: 20px;
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--brand-deep) 8%, transparent);
+}
+
+.visibility-validator-result-card::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-purple), var(--brand-primary), var(--brand-cyan));
+}
+
+.visibility-validator-result-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .visibility-validator-result-top {
@@ -310,38 +445,100 @@
 }
 
 .visibility-validator-score {
-  display: grid;
-  gap: 8px;
-}
-
-.visibility-validator-score > div:first-child {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  color: color-mix(in srgb, var(--brand-night) 60%, transparent);
-  font-size: 12px;
-  font-weight: 900;
-  text-transform: uppercase;
+  gap: 8px;
+  border-block: 1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent);
+  padding-block: 20px;
+  text-align: center;
 }
 
-.visibility-validator-score strong {
-  color: var(--brand-primary);
-  font-size: 20px;
+.visibility-validator-score-ring {
+  position: relative;
+  width: 124px;
+  height: 124px;
 }
 
-.visibility-validator-score-track {
-  overflow: hidden;
-  height: 8px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--brand-primary) 12%, transparent);
-}
-
-.visibility-validator-score-track span {
-  display: block;
+.visibility-validator-score-ring svg {
+  width: 100%;
   height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--brand-primary), #00D1FF);
-  transition: width .45s ease;
+  transform: rotate(-90deg);
+}
+
+.visibility-validator-score-ring circle {
+  fill: none;
+  stroke-width: 8;
+}
+
+.score-ring-background {
+  stroke: color-mix(in srgb, var(--brand-night) 9%, transparent);
+}
+
+.score-ring-value {
+  stroke: var(--score-color);
+  stroke-linecap: round;
+  transition: stroke-dashoffset .6s ease;
+}
+
+.visibility-validator-score-ring strong {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--score-color);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.visibility-validator-score.status-found { --score-color: #00b968; }
+.visibility-validator-score.status-partial { --score-color: #f5a623; }
+.visibility-validator-score.status-not-found { --score-color: #ef3340; }
+
+.visibility-validator-score h4 {
+  margin: 0;
+  color: var(--brand-night);
+  font-size: 1rem;
+  font-weight: 850;
+}
+
+.visibility-validator-score > p {
+  max-width: 310px;
+  margin: 0;
+  color: color-mix(in srgb, var(--brand-night) 58%, transparent);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.visibility-validator-score-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 4px;
+  color: color-mix(in srgb, var(--brand-night) 64%, transparent);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.visibility-validator-score-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.visibility-validator-score-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.visibility-validator-score-legend .is-poor i { background: #ef3340; }
+.visibility-validator-score-legend .is-partial i { background: #f5a623; }
+.visibility-validator-score-legend .is-good i { background: #00b968; }
+
+@media (prefers-reduced-motion: reduce) {
+  .score-ring-value { transition: none; }
 }
 
 .visibility-validator-result-card ul {
@@ -365,6 +562,48 @@
   flex: 0 0 auto;
   margin-top: 2px;
   color: var(--brand-primary);
+}
+
+.visibility-validator-types button small {
+  margin-left: auto;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand-primary) 8%, transparent);
+  padding: 4px 7px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  opacity: 0.65;
+}
+
+.visibility-validator-types button:disabled:not(.is-selected) {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.visibility-validator-checks {
+  margin-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--brand-primary) 14%, transparent);
+  padding-top: 0.85rem;
+}
+
+.visibility-validator-checks summary {
+  cursor: pointer;
+  color: var(--brand-primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.visibility-validator-checks ul {
+  margin-top: 0.75rem;
+}
+
+.visibility-validator-checks li.is-failed svg {
+  color: #c2410c;
+}
+
+.visibility-validator-checks li.is-passed svg {
+  color: #15803d;
 }
 
 .visibility-validator-status {
@@ -437,7 +676,7 @@
 }
 
 @media (max-width: 920px) {
-  .visibility-validator-inner {
+  .visibility-validator-result-list {
     grid-template-columns: 1fr;
   }
 }
@@ -451,5 +690,19 @@
   .visibility-validator-results-panel,
   .visibility-validator-result-card {
     padding: 18px;
+  }
+
+  .visibility-validator-fields,
+  .visibility-validator-types,
+  .visibility-validator-impact > div {
+    grid-template-columns: 1fr;
+  }
+
+  .visibility-validator-types button {
+    height: 54px;
+  }
+
+  .visibility-validator-inner {
+    gap: 28px;
   }
 }

@@ -62,6 +62,11 @@ export const faqPT = {
       answer:
         "Começa com uma conversa. Analisamos o seu caso, percebemos os objetivos e desafios, e apresentamos uma proposta concreta. Sem compromisso, sem guiões de venda.",
     },
+    {
+      question: "A Sapiente.AI trabalha com empresas em Portugal e no Brasil?",
+      answer:
+        "Sim. Temos clientes em Portugal (principalmente na região de Aveiro, Porto e Lisboa) e no Brasil. Trabalhamos 100% remotamente e online, pelo que a localização não é uma limitação. As nossas soluções são desenvolvidas em português europeu e brasileiro conforme o contexto do cliente.",
+    },
 
     // ─── MARKETING & CONTEÚDO (8–16) ──────────────────────────────
     {
@@ -122,6 +127,11 @@ export const faqPT = {
         "Sim. Todos os websites que desenvolvemos são totalmente responsivos e otimizados para mobile. A maioria do tráfego hoje vem de telemóvel. Ignorar isso é deixar oportunidades na mesa.",
     },
     {
+      question: "Orientam a criação de anúncios para aparecer como link patrocinado no Google?",
+      answer:
+        "Sim. Ajudamos a planear e estruturar campanhas de Google Ads, desde a escolha das palavras-chave e definição do público até à criação dos anúncios, páginas de destino e acompanhamento de conversões. O objetivo é aparecer como link patrocinado perante pesquisas relevantes e transformar o investimento em contactos qualificados.",
+    },
+    {
       question: "Trabalham com SEO, GEO e AEO?",
       answer:
         "Sim. Otimizamos a presença digital para motores de busca tradicionais, pesquisa geolocalizada e motores de resposta com IA, aumentando a visibilidade e a captura de procura qualificada.",
@@ -177,6 +187,11 @@ export const faqPT = {
       question: "Como garantem que as automações funcionam de forma fiável?",
       answer:
         "Cada automação é testada antes de entrar em produção e monitorizada após o lançamento. Configuramos alertas para detetar falhas, registos de atividade para auditoria e ciclos de revisão para garantir que tudo continua a funcionar à medida que o negócio evolui.",
+    },
+    {
+      question: "Como posso implementar um chatbot inteligente no meu negócio?",
+      answer:
+        "O processo segue esta ordem: 1. Diagnóstico — identificamos os casos de uso mais valiosos, como atendimento, qualificação de leads ou suporte pós-venda. 2. Desenvolvimento — configuramos e treinamos o chatbot com o conteúdo, as regras e o tom de voz da sua marca. 3. Integração — ligamos a solução ao seu website, WhatsApp, Instagram ou CRM. 4. Entrada em operação — um chatbot básico pode ficar operacional em 2 a 4 semanas. Se quiser, podemos fazer uma demonstração gratuita e avaliar o melhor formato para o seu negócio.",
     },
 
     // ─── INVESTIMENTO & SUPORTE (31–34) ───────────────────────────
@@ -253,16 +268,6 @@ export const faqPT = {
       question: "Qual é a diferença entre usar o ChatGPT e contratar automação personalizada?",
       answer:
         "O ChatGPT é uma ferramenta genérica — responde a perguntas mas não conhece o seu negócio, os seus clientes nem os seus processos. A automação personalizada integra IA diretamente nos seus sistemas (CRM, email, ERP, website) e é treinada com os dados da sua empresa. O resultado: automação que trabalha 24/7 especificamente para os seus objetivos, não para os de toda a gente.",
-    },
-    {
-      question: "A Sapiente.AI trabalha com empresas em Portugal e no Brasil?",
-      answer:
-        "Sim. Temos clientes em Portugal (principalmente na região de Aveiro, Porto e Lisboa) e no Brasil. Trabalhamos 100% remotamente e online, pelo que a localização não é uma limitação. As nossas soluções são desenvolvidas em português europeu e brasileiro conforme o contexto do cliente.",
-    },
-    {
-      question: "Como posso implementar um chatbot inteligente no meu negócio?",
-      answer:
-        "O processo segue esta ordem: 1. Diagnóstico — identificamos os casos de uso mais valiosos, como atendimento, qualificação de leads ou suporte pós-venda. 2. Desenvolvimento — configuramos e treinamos o chatbot com o conteúdo, as regras e o tom de voz da sua marca. 3. Integração — ligamos a solução ao seu website, WhatsApp, Instagram ou CRM. 4. Entrada em operação — um chatbot básico pode ficar operacional em 2 a 4 semanas. Se quiser, podemos fazer uma demonstração gratuita e avaliar o melhor formato para o seu negócio.",
     },
   ],
 };

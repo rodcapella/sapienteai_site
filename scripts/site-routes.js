@@ -73,6 +73,8 @@ export function getIndexableRoutes() {
   pages.push(
     { lang: "pt", routePath: "/pt/quiz-ia", priority: "0.8", title: "Quiz IA", description: "Descubra onde a inteligência artificial pode gerar mais eficiência e crescimento no seu negócio.", heading: "Descubra o potencial da IA para o seu negócio" },
     { lang: "en", routePath: "/en/quiz-ai", priority: "0.8", title: "AI Quiz", description: "Discover where artificial intelligence can create more efficiency and growth in your business.", heading: "Discover the potential of AI for your business" },
+    { lang: "pt", routePath: "/pt/seo-aeo-validator", priority: "0.8", title: "Validador de SEO e AEO", description: "Analise gratuitamente sinais técnicos de SEO e a preparação do seu website para respostas e agentes de inteligência artificial.", heading: "Valide a visibilidade da sua marca" },
+    { lang: "en", routePath: "/en/seo-aeo-validator", priority: "0.8", title: "SEO and AEO Validator", description: "Analyze technical SEO signals and your website's readiness for AI answers and agents with a free preliminary assessment.", heading: "Assess your brand visibility" },
   );
 
   const articles = LANGUAGES.flatMap((lang) => parseBlogArticles(lang).map((article) => ({
@@ -93,6 +95,7 @@ export function getIndexableRoutes() {
 
 export function alternatePath(route, language) {
   if (route.routePath === "/pt/quiz-ia" || route.routePath === "/en/quiz-ai") return language === "pt" ? "/pt/quiz-ia" : "/en/quiz-ai";
+  if (route.routePath.endsWith("/seo-aeo-validator")) return `/${language}/seo-aeo-validator`;
   if (route.schemaType === "BlogPosting" && route.article?.slugs) return `/${language}/blog/${route.article.slugs[language]}`;
   return route.routePath.replace(/^\/(pt|en)(?=\/|$)/, `/${language}`);
 }

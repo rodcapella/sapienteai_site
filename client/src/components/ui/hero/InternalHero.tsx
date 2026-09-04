@@ -27,7 +27,7 @@ export function InternalHero({
   highlight,
   subtitle,
   label,
-  image = "/media/bg/bg_hero.webp",
+  image = "/media/bg/bg_hero-1600.webp",
   imageSrcSet,
   imageSizes = "100vw",
   imageAlt = "Sapiente.AI",
@@ -50,10 +50,10 @@ export function InternalHero({
       <div className="absolute inset-0 bg-[var(--brand-night)]" aria-hidden="true">
         <img
           src={image}
-          srcSet={imageSrcSet || (image === "/media/bg/bg_hero.webp"
-            ? "/media/bg/bg_hero-960.webp 960w, /media/bg/bg_hero-1600.webp 1600w, /media/bg/bg_hero.webp 1618w"
+          srcSet={imageSrcSet || (image === "/media/bg/bg_hero-1600.webp"
+            ? "/media/bg/bg_hero-768.webp 768w, /media/bg/bg_hero-1600.webp 1600w"
             : undefined)}
-          sizes={imageSrcSet || image === "/media/bg/bg_hero.webp" ? imageSizes : undefined}
+          sizes={imageSrcSet || image === "/media/bg/bg_hero-1600.webp" ? imageSizes : undefined}
           alt={imageAlt}
           className="internal-hero-image h-full w-full"
           style={{

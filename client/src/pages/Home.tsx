@@ -1,8 +1,10 @@
 ﻿import { Suspense, lazy, useState } from "react";
 
+import { Link } from "wouter";
+
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
-import { ArrowRight } from "@/lib/icons";
+import { ArrowRight, Brain, Search } from "@/lib/icons";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { QuizCTA } from "@/components/ui/cta/QuizCTA";
@@ -109,6 +111,23 @@ export default function Home() {
   const { lang } = useTranslation();
   const isPT = lang === "pt";
   const content = isPT ? homePT : homeEN;
+  const validatorCta = isPT
+    ? {
+        label: "Validador gratuito",
+        title: "O seu site está preparado para ser encontrado?",
+        description: "Descubra como está a sua presença no Google e nas respostas de inteligência artificial. Receba uma avaliação clara de SEO e AEO em poucos instantes.",
+        seo: "Melhor posicionamento no Google",
+        aeo: "Mais visibilidade nas respostas de IA",
+        button: "Testar o meu site",
+      }
+    : {
+        label: "Free validator",
+        title: "Is your website ready to be found?",
+        description: "Discover how your brand appears on Google and in AI-generated answers. Get a clear SEO and AEO assessment in just a few moments.",
+        seo: "Better positioning on Google",
+        aeo: "More visibility in AI answers",
+        button: "Test my website",
+      };
   const heroTitle = isPT ? (
     <>
       <span className="sm:hidden">
@@ -347,6 +366,43 @@ export default function Home() {
           textContent={bannerTextContent[index]}
         />
       ))}
+
+      <section className="content-atmosphere relative overflow-hidden bg-[var(--brand-night)] px-4 py-7 sm:px-6 sm:py-10 md:py-16" aria-labelledby="home-validator-title">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_25%,color-mix(in_srgb,var(--brand-cyan-bright)_20%,transparent),transparent_34%),radial-gradient(circle_at_88%_80%,color-mix(in_srgb,var(--brand-primary)_22%,transparent),transparent_35%)]" />
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[22px] border border-[var(--brand-cyan-bright)]/45 bg-white/[0.12] px-5 py-6 shadow-[0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:rounded-[26px] sm:px-6 sm:py-8 md:rounded-[30px] md:px-10 md:py-11 md:shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
+          <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[var(--brand-cyan-bright)]/20 blur-3xl" />
+          <div className="relative z-10 grid items-center gap-5 sm:gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
+            <div>
+              <p className="inline-flex rounded-full border border-[var(--brand-cyan-bright)]/35 bg-[var(--brand-cyan-bright)]/10 px-2.5 py-1 font-[var(--font-body)] text-[9px] font-black uppercase tracking-[0.18em] text-[var(--brand-cyan-bright)] sm:px-3 sm:py-1.5 sm:text-[10px] sm:tracking-[0.2em]">
+                {validatorCta.label}
+              </p>
+              <h2 id="home-validator-title" className="mt-3 max-w-3xl font-[var(--font-heading)] text-[1.55rem] font-black leading-[1.08] !text-white sm:mt-4 sm:text-[clamp(1.9rem,3.2vw,3rem)] sm:leading-[1.05]">
+                {validatorCta.title}
+              </h2>
+              <p className="mt-3 max-w-3xl font-[var(--font-body)] text-[13px] font-medium leading-relaxed !text-[#2cb4f2] sm:mt-4 sm:text-[15px] md:text-[16px]">
+                {validatorCta.description}
+              </p>
+              <div className="mt-4 grid max-w-3xl gap-2 font-[var(--font-body)] text-[12px] font-bold text-white/90 sm:mt-6 sm:grid-cols-2 sm:gap-3 sm:text-[13px]">
+                <span className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3">
+                  <Search className="h-4 w-4 shrink-0 text-[var(--brand-cyan-bright)] sm:h-5 sm:w-5" aria-hidden="true" />
+                  {validatorCta.seo}
+                </span>
+                <span className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3">
+                  <Brain className="h-4 w-4 shrink-0 text-[var(--brand-cyan-bright)] sm:h-5 sm:w-5" aria-hidden="true" />
+                  {validatorCta.aeo}
+                </span>
+              </div>
+            </div>
+            <Link
+              href={`/${lang}/seo-aeo-validator`}
+              className="neon-shimmer group inline-flex w-fit items-center justify-center gap-2.5 rounded-full border border-white/15 bg-[var(--brand-primary)] px-5 py-2.5 font-[var(--font-body)] text-[10px] font-extrabold uppercase tracking-[0.15em] text-white shadow-[0_12px_30px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent)] transition-all duration-500 hover:scale-[1.03] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent)] active:scale-95 sm:gap-3 sm:px-6 sm:py-3 sm:text-[11px] sm:tracking-[0.16em] md:px-8 md:py-4 md:text-[12px]"
+            >
+              {validatorCta.button}
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
       
       <QuizCTA />
       <FinalCTA 
