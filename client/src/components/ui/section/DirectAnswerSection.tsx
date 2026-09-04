@@ -6,7 +6,7 @@ type DirectAnswer = {
 type DirectAnswerSectionProps = {
   label: string;
   title: string;
-  answers: DirectAnswer[];
+  answers: readonly DirectAnswer[];
 };
 
 export function DirectAnswerSection({ label, title, answers }: DirectAnswerSectionProps) {

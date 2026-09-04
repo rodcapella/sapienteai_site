@@ -2,6 +2,8 @@
 
 User-agent: *
 Allow: /
+Allow: /pt/seo-aeo-validator
+Allow: /en/seo-aeo-validator
 Disallow: /admin
 Disallow: /private
 Disallow: /.env
@@ -44,6 +46,10 @@ Allow: /
 Sitemap: https://www.sapienteai.com/sitemap.xml
 
 # AI and agent discovery
+# Free SEO and AEO Validator:
+# https://www.sapienteai.com/en/seo-aeo-validator
+# Validador de SEO e AEO gratuito:
+# https://www.sapienteai.com/pt/seo-aeo-validator
 # Concise company and website context:
 # https://www.sapienteai.com/llms.txt
 # Extended machine-readable context:

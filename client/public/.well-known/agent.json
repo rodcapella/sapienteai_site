@@ -23,6 +23,14 @@
     "sitemap": "https://www.sapienteai.com/sitemap.xml",
     "robots": "https://www.sapienteai.com/robots.txt"
   },
+  "featured_resource": {
+    "name": "SEO and AEO Validator",
+    "description": "Free online tool providing separate SEO and AEO scores for website visibility in search engines and AI-generated answers.",
+    "urls": {
+      "en": "https://www.sapienteai.com/en/seo-aeo-validator",
+      "pt": "https://www.sapienteai.com/pt/seo-aeo-validator"
+    }
+  },
   "content_negotiation": {
     "media_type": "text/markdown",
     "header": "Accept: text/markdown"
@@ -40,6 +48,8 @@
     "digital-marketing",
     "seo",
     "geo",
-    "aeo"
+    "aeo",
+    "seo-aeo-validator",
+    "website-visibility-assessment"
   ]
 }

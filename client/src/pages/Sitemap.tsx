@@ -101,6 +101,11 @@ export default function Sitemap() {
       links: [
         { title: l.blog[0], description: l.blog[1], href: makeLink(lang, "/blog") },
         { title: l.faq[0], description: l.faq[1], href: makeLink(lang, "/faq") },
+        {
+          title: lang === "pt" ? "Validador de SEO e AEO" : "SEO and AEO Validator",
+          description: lang === "pt" ? "Avaliação online gratuita com scores separados de SEO e AEO." : "Free online assessment with separate SEO and AEO scores.",
+          href: makeLink(lang, "/seo-aeo-validator"),
+        },
         { title: l.quiz[0], description: l.quiz[1], href: quizHref },
       ],
     },

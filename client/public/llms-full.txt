@@ -18,6 +18,15 @@ Sapiente.AI combines strategy, artificial intelligence and execution to help org
 - Digital marketing, content and performance campaigns
 - SEO, GEO and AEO strategy
 
+## SEO and AEO Validator
+
+Sapiente.AI provides a free [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator), also available in Portuguese as [Validador de SEO e AEO](https://www.sapienteai.com/pt/seo-aeo-validator). It measures two independent dimensions:
+
+- SEO score: technical readiness to be crawled, understood and displayed by Google and other search engines.
+- AEO score: content and technical readiness to be understood and used by ChatGPT, Google AI, Perplexity and other AI answer systems.
+- Public access: free score-based preliminary assessment.
+- Detailed assessment: available from Sapiente.AI as a professional diagnostic and improvement plan.
+
 ## Canonical public pages
 
 - [Inteligência Artificial Aplicada ao seu Negócio](https://www.sapienteai.com/pt): Inteligência artificial, automação, dados, websites e marketing digital orientados ao crescimento de empresas.
@@ -46,8 +55,8 @@ Sapiente.AI combines strategy, artificial intelligence and execution to help org
 - [Generative AI Policy](https://www.sapienteai.com/en/generative-ai-policy): Principles for responsible and transparent use of generative artificial intelligence.
 - [Quiz IA](https://www.sapienteai.com/pt/quiz-ia): Descubra onde a inteligência artificial pode gerar mais eficiência e crescimento no seu negócio.
 - [AI Quiz](https://www.sapienteai.com/en/quiz-ai): Discover where artificial intelligence can create more efficiency and growth in your business.
-- [Validador de SEO e AEO](https://www.sapienteai.com/pt/seo-aeo-validator): Analise gratuitamente sinais técnicos de SEO e a preparação do seu website para respostas e agentes de inteligência artificial.
-- [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): Analyze technical SEO signals and your website's readiness for AI answers and agents with a free preliminary assessment.
+- [Validador de SEO e AEO Gratuito](https://www.sapienteai.com/pt/seo-aeo-validator): Use o Validador de SEO e AEO gratuito da Sapiente.AI para medir a visibilidade do seu website no Google e a preparação para respostas de IA.
+- [Free SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): Use Sapiente.AI's free SEO and AEO Validator to assess your website's Google visibility and readiness for AI-generated answers.
 
 ## Published articles
 

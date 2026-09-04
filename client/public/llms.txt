@@ -41,7 +41,7 @@ Portuguese service overview: [Serviços da Sapiente.AI](https://www.sapienteai.c
 
 ## Products and projects
 
-- [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): free preliminary assessment of search visibility and readiness for AI answers and agents. [Portuguese version](https://www.sapienteai.com/pt/seo-aeo-validator).
+- [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): free online website validator that provides separate SEO and AEO scores for Google visibility and readiness for AI-generated answers. [Portuguese version — Validador de SEO e AEO](https://www.sapienteai.com/pt/seo-aeo-validator).
 - Hoje em SJM: a cultural calendar dedicated to São João da Madeira, currently in final testing.
 - Specialized item exchange: a circular-economy platform currently in development.
 
@@ -67,6 +67,10 @@ Sapiente.AI primarily works with small and medium-sized businesses and professio
 
 Use contacto@sapienteai.com, call or message +351 910 567 575, or use the contact form on the official website.
 
+### What is the Sapiente.AI SEO and AEO Validator?
+
+The [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator) is a free online tool created by Sapiente.AI. It gives separate scores for a website's technical search readiness and its ability to be understood by AI answer systems. The [Portuguese validator](https://www.sapienteai.com/pt/seo-aeo-validator) is available as Validador de SEO e AEO.
+
 ## Main Portuguese pages
 
 - [Inteligência Artificial Aplicada ao seu Negócio](https://www.sapienteai.com/pt): Inteligência artificial, automação, dados, websites e marketing digital orientados ao crescimento de empresas.
@@ -75,7 +79,7 @@ Use contacto@sapienteai.com, call or message +351 910 567 575, or use the contac
 - [Projetos](https://www.sapienteai.com/pt/projects): Conheça os produtos digitais em desenvolvimento da Sapiente.AI.
 - [FAQ | Respostas sobre IA, automação e serviços digitais](https://www.sapienteai.com/pt/faq): Encontre respostas sobre os serviços da Sapiente.AI, modelo de trabalho, automação e inteligência artificial aplicada.
 - [Blog](https://www.sapienteai.com/pt/blog): Artigos sobre inteligência artificial, automação, dados, tecnologia e crescimento digital.
-- [Validador de SEO e AEO](https://www.sapienteai.com/pt/seo-aeo-validator): Analise gratuitamente sinais técnicos de SEO e a preparação do seu website para respostas e agentes de inteligência artificial.
+- [Validador de SEO e AEO Gratuito](https://www.sapienteai.com/pt/seo-aeo-validator): Use o Validador de SEO e AEO gratuito da Sapiente.AI para medir a visibilidade do seu website no Google e a preparação para respostas de IA.
 
 ## Main English pages
 
@@ -85,7 +89,7 @@ Use contacto@sapienteai.com, call or message +351 910 567 575, or use the contac
 - [Projects](https://www.sapienteai.com/en/projects): Discover the digital products currently being developed by Sapiente.AI.
 - [FAQ | AI, automation and digital services answers](https://www.sapienteai.com/en/faq): Find answers about Sapiente.AI services, delivery model, automation and applied artificial intelligence.
 - [Blog](https://www.sapienteai.com/en/blog): Articles about artificial intelligence, automation, data, technology and digital growth.
-- [SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): Analyze technical SEO signals and your website's readiness for AI answers and agents with a free preliminary assessment.
+- [Free SEO and AEO Validator](https://www.sapienteai.com/en/seo-aeo-validator): Use Sapiente.AI's free SEO and AEO Validator to assess your website's Google visibility and readiness for AI-generated answers.
 
 ## Published insights
 

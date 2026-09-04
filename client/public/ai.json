@@ -149,7 +149,29 @@
     {
       "name": "SEO and AEO Validator",
       "status": "launched",
-      "description": "Free preliminary assessment of technical SEO signals and readiness for AI answers and agents.",
+      "alternate_names": [
+        "Validador de SEO e AEO",
+        "Free SEO Validator",
+        "SEO and AEO Analyzer"
+      ],
+      "description": "Free online website validator providing separate SEO and AEO scores for Google visibility and readiness for AI-generated answers.",
+      "category": "WebApplication",
+      "access": "free",
+      "keywords": [
+        "SEO and AEO validator",
+        "Validador de SEO e AEO",
+        "free SEO validator",
+        "online SEO analysis",
+        "AEO analysis",
+        "Google visibility",
+        "AI search optimization"
+      ],
+      "features": [
+        "SEO score",
+        "AEO score",
+        "website search visibility assessment",
+        "AI answer readiness assessment"
+      ],
       "urls": {
         "pt": "https://www.sapienteai.com/pt/seo-aeo-validator",
         "en": "https://www.sapienteai.com/en/seo-aeo-validator"
@@ -372,15 +394,15 @@
     },
     {
       "language": "pt-PT",
-      "title": "Validador de SEO e AEO",
+      "title": "Validador de SEO e AEO Gratuito",
       "url": "https://www.sapienteai.com/pt/seo-aeo-validator",
-      "description": "Analise gratuitamente sinais técnicos de SEO e a preparação do seu website para respostas e agentes de inteligência artificial."
+      "description": "Use o Validador de SEO e AEO gratuito da Sapiente.AI para medir a visibilidade do seu website no Google e a preparação para respostas de IA."
     },
     {
       "language": "en-US",
-      "title": "SEO and AEO Validator",
+      "title": "Free SEO and AEO Validator",
       "url": "https://www.sapienteai.com/en/seo-aeo-validator",
-      "description": "Analyze technical SEO signals and your website's readiness for AI answers and agents with a free preliminary assessment."
+      "description": "Use Sapiente.AI's free SEO and AEO Validator to assess your website's Google visibility and readiness for AI-generated answers."
     }
   ],
   "entity_signals": {

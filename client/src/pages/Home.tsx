@@ -118,7 +118,7 @@ export default function Home() {
         description: "Descubra como está a sua presença no Google e nas respostas de inteligência artificial. Receba uma avaliação clara de SEO e AEO em poucos instantes.",
         seo: "Melhor posicionamento no Google",
         aeo: "Mais visibilidade nas respostas de IA",
-        button: "Testar o meu site",
+        button: "Testar SEO e AEO",
       }
     : {
         label: "Free validator",
@@ -126,7 +126,7 @@ export default function Home() {
         description: "Discover how your brand appears on Google and in AI-generated answers. Get a clear SEO and AEO assessment in just a few moments.",
         seo: "Better positioning on Google",
         aeo: "More visibility in AI answers",
-        button: "Test my website",
+        button: "Test SEO and AEO",
       };
   const heroTitle = isPT ? (
     <>

@@ -74,8 +74,48 @@ function replaceMeta(html, attribute, name, value) {
   return expression.test(html) ? html.replace(expression, tag) : html.replace("</head>", `  ${tag}\n  </head>`);
 }
 
+function validatorAnswers(lang) {
+  return lang === "pt"
+    ? [
+        ["O que é o Validador de SEO e AEO?", "É uma ferramenta online gratuita da Sapiente.AI que atribui scores separados à presença do website nos motores de pesquisa e à sua preparação para respostas geradas por inteligência artificial."],
+        ["O que o score de SEO indica?", "Resume a capacidade técnica do website para ser rastreado, compreendido e apresentado em pesquisas relevantes no Google e noutros motores de busca."],
+        ["O que o score de AEO indica?", "Mostra se o conteúdo e os sinais do website ajudam sistemas como ChatGPT, Google AI e Perplexity a compreender e utilizar a informação da marca."],
+      ]
+    : [
+        ["What is the SEO and AEO Validator?", "It is a free online tool from Sapiente.AI that provides separate scores for a website's search presence and its readiness for AI-generated answers."],
+        ["What does the SEO score indicate?", "It summarizes the website's technical ability to be crawled, understood, and shown for relevant searches on Google and other search engines."],
+        ["What does the AEO score indicate?", "It shows whether the website's content and signals help systems such as ChatGPT, Google AI, and Perplexity understand and use the brand's information."],
+      ];
+}
+
 function routeSchema(route) {
   const url = `${SITE_ORIGIN}${route.routePath}`;
+  if (route.routePath.endsWith("/seo-aeo-validator")) {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage", "@id": `${url}#webpage`, url, name: route.title, description: route.description,
+          inLanguage: route.lang === "pt" ? "pt-PT" : "en-US", isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+          about: { "@id": `${url}#webapplication` }, mainEntity: { "@id": `${url}#webapplication` },
+        },
+        {
+          "@type": "WebApplication", "@id": `${url}#webapplication`,
+          name: route.lang === "pt" ? "Validador de SEO e AEO" : "SEO and AEO Validator",
+          alternateName: route.lang === "pt" ? ["Validador SEO gratuito", "Analisador de SEO e AEO"] : ["Free SEO Validator", "SEO and AEO Analyzer"],
+          url, description: route.description, applicationCategory: "BusinessApplication", applicationSubCategory: "SEO and AEO analysis tool",
+          operatingSystem: "Web", browserRequirements: "Requires a modern web browser", inLanguage: route.lang === "pt" ? "pt-PT" : "en-US",
+          isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
+          provider: { "@id": `${SITE_ORIGIN}/#organization` },
+          featureList: route.lang === "pt" ? ["Score de SEO", "Score de AEO", "Análise online gratuita"] : ["SEO score", "AEO score", "Free online assessment"],
+        },
+        {
+          "@type": "FAQPage", "@id": `${url}#faq`,
+          mainEntity: validatorAnswers(route.lang).map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })),
+        },
+      ],
+    };
+  }
   if (route.schemaType === "BlogPosting") {
     return {
       "@context": "https://schema.org",
@@ -169,13 +209,14 @@ function staticContent(route) {
           ["Does AI replace the team?", "Not necessarily. Sapiente.AI automates repetitive work while keeping people in control of important decisions."],
         ]
       : [];
+  const routeAnswers = route.routePath.endsWith("/seo-aeo-validator") ? validatorAnswers(route.lang) : homeAnswers;
   return `<main id="prerendered-content" data-prerendered="true" hidden aria-hidden="true">
     <article>
       <h1>${escapeHtml(route.heading)}</h1>
       ${route.schemaType === "FAQPage" ? "" : `<section><h2>${escapeHtml(overviewHeading)}</h2><p>${escapeHtml(route.description)}</p></section>`}
       ${route.schemaType === "FAQPage" ? `<p>${escapeHtml(route.description)}</p>` : ""}
       ${route.schemaType === "BlogPosting" ? `<p>${escapeHtml(route.article.excerpt)}</p><p>${escapeHtml(route.article.author)} · <time datetime="${escapeHtml(route.article.date)}">${escapeHtml(route.article.date)}</time></p>${route.article.sourceUrl ? `<p>${route.lang === "pt" ? "Publicado originalmente em" : "Originally published by"} <a href="${escapeHtml(route.article.sourceUrl)}">${escapeHtml(route.article.sourceName)}</a></p>` : ""}` : ""}
-      ${homeAnswers.map(([question, answer]) => `<section><h3>${escapeHtml(question)}</h3><p>${escapeHtml(answer)}</p></section>`).join("")}
+      ${routeAnswers.map(([question, answer]) => `<section><h3>${escapeHtml(question)}</h3><p>${escapeHtml(answer)}</p></section>`).join("")}
       ${route.schemaType === "FAQPage" ? route.faqItems.map((item) => `<section><h2>${escapeHtml(item.question)}</h2><p>${escapeHtml(item.answer)}</p></section>`).join("") : ""}
     </article>
     <nav aria-label="${route.lang === "pt" ? "Navegação principal" : "Main navigation"}"><ul>${navigation.map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join("")}</ul></nav>
@@ -198,6 +239,13 @@ function routeMarkdown(route) {
     lines.push("", "## Questions and answers", "");
     for (const item of route.faqItems) lines.push(`### ${item.question}`, "", item.answer, "");
   }
+  if (route.routePath.endsWith("/seo-aeo-validator")) {
+    lines.push("", route.lang === "pt" ? "## Sobre o Validador de SEO e AEO" : "## About the SEO and AEO Validator", "");
+    for (const [question, answer] of validatorAnswers(route.lang)) lines.push(`### ${question}`, "", answer, "");
+    lines.push(route.lang === "pt"
+      ? "A ferramenta apresenta gratuitamente scores separados de SEO e AEO. A análise detalhada e o plano de melhoria podem ser solicitados à Sapiente.AI."
+      : "The tool provides separate SEO and AEO scores free of charge. A detailed assessment and improvement plan can be requested from Sapiente.AI.");
+  }
   if (route.schemaType === "BlogPosting") {
     lines.push("", `- Author: ${route.article.author || "Sapiente.AI"}`, `- Published: ${route.article.date}`, "", route.article.content || route.article.excerpt);
     if (route.article.sourceUrl) lines.push("", `Original publication: [${route.article.sourceName}](${route.article.sourceUrl})`);
@@ -208,7 +256,7 @@ function routeMarkdown(route) {
 
 function render(route) {
   const url = `${SITE_ORIGIN}${route.routePath}`;
-  const title = formattedTitle(route.title);
+  const title = route.routePath.endsWith("/seo-aeo-validator") ? `${route.title} | Sapiente.AI` : formattedTitle(route.title);
   const image = absoluteImage(route.image);
   let html = baseHtml
     .replace(/\s*<link rel="modulepreload" href="\/assets\/[^"]+\.js" \/>/g, "")
@@ -229,7 +277,7 @@ function render(route) {
   }
 
   for (const [attribute, name, value] of [
-    ["name", "description", route.description], ["name", "keywords", route.article?.keywords || "artificial intelligence, automation, digital transformation, Sapiente.AI"], ["name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"],
+    ["name", "description", route.description], ["name", "keywords", route.keywords || route.article?.keywords || "artificial intelligence, automation, digital transformation, Sapiente.AI"], ["name", "robots", "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"],
     ["property", "og:title", title], ["property", "og:description", route.description], ["property", "og:url", url], ["property", "og:type", route.schemaType === "BlogPosting" ? "article" : "website"], ["property", "og:image", image],
     ["property", "og:locale", route.lang === "pt" ? "pt_PT" : "en_US"], ["property", "og:locale:alternate", route.lang === "pt" ? "en_US" : "pt_PT"],
     ["name", "twitter:title", title], ["name", "twitter:description", route.description], ["name", "twitter:url", url], ["name", "twitter:image", image], ["name", "twitter:card", "summary_large_image"],

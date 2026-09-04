@@ -52,7 +52,7 @@ Portuguese service overview: [Serviços da Sapiente.AI](${SITE_ORIGIN}/pt/servic
 
 ## Products and projects
 
-- [SEO and AEO Validator](${SITE_ORIGIN}/en/seo-aeo-validator): free preliminary assessment of search visibility and readiness for AI answers and agents. [Portuguese version](${SITE_ORIGIN}/pt/seo-aeo-validator).
+- [SEO and AEO Validator](${SITE_ORIGIN}/en/seo-aeo-validator): free online website validator that provides separate SEO and AEO scores for Google visibility and readiness for AI-generated answers. [Portuguese version — Validador de SEO e AEO](${SITE_ORIGIN}/pt/seo-aeo-validator).
 - Hoje em SJM: a cultural calendar dedicated to São João da Madeira, currently in final testing.
 - Specialized item exchange: a circular-economy platform currently in development.
 
@@ -77,6 +77,10 @@ Sapiente.AI primarily works with small and medium-sized businesses and professio
 ### How can someone contact Sapiente.AI?
 
 Use contacto@sapienteai.com, call or message +351 910 567 575, or use the contact form on the official website.
+
+### What is the Sapiente.AI SEO and AEO Validator?
+
+The [SEO and AEO Validator](${SITE_ORIGIN}/en/seo-aeo-validator) is a free online tool created by Sapiente.AI. It gives separate scores for a website's technical search readiness and its ability to be understood by AI answer systems. The [Portuguese validator](${SITE_ORIGIN}/pt/seo-aeo-validator) is available as Validador de SEO e AEO.
 
 ## Main Portuguese pages
 
@@ -133,6 +137,15 @@ Sapiente.AI combines strategy, artificial intelligence and execution to help org
 - Digital marketing, content and performance campaigns
 - SEO, GEO and AEO strategy
 
+## SEO and AEO Validator
+
+Sapiente.AI provides a free [SEO and AEO Validator](${SITE_ORIGIN}/en/seo-aeo-validator), also available in Portuguese as [Validador de SEO e AEO](${SITE_ORIGIN}/pt/seo-aeo-validator). It measures two independent dimensions:
+
+- SEO score: technical readiness to be crawled, understood and displayed by Google and other search engines.
+- AEO score: content and technical readiness to be understood and used by ChatGPT, Google AI, Perplexity and other AI answer systems.
+- Public access: free score-based preliminary assessment.
+- Detailed assessment: available from Sapiente.AI as a professional diagnostic and improvement plan.
+
 ## Canonical public pages
 
 ${linkList(institutional)}
@@ -170,9 +183,17 @@ const manifest = {
     sitemap: `${SITE_ORIGIN}/sitemap.xml`,
     robots: `${SITE_ORIGIN}/robots.txt`,
   },
+  featured_resource: {
+    name: "SEO and AEO Validator",
+    description: "Free online tool providing separate SEO and AEO scores for website visibility in search engines and AI-generated answers.",
+    urls: {
+      en: `${SITE_ORIGIN}/en/seo-aeo-validator`,
+      pt: `${SITE_ORIGIN}/pt/seo-aeo-validator`,
+    },
+  },
   content_negotiation: { media_type: "text/markdown", header: "Accept: text/markdown" },
   content_signals: { ai_train: false, search: true, ai_input: true },
-  capabilities: ["applied-ai", "automation", "data-analytics", "web-development", "digital-marketing", "seo", "geo", "aeo"],
+  capabilities: ["applied-ai", "automation", "data-analytics", "web-development", "digital-marketing", "seo", "geo", "aeo", "seo-aeo-validator", "website-visibility-assessment"],
 };
 
 const aiProfile = {
@@ -252,7 +273,12 @@ const aiProfile = {
     {
       name: "SEO and AEO Validator",
       status: "launched",
-      description: "Free preliminary assessment of technical SEO signals and readiness for AI answers and agents.",
+      alternate_names: ["Validador de SEO e AEO", "Free SEO Validator", "SEO and AEO Analyzer"],
+      description: "Free online website validator providing separate SEO and AEO scores for Google visibility and readiness for AI-generated answers.",
+      category: "WebApplication",
+      access: "free",
+      keywords: ["SEO and AEO validator", "Validador de SEO e AEO", "free SEO validator", "online SEO analysis", "AEO analysis", "Google visibility", "AI search optimization"],
+      features: ["SEO score", "AEO score", "website search visibility assessment", "AI answer readiness assessment"],
       urls: { pt: `${SITE_ORIGIN}/pt/seo-aeo-validator`, en: `${SITE_ORIGIN}/en/seo-aeo-validator` },
     },
     { name: "Hoje em SJM", status: "final testing", description: "Cultural calendar dedicated to São João da Madeira." },

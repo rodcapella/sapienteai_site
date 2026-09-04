@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FinalCTA } from "@/components/ui/cta/FinalCTA";
 import { InternalHero } from "@/components/ui/hero/InternalHero";
 import { Reveal } from "@/components/ui/motion/Reveal";
+import { DirectAnswerSection } from "@/components/ui/section/DirectAnswerSection";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useSEOHead } from "@/hooks/useSEOHead";
 import { AlertCircle, ArrowRight, Brain, Check, CheckCircle2, Globe, LoaderCircle, RotateCcw, Search } from "@/lib/icons";
@@ -32,11 +33,13 @@ const selectableTypes: ValidationType[] = ["seo", "aeo"];
 
 const copy = {
   pt: {
-    seoTitle: "Validador de SEO e AEO - Sapiente.AI",
+    seoTitle: "Validador de SEO e AEO Gratuito | Sapiente.AI",
+    seoDescription: "Use o Validador de SEO e AEO gratuito da Sapiente.AI para medir a visibilidade do seu website no Google e a preparação para respostas de IA.",
+    keywords: "validador de SEO e AEO, validador SEO gratuito, análise SEO online, teste SEO website, análise AEO, visibilidade no Google, otimização para inteligência artificial",
     hero: {
       label: "Ferramenta gratuita",
-      title: "Valide a visibilidade",
-      highlight: "da sua marca.",
+      title: "Validador de",
+      highlight: "SEO e AEO.",
       subtitle: "Faça um diagnóstico preliminar da presença da sua marca nos motores de pesquisa e nas respostas de inteligência artificial.",
     },
     form: {
@@ -101,6 +104,15 @@ const copy = {
       aeoTitle: "AEO: ser encontrado e recomendado pela IA",
       aeoText: "As pesquisas já não acontecem apenas no Google. Um AEO eficaz prepara o seu conteúdo para aparecer em respostas do ChatGPT, Google AI, Perplexity e outros assistentes, aumentando a visibilidade e a confiança na sua marca.",
     },
+    directAnswers: {
+      label: "SEO e inteligência artificial",
+      title: "Conheça o Validador de SEO e AEO",
+      answers: [
+        { question: "O que é o Validador de SEO e AEO?", answer: "É uma ferramenta online gratuita da Sapiente.AI que atribui scores separados à presença do website nos motores de pesquisa e à sua preparação para respostas geradas por inteligência artificial." },
+        { question: "O que o score de SEO indica?", answer: "O score de SEO resume a capacidade técnica do website para ser rastreado, compreendido e apresentado em pesquisas relevantes no Google e noutros motores de busca." },
+        { question: "O que o score de AEO indica?", answer: "O score de AEO mostra se o conteúdo e os sinais do website ajudam sistemas como ChatGPT, Google AI e Perplexity a compreender e utilizar a informação da marca." },
+      ],
+    },
     cta: {
       title: "Quer transformar este diagnóstico",
       highlight: "num plano real?",
@@ -109,11 +121,13 @@ const copy = {
     },
   },
   en: {
-    seoTitle: "SEO and AEO Validator - Sapiente.AI",
+    seoTitle: "Free SEO and AEO Validator | Sapiente.AI",
+    seoDescription: "Use Sapiente.AI's free SEO and AEO Validator to assess your website's Google visibility and readiness for AI-generated answers.",
+    keywords: "SEO and AEO validator, free SEO validator, online SEO analysis, website SEO test, AEO analysis, Google visibility, AI search optimization",
     hero: {
       label: "Free tool",
-      title: "Validate your brand",
-      highlight: "visibility.",
+      title: "SEO and AEO",
+      highlight: "Validator.",
       subtitle: "Run a preliminary assessment of your brand presence across search engines and AI-generated answers.",
     },
     form: {
@@ -178,6 +192,15 @@ const copy = {
       aeoTitle: "AEO: get found and recommended by AI",
       aeoText: "Search no longer happens only on Google. Effective AEO prepares your content to appear in answers from ChatGPT, Google AI, Perplexity, and other assistants, increasing your brand's visibility and credibility.",
     },
+    directAnswers: {
+      label: "SEO and artificial intelligence",
+      title: "Understand the SEO and AEO Validator",
+      answers: [
+        { question: "What is the SEO and AEO Validator?", answer: "It is a free online tool from Sapiente.AI that provides separate scores for a website's search presence and its readiness for AI-generated answers." },
+        { question: "What does the SEO score indicate?", answer: "The SEO score summarizes the website's technical ability to be crawled, understood, and shown for relevant searches on Google and other search engines." },
+        { question: "What does the AEO score indicate?", answer: "The AEO score shows whether the website's content and signals help systems such as ChatGPT, Google AI, and Perplexity understand and use the brand's information." },
+      ],
+    },
     cta: {
       title: "Want to turn this diagnosis",
       highlight: "into a real plan?",
@@ -217,10 +240,67 @@ export default function VisibilityValidator() {
 
   useSEOHead({
     title: text.seoTitle,
-    description: text.hero.subtitle,
+    description: text.seoDescription,
+    keywords: text.keywords,
     url: `https://www.sapienteai.com/${lang}/seo-aeo-validator`,
     type: "website",
     noindex: false,
+  }, [lang, text]);
+
+  useEffect(() => {
+    const pageUrl = `https://www.sapienteai.com/${lang}/seo-aeo-validator`;
+    const schema = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${pageUrl}#webpage`,
+          url: pageUrl,
+          name: text.seoTitle,
+          description: text.seoDescription,
+          inLanguage: lang === "pt" ? "pt-PT" : "en-US",
+          isPartOf: { "@id": "https://www.sapienteai.com/#website" },
+          about: { "@id": `${pageUrl}#webapplication` },
+          mainEntity: { "@id": `${pageUrl}#webapplication` },
+        },
+        {
+          "@type": "WebApplication",
+          "@id": `${pageUrl}#webapplication`,
+          name: lang === "pt" ? "Validador de SEO e AEO" : "SEO and AEO Validator",
+          alternateName: lang === "pt" ? ["Validador SEO gratuito", "Analisador de SEO e AEO"] : ["Free SEO Validator", "SEO and AEO Analyzer"],
+          url: pageUrl,
+          description: text.seoDescription,
+          applicationCategory: "BusinessApplication",
+          applicationSubCategory: "SEO and AEO analysis tool",
+          operatingSystem: "Web",
+          browserRequirements: "Requires a modern web browser",
+          inLanguage: lang === "pt" ? "pt-PT" : "en-US",
+          isAccessibleForFree: true,
+          offers: { "@type": "Offer", price: "0", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
+          provider: { "@id": "https://www.sapienteai.com/#organization" },
+          featureList: lang === "pt" ? ["Score de SEO", "Score de AEO", "Análise online gratuita"] : ["SEO score", "AEO score", "Free online assessment"],
+        },
+        {
+          "@type": "FAQPage",
+          "@id": `${pageUrl}#faq`,
+          mainEntity: text.directAnswers.answers.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: item.answer },
+          })),
+        },
+      ],
+    };
+    const id = "visibility-validator-schema";
+    let element = document.getElementById(id) as HTMLScriptElement | null;
+    if (!element) {
+      element = document.createElement("script");
+      element.id = id;
+      element.type = "application/ld+json";
+      document.head.appendChild(element);
+    }
+    element.textContent = JSON.stringify(schema);
+    return () => document.getElementById(id)?.remove();
   }, [lang, text]);
 
   const enabledTypes = (Object.keys(selectedTypes) as ValidationType[]).filter((type) => selectedTypes[type]);
@@ -546,6 +626,8 @@ export default function VisibilityValidator() {
           </Reveal>
         </div>
       </section>
+
+      <DirectAnswerSection {...text.directAnswers} />
 
       <FinalCTA
         title={resultCTA.title}
