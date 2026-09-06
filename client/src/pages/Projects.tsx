@@ -95,7 +95,6 @@ export default function Projects() {
               "@type": "ListItem",
               position: 2,
               name: isEN ? "Projects" : "Projetos",
-              item: pageUrl,
             },
           ],
         },

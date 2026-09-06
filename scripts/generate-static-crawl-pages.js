@@ -88,8 +88,51 @@ function validatorAnswers(lang) {
       ];
 }
 
+function breadcrumbSchema(route, url) {
+  if (route.routePath === "/pt" || route.routePath === "/en") return undefined;
+
+  const isPT = route.lang === "pt";
+  const items = [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: isPT ? "Início" : "Home",
+      item: `${SITE_ORIGIN}/${route.lang}`,
+    },
+  ];
+
+  if (route.schemaType === "BlogPosting") {
+    items.push({
+      "@type": "ListItem",
+      position: items.length + 1,
+      name: "Blog",
+      item: `${SITE_ORIGIN}/${route.lang}/blog`,
+    });
+  } else if (route.routePath.endsWith("/seo-aeo-validator")) {
+    items.push({
+      "@type": "ListItem",
+      position: items.length + 1,
+      name: isPT ? "Projetos" : "Projects",
+      item: `${SITE_ORIGIN}/${route.lang}/projects`,
+    });
+  }
+
+  items.push({
+    "@type": "ListItem",
+    position: items.length + 1,
+    name: route.heading || route.title,
+  });
+
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
+    itemListElement: items,
+  };
+}
+
 function routeSchema(route) {
   const url = `${SITE_ORIGIN}${route.routePath}`;
+  const breadcrumb = breadcrumbSchema(route, url);
   if (route.routePath.endsWith("/seo-aeo-validator")) {
     return {
       "@context": "https://schema.org",
@@ -98,6 +141,7 @@ function routeSchema(route) {
           "@type": "WebPage", "@id": `${url}#webpage`, url, name: route.title, description: route.description,
           inLanguage: route.lang === "pt" ? "pt-PT" : "en-US", isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
           about: { "@id": `${url}#webapplication` }, mainEntity: { "@id": `${url}#webapplication` },
+          breadcrumb: { "@id": `${url}#breadcrumb` },
         },
         {
           "@type": "WebApplication", "@id": `${url}#webapplication`,
@@ -113,6 +157,7 @@ function routeSchema(route) {
           "@type": "FAQPage", "@id": `${url}#faq`,
           mainEntity: validatorAnswers(route.lang).map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })),
         },
+        breadcrumb,
       ],
     };
   }
@@ -130,6 +175,7 @@ function routeSchema(route) {
           isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
           about: { "@id": `${SITE_ORIGIN}/#organization` },
           mainEntity: { "@id": `${url}#article` },
+          breadcrumb: { "@id": `${url}#breadcrumb` },
         },
         {
           "@type": "BlogPosting",
@@ -152,6 +198,7 @@ function routeSchema(route) {
           mainEntityOfPage: { "@id": `${url}#webpage` },
           isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
         },
+        breadcrumb,
       ],
     };
   }
@@ -186,7 +233,11 @@ function routeSchema(route) {
     name: item.question,
     acceptedAnswer: { "@type": "Answer", text: item.answer },
   }));
-  return common;
+  if (!breadcrumb) return common;
+  common.breadcrumb = { "@id": `${url}#breadcrumb` };
+  const commonNode = { ...common };
+  delete commonNode["@context"];
+  return { "@context": "https://schema.org", "@graph": [commonNode, breadcrumb] };
 }
 
 function staticContent(route) {

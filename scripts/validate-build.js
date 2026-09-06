@@ -39,13 +39,20 @@ for (const route of routes) {
   check(canonicalMatch === canonical, `Invalid canonical for ${route.routePath}: ${canonicalMatch || "missing"}`);
   check(h1Count === 1, `${route.routePath} has ${h1Count} H1 elements; expected 1`);
   check(schemaBlocks.length >= 3, `${route.routePath} is missing route-specific JSON-LD`);
+  const parsedSchemas = [];
   for (const [, json] of schemaBlocks) {
-    try { JSON.parse(json); } catch (error) { failures.push(`Invalid JSON-LD for ${route.routePath}: ${error.message}`); }
+    try { parsedSchemas.push(JSON.parse(json)); } catch (error) { failures.push(`Invalid JSON-LD for ${route.routePath}: ${error.message}`); }
+  }
+  if (localPath !== "/") {
+    const schemaNodes = parsedSchemas.flatMap((schema) => Array.isArray(schema?.["@graph"]) ? schema["@graph"] : [schema]);
+    const breadcrumb = schemaNodes.find((entity) => entity?.["@type"] === "BreadcrumbList" && entity?.["@id"] === `${canonical}#breadcrumb`);
+    const items = Array.isArray(breadcrumb?.itemListElement) ? breadcrumb.itemListElement : [];
+    check(items.length >= 2, `${route.routePath} must have a BreadcrumbList with at least two items`);
+    check(items.every((item, index) => item?.["@type"] === "ListItem" && item.position === index + 1 && Boolean(item.name)), `${route.routePath} has invalid breadcrumb items`);
+    check(items.slice(0, -1).every((item) => typeof item.item === "string" && item.item.startsWith(`${SITE_ORIGIN}/`)), `${route.routePath} has a breadcrumb level without an absolute URL`);
   }
   if (route.schemaType === "BlogPosting") {
-    const routeSchema = schemaBlocks
-      .map(([, json]) => { try { return JSON.parse(json); } catch { return null; } })
-      .find((schema) => Array.isArray(schema?.["@graph"]));
+    const routeSchema = parsedSchemas.find((schema) => Array.isArray(schema?.["@graph"]));
     const graph = routeSchema?.["@graph"] || [];
     const webPage = graph.find((entity) => entity?.["@type"] === "WebPage");
     const article = graph.find((entity) => entity?.["@type"] === "BlogPosting");
