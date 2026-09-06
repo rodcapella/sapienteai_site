@@ -60,7 +60,7 @@ Sapiente.AI provides a free [SEO and AEO Validator](https://www.sapienteai.com/e
 
 ## Published articles
 
-- [IA e produtividade: devolver tempo às pessoas](https://www.sapienteai.com/pt/blog/ia-deve-devolver-tempo-as-pessoas): Descubra como a IA e a automação libertam profissionais de tarefas repetitivas, aumentam a produtividade e preservam o julgamento humano.
+- [IA e produtividade: devolver tempo às pessoas](https://www.sapienteai.com/pt/blog/ai-should-give-time-back-to-people): Descubra como a IA e a automação libertam profissionais de tarefas repetitivas, aumentam a produtividade e preservam o julgamento humano.
 - [Sem dados de qualidade, não há IA que salve o negócio](https://www.sapienteai.com/pt/blog/without-quality-data-no-ai-can-save-the-business): Entenda por que qualidade e governação de dados são essenciais para empresas que pretendem usar inteligência artificial com confiança e gerar valor real.
 - [AI and Productivity: Giving Time Back to People](https://www.sapienteai.com/en/blog/ai-should-give-time-back-to-people): Learn how AI and automation free professionals from repetitive tasks, improve productivity, and preserve human judgment in business decisions.
 - [Without Quality Data, No AI Can Save the Business](https://www.sapienteai.com/en/blog/without-quality-data-no-ai-can-save-the-business): Learn why data quality and governance are essential for businesses that want to use artificial intelligence with confidence and create measurable value.

@@ -34,7 +34,7 @@ export const blogArticles: BlogArticle[] = [
   {
     id: '1',
     published: true,
-    slug: 'ia-deve-devolver-tempo-as-pessoas',
+    slug: 'ai-should-give-time-back-to-people',
     title: 'IA não deve substituir pessoas. Deve devolver tempo às pessoas.',
     excerpt: 'O verdadeiro potencial da Inteligência Artificial não está em substituir profissionais, mas em libertá-los de tarefas repetitivas para que possam aplicar experiência, criatividade e capacidade de decisão.',
     seoTitle: 'IA e produtividade: devolver tempo às pessoas',

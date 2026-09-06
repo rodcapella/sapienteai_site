@@ -9,6 +9,11 @@
     },
     { "source": "/blog", "destination": "/pt/blog", "permanent": true },
     {
+      "source": "/pt/blog/ia-deve-devolver-tempo-as-pessoas",
+      "destination": "/pt/blog/ai-should-give-time-back-to-people",
+      "permanent": true
+    },
+    {
       "source": "/pt/blog/sem-dados-de-qualidade-nao-ha-ia-que-salve-o-negocio",
       "destination": "/pt/blog/without-quality-data-no-ai-can-save-the-business",
       "permanent": true
