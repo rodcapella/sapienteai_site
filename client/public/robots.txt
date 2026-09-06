@@ -7,14 +7,12 @@ Allow: /en/seo-aeo-validator
 Disallow: /admin
 Disallow: /private
 Disallow: /.env
-Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
