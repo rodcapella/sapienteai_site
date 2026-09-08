@@ -55,7 +55,7 @@ function getHomeBannerSrc(lang: string, file: string) {
   return `${HOME_BANNER_BASE_PATH}/${folder}/${localizedFile}`;
 }
 
-function getResponsiveBannerSrc(src: string, width: 960 | 1440) {
+function getResponsiveBannerSrc(src: string, width: 480 | 768 | 960 | 1440) {
   return src.replace(/\.webp$/, `-${width}.webp`);
 }
 
@@ -73,14 +73,15 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
       <Reveal className="absolute inset-0">
         <img
           src={bannerSrc}
-          srcSet={`${getResponsiveBannerSrc(bannerSrc, 960)} 960w, ${getResponsiveBannerSrc(bannerSrc, 1440)} 1440w, ${bannerSrc} 1920w`}
+          srcSet={`${getResponsiveBannerSrc(bannerSrc, 480)} 480w, ${getResponsiveBannerSrc(bannerSrc, 768)} 768w, ${getResponsiveBannerSrc(bannerSrc, 960)} 960w, ${getResponsiveBannerSrc(bannerSrc, 1440)} 1440w, ${bannerSrc} 1920w`}
           sizes="100vw"
           alt=""
           aria-hidden="true"
           width="1920"
           height="700"
           className="h-full w-full object-contain"
-          loading="eager"
+          loading="lazy"
+          fetchPriority="low"
           decoding="async"
         />
       </Reveal>

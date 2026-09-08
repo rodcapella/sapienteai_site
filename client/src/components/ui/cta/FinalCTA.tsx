@@ -142,12 +142,25 @@ export function FinalCTA({
     return (
       <>
         <section className="final-cta relative min-h-[252px] w-full overflow-hidden bg-[var(--section-ice)] md:h-[450px]">
-          <img
-            src={computedBackgroundSrc}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover object-left md:object-center"
-          />
+          <picture className="absolute inset-0 block" aria-hidden="true">
+            {!backgroundSrc && (
+              <source media="(max-width: 767px)" srcSet="/media/bg/finalCTA/bg_finalCTA_home-mobile.webp" />
+            )}
+            <img
+              src={computedBackgroundSrc}
+              srcSet={!backgroundSrc
+                ? "/media/bg/finalCTA/bg_finalCTA_home-1440.webp 1440w, /media/bg/finalCTA/bg_finalCTA_home.webp 1920w"
+                : undefined}
+              sizes={!backgroundSrc ? "100vw" : undefined}
+              alt=""
+              width="1920"
+              height="450"
+              className="h-full w-full object-cover object-left md:object-center"
+              loading="lazy"
+              fetchPriority="low"
+              decoding="async"
+            />
+          </picture>
 
           <div className="absolute inset-0 z-10 flex flex-col items-center justify-end gap-3 px-6 pb-7 pt-28 text-center md:justify-center md:gap-4 md:py-0">
             <Reveal>

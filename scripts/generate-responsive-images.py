@@ -34,11 +34,23 @@ for language, names in banner_names.items():
     for name in names:
         source = ROOT / "banners" / language / name
         stem = source.stem
-        for width in (960, 1440):
+        for width in (480, 768, 960, 1440):
             resized_webp(source, source.with_name(f"{stem}-{width}.webp"), width)
 
-resized_webp(ROOT / "bg" / "bg_hero.webp", ROOT / "bg" / "bg_hero-960.webp", 960, 80)
-resized_webp(ROOT / "bg" / "bg_hero.webp", ROOT / "bg" / "bg_hero-1600.webp", 1600, 80)
+resized_webp(ROOT / "bg" / "bg_hero-1600.webp", ROOT / "bg" / "bg_hero-768.webp", 768, 70)
+
+final_cta_source = ROOT / "bg" / "finalCTA" / "bg_finalCTA_home.webp"
+resized_webp(final_cta_source, final_cta_source.with_name("bg_finalCTA_home-1440.webp"), 1440, 74)
+with Image.open(final_cta_source) as image:
+    mobile_aspect = 736 / 450
+    crop_width = round(image.height * mobile_aspect)
+    mobile_crop = image.crop((0, 0, min(crop_width, image.width), image.height))
+    mobile_crop.save(
+        final_cta_source.with_name("bg_finalCTA_home-mobile.webp"),
+        "WEBP",
+        quality=74,
+        method=6,
+    )
 
 for theme in ("claro", "escuro"):
     source = ROOT / "logos" / f"Logo_Sapiente_fundo_{theme}.webp"
