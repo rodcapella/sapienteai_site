@@ -1,0 +1,45 @@
+name: Sync SEO and AEO validator
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "api/visibility.ts"
+      - "client/src/pages/VisibilityValidator.tsx"
+      - "client/src/styles/visibilityValidator.css"
+      - "scripts/sync-validator-local.sh"
+      - ".github/workflows/sync-validator-local.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out Sapiente.AI website
+        uses: actions/checkout@v4
+
+      - name: Check out local validator repository
+        uses: actions/checkout@v4
+        with:
+          repository: rodcapella/sapienteai_validator_local
+          token: ${{ secrets.VALIDATOR_SYNC_TOKEN }}
+          path: validator-local
+
+      - name: Copy shared validator files
+        run: bash scripts/sync-validator-local.sh validator-local
+
+      - name: Commit and push when necessary
+        working-directory: validator-local
+        run: |
+          if git diff --quiet; then
+            echo "Validator repository is already synchronized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add api/visibility.ts client/src/pages/VisibilityValidator.tsx client/src/styles/visibilityValidator.css
+          git commit -m "sync validator from sapienteai_site"
+          git push

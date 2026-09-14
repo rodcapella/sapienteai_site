@@ -3,6 +3,7 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
+import { isValidatorRateLimited } from "./_validatorRateLimit.js";
 
 type ValidationType = "seo" | "aeo";
 type ValidationStatus = "found" | "partial" | "not-found";
@@ -19,33 +20,10 @@ type Result = {
 
 type PublicResult = Omit<Result, "details" | "checks">;
 
-const MAX_REQUESTS = 2;
-const WINDOW_MS = 2 * 60 * 60 * 1000;
 const MAX_HTML_BYTES = 1_500_000;
-const rateLimits = new Map<string, { count: number; resetAt: number }>();
-
-function clientIp(req: VercelRequest) {
-  const forwarded = req.headers["x-forwarded-for"];
-  return (Array.isArray(forwarded) ? forwarded[0] : forwarded?.split(",")[0])?.trim() || req.socket.remoteAddress || "unknown";
-}
-
-function isRateLimited(ip: string) {
-  const now = Date.now();
-  const entry = rateLimits.get(ip);
-  if (!entry || entry.resetAt <= now) {
-    rateLimits.set(ip, { count: 1, resetAt: now + WINDOW_MS });
-    return false;
-  }
-  entry.count += 1;
-  return entry.count > MAX_REQUESTS;
-}
 
 function canShowDetailedResults() {
   return process.env.NODE_ENV !== "production" && process.env.VERCEL_ENV !== "production";
-}
-
-function isProductionDeployment() {
-  return process.env.VERCEL_ENV === "production";
 }
 
 function publicResult(result: Result): PublicResult {
@@ -429,7 +407,7 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Cache-Control", "no-store");
   if (req.method !== "POST") return res.status(405).json({ error: "method_not_allowed" });
-  if (isProductionDeployment() && isRateLimited(clientIp(req))) return res.status(429).json({ error: "rate_limited" });
+  if (isValidatorRateLimited(req)) return res.status(429).json({ error: "rate_limited" });
   const { brandName, website, types, lang } = (req.body || {}) as { brandName?: unknown; website?: unknown; types?: unknown; lang?: unknown };
   if (typeof brandName !== "string" || !brandName.trim() || brandName.length > 120 || typeof website !== "string" || !website.trim() || website.length > 300) return res.status(400).json({ error: "invalid_input" });
   try {
