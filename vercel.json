@@ -1,6 +1,7 @@
 {
   "installCommand": "pnpm install --no-frozen-lockfile",
   "redirects": [
+    { "source": "/", "destination": "/pt", "permanent": true },
     {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "sapienteai-site.vercel.app" }],
@@ -24,15 +25,6 @@
     { "source": "/en/seo-geo-aeo-validator", "destination": "/en/seo-aeo-validator", "permanent": true }
   ],
   "rewrites": [
-    {
-      "source": "/",
-      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
-      "destination": "/pt/index.md"
-    },
-    {
-      "source": "/",
-      "destination": "/pt"
-    },
     {
       "source": "/pt",
       "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
