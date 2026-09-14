@@ -7,6 +7,7 @@
     "dev": "vite --host",
     "build": "node scripts/generate-sitemap.js && node scripts/generate-agent-discovery.js && vite build && node scripts/inline-entry-css.js && node scripts/add-subresource-integrity.js && node scripts/generate-static-crawl-pages.js && node scripts/validate-google-analytics.js && node scripts/validate-build.js",
     "test:build": "node scripts/validate-google-analytics.js && node scripts/validate-build.js",
+    "indexnow": "node scripts/submit-indexnow.js",
     "preview": "vite preview --host",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
