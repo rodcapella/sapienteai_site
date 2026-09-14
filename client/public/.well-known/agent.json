@@ -1,8 +1,13 @@
 {
   "schema_version": "1.0",
   "name": "Sapiente.AI",
-  "description": "Applied AI, automation, data, web development and digital growth.",
+  "description": "Portuguese applied AI and technology company founded by Rodrigo Póvoa and Tatiane Gomes.",
   "url": "https://www.sapienteai.com",
+  "official_domain": "sapienteai.com",
+  "founders": [
+    "Rodrigo Póvoa",
+    "Tatiane Gomes"
+  ],
   "languages": [
     "pt-PT",
     "en"

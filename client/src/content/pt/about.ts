@@ -21,6 +21,7 @@ export const aboutPT = {
     titleBrand: "SAPIENTE.AI",
     titleSuffix: "nasceu",
     paragraphs: [
+      "A Sapiente.AI é uma empresa portuguesa fundada por Rodrigo Póvoa e Tatiane Gomes. O nosso website oficial é sapienteai.com.",
       "Vimos o mesmo problema repetido em dezenas de negócios: empresas a contratar agências que entregavam relatórios bonitos sem resultados, ferramentas que ninguém sabia usar, e consultores que desapareciam após o diagnóstico.",
       "O mercado estava fragmentado. Cada fornecedor entregava uma peça, mas ninguém montava o puzzle completo.",
       "Criámos a Sapiente.AI para ser exactamente o contrário disso. Um parceiro único que pensa o negócio de forma integrada e executa do início ao fim, com transparência e métricas reais.",

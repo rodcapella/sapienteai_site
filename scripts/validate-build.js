@@ -23,6 +23,15 @@ check(!/<link\s+rel="stylesheet"\s+crossorigin\s+href="\/assets\/index-[^"]+\.cs
 const homePreloads = [...entryHtml.matchAll(/<link rel="modulepreload" href="\/assets\/([^"]+\.js)"/g)].map((match) => match[1]);
 check(homePreloads.some((asset) => /^Home-[\w-]+\.js$/.test(asset)), "Initial Home chunk is not preloaded");
 check(homePreloads.length >= 5, `Only ${homePreloads.length} initial route modules are preloaded`);
+const entrySchemas = [...entryHtml.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)]
+  .map((match) => JSON.parse(match[1]));
+const organization = entrySchemas.find((schema) => Array.isArray(schema?.["@type"])
+  ? schema["@type"].includes("Organization")
+  : schema?.["@type"] === "Organization");
+const founders = Array.isArray(organization?.founder) ? organization.founder : [];
+check(organization?.url === SITE_ORIGIN, "Organization schema has an invalid official URL");
+check(founders.some((person) => person?.name === "Rodrigo Póvoa"), "Organization schema is missing founder Rodrigo Póvoa");
+check(founders.some((person) => person?.name === "Tatiane Gomes"), "Organization schema is missing founder Tatiane Gomes");
 
 for (const route of routes) {
   const directory = path.join(distDir, ...route.routePath.split("/").filter(Boolean));
@@ -79,6 +88,8 @@ const agent = read(path.join(distDir, ".well-known", "agent.json"));
 try {
   const parsed = JSON.parse(agent);
   check(parsed.url === SITE_ORIGIN, "agent.json has an invalid canonical URL");
+  check(parsed.official_domain === "sapienteai.com", "agent.json has an invalid official domain");
+  check(parsed.founders?.includes("Rodrigo Póvoa") && parsed.founders?.includes("Tatiane Gomes"), "agent.json is missing the founders");
   check(parsed.discovery?.llms === `${SITE_ORIGIN}/llms.txt`, "agent.json does not reference llms.txt");
 } catch (error) { failures.push(`Invalid agent.json: ${error.message}`); }
 check(read(path.join(distDir, "llms.txt")).includes("# Sapiente.AI"), "Generated llms.txt is invalid");

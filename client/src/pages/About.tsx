@@ -359,7 +359,8 @@ export default function About() {
           "position": 1,
           "item": {
             "@type": "Person",
-            "name": "Rodrigo Póvoa",
+             "name": "Rodrigo Póvoa",
+             "@id": "https://www.sapienteai.com/#rodrigo-povoa",
             "jobTitle": isPT ? "Fundador e CTO" : "Founder and CTO",
             "worksFor": {
               "@type": "Organization",
@@ -378,7 +379,8 @@ export default function About() {
           "position": 2,
           "item": {
             "@type": "Person",
-            "name": "Tatiane Gomes",
+             "name": "Tatiane Gomes",
+             "@id": "https://www.sapienteai.com/#tatiane-gomes",
             "jobTitle": isPT ? "Co-fundadora" : "Co-founder",
             "worksFor": {
               "@type": "Organization",

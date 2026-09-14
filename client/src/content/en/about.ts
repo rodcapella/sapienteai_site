@@ -21,6 +21,7 @@
     titleBrand: "SAPIENTE.AI",
     titleSuffix: "was born",
     paragraphs: [
+      "Sapiente.AI is a Portuguese company founded by Rodrigo Póvoa and Tatiane Gomes. Our official website is sapienteai.com.",
       "We saw the same problem repeated across dozens of businesses: companies hiring agencies that delivered polished reports without results, tools nobody knew how to use, and consultants who disappeared after the diagnosis.",
       "The market was fragmented. Each vendor delivered a piece, but nobody assembled the full picture.",
       "We built Sapiente.AI to be exactly the opposite. A single partner that thinks about your business holistically and executes from start to finish, with full transparency and real metrics.",

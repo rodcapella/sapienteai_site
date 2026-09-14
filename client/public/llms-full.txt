@@ -2,9 +2,11 @@
 
 ## Identity
 
-Sapiente.AI combines strategy, artificial intelligence and execution to help organisations acquire customers, automate operations, improve decisions and create measurable digital growth.
+Sapiente.AI is a Portuguese technology and applied artificial intelligence company founded by Rodrigo Póvoa and Tatiane Gomes. It combines strategy, artificial intelligence and execution to help organisations acquire customers, automate operations, improve decisions and create measurable digital growth.
 
 - Official domain: https://www.sapienteai.com
+- Official domain identifier: sapienteai.com
+- Founders: Rodrigo Póvoa and Tatiane Gomes
 - Location: São João da Madeira, Aveiro, Portugal
 - Contact: contacto@sapienteai.com · +351 910 567 575
 - Primary languages: Portuguese (Portugal) and English

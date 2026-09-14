@@ -20,7 +20,7 @@ type Result = {
 type PublicResult = Omit<Result, "details" | "checks">;
 
 const MAX_REQUESTS = 2;
-const WINDOW_MS = 10 * 60 * 1000;
+const WINDOW_MS = 2 * 60 * 60 * 1000;
 const MAX_HTML_BYTES = 1_500_000;
 const rateLimits = new Map<string, { count: number; resetAt: number }>();
 
