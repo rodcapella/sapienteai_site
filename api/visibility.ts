@@ -83,23 +83,85 @@ async function fetchPublicText(initialUrl: string, optional = false, requestHead
   throw new Error("too_many_redirects");
 }
 
-function schemaTypes($: cheerio.CheerioAPI) {
-  const types = new Set<string>();
+type SchemaNode = Record<string, unknown>;
+
+function schemaNodes($: cheerio.CheerioAPI) {
+  const nodes: SchemaNode[] = [];
   $("script[type='application/ld+json']").each((_, element) => {
     try {
       const visit = (value: unknown): void => {
         if (!value || typeof value !== "object") return;
         if (Array.isArray(value)) return value.forEach(visit);
-        const item = value as Record<string, unknown>;
+        const item = value as SchemaNode;
         const type = item["@type"];
-        if (typeof type === "string") types.add(type);
-        if (Array.isArray(type)) type.forEach((entry) => typeof entry === "string" && types.add(entry));
+        const definesEntity = Object.keys(item).some((key) => key !== "@type" && key !== "@id");
+        if (definesEntity && (typeof type === "string" || (Array.isArray(type) && type.some((entry) => typeof entry === "string")))) nodes.push(item);
         Object.values(item).forEach(visit);
       };
       visit(JSON.parse($(element).html() || "{}"));
     } catch { /* malformed JSON-LD is treated as absent */ }
   });
-  return [...types];
+  return nodes;
+}
+
+function typesOf(node: SchemaNode) {
+  const value = node["@type"];
+  return (Array.isArray(value) ? value : [value]).filter((type): type is string => typeof type === "string");
+}
+
+function hasSchemaValue(value: unknown) {
+  if (typeof value === "string") return value.trim().length > 0;
+  if (Array.isArray(value)) return value.length > 0;
+  return Boolean(value && typeof value === "object");
+}
+
+const SCHEMA_PROPERTIES: Record<string, string[]> = {
+  Article: ["headline", "author", "datePublished", "image"],
+  BlogPosting: ["headline", "author", "datePublished", "image"],
+  NewsArticle: ["headline", "author", "datePublished", "image"],
+  FAQPage: ["mainEntity"],
+  HowTo: ["name", "step"],
+  Organization: ["name", "url", "logo", "sameAs"],
+  LocalBusiness: ["name", "url", "address", "telephone"],
+  Corporation: ["name", "url", "logo", "sameAs"],
+  WebSite: ["name", "url", "publisher"],
+  Service: ["name", "description", "provider"],
+  ItemList: ["name", "itemListElement"],
+};
+
+function schemaQuality(nodes: SchemaNode[], acceptedTypes: string[]) {
+  const assessments = acceptedTypes.flatMap((type) => nodes
+    .filter((node) => typesOf(node).includes(type))
+    .map((node) => {
+      const properties = SCHEMA_PROPERTIES[type] || [];
+      const missing = properties.filter((property) => !hasSchemaValue(node[property]));
+      if (type === "FAQPage") {
+        const questions = Array.isArray(node.mainEntity) ? node.mainEntity : [];
+        const validQuestions = questions.filter((entry) => {
+          if (!entry || typeof entry !== "object") return false;
+          const question = entry as SchemaNode;
+          const answer = question.acceptedAnswer as SchemaNode | undefined;
+          return hasSchemaValue(question.name) && hasSchemaValue(answer?.text);
+        });
+        if (!validQuestions.length && !missing.includes("mainEntity.Question(name, acceptedAnswer.text)")) {
+          missing.push("mainEntity.Question(name, acceptedAnswer.text)");
+        }
+      }
+      const total = properties.length + (type === "FAQPage" ? 1 : 0);
+      return { type, quality: total ? Math.max(0, (total - missing.length) / total) : 1, missing };
+    }));
+
+  const bestByType = new Map<string, typeof assessments[number]>();
+  assessments.forEach((assessment) => {
+    const current = bestByType.get(assessment.type);
+    if (!current || assessment.quality > current.quality) bestByType.set(assessment.type, assessment);
+  });
+  const best = [...bestByType.values()];
+  return {
+    quality: best.length ? best.reduce((sum, item) => sum + item.quality, 0) / best.length : 0,
+    types: best.map((item) => item.type),
+    missing: [...new Set(best.flatMap((item) => item.missing))],
+  };
 }
 
 function schemaExternalReferences($: cheerio.CheerioAPI) {
@@ -223,7 +285,11 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
   const canonical = $("link[rel='canonical']").attr("href") || "";
   const robotsMeta = $("meta[name='robots']").attr("content")?.toLowerCase() || "";
   const langAttr = $("html").attr("lang") || "";
-  const schemas = schemaTypes($);
+  const parsedSchemaNodes = schemaNodes($);
+  const schemas = [...new Set(parsedSchemaNodes.flatMap(typesOf))];
+  const generalSchemaQuality = schemaQuality(parsedSchemaNodes, Object.keys(SCHEMA_PROPERTIES));
+  const entitySchemaQuality = schemaQuality(parsedSchemaNodes, ["Organization", "LocalBusiness", "Corporation", "WebSite"]);
+  const answerSchemaQuality = schemaQuality(parsedSchemaNodes, ["FAQPage", "HowTo", "Article", "BlogPosting", "NewsArticle", "Service", "ItemList"]);
   const htmlSource = page.text.toLowerCase();
   const isWordPress = /<meta[^>]+name=["']generator["'][^>]+content=["']wordpress\b/i.test(page.text)
     || /\bwp-(?:content|includes)\//i.test(page.text);
@@ -242,8 +308,10 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
     try { return new URL($(el).attr("href") || "", finalUrl).hostname !== finalUrl.hostname; } catch { return false; }
   }).length + schemaExternalReferences($);
   const hasEntitySchema = schemas.some((type) => ["Organization", "LocalBusiness", "Corporation", "WebSite"].includes(type));
-  const hasAuthor = hasEntitySchema || schemas.some((type) => ["Person", "Article", "BlogPosting", "NewsArticle"].includes(type)) || /\b(author|autor|por|by)\b/i.test(bodyText);
-  const hasAnswerSchema = schemas.some((type) => ["FAQPage", "HowTo", "Article", "BlogPosting", "Service", "ItemList"].includes(type));
+  const hasAuthoredSchema = parsedSchemaNodes.some((node) =>
+    typesOf(node).some((type) => ["Article", "BlogPosting", "NewsArticle"].includes(type)) && hasSchemaValue(node.author));
+  const hasNamedPersonSchema = parsedSchemaNodes.some((node) => typesOf(node).includes("Person") && hasSchemaValue(node.name));
+  const hasAuthor = (hasEntitySchema && entitySchemaQuality.quality >= 0.5) || hasAuthoredSchema || hasNamedPersonSchema || /\b(author|autor|por|by)\b/i.test(bodyText);
   const brandMentioned = normalizeEntityName(bodyText).includes(normalizeEntityName(brand));
   const isPT = lang === "pt";
   const robotsAllows = Boolean(robots && !/user-agent:\s*\*[^]*?disallow:\s*\/\s*(?:\r?\n|$)/i.test(robots.text));
@@ -297,6 +365,37 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
   const aiBotsBlocked = Boolean(robots && blocksAiBots(robots.text));
   const hasFaqOrHowToSchema = schemas.some((type) => ["FAQPage", "HowTo"].includes(type));
 
+  const titlePoints = title.length === 0 ? 0
+    : title.length >= 30 && title.length <= 65 ? 8
+      : (title.length >= 20 && title.length < 30) || (title.length > 65 && title.length <= 75) ? 6
+        : 4;
+  const descriptionPoints = description.length === 0 ? 0
+    : description.length >= 70 && description.length <= 170 ? 8
+      : (description.length >= 50 && description.length < 70) || (description.length > 170 && description.length <= 200) ? 6
+        : 4;
+  const titleEvidence = title.length === 0
+    ? (isPT ? "Tag title ausente." : "Missing title tag.")
+    : `Title: ${title.length} ${isPT ? "caracteres" : "characters"}; ${titlePoints === 8
+      ? (isPT ? "comprimento adequado." : "appropriate length.")
+      : titlePoints === 6
+        ? (isPT ? "comprimento aceitável, mas pode ser otimizado." : "acceptable length, but it can be optimized.")
+        : (isPT ? "demasiado curto ou longo; recomenda-se revisão." : "too short or long; revision is recommended.")}`;
+  const descriptionEvidence = description.length === 0
+    ? (isPT ? "Meta description ausente." : "Missing meta description.")
+    : `Meta description: ${description.length} ${isPT ? "caracteres" : "characters"}; ${descriptionPoints === 8
+      ? (isPT ? "comprimento adequado." : "appropriate length.")
+      : descriptionPoints === 6
+        ? (isPT ? "comprimento aceitável, mas pode ser otimizado." : "acceptable length, but it can be optimized.")
+        : (isPT ? "demasiado curta ou longa; recomenda-se revisão." : "too short or long; revision is recommended.")}`;
+  const schemaEvidence = (quality: ReturnType<typeof schemaQuality>, absent: string) => {
+    if (!quality.types.length) return absent;
+    const completeness = Math.round(quality.quality * 100);
+    const missing = quality.missing.length
+      ? `${isPT ? " Propriedades em falta" : " Missing properties"}: ${quality.missing.join(", ")}.`
+      : "";
+    return `${isPT ? "Qualidade dos schemas" : "Schema quality"} ${quality.types.join(", ")}: ${completeness}%.${missing}`;
+  };
+
   const anchors = $("a").toArray();
   const genericLinkText = /^(clique aqui|aqui|saiba mais|ler mais|mais|link|click here|here|learn more|read more)$/i;
   const nonDescriptiveLinks = anchors.filter((element) => {
@@ -330,8 +429,8 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
   const seoChecks = [
     { label: "HTTPS", passed: finalUrl.protocol === "https:", weight: 6, evidence: finalUrl.protocol === "https:" ? (isPT ? "HTTPS ativo." : "HTTPS is active.") : (isPT ? "A página não usa HTTPS." : "The page does not use HTTPS.") },
     { label: "HTTP", passed: page.status === 200, weight: 8, evidence: `${isPT ? "Resposta HTTP" : "HTTP response"}: ${page.status}.` },
-    { label: "Title", passed: title.length > 0, weight: 8, evidence: title ? `Title: ${title.length} ${isPT ? "caracteres" : "characters"}${title.length > 65 ? (isPT ? "; recomenda-se encurtar para melhorar a apresentação nos resultados." : "; shortening is recommended for clearer search result presentation.") : "."}` : (isPT ? "Tag title ausente." : "Missing title tag.") },
-    { label: "Meta description", passed: description.length > 0, weight: 8, evidence: description ? `Meta description: ${description.length} ${isPT ? "caracteres" : "characters"}${description.length > 170 ? (isPT ? "; recomenda-se torná-la mais concisa." : "; a more concise description is recommended.") : "."}` : (isPT ? "Meta description ausente." : "Missing meta description.") },
+    { label: "Title", passed: titlePoints === 8, points: titlePoints, weight: 8, evidence: titleEvidence },
+    { label: "Meta description", passed: descriptionPoints === 8, points: descriptionPoints, weight: 8, evidence: descriptionEvidence },
     { label: "H1", passed: h1s.length === 1, points: h1s.length === 1 ? 8 : h1s.length > 1 ? 4 : 0, weight: 8, evidence: h1s.length === 1 ? (isPT ? "Foi encontrado um único H1." : "A single H1 was found.") : h1s.length > 1 ? `${h1s.length} H1 ${isPT ? "encontrados; existe um título principal, mas a hierarquia deve ser corrigida." : "found; a primary heading exists, but the hierarchy should be corrected."}` : (isPT ? "Nenhum H1 encontrado." : "No H1 found.") },
     { label: isPT ? "Canonical válido" : "Valid canonical", passed: canonicalValid, weight: 10, evidence: canonicalValid ? `${isPT ? "Canonical válido" : "Valid canonical"}: ${canonical}` : (isPT ? "Canonical ausente, relativo ou inacessível." : "Canonical is missing, relative, or unreachable.") },
     { label: isPT ? "Indexação" : "Indexing", passed: !robotsMeta.includes("noindex") && robotsAllows, weight: 8, evidence: robotsMeta.includes("noindex") ? (isPT ? "Meta robots contém noindex." : "The robots meta tag contains noindex.") : (robotsAllows ? (isPT ? "Indexação permitida." : "Indexing allowed.") : (isPT ? "O robots.txt bloqueia o rastreio." : "robots.txt blocks crawling.")) },
@@ -339,7 +438,7 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
     { label: isPT ? "Idioma" : "Language", passed: Boolean(langAttr), weight: 4, evidence: langAttr ? `HTML lang: ${langAttr}.` : (isPT ? "HTML lang ausente." : "HTML lang is missing.") },
     { label: "Headings", passed: h2s.length > 0, weight: 4, evidence: `${h2s.length} H2 ${isPT ? "encontrado(s)" : "found"}.` },
     { label: isPT ? "Imagens" : "Images", passed: images === 0 || missingAlt === 0, points: images === 0 ? 4 : 4 * ((images - missingAlt) / images), weight: 4, evidence: `${missingAlt}/${images} ${isPT ? "imagens sem o atributo alt" : "images missing the alt attribute"}.` },
-    { label: isPT ? "Dados estruturados" : "Structured data", passed: schemas.length > 0, weight: 4, evidence: schemas.length ? `Schemas: ${schemas.join(", ")}.` : (isPT ? "JSON-LD ausente." : "JSON-LD is missing.") },
+    { label: isPT ? "Qualidade dos dados estruturados" : "Structured data quality", passed: generalSchemaQuality.quality === 1, points: 4 * generalSchemaQuality.quality, weight: 4, evidence: schemaEvidence(generalSchemaQuality, isPT ? "JSON-LD reconhecido ausente." : "No recognized JSON-LD found.") },
     { label: isPT ? "Sitemap válido" : "Valid sitemap", passed: sitemapValid, weight: 4, evidence: sitemapValid ? (isPT ? "Sitemap XML válido encontrado." : "A valid XML sitemap was found.") : (isPT ? "Sitemap XML ausente ou inválido." : "The XML sitemap is missing or invalid.") },
     { label: isPT ? "Texto dos links" : "Link text", passed: nonDescriptiveLinks === 0, points: anchors.length === 0 ? 6 : 6 * ((anchors.length - nonDescriptiveLinks) / anchors.length), weight: 6, evidence: `${nonDescriptiveLinks}/${anchors.length} ${isPT ? "links sem texto descritivo" : "links without descriptive text"}.` },
     { label: isPT ? "Links rastreáveis" : "Crawlable links", passed: nonCrawlableLinks === 0, points: anchors.length === 0 ? 5 : 5 * ((anchors.length - nonCrawlableLinks) / anchors.length), weight: 5, evidence: `${nonCrawlableLinks}/${anchors.length} ${isPT ? "links não rastreáveis" : "links are not crawlable"}.` },
@@ -359,20 +458,20 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
   ];
 
   const aeoChecks = [
-    { label: isPT ? "Conteúdo — Entidade" : "Content — Entity", passed: hasEntitySchema, weight: 14, evidence: hasEntitySchema ? (isPT ? "Entidade da organização identificada em JSON-LD." : "Organization entity identified in JSON-LD.") : (isPT ? "Falta schema Organization ou WebSite." : "Missing Organization or WebSite schema.") },
-    { label: isPT ? "Conteúdo — Dados estruturados" : "Content — Structured data", passed: hasAnswerSchema, weight: 14, evidence: hasAnswerSchema ? (isPT ? "Schema adequado a respostas encontrado." : "Answer-oriented schema found.") : (isPT ? "Falta FAQPage, Article, Service, ItemList ou HowTo." : "Missing FAQPage, Article, Service, ItemList, or HowTo schema.") },
-    { label: isPT ? "Conteúdo — Respostas diretas" : "Content — Direct answers", passed: questionHeadings > 0 || schemas.includes("FAQPage"), weight: 14, evidence: questionHeadings > 0 ? `${questionHeadings} ${isPT ? "perguntas em títulos" : questionHeadings === 1 ? "question heading" : "question headings"}.` : (isPT ? "Não foram detetadas perguntas em títulos." : "No question headings detected.") },
-    { label: isPT ? "Conteúdo — Marca" : "Content — Brand", passed: brandMentioned, weight: 10, evidence: brandMentioned ? (isPT ? "Marca mencionada no conteúdo." : "Brand mentioned in page content.") : (isPT ? "Marca não encontrada no conteúdo visível." : "Brand not found in visible content.") },
-    { label: isPT ? "Conteúdo — Responsabilidade editorial" : "Content — Editorial responsibility", passed: hasAuthor, weight: 10, evidence: hasAuthor ? (isPT ? "Autoria ou entidade responsável identificada." : "Author or responsible entity identified.") : (isPT ? "Responsabilidade editorial não identificada." : "Editorial responsibility not identified.") },
+    { label: isPT ? "Conteúdo — Entidade" : "Content — Entity", passed: entitySchemaQuality.quality === 1, points: 18 * entitySchemaQuality.quality, weight: 18, evidence: schemaEvidence(entitySchemaQuality, isPT ? "Falta schema Organization ou WebSite." : "Missing Organization or WebSite schema.") },
+    { label: isPT ? "Conteúdo — Dados estruturados" : "Content — Structured data", passed: answerSchemaQuality.quality === 1, points: 18 * answerSchemaQuality.quality, weight: 18, evidence: schemaEvidence(answerSchemaQuality, isPT ? "Falta FAQPage, Article, Service, ItemList ou HowTo." : "Missing FAQPage, Article, Service, ItemList, or HowTo schema.") },
+    { label: isPT ? "Conteúdo — Respostas diretas" : "Content — Direct answers", passed: questionHeadings > 0 || schemas.includes("FAQPage"), weight: 17, evidence: questionHeadings > 0 ? `${questionHeadings} ${isPT ? "perguntas em títulos" : questionHeadings === 1 ? "question heading" : "question headings"}.` : (isPT ? "Não foram detetadas perguntas em títulos." : "No question headings detected.") },
+    { label: isPT ? "Conteúdo — Marca" : "Content — Brand", passed: brandMentioned, weight: 11, evidence: brandMentioned ? (isPT ? "Marca mencionada no conteúdo." : "Brand mentioned in page content.") : (isPT ? "Marca não encontrada no conteúdo visível." : "Brand not found in visible content.") },
+    { label: isPT ? "Conteúdo — Responsabilidade editorial" : "Content — Editorial responsibility", passed: hasAuthor, weight: 12, evidence: hasAuthor ? (isPT ? "Autoria ou entidade responsável identificada." : "Author or responsible entity identified.") : (isPT ? "Responsabilidade editorial não identificada." : "Editorial responsibility not identified.") },
     { label: isPT ? "Conteúdo — Fontes e referências" : "Content — Sources and references", passed: externalLinks > 0, weight: 8, evidence: `${externalLinks} ${isPT ? "links externos ou referências sameAs" : "external links or sameAs references"}.` },
-    { label: isPT ? "Técnico — Ficheiro llms.txt" : "Technical — llms.txt file", passed: Boolean(llms), weight: 5, evidence: llms ? (llmsFull ? (isPT ? "llms.txt e llms-full.txt encontrados." : "llms.txt and llms-full.txt were found.") : (isPT ? "llms.txt encontrado; llms-full.txt é complementar e não obrigatório." : "llms.txt found; llms-full.txt is complementary and optional.")) : (isPT ? "llms.txt ausente ou inacessível." : "llms.txt is missing or inaccessible.") },
+    { label: isPT ? "Complementar — Ficheiro llms.txt" : "Complementary — llms.txt file", passed: Boolean(llms), weight: 1, evidence: llms ? (llmsFull ? (isPT ? "llms.txt e llms-full.txt encontrados; sinal complementar não utilizado pelo Google Search." : "llms.txt and llms-full.txt were found; a complementary signal not used by Google Search.") : (isPT ? "llms.txt encontrado; recurso complementar." : "llms.txt found; complementary resource.")) : (isPT ? "llms.txt ausente; recurso complementar." : "llms.txt is missing; complementary resource.") },
     { label: isPT ? "Técnico — Acesso geral de bots" : "Technical — General bot access", passed: robotsAllows, weight: 3, evidence: robotsAllows ? (isPT ? "O robots.txt permite rastreio geral." : "robots.txt allows general crawling.") : (isPT ? "O robots.txt bloqueia o rastreio geral." : "robots.txt blocks general crawling.") },
     { label: isPT ? "Técnico — Acesso de bots de IA" : "Technical — AI bot access", passed: aiBotRules || robotsAllows, weight: 3, evidence: aiBotRules ? (isPT ? "Regras específicas para bots de IA encontradas." : "Specific rules for AI bots were found.") : robotsAllows ? (isPT ? "O rastreio geral está permitido, incluindo bots de IA; não existem regras específicas." : "General crawling is allowed, including AI bots; no specific rules are declared.") : (isPT ? "O acesso de bots de IA não está declarado ou permitido." : "AI bot access is not declared or allowed.") },
     { label: isPT ? "Técnico — Sitemap" : "Technical — Sitemap", passed: sitemapValid, weight: 3, evidence: sitemapValid ? `Sitemap ${isPT ? "válido" : "valid"}: ${sitemap?.url}.` : (isPT ? "Sitemap ausente ou inválido." : "Sitemap is missing or invalid.") },
     { label: isPT ? "Técnico — Cabeçalho Link" : "Technical — Link header", passed: hasDiscoveryLink, weight: 3, evidence: hasDiscoveryLink ? `${validDiscoveryLinks.length}/${discoveryLinks.length} ${isPT ? "recursos anunciados no cabeçalho Link foram validados" : "resources advertised in the Link header were validated"}.` : (isPT ? "Nenhum recurso válido foi encontrado no cabeçalho Link." : "No valid resource was found in the Link header.") },
-    { label: isPT ? "Técnico — Markdown" : "Technical — Markdown", passed: markdownAvailable, weight: 6, evidence: markdownAvailable ? (isPT ? "A página entrega Markdown real quando solicitado." : "The page returns real Markdown when requested.") : (isPT ? "A resposta Markdown está ausente ou contém HTML." : "The Markdown response is missing or contains HTML.") },
-    { label: isPT ? "Técnico — Content Signals" : "Technical — Content Signals", passed: contentSignals, weight: 3, evidence: contentSignals ? (isPT ? "Preferências de utilização por IA declaradas." : "AI usage preferences are declared.") : (isPT ? "Content Signals não encontrados." : "Content Signals were not found.") },
-    { label: isPT ? "Técnico — Manifesto de agente" : "Technical — Agent manifest", passed: agentManifestValid, weight: 4, evidence: agentManifestValid ? (isPT ? "agent.json válido encontrado." : "A valid agent.json file was found.") : (isPT ? "agent.json ausente ou inválido." : "agent.json is missing or invalid.") },
+    { label: isPT ? "Complementar — Markdown" : "Complementary — Markdown", passed: markdownAvailable, weight: 1, evidence: markdownAvailable ? (isPT ? "A página entrega Markdown real; sinal complementar não utilizado pelo Google Search." : "The page returns real Markdown; a complementary signal not used by Google Search.") : (isPT ? "A resposta Markdown está ausente ou contém HTML; recurso complementar." : "The Markdown response is missing or contains HTML; complementary resource.") },
+    { label: isPT ? "Complementar — Content Signals" : "Complementary — Content Signals", passed: contentSignals, weight: 1, evidence: contentSignals ? (isPT ? "Preferências de utilização por IA declaradas; sinal complementar." : "AI usage preferences are declared; complementary signal.") : (isPT ? "Content Signals não encontrados; recurso complementar." : "Content Signals were not found; complementary resource.") },
+    { label: isPT ? "Complementar — Manifesto de agente" : "Complementary — Agent manifest", passed: agentManifestValid, weight: 1, evidence: agentManifestValid ? (isPT ? "agent.json válido encontrado; sinal complementar." : "A valid agent.json file was found; complementary signal.") : (isPT ? "agent.json ausente ou inválido; recurso complementar." : "agent.json is missing or invalid; complementary resource.") },
     ...(isWordPress ? [
       {
         label: isPT ? "WordPress — Bloqueio de bots de IA" : "WordPress — AI bot blocking",
