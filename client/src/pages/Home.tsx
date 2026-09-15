@@ -66,7 +66,7 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
   return (
     <section
       id={id}
-      className="content-atmosphere relative w-full overflow-hidden bg-[var(--section-ice)] aspect-[1920/700] sm:aspect-[1920/700]"
+      className="content-atmosphere relative w-full overflow-hidden bg-[var(--section-ice)] aspect-[16/8.5] sm:aspect-[1920/700]"
       aria-label={label}
     >
       {/* Imagem de fundo */}
@@ -79,7 +79,7 @@ function HomeBannerSection({ lang, file, label, id, textContent }: HomeBannerSec
           aria-hidden="true"
           width="1920"
           height="700"
-          className="h-full w-full object-contain"
+          className={`h-full w-full scale-[1.3] object-cover sm:scale-100 sm:object-contain ${align === "right" ? "origin-right object-[68%_center]" : "origin-left object-[32%_center]"} sm:origin-center sm:object-center`}
           loading="lazy"
           fetchPriority="low"
           decoding="async"
@@ -325,26 +325,26 @@ export default function Home() {
         </div>
       </InternalHero>
 
-      <section className="content-atmosphere bg-white px-6 py-10 md:py-14">
-        <div className="mx-auto max-w-6xl rounded-[30px] border border-[var(--brand-mid)]/30 bg-[color-mix(in_srgb,var(--section-ice)_88%,white)] p-6 shadow-[0_20px_48px_color-mix(in_srgb,var(--brand-deep)_8%,transparent)] md:p-8 lg:p-10">
-          <p className="font-[var(--font-body)] text-[12px] font-black uppercase tracking-[0.18em] text-[var(--brand-primary)]">
+      <section className="content-atmosphere bg-white px-4 py-7 sm:px-6 sm:py-10 md:py-14">
+        <div className="mx-auto max-w-6xl rounded-[22px] border border-[var(--brand-mid)]/30 bg-[color-mix(in_srgb,var(--section-ice)_88%,white)] p-4 shadow-[0_16px_36px_color-mix(in_srgb,var(--brand-deep)_8%,transparent)] sm:rounded-[30px] sm:p-6 md:p-8 lg:p-10">
+          <p className="font-[var(--font-body)] text-[10px] font-black uppercase tracking-[0.16em] text-[var(--brand-primary)] sm:text-[12px] sm:tracking-[0.18em]">
             {homeSeoSummary.eyebrow}
           </p>
-          <div className="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
+          <div className="mt-3 grid gap-4 sm:mt-4 sm:gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
             <div data-speakable>
-              <h2 className="font-[var(--font-heading)] text-[clamp(1.9rem,3.2vw,3rem)] font-black leading-[1.05] text-[var(--brand-night)]">
+              <h2 className="font-[var(--font-heading)] text-[1.5rem] font-black leading-[1.08] text-[var(--brand-night)] sm:text-[clamp(1.9rem,3.2vw,3rem)] sm:leading-[1.05]">
                 {homeSeoSummary.title}
               </h2>
-              <p className="mt-4 max-w-2xl font-[var(--font-body)] text-[15px] font-medium leading-relaxed text-[var(--brand-night)]/74 md:text-[16px]">
+              <p className="mt-3 max-w-2xl font-[var(--font-body)] text-[13px] font-medium leading-[1.55] text-[var(--brand-night)]/74 sm:mt-4 sm:text-[15px] sm:leading-relaxed md:text-[16px]">
                 {homeSeoSummary.description}
               </p>
             </div>
 
-            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            <ul className="grid gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-1">
               {homeSeoSummary.points.map((point) => (
                 <li
                   key={point}
-                  className="flex items-start gap-3 rounded-2xl border border-[var(--brand-mid)]/25 bg-white/88 px-4 py-4 font-[var(--font-body)] text-[14px] font-semibold leading-relaxed text-[var(--brand-night)] shadow-[0_12px_28px_color-mix(in_srgb,var(--brand-deep)_6%,transparent)]"
+                  className="flex items-start gap-2.5 rounded-xl border border-[var(--brand-mid)]/25 bg-white/88 px-3 py-2.5 font-[var(--font-body)] text-[12px] font-semibold leading-[1.45] text-[var(--brand-night)] shadow-[0_10px_22px_color-mix(in_srgb,var(--brand-deep)_6%,transparent)] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-4 sm:text-[14px] sm:leading-relaxed"
                 >
                   <span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-[var(--brand-primary)]" />
                   <span>{point}</span>
@@ -368,27 +368,27 @@ export default function Home() {
         />
       ))}
 
-      <section className="content-atmosphere relative overflow-hidden bg-[var(--brand-night)] px-4 py-7 sm:px-6 sm:py-10 md:py-16" aria-labelledby="home-validator-title">
+      <section className="content-atmosphere relative overflow-hidden bg-[var(--brand-night)] px-4 py-5 sm:px-6 sm:py-10 md:py-16" aria-labelledby="home-validator-title">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_14%_25%,color-mix(in_srgb,var(--brand-cyan-bright)_20%,transparent),transparent_34%),radial-gradient(circle_at_88%_80%,color-mix(in_srgb,var(--brand-primary)_22%,transparent),transparent_35%)]" />
-        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[22px] border border-[var(--brand-cyan-bright)]/45 bg-white/[0.12] px-5 py-6 shadow-[0_18px_48px_rgba(0,0,0,0.24)] backdrop-blur-sm sm:rounded-[26px] sm:px-6 sm:py-8 md:rounded-[30px] md:px-10 md:py-11 md:shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
+        <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[18px] border border-[var(--brand-cyan-bright)]/45 bg-white/[0.12] px-4 py-4 shadow-[0_14px_34px_rgba(0,0,0,0.22)] backdrop-blur-sm sm:rounded-[26px] sm:px-6 sm:py-8 md:rounded-[30px] md:px-10 md:py-11 md:shadow-[0_24px_70px_rgba(0,0,0,0.28)]">
           <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-[var(--brand-cyan-bright)]/20 blur-3xl" />
-          <div className="relative z-10 grid items-center gap-5 sm:gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
+          <div className="relative z-10 grid items-center gap-4 sm:gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-12">
             <div>
-              <p className="inline-flex rounded-full border border-[var(--brand-cyan-bright)]/35 bg-[var(--brand-cyan-bright)]/10 px-2.5 py-1 font-[var(--font-body)] text-[9px] font-black uppercase tracking-[0.18em] text-[var(--brand-cyan-bright)] sm:px-3 sm:py-1.5 sm:text-[10px] sm:tracking-[0.2em]">
+              <p className="inline-flex rounded-full border border-[var(--brand-cyan-bright)]/35 bg-[var(--brand-cyan-bright)]/10 px-2 py-0.5 font-[var(--font-body)] text-[8px] font-black uppercase tracking-[0.15em] text-[var(--brand-cyan-bright)] sm:px-3 sm:py-1.5 sm:text-[10px] sm:tracking-[0.2em]">
                 {validatorCta.label}
               </p>
-              <h2 id="home-validator-title" className="mt-3 max-w-3xl font-[var(--font-heading)] text-[1.55rem] font-black leading-[1.08] !text-white sm:mt-4 sm:text-[clamp(1.9rem,3.2vw,3rem)] sm:leading-[1.05]">
+              <h2 id="home-validator-title" className="mt-2.5 max-w-3xl font-[var(--font-heading)] text-[1.3rem] font-black leading-[1.08] !text-white sm:mt-4 sm:text-[clamp(1.9rem,3.2vw,3rem)] sm:leading-[1.05]">
                 {validatorCta.title}
               </h2>
-              <p className="mt-3 max-w-3xl font-[var(--font-body)] text-[13px] font-medium leading-relaxed !text-[#2cb4f2] sm:mt-4 sm:text-[15px] md:text-[16px]">
+              <p className="mt-2.5 max-w-3xl font-[var(--font-body)] text-[12px] font-medium leading-[1.5] !text-[#2cb4f2] sm:mt-4 sm:text-[15px] sm:leading-relaxed md:text-[16px]">
                 {validatorCta.description}
               </p>
-              <div className="mt-4 grid max-w-3xl gap-2 font-[var(--font-body)] text-[12px] font-bold text-white/90 sm:mt-6 sm:grid-cols-2 sm:gap-3 sm:text-[13px]">
-                <span className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3">
+              <div className="mt-3 grid max-w-3xl gap-1.5 font-[var(--font-body)] text-[11px] font-bold text-white/90 sm:mt-6 sm:grid-cols-2 sm:gap-3 sm:text-[13px]">
+                <span className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-2.5 py-2 sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3">
                   <Search className="h-4 w-4 shrink-0 text-[var(--brand-cyan-bright)] sm:h-5 sm:w-5" aria-hidden="true" />
                   {validatorCta.seo}
                 </span>
-                <span className="flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3">
+                <span className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.06] px-2.5 py-2 sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3">
                   <Brain className="h-4 w-4 shrink-0 text-[var(--brand-cyan-bright)] sm:h-5 sm:w-5" aria-hidden="true" />
                   {validatorCta.aeo}
                 </span>
@@ -396,7 +396,7 @@ export default function Home() {
             </div>
             <Link
               href={`/${lang}/seo-aeo-validator`}
-              className="neon-shimmer group inline-flex w-fit items-center justify-center gap-2.5 rounded-full border border-white/15 bg-[var(--brand-primary)] px-5 py-2.5 font-[var(--font-body)] text-[10px] font-extrabold uppercase tracking-[0.15em] text-white shadow-[0_12px_30px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent)] transition-all duration-500 hover:scale-[1.03] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent)] active:scale-95 sm:gap-3 sm:px-6 sm:py-3 sm:text-[11px] sm:tracking-[0.16em] md:px-8 md:py-4 md:text-[12px]"
+              className="neon-shimmer group inline-flex w-fit items-center justify-center gap-2 rounded-full border border-white/15 bg-[var(--brand-primary)] px-4 py-2 font-[var(--font-body)] text-[9px] font-extrabold uppercase tracking-[0.13em] text-white shadow-[0_10px_24px_color-mix(in_srgb,var(--brand-cyan-mid)_26%,transparent)] transition-all duration-500 hover:scale-[1.03] hover:bg-[var(--brand-primary)] hover:text-white hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--brand-cyan-mid)_28%,transparent),0_18px_42px_color-mix(in_srgb,var(--brand-cyan-mid)_24%,transparent)] active:scale-95 sm:gap-3 sm:px-6 sm:py-3 sm:text-[11px] sm:tracking-[0.16em] md:px-8 md:py-4 md:text-[12px]"
             >
               {validatorCta.button}
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
