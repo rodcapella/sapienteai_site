@@ -21,7 +21,7 @@ type ValidationResult = {
   description: string;
   details?: string[];
   score: number;
-  checks?: Array<{ label: string; passed: boolean; evidence: string; points: number; maxPoints: number; scored?: boolean }>;
+  checks?: Array<{ id: string; label: string; passed: boolean; status: ValidationStatus; evidence: string; points: number; maxPoints: number; scored?: boolean }>;
 };
 
 const typeConfig = {
@@ -396,7 +396,7 @@ export default function VisibilityValidator() {
           lang,
         }),
       });
-      const payload = await response.json() as { results?: ValidationResult[]; analyzedUrl?: string; analyzedAt?: string; error?: string };
+      const payload = await response.json() as { formulaVersion?: string; results?: ValidationResult[]; analyzedUrl?: string; analyzedAt?: string; error?: string };
       if (!response.ok || !payload.results) throw new Error(payload.error || "request_failed");
       setResults(payload.results);
       setAnalysisMeta({ analyzedUrl: payload.analyzedUrl || website, analyzedAt: payload.analyzedAt || new Date().toISOString() });
@@ -582,11 +582,13 @@ export default function VisibilityValidator() {
                               <summary>{lang === "pt" ? "Ver todos os critérios" : "View all criteria"}</summary>
                               <ul>
                                 {result.checks.map((check) => (
-                                  <li key={check.label} className={check.passed ? "is-passed" : "is-failed"}>
+                                  <li key={check.id} className={`is-${check.status}`}>
                                     {check.passed ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}
                                     <span>
                                       <strong>
-                                        {check.label}{check.scored === false ? (lang === "pt" ? " (diagnóstico)" : " (diagnostic)") : ` (${check.points}/${check.maxPoints})`}:
+                                        {check.label}{check.scored === false
+                                          ? (lang === "pt" ? " (diagnóstico)" : " (diagnostic)")
+                                          : ` (${check.points}/${check.maxPoints}${check.status === "partial" ? (lang === "pt" ? ", parcial" : ", partial") : ""})`}:
                                       </strong>{" "}{check.evidence}
                                     </span>
                                   </li>

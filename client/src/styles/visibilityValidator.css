@@ -598,12 +598,16 @@
   margin-top: 0.75rem;
 }
 
-.visibility-validator-checks li.is-failed svg {
+.visibility-validator-checks li.is-not-found svg {
   color: #c2410c;
 }
 
-.visibility-validator-checks li.is-passed svg {
+.visibility-validator-checks li.is-found svg {
   color: #15803d;
+}
+
+.visibility-validator-checks li.is-partial svg {
+  color: #b45309;
 }
 
 .visibility-validator-status {
