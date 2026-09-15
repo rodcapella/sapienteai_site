@@ -578,7 +578,7 @@ export default function VisibilityValidator() {
                           )}
 
                           {result.checks && (
-                            <details className="visibility-validator-checks">
+                            <details className="visibility-validator-checks" open>
                               <summary>{lang === "pt" ? "Ver todos os critérios" : "View all criteria"}</summary>
                               <ul>
                                 {result.checks.map((check) => (

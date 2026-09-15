@@ -4,6 +4,7 @@ import * as cheerio from "cheerio";
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
 import { isValidatorRateLimited } from "./_validatorRateLimit.js";
+import { canShowDetailedValidatorResults } from "./_validatorResultPolicy.js";
 
 type ValidationType = "seo" | "aeo";
 type ValidationStatus = "found" | "partial" | "not-found";
@@ -34,10 +35,6 @@ type Result = {
 type PublicResult = Omit<Result, "details" | "checks">;
 
 const MAX_HTML_BYTES = 1_500_000;
-
-function canShowDetailedResults() {
-  return process.env.NODE_ENV !== "production" && process.env.VERCEL_ENV !== "production";
-}
 
 function publicResult(result: Result): PublicResult {
   const { details: _details, checks: _checks, ...summary } = result;
@@ -624,7 +621,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!selected.length) return res.status(400).json({ error: "invalid_types" });
   try {
     const analysis = await analyze(brandName.trim(), website.trim(), selected, lang === "en" ? "en" : "pt");
-    const detailed = canShowDetailedResults();
+    const detailed = canShowDetailedValidatorResults();
     return res.status(200).json({
       ...analysis,
       detailed,
