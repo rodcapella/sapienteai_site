@@ -10,7 +10,7 @@ type ValidationType = "seo" | "aeo";
 type ValidationStatus = "found" | "partial" | "not-found";
 type CriterionStatus = ValidationStatus;
 
-const FORMULA_VERSION = "2026-09-schema-quality-v2";
+const FORMULA_VERSION = "2026-09-editorial-signals-v3";
 
 type CriterionInput = {
   id: string;
@@ -250,29 +250,91 @@ function schemaQuality(nodes: SchemaNode[], acceptedTypes: string[]) {
   };
 }
 
-function schemaExternalReferences($: cheerio.CheerioAPI) {
-  const references = new Set<string>();
-  $("script[type='application/ld+json']").each((_, element) => {
-    try {
-      const visit = (value: unknown): void => {
-        if (!value || typeof value !== "object") return;
-        if (Array.isArray(value)) return value.forEach(visit);
-        const item = value as Record<string, unknown>;
-        const sameAs = item.sameAs;
-        const candidates = Array.isArray(sameAs) ? sameAs : [sameAs];
-        candidates.forEach((candidate) => {
-          if (typeof candidate !== "string") return;
-          try {
-            const url = new URL(candidate);
-            if (["http:", "https:"].includes(url.protocol)) references.add(url.toString());
-          } catch { /* invalid references do not count */ }
-        });
-        Object.values(item).forEach(visit);
-      };
-      visit(JSON.parse($(element).html() || "{}"));
-    } catch { /* malformed JSON-LD is treated as absent */ }
+type EditorialAssessment = {
+  points: number;
+  evidence: string;
+};
+
+function evaluateEditorialResponsibility($: cheerio.CheerioAPI, nodes: SchemaNode[], isPT: boolean): EditorialAssessment {
+  const articleTypes = new Set(["Article", "BlogPosting", "NewsArticle"]);
+  const authorTypes = new Set(["Person", "Organization"]);
+  const nodeById = new Map<string, SchemaNode>();
+  nodes.forEach((node) => {
+    if (typeof node["@id"] === "string") nodeById.set(node["@id"], node);
   });
-  return references.size;
+
+  const resolveEntity = (value: unknown): SchemaNode | null => {
+    if (!isSchemaRecord(value)) return null;
+    const id = typeof value["@id"] === "string" ? value["@id"] : "";
+    return id && nodeById.has(id) ? { ...nodeById.get(id), ...value } : value;
+  };
+
+  const articleNodes = nodes.filter((node) => typesOf(node).some((type) => articleTypes.has(type)));
+  const authorEntities = articleNodes.flatMap((article) => {
+    const authors = Array.isArray(article.author) ? article.author : [article.author];
+    return authors.map(resolveEntity).filter((author): author is SchemaNode => Boolean(author));
+  });
+  const namedAuthors = authorEntities.filter((author) => hasSchemaValue(author.name));
+  const typedAuthors = namedAuthors.filter((author) => typesOf(author).some((type) => authorTypes.has(type)));
+  const identifiableAuthors = namedAuthors.filter((author) => hasValidUrl(author.url) || hasValidUrlList(author.sameAs));
+
+  const authorSelectors = [
+    "[rel~='author']",
+    "[itemprop='author']",
+    ".author",
+    ".byline",
+    "[class*='author-']",
+    "[class*='byline-']",
+  ].join(",");
+  const visibleAuthorElements = $(authorSelectors).filter((_, element) => $(element).text().replace(/\s+/g, " ").trim().length >= 3);
+  const visibleText = $("body").text().replace(/\s+/g, " ").trim();
+  const explicitAuthorLabel = /(?:written by|escrito por|autoria(?: de)?|autor(?:a)?\s*:)[ ]+[\p{L}][\p{L}.'’ -]{2,80}/iu.test(visibleText);
+  const namedPortugueseByline = /\b[Pp]or [A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][\p{L}.'’-]+(?: [A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][\p{L}.'’-]+)+/u.test(visibleText);
+  const hasVisibleAuthor = visibleAuthorElements.length > 0 || explicitAuthorLabel || namedPortugueseByline;
+
+  const publisherEntities = articleNodes.flatMap((article) => {
+    const publishers = Array.isArray(article.publisher) ? article.publisher : [article.publisher];
+    return publishers.map(resolveEntity).filter((publisher): publisher is SchemaNode => Boolean(publisher));
+  });
+  nodes.filter((node) => typesOf(node).includes("WebSite")).forEach((website) => {
+    const publishers = Array.isArray(website.publisher) ? website.publisher : [website.publisher];
+    publisherEntities.push(...publishers.map(resolveEntity).filter((publisher): publisher is SchemaNode => Boolean(publisher)));
+  });
+  const hasPublisher = publisherEntities.some((publisher) => hasSchemaValue(publisher.name) || hasValidUrl(publisher["@id"]) || hasValidUrl(publisher.url));
+  const hasValidEditorialDate = articleNodes.some((article) => hasValidDate(article.datePublished) || hasValidDate(article.dateModified));
+  const hasEditorialPolicy = $("a[href]").toArray().some((element) => {
+    const href = ($(element).attr("href") || "").toLowerCase();
+    const text = $(element).text().replace(/\s+/g, " ").trim().toLowerCase();
+    return /(editorial|pol[ií]tica-editorial|standards|normas-editoriais)/i.test(`${href} ${text}`);
+  });
+
+  let points = 0;
+  const evidence: string[] = [];
+  if (hasVisibleAuthor) {
+    points += 4;
+    evidence.push(isPT ? "autoria visível (4/4)" : "visible authorship (4/4)");
+  } else evidence.push(isPT ? "autoria visível (0/4)" : "visible authorship (0/4)");
+
+  const structuredAuthorPoints = typedAuthors.length > 0 ? 3 : namedAuthors.length > 0 ? 2 : 0;
+  points += structuredAuthorPoints;
+  evidence.push(isPT ? `autoria estruturada (${structuredAuthorPoints}/3)` : `structured authorship (${structuredAuthorPoints}/3)`);
+
+  const authorIdentityPoints = identifiableAuthors.length > 0 ? 2 : 0;
+  points += authorIdentityPoints;
+  evidence.push(isPT ? `identidade do autor (${authorIdentityPoints}/2)` : `author identity (${authorIdentityPoints}/2)`);
+
+  const publisherPoints = hasPublisher ? 2 : 0;
+  points += publisherPoints;
+  evidence.push(isPT ? `publisher responsável (${publisherPoints}/2)` : `responsible publisher (${publisherPoints}/2)`);
+
+  const transparencyPoints = hasValidEditorialDate || hasEditorialPolicy ? 1 : 0;
+  points += transparencyPoints;
+  evidence.push(isPT ? `transparência editorial (${transparencyPoints}/1)` : `editorial transparency (${transparencyPoints}/1)`);
+
+  return {
+    points: Math.min(points, 12),
+    evidence: `${isPT ? "Sinais observáveis relacionados com E-E-A-T" : "Observable signals related to E-E-A-T"}: ${evidence.join("; ")}.`,
+  };
 }
 
 function normalizeEntityName(value: string) {
@@ -399,16 +461,17 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
   const missingAlt = $("img").filter((_, el) => $(el).attr("alt") === undefined).length;
   const bodyText = $("body").text().replace(/\s+/g, " ").trim();
   const questionHeadings = [...h1s, ...h2s, ...$("h3").map((_, el) => $(el).text().trim()).get()].filter((heading) => /\?$/.test(heading)).length;
-  const externalLinks = $("a[href^='http']").filter((_, el) => {
+  const externalAnchorElements = $("a[href]").filter((_, el) => {
     try { return new URL($(el).attr("href") || "", finalUrl).hostname !== finalUrl.hostname; } catch { return false; }
-  }).length + schemaExternalReferences($);
-  const hasEntitySchema = schemas.some((type) => ["Organization", "LocalBusiness", "Corporation", "WebSite"].includes(type));
-  const hasAuthoredSchema = parsedSchemaNodes.some((node) =>
-    typesOf(node).some((type) => ["Article", "BlogPosting", "NewsArticle"].includes(type)) && hasSchemaValue(node.author));
-  const hasNamedPersonSchema = parsedSchemaNodes.some((node) => typesOf(node).includes("Person") && hasSchemaValue(node.name));
-  const hasAuthor = (hasEntitySchema && entitySchemaQuality.quality >= 0.5) || hasAuthoredSchema || hasNamedPersonSchema || /\b(author|autor|por|by)\b/i.test(bodyText);
+  });
+  const editorialExternalLinks = externalAnchorElements.filter((_, element) => {
+    const anchor = $(element);
+    const rel = (anchor.attr("rel") || "").toLowerCase().split(/\s+/);
+    return rel.includes("cite") || anchor.closest("article, cite, blockquote, [class*='reference'], [class*='source'], [class*='citation'], [class*='bibliograph'], [id*='reference'], [id*='source']").length > 0;
+  }).length;
   const brandMentioned = normalizeEntityName(bodyText).includes(normalizeEntityName(brand));
   const isPT = lang === "pt";
+  const editorialAssessment = evaluateEditorialResponsibility($, parsedSchemaNodes, isPT);
   const robotsAllows = Boolean(robots && !/user-agent:\s*\*[^]*?disallow:\s*\/\s*(?:\r?\n|$)/i.test(robots.text));
   const robotsLines = robots?.text.split(/\r?\n/).map((line) => line.replace(/#.*$/, "").trim()).filter(Boolean) || [];
   const validRobotsDirectives = /^(user-agent|allow|disallow|sitemap|crawl-delay|host|content-signal)\s*:/i;
@@ -558,8 +621,8 @@ async function analyze(brand: string, rawWebsite: string, types: ValidationType[
     { id: "aeo.structured_data_quality", label: isPT ? "Conteúdo — Dados estruturados" : "Content — Structured data", passed: answerSchemaQuality.quality === 1, points: 18 * answerSchemaQuality.quality, weight: 18, evidence: schemaEvidence(answerSchemaQuality, isPT ? "Falta FAQPage, Article, Service, ItemList ou HowTo." : "Missing FAQPage, Article, Service, ItemList, or HowTo schema.") },
     { id: "aeo.direct_answers", label: isPT ? "Conteúdo — Respostas diretas" : "Content — Direct answers", passed: questionHeadings > 0 || schemas.includes("FAQPage"), weight: 17, evidence: questionHeadings > 0 ? `${questionHeadings} ${isPT ? "perguntas em títulos" : questionHeadings === 1 ? "question heading" : "question headings"}.` : (isPT ? "Não foram detetadas perguntas em títulos." : "No question headings detected.") },
     { id: "aeo.brand", label: isPT ? "Conteúdo — Marca" : "Content — Brand", passed: brandMentioned, weight: 11, evidence: brandMentioned ? (isPT ? "Marca mencionada no conteúdo." : "Brand mentioned in page content.") : (isPT ? "Marca não encontrada no conteúdo visível." : "Brand not found in visible content.") },
-    { id: "aeo.editorial_responsibility", label: isPT ? "Conteúdo — Responsabilidade editorial" : "Content — Editorial responsibility", passed: hasAuthor, weight: 12, evidence: hasAuthor ? (isPT ? "Autoria ou entidade responsável identificada." : "Author or responsible entity identified.") : (isPT ? "Responsabilidade editorial não identificada." : "Editorial responsibility not identified.") },
-    { id: "aeo.sources", label: isPT ? "Conteúdo — Fontes e referências" : "Content — Sources and references", passed: externalLinks > 0, weight: 8, evidence: `${externalLinks} ${isPT ? "links externos ou referências sameAs" : "external links or sameAs references"}.` },
+    { id: "aeo.editorial_responsibility", label: isPT ? "Conteúdo — Responsabilidade editorial" : "Content — Editorial responsibility", passed: editorialAssessment.points === 12, points: editorialAssessment.points, weight: 12, evidence: editorialAssessment.evidence },
+    { id: "aeo.sources", label: isPT ? "Conteúdo — Fontes e referências" : "Content — Sources and references", passed: editorialExternalLinks > 0, weight: 8, evidence: `${editorialExternalLinks} ${isPT ? "referências externas em contexto editorial" : "external references in editorial context"}.` },
     { id: "aeo.llms_txt", label: isPT ? "Complementar — Ficheiro llms.txt" : "Complementary — llms.txt file", passed: Boolean(llms), weight: 1, evidence: llms ? (llmsFull ? (isPT ? "llms.txt e llms-full.txt encontrados; sinal complementar não utilizado pelo Google Search." : "llms.txt and llms-full.txt were found; a complementary signal not used by Google Search.") : (isPT ? "llms.txt encontrado; recurso complementar." : "llms.txt found; complementary resource.")) : (isPT ? "llms.txt ausente; recurso complementar." : "llms.txt is missing; complementary resource.") },
     { id: "aeo.general_bot_access", label: isPT ? "Técnico — Acesso geral de bots" : "Technical — General bot access", passed: robotsAllows, weight: 3, evidence: robotsAllows ? (isPT ? "O robots.txt permite rastreio geral." : "robots.txt allows general crawling.") : (isPT ? "O robots.txt bloqueia o rastreio geral." : "robots.txt blocks general crawling.") },
     { id: "aeo.ai_bot_access", label: isPT ? "Técnico — Acesso de bots de IA" : "Technical — AI bot access", passed: aiBotRules || robotsAllows, weight: 3, evidence: aiBotRules ? (isPT ? "Regras específicas para bots de IA encontradas." : "Specific rules for AI bots were found.") : robotsAllows ? (isPT ? "O rastreio geral está permitido, incluindo bots de IA; não existem regras específicas." : "General crawling is allowed, including AI bots; no specific rules are declared.") : (isPT ? "O acesso de bots de IA não está declarado ou permitido." : "AI bot access is not declared or allowed.") },
